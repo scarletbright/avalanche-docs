@@ -5,7 +5,7 @@ Clients interact with AVA through APIs calls to nodes.
 Numeric parameters in API calls may be given as strings (e.g. `"5"` or `5` are both ok for an integer argument).
 Numeric return values are always given as strings (e.g. `"5"` rather than `5`).
 
-In examples, API calls are made to a node listening on `127.0.0.1:9650`.
+In examples, API calls are made to a node listening for HTTP traffic on `127.0.0.1:9650`.
 
 ## [AVM (X-Chain) API](./avm.md)
 
