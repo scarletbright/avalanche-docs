@@ -195,7 +195,7 @@ curl -X POST --data '{
 
 ### admin.startCPUProfiler
 
-Start profiling the COU utilization of the node. Will write the profile to the specified file on stop.
+Start profiling the CPU utilization of the node. Will write the profile to the specified file on stop.
 
 #### Signature
 ```go
