@@ -9,44 +9,32 @@ The quickest way to learn about AVA is to run a node and interact with the netwo
 
 In this tutorial, which should take less than 10 minutes, we will:
 
-* Download and compile an AVA node implementation.
-* Install and run an AVA node.
-* Create a local test network.
-* Acquire AVA, the AVA network's native token, on your local test network.
-* Send AVA on your local test network.
-* Start validating the Default Subnet (staking)
+* Install and run an AVA node
+* Connect to the public test network
+* Acquire and send AVA, the AVA network's native token
+* Start validating
 
 If you run into any issues at all, please come ask for help on our [Discord Server!](https://discord.gg/wdkGmJ9)
-We will work to get you through any problems you may face with this tutorial or any AVA-related matter. 
+We will work to get you through any problems.
 
 ## Requirements 
 
 AVA is an incredibly lightweight protocol, so the minimum computer requirements are quite modest. 
 
-* Hardware: 2 GHz or faster CPU, 3 GB RAM, 250 MB hard disk.
+* Hardware: CPU > 2 GHz, RAM > 3 GB, Storage > 5 GB free space.
 * OS: Ubuntu == 18.04 or Mac OS X >= Catalina. (Ubuntu versions other than 18.04 may work but have not been tested.)
-* Software: [Go](https://golang.org/doc/install) version == 1.13.X and set up [`$GOPATH`](https://github.com/golang/go/wiki/SettingGOPATH).
-  Note: Go version **must be** 1.13.X. Version 1.14.X will not work (support coming soon.)
+* Software: [Go](https://golang.org/doc/install) >= 1.13
 
-To check if Go version 1.13.X is installed, run `go version` in your terminal.
-To check if your `$GOPATH` is set, run `echo $GOPATH`.
+Run `go version`. **It should be 1.13 or above.**
+Run `echo $GOPATH`. **It should not be empty**
 
 ## Run an AVA Node
 
-Let's download, compile and run Gecko, the Go implementation of an AVA node, and connect to the AVA Public Testnet.
+Let's install Gecko, the Go implementation of an AVA node, and connect to the AVA Public Testnet.
 
 ### Install Libraries
 
-Ubuntu users need the following libraries to run Gecko:
-
-* libssl-dev
-* libuv1-dev
-* cmake
-* make
-* curl
-* g++
-  
-Install the libraries:
+Ubuntu users need to install some libraries with:
 
 ```sh
 sudo apt-get install libssl-dev libuv1-dev cmake make curl g++
@@ -54,76 +42,107 @@ sudo apt-get install libssl-dev libuv1-dev cmake make curl g++
 
 ### Download Gecko Source Code
 
-Clone the Gecko repository:
+Download the Gecko repository:
 
 ```sh
-cd $GOPATH
-mkdir -p src/github.com/ava-labs
-cd src/github.com/ava-labs
-git clone https://github.com/ava-labs/gecko.git
-cd gecko
+go get -v -d github.com/ava-labs/gecko/...
 ```
 
-### Build the Executable
+### Build Executable
 
-Build Gecko using the build script:
+Change to the `gecko` directory:
+
+```sh
+cd $GOPATH/src/github.com/ava-labs/gecko
+```
+
+Build Gecko:
 
 ```sh
 ./scripts/build.sh
 ```
 
-The Gecko binary, named `ava`, is in the `build` directory.
+The binary, named `ava`, is in `gecko/build`. 
 
-### Managing a Key and Certificate for your Node
+### Start a Node and Connect to Test Network
 
-Nodes use a TLS certificate as an identity when communicating with other nodes.
-By default, the node will create a new key and certificate at `~/.gecko/staking/staker.key` and `~/.gecko/staking/staker.crt`, respectively. If a file already exists in either of these locations, the node will not overwrite the files.
-
-**Do not modify or delete your `staker.key` or `staker.crt`.**
-Doing so would erase your node's identity.
-
-### Connect to the Public Testnet
-
-The AVA Public Testnet is a sandbox AVA network where AVA tokens are free.
+The AVA test network is a sandbox AVA network where AVA tokens are free.
 You can use it to play around in a low-stakes environment.
 
-To start a node and connect it to the AVA testnet:
+To start a node and connect it to the AVA test net:
 
 ```sh
 ./build/ava
 ```
 
-You should see some pretty ASCII art and log messages when your node starts.
-You may see a few warnings. These are OK.
-
 You can use `Ctrl + C` to kill the node.
 
-If you want to create a local test network rather than connect to the Public Testnet, [see here.](../tutorials/creating-a-local-testnet.md)
+The first time you start a node it will take a few minutes (~5) to bootstrap.
 
-### Verify Connection
-
-To ensure that your node is connected to other nodes, call `admin.peers`:
+We are working on a better way to inform the user that bootstrapping is done and the node is ready to process transactions.
+For now, call `platform.getCurrentValidators` to get AVA's validators.
 
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "admin.peers",
+    "method": "platform.getCurrentValidators",
     "params":{},
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
 ```
 
-The `peers` field in the response should contain several IPs.
-If it's empty, your node wasn't able to connect to the network; double check your port forwarding settings,
-and if problems persist contact us on [Discord.](https://discord.gg/wdkGmJ9)
+If the response is this:
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "validators": [
+            {
+                "startTime": "1572566400",
+                "endTime": "1604102400",
+                "stakeAmount": "20000000000000",
+                "id": "EkKeGSLUbHrrtuayBtbwgWDRUiAziC3ao"
+            },
+            {
+                "startTime": "1572566400",
+                "endTime": "1604102400",
+                "stakeAmount": "20000000000000",
+                "id": "DsMP6jLhi1MkDVc3qx9xx9AAZWx8e87Jd"
+            },
+            {
+                "startTime": "1572566400",
+                "endTime": "1604102400",
+                "stakeAmount": "20000000000000",
+                "id": "NX4zVkuiRJZYe6Nzzav7GXN3TakUet3Co"
+            },
+            {
+                "startTime": "1572566400",
+                "endTime": "1604102400",
+                "stakeAmount": "20000000000000",
+                "id": "CMsa8cMw4eib1Hb8GG4xiUKAq5eE1BwUX"
+            },
+            {
+                "startTime": "1572566400",
+                "endTime": "1604102400",
+                "stakeAmount": "20000000000000",
+                "id": "N86eodVZja3GEyZJTo3DFUPGpxEEvjGHs"
+            }
+        ]
+    },
+    "id": 85
+}
+```
+
+Then your node isn't bootstrapped.
+If it doesn't bootstrap in a few minutes, contact us on [Discord.](https://discord.gg/wdkGmJ9)
 
 ## Create a Keystore User
 
 AVA nodes provide a built-in **Keystore.**
 The Keystore manages users.
 A user is a password-protected identity that a client can use when interacting with blockchains.
-The same user can be used as an identity on many blockchains, and one client can have multiple users.
-
+A keystore user is a lot like a wallet.
 To create a user, call `keystore.createUser`:
 
 ```json
@@ -199,15 +218,14 @@ Your user now controls the address `X-5TQr5hSAZ8ZKuSaYLg5sr4VwvcvwKZ1Mg` on the 
 To tell apart addresses on different chains, the AVA convention is for an address to include the ID of the chain it exists on.
 Hence, this address begins `X-`, denoting that it exists on the X-Chain.
 
-## Acquire AVA Tokens
+## Acquire AVA
 
-Now let's use the AVA Testnet Faucet to send some AVA tokens to this address.
-The faucet dispenses 2500 nanoAVA (nAVA) for free.
+Now let's use the AVA test net faucet to send some free AVA to this address.
+The faucet dispenses 20,000 nanoAVA (nAVA) each drop.
 
-Remember, this is only a test network, and AVA on this network has no value.
-After all, anyone can get it for free by using the faucet.
+**This is only a test network, and AVA on this network has no value.**
 
-Go to the [Testnet Faucet](https://faucet.ava.network/) and paste the address you just created to receive 2500 nAVA.
+Go to the [test net faucet](https://faucet.ava.network/) and paste the address you just created to receive 20,000 nAVA.
 
 We can check an address's balance of a given asset by calling `avm.getBalance`, another method of the X-Chain's API.
 Let's check that the 2500 nAVA was actually sent.
@@ -234,14 +252,14 @@ The response should look like this:
     "jsonrpc":"2.0",
     "id"     :3,
     "result" :{
-        "balance":2500
+        "balance":20000
     }
 }
 ```
 
 ## Send AVA
 
-Now let's send some AVA tokens:
+Now let's send some AVA:
 
 ```json
 curl -X POST --data '{
