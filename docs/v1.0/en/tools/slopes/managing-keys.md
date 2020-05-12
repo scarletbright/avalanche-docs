@@ -17,7 +17,7 @@ The keychain is accessed through the AVM API and can be referenced directly or t
 let myKeychain = avm.keyChain();
 ```
 
-This exposes the instance of the class AVM Keychain which is created when the AVM API is created. At present, this supports secp256k1 curve for ECDSA key pairs. 
+This exposes the instance of the class AVM Keychain which is created when the AVM API is created. At present, this supports secp256k1 curve for ECDSA key pairs.
 
 ## Creating AVM key pairs
 
@@ -46,10 +46,10 @@ let newAddress2 = myKeychain.importKey(mypk); //returns a Buffer for the address
 The AVMKeyChain extends the global KeyChain class, which has standardized key management capabilities. The following functions are available on any keychain that implements this interface.
 
 ```js
-let addresses = avm.keyChain().getAddresses(); //returns an array of Buffers for the addresses
-let addressStrings = avm.keyChain().getAddressStrings(); //returns an array of strings for the addresses
-let exists = myKeychain.hasKey(myaddress); //returns true if the address is managed
-let keypair = myKeychain.getKey(myaddress); //returns the keypair class
+let addresses = myKeychain.getAddresses(); //returns an array of Buffers for the addresses
+let addressStrings = myKeychain.getAddressStrings(); //returns an array of strings for the addresses
+let exists = myKeychain.hasKey(newAddress1); //returns true if the address is managed
+let keypair = myKeychain.getKey(newAddress1); //returns the keypair class
 ```
 
 ## Working with keypairs
@@ -74,5 +74,5 @@ let successul = keypair.importKey(mypk); //returns boolean if private key import
 let message = Buffer.from("Wubalubadubdub");
 let signature = keypair.sign(message); //returns a Buffer with the signature
 let signerPubk = keypair.recover(message, signature);
-let isValid = keypair.verify(message, signature, signerPubk); //returns a boolean
+let isValid = keypair.verify(message, signature); //returns a boolean
 ```

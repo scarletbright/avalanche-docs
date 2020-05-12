@@ -6,7 +6,7 @@
 
 ## Overview
 
-Slopes is a JavaScript Library for interfacing with the AVA Platform. It is built using TypeScript and intended to support both browser and Node.js. The Slopes library allows one to issue commands to the AVA node APIs. 
+Slopes is a JavaScript Library for interfacing with the AVA Platform. It is built using TypeScript and intended to support both browser and Node.js. The Slopes library allows one to issue commands to the AVA node APIs.
 
 The APIs currently supported by default are:
 
@@ -17,7 +17,7 @@ The APIs currently supported by default are:
 
 ## Getting Started
 
-We built Slopes with ease of use in mind. With this library, any Javascript developer is able to interact with a node on the AVA Platform who has enabled their API endpoints for the developer's consumption. We keep the library up-to-date with the latest changes in the [AVA Platform Specification](https://avalabs.org/docs/). 
+We built Slopes with ease of use in mind. With this library, any Javascript developer is able to interact with a node on the AVA Platform who has enabled their API endpoints for the developer's consumption. We keep the library up-to-date with the latest changes in the [AVA Platform Specification](https://avalabs.org/docs/).
 
   Using Slopes, developers are able to:
 
@@ -32,10 +32,9 @@ We built Slopes with ease of use in mind. With this library, any Javascript deve
 
 The entirety of the Slopes documentation can be found on our [XXX Fix Link XXX Slopes documentation page](https://avalabs.org/docs/slopes).
 
-
 ### Requirements
 
-Slopes requires Node.js LTS version 12.13.1 or higher to compile. 
+Slopes requires Node.js LTS version 12.13.1 or higher to compile.
 
 Slopes depends on the following two Node.js modules internally, and we suggest that your project uses them as well:
 
@@ -46,9 +45,9 @@ Slopes depends on the following two Node.js modules internally, and we suggest t
    * https://github.com/indutny/bn.js/
    * `npm install --save bn.js`
 
-Both of the above modules are extremely useful when interacting with Slopes as they are the input and output types of many base classes in the library. 
+Both of the above modules are extremely useful when interacting with Slopes as they are the input and output types of many base classes in the library.
 
-### Installation 
+### Installation
 
 Slopes is available for install via `npm`:
 
@@ -107,7 +106,7 @@ The keychain is accessed through the AVM API and can be referenced directly or t
 let myKeychain = avm.keyChain();
 ```
 
-This exposes the instance of the class AVM Keychain which is created when the AVM API is created. At present, this supports secp256k1 curve for ECDSA key pairs. 
+This exposes the instance of the class AVM Keychain which is created when the AVM API is created. At present, this supports secp256k1 curve for ECDSA key pairs.
 
 ### Creating AVM key pairs
 
@@ -136,10 +135,10 @@ let newAddress2 = myKeychain.importKey(mypk); //returns a Buffer for the address
 The AVMKeyChain extends the global KeyChain class, which has standardized key management capabilities. The following functions are available on any keychain that implements this interface.
 
 ```js
-let addresses = avm.keyChain().getAddresses(); //returns an array of Buffers for the addresses
-let addressStrings = avm.keyChain().getAddressStrings(); //returns an array of strings for the addresses
-let exists = myKeychain.hasKey(myaddress); //returns true if the address is managed
-let keypair = myKeychain.getKey(myaddress); //returns the keypair class
+let addresses = myKeychain.getAddresses(); //returns an array of Buffers for the addresses
+let addressStrings = myKeychain.getAddressStrings(); //returns an array of strings for the addresses
+let exists = myKeychain.hasKey(newAddress1); //returns true if the address is managed
+let keypair = myKeychain.getKey(newAddress1); //returns the keypair class
 ```
 
 ### Working with keypairs
@@ -161,10 +160,10 @@ keypair.generateKey(); //creates a new random keypair
 let mypk = "24jUJ9vZexUM6expyMcT48LBx27k1m7xpraoV62oSQAHdziao5";
 let successul = keypair.importKey(mypk); //returns boolean if private key imported successfully
 
-let message = "Wubalubadubdub";
+let message = Buffer.from("Wubalubadubdub");
 let signature = keypair.sign(message); //returns a Buffer with the signature
 let signerPubk = keypair.recover(message, signature);
-let isValid = keypair.verify(message, signature, signerPubk); //returns a boolean
+let isValid = keypair.verify(message, signature); //returns a boolean
 ```
 
 ## Example 2 &mdash; Creating An Asset
@@ -179,7 +178,7 @@ let avm = ava.AVM(); //returns a reference to the AVM API used by Slopes
 
 ### Describe the new asset
 
-The first steps in creating a new asset using Slopes is to determine the qualities of the asset. We will give the asset a name, a ticker symbol, as well as a denomination. 
+The first steps in creating a new asset using Slopes is to determine the qualities of the asset. We will give the asset a name, a ticker symbol, as well as a denomination.
 
 ```js
 // The fee to pay for the asset, we assume this network is fee-less
@@ -196,7 +195,7 @@ let denomination = 9;
 
 ### Creating the initial state
 
-We want to mint an asset with 400 coins to all of our managed keys, 500 to the second address we know of, and 600 to the second and third address. This sets up the state that will result from the Create Asset transaction. 
+We want to mint an asset with 400 coins to all of our managed keys, 500 to the second address we know of, and 600 to the second and third address. This sets up the state that will result from the Create Asset transaction.
 
 *Note: This example assumes we have the keys already managed in our AVM Keychain.*
 
@@ -209,7 +208,7 @@ let secpbase2 = new slopes.SecpOutBase(new BN(500), [addresses[1]]);
 let secpbase3 = new slopes.SecpOutBase(new BN(600), [addresses[1], addresses[2]]);
 
 // Populate the initialState array
-// The AVM needs to know what type of output is produced. 
+// The AVM needs to know what type of output is produced.
 // The constant slopes.AVMConstants.SECPFXID is the correct output.
 // It specifies that we are using a secp256k1 signature scheme for this output.
 let initialState = new slopes.InitialStates();
@@ -220,7 +219,7 @@ initialState.addOutput(secpbase3, slopes.AVMConstants.SECPFXID);
 
 ### Creating the signed transaction
 
-Now that we know what we want an asset to look like, we create an output to send to the network. There is an AVM helper function `makeCreateAssetTx()` which does just that. 
+Now that we know what we want an asset to look like, we create an output to send to the network. There is an AVM helper function `makeCreateAssetTx()` which does just that.
 
 ```js
 // Fetch the UTXOSet for our addresses
@@ -234,7 +233,7 @@ let signed = avm.keyChain().signTx(unsigned); //returns a Tx class
 
 ### Issue the signed transaction
 
-Now that we have a signed transaction ready to send to the network, let's issue it! 
+Now that we have a signed transaction ready to send to the network, let's issue it!
 
 Using the Slopes AVM API, we going to call the issueTx function. This function can take either the Tx class returned in the previous step, a base-58 string AVA serialized representation of the transaction, or a raw Buffer class with the data for the transaction. Examples of each are below:
 
@@ -261,7 +260,7 @@ Now that we sent the transaction to the network, it takes a few seconds to deter
 
 ```js
 // returns one of: "Accepted", "Processing", "Unknown", and "Rejected"
-let status = await avm.getTxStatus(txid); 
+let status = await avm.getTxStatus(txid);
 ```
 
 The statuses can be one of "Accepted", "Processing", "Unknown", and "Rejected":
@@ -276,6 +275,7 @@ The statuses can be one of "Accepted", "Processing", "Unknown", and "Rejected":
 The AVM uses the TxID of the transaction which created the asset as the unique identifier for the asset. This unique identifier is henceforth known as the "AssetID" of the asset. When assets are traded around the AVM, they always reference the AssetID that they represent.
 
 ## Example 3 &mdash; Sending An Asset
+
 This example sends an asset in the AVM to a single recipient. The first step in this process is to create an instance of Slopes connected to our AVA Platform endpoint of choice.
 
 ```js
@@ -288,14 +288,15 @@ We're also assuming that the keystore contains a list of addresses used in this 
 
 ### Getting the UTXO Set
 
-The AVM stores all available balances in a datastore called Unspent Transaction Outputs (UTXOs). A UTXO Set is the unique list of outputs produced by transactions, addresses that can spend those outputs, and other variables such as lockout times (a timestamp after which the output can be spent) and thresholds (how many signers are required to spend the output). 
+The AVM stores all available balances in a datastore called Unspent Transaction Outputs (UTXOs). A UTXO Set is the unique list of outputs produced by transactions, addresses that can spend those outputs, and other variables such as lockout times (a timestamp after which the output can be spent) and thresholds (how many signers are required to spend the output).
 
-For the case of this example, we're going to create a simple transaction that spends an amount of available coins and sends it to a single address without any restrictions. The management of the UTXOs will mostly be abstracted away. 
+For the case of this example, we're going to create a simple transaction that spends an amount of available coins and sends it to a single address without any restrictions. The management of the UTXOs will mostly be abstracted away.
 
-However, we do need to get the UTXO Set for the addresses we're managing. 
+However, we do need to get the UTXO Set for the addresses we're managing.
 
 ```js
 let myAddresses = avm.keyChain().getAddresses(); //returns an array of addresses the keychain manages
+let addressStrings = avm.keyChain().getAddressStrings(); //returns an array of addresses the keychain manages as strings
 let utxos = await avm.getUTXOs(myAddresses);
 ```
 
@@ -321,7 +322,7 @@ let friendsAddress = "X-B6D4v1VtPYLbiUvYXtW4Px8oE9imC2vGW"; //AVA serialized add
 //   * An array of addresses sending the funds
 //   * An array of addresses any leftover funds are sent
 //   * The AssetID of the funds being sent
-let unsignedTx = avm.makeUnsignedTx(utxos, amount, [friendsAddress], myAddresses, myAddresses, assetid); 
+let unsignedTx = await avm.makeUnsignedTx(utxos, sendAmount, [friendsAddress], addressStrings, addressStrings, assetid);
 let signedTx = avm.signTx(unsignedTx);
 let txid = await avm.issueTx(signedTx);
 ```
@@ -334,7 +335,7 @@ Now that we sent the transaction to the network, it takes a few seconds to deter
 
 ```js
 // returns one of: "Accepted", "Processing", "Unknown", and "Rejected"
-let status = await avm.getTxStatus(txid); 
+let status = await avm.getTxStatus(txid);
 ```
 
 The statuses can be one of "Accepted", "Processing", "Unknown", and "Rejected":
