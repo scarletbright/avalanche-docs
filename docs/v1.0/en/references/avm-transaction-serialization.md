@@ -956,7 +956,7 @@ An unsigned create asset tx contains a `BaseTx`, `Name`, `Symbol`, `Denomination
 ### Proto Unsigned Create Asset Tx Specification
 
 ```protobuf
-message BaseTx {
+message CreateAssetTx {
     BaseTx base_tx = 1;                       // size(base_tx)
     string name = 2;                          // 2 bytes + len(name)
     name symbol = 3;                          // 2 bytes + len(symbol)
