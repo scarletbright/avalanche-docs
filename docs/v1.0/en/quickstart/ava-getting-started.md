@@ -199,6 +199,9 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
+If this call returns a 404 error, your node isn't finished bootstrapping. Wait a few more minutes and try again.
+If it stills gives you a 404, contact us on [Discord](https://discord.gg/wdkGmJ9) and we'll help you.
+
 Note that we make this request to `127.0.0.1:9650/ext/bc/X`.
 The `bc/X` portion signifies that the request is being sent to the blockchain whose ID (or alias) is `X` (ie the X-Chain.)
 
