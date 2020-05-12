@@ -88,7 +88,7 @@ curl -X POST --data '{
     "method": "platform.getCurrentValidators",
     "params":{},
     "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
 If the response is this:
