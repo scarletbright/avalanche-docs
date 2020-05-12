@@ -72,24 +72,15 @@ Build Gecko using the build script:
 ./scripts/build.sh
 ```
 
-The Gecko binary, named `ava`, is in the `build` directory. 
+The Gecko binary, named `ava`, is in the `build` directory.
 
-### Create a Key and Certificate for your Node
+### Managing a Key and Certificate for your Node
 
 Nodes use a TLS certificate as an identity when communicating with other nodes.
-You'll need to run a script in order to generate your node's TLS certificate.
+By default, the node will create a new key and certificate at `~/.gecko/staking/staker.key` and `~/.gecko/staking/staker.crt`, respectively. If a file already exists in either of these locations, the node will not overwrite the files.
 
-Generate the TLS certificate:
-
-```sh
-sh keys/genStaker.sh
-```
-
-**Do not modify or delete `staker.key`, `staker.crt` or `staker.csr` in** `keys`.
+**Do not modify or delete your `staker.key` or `staker.crt`.**
 Doing so would erase your node's identity.
-
-If you have run this script before, you'll see a message telling you that a key/certificate
-have not been generated because doing so would overwrite the existing ones.
 
 ### Connect to the Public Testnet
 
