@@ -96,6 +96,38 @@ curl -X POST --data '{
 }
 ```
 
+### kesytore.deleteUser
+
+Delete a user.
+
+```go
+keystore.deleteUser({username: string, password:string}) -> {success: bool}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"keystore.deleteUser",
+    "params" : {
+        "username" : "bob",
+        "password" : "3l33th4x0r!!1!"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/keystore
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{"success" : true}
+}
+```
+
 ### keystore.exportUser
 
 Export a user. The user can be imported to another node with `keystore.importUser`.
