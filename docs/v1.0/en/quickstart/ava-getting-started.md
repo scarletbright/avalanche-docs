@@ -26,6 +26,7 @@ AVA is an incredibly lightweight protocol, so the minimum computer requirements 
 * Software: [Go](https://golang.org/doc/install) >= 1.13
 
 Run `go version`. **It should be 1.13 or above.**
+Run `echo $GOPATH`. **It should not be empty**
 
 ## Run an AVA Node
 
@@ -41,10 +42,10 @@ sudo apt-get install libssl-dev libuv1-dev cmake make curl g++
 
 ### Download Gecko Source Code
 
-Clone the Gecko repository:
+Download the Gecko repository:
 
 ```sh
-git clone https://github.com/ava-labs/gecko.git
+go get -v -d github.com/ava-labs/gecko/...
 ```
 
 ### Build Executable
@@ -52,7 +53,7 @@ git clone https://github.com/ava-labs/gecko.git
 Change to the `gecko` directory:
 
 ```sh
-cd gecko
+cd $GOPATH/src/github.com/ava-labs/gecko
 ```
 
 Build Gecko:
