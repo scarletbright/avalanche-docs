@@ -296,7 +296,7 @@ However, we do need to get the UTXO Set for the addresses we're managing.
 
 ```js
 let myAddresses = avm.keyChain().getAddresses(); //returns an array of addresses the keychain manages
-let addressStrings = avm.keyChain().getAddresses(); //returns an array of addresses the keychain manages as strings
+let addressStrings = avm.keyChain().getAddressStrings(); //returns an array of addresses the keychain manages as strings
 let utxos = await avm.getUTXOs(myAddresses);
 ```
 
