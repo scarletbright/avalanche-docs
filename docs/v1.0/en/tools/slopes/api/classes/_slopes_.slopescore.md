@@ -62,7 +62,7 @@ Creates a new Slopes instance. Sets the address and port of the main AVA Client.
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `ip` | string | - | The hostname to resolve to reach the AVA Client APIs |
-`port` | number | - | The port to reolve to reach the AVA Client APIs |
+`port` | number | - | The port to resolve to reach the AVA Client APIs |
 `protocol` | string | "http" | The protocol string to use before a "://" in a request, ex: "http", "https", "git", "ws", etc ...  |
 
 **Returns:** *[SlopesCore](_slopes_.slopescore.md)*
@@ -371,7 +371,7 @@ Sets the address and port of the main AVA Client.
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `ip` | string | - | The hostname to resolve to reach the AVA Client RPC APIs |
-`port` | number | - | The port to reolve to reach the AVA Client RPC APIs |
+`port` | number | - | The port to resolve to reach the AVA Client RPC APIs |
 `protocol` | string | "http" | The protocol string to use before a "://" in a request, ex: "http", "https", "git", "ws", etc ...  |
 
 **Returns:** *void*
