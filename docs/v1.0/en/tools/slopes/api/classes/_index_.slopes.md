@@ -68,7 +68,7 @@ Creates a new AVA instance. Sets the address and port of the main AVA Client.
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `ip` | string | - | The hostname to resolve to reach the AVA Client RPC APIs |
-`port` | number | - | The port to reolve to reach the AVA Client RPC APIs |
+`port` | number | - | The port to resolve to reach the AVA Client RPC APIs |
 `protocol` | string | "http" | The protocol string to use before a "://" in a request, ex: "http", "https", "git", "ws", etc ... |
 `networkID` | number | 12345 | - |
 `avmChainID` | string |  undefined | Sets the blockchainID for the AVM. Will try to auto-detect, otherwise default "4R5p2RXDGLqaifZE4hHWH9owe34pfoBULn1DrQTWivjg8o4aH" |
@@ -466,7 +466,7 @@ Sets the address and port of the main AVA Client.
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `ip` | string | - | The hostname to resolve to reach the AVA Client RPC APIs |
-`port` | number | - | The port to reolve to reach the AVA Client RPC APIs |
+`port` | number | - | The port to resolve to reach the AVA Client RPC APIs |
 `protocol` | string | "http" | The protocol string to use before a "://" in a request, ex: "http", "https", "git", "ws", etc ...  |
 
 **Returns:** *void*
