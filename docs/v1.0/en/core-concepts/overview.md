@@ -229,7 +229,7 @@ That is, when it is queried about the transaction in the future, it will reply t
 
 The validator repeats this sampling process until *alpha* of the validators queried reply the same way (accept/reject) for *beta* consecutive rounds. 
 
-In the case common case when a transaction has no conflicts, finalization happens very quickly.
+In the common case when a transaction has no conflicts, finalization happens very quickly.
 When conflicts exist, honest validators quickly cluster around preferring one of the conflicting transactions, entering a positive feedback loop until all correct validators prefer that transaction, leading to its acceptance and the rejection of conflicting transactions. Avalanche gets its name from this cascading property.
 
 It is guaranteed (with arbitrarily high probability based on system parameters) that if any honest validator accepts (rejects) a transaction, all honest validators will accept (reject) that transaction.
