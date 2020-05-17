@@ -330,8 +330,8 @@ Users can create Subnets, allowing for private blockchains.
 
 ## Next steps
 
-- [Get started with the quickstart tutorial](../../quickstart/ava-getting-started/)
+- [Get started with the quickstart tutorial](../quickstart/ava-getting-started.md)
 - [Follow the Quickstart guide](../tutorials/fixed-cap-asset.md)
-- [Explore AVA's APIs](../../api/intro-apis/)
-- [Explore reference materials](../../references/cryptographic-primitives)
-- [Read the whitepaper and other papers](../../papers/)
+- [Explore AVA's APIs](../api/intro-apis.md)
+- [Explore reference materials](../references/cryptographic-primitives.md)
+- [Read the whitepaper and other papers](../papers/)
