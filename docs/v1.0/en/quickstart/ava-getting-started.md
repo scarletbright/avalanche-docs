@@ -75,9 +75,20 @@ To start a node and connect it to the AVA test net:
 ./build/ava
 ```
 
+**Note: if your node fails to start with** `problem starting servers: failed to listen on consensus server at 0.0.0.0:9
+651: unable to listen`, **run with**  `./build/ava --staking-port=9652` **(or 9653 or some other unused port). This is a known issue and we're working on it.**
+
 You can use `Ctrl + C` to kill the node.
 
-The first time you start a node it will take a few minutes (~5) to bootstrap.
+The first time you start a node it will take a few minutes (~5) to bootstrap.  
+While your node is running, you will see a lot of messages that look like these printed to the console:
+
+```
+2020-05-18 10:09:55.918792 [net info] established 8d31f9a0fe <---> 5aab4f2030 (via <Conn fd=55 addr=<NetAddr 34.207.133.167:21001> mode=active>)
+2020-05-18 10:09:55.918819 [net info] 8d31f9a0fe: ping from <Conn fd=55 addr=<NetAddr 34.207.133.167:21001> mode=active>
+```
+
+There is no way to disable these networking logs at the moment, but we're working on it.
 
 We are working on a better way to inform the user that bootstrapping is done and the node is ready to process transactions.
 For now, call `platform.getCurrentValidators` to get AVA's validators.
@@ -135,7 +146,9 @@ If the response is this:
 ```
 
 Then your node isn't bootstrapped.
-If it doesn't bootstrap in a few minutes, contact us on [Discord.](https://discord.gg/wdkGmJ9)
+If it doesn't bootstrap in a few minutes, check the [AVA explorer](https://explorer.ava.network/) to see if there are recent transactions on the network.
+If so, the issue is probably your node; contact us on [Discord.](https://discord.gg/wdkGmJ9)
+If not, the test network is probably down.
 
 ## Create a Keystore User
 
