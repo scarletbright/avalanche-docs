@@ -14,6 +14,35 @@ This API uses the `json 2.0` RPC format. For more information on making JSON RPC
 
 ## API Methods
 
+### admin.getNodeID
+Get the ID of this node.
+
+#### Signature 
+```go
+admin.getNodeID() -> {nodeID: string}
+```
+
+#### Example Call
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"admin.getNodeID"
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "nodeID": "5mb46qkSBj81k9g9e4VFjGGSbaaSLFRzD"
+    },
+    "id": 1
+}
+```
+
 ### admin.peers
 Get the peers this node is connected to.
 
