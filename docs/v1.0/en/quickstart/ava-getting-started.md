@@ -80,7 +80,7 @@ To start a node and connect it to the AVA test net:
 
 You can use `Ctrl + C` to kill the node.
 
-The first time you start a node it will take a few minutes (~5) to bootstrap.  
+The first time you start a node it will take a few minutes (~15) to bootstrap.  
 While your node is running, you will see a lot of messages that look like these printed to the console:
 
 ```
