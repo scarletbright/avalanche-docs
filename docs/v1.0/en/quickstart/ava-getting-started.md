@@ -84,68 +84,45 @@ The first time you start a node it will take a few minutes (~15) to bootstrap.
 While your node is running, you will see a lot of messages that look like these printed to the console:
 
 ```
-2020-05-18 10:09:55.918792 [net info] established 8d31f9a0fe <---> 5aab4f2030 (via <Conn fd=55 addr=<NetAddr 34.207.133.167:21001> mode=active>)
-2020-05-18 10:09:55.918819 [net info] 8d31f9a0fe: ping from <Conn fd=55 addr=<NetAddr 34.207.133.167:21001> mode=active>
+created <Conn fd=100 addr=<NetAddr 107.23.241.199:21001> mode=active>
+established 8d31f9a0fe <---> 5aab4f2030 (via <Conn fd=55 addr=<NetAddr 34.207.133.167:21001> mode=active>)
+ping from <Conn fd=55 addr=<NetAddr 34.207.133.167:21001> mode=active>
 ```
 
 There is no way to disable these networking logs at the moment, but we're working on it.
 
-We are working on a better way to inform the user that bootstrapping is done and the node is ready to process transactions.
-For now, call `platform.getCurrentValidators` to get AVA's validators.
+You will also see two warnings that say, in part `Bootstrapping finished with no accepted frontier.` These are OK.
 
-```json
+We are working on a better way to inform the user that bootstrapping is done and the node is ready to process transactions.
+For now, check the balance of the faucet to see if your node is bootstrapped.
+
+```sh
 curl -X POST --data '{
-    "jsonrpc": "2.0",
-    "method": "platform.getCurrentValidators",
-    "params":{},
-    "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+    "jsonrpc":"2.0",
+    "id"     :2,
+    "method" :"avm.getBalance",
+    "params" :{
+        "address":"X-6cesTteH62Y5mLoDBUASaBvCXuL2AthL",
+        "assetID":"AVA"
+    }
+}'' -H 'content-type:application/json;' 127.0.0.1:9650/ext/X
 ```
 
 If the response is this:
 
 ```json
 {
-    "jsonrpc": "2.0",
-    "result": {
-        "validators": [
-            {
-                "startTime": "1572566400",
-                "endTime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "EkKeGSLUbHrrtuayBtbwgWDRUiAziC3ao"
-            },
-            {
-                "startTime": "1572566400",
-                "endTime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "DsMP6jLhi1MkDVc3qx9xx9AAZWx8e87Jd"
-            },
-            {
-                "startTime": "1572566400",
-                "endTime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "NX4zVkuiRJZYe6Nzzav7GXN3TakUet3Co"
-            },
-            {
-                "startTime": "1572566400",
-                "endTime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "CMsa8cMw4eib1Hb8GG4xiUKAq5eE1BwUX"
-            },
-            {
-                "startTime": "1572566400",
-                "endTime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "N86eodVZja3GEyZJTo3DFUPGpxEEvjGHs"
-            }
-        ]
-    },
-    "id": 85
+    "jsonrpc":"2.0",
+    "id"     :2,
+    "result" :{
+        "balance": 0,
+        "utxoIDs":null
+    }
 }
 ```
 
-Then your node isn't bootstrapped.
+or if the API call hangs or returns a 404 error, then your node isn't bootstrapped.
+
 If it doesn't bootstrap in a few minutes, check the [AVA explorer](https://explorer.ava.network/) to see if there are recent transactions on the network.
 If so, the issue is probably your node; contact us on [Discord.](https://discord.gg/wdkGmJ9)
 If not, the test network is probably down.
@@ -158,7 +135,7 @@ A user is a password-protected identity that a client can use when interacting w
 A keystore user is a lot like a wallet.
 To create a user, call `keystore.createUser`:
 
-```json
+```sh
 curl -X POST --data '{
      "jsonrpc": "2.0",
      "id": 1,
@@ -200,7 +177,7 @@ First, we'll need to create an address to hold them.
 
 To create a new address on the X-Chain, call `avm.createAddress`, a method of the [X-Chain's API](../api/avm.md):
 
-```json
+```sh
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :2,
@@ -234,7 +211,7 @@ Your user now controls the address `X-5TQr5hSAZ8ZKuSaYLg5sr4VwvcvwKZ1Mg` on the 
 To tell apart addresses on different chains, the AVA convention is for an address to include the ID of the chain it exists on.
 Hence, this address begins `X-`, denoting that it exists on the X-Chain.
 
-## Acquire AVA
+## Use the AVA Faucet
 
 Now let's use the AVA test net faucet to send some free AVA to this address.
 The faucet dispenses 20,000 nanoAVA (nAVA) each drop.
@@ -244,9 +221,9 @@ The faucet dispenses 20,000 nanoAVA (nAVA) each drop.
 Go to the [test net faucet](https://faucet.ava.network/) and paste the address you just created to receive 20,000 nAVA.
 
 We can check an address's balance of a given asset by calling `avm.getBalance`, another method of the X-Chain's API.
-Let's check that the 2500 nAVA was actually sent.
+Let's check that the faucet drip went through.
 
-```json
+```sh
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :3,
@@ -268,7 +245,13 @@ The response should look like this:
     "jsonrpc":"2.0",
     "id"     :3,
     "result" :{
-        "balance":20000
+        "balance":20000,
+        "utxoIDs": [
+            {
+                "txID": "x6vR85YPNRf5phpLAEC7Sd6Tq2PXWRt3AAHAK4BpjxyjRyhtu",
+                "outputIndex": 0
+            }
+        ]
     }
 }
 ```
@@ -277,7 +260,7 @@ The response should look like this:
 
 Now let's send some AVA:
 
-```json
+```sh
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :5,
@@ -317,7 +300,7 @@ The response should look like this:
 
 This send transaction will only take a second or two to finalize. We can check its status with `avm.getTxStatus`:
 
-```json
+```sh
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :6,
@@ -344,7 +327,7 @@ You might also see that `status` is `Pending` if the network has not yet finaliz
 
 Once you see that the transaction is `Accepted`, check the balance of the `to` address to see that it has the AVA we sent:
 
-```json
+```sh
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :7,
@@ -385,7 +368,7 @@ The P-Chain (Platform Chain) manages metadata about the AVA network, including w
 The P-Chain uses an account model, so in order to validate the Default Subnet you'll need to first create an account on the P-Chain.
 To do so, call [`platform.createAccount`](../api/platform.md#platformcreateaccount):
 
-```json
+```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.createAccount",
@@ -422,7 +405,7 @@ The minimum stake amount is 10,000 nAVA, so make sure you have at least this muc
 
 The first step in transferring AVA from the X-Chain to P-Chain is to call `avm.exportAVA`:
 
-```json
+```sh
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
@@ -441,7 +424,7 @@ As before, you can check the transaction's status by calling `avm.getTxStatus`.
 
 The second and final step is to call `platform.importAVA`:
 
-```json
+```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.importAVA",
@@ -473,7 +456,7 @@ This call returns the transaction:
 
 Which you can issue to the P-Chain by calling `platform.issueTx`:
 
-```json
+```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.issueTx",
@@ -486,7 +469,7 @@ curl -X POST --data '{
 
 Now check the balance of your P-Chain account by calling `platform.getAccount`:
 
-```json
+```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.getAccount",
@@ -518,7 +501,7 @@ Great! Now your P-Chain account has enough AVA tokens to provide a stake.
 Your node is uniquely identified by the TLS certificate generated earlier by running `genStaker.sh`.
 To get your node's ID, call [`admin.getNodeID:`](../api/admin.md#admingetnodeid)
 
-```json
+```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "admin.getNodeID",
@@ -597,7 +580,7 @@ We need to sign this transaction with the key of the account that is paying the 
 
 To do so, call `platform.Sign`.
 
-```json
+```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.sign",
@@ -627,7 +610,7 @@ This returns the signed transaction:
 
 Finally, we issue the transaction to the network by calling [`platform.issueTx`](../api/platform.md#platformissuetx)
 
-```json
+```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.issueTx",
@@ -648,7 +631,7 @@ A Subnet's pending validator set contains the nodes that are slated to start val
 
 If we don't provide any arguments, this method returns the pending validator set of the Default Subnet:
 
-```json
+```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.getPendingValidators",
