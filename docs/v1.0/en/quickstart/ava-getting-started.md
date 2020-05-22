@@ -275,8 +275,8 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-`amount` specifies the number of \nAVA to send.
-A \nAVA ($nanoAVA) is the smallest increment of AVA, and 1,000,000,000 nAVA == 1 AVA. 
+`amount` specifies the number of nAVA to send.
+A nAVA (nanoAVA) is the smallest increment of AVA, and 1,000,000,000 nAVA == 1 AVA. 
 
 When you send this request, the node will authenticate you using your username and password.
 Then, it will look through all the private keys controlled by your user until it finds
