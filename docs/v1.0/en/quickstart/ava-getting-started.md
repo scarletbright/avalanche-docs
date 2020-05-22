@@ -105,7 +105,7 @@ curl -X POST --data '{
         "address":"X-6cesTteH62Y5mLoDBUASaBvCXuL2AthL",
         "assetID":"AVA"
     }
-}'' -H 'content-type:application/json;' 127.0.0.1:9650/ext/X
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/X
 ```
 
 If the response is this:
