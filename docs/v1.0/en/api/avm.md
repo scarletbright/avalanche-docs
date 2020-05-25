@@ -627,7 +627,7 @@ curl -X POST --data '{
         "to":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
         "amount": 500,
     	"username":"myUsername",
-    	"password":"myPassword",
+    	"password":"myPassword"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
