@@ -723,6 +723,43 @@ curl -X POST --data '{
 }
 ```
 
+
+### platform.getSubnets
+
+Get the subnets information.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "platform.getSubnets",
+    "params": {},
+    "id": 6
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "subnets": [
+            {
+                "id": "hW8Ma7dLMA7o4xmJf3AXBbo17bXzE7xnThUd3ypM4VAWo1sNJ",
+                "controlKeys": [
+                    "KNjXsaA1sZsaKCD1cd85YXauDuxshTes2",
+                    "Aiz4eEt5xv9t4NCnAWaQJFNz5ABqLtJkR"
+                ],
+                "threshold": "2"
+            }
+        ]
+    },
+    "id": 6
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
 ### platform.validatedBy
 
 Get the Subnet that validates a given blockchain.
