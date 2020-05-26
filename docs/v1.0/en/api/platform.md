@@ -728,6 +728,21 @@ curl -X POST --data '{
 
 Get the subnets information.
 
+#### Signature
+
+```go
+platform.getSubnets(
+    {
+
+    }
+) -> {
+        id: string,
+        controlKeys: []string,
+        threshold: string
+     }
+```
+
+
 #### Example Call
 
 ```json
