@@ -736,9 +736,11 @@ platform.getSubnets(
 
     }
 ) -> {
-        id: string,
-        controlKeys: []string,
-        threshold: string
+	subnets: []{
+	        id: string,
+        	controlKeys: []string,
+	        threshold: string
+	}
      }
 ```
 
