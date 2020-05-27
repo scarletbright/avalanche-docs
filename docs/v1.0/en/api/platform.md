@@ -723,6 +723,61 @@ curl -X POST --data '{
 }
 ```
 
+
+### platform.getSubnets
+
+Get all the Subnets that exist.
+
+#### Signature
+
+```go
+platform.getSubnets({}) ->
+{
+	subnets: []{
+	        id: string,
+        	controlKeys: []string,
+	        threshold: string
+    }
+}
+```
+
+`id` is the Subnet's ID.  
+`threshold` signatures from addresses in `controlKeys` are needed to add a validator to the subnet.  
+See [here](../tutorials/adding-validators.md#add-a-validator-to-a-non-default-subnet) for information on adding a validator to a Subnet.
+
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "platform.getSubnets",
+    "params": {},
+    "id": 6
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "subnets": [
+            {
+                "id": "hW8Ma7dLMA7o4xmJf3AXBbo17bXzE7xnThUd3ypM4VAWo1sNJ",
+                "controlKeys": [
+                    "KNjXsaA1sZsaKCD1cd85YXauDuxshTes2",
+                    "Aiz4eEt5xv9t4NCnAWaQJFNz5ABqLtJkR"
+                ],
+                "threshold": "2"
+            }
+        ]
+    },
+    "id": 6
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
 ### platform.validatedBy
 
 Get the Subnet that validates a given blockchain.
