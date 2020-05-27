@@ -75,23 +75,14 @@ To start a node and connect it to the AVA test net:
 ./build/ava
 ```
 
-**Note: if your node fails to start with** `problem starting servers: failed to listen on consensus server at 0.0.0.0:9
-651: unable to listen`, **run with**  `./build/ava --staking-port=9652` **(or 9653 or some other unused port). This is a known issue and we're working on it.**
+**Note: if your node fails to start with** `problem starting servers: failed to listen on consensus server at 0.0.0.0:9651: unable to listen`,
+**run with**  `./build/ava --staking-port=9652` **(or 9653 or some other unused port). This is a known issue and we're working on it.**
 
 You can use `Ctrl + C` to kill the node.
 
+You will see two warnings that say, in part `Bootstrapping finished with no accepted frontier.` These are OK.
+
 The first time you start a node it will take a few minutes (~15) to bootstrap.  
-While your node is running, you will see a lot of messages that look like these printed to the console:
-
-```
-created <Conn fd=100 addr=<NetAddr 107.23.241.199:21001> mode=active>
-established 8d31f9a0fe <---> 5aab4f2030 (via <Conn fd=55 addr=<NetAddr 34.207.133.167:21001> mode=active>)
-ping from <Conn fd=55 addr=<NetAddr 34.207.133.167:21001> mode=active>
-```
-
-There is no way to disable these networking logs at the moment, but we're working on it.
-
-You will also see two warnings that say, in part `Bootstrapping finished with no accepted frontier.` These are OK.
 
 We are working on a better way to inform the user that bootstrapping is done and the node is ready to process transactions.
 For now, check the balance of the faucet to see if your node is bootstrapped.
