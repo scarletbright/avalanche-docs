@@ -726,23 +726,24 @@ curl -X POST --data '{
 
 ### platform.getSubnets
 
-Get the subnets information.
+Get all the Subnets that exist.
 
 #### Signature
 
 ```go
-platform.getSubnets(
-    {
-
-    }
-) -> {
+platform.getSubnets({}) ->
+{
 	subnets: []{
 	        id: string,
         	controlKeys: []string,
 	        threshold: string
-	}
-     }
+    }
+}
 ```
+
+`id` is the Subnet's ID.  
+`threshold` signatures from addresses in `controlKeys` are needed to add a validator to the subnet.  
+See [here](../tutorials/adding-validators.md#add-a-validator-to-a-non-default-subnet) for information on adding a validator to a Subnet.
 
 
 #### Example Call
