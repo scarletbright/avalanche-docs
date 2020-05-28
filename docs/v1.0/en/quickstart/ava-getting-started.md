@@ -32,14 +32,6 @@ Run `echo $GOPATH`. **It should not be empty**
 
 Let's install Gecko, the Go implementation of an AVA node, and connect to the AVA Public Testnet.
 
-### Install Libraries
-
-Ubuntu users need to install some libraries with:
-
-```sh
-sudo apt-get install libssl-dev libuv1-dev cmake make curl g++
-```
-
 ### Download Gecko Source Code
 
 Download the Gecko repository:
@@ -47,6 +39,8 @@ Download the Gecko repository:
 ```sh
 go get -v -d github.com/ava-labs/gecko/...
 ```
+
+(Note to advanced users: Gecko uses Go modules, so you can actually clone the [Gecko repository](https://github.com/ava-labs/gecko) other locations on your machine.)
 
 ### Build Executable
 
