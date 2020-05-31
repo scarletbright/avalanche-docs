@@ -541,7 +541,8 @@ curl -X POST --data '{
     	"destination":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
     	"startTime":'$(date --date="10 minutes" +%s)',
     	"endTime":'$(date --date="2 days" +%s)',
-    	"stakeAmount":10000
+    	"stakeAmount":10000,
+        "delegationFeeRate":100000
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P

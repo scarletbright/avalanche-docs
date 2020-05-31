@@ -517,15 +517,15 @@ In this example we use shell command `date` to compute Unix times 10 minutes and
 ```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.addNonDefaultSubnetValidator",
+    "method": "platform.addDefaultSubnetValidator",
     "params": {
-    	"id":"7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg",
-		"subnetID":"zBfoWW1FfkPVRfywpJ1CVQRfnYesEpdFC61hmU2n9JNGhDUEL",
+        "id":"ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+    	"payerNonce":1,
+    	"destination":"Q4MzFZZDPHRPAHFeDs3NiyyaZDvxHKivf",
     	"startTime":'$(date --date="10 minutes" +%s)',
-    	"endTime":'$(date --date="30 days" +%s)',
-    	"weight":1,
-        "payerNonce":2,
-        "delegationFeeRate":100000
+    	"endTime":'$(date --date="2 days" +%s)',
+    	"stakeAmount":1000000,
+    	"delegationFeeRate":100000
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
