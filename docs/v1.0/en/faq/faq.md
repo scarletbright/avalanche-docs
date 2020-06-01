@@ -214,7 +214,7 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
 ```
 
-Each entry in the response is a peer. If you see none, you are connected to no peers.
+Each entry in the response contains a peer's IP address, public IP address, ID, version, and the time of the last sent and received messages exchanged with this node. If you see none, you are not connected to any peers.
 You should see at least the 5 nodes run by AVA Labs.
 
 ### How do I kill my node?

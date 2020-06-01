@@ -44,11 +44,18 @@ curl -X POST --data '{
 ```
 
 ### admin.peers
-Get the peers this node is connected to.
+Get description of peer connections.
 
 #### Signature 
 ```go
-admin.peers() -> {peers:[]string}
+admin.peers() -> {peers:[]{
+    ip: string,
+    publicIP: string,
+    id: string,
+    version: string,
+    lastSent: string,
+    lastRecevied: string
+}}
 ```
 
 #### Example Call
