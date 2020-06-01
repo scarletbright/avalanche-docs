@@ -20,7 +20,7 @@ We assume that you've already done the [quickstart guide](../quickstart/ava-gett
 
 First, the node you're adding will need to be connected to the AVA Public Testnet.
 
-To start your node and connect to the AVA Public Tesntet, follow the same instructions as in the quickstart guide.
+To start your node and connect to the AVA Public Testnet, follow the same instructions as in the quickstart guide.
 
 ## Add a Validator to the Default Subnet
 
