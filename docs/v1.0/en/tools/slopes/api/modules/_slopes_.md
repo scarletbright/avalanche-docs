@@ -1,4 +1,4 @@
-[slopes - v1.4.3](../README.md) › [Globals](../globals.md) › ["slopes"](_slopes_.md)
+[slopes - v1.7.1](../README.md) › ["slopes"](_slopes_.md)
 
 # External module: "slopes"
 

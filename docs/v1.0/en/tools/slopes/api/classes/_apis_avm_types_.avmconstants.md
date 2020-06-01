@@ -1,4 +1,4 @@
-[slopes - v1.4.3](../README.md) › [Globals](../globals.md) › ["apis/avm/types"](../modules/_apis_avm_types_.md) › [AVMConstants](_apis_avm_types_.avmconstants.md)
+[slopes - v1.7.1](../README.md) › ["apis/avm/types"](../modules/_apis_avm_types_.md) › [AVMConstants](_apis_avm_types_.avmconstants.md)
 
 # Class: AVMConstants
 
@@ -16,6 +16,10 @@
 * [BASETX](_apis_avm_types_.avmconstants.md#static-basetx)
 * [BLOCKCHAINIDLEN](_apis_avm_types_.avmconstants.md#static-blockchainidlen)
 * [CREATEASSETTX](_apis_avm_types_.avmconstants.md#static-createassettx)
+* [NFTCREDENTIAL](_apis_avm_types_.avmconstants.md#static-nftcredential)
+* [NFTXFEROP](_apis_avm_types_.avmconstants.md#static-nftxferop)
+* [NFTXFEROUTPUTID](_apis_avm_types_.avmconstants.md#static-nftxferoutputid)
+* [OPERATIONTX](_apis_avm_types_.avmconstants.md#static-operationtx)
 * [SECPCREDENTIAL](_apis_avm_types_.avmconstants.md#static-secpcredential)
 * [SECPFXID](_apis_avm_types_.avmconstants.md#static-secpfxid)
 * [SECPINPUTID](_apis_avm_types_.avmconstants.md#static-secpinputid)
@@ -28,7 +32,7 @@
 
 ▪ **ADDRESSLENGTH**: *number* = 20
 
-*Defined in [apis/avm/types.ts:192](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L192)*
+*Defined in [apis/avm/types.ts:260](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L260)*
 
 ___
 
@@ -36,7 +40,7 @@ ___
 
 ▪ **ASSETIDLEN**: *number* = 32
 
-*Defined in [apis/avm/types.ts:188](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L188)*
+*Defined in [apis/avm/types.ts:256](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L256)*
 
 ___
 
@@ -44,7 +48,7 @@ ___
 
 ▪ **ASSETNAMELEN**: *number* = 128
 
-*Defined in [apis/avm/types.ts:191](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L191)*
+*Defined in [apis/avm/types.ts:259](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L259)*
 
 ___
 
@@ -52,7 +56,7 @@ ___
 
 ▪ **BASETX**: *number* = 0
 
-*Defined in [apis/avm/types.ts:186](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L186)*
+*Defined in [apis/avm/types.ts:249](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L249)*
 
 ___
 
@@ -60,7 +64,7 @@ ___
 
 ▪ **BLOCKCHAINIDLEN**: *number* = 32
 
-*Defined in [apis/avm/types.ts:189](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L189)*
+*Defined in [apis/avm/types.ts:257](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L257)*
 
 ___
 
@@ -68,7 +72,39 @@ ___
 
 ▪ **CREATEASSETTX**: *number* = 1
 
-*Defined in [apis/avm/types.ts:185](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L185)*
+*Defined in [apis/avm/types.ts:250](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L250)*
+
+___
+
+### `Static` NFTCREDENTIAL
+
+▪ **NFTCREDENTIAL**: *number* = 16
+
+*Defined in [apis/avm/types.ts:254](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L254)*
+
+___
+
+### `Static` NFTXFEROP
+
+▪ **NFTXFEROP**: *number* = 13
+
+*Defined in [apis/avm/types.ts:247](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L247)*
+
+___
+
+### `Static` NFTXFEROUTPUTID
+
+▪ **NFTXFEROUTPUTID**: *number* = 11
+
+*Defined in [apis/avm/types.ts:244](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L244)*
+
+___
+
+### `Static` OPERATIONTX
+
+▪ **OPERATIONTX**: *number* = 2
+
+*Defined in [apis/avm/types.ts:251](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L251)*
 
 ___
 
@@ -76,7 +112,7 @@ ___
 
 ▪ **SECPCREDENTIAL**: *number* = 9
 
-*Defined in [apis/avm/types.ts:187](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L187)*
+*Defined in [apis/avm/types.ts:253](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L253)*
 
 ___
 
@@ -84,7 +120,7 @@ ___
 
 ▪ **SECPFXID**: *number* = 0
 
-*Defined in [apis/avm/types.ts:193](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L193)*
+*Defined in [apis/avm/types.ts:241](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L241)*
 
 ___
 
@@ -92,7 +128,7 @@ ___
 
 ▪ **SECPINPUTID**: *number* = 5
 
-*Defined in [apis/avm/types.ts:184](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L184)*
+*Defined in [apis/avm/types.ts:246](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L246)*
 
 ___
 
@@ -100,7 +136,7 @@ ___
 
 ▪ **SECPOUTPUTID**: *number* = 7
 
-*Defined in [apis/avm/types.ts:183](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L183)*
+*Defined in [apis/avm/types.ts:243](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L243)*
 
 ___
 
@@ -108,4 +144,4 @@ ___
 
 ▪ **SYMBOLMAXLEN**: *number* = 4
 
-*Defined in [apis/avm/types.ts:190](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L190)*
+*Defined in [apis/avm/types.ts:258](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L258)*

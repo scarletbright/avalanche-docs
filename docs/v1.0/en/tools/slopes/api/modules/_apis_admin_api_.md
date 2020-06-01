@@ -1,4 +1,4 @@
-[slopes - v1.4.3](../README.md) › [Globals](../globals.md) › ["apis/admin/api"](_apis_admin_api_.md)
+[slopes - v1.7.1](../README.md) › ["apis/admin/api"](_apis_admin_api_.md)
 
 # External module: "apis/admin/api"
 

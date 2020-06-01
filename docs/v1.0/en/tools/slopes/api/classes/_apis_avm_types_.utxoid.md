@@ -1,48 +1,48 @@
-[slopes - v1.7.1](../README.md) › ["apis/avm/types"](../modules/_apis_avm_types_.md) › [Address](_apis_avm_types_.address.md)
+[slopes - v1.7.1](../README.md) › ["apis/avm/types"](../modules/_apis_avm_types_.md) › [UTXOID](_apis_avm_types_.utxoid.md)
 
-# Class: Address
+# Class: UTXOID
 
-Class for representing an address used in [Output](_apis_avm_outputs_.output.md) types
+Class for representing a UTXOID used in [[TransferableOp]] types
 
 ## Hierarchy
 
 * [NBytes](_utils_types_.nbytes.md)
 
-  ↳ **Address**
+  ↳ **UTXOID**
 
 ## Index
 
 ### Constructors
 
-* [constructor](_apis_avm_types_.address.md#constructor)
+* [constructor](_apis_avm_types_.utxoid.md#constructor)
 
 ### Properties
 
-* [bsize](_apis_avm_types_.address.md#protected-bsize)
-* [bytes](_apis_avm_types_.address.md#protected-bytes)
+* [bsize](_apis_avm_types_.utxoid.md#protected-bsize)
+* [bytes](_apis_avm_types_.utxoid.md#protected-bytes)
 
 ### Methods
 
-* [fromBuffer](_apis_avm_types_.address.md#frombuffer)
-* [fromString](_apis_avm_types_.address.md#fromstring)
-* [getSize](_apis_avm_types_.address.md#getsize)
-* [toBuffer](_apis_avm_types_.address.md#tobuffer)
-* [toString](_apis_avm_types_.address.md#tostring)
-* [comparitor](_apis_avm_types_.address.md#static-comparitor)
+* [fromBuffer](_apis_avm_types_.utxoid.md#frombuffer)
+* [fromString](_apis_avm_types_.utxoid.md#fromstring)
+* [getSize](_apis_avm_types_.utxoid.md#getsize)
+* [toBuffer](_apis_avm_types_.utxoid.md#tobuffer)
+* [toString](_apis_avm_types_.utxoid.md#tostring)
+* [comparitor](_apis_avm_types_.utxoid.md#static-comparitor)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new Address**(): *[Address](_apis_avm_types_.address.md)*
+\+ **new UTXOID**(): *[UTXOID](_apis_avm_types_.utxoid.md)*
 
 *Overrides [NBytes](_utils_types_.nbytes.md).[constructor](_utils_types_.nbytes.md#constructor)*
 
-*Defined in [apis/avm/types.ts:103](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L103)*
+*Defined in [apis/avm/types.ts:157](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L157)*
 
-Class for representing an address used in [Output](_apis_avm_outputs_.output.md) types
+Class for representing a UTXOID used in [[TransferableOp]] types
 
-**Returns:** *[Address](_apis_avm_types_.address.md)*
+**Returns:** *[UTXOID](_apis_avm_types_.utxoid.md)*
 
 ## Properties
 
@@ -91,23 +91,23 @@ ___
 
 ###  fromString
 
-▸ **fromString**(`addr`: string): *number*
+▸ **fromString**(`utxoid`: string): *number*
 
 *Overrides [NBytes](_utils_types_.nbytes.md).[fromString](_utils_types_.nbytes.md#fromstring)*
 
-*Defined in [apis/avm/types.ts:87](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L87)*
+*Defined in [apis/avm/types.ts:141](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L141)*
 
-Takes a base-58 string containing an [Address](_apis_avm_types_.address.md), parses it, populates the class, and returns the length of the Address in bytes.
+Takes a base-58 string containing an [UTXOID](_apis_avm_types_.utxoid.md), parses it, populates the class, and returns the length of the UTXOID in bytes.
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`addr` | string |
+`utxoid` | string |
 
 **Returns:** *number*
 
-The length of the raw [Address](_apis_avm_types_.address.md)
+The length of the raw [UTXOID](_apis_avm_types_.utxoid.md)
 
 ___
 
@@ -149,9 +149,9 @@ ___
 
 *Overrides [NBytes](_utils_types_.nbytes.md).[toString](_utils_types_.nbytes.md#tostring)*
 
-*Defined in [apis/avm/types.ts:77](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L77)*
+*Defined in [apis/avm/types.ts:131](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L131)*
 
-Returns a base-58 representation of the [Address](_apis_avm_types_.address.md).
+Returns a base-58 representation of the [UTXOID](_apis_avm_types_.utxoid.md).
 
 **Returns:** *string*
 
@@ -161,17 +161,17 @@ ___
 
 ▸ **comparitor**(): *function*
 
-*Defined in [apis/avm/types.ts:69](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L69)*
+*Defined in [apis/avm/types.ts:123](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L123)*
 
-Returns a function used to sort an array of [Address](_apis_avm_types_.address.md)es
+Returns a function used to sort an array of [UTXOID](_apis_avm_types_.utxoid.md)s
 
 **Returns:** *function*
 
-▸ (`a`: [Address](_apis_avm_types_.address.md), `b`: [Address](_apis_avm_types_.address.md)): *0 | 1 | -1*
+▸ (`a`: [UTXOID](_apis_avm_types_.utxoid.md), `b`: [UTXOID](_apis_avm_types_.utxoid.md)): *0 | 1 | -1*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`a` | [Address](_apis_avm_types_.address.md) |
-`b` | [Address](_apis_avm_types_.address.md) |
+`a` | [UTXOID](_apis_avm_types_.utxoid.md) |
+`b` | [UTXOID](_apis_avm_types_.utxoid.md) |

@@ -1,71 +1,74 @@
-[slopes - v1.7.1](../README.md) › ["apis/avm/outputs"](../modules/_apis_avm_outputs_.md) › [SecpOutput](_apis_avm_outputs_.secpoutput.md)
+[slopes - v1.7.1](../README.md) › ["apis/avm/outputs"](../modules/_apis_avm_outputs_.md) › [NFTTransferOutput](_apis_avm_outputs_.nfttransferoutput.md)
 
-# Class: SecpOutput
+# Class: NFTTransferOutput
 
-An [Output](_apis_avm_outputs_.output.md) class which specifies an Output that carries an ammount for an assetID and uses secp256k1 signature scheme.
+An [Output](_apis_avm_outputs_.output.md) class which specifies an Output that carries an NFT and uses secp256k1 signature scheme.
 
 ## Hierarchy
 
-  ↳ [AmountOutput](_apis_avm_outputs_.amountoutput.md)
+  ↳ [NFTOutBase](_apis_avm_outputs_.nftoutbase.md)
 
-  ↳ **SecpOutput**
+  ↳ **NFTTransferOutput**
 
 ## Index
 
 ### Constructors
 
-* [constructor](_apis_avm_outputs_.secpoutput.md#constructor)
+* [constructor](_apis_avm_outputs_.nfttransferoutput.md#constructor)
 
 ### Properties
 
-* [addresses](_apis_avm_outputs_.secpoutput.md#protected-addresses)
-* [amount](_apis_avm_outputs_.secpoutput.md#protected-amount)
-* [amountValue](_apis_avm_outputs_.secpoutput.md#protected-amountvalue)
-* [locktime](_apis_avm_outputs_.secpoutput.md#protected-locktime)
-* [numaddrs](_apis_avm_outputs_.secpoutput.md#protected-numaddrs)
-* [threshold](_apis_avm_outputs_.secpoutput.md#protected-threshold)
+* [addresses](_apis_avm_outputs_.nfttransferoutput.md#protected-addresses)
+* [groupID](_apis_avm_outputs_.nfttransferoutput.md#protected-groupid)
+* [locktime](_apis_avm_outputs_.nfttransferoutput.md#protected-locktime)
+* [numaddrs](_apis_avm_outputs_.nfttransferoutput.md#protected-numaddrs)
+* [payload](_apis_avm_outputs_.nfttransferoutput.md#protected-payload)
+* [sizePayload](_apis_avm_outputs_.nfttransferoutput.md#protected-sizepayload)
+* [threshold](_apis_avm_outputs_.nfttransferoutput.md#protected-threshold)
 
 ### Methods
 
-* [fromBuffer](_apis_avm_outputs_.secpoutput.md#frombuffer)
-* [getAddress](_apis_avm_outputs_.secpoutput.md#getaddress)
-* [getAddressIdx](_apis_avm_outputs_.secpoutput.md#getaddressidx)
-* [getAddresses](_apis_avm_outputs_.secpoutput.md#getaddresses)
-* [getAmount](_apis_avm_outputs_.secpoutput.md#getamount)
-* [getLocktime](_apis_avm_outputs_.secpoutput.md#getlocktime)
-* [getOutputID](_apis_avm_outputs_.secpoutput.md#getoutputid)
-* [getSpenders](_apis_avm_outputs_.secpoutput.md#getspenders)
-* [getThreshold](_apis_avm_outputs_.secpoutput.md#getthreshold)
-* [makeTransferable](_apis_avm_outputs_.secpoutput.md#maketransferable)
-* [meetsThreshold](_apis_avm_outputs_.secpoutput.md#meetsthreshold)
-* [toBuffer](_apis_avm_outputs_.secpoutput.md#tobuffer)
-* [toString](_apis_avm_outputs_.secpoutput.md#tostring)
-* [comparator](_apis_avm_outputs_.secpoutput.md#static-comparator)
+* [fromBuffer](_apis_avm_outputs_.nfttransferoutput.md#frombuffer)
+* [getAddress](_apis_avm_outputs_.nfttransferoutput.md#getaddress)
+* [getAddressIdx](_apis_avm_outputs_.nfttransferoutput.md#getaddressidx)
+* [getAddresses](_apis_avm_outputs_.nfttransferoutput.md#getaddresses)
+* [getGroupID](_apis_avm_outputs_.nfttransferoutput.md#getgroupid)
+* [getLocktime](_apis_avm_outputs_.nfttransferoutput.md#getlocktime)
+* [getOutputID](_apis_avm_outputs_.nfttransferoutput.md#getoutputid)
+* [getPayload](_apis_avm_outputs_.nfttransferoutput.md#getpayload)
+* [getSpenders](_apis_avm_outputs_.nfttransferoutput.md#getspenders)
+* [getThreshold](_apis_avm_outputs_.nfttransferoutput.md#getthreshold)
+* [makeTransferable](_apis_avm_outputs_.nfttransferoutput.md#maketransferable)
+* [meetsThreshold](_apis_avm_outputs_.nfttransferoutput.md#meetsthreshold)
+* [toBuffer](_apis_avm_outputs_.nfttransferoutput.md#tobuffer)
+* [toString](_apis_avm_outputs_.nfttransferoutput.md#tostring)
+* [comparator](_apis_avm_outputs_.nfttransferoutput.md#static-comparator)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new SecpOutput**(`amount`: BN, `locktime`: BN, `threshold`: number, `addresses`: Array‹Buffer›): *[SecpOutput](_apis_avm_outputs_.secpoutput.md)*
+\+ **new NFTTransferOutput**(`groupID`: number, `payload`: Buffer, `locktime`: BN, `threshold`: number, `addresses`: Array‹Buffer›): *[NFTTransferOutput](_apis_avm_outputs_.nfttransferoutput.md)*
 
-*Inherited from [AmountOutput](_apis_avm_outputs_.amountoutput.md).[constructor](_apis_avm_outputs_.amountoutput.md#constructor)*
+*Inherited from [NFTOutBase](_apis_avm_outputs_.nftoutbase.md).[constructor](_apis_avm_outputs_.nftoutbase.md#constructor)*
 
 *Overrides [Output](_apis_avm_outputs_.output.md).[constructor](_apis_avm_outputs_.output.md#constructor)*
 
-*Defined in [apis/avm/outputs.ts:326](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L326)*
+*Defined in [apis/avm/outputs.ts:403](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L403)*
 
-An [AmountOutput](_apis_avm_outputs_.amountoutput.md) class which issues a payment on an assetID.
+An [Output](_apis_avm_outputs_.output.md) class which contains an NFT on an assetID.
 
 **Parameters:**
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
-`amount` | BN |  undefined | A [BN](https://github.com/indutny/bn.js/) representing the amount in the output |
+`groupID` | number |  undefined | A number representing the amount in the output |
+`payload` | Buffer |  undefined | A [Buffer](https://github.com/feross/buffer) of max length 1024 |
 `locktime` | BN |  undefined | A [BN](https://github.com/indutny/bn.js/) representing the locktime |
-`threshold` | number |  undefined | A number representing the the threshold number of signers required to sign the transaction |
-`addresses` | Array‹Buffer› |  undefined | An array of [Buffer](https://github.com/feross/buffer)s representing addresses  |
+`threshold` | number |  undefined | A number representing the the threshold number of signers required to sign the transaction  |
+`addresses` | Array‹Buffer› |  undefined | An array of [Buffer](https://github.com/feross/buffer)s representing addresses |
 
-**Returns:** *[SecpOutput](_apis_avm_outputs_.secpoutput.md)*
+**Returns:** *[NFTTransferOutput](_apis_avm_outputs_.nfttransferoutput.md)*
 
 ## Properties
 
@@ -79,23 +82,13 @@ Name | Type | Default | Description |
 
 ___
 
-### `Protected` amount
+### `Protected` groupID
 
-• **amount**: *Buffer* =  Buffer.alloc(8)
+• **groupID**: *Buffer* =  Buffer.alloc(4)
 
-*Inherited from [AmountOutput](_apis_avm_outputs_.amountoutput.md).[amount](_apis_avm_outputs_.amountoutput.md#protected-amount)*
+*Inherited from [NFTOutBase](_apis_avm_outputs_.nftoutbase.md).[groupID](_apis_avm_outputs_.nftoutbase.md#protected-groupid)*
 
-*Defined in [apis/avm/outputs.ts:297](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L297)*
-
-___
-
-### `Protected` amountValue
-
-• **amountValue**: *BN* =  new BN(0)
-
-*Inherited from [AmountOutput](_apis_avm_outputs_.amountoutput.md).[amountValue](_apis_avm_outputs_.amountoutput.md#protected-amountvalue)*
-
-*Defined in [apis/avm/outputs.ts:298](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L298)*
+*Defined in [apis/avm/outputs.ts:362](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L362)*
 
 ___
 
@@ -119,6 +112,26 @@ ___
 
 ___
 
+### `Protected` payload
+
+• **payload**: *Buffer*
+
+*Inherited from [NFTOutBase](_apis_avm_outputs_.nftoutbase.md).[payload](_apis_avm_outputs_.nftoutbase.md#protected-payload)*
+
+*Defined in [apis/avm/outputs.ts:364](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L364)*
+
+___
+
+### `Protected` sizePayload
+
+• **sizePayload**: *Buffer* =  Buffer.alloc(4)
+
+*Inherited from [NFTOutBase](_apis_avm_outputs_.nftoutbase.md).[sizePayload](_apis_avm_outputs_.nftoutbase.md#protected-sizepayload)*
+
+*Defined in [apis/avm/outputs.ts:363](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L363)*
+
+___
+
 ### `Protected` threshold
 
 • **threshold**: *Buffer* =  Buffer.alloc(4)
@@ -131,21 +144,21 @@ ___
 
 ###  fromBuffer
 
-▸ **fromBuffer**(`outbuff`: Buffer, `offset`: number): *number*
+▸ **fromBuffer**(`utxobuff`: Buffer, `offset`: number): *number*
 
-*Inherited from [AmountOutput](_apis_avm_outputs_.amountoutput.md).[fromBuffer](_apis_avm_outputs_.amountoutput.md#frombuffer)*
+*Inherited from [NFTOutBase](_apis_avm_outputs_.nftoutbase.md).[fromBuffer](_apis_avm_outputs_.nftoutbase.md#frombuffer)*
 
 *Overrides [Output](_apis_avm_outputs_.output.md).[fromBuffer](_apis_avm_outputs_.output.md#frombuffer)*
 
-*Defined in [apis/avm/outputs.ts:310](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L310)*
+*Defined in [apis/avm/outputs.ts:383](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L383)*
 
-Popuates the instance from a [Buffer](https://github.com/feross/buffer) representing the [AmountOutput](_apis_avm_outputs_.amountoutput.md) and returns the size of the output.
+Popuates the instance from a [Buffer](https://github.com/feross/buffer) representing the [NFTOutBase](_apis_avm_outputs_.nftoutbase.md) and returns the size of the output.
 
 **Parameters:**
 
 Name | Type | Default |
 ------ | ------ | ------ |
-`outbuff` | Buffer | - |
+`utxobuff` | Buffer | - |
 `offset` | number | 0 |
 
 **Returns:** *number*
@@ -210,17 +223,17 @@ Returns an array of [Buffer](https://github.com/feross/buffer)s for the addresse
 
 ___
 
-###  getAmount
+###  getGroupID
 
-▸ **getAmount**(): *BN*
+▸ **getGroupID**(): *number*
 
-*Inherited from [AmountOutput](_apis_avm_outputs_.amountoutput.md)*
+*Inherited from [NFTOutBase](_apis_avm_outputs_.nftoutbase.md)*
 
-*Defined in [apis/avm/outputs.ts:303](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L303)*
+*Defined in [apis/avm/outputs.ts:369](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L369)*
 
-Returns the amount as a [BN](https://github.com/indutny/bn.js/).
+Returns the groupID as a number.
 
-**Returns:** *BN*
+**Returns:** *number*
 
 ___
 
@@ -244,11 +257,25 @@ ___
 
 *Overrides [Output](_apis_avm_outputs_.output.md).[getOutputID](_apis_avm_outputs_.output.md#abstract-getoutputid)*
 
-*Defined in [apis/avm/outputs.ts:352](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L352)*
+*Defined in [apis/avm/outputs.ts:431](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L431)*
 
 Returns the outputID for this output
 
 **Returns:** *number*
+
+___
+
+###  getPayload
+
+▸ **getPayload**(): *Buffer*
+
+*Inherited from [NFTOutBase](_apis_avm_outputs_.nftoutbase.md)*
+
+*Defined in [apis/avm/outputs.ts:376](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L376)*
+
+Returns the payload as a [Buffer](https://github.com/feross/buffer)
+
+**Returns:** *Buffer*
 
 ___
 
@@ -330,13 +357,13 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Inherited from [AmountOutput](_apis_avm_outputs_.amountoutput.md).[toBuffer](_apis_avm_outputs_.amountoutput.md#tobuffer)*
+*Inherited from [NFTOutBase](_apis_avm_outputs_.nftoutbase.md).[toBuffer](_apis_avm_outputs_.nftoutbase.md#tobuffer)*
 
 *Overrides [Output](_apis_avm_outputs_.output.md).[toBuffer](_apis_avm_outputs_.output.md#tobuffer)*
 
-*Defined in [apis/avm/outputs.ts:320](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L320)*
+*Defined in [apis/avm/outputs.ts:397](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L397)*
 
-Returns the buffer representing the [AmountInput](_apis_avm_inputs_.amountinput.md) instance.
+Returns the buffer representing the [NFTOutBase](_apis_avm_outputs_.nftoutbase.md) instance.
 
 **Returns:** *Buffer*
 

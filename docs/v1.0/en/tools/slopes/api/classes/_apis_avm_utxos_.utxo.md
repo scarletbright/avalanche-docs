@@ -1,4 +1,4 @@
-[slopes - v1.4.3](../README.md) › [Globals](../globals.md) › ["apis/avm/utxos"](../modules/_apis_avm_utxos_.md) › [UTXO](_apis_avm_utxos_.utxo.md)
+[slopes - v1.7.1](../README.md) › ["apis/avm/utxos"](../modules/_apis_avm_utxos_.md) › [UTXO](_apis_avm_utxos_.utxo.md)
 
 # Class: UTXO
 
@@ -8,8 +8,6 @@ Class for representing a single UTXO.
 
 * **UTXO**
 
-  ↳ [SecpUTXO](_apis_avm_utxos_.secputxo.md)
-
 ## Index
 
 ### Constructors
@@ -18,16 +16,19 @@ Class for representing a single UTXO.
 
 ### Properties
 
+* [assetid](_apis_avm_utxos_.utxo.md#protected-assetid)
+* [output](_apis_avm_utxos_.utxo.md#protected-output)
+* [outputidx](_apis_avm_utxos_.utxo.md#protected-outputidx)
 * [txid](_apis_avm_utxos_.utxo.md#protected-txid)
-* [txidx](_apis_avm_utxos_.utxo.md#protected-txidx)
 
 ### Methods
 
 * [fromBuffer](_apis_avm_utxos_.utxo.md#frombuffer)
 * [fromString](_apis_avm_utxos_.utxo.md#fromstring)
-* [getOuputID](_apis_avm_utxos_.utxo.md#getouputid)
+* [getAssetID](_apis_avm_utxos_.utxo.md#getassetid)
+* [getOutput](_apis_avm_utxos_.utxo.md#getoutput)
+* [getOutputIdx](_apis_avm_utxos_.utxo.md#getoutputidx)
 * [getTxID](_apis_avm_utxos_.utxo.md#gettxid)
-* [getTxIdx](_apis_avm_utxos_.utxo.md#gettxidx)
 * [getUTXOID](_apis_avm_utxos_.utxo.md#getutxoid)
 * [toBuffer](_apis_avm_utxos_.utxo.md#tobuffer)
 * [toString](_apis_avm_utxos_.utxo.md#tostring)
@@ -36,9 +37,9 @@ Class for representing a single UTXO.
 
 ###  constructor
 
-\+ **new UTXO**(`txid`: Buffer, `txidx`: number): *[UTXO](_apis_avm_utxos_.utxo.md)*
+\+ **new UTXO**(`txid`: Buffer, `outputidx`: Buffer | number, `assetid`: Buffer, `output`: [Output](_apis_avm_outputs_.output.md)): *[UTXO](_apis_avm_utxos_.utxo.md)*
 
-*Defined in [apis/avm/utxos.ts:128](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L128)*
+*Defined in [apis/avm/utxos.ts:121](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L121)*
 
 Class for representing a single UTXO.
 
@@ -47,42 +48,60 @@ Class for representing a single UTXO.
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `txid` | Buffer |  undefined | Optional [Buffer](https://github.com/feross/buffer) of transaction ID for the UTXO |
-`txidx` | number |  undefined | Optional number for the index of the transaction's [Output](_apis_avm_outputs_.output.md)  |
+`outputidx` | Buffer &#124; number |  undefined | - |
+`assetid` | Buffer |  undefined | Optional [Buffer](https://github.com/feross/buffer) of the asset ID for the UTXO |
+`output` | [Output](_apis_avm_outputs_.output.md) |  undefined | - |
 
 **Returns:** *[UTXO](_apis_avm_utxos_.utxo.md)*
 
 ## Properties
 
+### `Protected` assetid
+
+• **assetid**: *Buffer* =  Buffer.alloc(32)
+
+*Defined in [apis/avm/utxos.ts:25](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L25)*
+
+___
+
+### `Protected` output
+
+• **output**: *[Output](_apis_avm_outputs_.output.md)* =  undefined
+
+*Defined in [apis/avm/utxos.ts:26](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L26)*
+
+___
+
+### `Protected` outputidx
+
+• **outputidx**: *Buffer* =  Buffer.alloc(4)
+
+*Defined in [apis/avm/utxos.ts:24](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L24)*
+
+___
+
 ### `Protected` txid
 
 • **txid**: *Buffer* =  Buffer.alloc(32)
 
-*Defined in [apis/avm/utxos.ts:44](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L44)*
-
-___
-
-### `Protected` txidx
-
-• **txidx**: *Buffer* =  Buffer.alloc(4)
-
-*Defined in [apis/avm/utxos.ts:45](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L45)*
+*Defined in [apis/avm/utxos.ts:23](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L23)*
 
 ## Methods
 
 ###  fromBuffer
 
-▸ **fromBuffer**(`utxobuff`: Buffer, `offset`: number): *number*
+▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-*Defined in [apis/avm/utxos.ts:80](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L80)*
+*Defined in [apis/avm/utxos.ts:73](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L73)*
 
 Takes a [Buffer](https://github.com/feross/buffer) containing an [UTXO](_apis_avm_utxos_.utxo.md), parses it, populates the class, and returns the length of the UTXO in bytes.
 
 **Parameters:**
 
-Name | Type | Default |
------- | ------ | ------ |
-`utxobuff` | Buffer | - |
-`offset` | number | 0 |
+Name | Type | Default | Description |
+------ | ------ | ------ | ------ |
+`bytes` | Buffer | - | A [Buffer](https://github.com/feross/buffer) containing a raw [UTXO](_apis_avm_utxos_.utxo.md)  |
+`offset` | number | 0 | - |
 
 **Returns:** *number*
 
@@ -92,7 +111,7 @@ ___
 
 ▸ **fromString**(`serialized`: string): *number*
 
-*Defined in [apis/avm/utxos.ts:98](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L98)*
+*Defined in [apis/avm/utxos.ts:107](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L107)*
 
 Takes a base-58 string containing an [UTXO](_apis_avm_utxos_.utxo.md), parses it, populates the class, and returns the length of the UTXO in bytes.
 
@@ -111,13 +130,39 @@ The length of the raw [UTXO](_apis_avm_utxos_.utxo.md)
 
 ___
 
-###  getOuputID
+###  getAssetID
 
-▸ **getOuputID**(): *number*
+▸ **getAssetID**(): *Buffer*
 
-*Defined in [apis/avm/utxos.ts:47](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L47)*
+*Defined in [apis/avm/utxos.ts:47](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L47)*
 
-**Returns:** *number*
+Returns the assetID as a [Buffer](https://github.com/feross/buffer).
+
+**Returns:** *Buffer*
+
+___
+
+###  getOutput
+
+▸ **getOutput**(): *[Output](_apis_avm_outputs_.output.md)*
+
+*Defined in [apis/avm/utxos.ts:63](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L63)*
+
+Returns a reference to the output;
+
+**Returns:** *[Output](_apis_avm_outputs_.output.md)*
+
+___
+
+###  getOutputIdx
+
+▸ **getOutputIdx**(): *Buffer*
+
+*Defined in [apis/avm/utxos.ts:39](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L39)*
+
+Returns a [Buffer](https://github.com/feross/buffer)  of the OutputIdx.
+
+**Returns:** *Buffer*
 
 ___
 
@@ -125,21 +170,9 @@ ___
 
 ▸ **getTxID**(): *Buffer*
 
-*Defined in [apis/avm/utxos.ts:54](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L54)*
+*Defined in [apis/avm/utxos.ts:31](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L31)*
 
 Returns a [Buffer](https://github.com/feross/buffer) of the TxID.
-
-**Returns:** *Buffer*
-
-___
-
-###  getTxIdx
-
-▸ **getTxIdx**(): *Buffer*
-
-*Defined in [apis/avm/utxos.ts:62](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L62)*
-
-Returns a [Buffer](https://github.com/feross/buffer)  of the TxIdx.
 
 **Returns:** *Buffer*
 
@@ -149,7 +182,7 @@ ___
 
 ▸ **getUTXOID**(): *string*
 
-*Defined in [apis/avm/utxos.ts:70](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L70)*
+*Defined in [apis/avm/utxos.ts:54](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L54)*
 
 Returns the UTXOID as a base-58 string (UTXOID is a string )
 
@@ -161,7 +194,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [apis/avm/utxos.ts:106](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L106)*
+*Defined in [apis/avm/utxos.ts:89](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L89)*
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [UTXO](_apis_avm_utxos_.utxo.md).
 
@@ -173,7 +206,7 @@ ___
 
 ▸ **toString**(): *string*
 
-*Defined in [apis/avm/utxos.ts:125](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L125)*
+*Defined in [apis/avm/utxos.ts:118](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L118)*
 
 Returns a base-58 representation of the [UTXO](_apis_avm_utxos_.utxo.md).
 

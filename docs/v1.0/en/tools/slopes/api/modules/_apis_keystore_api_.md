@@ -1,4 +1,4 @@
-[slopes - v1.4.3](../README.md) › [Globals](../globals.md) › ["apis/keystore/api"](_apis_keystore_api_.md)
+[slopes - v1.7.1](../README.md) › ["apis/keystore/api"](_apis_keystore_api_.md)
 
 # External module: "apis/keystore/api"
 

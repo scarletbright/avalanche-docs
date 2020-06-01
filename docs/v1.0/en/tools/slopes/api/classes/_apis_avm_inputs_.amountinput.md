@@ -1,45 +1,47 @@
-[slopes - v1.7.1](../README.md) › ["apis/avm/inputs"](../modules/_apis_avm_inputs_.md) › [SecpInput](_apis_avm_inputs_.secpinput.md)
+[slopes - v1.7.1](../README.md) › ["apis/avm/inputs"](../modules/_apis_avm_inputs_.md) › [AmountInput](_apis_avm_inputs_.amountinput.md)
 
-# Class: SecpInput
+# Class: AmountInput
+
+An [Input](_apis_avm_inputs_.input.md) class which specifies a token amount .
 
 ## Hierarchy
 
-  ↳ [AmountInput](_apis_avm_inputs_.amountinput.md)
+* [Input](_apis_avm_inputs_.input.md)
 
-  ↳ **SecpInput**
+  ↳ **AmountInput**
+
+  ↳ [SecpInput](_apis_avm_inputs_.secpinput.md)
 
 ## Index
 
 ### Constructors
 
-* [constructor](_apis_avm_inputs_.secpinput.md#constructor)
+* [constructor](_apis_avm_inputs_.amountinput.md#constructor)
 
 ### Properties
 
-* [amount](_apis_avm_inputs_.secpinput.md#protected-amount)
-* [amountValue](_apis_avm_inputs_.secpinput.md#protected-amountvalue)
-* [sigCount](_apis_avm_inputs_.secpinput.md#protected-sigcount)
-* [sigIdxs](_apis_avm_inputs_.secpinput.md#protected-sigidxs)
+* [amount](_apis_avm_inputs_.amountinput.md#protected-amount)
+* [amountValue](_apis_avm_inputs_.amountinput.md#protected-amountvalue)
+* [sigCount](_apis_avm_inputs_.amountinput.md#protected-sigcount)
+* [sigIdxs](_apis_avm_inputs_.amountinput.md#protected-sigidxs)
 
 ### Methods
 
-* [addSignatureIdx](_apis_avm_inputs_.secpinput.md#addsignatureidx)
-* [fromBuffer](_apis_avm_inputs_.secpinput.md#frombuffer)
-* [getAmount](_apis_avm_inputs_.secpinput.md#getamount)
-* [getCredentialID](_apis_avm_inputs_.secpinput.md#getcredentialid)
-* [getInputID](_apis_avm_inputs_.secpinput.md#getinputid)
-* [getSigIdxs](_apis_avm_inputs_.secpinput.md#getsigidxs)
-* [toBuffer](_apis_avm_inputs_.secpinput.md#tobuffer)
-* [toString](_apis_avm_inputs_.secpinput.md#tostring)
-* [comparator](_apis_avm_inputs_.secpinput.md#static-comparator)
+* [addSignatureIdx](_apis_avm_inputs_.amountinput.md#addsignatureidx)
+* [fromBuffer](_apis_avm_inputs_.amountinput.md#frombuffer)
+* [getAmount](_apis_avm_inputs_.amountinput.md#getamount)
+* [getCredentialID](_apis_avm_inputs_.amountinput.md#getcredentialid)
+* [getInputID](_apis_avm_inputs_.amountinput.md#abstract-getinputid)
+* [getSigIdxs](_apis_avm_inputs_.amountinput.md#getsigidxs)
+* [toBuffer](_apis_avm_inputs_.amountinput.md#tobuffer)
+* [toString](_apis_avm_inputs_.amountinput.md#tostring)
+* [comparator](_apis_avm_inputs_.amountinput.md#static-comparator)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new SecpInput**(`amount`: BN): *[SecpInput](_apis_avm_inputs_.secpinput.md)*
-
-*Inherited from [AmountInput](_apis_avm_inputs_.amountinput.md).[constructor](_apis_avm_inputs_.amountinput.md#constructor)*
+\+ **new AmountInput**(`amount`: BN): *[AmountInput](_apis_avm_inputs_.amountinput.md)*
 
 *Overrides [Input](_apis_avm_inputs_.input.md).[constructor](_apis_avm_inputs_.input.md#constructor)*
 
@@ -53,15 +55,13 @@ Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `amount` | BN |  undefined | A [BN](https://github.com/indutny/bn.js/) representing the amount in the input  |
 
-**Returns:** *[SecpInput](_apis_avm_inputs_.secpinput.md)*
+**Returns:** *[AmountInput](_apis_avm_inputs_.amountinput.md)*
 
 ## Properties
 
 ### `Protected` amount
 
 • **amount**: *Buffer* =  Buffer.alloc(8)
-
-*Inherited from [AmountInput](_apis_avm_inputs_.amountinput.md).[amount](_apis_avm_inputs_.amountinput.md#protected-amount)*
 
 *Defined in [apis/avm/inputs.ts:234](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/inputs.ts#L234)*
 
@@ -70,8 +70,6 @@ ___
 ### `Protected` amountValue
 
 • **amountValue**: *BN* =  new BN(0)
-
-*Inherited from [AmountInput](_apis_avm_inputs_.amountinput.md).[amountValue](_apis_avm_inputs_.amountinput.md#protected-amountvalue)*
 
 *Defined in [apis/avm/inputs.ts:235](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/inputs.ts#L235)*
 
@@ -122,8 +120,6 @@ ___
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-*Inherited from [AmountInput](_apis_avm_inputs_.amountinput.md).[fromBuffer](_apis_avm_inputs_.amountinput.md#frombuffer)*
-
 *Overrides [Input](_apis_avm_inputs_.input.md).[fromBuffer](_apis_avm_inputs_.input.md#frombuffer)*
 
 *Defined in [apis/avm/inputs.ts:247](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/inputs.ts#L247)*
@@ -145,8 +141,6 @@ ___
 
 ▸ **getAmount**(): *BN*
 
-*Inherited from [AmountInput](_apis_avm_inputs_.amountinput.md)*
-
 *Defined in [apis/avm/inputs.ts:240](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/inputs.ts#L240)*
 
 Returns the amount as a [BN](https://github.com/indutny/bn.js/).
@@ -167,15 +161,13 @@ ___
 
 ___
 
-###  getInputID
+### `Abstract` getInputID
 
 ▸ **getInputID**(): *number*
 
-*Overrides [Input](_apis_avm_inputs_.input.md).[getInputID](_apis_avm_inputs_.input.md#abstract-getinputid)*
+*Inherited from [Input](_apis_avm_inputs_.input.md).[getInputID](_apis_avm_inputs_.input.md#abstract-getinputid)*
 
-*Defined in [apis/avm/inputs.ts:282](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/inputs.ts#L282)*
-
-Returns the inputID for this input
+*Defined in [apis/avm/inputs.ts:34](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/inputs.ts#L34)*
 
 **Returns:** *number*
 
@@ -198,8 +190,6 @@ ___
 ###  toBuffer
 
 ▸ **toBuffer**(): *Buffer*
-
-*Inherited from [AmountInput](_apis_avm_inputs_.amountinput.md).[toBuffer](_apis_avm_inputs_.amountinput.md#tobuffer)*
 
 *Overrides [Input](_apis_avm_inputs_.input.md).[toBuffer](_apis_avm_inputs_.input.md#tobuffer)*
 

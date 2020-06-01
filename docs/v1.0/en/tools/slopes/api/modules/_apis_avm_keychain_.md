@@ -1,4 +1,4 @@
-[slopes - v1.4.3](../README.md) › [Globals](../globals.md) › ["apis/avm/keychain"](_apis_avm_keychain_.md)
+[slopes - v1.7.1](../README.md) › ["apis/avm/keychain"](_apis_avm_keychain_.md)
 
 # External module: "apis/avm/keychain"
 
