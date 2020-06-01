@@ -243,6 +243,10 @@ If it doesn't see [here](https://www.digitalocean.com/community/tutorials/how-to
 
 [Yes.](https://explorer.ava.network/)
 
+### Is there a Javascript library?
+
+[Yes.](http://docs.ava.network/v1.0/en/tools/slopes/)
+
 ### Is my node connected to peers?
 
 Call `admin.peers`:
