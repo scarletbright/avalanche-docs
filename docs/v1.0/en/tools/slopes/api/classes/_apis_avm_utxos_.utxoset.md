@@ -1,4 +1,4 @@
-[slopes - v1.4.3](../README.md) › [Globals](../globals.md) › ["apis/avm/utxos"](../modules/_apis_avm_utxos_.md) › [UTXOSet](_apis_avm_utxos_.utxoset.md)
+[slopes - v1.7.1](../README.md) › ["apis/avm/utxos"](../modules/_apis_avm_utxos_.md) › [UTXOSet](_apis_avm_utxos_.utxoset.md)
 
 # Class: UTXOSet
 
@@ -29,8 +29,9 @@ Class representing a set of [UTXO](_apis_avm_utxos_.utxo.md)s.
 * [getUTXOIDs](_apis_avm_utxos_.utxoset.md#getutxoids)
 * [includes](_apis_avm_utxos_.utxoset.md#includes)
 * [intersection](_apis_avm_utxos_.utxoset.md#intersection)
+* [makeBaseTx](_apis_avm_utxos_.utxoset.md#makebasetx)
 * [makeCreateAssetTx](_apis_avm_utxos_.utxoset.md#makecreateassettx)
-* [makeUnsignedTx](_apis_avm_utxos_.utxoset.md#makeunsignedtx)
+* [makeNFTTransferTx](_apis_avm_utxos_.utxoset.md#makenfttransfertx)
 * [merge](_apis_avm_utxos_.utxoset.md#merge)
 * [mergeByRule](_apis_avm_utxos_.utxoset.md#mergebyrule)
 * [remove](_apis_avm_utxos_.utxoset.md#remove)
@@ -44,7 +45,7 @@ Class representing a set of [UTXO](_apis_avm_utxos_.utxo.md)s.
 
 • **addressUTXOs**: *object*
 
-*Defined in [apis/avm/utxos.ts:316](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L316)*
+*Defined in [apis/avm/utxos.ts:154](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L154)*
 
 #### Type declaration:
 
@@ -58,19 +59,19 @@ ___
 
 • **utxos**: *object*
 
-*Defined in [apis/avm/utxos.ts:315](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L315)*
+*Defined in [apis/avm/utxos.ts:153](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L153)*
 
 #### Type declaration:
 
-* \[ **utxoid**: *string*\]: [SecpUTXO](_apis_avm_utxos_.secputxo.md)
+* \[ **utxoid**: *string*\]: [UTXO](_apis_avm_utxos_.utxo.md)
 
 ## Methods
 
 ###  add
 
-▸ **add**(`utxo`: [UTXO](_apis_avm_utxos_.utxo.md) | string, `overwrite`: boolean): *boolean*
+▸ **add**(`utxo`: [UTXO](_apis_avm_utxos_.utxo.md) | string, `overwrite`: boolean): *[UTXO](_apis_avm_utxos_.utxo.md)*
 
-*Defined in [apis/avm/utxos.ts:343](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L343)*
+*Defined in [apis/avm/utxos.ts:181](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L181)*
 
 Adds a UTXO to the UTXOSet.
 
@@ -81,9 +82,9 @@ Name | Type | Default | Description |
 `utxo` | [UTXO](_apis_avm_utxos_.utxo.md) &#124; string | - | Either a [UTXO](_apis_avm_utxos_.utxo.md) an AVA serialized string representing a UTXO |
 `overwrite` | boolean | false | If true, if the UTXOID already exists, overwrite it... default false  |
 
-**Returns:** *boolean*
+**Returns:** *[UTXO](_apis_avm_utxos_.utxo.md)*
 
-A true value if a [UTXO](_apis_avm_utxos_.utxo.md) was added and false if nothing was added.
+A [UTXO](_apis_avm_utxos_.utxo.md) if one was added and undefined if nothing was added.
 
 ___
 
@@ -91,7 +92,7 @@ ___
 
 ▸ **addArray**(`utxos`: Array‹string | [UTXO](_apis_avm_utxos_.utxo.md)›, `overwrite`: boolean): *Array‹[UTXO](_apis_avm_utxos_.utxo.md)›*
 
-*Defined in [apis/avm/utxos.ts:384](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L384)*
+*Defined in [apis/avm/utxos.ts:218](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L218)*
 
 Adds an array of [UTXO](_apis_avm_utxos_.utxo.md)s to the [UTXOSet](_apis_avm_utxos_.utxoset.md).
 
@@ -112,7 +113,7 @@ ___
 
 ▸ **difference**(`utxoset`: [UTXOSet](_apis_avm_utxos_.utxoset.md)): *[UTXOSet](_apis_avm_utxos_.utxoset.md)*
 
-*Defined in [apis/avm/utxos.ts:753](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L753)*
+*Defined in [apis/avm/utxos.ts:656](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L656)*
 
 Set difference between this set and a parameter.
 
@@ -132,7 +133,7 @@ ___
 
 ▸ **getAddresses**(): *Array‹Buffer›*
 
-*Defined in [apis/avm/utxos.ts:539](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L539)*
+*Defined in [apis/avm/utxos.ts:363](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L363)*
 
 Gets the addresses in the [UTXOSet](_apis_avm_utxos_.utxoset.md) and returns an array of [Buffer](https://github.com/feross/buffer).
 
@@ -144,7 +145,7 @@ ___
 
 ▸ **getAllUTXOStrings**(`utxoids`: Array‹string›): *Array‹string›*
 
-*Defined in [apis/avm/utxos.ts:492](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L492)*
+*Defined in [apis/avm/utxos.ts:316](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L316)*
 
 Gets all the [UTXO](_apis_avm_utxos_.utxo.md)s as strings, optionally that match with UTXOIDs in an array.
 
@@ -162,9 +163,9 @@ ___
 
 ###  getAllUTXOs
 
-▸ **getAllUTXOs**(`utxoids`: Array‹string›): *Array‹[SecpUTXO](_apis_avm_utxos_.secputxo.md)›*
+▸ **getAllUTXOs**(`utxoids`: Array‹string›): *Array‹[UTXO](_apis_avm_utxos_.utxo.md)›*
 
-*Defined in [apis/avm/utxos.ts:471](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L471)*
+*Defined in [apis/avm/utxos.ts:295](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L295)*
 
 Gets all the [UTXO](_apis_avm_utxos_.utxo.md)s, optionally that match with UTXOIDs in an array
 
@@ -174,7 +175,7 @@ Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `utxoids` | Array‹string› |  undefined | An optional array of UTXOIDs, returns all [UTXO](_apis_avm_utxos_.utxo.md)s if not provided  |
 
-**Returns:** *Array‹[SecpUTXO](_apis_avm_utxos_.secputxo.md)›*
+**Returns:** *Array‹[UTXO](_apis_avm_utxos_.utxo.md)›*
 
 An array of [UTXO](_apis_avm_utxos_.utxo.md)s.
 
@@ -184,7 +185,7 @@ ___
 
 ▸ **getAssetIDs**(`addresses`: Array‹Buffer›): *Array‹Buffer›*
 
-*Defined in [apis/avm/utxos.ts:577](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L577)*
+*Defined in [apis/avm/utxos.ts:401](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L401)*
 
 Gets all the Asset IDs, optionally that match with Asset IDs in an array
 
@@ -204,7 +205,7 @@ ___
 
 ▸ **getBalance**(`addresses`: Array‹Buffer›, `assetID`: Buffer | string, `asOf`: BN): *BN*
 
-*Defined in [apis/avm/utxos.ts:552](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L552)*
+*Defined in [apis/avm/utxos.ts:376](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L376)*
 
 Returns the balance of a set of addresses in the UTXOSet.
 
@@ -226,7 +227,7 @@ ___
 
 ▸ **getUTXO**(`utxoid`: string): *[UTXO](_apis_avm_utxos_.utxo.md)*
 
-*Defined in [apis/avm/utxos.ts:460](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L460)*
+*Defined in [apis/avm/utxos.ts:284](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L284)*
 
 Gets a [UTXO](_apis_avm_utxos_.utxo.md) from the [UTXOSet](_apis_avm_utxos_.utxoset.md) by its UTXOID.
 
@@ -246,7 +247,7 @@ ___
 
 ▸ **getUTXOIDs**(`addresses`: Array‹Buffer›, `spendable`: boolean): *Array‹string›*
 
-*Defined in [apis/avm/utxos.ts:517](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L517)*
+*Defined in [apis/avm/utxos.ts:341](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L341)*
 
 Given an address or array of addresses, returns all the UTXOIDs for those addresses
 
@@ -267,7 +268,7 @@ ___
 
 ▸ **includes**(`utxo`: [UTXO](_apis_avm_utxos_.utxo.md) | string): *boolean*
 
-*Defined in [apis/avm/utxos.ts:323](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L323)*
+*Defined in [apis/avm/utxos.ts:161](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L161)*
 
 Returns true if the [UTXO](_apis_avm_utxos_.utxo.md) is in the UTXOSet.
 
@@ -285,7 +286,7 @@ ___
 
 ▸ **intersection**(`utxoset`: [UTXOSet](_apis_avm_utxos_.utxoset.md)): *[UTXOSet](_apis_avm_utxos_.utxoset.md)*
 
-*Defined in [apis/avm/utxos.ts:738](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L738)*
+*Defined in [apis/avm/utxos.ts:641](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L641)*
 
 Set intersetion between this set and a parameter.
 
@@ -301,43 +302,14 @@ A new UTXOSet containing the intersection
 
 ___
 
-###  makeCreateAssetTx
+###  makeBaseTx
 
-▸ **makeCreateAssetTx**(`networkid`: number, `blockchainid`: Buffer, `avaAssetID`: Buffer, `fee`: BN, `creatorAddresses`: Array‹Buffer›, `initialState`: [InitialStates](_apis_avm_types_.initialstates.md), `name`: string, `symbol`: string, `denomination`: number): *[TxCreateAsset](_apis_avm_tx_.txcreateasset.md)*
+▸ **makeBaseTx**(`networkid`: number, `blockchainid`: Buffer, `amount`: BN, `toAddresses`: Array‹Buffer›, `fromAddresses`: Array‹Buffer›, `changeAddresses`: Array‹Buffer›, `assetID`: Buffer, `asOf`: BN, `locktime`: BN, `threshold`: number, `outputID`: number): *[UnsignedTx](_apis_avm_tx_.unsignedtx.md)*
 
-*Defined in [apis/avm/utxos.ts:697](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L697)*
+*Defined in [apis/avm/utxos.ts:438](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L438)*
 
-Creates an unsigned transaction. For more granular control, you may create your own
-[TxCreateAsset](_apis_avm_tx_.txcreateasset.md) manually (with their corresponding [Input](_apis_avm_inputs_.input.md)s, [Output](_apis_avm_outputs_.output.md)s).
-
-**Parameters:**
-
-Name | Type | Description |
------- | ------ | ------ |
-`networkid` | number | The number representing NetworkID of the node |
-`blockchainid` | Buffer | The [Buffer](https://github.com/feross/buffer) representing the BlockchainID for the transaction |
-`avaAssetID` | Buffer | - |
-`fee` | BN | The amount of AVA to be paid for fees, in $nAVA |
-`creatorAddresses` | Array‹Buffer› | The addresses to send the fees |
-`initialState` | [InitialStates](_apis_avm_types_.initialstates.md) | The [InitialStates](_apis_avm_types_.initialstates.md)that represent the intial state of a created asset |
-`name` | string | String for the descriptive name of the asset |
-`symbol` | string | String for the ticker symbol of the asset |
-`denomination` | number | Optional number for the denomination which is 10^D. D must be >= 0 and <= 32. Ex: $1 AVA = 10^9 $nAVA  |
-
-**Returns:** *[TxCreateAsset](_apis_avm_tx_.txcreateasset.md)*
-
-An unsigned transaction created from the passed in parameters.
-
-___
-
-###  makeUnsignedTx
-
-▸ **makeUnsignedTx**(`networkid`: number, `blockchainid`: Buffer, `amount`: BN, `toAddresses`: Array‹Buffer›, `fromAddresses`: Array‹Buffer›, `changeAddresses`: Array‹Buffer›, `assetID`: Buffer, `asOf`: BN, `locktime`: BN, `threshold`: number): *[TxUnsigned](_apis_avm_tx_.txunsigned.md)*
-
-*Defined in [apis/avm/utxos.ts:612](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L612)*
-
-Creates an unsigned transaction. For more granular control, you may create your own
-[TxUnsigned](_apis_avm_tx_.txunsigned.md) manually (with their corresponding [Input](_apis_avm_inputs_.input.md)s and [Output](_apis_avm_outputs_.output.md)s).
+Creates an [UnsignedTx](_apis_avm_tx_.unsignedtx.md) wrapping a [BaseTx](_apis_avm_tx_.basetx.md). For more granular control, you may create your own
+[UnsignedTx](_apis_avm_tx_.unsignedtx.md) wrapping a [BaseTx](_apis_avm_tx_.basetx.md) manually (with their corresponding [TransferableInput](_apis_avm_inputs_.transferableinput.md)s and [TransferableOutput](_apis_avm_outputs_.transferableoutput.md)s).
 
 **Parameters:**
 
@@ -348,13 +320,74 @@ Name | Type | Default | Description |
 `amount` | BN | - | The amount of AVA to be spent in $nAVA |
 `toAddresses` | Array‹Buffer› | - | The addresses to send the funds |
 `fromAddresses` | Array‹Buffer› | - | The addresses being used to send the funds from the UTXOs [Buffer](https://github.com/feross/buffer) |
-`changeAddresses` | Array‹Buffer› | - | - |
+`changeAddresses` | Array‹Buffer› | - | The addresses that can spend the change remaining from the spent UTXOs |
 `assetID` | Buffer | - | - |
-`asOf` | BN |  UnixNow() | The timestamp to verify the transaction against as a [BN](https://github.com/indutny/bn.js/) |
-`locktime` | BN |  new BN(0) | The locktime field created in the resulting outputs |
-`threshold` | number | 1 | The number of signatures required to spend the funds in the resultant UTXO  |
+`asOf` | BN |  UnixNow() | Optional. The timestamp to verify the transaction against as a [BN](https://github.com/indutny/bn.js/) |
+`locktime` | BN |  new BN(0) | Optional. The locktime field created in the resulting outputs |
+`threshold` | number | 1 | Optional. The number of signatures required to spend the funds in the resultant UTXO |
+`outputID` | number |  AVMConstants.SECPOUTPUTID | Optional. The outputID used for this transaction, must implement AmountOutput, default AVMConstants.SECPOUTPUTID  |
 
-**Returns:** *[TxUnsigned](_apis_avm_tx_.txunsigned.md)*
+**Returns:** *[UnsignedTx](_apis_avm_tx_.unsignedtx.md)*
+
+An unsigned transaction created from the passed in parameters.
+
+___
+
+###  makeCreateAssetTx
+
+▸ **makeCreateAssetTx**(`networkid`: number, `blockchainid`: Buffer, `avaAssetID`: Buffer, `fee`: BN, `feeSenderAddresses`: Array‹Buffer›, `initialState`: [InitialStates](_apis_avm_types_.initialstates.md), `name`: string, `symbol`: string, `denomination`: number): *[UnsignedTx](_apis_avm_tx_.unsignedtx.md)*
+
+*Defined in [apis/avm/utxos.ts:538](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L538)*
+
+Creates an unsigned transaction. For more granular control, you may create your own
+[[TxCreateAsset]] manually (with their corresponding [TransferableInput](_apis_avm_inputs_.transferableinput.md)s, [TransferableOutput](_apis_avm_outputs_.transferableoutput.md)s).
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`networkid` | number | The number representing NetworkID of the node |
+`blockchainid` | Buffer | The [Buffer](https://github.com/feross/buffer) representing the BlockchainID for the transaction |
+`avaAssetID` | Buffer | - |
+`fee` | BN | The amount of AVA to be paid for fees, in $nAVA |
+`feeSenderAddresses` | Array‹Buffer› | The addresses to send the fees |
+`initialState` | [InitialStates](_apis_avm_types_.initialstates.md) | The [InitialStates](_apis_avm_types_.initialstates.md)that represent the intial state of a created asset |
+`name` | string | String for the descriptive name of the asset |
+`symbol` | string | String for the ticker symbol of the asset |
+`denomination` | number | Optional number for the denomination which is 10^D. D must be >= 0 and <= 32. Ex: $1 AVA = 10^9 $nAVA  |
+
+**Returns:** *[UnsignedTx](_apis_avm_tx_.unsignedtx.md)*
+
+An unsigned transaction created from the passed in parameters.
+
+___
+
+###  makeNFTTransferTx
+
+▸ **makeNFTTransferTx**(`networkid`: number, `blockchainid`: Buffer, `feeAssetID`: Buffer, `fee`: BN, `feeSenderAddresses`: Array‹Buffer›, `toAddresses`: Array‹Buffer›, `fromAddresses`: Array‹Buffer›, `utxoids`: Array‹string›, `asOf`: BN, `locktime`: BN, `threshold`: number): *[UnsignedTx](_apis_avm_tx_.unsignedtx.md)*
+
+*Defined in [apis/avm/utxos.ts:571](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L571)*
+
+Creates an unsigned NFT transfer transaction. For more granular control, you may create your own
+[NFTTransferOperation](_apis_avm_ops_.nfttransferoperation.md) manually (with their corresponding [TransferableInput](_apis_avm_inputs_.transferableinput.md)s, [TransferableOutput](_apis_avm_outputs_.transferableoutput.md)s, and [[TransferOperation]]s).
+
+**Parameters:**
+
+Name | Type | Default | Description |
+------ | ------ | ------ | ------ |
+`networkid` | number | - | The number representing NetworkID of the node |
+`blockchainid` | Buffer | - | The [Buffer](https://github.com/feross/buffer) representing the BlockchainID for the transaction |
+`feeAssetID` | Buffer | - | The assetID for the AVA fee to be paid |
+`fee` | BN | - | The amount of AVA to be paid for fees, in $nAVA |
+`feeSenderAddresses` | Array‹Buffer› | - | The addresses to send the fees |
+`toAddresses` | Array‹Buffer› | - | An array of [Buffer](https://github.com/feross/buffer)s which indicate who recieves the NFT |
+`fromAddresses` | Array‹Buffer› | - | An array for [Buffer](https://github.com/feross/buffer) who owns the NFT |
+`utxoids` | Array‹string› | - | An array of strings for the NFTs being transferred |
+`asOf` | BN |  UnixNow() | Optional. The timestamp to verify the transaction against as a [BN](https://github.com/indutny/bn.js/) |
+`locktime` | BN |  new BN(0) | Optional. The locktime field created in the resulting outputs |
+`threshold` | number | 1 | Optional. The number of signatures required to spend the funds in the resultant UTXO |
+
+**Returns:** *[UnsignedTx](_apis_avm_tx_.unsignedtx.md)*
 
 An unsigned transaction created from the passed in parameters.
 
@@ -364,7 +397,7 @@ ___
 
 ▸ **merge**(`utxoset`: [UTXOSet](_apis_avm_utxos_.utxoset.md), `hasUTXOIDs`: Array‹string›): *[UTXOSet](_apis_avm_utxos_.utxoset.md)*
 
-*Defined in [apis/avm/utxos.ts:719](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L719)*
+*Defined in [apis/avm/utxos.ts:622](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L622)*
 
 Returns a new set with copy of UTXOs in this and set parameter.
 
@@ -385,7 +418,7 @@ ___
 
 ▸ **mergeByRule**(`utxoset`: [UTXOSet](_apis_avm_utxos_.utxoset.md), `mergeRule`: [MergeRule](../modules/_apis_avm_types_.md#mergerule)): *[UTXOSet](_apis_avm_utxos_.utxoset.md)*
 
-*Defined in [apis/avm/utxos.ts:806](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L806)*
+*Defined in [apis/avm/utxos.ts:709](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L709)*
 
 Merges a set by the rule provided.
 
@@ -404,9 +437,9 @@ ___
 
 ###  remove
 
-▸ **remove**(`utxo`: [UTXO](_apis_avm_utxos_.utxo.md) | string): *boolean*
+▸ **remove**(`utxo`: [UTXO](_apis_avm_utxos_.utxo.md) | string): *[UTXO](_apis_avm_utxos_.utxo.md)*
 
-*Defined in [apis/avm/utxos.ts:407](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L407)*
+*Defined in [apis/avm/utxos.ts:236](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L236)*
 
 Removes a [UTXO](_apis_avm_utxos_.utxo.md) from the [UTXOSet](_apis_avm_utxos_.utxoset.md) if it exists.
 
@@ -416,9 +449,9 @@ Name | Type | Description |
 ------ | ------ | ------ |
 `utxo` | [UTXO](_apis_avm_utxos_.utxo.md) &#124; string | Either a [UTXO](_apis_avm_utxos_.utxo.md) an AVA serialized string representing a UTXO  |
 
-**Returns:** *boolean*
+**Returns:** *[UTXO](_apis_avm_utxos_.utxo.md)*
 
-A true value if a [UTXO](_apis_avm_utxos_.utxo.md) was removed and false if nothing was removed.
+A [UTXO](_apis_avm_utxos_.utxo.md) if it was removed and undefined if nothing was removed.
 
 ___
 
@@ -426,7 +459,7 @@ ___
 
 ▸ **removeArray**(`utxos`: Array‹string | [UTXO](_apis_avm_utxos_.utxo.md)›): *Array‹[UTXO](_apis_avm_utxos_.utxo.md)›*
 
-*Defined in [apis/avm/utxos.ts:437](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L437)*
+*Defined in [apis/avm/utxos.ts:266](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L266)*
 
 Removes an array of [UTXO](_apis_avm_utxos_.utxo.md)s to the [UTXOSet](_apis_avm_utxos_.utxoset.md).
 
@@ -446,7 +479,7 @@ ___
 
 ▸ **symDifference**(`utxoset`: [UTXOSet](_apis_avm_utxos_.utxoset.md)): *[UTXOSet](_apis_avm_utxos_.utxoset.md)*
 
-*Defined in [apis/avm/utxos.ts:768](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L768)*
+*Defined in [apis/avm/utxos.ts:671](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L671)*
 
 Set symmetrical difference between this set and a parameter.
 
@@ -466,7 +499,7 @@ ___
 
 ▸ **union**(`utxoset`: [UTXOSet](_apis_avm_utxos_.utxoset.md)): *[UTXOSet](_apis_avm_utxos_.utxoset.md)*
 
-*Defined in [apis/avm/utxos.ts:784](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/utxos.ts#L784)*
+*Defined in [apis/avm/utxos.ts:687](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/utxos.ts#L687)*
 
 Set union between this set and a parameter.
 

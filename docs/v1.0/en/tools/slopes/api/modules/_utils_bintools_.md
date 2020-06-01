@@ -1,4 +1,4 @@
-[slopes - v1.4.3](../README.md) › [Globals](../globals.md) › ["utils/bintools"](_utils_bintools_.md)
+[slopes - v1.7.1](../README.md) › ["utils/bintools"](_utils_bintools_.md)
 
 # External module: "utils/bintools"
 

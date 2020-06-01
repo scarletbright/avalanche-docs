@@ -1,54 +1,54 @@
-[slopes - v1.7.1](../README.md) › ["apis/avm/outputs"](../modules/_apis_avm_outputs_.md) › [SecpOutput](_apis_avm_outputs_.secpoutput.md)
+[slopes - v1.7.1](../README.md) › ["apis/avm/outputs"](../modules/_apis_avm_outputs_.md) › [AmountOutput](_apis_avm_outputs_.amountoutput.md)
 
-# Class: SecpOutput
+# Class: AmountOutput
 
-An [Output](_apis_avm_outputs_.output.md) class which specifies an Output that carries an ammount for an assetID and uses secp256k1 signature scheme.
+An [Output](_apis_avm_outputs_.output.md) class which specifies a token amount .
 
 ## Hierarchy
 
-  ↳ [AmountOutput](_apis_avm_outputs_.amountoutput.md)
+* [Output](_apis_avm_outputs_.output.md)
 
-  ↳ **SecpOutput**
+  ↳ **AmountOutput**
+
+  ↳ [SecpOutput](_apis_avm_outputs_.secpoutput.md)
 
 ## Index
 
 ### Constructors
 
-* [constructor](_apis_avm_outputs_.secpoutput.md#constructor)
+* [constructor](_apis_avm_outputs_.amountoutput.md#constructor)
 
 ### Properties
 
-* [addresses](_apis_avm_outputs_.secpoutput.md#protected-addresses)
-* [amount](_apis_avm_outputs_.secpoutput.md#protected-amount)
-* [amountValue](_apis_avm_outputs_.secpoutput.md#protected-amountvalue)
-* [locktime](_apis_avm_outputs_.secpoutput.md#protected-locktime)
-* [numaddrs](_apis_avm_outputs_.secpoutput.md#protected-numaddrs)
-* [threshold](_apis_avm_outputs_.secpoutput.md#protected-threshold)
+* [addresses](_apis_avm_outputs_.amountoutput.md#protected-addresses)
+* [amount](_apis_avm_outputs_.amountoutput.md#protected-amount)
+* [amountValue](_apis_avm_outputs_.amountoutput.md#protected-amountvalue)
+* [locktime](_apis_avm_outputs_.amountoutput.md#protected-locktime)
+* [numaddrs](_apis_avm_outputs_.amountoutput.md#protected-numaddrs)
+* [threshold](_apis_avm_outputs_.amountoutput.md#protected-threshold)
 
 ### Methods
 
-* [fromBuffer](_apis_avm_outputs_.secpoutput.md#frombuffer)
-* [getAddress](_apis_avm_outputs_.secpoutput.md#getaddress)
-* [getAddressIdx](_apis_avm_outputs_.secpoutput.md#getaddressidx)
-* [getAddresses](_apis_avm_outputs_.secpoutput.md#getaddresses)
-* [getAmount](_apis_avm_outputs_.secpoutput.md#getamount)
-* [getLocktime](_apis_avm_outputs_.secpoutput.md#getlocktime)
-* [getOutputID](_apis_avm_outputs_.secpoutput.md#getoutputid)
-* [getSpenders](_apis_avm_outputs_.secpoutput.md#getspenders)
-* [getThreshold](_apis_avm_outputs_.secpoutput.md#getthreshold)
-* [makeTransferable](_apis_avm_outputs_.secpoutput.md#maketransferable)
-* [meetsThreshold](_apis_avm_outputs_.secpoutput.md#meetsthreshold)
-* [toBuffer](_apis_avm_outputs_.secpoutput.md#tobuffer)
-* [toString](_apis_avm_outputs_.secpoutput.md#tostring)
-* [comparator](_apis_avm_outputs_.secpoutput.md#static-comparator)
+* [fromBuffer](_apis_avm_outputs_.amountoutput.md#frombuffer)
+* [getAddress](_apis_avm_outputs_.amountoutput.md#getaddress)
+* [getAddressIdx](_apis_avm_outputs_.amountoutput.md#getaddressidx)
+* [getAddresses](_apis_avm_outputs_.amountoutput.md#getaddresses)
+* [getAmount](_apis_avm_outputs_.amountoutput.md#getamount)
+* [getLocktime](_apis_avm_outputs_.amountoutput.md#getlocktime)
+* [getOutputID](_apis_avm_outputs_.amountoutput.md#abstract-getoutputid)
+* [getSpenders](_apis_avm_outputs_.amountoutput.md#getspenders)
+* [getThreshold](_apis_avm_outputs_.amountoutput.md#getthreshold)
+* [makeTransferable](_apis_avm_outputs_.amountoutput.md#maketransferable)
+* [meetsThreshold](_apis_avm_outputs_.amountoutput.md#meetsthreshold)
+* [toBuffer](_apis_avm_outputs_.amountoutput.md#tobuffer)
+* [toString](_apis_avm_outputs_.amountoutput.md#tostring)
+* [comparator](_apis_avm_outputs_.amountoutput.md#static-comparator)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new SecpOutput**(`amount`: BN, `locktime`: BN, `threshold`: number, `addresses`: Array‹Buffer›): *[SecpOutput](_apis_avm_outputs_.secpoutput.md)*
-
-*Inherited from [AmountOutput](_apis_avm_outputs_.amountoutput.md).[constructor](_apis_avm_outputs_.amountoutput.md#constructor)*
+\+ **new AmountOutput**(`amount`: BN, `locktime`: BN, `threshold`: number, `addresses`: Array‹Buffer›): *[AmountOutput](_apis_avm_outputs_.amountoutput.md)*
 
 *Overrides [Output](_apis_avm_outputs_.output.md).[constructor](_apis_avm_outputs_.output.md#constructor)*
 
@@ -65,7 +65,7 @@ Name | Type | Default | Description |
 `threshold` | number |  undefined | A number representing the the threshold number of signers required to sign the transaction |
 `addresses` | Array‹Buffer› |  undefined | An array of [Buffer](https://github.com/feross/buffer)s representing addresses  |
 
-**Returns:** *[SecpOutput](_apis_avm_outputs_.secpoutput.md)*
+**Returns:** *[AmountOutput](_apis_avm_outputs_.amountoutput.md)*
 
 ## Properties
 
@@ -83,8 +83,6 @@ ___
 
 • **amount**: *Buffer* =  Buffer.alloc(8)
 
-*Inherited from [AmountOutput](_apis_avm_outputs_.amountoutput.md).[amount](_apis_avm_outputs_.amountoutput.md#protected-amount)*
-
 *Defined in [apis/avm/outputs.ts:297](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L297)*
 
 ___
@@ -92,8 +90,6 @@ ___
 ### `Protected` amountValue
 
 • **amountValue**: *BN* =  new BN(0)
-
-*Inherited from [AmountOutput](_apis_avm_outputs_.amountoutput.md).[amountValue](_apis_avm_outputs_.amountoutput.md#protected-amountvalue)*
 
 *Defined in [apis/avm/outputs.ts:298](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L298)*
 
@@ -132,8 +128,6 @@ ___
 ###  fromBuffer
 
 ▸ **fromBuffer**(`outbuff`: Buffer, `offset`: number): *number*
-
-*Inherited from [AmountOutput](_apis_avm_outputs_.amountoutput.md).[fromBuffer](_apis_avm_outputs_.amountoutput.md#frombuffer)*
 
 *Overrides [Output](_apis_avm_outputs_.output.md).[fromBuffer](_apis_avm_outputs_.output.md#frombuffer)*
 
@@ -214,8 +208,6 @@ ___
 
 ▸ **getAmount**(): *BN*
 
-*Inherited from [AmountOutput](_apis_avm_outputs_.amountoutput.md)*
-
 *Defined in [apis/avm/outputs.ts:303](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L303)*
 
 Returns the amount as a [BN](https://github.com/indutny/bn.js/).
@@ -238,15 +230,15 @@ Returns the a [BN](https://github.com/indutny/bn.js/) repersenting the UNIX Time
 
 ___
 
-###  getOutputID
+### `Abstract` getOutputID
 
 ▸ **getOutputID**(): *number*
 
-*Overrides [Output](_apis_avm_outputs_.output.md).[getOutputID](_apis_avm_outputs_.output.md#abstract-getoutputid)*
+*Inherited from [Output](_apis_avm_outputs_.output.md).[getOutputID](_apis_avm_outputs_.output.md#abstract-getoutputid)*
 
-*Defined in [apis/avm/outputs.ts:352](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L352)*
+*Defined in [apis/avm/outputs.ts:38](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/outputs.ts#L38)*
 
-Returns the outputID for this output
+Returns the outputID for the output which tells parsers what type it is
 
 **Returns:** *number*
 
@@ -329,8 +321,6 @@ ___
 ###  toBuffer
 
 ▸ **toBuffer**(): *Buffer*
-
-*Inherited from [AmountOutput](_apis_avm_outputs_.amountoutput.md).[toBuffer](_apis_avm_outputs_.amountoutput.md#tobuffer)*
 
 *Overrides [Output](_apis_avm_outputs_.output.md).[toBuffer](_apis_avm_outputs_.output.md#tobuffer)*
 

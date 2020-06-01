@@ -1,4 +1,4 @@
-[slopes - v1.4.3](../README.md) › [Globals](../globals.md) › ["apis/avm/types"](../modules/_apis_avm_types_.md) › [InitialStates](_apis_avm_types_.initialstates.md)
+[slopes - v1.7.1](../README.md) › ["apis/avm/types"](../modules/_apis_avm_types_.md) › [InitialStates](_apis_avm_types_.initialstates.md)
 
 # Class: InitialStates
 
@@ -30,7 +30,7 @@ Class for creating initial output states used in asset creation
 
 \+ **new InitialStates**(): *[InitialStates](_apis_avm_types_.initialstates.md)*
 
-*Defined in [apis/avm/types.ts:178](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L178)*
+*Defined in [apis/avm/types.ts:235](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L235)*
 
 **Returns:** *[InitialStates](_apis_avm_types_.initialstates.md)*
 
@@ -40,7 +40,7 @@ Class for creating initial output states used in asset creation
 
 • **fxs**: *object*
 
-*Defined in [apis/avm/types.ts:118](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L118)*
+*Defined in [apis/avm/types.ts:173](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L173)*
 
 #### Type declaration:
 
@@ -52,7 +52,7 @@ Class for creating initial output states used in asset creation
 
 ▸ **addOutput**(`out`: [Output](_apis_avm_outputs_.output.md), `fxid`: number): *void*
 
-*Defined in [apis/avm/types.ts:125](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L125)*
+*Defined in [apis/avm/types.ts:180](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L180)*
 
 **Parameters:**
 
@@ -69,14 +69,14 @@ ___
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-*Defined in [apis/avm/types.ts:132](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L132)*
+*Defined in [apis/avm/types.ts:187](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L187)*
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`bytes` | Buffer |
-`offset` | number |
+Name | Type | Default |
+------ | ------ | ------ |
+`bytes` | Buffer | - |
+`offset` | number | 0 |
 
 **Returns:** *number*
 
@@ -86,6 +86,6 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [apis/avm/types.ts:158](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L158)*
+*Defined in [apis/avm/types.ts:212](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/types.ts#L212)*
 
 **Returns:** *Buffer*

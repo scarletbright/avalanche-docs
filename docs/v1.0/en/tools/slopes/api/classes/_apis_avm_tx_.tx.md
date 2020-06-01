@@ -1,4 +1,4 @@
-[slopes - v1.4.3](../README.md) › [Globals](../globals.md) › ["apis/avm/tx"](../modules/_apis_avm_tx_.md) › [Tx](_apis_avm_tx_.tx.md)
+[slopes - v1.7.1](../README.md) › ["apis/avm/tx"](../modules/_apis_avm_tx_.md) › [Tx](_apis_avm_tx_.tx.md)
 
 # Class: Tx
 
@@ -16,8 +16,8 @@ Class representing a signed transaction.
 
 ### Properties
 
-* [signatures](_apis_avm_tx_.tx.md#protected-signatures)
-* [tx](_apis_avm_tx_.tx.md#protected-tx)
+* [credentials](_apis_avm_tx_.tx.md#protected-credentials)
+* [unsignedTx](_apis_avm_tx_.tx.md#protected-unsignedtx)
 
 ### Methods
 
@@ -30,52 +30,53 @@ Class representing a signed transaction.
 
 ###  constructor
 
-\+ **new Tx**(`tx?`: [TxUnsigned](_apis_avm_tx_.txunsigned.md), `signatures?`: Array‹Array‹[Signature](_apis_avm_types_.signature.md)››): *[Tx](_apis_avm_tx_.tx.md)*
+\+ **new Tx**(`unsignedTx`: [UnsignedTx](_apis_avm_tx_.unsignedtx.md), `credentials`: Array‹[Credential](_apis_avm_credentials_.credential.md)›): *[Tx](_apis_avm_tx_.tx.md)*
 
-*Defined in [apis/avm/tx.ts:399](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/tx.ts#L399)*
+*Defined in [apis/avm/tx.ts:563](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/tx.ts#L563)*
 
 Class representing a signed transaction.
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`tx?` | [TxUnsigned](_apis_avm_tx_.txunsigned.md) | Optional [Tx](_apis_avm_tx_.tx.md) |
-`signatures?` | Array‹Array‹[Signature](_apis_avm_types_.signature.md)›› | Optional array of [Signature](_apis_avm_types_.signature.md)s  |
+Name | Type | Default | Description |
+------ | ------ | ------ | ------ |
+`unsignedTx` | [UnsignedTx](_apis_avm_tx_.unsignedtx.md) |  undefined | Optional [UnsignedTx](_apis_avm_tx_.unsignedtx.md) |
+`credentials` | Array‹[Credential](_apis_avm_credentials_.credential.md)› |  undefined | - |
 
 **Returns:** *[Tx](_apis_avm_tx_.tx.md)*
 
 ## Properties
 
-### `Protected` signatures
+### `Protected` credentials
 
-• **signatures**: *Array‹Array‹[Signature](_apis_avm_types_.signature.md)››* =  []
+• **credentials**: *Array‹[Credential](_apis_avm_credentials_.credential.md)›* =  []
 
-*Defined in [apis/avm/tx.ts:306](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/tx.ts#L306)*
+*Defined in [apis/avm/tx.ts:492](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/tx.ts#L492)*
 
 ___
 
-### `Protected` tx
+### `Protected` unsignedTx
 
-• **tx**: *[TxUnsigned](_apis_avm_tx_.txunsigned.md)* =  new TxUnsigned()
+• **unsignedTx**: *[UnsignedTx](_apis_avm_tx_.unsignedtx.md)* =  new UnsignedTx()
 
-*Defined in [apis/avm/tx.ts:305](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/tx.ts#L305)*
+*Defined in [apis/avm/tx.ts:491](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/tx.ts#L491)*
 
 ## Methods
 
 ###  fromBuffer
 
-▸ **fromBuffer**(`bytes`: Buffer): *number*
+▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-*Defined in [apis/avm/tx.ts:315](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/tx.ts#L315)*
+*Defined in [apis/avm/tx.ts:502](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/tx.ts#L502)*
 
 Takes a [Buffer](https://github.com/feross/buffer) containing an [Tx](_apis_avm_tx_.tx.md), parses it, populates the class, and returns the length of the Tx in bytes.
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`bytes` | Buffer | A [Buffer](https://github.com/feross/buffer) containing a raw [Tx](_apis_avm_tx_.tx.md)  |
+Name | Type | Default | Description |
+------ | ------ | ------ | ------ |
+`bytes` | Buffer | - | A [Buffer](https://github.com/feross/buffer) containing a raw [Tx](_apis_avm_tx_.tx.md) |
+`offset` | number | 0 | A number representing the starting point of the bytes to begin parsing  |
 
 **Returns:** *number*
 
@@ -87,7 +88,7 @@ ___
 
 ▸ **fromString**(`serialized`: string): *number*
 
-*Defined in [apis/avm/tx.ts:351](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/tx.ts#L351)*
+*Defined in [apis/avm/tx.ts:551](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/tx.ts#L551)*
 
 Takes a base-58 string containing an [Tx](_apis_avm_tx_.tx.md), parses it, populates the class, and returns the length of the Tx in bytes.
 
@@ -110,7 +111,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [apis/avm/tx.ts:358](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/tx.ts#L358)*
+*Defined in [apis/avm/tx.ts:521](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/tx.ts#L521)*
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [Tx](_apis_avm_tx_.tx.md).
 
@@ -122,7 +123,7 @@ ___
 
 ▸ **toString**(): *string*
 
-*Defined in [apis/avm/tx.ts:397](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/tx.ts#L397)*
+*Defined in [apis/avm/tx.ts:561](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/tx.ts#L561)*
 
 Returns a base-58 AVA-serialized representation of the [Tx](_apis_avm_tx_.tx.md).
 

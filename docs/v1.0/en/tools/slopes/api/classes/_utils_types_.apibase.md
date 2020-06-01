@@ -1,4 +1,4 @@
-[slopes - v1.4.3](../README.md) › [Globals](../globals.md) › ["utils/types"](../modules/_utils_types_.md) › [APIBase](_utils_types_.apibase.md)
+[slopes - v1.7.1](../README.md) › ["utils/types"](../modules/_utils_types_.md) › [APIBase](_utils_types_.apibase.md)
 
 # Class: APIBase
 
@@ -34,7 +34,7 @@ Abstract class defining a generic endpoint that all endpoints must implement (ex
 
 \+ **new APIBase**(`core`: [SlopesCore](_slopes_.slopescore.md), `baseurl`: string): *[APIBase](_utils_types_.apibase.md)*
 
-*Defined in [utils/types.ts:66](https://github.com/ava-labs/slopes/blob/709e172/src/utils/types.ts#L66)*
+*Defined in [utils/types.ts:66](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L66)*
 
 **Parameters:**
 
@@ -51,7 +51,7 @@ Name | Type | Description |
 
 • **baseurl**: *string*
 
-*Defined in [utils/types.ts:33](https://github.com/ava-labs/slopes/blob/709e172/src/utils/types.ts#L33)*
+*Defined in [utils/types.ts:33](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L33)*
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 • **core**: *[SlopesCore](_slopes_.slopescore.md)*
 
-*Defined in [utils/types.ts:32](https://github.com/ava-labs/slopes/blob/709e172/src/utils/types.ts#L32)*
+*Defined in [utils/types.ts:32](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L32)*
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 • **db**: *StoreAPI*
 
-*Defined in [utils/types.ts:34](https://github.com/ava-labs/slopes/blob/709e172/src/utils/types.ts#L34)*
+*Defined in [utils/types.ts:34](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L34)*
 
 ## Methods
 
@@ -75,7 +75,7 @@ ___
 
 ▸ **getBaseURL**(): *string*
 
-*Defined in [utils/types.ts:57](https://github.com/ava-labs/slopes/blob/709e172/src/utils/types.ts#L57)*
+*Defined in [utils/types.ts:57](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L57)*
 
 Returns the baseurl's path.
 
@@ -87,7 +87,7 @@ ___
 
 ▸ **getDB**(): *StoreAPI*
 
-*Defined in [utils/types.ts:64](https://github.com/ava-labs/slopes/blob/709e172/src/utils/types.ts#L64)*
+*Defined in [utils/types.ts:64](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L64)*
 
 Returns the baseurl's database.
 
@@ -99,7 +99,7 @@ ___
 
 ▸ **setBaseURL**(`baseurl`: string): *void*
 
-*Defined in [utils/types.ts:41](https://github.com/ava-labs/slopes/blob/709e172/src/utils/types.ts#L41)*
+*Defined in [utils/types.ts:41](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L41)*
 
 Sets the path of the APIs baseurl.
 
