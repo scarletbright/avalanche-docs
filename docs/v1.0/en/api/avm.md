@@ -55,6 +55,46 @@ curl -X POST --data '{
 }
 ```
 
+### avm.listAddresses
+
+List addresses controlled by the given user.
+
+#### Signature
+
+```go
+avm.listAddresses({
+    username: string,
+    password: string
+}) -> {addresses: []string}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "avm.listAddresses",
+    "params": {
+        "username":"myUsername",
+        "password":"myPassword"
+    },
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "addresses": ["X-KqpU28P2ipUxfTfwaT847wWxyXB4XuWad"]
+    },
+    "id": 84
+}
+```
+
 ### avm.getBalance
 
 Get the balance of an asset controlled by a given address.
