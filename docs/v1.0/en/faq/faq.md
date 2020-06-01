@@ -255,6 +255,32 @@ If you started your node with command-line argument `--http-port=9700` then repl
 
 There is already a node running on your machine.
 
+### Wrong Network: Insufficient Funds
+
+If you have already received funds from the faucet and can see them on the explorer, but you still can't send a transaction with your node, you may still be connected to the Cascade test network. Check to make sure that you are are on the right network, by calling `admin.getNetworkID`:
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"admin.getNetworkID"
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+```
+
+The expected output is:
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "networkID": "3"
+    },
+    "id": 1
+}
+```
+
+The correct network ID for Denali is 3. If the network ID is 2, then you are on the Cascade test network and need to upgrade.
+
 ## Known Issues
 
 This section contains bugs and issues that we're aware of.
