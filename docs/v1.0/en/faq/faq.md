@@ -233,6 +233,10 @@ This should print something like:
 
 Do `kill -9 %1` (or `kill -9 %2` if it printed `[1]+ Stopped`, etc.)
 
+### Do I need to open any ports?
+
+You don't have to. However, if you open the staking port (`9651` by default) your node will be able to connect to more peers.
+
 ### Is there a repository of AVA related materials I can learn from?
 
 In addition to this documentation, there is a [community-run repository](https://github.com/tbrunain/awesome-ava-chain) of useful links and resoucres.
@@ -300,3 +304,19 @@ This message means your node is not running the C-Chain; it's looking in the wro
 To fix this, you can use the `--plugin-dir` command-line argument.
 
 If you are in the directory containing the `ava` binary, start your node with: `./ava --plugin-dir=$(pwd)/plugins`
+
+### Node prints `GetFailed called without sending the corresponding Get message`
+
+This is OK. We will likely lower this log level to be less visible in the future.
+
+### Node prints `next scheduled event is at ...`
+
+This is OK. We will likely lower this log level to be less visible in the future.
+
+### Node prints `NAT Traversal failed ...`
+
+This is OK. It means your node will be able to connect to less peers, but you should still be able to connect to some peers and participate in the network.
+
+### Node print `assertions are enabled. This may slow down execution`
+
+This is OK.
