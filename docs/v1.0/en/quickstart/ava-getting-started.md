@@ -483,7 +483,7 @@ Great! Now your P-Chain account has enough AVA tokens to provide a stake.
 
 ### Get Your Node's ID
 
-Your node is uniquely identified by the TLS certificate generated earlier by running `genStaker.sh`.
+Your node is uniquely identified by its staking key.
 To get your node's ID, call [`admin.getNodeID:`](../api/admin.md#admingetnodeid)
 
 ```sh

@@ -31,6 +31,7 @@ nav:
 - AVA Documentation :
   - Home : index.md
   - Quickstart : ./v1.0/en/quickstart/ava-getting-started.md
+  - FAQ and Known Issues : ./v1.0/en/faq/faq.md
   - System Overview: v1.0/en/core-concepts/overview.md
   - Tutorials:
     - Create a Fixed-Cap Asset         : ./v1.0/en/tutorials/fixed-cap-asset.md
