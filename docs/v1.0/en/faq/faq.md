@@ -41,24 +41,62 @@ If someone already reported the same issue, comment with your details.
 
 Many times, restarting your node will fix an issue.
 
-<!--
 ### How do I upgrade my node?
 
-To pull the latest code, go to your `gecko` directory.
-Do:
+The node is a binary program. You can either download the source code and then build the binary program, or you can download the pre-built binary.
+You can do either of the below. You don't need to do both.
 
-```
-git pull
-./scripts/build.sh
-```
+#### From source
 
-The build script should print `build successful`.
+First clone our Github repo (you can skip this step if you've done this before):
 
-### How can I make sure I have the latest version?
+`git clone https://github.com/ava-labs/gecko.git`
 
-To check that your code is the latest version, do `git rev-parse HEAD`.
-The first 7 characters should match the `Latest commit` field on our [Github.](https://github.com/ava-labs/gecko) 
--->
+Then move to the gecko directory:
+
+`cd gecko`
+
+Pull the latest code:
+
+`git pull`
+
+Check that your local code is up to date. Do:
+
+`git rev-parse HEAD`
+
+and check that the first 7 characters printed match the `Latest commit` field on our [Github.](https://github.com/ava-labs/gecko)
+
+Now build the binary:
+
+`./scripts/build.sh`
+
+This should print `Build Successful`.
+Now you can run your node with `./build/ava`
+
+#### Download Binary
+
+Go to our [releases page](https://github.com/ava-labs/gecko/releases) and select the release you want (probably the latest one.)
+
+Under `Assets`, select the appropriate file.
+
+For MacOS:  
+Download the file named `gecko-osx-<VERSION>.zip`  
+Unzip the file with `unzip gecko-osx-<VERSION>.zip`  
+The resulting folder, `build`, contains the binaries.  
+You can run the node with `./build/ava`
+
+For Linux:  
+Download the file named `gecko-linux-<VERSION>.tar.gz`. 
+Unzip the file with `tar -xvf gecko-linux-<VERSION>.tar.gz`  
+The resulting folder, `gecko-<VERSION>`, contains the binaries.  
+You can run the node with `./gecko-<VERSION>/ava`
+
+### Why am I getting a 404 when I make an API call?
+
+First, make sure you're sending the API call to the right place/following an instruction correctly.
+Then, [make sure your node is connected to peers.](#is-my-node-connected-to-peers)
+It should be connected to at least a few peers.
+Then, [make sure your node is done bootstrapping.](#is-my-node-done-bootstrapping)
 
 ### Where is my node's data?
 
@@ -161,6 +199,10 @@ If your node is not in either list, it is not a validator and is not a pending v
 Please note that even if your node is off, it will appear in the validator list.
 In order to complete certain incentivized testnet challenges, your node must also be on.
 
+### My node is in the validator set. How can I tell that it's actually validating?
+
+There is no good way to tell right now. If your node is connected to peers, it should be validating.
+
 ### How can I get involved with AVA?
 
 You can:
@@ -201,7 +243,6 @@ If it doesn't see [here](https://www.digitalocean.com/community/tutorials/how-to
 
 [Yes.](https://explorer.ava.network/)
 
-
 ### Is my node connected to peers?
 
 Call `admin.peers`:
@@ -233,6 +274,19 @@ This should print something like:
 
 Do `kill -9 %1` (or `kill -9 %2` if it printed `[1]+ Stopped`, etc.)
 
+### Do I need to open any ports?
+
+You don't have to. However, if you open the staking port (`9651` by default) your node will be able to connect to more peers.
+
+### What is the `id` field in every API call? Do I need to change it?
+
+Gecko uses the [JSON RPC 2.0 standard](https://www.jsonrpc.org/specificatio) for API calls.  
+As part of this standard, each call and response has a field `id`.
+This is useful in tracking which response corresponds to which request.
+
+You do not need to change this field when making API calls.
+It's OK to make many API calls with the same `id` field.
+
 ### Is there a repository of AVA related materials I can learn from?
 
 In addition to this documentation, there is a [community-run repository](https://github.com/tbrunain/awesome-ava-chain) of useful links and resoucres.
@@ -255,7 +309,7 @@ If you started your node with command-line argument `--http-port=9700` then repl
 
 There is already a node running on your machine.
 
-### Wrong Network: Insufficient Funds
+### Node is on the wrong network
 
 If you have already received funds from the faucet and can see them on the explorer, but you still can't send a transaction with your node, you may still be connected to the Cascade test network. Check to make sure that you are are on the right network, by calling `admin.getNetworkID`:
 
@@ -326,3 +380,19 @@ This message means your node is not running the C-Chain; it's looking in the wro
 To fix this, you can use the `--plugin-dir` command-line argument.
 
 If you are in the directory containing the `ava` binary, start your node with: `./ava --plugin-dir=$(pwd)/plugins`
+
+### Node prints `GetFailed called without sending the corresponding Get message`
+
+This is OK. We will likely lower this log level to be less visible in the future.
+
+### Node prints `next scheduled event is at ...`
+
+This is OK. We will likely lower this log level to be less visible in the future.
+
+### Node prints `NAT Traversal failed ...`
+
+This is OK. It means your node will be able to connect to less peers, but you should still be able to connect to some peers and participate in the network.
+
+### Node print `assertions are enabled. This may slow down execution`
+
+This is OK.
