@@ -49,7 +49,7 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "address": "X-KqpU28P2ipUxfTfwaT847wWxyXB4XuWad"
+        "address": "X-EKpEPX56YA1dsaHBsW8X5nGqNSwJ7JrWH"
     },
     "id": 1
 }
@@ -89,7 +89,7 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "addresses": ["X-KqpU28P2ipUxfTfwaT847wWxyXB4XuWad"]
+        "addresses": ["X-EKpEPX56YA1dsaHBsW8X5nGqNSwJ7JrWH"]
     },
     "id": 84
 }
@@ -112,13 +112,13 @@ avm.getBalance({
 
 ```json
 curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :2,
-    "method" :"avm.getBalance",
-    "params" :{
-        "address":"X-KqpU28P2ipUxfTfwaT847wWxyXB4XuWad",
-        "assetID":"2sLRGHdLCZkxKnAew9M91GcN4DWVP9WwSrLTYNTqdZAXFB57Py"
-    }
+  "jsonrpc":"2.0",
+  "id"     : 1,
+  "method" :"avm.getBalance",
+  "params" :{
+      "address":"X-EKpEPX56YA1dsaHBsW8X5nGqNSwJ7JrWH",
+      "assetID": "2pYGetDWyKdHxpFxh2LHeoLNCH6H5vxxCxHQtFnnFaYxLsqtHC"
+  }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
@@ -129,7 +129,13 @@ curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :2,
     "result" :{
-        "balance":18944
+        "balance":"299999999999900",
+        "utxoIDs":[
+            {
+                "txID":"WPQdyLNqHfiEKp4zcCpayRHYDVYuh1hqs9c1RqgZXS4VPgdvo",
+                "outputIndex":1
+            }
+        ]
     }
 }
 ```
