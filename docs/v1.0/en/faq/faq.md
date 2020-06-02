@@ -294,7 +294,7 @@ It's OK to make many API calls with the same `id` field.
 ### Is there a repository of AVA related materials I can learn from?
 
 In addition to this documentation, there is a [community-run repository](https://github.com/tbrunain/awesome-ava-chain) of useful links and resoucres.
-Great thanks to `tbrunaian` for this contribution :)
+Great thanks to `tbrunain` for this contribution :)
 
 ## Common Mistakes
 
