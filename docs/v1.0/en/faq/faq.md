@@ -41,24 +41,62 @@ If someone already reported the same issue, comment with your details.
 
 Many times, restarting your node will fix an issue.
 
-<!--
 ### How do I upgrade my node?
 
-To pull the latest code, go to your `gecko` directory.
-Do:
+The node is a binary program. You can either download the source code and then build the binary program, or you can download the pre-built binary.
+You can do either of the below. You don't need to do both.
 
-```
-git pull
-./scripts/build.sh
-```
+#### From source
 
-The build script should print `build successful`.
+First clone our Github repo (you can skip this step if you've done this before):
 
-### How can I make sure I have the latest version?
+`git clone https://github.com/ava-labs/gecko.git`
 
-To check that your code is the latest version, do `git rev-parse HEAD`.
-The first 7 characters should match the `Latest commit` field on our [Github.](https://github.com/ava-labs/gecko) 
--->
+Then move to the gecko directory:
+
+`cd gecko`
+
+Pull the latest code:
+
+`git pull`
+
+Check that your local code is up to date. Do:
+
+`git rev-parse HEAD`
+
+and check that the first 7 characters printed match the `Latest commit` field on our [Github.](https://github.com/ava-labs/gecko)
+
+Now build the binary:
+
+`./scripts/build.sh`
+
+This should print `Build Successful`.
+Now you can run your node with `./build/ava`
+
+#### Download Binary
+
+Go to our [releases page](https://github.com/ava-labs/gecko/releases) and select the release you want (probably the latest one.)
+
+Under `Assets`, select the appropriate file.
+
+For MacOS:  
+Download the file named `gecko-osx-<VERSION>.zip`  
+Unzip the file with `unzip gecko-osx-<VERSION>.zip`  
+The resulting folder, `build`, contains the binaries.  
+You can run the node with `./build/ava`
+
+For Linux:  
+Download the file named `gecko-linux-<VERSION>.tar.gz`. 
+Unzip the file with `tar -xvf gecko-linux-<VERSION>.tar.gz`  
+The resulting folder, `gecko-<VERSION>`, contains the binaries.  
+You can run the node with `./gecko-<VERSION>/ava`
+
+### Why am I getting a 404 when I make an API call?
+
+First, make sure you're sending the API call to the right place/following an instruction correctly.
+Then, [make sure your node is connected to peers.](#is-my-node-connected-to-peers)
+It should be connected to at least a few peers.
+Then, [make sure your node is done bootstrapping.](#is-my-node-done-bootstrapping)
 
 ### Where is my node's data?
 
@@ -161,6 +199,10 @@ If your node is not in either list, it is not a validator and is not a pending v
 Please note that even if your node is off, it will appear in the validator list.
 In order to complete certain incentivized testnet challenges, your node must also be on.
 
+### My node is in the validator set. How can I tell that it's actually validating?
+
+There is no good way to tell right now. If your node is connected to peers, it should be validating.
+
 ### How can I get involved with AVA?
 
 You can:
@@ -201,6 +243,9 @@ If it doesn't see [here](https://www.digitalocean.com/community/tutorials/how-to
 
 [Yes.](https://explorer.ava.network/)
 
+### Is there a Javascript library?
+
+[Yes.](http://docs.ava.network/v1.0/en/tools/slopes/)
 
 ### Is my node connected to peers?
 
@@ -214,7 +259,7 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
 ```
 
-Each entry in the response is a peer. If you see none, you are connected to no peers.
+Each entry in the response contains a peer's IP address, public IP address, ID, version, and the time of the last sent and received messages exchanged with this node. If you see none, you are not connected to any peers.
 You should see at least the 5 nodes run by AVA Labs.
 
 ### How do I kill my node?
@@ -237,10 +282,19 @@ Do `kill -9 %1` (or `kill -9 %2` if it printed `[1]+ Stopped`, etc.)
 
 You don't have to. However, if you open the staking port (`9651` by default) your node will be able to connect to more peers.
 
+### What is the `id` field in every API call? Do I need to change it?
+
+Gecko uses the [JSON RPC 2.0 standard](https://www.jsonrpc.org/specificatio) for API calls.  
+As part of this standard, each call and response has a field `id`.
+This is useful in tracking which response corresponds to which request.
+
+You do not need to change this field when making API calls.
+It's OK to make many API calls with the same `id` field.
+
 ### Is there a repository of AVA related materials I can learn from?
 
 In addition to this documentation, there is a [community-run repository](https://github.com/tbrunain/awesome-ava-chain) of useful links and resoucres.
-Great thanks to `tbrunaian` for this contribution :)
+Great thanks to `tbrunain` for this contribution :)
 
 ## Common Mistakes
 
