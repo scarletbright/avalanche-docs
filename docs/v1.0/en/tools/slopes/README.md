@@ -92,8 +92,8 @@ The above lines import the libraries used in the below example:
 Slopes comes with its own AVM Keychain. This keychain is used in the functions of the API, enabling them to sign using keys it's registered. The first step in this process is to create an instance of Slopes connected to our AVA Platform endpoint of choice.
 
 ```js
-let myNetworkID = 12345; //default is 2, we want to override that for our local network
-let myBlockchainID = "GJABrZ9A6UQFpwjPU8MDxDd8vuyRoDVeDAXc694wJ5t3zEkhU"; // The AVM blockchainID on this network
+let myNetworkID = 12345; //default is 3, we want to override that for our local network
+let myBlockchainID = "4R5p2RXDGLqaifZE4hHWH9owe34pfoBULn1DrQTWivjg8o4aH"; // The AVM blockchainID on this network
 let ava = new slopes.Slopes("localhost", 9650, "http", myNetworkID, myBlockchainID);
 let avm = ava.AVM(); //returns a reference to the AVM API used by Slopes
 ```
@@ -171,7 +171,7 @@ let isValid = keypair.verify(message, signature); //returns a boolean
 This example creates an asset in the AVM and publishes it to the AVA Platform. The first step in this process is to create an instance of Slopes connected to our AVA Platform endpoint of choice.
 
 ```js
-let mynetworkID = 12345; //default is 2, we want to override that for our local network
+let mynetworkID = 12345; //default is 3, we want to override that for our local network
 let ava = new slopes.Slopes("localhost", 9650, "https", mynetworkID);
 let avm = ava.AVM(); //returns a reference to the AVM API used by Slopes
 ```
@@ -279,7 +279,7 @@ The AVM uses the TxID of the transaction which created the asset as the unique i
 This example sends an asset in the AVM to a single recipient. The first step in this process is to create an instance of Slopes connected to our AVA Platform endpoint of choice.
 
 ```js
-let mynetworkID = 12345; //default is 2, we want to override that for our local network
+let mynetworkID = 12345; //default is 3, we want to override that for our local network
 let ava = new slopes.Slopes("localhost", 9650, "https", mynetworkID);
 let avm = ava.AVM(); //returns a reference to the AVM API used by Slopes
 ```
@@ -302,7 +302,7 @@ let utxos = await avm.getUTXOs(myAddresses);
 
 ### Spending the UTXOs
 
-The `makeUnsignedTx()` helper function sends a single asset type. We have a particular assetID whose coins we want to send to a recipient address. This is an imaginary asset for this example which we believe to have 400 coins. Let's verify that we have the funds available for the transaction.
+The `makeBaseTx()` helper function sends a single asset type. We have a particular assetID whose coins we want to send to a recipient address. This is an imaginary asset for this example which we believe to have 400 coins. Let's verify that we have the funds available for the transaction.
 
 ```js
 let assetid = "23wKfz3viWLmjWo2UZ7xWegjvnZFenGAVkouwQCeB9ubPXodG6"; //avaSerialized string
@@ -314,7 +314,7 @@ We have 400 coins! We're going to now send 100 of those coins to our friend's ad
 let sendAmount = new BN(100); //amounts are in BN format
 let friendsAddress = "X-B6D4v1VtPYLbiUvYXtW4Px8oE9imC2vGW"; //AVA serialized address format
 
-//The below returns a TxUnsigned
+//The below returns a UnsignedTx
 //Parameters sent are (in order of appearance):
 //   * The UTXO Set
 //   * The amount being sent as a BN
@@ -322,7 +322,7 @@ let friendsAddress = "X-B6D4v1VtPYLbiUvYXtW4Px8oE9imC2vGW"; //AVA serialized add
 //   * An array of addresses sending the funds
 //   * An array of addresses any leftover funds are sent
 //   * The AssetID of the funds being sent
-let unsignedTx = await avm.makeUnsignedTx(utxos, sendAmount, [friendsAddress], addressStrings, addressStrings, assetid);
+let unsignedTx = await avm.makeBaseTx(utxos, sendAmount, [friendsAddress], addressStrings, addressStrings, assetid);
 let signedTx = avm.signTx(unsignedTx);
 let txid = await avm.issueTx(signedTx);
 ```

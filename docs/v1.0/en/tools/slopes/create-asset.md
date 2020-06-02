@@ -3,8 +3,8 @@
 This example creates an asset in the AVM and publishes it to the AVA Platform. The first step in this process is to create an instance of Slopes connected to our AVA Platform endpoint of choice.
 
 ```js
-let myNetworkID = 12345; //default is 2, we want to override that for our local network
-let myBlockchainID = "GJABrZ9A6UQFpwjPU8MDxDd8vuyRoDVeDAXc694wJ5t3zEkhU"; // The AVM blockchainID on this network
+let myNetworkID = 12345; //default is 3, we want to override that for our local network
+let myBlockchainID = "4R5p2RXDGLqaifZE4hHWH9owe34pfoBULn1DrQTWivjg8o4aH"; // The AVM blockchainID on this network
 let ava = new slopes.Slopes("localhost", 9650, "http", myNetworkID, myBlockchainID);
 let avm = ava.AVM(); //returns a reference to the AVM API used by Slopes
 ```

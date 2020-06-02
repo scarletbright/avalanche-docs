@@ -840,7 +840,7 @@ Helper function which takes an unsigned transaction and signs it, returning the 
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`utx` | [UnsignedTx](_apis_avm_tx_.unsignedtx.md) | The unsigned transaction of type [[TxUnsigned]]  |
+`utx` | [UnsignedTx](_apis_avm_tx_.unsignedtx.md) | The unsigned transaction of type [[UnsignedTx]]  |
 
 **Returns:** *[Tx](_apis_avm_tx_.tx.md)*
 
