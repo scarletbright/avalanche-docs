@@ -300,7 +300,7 @@ Great thanks to `tbrunain` for this contribution :)
 
 As long as you are [on the right network](#node-is-on-the-wrong-network), yes.
 
-## Common Mistakes
+## Common Problems
 
 ### API call fails with `Failed to connect to 127.0.0.1 port 9650: Connection refused`
 
@@ -343,7 +343,12 @@ The expected output is:
 
 The correct network ID for Denali is 3. If the network ID is 2, then you are on the Cascade test network and need to upgrade.
 
-## Known Issues
+### API response says `invalid character 'â' looking for beginning of value`
+
+You probably pasted the API call from a program that uses smart quotes.
+Replace each character that looks like a quotation mark " with a quotation mark and try again.
+
+## Known Issues/Bugs
 
 This section contains bugs and issues that we're aware of.
 Please also see our [Github issues.](https://github.com/ava-labs/gecko/issues)
