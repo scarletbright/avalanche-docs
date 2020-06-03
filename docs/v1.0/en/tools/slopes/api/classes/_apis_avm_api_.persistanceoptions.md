@@ -1,4 +1,4 @@
-[slopes - v1.7.1](../README.md) › ["apis/avm/api"](../modules/_apis_avm_api_.md) › [PersistanceOptions](_apis_avm_api_.persistanceoptions.md)
+[slopes - v1.7.2](../README.md) › ["apis/avm/api"](../modules/_apis_avm_api_.md) › [PersistanceOptions](_apis_avm_api_.persistanceoptions.md)
 
 # Class: PersistanceOptions
 
@@ -32,7 +32,7 @@ A class for defining the persistance behavior of this an API call.
 
 \+ **new PersistanceOptions**(`name`: string, `overwrite`: boolean, `mergeRule`: [MergeRule](../modules/_apis_avm_types_.md#mergerule)): *[PersistanceOptions](_apis_avm_api_.persistanceoptions.md)*
 
-*Defined in [apis/avm/api.ts:49](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L49)*
+*Defined in [apis/avm/api.ts:49](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L49)*
 
 **`remarks`** 
 The merge rules are as follows:
@@ -60,7 +60,7 @@ Name | Type | Default | Description |
 
 • **mergeRule**: *[MergeRule](../modules/_apis_avm_types_.md#mergerule)* = "union"
 
-*Defined in [apis/avm/api.ts:28](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L28)*
+*Defined in [apis/avm/api.ts:28](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L28)*
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 • **name**: *string* =  undefined
 
-*Defined in [apis/avm/api.ts:26](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L26)*
+*Defined in [apis/avm/api.ts:26](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L26)*
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 • **overwrite**: *boolean* = false
 
-*Defined in [apis/avm/api.ts:27](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L27)*
+*Defined in [apis/avm/api.ts:27](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L27)*
 
 ## Methods
 
@@ -84,7 +84,7 @@ ___
 
 ▸ **getMergeRule**(): *[MergeRule](../modules/_apis_avm_types_.md#mergerule)*
 
-*Defined in [apis/avm/api.ts:47](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L47)*
+*Defined in [apis/avm/api.ts:47](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L47)*
 
 Returns the [MergeRule](../modules/_apis_avm_types_.md#mergerule) of the instance
 
@@ -96,7 +96,7 @@ ___
 
 ▸ **getName**(): *string*
 
-*Defined in [apis/avm/api.ts:33](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L33)*
+*Defined in [apis/avm/api.ts:33](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L33)*
 
 Returns the namespace of the instance
 
@@ -108,7 +108,7 @@ ___
 
 ▸ **getOverwrite**(): *boolean*
 
-*Defined in [apis/avm/api.ts:40](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L40)*
+*Defined in [apis/avm/api.ts:40](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L40)*
 
 Returns the overwrite rule of the instance
 

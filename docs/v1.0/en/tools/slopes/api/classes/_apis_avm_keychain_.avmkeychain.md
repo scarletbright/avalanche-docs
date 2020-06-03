@@ -1,4 +1,4 @@
-[slopes - v1.7.1](../README.md) › ["apis/avm/keychain"](../modules/_apis_avm_keychain_.md) › [AVMKeyChain](_apis_avm_keychain_.avmkeychain.md)
+[slopes - v1.7.2](../README.md) › ["apis/avm/keychain"](../modules/_apis_avm_keychain_.md) › [AVMKeyChain](_apis_avm_keychain_.avmkeychain.md)
 
 # Class: AVMKeyChain
 
@@ -45,7 +45,7 @@ Class for representing a key chain in Slopes.
 
 *Overrides [KeyChain](_utils_types_.keychain.md).[constructor](_utils_types_.keychain.md#constructor)*
 
-*Defined in [apis/avm/keychain.ts:255](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/keychain.ts#L255)*
+*Defined in [apis/avm/keychain.ts:255](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/keychain.ts#L255)*
 
 Returns instance of AVMKeyChain.
 
@@ -65,7 +65,7 @@ Name | Type |
 
 *Inherited from [KeyChain](_utils_types_.keychain.md).[chainid](_utils_types_.keychain.md#protected-chainid)*
 
-*Defined in [utils/types.ts:272](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L272)*
+*Defined in [utils/types.ts:272](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L272)*
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 *Inherited from [KeyChain](_utils_types_.keychain.md).[keys](_utils_types_.keychain.md#protected-keys)*
 
-*Defined in [utils/types.ts:271](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L271)*
+*Defined in [utils/types.ts:271](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L271)*
 
 #### Type declaration:
 
@@ -89,7 +89,7 @@ ___
 
 *Inherited from [KeyChain](_utils_types_.keychain.md)*
 
-*Defined in [utils/types.ts:315](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L315)*
+*Defined in [utils/types.ts:315](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L315)*
 
 Adds the key pair to the list of the keys managed in the [KeyChain](_utils_types_.keychain.md).
 
@@ -109,7 +109,7 @@ ___
 
 *Inherited from [KeyChain](_utils_types_.keychain.md)*
 
-*Defined in [utils/types.ts:306](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L306)*
+*Defined in [utils/types.ts:306](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L306)*
 
 Gets an array of addresses stored in the [KeyChain](_utils_types_.keychain.md).
 
@@ -125,7 +125,7 @@ ___
 
 *Inherited from [KeyChain](_utils_types_.keychain.md)*
 
-*Defined in [utils/types.ts:297](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L297)*
+*Defined in [utils/types.ts:297](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L297)*
 
 Gets an array of addresses stored in the [KeyChain](_utils_types_.keychain.md).
 
@@ -141,7 +141,7 @@ ___
 
 *Inherited from [KeyChain](_utils_types_.keychain.md)*
 
-*Defined in [utils/types.ts:369](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L369)*
+*Defined in [utils/types.ts:369](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L369)*
 
 Returns the chainID associated with this [KeyChain](_utils_types_.keychain.md).
 
@@ -157,7 +157,7 @@ ___
 
 *Inherited from [KeyChain](_utils_types_.keychain.md)*
 
-*Defined in [utils/types.ts:360](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L360)*
+*Defined in [utils/types.ts:360](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L360)*
 
 Returns the [KeyPair](_utils_types_.keypair.md) listed under the provided address
 
@@ -179,7 +179,7 @@ ___
 
 *Inherited from [KeyChain](_utils_types_.keychain.md)*
 
-*Defined in [utils/types.ts:349](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L349)*
+*Defined in [utils/types.ts:349](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L349)*
 
 Checks if there is a key associated with the provided address.
 
@@ -201,7 +201,7 @@ ___
 
 *Overrides [KeyChain](_utils_types_.keychain.md).[importKey](_utils_types_.keychain.md#importkey)*
 
-*Defined in [apis/avm/keychain.ts:230](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/keychain.ts#L230)*
+*Defined in [apis/avm/keychain.ts:230](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/keychain.ts#L230)*
 
 Given a private key, makes a new key pair, returns the address.
 
@@ -223,7 +223,7 @@ ___
 
 *Overrides [KeyChain](_utils_types_.keychain.md).[makeKey](_utils_types_.keychain.md#makekey)*
 
-*Defined in [apis/avm/keychain.ts:217](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/keychain.ts#L217)*
+*Defined in [apis/avm/keychain.ts:217](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/keychain.ts#L217)*
 
 Makes a new key pair, returns the address.
 
@@ -245,7 +245,7 @@ ___
 
 *Inherited from [KeyChain](_utils_types_.keychain.md)*
 
-*Defined in [utils/types.ts:327](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L327)*
+*Defined in [utils/types.ts:327](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L327)*
 
 Removes the key pair from the list of they keys managed in the [KeyChain](_utils_types_.keychain.md).
 
@@ -267,7 +267,7 @@ ___
 
 *Inherited from [KeyChain](_utils_types_.keychain.md)*
 
-*Defined in [utils/types.ts:378](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L378)*
+*Defined in [utils/types.ts:378](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L378)*
 
 Sets the the chainID associated with this [KeyChain](_utils_types_.keychain.md) and all associated keypairs.
 
@@ -285,7 +285,7 @@ ___
 
 ▸ **signTx**(`utx`: [UnsignedTx](_apis_avm_tx_.unsignedtx.md)): *[Tx](_apis_avm_tx_.tx.md)*
 
-*Defined in [apis/avm/keychain.ts:253](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/keychain.ts#L253)*
+*Defined in [apis/avm/keychain.ts:253](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/keychain.ts#L253)*
 
 DEPRECATED: use UnsignedTx.sign(keychain) instead
 Signs a [UnsignedTx](_apis_avm_tx_.unsignedtx.md) and returns signed [Tx](_apis_avm_tx_.tx.md)

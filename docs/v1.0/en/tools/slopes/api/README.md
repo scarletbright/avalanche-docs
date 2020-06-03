@@ -1,6 +1,6 @@
-[slopes - v1.7.1](README.md)
+[slopes - v1.7.2](README.md)
 
-# slopes - v1.7.1
+# slopes - v1.7.2
 
 ## Index
 

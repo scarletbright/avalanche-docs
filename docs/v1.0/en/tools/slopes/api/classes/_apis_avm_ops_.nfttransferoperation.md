@@ -1,4 +1,4 @@
-[slopes - v1.7.1](../README.md) › ["apis/avm/ops"](../modules/_apis_avm_ops_.md) › [NFTTransferOperation](_apis_avm_ops_.nfttransferoperation.md)
+[slopes - v1.7.2](../README.md) › ["apis/avm/ops"](../modules/_apis_avm_ops_.md) › [NFTTransferOperation](_apis_avm_ops_.nfttransferoperation.md)
 
 # Class: NFTTransferOperation
 
@@ -42,7 +42,7 @@ A [Operation](_apis_avm_ops_.operation.md) class which specifies a NFT Transfer 
 
 *Overrides [Operation](_apis_avm_ops_.operation.md).[constructor](_apis_avm_ops_.operation.md#constructor)*
 
-*Defined in [apis/avm/ops.ts:242](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/ops.ts#L242)*
+*Defined in [apis/avm/ops.ts:242](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/ops.ts#L242)*
 
 An [Operation](_apis_avm_ops_.operation.md) class which contains an NFT on an assetID.
 
@@ -60,7 +60,7 @@ Name | Type | Default | Description |
 
 • **output**: *[NFTTransferOutput](_apis_avm_outputs_.nfttransferoutput.md)*
 
-*Defined in [apis/avm/ops.ts:204](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/ops.ts#L204)*
+*Defined in [apis/avm/ops.ts:204](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/ops.ts#L204)*
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 *Inherited from [Operation](_apis_avm_ops_.operation.md).[sigCount](_apis_avm_ops_.operation.md#protected-sigcount)*
 
-*Defined in [apis/avm/ops.ts:31](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/ops.ts#L31)*
+*Defined in [apis/avm/ops.ts:31](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/ops.ts#L31)*
 
 ___
 
@@ -80,7 +80,7 @@ ___
 
 *Inherited from [Operation](_apis_avm_ops_.operation.md).[sigIdxs](_apis_avm_ops_.operation.md#protected-sigidxs)*
 
-*Defined in [apis/avm/ops.ts:32](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/ops.ts#L32)*
+*Defined in [apis/avm/ops.ts:32](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/ops.ts#L32)*
 
 ## Methods
 
@@ -90,7 +90,7 @@ ___
 
 *Inherited from [Operation](_apis_avm_ops_.operation.md)*
 
-*Defined in [apis/avm/ops.ts:53](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/ops.ts#L53)*
+*Defined in [apis/avm/ops.ts:53](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/ops.ts#L53)*
 
 Creates and adds a [SigIdx](_apis_avm_types_.sigidx.md) to the [Operation](_apis_avm_ops_.operation.md).
 
@@ -111,7 +111,7 @@ ___
 
 *Overrides [Operation](_apis_avm_ops_.operation.md).[fromBuffer](_apis_avm_ops_.operation.md#frombuffer)*
 
-*Defined in [apis/avm/ops.ts:220](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/ops.ts#L220)*
+*Defined in [apis/avm/ops.ts:220](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/ops.ts#L220)*
 
 Popuates the instance from a [Buffer](https://github.com/feross/buffer) representing the [NFTTransferOperation](_apis_avm_ops_.nfttransferoperation.md) and returns the size of the output.
 
@@ -132,7 +132,7 @@ ___
 
 *Inherited from [Operation](_apis_avm_ops_.operation.md)*
 
-*Defined in [apis/avm/ops.ts:43](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/ops.ts#L43)*
+*Defined in [apis/avm/ops.ts:43](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/ops.ts#L43)*
 
 **Returns:** *number*
 
@@ -144,7 +144,7 @@ ___
 
 *Overrides [Operation](_apis_avm_ops_.operation.md).[getOperationID](_apis_avm_ops_.operation.md#abstract-getoperationid)*
 
-*Defined in [apis/avm/ops.ts:209](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/ops.ts#L209)*
+*Defined in [apis/avm/ops.ts:209](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/ops.ts#L209)*
 
 Returns the operation ID.
 
@@ -156,7 +156,7 @@ ___
 
 ▸ **getOutput**(): *[NFTTransferOutput](_apis_avm_outputs_.nfttransferoutput.md)*
 
-*Defined in [apis/avm/ops.ts:213](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/ops.ts#L213)*
+*Defined in [apis/avm/ops.ts:213](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/ops.ts#L213)*
 
 **Returns:** *[NFTTransferOutput](_apis_avm_outputs_.nfttransferoutput.md)*
 
@@ -168,7 +168,7 @@ ___
 
 *Inherited from [Operation](_apis_avm_ops_.operation.md)*
 
-*Defined in [apis/avm/ops.ts:39](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/ops.ts#L39)*
+*Defined in [apis/avm/ops.ts:39](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/ops.ts#L39)*
 
 Returns the array of [SigIdx](_apis_avm_types_.sigidx.md) for this [Operation](_apis_avm_ops_.operation.md)
 
@@ -182,7 +182,7 @@ ___
 
 *Overrides [Operation](_apis_avm_ops_.operation.md).[toBuffer](_apis_avm_ops_.operation.md#tobuffer)*
 
-*Defined in [apis/avm/ops.ts:229](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/ops.ts#L229)*
+*Defined in [apis/avm/ops.ts:229](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/ops.ts#L229)*
 
 Returns the buffer representing the [NFTTransferOperation](_apis_avm_ops_.nfttransferoperation.md) instance.
 
@@ -194,7 +194,7 @@ ___
 
 ▸ **toString**(): *string*
 
-*Defined in [apis/avm/ops.ts:240](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/ops.ts#L240)*
+*Defined in [apis/avm/ops.ts:240](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/ops.ts#L240)*
 
 Returns a base-58 string representing the [NFTTransferOperation](_apis_avm_ops_.nfttransferoperation.md).
 
@@ -208,7 +208,7 @@ ___
 
 *Inherited from [Operation](_apis_avm_ops_.operation.md)*
 
-*Defined in [apis/avm/ops.ts:90](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/ops.ts#L90)*
+*Defined in [apis/avm/ops.ts:90](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/ops.ts#L90)*
 
 **Returns:** *function*
 
