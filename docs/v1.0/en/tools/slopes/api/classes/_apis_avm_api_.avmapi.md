@@ -1,4 +1,4 @@
-[slopes - v1.7.1](../README.md) › ["apis/avm/api"](../modules/_apis_avm_api_.md) › [AVMAPI](_apis_avm_api_.avmapi.md)
+[slopes - v1.7.2](../README.md) › ["apis/avm/api"](../modules/_apis_avm_api_.md) › [AVMAPI](_apis_avm_api_.avmapi.md)
 
 # Class: AVMAPI
 
@@ -73,7 +73,7 @@ Class for interacting with a node endpoint that is using the AVM.
 
 *Overrides [JRPCAPI](_utils_types_.jrpcapi.md).[constructor](_utils_types_.jrpcapi.md#constructor)*
 
-*Defined in [apis/avm/api.ts:818](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L818)*
+*Defined in [apis/avm/api.ts:818](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L818)*
 
 This class should not be instantiated directly. Instead use the [Slopes.addAPI](_index_.slopes.md#addapi) method.
 
@@ -93,7 +93,7 @@ Name | Type | Default | Description |
 
 • **AVAAssetID**: *Buffer* =  undefined
 
-*Defined in [apis/avm/api.ts:88](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L88)*
+*Defined in [apis/avm/api.ts:88](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L88)*
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 *Inherited from [APIBase](_utils_types_.apibase.md).[baseurl](_utils_types_.apibase.md#protected-baseurl)*
 
-*Defined in [utils/types.ts:33](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L33)*
+*Defined in [utils/types.ts:33](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L33)*
 
 ___
 
@@ -111,7 +111,7 @@ ___
 
 • **blockchainID**: *string* = ""
 
-*Defined in [apis/avm/api.ts:87](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L87)*
+*Defined in [apis/avm/api.ts:87](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L87)*
 
 ___
 
@@ -121,7 +121,7 @@ ___
 
 *Inherited from [APIBase](_utils_types_.apibase.md).[core](_utils_types_.apibase.md#protected-core)*
 
-*Defined in [utils/types.ts:32](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L32)*
+*Defined in [utils/types.ts:32](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L32)*
 
 ___
 
@@ -131,7 +131,7 @@ ___
 
 *Inherited from [APIBase](_utils_types_.apibase.md).[db](_utils_types_.apibase.md#protected-db)*
 
-*Defined in [utils/types.ts:34](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L34)*
+*Defined in [utils/types.ts:34](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L34)*
 
 ___
 
@@ -141,7 +141,7 @@ ___
 
 *Inherited from [JRPCAPI](_utils_types_.jrpcapi.md).[jrpcVersion](_utils_types_.jrpcapi.md#protected-jrpcversion)*
 
-*Defined in [utils/types.ts:80](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L80)*
+*Defined in [utils/types.ts:80](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L80)*
 
 ___
 
@@ -151,7 +151,7 @@ ___
 
 *Inherited from [JRPCAPI](_utils_types_.jrpcapi.md).[rpcid](_utils_types_.jrpcapi.md#protected-rpcid)*
 
-*Defined in [utils/types.ts:81](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L81)*
+*Defined in [utils/types.ts:81](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L81)*
 
 ## Methods
 
@@ -159,7 +159,7 @@ ___
 
 ▸ **addressFromBuffer**(`address`: Buffer): *string*
 
-*Defined in [apis/avm/api.ts:143](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L143)*
+*Defined in [apis/avm/api.ts:143](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L143)*
 
 **Parameters:**
 
@@ -175,7 +175,7 @@ ___
 
 ▸ **buildGenesis**(`genesisData`: object): *Promise‹string›*
 
-*Defined in [apis/avm/api.ts:788](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L788)*
+*Defined in [apis/avm/api.ts:788](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L788)*
 
 Given a JSON representation of this Virtual Machine’s genesis state, create the byte representation of that state.
 
@@ -197,7 +197,7 @@ ___
 
 *Inherited from [JRPCAPI](_utils_types_.jrpcapi.md)*
 
-*Defined in [utils/types.ts:82](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L82)*
+*Defined in [utils/types.ts:82](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L82)*
 
 **Parameters:**
 
@@ -215,7 +215,7 @@ ___
 
 ▸ **createAddress**(`username`: string, `password`: string): *Promise‹string›*
 
-*Defined in [apis/avm/api.ts:215](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L215)*
+*Defined in [apis/avm/api.ts:215](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L215)*
 
 Creates an address (and associated private keys) on a user on a blockchain.
 
@@ -236,7 +236,7 @@ ___
 
 ▸ **createFixedCapAsset**(`username`: string, `password`: string, `name`: string, `symbol`: string, `initialHolders`: Array‹object›): *Promise‹string›*
 
-*Defined in [apis/avm/api.ts:250](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L250)*
+*Defined in [apis/avm/api.ts:250](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L250)*
 
 Create a new fixed-cap, fungible asset. A quantity of it is created at initialization and there no more is ever created.
 
@@ -260,7 +260,7 @@ ___
 
 ▸ **createMintTx**(`amount`: number | BN, `assetID`: Buffer | string, `to`: string, `minters`: Array‹string›): *Promise‹string›*
 
-*Defined in [apis/avm/api.ts:317](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L317)*
+*Defined in [apis/avm/api.ts:317](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L317)*
 
 Create an unsigned transaction to mint more of an asset.
 
@@ -283,7 +283,7 @@ ___
 
 ▸ **createVariableCapAsset**(`username`: string, `password`: string, `name`: string, `symbol`: string, `minterSets`: Array‹object›): *Promise‹string›*
 
-*Defined in [apis/avm/api.ts:294](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L294)*
+*Defined in [apis/avm/api.ts:294](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L294)*
 
 Create a new variable-cap, fungible asset. No units of the asset exist at initialization. Minters can mint units of this asset using createMintTx, signMintTx and sendMintTx.
 
@@ -307,7 +307,7 @@ ___
 
 ▸ **exportAVA**(`username`: string, `password`: string, `to`: string, `amount`: BN): *Promise‹string›*
 
-*Defined in [apis/avm/api.ts:423](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L423)*
+*Defined in [apis/avm/api.ts:423](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L423)*
 
 Send AVA from the X-Chain to an account on the P-Chain.
 
@@ -332,7 +332,7 @@ ___
 
 ▸ **exportKey**(`username`: string, `password`: string, `address`: string): *Promise‹string›*
 
-*Defined in [apis/avm/api.ts:376](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L376)*
+*Defined in [apis/avm/api.ts:376](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L376)*
 
 Exports the private key for an address.
 
@@ -354,7 +354,7 @@ ___
 
 ▸ **getAVAAssetID**(): *Promise‹Buffer›*
 
-*Defined in [apis/avm/api.ts:153](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L153)*
+*Defined in [apis/avm/api.ts:153](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L153)*
 
 Fetches the AVA AssetID and returns it in a Promise.
 
@@ -368,7 +368,7 @@ ___
 
 ▸ **getAllBalances**(`address`: string): *Promise‹Array‹object››*
 
-*Defined in [apis/avm/api.ts:482](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L482)*
+*Defined in [apis/avm/api.ts:482](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L482)*
 
 Retrieves all assets for an address on a server and their associated balances.
 
@@ -388,7 +388,7 @@ ___
 
 ▸ **getAssetDescription**(`assetID`: Buffer | string): *Promise‹object›*
 
-*Defined in [apis/avm/api.ts:502](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L502)*
+*Defined in [apis/avm/api.ts:502](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L502)*
 
 Retrieves an assets name and symbol.
 
@@ -408,7 +408,7 @@ ___
 
 ▸ **getBalance**(`address`: string, `assetID`: string): *Promise‹BN›*
 
-*Defined in [apis/avm/api.ts:192](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L192)*
+*Defined in [apis/avm/api.ts:192](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L192)*
 
 Gets the balance of a particular asset on a blockchain.
 
@@ -431,7 +431,7 @@ ___
 
 *Inherited from [APIBase](_utils_types_.apibase.md)*
 
-*Defined in [utils/types.ts:57](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L57)*
+*Defined in [utils/types.ts:57](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L57)*
 
 Returns the baseurl's path.
 
@@ -443,7 +443,7 @@ ___
 
 ▸ **getBlockchainAlias**(): *string*
 
-*Defined in [apis/avm/api.ts:95](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L95)*
+*Defined in [apis/avm/api.ts:95](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L95)*
 
 Gets the alias for the blockchainID if it exists, otherwise returns `undefined`.
 
@@ -457,7 +457,7 @@ ___
 
 ▸ **getBlockchainID**(): *string*
 
-*Defined in [apis/avm/api.ts:109](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L109)*
+*Defined in [apis/avm/api.ts:109](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L109)*
 
 Gets the blockchainID and returns it.
 
@@ -473,7 +473,7 @@ ___
 
 *Inherited from [APIBase](_utils_types_.apibase.md)*
 
-*Defined in [utils/types.ts:64](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L64)*
+*Defined in [utils/types.ts:64](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L64)*
 
 Returns the baseurl's database.
 
@@ -487,7 +487,7 @@ ___
 
 *Inherited from [JRPCAPI](_utils_types_.jrpcapi.md)*
 
-*Defined in [utils/types.ts:124](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L124)*
+*Defined in [utils/types.ts:124](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L124)*
 
 Returns the rpcid, a strictly-increasing number, starting from 1, indicating the next request ID that will be sent.
 
@@ -499,7 +499,7 @@ ___
 
 ▸ **getTxStatus**(`txid`: string): *Promise‹string›*
 
-*Defined in [apis/avm/api.ts:529](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L529)*
+*Defined in [apis/avm/api.ts:529](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L529)*
 
 Returns the status of a provided transaction ID by calling the node's `getTxStatus` method.
 
@@ -519,7 +519,7 @@ ___
 
 ▸ **getUTXOs**(`addresses`: Array‹string› | Array‹Buffer›, `persistOpts`: [PersistanceOptions](_apis_avm_api_.persistanceoptions.md)): *Promise‹[UTXOSet](_apis_avm_utxos_.utxoset.md)›*
 
-*Defined in [apis/avm/api.ts:548](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L548)*
+*Defined in [apis/avm/api.ts:548](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L548)*
 
 Retrieves the UTXOs related to the addresses provided from the node's `getUTXOs` method.
 
@@ -538,7 +538,7 @@ ___
 
 ▸ **importAVA**(`username`: string, `password`: string, `to`: string): *Promise‹string›*
 
-*Defined in [apis/avm/api.ts:446](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L446)*
+*Defined in [apis/avm/api.ts:446](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L446)*
 
 Finalize a transfer of AVA from the P-Chain to the X-Chain.
 
@@ -562,7 +562,7 @@ ___
 
 ▸ **importKey**(`username`: string, `password`: string, `privateKey`: string): *Promise‹string›*
 
-*Defined in [apis/avm/api.ts:400](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L400)*
+*Defined in [apis/avm/api.ts:400](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L400)*
 
 Imports a private key into the node's keystore under an user and for a blockchain.
 
@@ -584,7 +584,7 @@ ___
 
 ▸ **issueTx**(`tx`: string | Buffer | [Tx](_apis_avm_tx_.tx.md)): *Promise‹string›*
 
-*Defined in [apis/avm/api.ts:712](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L712)*
+*Defined in [apis/avm/api.ts:712](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L712)*
 
 Calls the node's issueTx method from the API and returns the resulting transaction ID as a string.
 
@@ -604,7 +604,7 @@ ___
 
 ▸ **keyChain**(): *[AVMKeyChain](_apis_avm_keychain_.avmkeychain.md)*
 
-*Defined in [apis/avm/api.ts:166](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L166)*
+*Defined in [apis/avm/api.ts:166](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L166)*
 
 Gets a reference to the keychain for this class.
 
@@ -618,7 +618,7 @@ ___
 
 ▸ **listAddresses**(`username`: string, `password`: string): *Promise‹Array‹string››*
 
-*Defined in [apis/avm/api.ts:465](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L465)*
+*Defined in [apis/avm/api.ts:465](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L465)*
 
 Lists all the addresses under a user.
 
@@ -639,7 +639,7 @@ ___
 
 ▸ **makeBaseTx**(`utxoset`: [UTXOSet](_apis_avm_utxos_.utxoset.md), `amount`: BN, `toAddresses`: Array‹string›, `fromAddresses`: Array‹string›, `changeAddresses`: Array‹string›, `assetID`: Buffer | string, `asOf`: BN, `locktime`: BN, `threshold`: number): *Promise‹[UnsignedTx](_apis_avm_tx_.unsignedtx.md)›*
 
-*Defined in [apis/avm/api.ts:594](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L594)*
+*Defined in [apis/avm/api.ts:594](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L594)*
 
 Helper function which creates an unsigned transaction. For more granular control, you may create your own
 [UnsignedTx](_apis_avm_tx_.unsignedtx.md) manually (with their corresponding [TransferableInput](_apis_avm_inputs_.transferableinput.md)s, [TransferableOutput](_apis_avm_outputs_.transferableoutput.md)s, and [[TransferOperation]]s).
@@ -668,7 +668,7 @@ ___
 
 ▸ **makeCreateAssetTx**(`utxoset`: [UTXOSet](_apis_avm_utxos_.utxoset.md), `fee`: BN, `creatorAddresses`: Array‹string› | Array‹Buffer›, `initialStates`: [InitialStates](_apis_avm_types_.initialstates.md), `name`: string, `symbol`: string, `denomination`: number): *Promise‹[UnsignedTx](_apis_avm_tx_.unsignedtx.md)›*
 
-*Defined in [apis/avm/api.ts:671](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L671)*
+*Defined in [apis/avm/api.ts:671](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L671)*
 
 Creates an unsigned transaction. For more granular control, you may create your own
 [UnsignedTx](_apis_avm_tx_.unsignedtx.md) manually (with their corresponding [TransferableInput](_apis_avm_inputs_.transferableinput.md)s, [TransferableOutput](_apis_avm_outputs_.transferableoutput.md)s, and [[TransferOperation]]s).
@@ -695,7 +695,7 @@ ___
 
 ▸ **makeNFTTransferTx**(`utxoset`: [UTXOSet](_apis_avm_utxos_.utxoset.md), `utxoid`: string | Array‹string›, `toAddresses`: Array‹string›, `fromAddresses`: Array‹string›, `feeAmount`: BN, `feeAddresses`: Array‹string›, `asOf`: BN, `locktime`: BN, `threshold`: number): *Promise‹[UnsignedTx](_apis_avm_tx_.unsignedtx.md)›*
 
-*Defined in [apis/avm/api.ts:633](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L633)*
+*Defined in [apis/avm/api.ts:633](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L633)*
 
 Helper function which creates an unsigned NFT Transfer. For more granular control, you may create your own
 [UnsignedTx](_apis_avm_tx_.unsignedtx.md) manually (with their corresponding [TransferableInput](_apis_avm_inputs_.transferableinput.md)s, [TransferableOutput](_apis_avm_outputs_.transferableoutput.md)s, and [[TransferOperation]]s).
@@ -724,7 +724,7 @@ ___
 
 ▸ **parseAddress**(`addr`: string): *Buffer*
 
-*Defined in [apis/avm/api.ts:137](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L137)*
+*Defined in [apis/avm/api.ts:137](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L137)*
 
 Takes an address string and returns its [Buffer](https://github.com/feross/buffer) representation if valid.
 
@@ -744,7 +744,7 @@ ___
 
 ▸ **refreshBlockchainID**(`blockchainID`: string): *boolean*
 
-*Defined in [apis/avm/api.ts:120](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L120)*
+*Defined in [apis/avm/api.ts:120](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L120)*
 
 Refresh blockchainID, and if a blockchainID is passed in, use that.
 
@@ -764,7 +764,7 @@ ___
 
 ▸ **send**(`username`: string, `password`: string, `assetID`: string | Buffer, `amount`: number | BN, `to`: string, `from`: Array‹string› | Array‹Buffer›): *Promise‹string›*
 
-*Defined in [apis/avm/api.ts:746](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L746)*
+*Defined in [apis/avm/api.ts:746](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L746)*
 
 Sends an amount of assetID to the specified address from a list of owned of addresses.
 
@@ -791,7 +791,7 @@ ___
 
 *Inherited from [APIBase](_utils_types_.apibase.md)*
 
-*Defined in [utils/types.ts:41](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/types.ts#L41)*
+*Defined in [utils/types.ts:41](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L41)*
 
 Sets the path of the APIs baseurl.
 
@@ -809,7 +809,7 @@ ___
 
 ▸ **signMintTx**(`username`: string, `password`: string, `tx`: string | Buffer, `minter`: string): *Promise‹string›*
 
-*Defined in [apis/avm/api.ts:351](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L351)*
+*Defined in [apis/avm/api.ts:351](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L351)*
 
 Sign an unsigned or partially signed mint transaction.
 
@@ -832,7 +832,7 @@ ___
 
 ▸ **signTx**(`utx`: [UnsignedTx](_apis_avm_tx_.unsignedtx.md)): *[Tx](_apis_avm_tx_.tx.md)*
 
-*Defined in [apis/avm/api.ts:701](https://github.com/ava-labs/slopes/blob/0d1acbd/src/apis/avm/api.ts#L701)*
+*Defined in [apis/avm/api.ts:701](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/api.ts#L701)*
 
 Helper function which takes an unsigned transaction and signs it, returning the resulting [Tx](_apis_avm_tx_.tx.md).
 
@@ -840,7 +840,7 @@ Helper function which takes an unsigned transaction and signs it, returning the 
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`utx` | [UnsignedTx](_apis_avm_tx_.unsignedtx.md) | The unsigned transaction of type [[UnsignedTx]]  |
+`utx` | [UnsignedTx](_apis_avm_tx_.unsignedtx.md) | The unsigned transaction of type [UnsignedTx](_apis_avm_tx_.unsignedtx.md)  |
 
 **Returns:** *[Tx](_apis_avm_tx_.tx.md)*
 

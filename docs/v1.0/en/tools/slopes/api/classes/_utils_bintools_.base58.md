@@ -1,4 +1,4 @@
-[slopes - v1.7.1](../README.md) › ["utils/bintools"](../modules/_utils_bintools_.md) › [Base58](_utils_bintools_.base58.md)
+[slopes - v1.7.2](../README.md) › ["utils/bintools"](../modules/_utils_bintools_.md) › [Base58](_utils_bintools_.base58.md)
 
 # Class: Base58
 
@@ -35,7 +35,7 @@ let buff:Buffer = b58.decode(somestring);
 
 • **alphabetIdx0**: *string* = "1"
 
-*Defined in [utils/bintools.ts:234](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/bintools.ts#L234)*
+*Defined in [utils/bintools.ts:234](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/bintools.ts#L234)*
 
 ___
 
@@ -76,7 +76,7 @@ ___
         255, 255, 255, 255, 255, 255, 255, 255
     ]
 
-*Defined in [utils/bintools.ts:235](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/bintools.ts#L235)*
+*Defined in [utils/bintools.ts:235](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/bintools.ts#L235)*
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 • **b58alphabet**: *string* = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 
-*Defined in [utils/bintools.ts:233](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/bintools.ts#L233)*
+*Defined in [utils/bintools.ts:233](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/bintools.ts#L233)*
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 • **big58Radix**: *BN* =  new BN(58)
 
-*Defined in [utils/bintools.ts:269](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/bintools.ts#L269)*
+*Defined in [utils/bintools.ts:269](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/bintools.ts#L269)*
 
 ___
 
@@ -100,7 +100,7 @@ ___
 
 • **bigZero**: *BN* =  new BN(0)
 
-*Defined in [utils/bintools.ts:270](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/bintools.ts#L270)*
+*Defined in [utils/bintools.ts:270](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/bintools.ts#L270)*
 
 ## Methods
 
@@ -108,7 +108,7 @@ ___
 
 ▸ **decode**(`b`: string): *Buffer*
 
-*Defined in [utils/bintools.ts:304](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/bintools.ts#L304)*
+*Defined in [utils/bintools.ts:304](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/bintools.ts#L304)*
 
 Dencodes a base-58 into a [Buffer](https://github.com/feross/buffer)
 
@@ -128,7 +128,7 @@ ___
 
 ▸ **encode**(`buff`: Buffer): *string*
 
-*Defined in [utils/bintools.ts:279](https://github.com/ava-labs/slopes/blob/0d1acbd/src/utils/bintools.ts#L279)*
+*Defined in [utils/bintools.ts:279](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/bintools.ts#L279)*
 
 Encodes a [Buffer](https://github.com/feross/buffer) as a base-58 string
 
