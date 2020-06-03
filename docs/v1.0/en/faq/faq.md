@@ -296,6 +296,10 @@ It's OK to make many API calls with the same `id` field.
 In addition to this documentation, there is a [community-run repository](https://github.com/tbrunain/awesome-ava-chain) of useful links and resoucres.
 Great thanks to `tbrunain` for this contribution :)
 
+### My node prints `peer attempting to connect with newer version avalanche/<VERSION>. You may want to update your client.` Is this OK?
+
+Yes.
+
 ## Common Mistakes
 
 ### API call fails with `Failed to connect to 127.0.0.1 port 9650: Connection refused`
