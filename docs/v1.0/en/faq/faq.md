@@ -276,7 +276,7 @@ This should print something like:
 [1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/gecko/build/ava
 ```
 
-Do `kill -9 %1` (or `kill -9 %2` if it printed `[1]+ Stopped`, etc.)
+Do `kill -9 %1` (or `kill -9 %2` if it printed `[2]+ Stopped`, etc.)
 
 ### Do I need to open any ports?
 
