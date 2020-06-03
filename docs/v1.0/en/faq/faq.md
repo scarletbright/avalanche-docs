@@ -298,7 +298,7 @@ Great thanks to `tbrunain` for this contribution :)
 
 ### My node prints `peer attempting to connect with newer version avalanche/<VERSION>. You may want to update your client.` Is this OK?
 
-Yes.
+As long as you are [on the right network](#node-is-on-the-wrong-network), yes.
 
 ## Common Mistakes
 
