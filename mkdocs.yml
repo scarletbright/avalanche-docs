@@ -50,6 +50,7 @@ nav:
               - Platform (P-Chain) API : ./v1.0/en/api/platform.md
               - EVM (C-Chain) API      : ./v1.0/en/api/evm.md
               - Admin API              : ./v1.0/en/api/admin.md
+              - Health API             : ./v1.0/en/api/health.md
               - IPC API                : ./v1.0/en/api/ipc.md
               - Metrics API            : ./v1.0/en/api/metrics.md
               - Timestamp API          : ./v1.0/en/api/timestamp.md
