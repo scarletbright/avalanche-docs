@@ -1,4 +1,4 @@
-[slopes - v1.7.2](../README.md) › ["utils/db"](_utils_db_.md)
+[slopes - v1.7.3](../README.md) › ["utils/db"](_utils_db_.md)
 
 # External module: "utils/db"
 

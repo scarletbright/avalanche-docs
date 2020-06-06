@@ -1,4 +1,4 @@
-[slopes - v1.7.2](../README.md) › ["apis/avm/tx"](../modules/_apis_avm_tx_.md) › [CreateAssetTx](_apis_avm_tx_.createassettx.md)
+[slopes - v1.7.3](../README.md) › ["apis/avm/tx"](../modules/_apis_avm_tx_.md) › [CreateAssetTx](_apis_avm_tx_.createassettx.md)
 
 # Class: CreateAssetTx
 
@@ -52,7 +52,7 @@
 
 *Overrides [BaseTx](_apis_avm_tx_.basetx.md).[constructor](_apis_avm_tx_.basetx.md#constructor)*
 
-*Defined in [apis/avm/tx.ts:305](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L305)*
+*Defined in [apis/avm/tx.ts:305](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L305)*
 
 Class representing an unsigned Create Asset transaction.
 
@@ -60,7 +60,7 @@ Class representing an unsigned Create Asset transaction.
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
-`networkid` | number | 2 | Optional networkid, default 2 |
+`networkid` | number | 3 | Optional networkid, default 3 |
 `blockchainid` | Buffer |  Buffer.alloc(32, 16) | Optional blockchainid, default Buffer.alloc(32, 16) |
 `outs` | Array‹[TransferableOutput](_apis_avm_outputs_.transferableoutput.md)› |  undefined | Optional array of the [TransferableOutput](_apis_avm_outputs_.transferableoutput.md)s |
 `ins` | Array‹[TransferableInput](_apis_avm_inputs_.transferableinput.md)› |  undefined | Optional array of the [TransferableInput](_apis_avm_inputs_.transferableinput.md)s |
@@ -79,7 +79,7 @@ Name | Type | Default | Description |
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md).[blockchainid](_apis_avm_tx_.basetx.md#protected-blockchainid)*
 
-*Defined in [apis/avm/tx.ts:46](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L46)*
+*Defined in [apis/avm/tx.ts:46](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L46)*
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 • **denomination**: *Buffer* =  Buffer.alloc(1)
 
-*Defined in [apis/avm/tx.ts:204](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L204)*
+*Defined in [apis/avm/tx.ts:204](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L204)*
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 • **initialstate**: *[InitialStates](_apis_avm_types_.initialstates.md)* =  new InitialStates()
 
-*Defined in [apis/avm/tx.ts:205](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L205)*
+*Defined in [apis/avm/tx.ts:205](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L205)*
 
 ___
 
@@ -105,7 +105,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md).[ins](_apis_avm_tx_.basetx.md#protected-ins)*
 
-*Defined in [apis/avm/tx.ts:50](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L50)*
+*Defined in [apis/avm/tx.ts:50](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L50)*
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 • **name**: *string* = ""
 
-*Defined in [apis/avm/tx.ts:202](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L202)*
+*Defined in [apis/avm/tx.ts:202](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L202)*
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md).[networkid](_apis_avm_tx_.basetx.md#protected-networkid)*
 
-*Defined in [apis/avm/tx.ts:45](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L45)*
+*Defined in [apis/avm/tx.ts:45](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L45)*
 
 ___
 
@@ -133,7 +133,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md).[numins](_apis_avm_tx_.basetx.md#protected-numins)*
 
-*Defined in [apis/avm/tx.ts:49](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L49)*
+*Defined in [apis/avm/tx.ts:49](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L49)*
 
 ___
 
@@ -143,7 +143,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md).[numouts](_apis_avm_tx_.basetx.md#protected-numouts)*
 
-*Defined in [apis/avm/tx.ts:47](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L47)*
+*Defined in [apis/avm/tx.ts:47](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L47)*
 
 ___
 
@@ -153,7 +153,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md).[outs](_apis_avm_tx_.basetx.md#protected-outs)*
 
-*Defined in [apis/avm/tx.ts:48](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L48)*
+*Defined in [apis/avm/tx.ts:48](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L48)*
 
 ___
 
@@ -161,7 +161,7 @@ ___
 
 • **symbol**: *string* = ""
 
-*Defined in [apis/avm/tx.ts:203](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L203)*
+*Defined in [apis/avm/tx.ts:203](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L203)*
 
 ## Methods
 
@@ -171,7 +171,7 @@ ___
 
 *Overrides [BaseTx](_apis_avm_tx_.basetx.md).[fromBuffer](_apis_avm_tx_.basetx.md#frombuffer)*
 
-*Defined in [apis/avm/tx.ts:262](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L262)*
+*Defined in [apis/avm/tx.ts:262](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L262)*
 
 Takes a [Buffer](https://github.com/feross/buffer) containing an [CreateAssetTx](_apis_avm_tx_.createassettx.md), parses it, populates the class, and returns the length of the [CreateAssetTx](_apis_avm_tx_.createassettx.md) in bytes.
 
@@ -196,7 +196,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md)*
 
-*Defined in [apis/avm/tx.ts:69](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L69)*
+*Defined in [apis/avm/tx.ts:69](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L69)*
 
 Returns the Buffer representation of the BlockchainID
 
@@ -208,7 +208,7 @@ ___
 
 ▸ **getDenomination**(): *number*
 
-*Defined in [apis/avm/tx.ts:241](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L241)*
+*Defined in [apis/avm/tx.ts:241](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L241)*
 
 Returns the numeric representation of the denomination
 
@@ -220,7 +220,7 @@ ___
 
 ▸ **getDenominationBuffer**(): *Buffer*
 
-*Defined in [apis/avm/tx.ts:249](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L249)*
+*Defined in [apis/avm/tx.ts:249](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L249)*
 
 Returns the [Buffer](https://github.com/feross/buffer) representation of the denomination
 
@@ -232,7 +232,7 @@ ___
 
 ▸ **getInitialStates**(): *[InitialStates](_apis_avm_types_.initialstates.md)*
 
-*Defined in [apis/avm/tx.ts:217](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L217)*
+*Defined in [apis/avm/tx.ts:217](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L217)*
 
 Returns the array of array of [Output](_apis_avm_outputs_.output.md)s for the initial state
 
@@ -246,7 +246,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md)*
 
-*Defined in [apis/avm/tx.ts:76](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L76)*
+*Defined in [apis/avm/tx.ts:76](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L76)*
 
 Returns the array of [TransferableInput](_apis_avm_inputs_.transferableinput.md)s
 
@@ -258,7 +258,7 @@ ___
 
 ▸ **getName**(): *string*
 
-*Defined in [apis/avm/tx.ts:224](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L224)*
+*Defined in [apis/avm/tx.ts:224](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L224)*
 
 Returns the string representation of the name
 
@@ -272,7 +272,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md)*
 
-*Defined in [apis/avm/tx.ts:62](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L62)*
+*Defined in [apis/avm/tx.ts:62](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L62)*
 
 Returns the NetworkID as a number
 
@@ -286,7 +286,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md)*
 
-*Defined in [apis/avm/tx.ts:83](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L83)*
+*Defined in [apis/avm/tx.ts:83](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L83)*
 
 Returns the array of [TransferableOutput](_apis_avm_outputs_.transferableoutput.md)s
 
@@ -298,7 +298,7 @@ ___
 
 ▸ **getSymbol**(): *string*
 
-*Defined in [apis/avm/tx.ts:232](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L232)*
+*Defined in [apis/avm/tx.ts:232](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L232)*
 
 Returns the string representation of the symbol
 
@@ -312,7 +312,7 @@ ___
 
 *Overrides [BaseTx](_apis_avm_tx_.basetx.md).[getTxType](_apis_avm_tx_.basetx.md#gettxtype)*
 
-*Defined in [apis/avm/tx.ts:210](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L210)*
+*Defined in [apis/avm/tx.ts:210](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L210)*
 
 Returns the id of the [CreateAssetTx](_apis_avm_tx_.createassettx.md)
 
@@ -326,7 +326,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md).[sign](_apis_avm_tx_.basetx.md#sign)*
 
-*Defined in [apis/avm/tx.ts:164](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L164)*
+*Defined in [apis/avm/tx.ts:164](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L164)*
 
 Takes the bytes of an [UnsignedTx](_apis_avm_tx_.unsignedtx.md) and returns an array of [Credential](_apis_avm_credentials_.credential.md)s
 
@@ -349,7 +349,7 @@ ___
 
 *Overrides [BaseTx](_apis_avm_tx_.basetx.md).[toBuffer](_apis_avm_tx_.basetx.md#tobuffer)*
 
-*Defined in [apis/avm/tx.ts:288](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L288)*
+*Defined in [apis/avm/tx.ts:288](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L288)*
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [CreateAssetTx](_apis_avm_tx_.createassettx.md).
 
@@ -363,7 +363,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md).[toString](_apis_avm_tx_.basetx.md#tostring)*
 
-*Defined in [apis/avm/tx.ts:152](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L152)*
+*Defined in [apis/avm/tx.ts:152](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L152)*
 
 Returns a base-58 representation of the [BaseTx](_apis_avm_tx_.basetx.md).
 
