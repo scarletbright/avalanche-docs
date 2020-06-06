@@ -21,7 +21,7 @@
 
 ▸ **SelectInputClass**(`inputid`: number, ...`args`: Array‹any›): *[Input](../classes/_apis_avm_inputs_.input.md)*
 
-*Defined in [apis/avm/inputs.ts:21](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/inputs.ts#L21)*
+*Defined in [apis/avm/inputs.ts:21](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/inputs.ts#L21)*
 
 Takes a buffer representing the output and returns the proper [Input](../classes/_apis_avm_inputs_.input.md) instance.
 

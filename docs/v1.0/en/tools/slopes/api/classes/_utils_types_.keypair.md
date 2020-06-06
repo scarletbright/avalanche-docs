@@ -45,7 +45,7 @@ All APIs that need key pairs should extend on this class.
 
 \+ **new KeyPair**(`chainid`: string): *[KeyPair](_utils_types_.keypair.md)*
 
-*Defined in [utils/types.ts:257](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L257)*
+*Defined in [utils/types.ts:257](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L257)*
 
 **Parameters:**
 
@@ -61,7 +61,7 @@ Name | Type |
 
 • **chainid**: *string* = ""
 
-*Defined in [utils/types.ts:148](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L148)*
+*Defined in [utils/types.ts:148](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L148)*
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 • **generateKey**: *function*
 
-*Defined in [utils/types.ts:155](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L155)*
+*Defined in [utils/types.ts:155](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L155)*
 
 Generates a new keypair.
 
@@ -91,7 +91,7 @@ ___
 
 • **getAddress**: *function*
 
-*Defined in [utils/types.ts:232](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L232)*
+*Defined in [utils/types.ts:232](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L232)*
 
 Returns the address.
 
@@ -107,7 +107,7 @@ ___
 
 • **getAddressString**: *function*
 
-*Defined in [utils/types.ts:239](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L239)*
+*Defined in [utils/types.ts:239](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L239)*
 
 Returns the address's string representation.
 
@@ -123,7 +123,7 @@ ___
 
 • **getPrivateKeyString**: *function*
 
-*Defined in [utils/types.ts:218](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L218)*
+*Defined in [utils/types.ts:218](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L218)*
 
 Returns a string representation of the private key.
 
@@ -139,7 +139,7 @@ ___
 
 • **getPublicKeyString**: *function*
 
-*Defined in [utils/types.ts:225](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L225)*
+*Defined in [utils/types.ts:225](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L225)*
 
 Returns the public key.
 
@@ -155,7 +155,7 @@ ___
 
 • **importKey**: *function*
 
-*Defined in [utils/types.ts:163](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L163)*
+*Defined in [utils/types.ts:163](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L163)*
 
 Imports a private key and generates the appropriate public key.
 
@@ -179,7 +179,7 @@ ___
 
 • **privk**: *Buffer*
 
-*Defined in [utils/types.ts:147](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L147)*
+*Defined in [utils/types.ts:147](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L147)*
 
 ___
 
@@ -187,7 +187,7 @@ ___
 
 • **pubk**: *Buffer*
 
-*Defined in [utils/types.ts:146](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L146)*
+*Defined in [utils/types.ts:146](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L146)*
 
 ___
 
@@ -195,7 +195,7 @@ ___
 
 • **recover**: *function*
 
-*Defined in [utils/types.ts:182](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L182)*
+*Defined in [utils/types.ts:182](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L182)*
 
 Recovers the public key of a message signer from a message and its associated signature.
 
@@ -222,7 +222,7 @@ ___
 
 • **sign**: *function*
 
-*Defined in [utils/types.ts:172](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L172)*
+*Defined in [utils/types.ts:172](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L172)*
 
 Takes a message, signs it, and returns the signature.
 
@@ -246,7 +246,7 @@ ___
 
 • **verify**: *function*
 
-*Defined in [utils/types.ts:193](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L193)*
+*Defined in [utils/types.ts:193](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L193)*
 
 Verifies that the private key associated with the provided public key produces the signature associated with the given message.
 
@@ -276,7 +276,7 @@ Name | Type |
 
 ▸ **getChainID**(): *string*
 
-*Defined in [utils/types.ts:246](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L246)*
+*Defined in [utils/types.ts:246](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L246)*
 
 Returns the chainID associated with this key.
 
@@ -290,7 +290,7 @@ ___
 
 ▸ **getPrivateKey**(): *Buffer*
 
-*Defined in [utils/types.ts:200](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L200)*
+*Defined in [utils/types.ts:200](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L200)*
 
 Returns a reference to the private key.
 
@@ -304,7 +304,7 @@ ___
 
 ▸ **getPublicKey**(): *Buffer*
 
-*Defined in [utils/types.ts:209](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L209)*
+*Defined in [utils/types.ts:209](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L209)*
 
 Returns a reference to the public key.
 
@@ -318,7 +318,7 @@ ___
 
 ▸ **setChainID**(`chainid`: string): *void*
 
-*Defined in [utils/types.ts:255](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L255)*
+*Defined in [utils/types.ts:255](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L255)*
 
 Sets the the chainID associated with this key.
 

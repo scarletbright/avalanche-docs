@@ -46,7 +46,7 @@
 
 *Overrides [APIBase](_utils_types_.apibase.md).[constructor](_utils_types_.apibase.md#constructor)*
 
-*Defined in [utils/types.ts:126](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L126)*
+*Defined in [utils/types.ts:126](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L126)*
 
 **Parameters:**
 
@@ -66,7 +66,7 @@ Name | Type | Default | Description |
 
 *Inherited from [APIBase](_utils_types_.apibase.md).[baseurl](_utils_types_.apibase.md#protected-baseurl)*
 
-*Defined in [utils/types.ts:33](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L33)*
+*Defined in [utils/types.ts:33](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L33)*
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 *Inherited from [APIBase](_utils_types_.apibase.md).[core](_utils_types_.apibase.md#protected-core)*
 
-*Defined in [utils/types.ts:32](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L32)*
+*Defined in [utils/types.ts:32](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L32)*
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 *Inherited from [APIBase](_utils_types_.apibase.md).[db](_utils_types_.apibase.md#protected-db)*
 
-*Defined in [utils/types.ts:34](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L34)*
+*Defined in [utils/types.ts:34](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L34)*
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 • **jrpcVersion**: *string* = "2.0"
 
-*Defined in [utils/types.ts:80](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L80)*
+*Defined in [utils/types.ts:80](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L80)*
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 • **rpcid**: *number* = 1
 
-*Defined in [utils/types.ts:81](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L81)*
+*Defined in [utils/types.ts:81](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L81)*
 
 ## Methods
 
@@ -110,7 +110,7 @@ ___
 
 ▸ **callMethod**(`method`: string, `params?`: Array‹object› | object, `baseurl?`: string): *Promise‹[RequestResponseData](_utils_types_.requestresponsedata.md)›*
 
-*Defined in [utils/types.ts:82](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L82)*
+*Defined in [utils/types.ts:82](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L82)*
 
 **Parameters:**
 
@@ -130,7 +130,7 @@ ___
 
 *Inherited from [APIBase](_utils_types_.apibase.md)*
 
-*Defined in [utils/types.ts:57](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L57)*
+*Defined in [utils/types.ts:57](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L57)*
 
 Returns the baseurl's path.
 
@@ -144,7 +144,7 @@ ___
 
 *Inherited from [APIBase](_utils_types_.apibase.md)*
 
-*Defined in [utils/types.ts:64](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L64)*
+*Defined in [utils/types.ts:64](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L64)*
 
 Returns the baseurl's database.
 
@@ -156,7 +156,7 @@ ___
 
 ▸ **getRPCID**(): *number*
 
-*Defined in [utils/types.ts:124](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L124)*
+*Defined in [utils/types.ts:124](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L124)*
 
 Returns the rpcid, a strictly-increasing number, starting from 1, indicating the next request ID that will be sent.
 
@@ -170,7 +170,7 @@ ___
 
 *Inherited from [APIBase](_utils_types_.apibase.md)*
 
-*Defined in [utils/types.ts:41](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L41)*
+*Defined in [utils/types.ts:41](https://github.com/ava-labs/slopes/blob/65cee65/src/utils/types.ts#L41)*
 
 Sets the path of the APIs baseurl.
 

@@ -37,7 +37,7 @@
 
 \+ **new TransferableInput**(`txid`: Buffer, `outputidx`: Buffer, `assetID`: Buffer, `input`: [Input](_apis_avm_inputs_.input.md)): *[TransferableInput](_apis_avm_inputs_.transferableinput.md)*
 
-*Defined in [apis/avm/inputs.ts:210](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/inputs.ts#L210)*
+*Defined in [apis/avm/inputs.ts:210](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/inputs.ts#L210)*
 
 Class representing an [TransferableInput](_apis_avm_inputs_.transferableinput.md) for a transaction.
 
@@ -58,7 +58,7 @@ Name | Type | Default | Description |
 
 • **assetid**: *Buffer* =  Buffer.alloc(32)
 
-*Defined in [apis/avm/inputs.ts:120](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/inputs.ts#L120)*
+*Defined in [apis/avm/inputs.ts:120](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/inputs.ts#L120)*
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 • **input**: *[Input](_apis_avm_inputs_.input.md)*
 
-*Defined in [apis/avm/inputs.ts:121](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/inputs.ts#L121)*
+*Defined in [apis/avm/inputs.ts:121](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/inputs.ts#L121)*
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 • **outputidx**: *Buffer* =  Buffer.alloc(4)
 
-*Defined in [apis/avm/inputs.ts:119](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/inputs.ts#L119)*
+*Defined in [apis/avm/inputs.ts:119](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/inputs.ts#L119)*
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 • **txid**: *Buffer* =  Buffer.alloc(32)
 
-*Defined in [apis/avm/inputs.ts:118](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/inputs.ts#L118)*
+*Defined in [apis/avm/inputs.ts:118](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/inputs.ts#L118)*
 
 ## Methods
 
@@ -90,7 +90,7 @@ ___
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-*Defined in [apis/avm/inputs.ts:178](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/inputs.ts#L178)*
+*Defined in [apis/avm/inputs.ts:178](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/inputs.ts#L178)*
 
 Takes a [Buffer](https://github.com/feross/buffer) containing an [TransferableInput](_apis_avm_inputs_.transferableinput.md), parses it, populates the class, and returns the length of the [TransferableInput](_apis_avm_inputs_.transferableinput.md) in bytes.
 
@@ -111,7 +111,7 @@ ___
 
 ▸ **getAssetID**(): *Buffer*
 
-*Defined in [apis/avm/inputs.ts:167](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/inputs.ts#L167)*
+*Defined in [apis/avm/inputs.ts:167](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/inputs.ts#L167)*
 
 Returns the assetID of the input.
 
@@ -123,7 +123,7 @@ ___
 
 ▸ **getInput**(): *[Input](_apis_avm_inputs_.input.md)*
 
-*Defined in [apis/avm/inputs.ts:160](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/inputs.ts#L160)*
+*Defined in [apis/avm/inputs.ts:160](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/inputs.ts#L160)*
 
 Returns the input.
 
@@ -135,7 +135,7 @@ ___
 
 ▸ **getOutputIdx**(): *Buffer*
 
-*Defined in [apis/avm/inputs.ts:145](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/inputs.ts#L145)*
+*Defined in [apis/avm/inputs.ts:145](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/inputs.ts#L145)*
 
 Returns a [Buffer](https://github.com/feross/buffer)  of the OutputIdx.
 
@@ -147,7 +147,7 @@ ___
 
 ▸ **getTxID**(): *Buffer*
 
-*Defined in [apis/avm/inputs.ts:137](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/inputs.ts#L137)*
+*Defined in [apis/avm/inputs.ts:137](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/inputs.ts#L137)*
 
 Returns a [Buffer](https://github.com/feross/buffer) of the TxID.
 
@@ -159,7 +159,7 @@ ___
 
 ▸ **getUTXOID**(): *string*
 
-*Defined in [apis/avm/inputs.ts:153](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/inputs.ts#L153)*
+*Defined in [apis/avm/inputs.ts:153](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/inputs.ts#L153)*
 
 Returns a base-58 string representation of the UTXOID this [TransferableInput](_apis_avm_inputs_.transferableinput.md) references.
 
@@ -171,7 +171,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [apis/avm/inputs.ts:194](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/inputs.ts#L194)*
+*Defined in [apis/avm/inputs.ts:194](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/inputs.ts#L194)*
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [TransferableInput](_apis_avm_inputs_.transferableinput.md).
 
@@ -183,7 +183,7 @@ ___
 
 ▸ **toString**(): *string*
 
-*Defined in [apis/avm/inputs.ts:207](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/inputs.ts#L207)*
+*Defined in [apis/avm/inputs.ts:207](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/inputs.ts#L207)*
 
 Returns a base-58 representation of the [TransferableInput](_apis_avm_inputs_.transferableinput.md).
 
@@ -195,7 +195,7 @@ ___
 
 ▸ **comparator**(): *function*
 
-*Defined in [apis/avm/inputs.ts:126](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/inputs.ts#L126)*
+*Defined in [apis/avm/inputs.ts:126](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/inputs.ts#L126)*
 
 Returns a function used to sort an array of [TransferableInput](_apis_avm_inputs_.transferableinput.md)s
 

@@ -33,7 +33,7 @@
 
 *Inherited from [Credential](_apis_avm_credentials_.credential.md).[constructor](_apis_avm_credentials_.credential.md#constructor)*
 
-*Defined in [apis/avm/credentials.ts:70](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/credentials.ts#L70)*
+*Defined in [apis/avm/credentials.ts:70](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/credentials.ts#L70)*
 
 **Parameters:**
 
@@ -51,7 +51,7 @@ Name | Type | Default |
 
 *Inherited from [Credential](_apis_avm_credentials_.credential.md).[sigArray](_apis_avm_credentials_.credential.md#protected-sigarray)*
 
-*Defined in [apis/avm/credentials.ts:35](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/credentials.ts#L35)*
+*Defined in [apis/avm/credentials.ts:35](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/credentials.ts#L35)*
 
 ## Methods
 
@@ -61,7 +61,7 @@ Name | Type | Default |
 
 *Inherited from [Credential](_apis_avm_credentials_.credential.md)*
 
-*Defined in [apis/avm/credentials.ts:42](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/credentials.ts#L42)*
+*Defined in [apis/avm/credentials.ts:42](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/credentials.ts#L42)*
 
 Adds a signature to the credentials and returns the index off the added signature.
 
@@ -81,7 +81,7 @@ ___
 
 *Inherited from [Credential](_apis_avm_credentials_.credential.md).[fromBuffer](_apis_avm_credentials_.credential.md#frombuffer)*
 
-*Defined in [apis/avm/credentials.ts:47](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/credentials.ts#L47)*
+*Defined in [apis/avm/credentials.ts:47](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/credentials.ts#L47)*
 
 **Parameters:**
 
@@ -100,7 +100,7 @@ ___
 
 *Overrides [Credential](_apis_avm_credentials_.credential.md).[getCredentialID](_apis_avm_credentials_.credential.md#abstract-getcredentialid)*
 
-*Defined in [apis/avm/credentials.ts:90](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/credentials.ts#L90)*
+*Defined in [apis/avm/credentials.ts:90](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/credentials.ts#L90)*
 
 **Returns:** *number*
 
@@ -112,6 +112,6 @@ ___
 
 *Inherited from [Credential](_apis_avm_credentials_.credential.md).[toBuffer](_apis_avm_credentials_.credential.md#tobuffer)*
 
-*Defined in [apis/avm/credentials.ts:59](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/credentials.ts#L59)*
+*Defined in [apis/avm/credentials.ts:59](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/credentials.ts#L59)*
 
 **Returns:** *Buffer*
