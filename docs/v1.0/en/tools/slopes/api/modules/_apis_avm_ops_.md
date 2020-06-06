@@ -24,7 +24,7 @@
 
 • **bintools**: *[BinTools](../classes/_utils_bintools_.bintools.md)‹›* =  BinTools.getInstance()
 
-*Defined in [apis/avm/ops.ts:9](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/ops.ts#L9)*
+*Defined in [apis/avm/ops.ts:9](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/ops.ts#L9)*
 
 ## Functions
 
@@ -32,7 +32,7 @@
 
 ▸ **SelectOperationClass**(`opid`: number, ...`args`: Array‹any›): *[Operation](../classes/_apis_avm_ops_.operation.md)*
 
-*Defined in [apis/avm/ops.ts:18](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/ops.ts#L18)*
+*Defined in [apis/avm/ops.ts:18](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/ops.ts#L18)*
 
 Takes a buffer representing the output and returns the proper [Operation](../classes/_apis_avm_ops_.operation.md) instance.
 

@@ -24,7 +24,7 @@ Response data for HTTP requests.
 
 • **data**: *string | object | Array‹object›*
 
-*Defined in [utils/types.ts:21](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L21)*
+*Defined in [utils/types.ts:21](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/types.ts#L21)*
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 • **headers**: *object*
 
-*Defined in [utils/types.ts:22](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L22)*
+*Defined in [utils/types.ts:22](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/types.ts#L22)*
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 • **request**: *ClientRequest | XMLHttpRequest*
 
-*Defined in [utils/types.ts:25](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L25)*
+*Defined in [utils/types.ts:25](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/types.ts#L25)*
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 • **status**: *number*
 
-*Defined in [utils/types.ts:23](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L23)*
+*Defined in [utils/types.ts:23](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/types.ts#L23)*
 
 ___
 
@@ -56,4 +56,4 @@ ___
 
 • **statusText**: *string*
 
-*Defined in [utils/types.ts:24](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/types.ts#L24)*
+*Defined in [utils/types.ts:24](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/types.ts#L24)*

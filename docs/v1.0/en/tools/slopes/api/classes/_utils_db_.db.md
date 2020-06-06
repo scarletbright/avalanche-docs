@@ -38,7 +38,7 @@ const blockchaindb = db.getNamespace("mychain");
 
 \+ **new DB**(): *[DB](_utils_db_.db.md)*
 
-*Defined in [utils/db.ts:20](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/db.ts#L20)*
+*Defined in [utils/db.ts:20](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/db.ts#L20)*
 
 **Returns:** *[DB](_utils_db_.db.md)*
 
@@ -48,7 +48,7 @@ const blockchaindb = db.getNamespace("mychain");
 
 ▪ **instance**: *[DB](_utils_db_.db.md)*
 
-*Defined in [utils/db.ts:19](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/db.ts#L19)*
+*Defined in [utils/db.ts:19](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/db.ts#L19)*
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 ▪ **store**: *store* =  store
 
-*Defined in [utils/db.ts:20](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/db.ts#L20)*
+*Defined in [utils/db.ts:20](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/db.ts#L20)*
 
 ## Methods
 
@@ -64,7 +64,7 @@ ___
 
 ▸ **getInstance**(): *[DB](_utils_db_.db.md)*
 
-*Defined in [utils/db.ts:26](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/db.ts#L26)*
+*Defined in [utils/db.ts:26](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/db.ts#L26)*
 
 Retrieves the database singleton.
 
@@ -76,7 +76,7 @@ ___
 
 ▸ **getNamespace**(`ns`: string): *StoreAPI*
 
-*Defined in [utils/db.ts:38](https://github.com/ava-labs/slopes/blob/2d2915d/src/utils/db.ts#L38)*
+*Defined in [utils/db.ts:38](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/db.ts#L38)*
 
 Gets a namespace from the database singleton.
 

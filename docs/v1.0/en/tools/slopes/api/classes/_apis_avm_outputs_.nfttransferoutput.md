@@ -54,7 +54,7 @@ An [Output](_apis_avm_outputs_.output.md) class which specifies an Output that c
 
 *Overrides [Output](_apis_avm_outputs_.output.md).[constructor](_apis_avm_outputs_.output.md#constructor)*
 
-*Defined in [apis/avm/outputs.ts:403](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L403)*
+*Defined in [apis/avm/outputs.ts:403](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L403)*
 
 An [Output](_apis_avm_outputs_.output.md) class which contains an NFT on an assetID.
 
@@ -78,7 +78,7 @@ Name | Type | Default | Description |
 
 *Inherited from [Output](_apis_avm_outputs_.output.md).[addresses](_apis_avm_outputs_.output.md#protected-addresses)*
 
-*Defined in [apis/avm/outputs.ts:33](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L33)*
+*Defined in [apis/avm/outputs.ts:33](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L33)*
 
 ___
 
@@ -88,7 +88,7 @@ ___
 
 *Inherited from [NFTOutBase](_apis_avm_outputs_.nftoutbase.md).[groupID](_apis_avm_outputs_.nftoutbase.md#protected-groupid)*
 
-*Defined in [apis/avm/outputs.ts:362](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L362)*
+*Defined in [apis/avm/outputs.ts:362](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L362)*
 
 ___
 
@@ -98,7 +98,7 @@ ___
 
 *Inherited from [Output](_apis_avm_outputs_.output.md).[locktime](_apis_avm_outputs_.output.md#protected-locktime)*
 
-*Defined in [apis/avm/outputs.ts:30](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L30)*
+*Defined in [apis/avm/outputs.ts:30](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L30)*
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 *Inherited from [Output](_apis_avm_outputs_.output.md).[numaddrs](_apis_avm_outputs_.output.md#protected-numaddrs)*
 
-*Defined in [apis/avm/outputs.ts:32](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L32)*
+*Defined in [apis/avm/outputs.ts:32](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L32)*
 
 ___
 
@@ -118,7 +118,7 @@ ___
 
 *Inherited from [NFTOutBase](_apis_avm_outputs_.nftoutbase.md).[payload](_apis_avm_outputs_.nftoutbase.md#protected-payload)*
 
-*Defined in [apis/avm/outputs.ts:364](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L364)*
+*Defined in [apis/avm/outputs.ts:364](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L364)*
 
 ___
 
@@ -128,7 +128,7 @@ ___
 
 *Inherited from [NFTOutBase](_apis_avm_outputs_.nftoutbase.md).[sizePayload](_apis_avm_outputs_.nftoutbase.md#protected-sizepayload)*
 
-*Defined in [apis/avm/outputs.ts:363](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L363)*
+*Defined in [apis/avm/outputs.ts:363](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L363)*
 
 ___
 
@@ -138,7 +138,7 @@ ___
 
 *Inherited from [Output](_apis_avm_outputs_.output.md).[threshold](_apis_avm_outputs_.output.md#protected-threshold)*
 
-*Defined in [apis/avm/outputs.ts:31](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L31)*
+*Defined in [apis/avm/outputs.ts:31](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L31)*
 
 ## Methods
 
@@ -150,7 +150,7 @@ ___
 
 *Overrides [Output](_apis_avm_outputs_.output.md).[fromBuffer](_apis_avm_outputs_.output.md#frombuffer)*
 
-*Defined in [apis/avm/outputs.ts:383](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L383)*
+*Defined in [apis/avm/outputs.ts:383](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L383)*
 
 Popuates the instance from a [Buffer](https://github.com/feross/buffer) representing the [NFTOutBase](_apis_avm_outputs_.nftoutbase.md) and returns the size of the output.
 
@@ -171,7 +171,7 @@ ___
 
 *Inherited from [Output](_apis_avm_outputs_.output.md)*
 
-*Defined in [apis/avm/outputs.ts:89](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L89)*
+*Defined in [apis/avm/outputs.ts:89](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L89)*
 
 Returns the address from the index provided.
 
@@ -193,7 +193,7 @@ ___
 
 *Inherited from [Output](_apis_avm_outputs_.output.md)*
 
-*Defined in [apis/avm/outputs.ts:72](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L72)*
+*Defined in [apis/avm/outputs.ts:72](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L72)*
 
 Returns the index of the address.
 
@@ -215,7 +215,7 @@ ___
 
 *Inherited from [Output](_apis_avm_outputs_.output.md)*
 
-*Defined in [apis/avm/outputs.ts:57](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L57)*
+*Defined in [apis/avm/outputs.ts:57](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L57)*
 
 Returns an array of [Buffer](https://github.com/feross/buffer)s for the addresses.
 
@@ -229,7 +229,7 @@ ___
 
 *Inherited from [NFTOutBase](_apis_avm_outputs_.nftoutbase.md)*
 
-*Defined in [apis/avm/outputs.ts:369](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L369)*
+*Defined in [apis/avm/outputs.ts:369](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L369)*
 
 Returns the groupID as a number.
 
@@ -243,7 +243,7 @@ ___
 
 *Inherited from [Output](_apis_avm_outputs_.output.md)*
 
-*Defined in [apis/avm/outputs.ts:50](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L50)*
+*Defined in [apis/avm/outputs.ts:50](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L50)*
 
 Returns the a [BN](https://github.com/indutny/bn.js/) repersenting the UNIX Timestamp when the lock is made available.
 
@@ -257,7 +257,7 @@ ___
 
 *Overrides [Output](_apis_avm_outputs_.output.md).[getOutputID](_apis_avm_outputs_.output.md#abstract-getoutputid)*
 
-*Defined in [apis/avm/outputs.ts:431](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L431)*
+*Defined in [apis/avm/outputs.ts:431](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L431)*
 
 Returns the outputID for this output
 
@@ -271,7 +271,7 @@ ___
 
 *Inherited from [NFTOutBase](_apis_avm_outputs_.nftoutbase.md)*
 
-*Defined in [apis/avm/outputs.ts:376](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L376)*
+*Defined in [apis/avm/outputs.ts:376](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L376)*
 
 Returns the payload as a [Buffer](https://github.com/feross/buffer)
 
@@ -285,7 +285,7 @@ ___
 
 *Inherited from [Output](_apis_avm_outputs_.output.md)*
 
-*Defined in [apis/avm/outputs.ts:118](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L118)*
+*Defined in [apis/avm/outputs.ts:118](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L118)*
 
 Given an array of addresses and an optional timestamp, select an array of address [Buffer](https://github.com/feross/buffer)s of qualified spenders for the output.
 
@@ -306,7 +306,7 @@ ___
 
 *Inherited from [Output](_apis_avm_outputs_.output.md)*
 
-*Defined in [apis/avm/outputs.ts:43](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L43)*
+*Defined in [apis/avm/outputs.ts:43](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L43)*
 
 Returns the threshold of signers required to spend this output.
 
@@ -320,7 +320,7 @@ ___
 
 *Inherited from [Output](_apis_avm_outputs_.output.md).[makeTransferable](_apis_avm_outputs_.output.md#maketransferable)*
 
-*Defined in [apis/avm/outputs.ts:192](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L192)*
+*Defined in [apis/avm/outputs.ts:192](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L192)*
 
 **Parameters:**
 
@@ -338,7 +338,7 @@ ___
 
 *Inherited from [Output](_apis_avm_outputs_.output.md)*
 
-*Defined in [apis/avm/outputs.ts:99](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L99)*
+*Defined in [apis/avm/outputs.ts:99](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L99)*
 
 Given an array of address [Buffer](https://github.com/feross/buffer)s and an optional timestamp, returns true if the addresses meet the threshold required to spend the output.
 
@@ -361,7 +361,7 @@ ___
 
 *Overrides [Output](_apis_avm_outputs_.output.md).[toBuffer](_apis_avm_outputs_.output.md#tobuffer)*
 
-*Defined in [apis/avm/outputs.ts:397](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L397)*
+*Defined in [apis/avm/outputs.ts:397](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L397)*
 
 Returns the buffer representing the [NFTOutBase](_apis_avm_outputs_.nftoutbase.md) instance.
 
@@ -375,7 +375,7 @@ ___
 
 *Inherited from [Output](_apis_avm_outputs_.output.md).[toString](_apis_avm_outputs_.output.md#tostring)*
 
-*Defined in [apis/avm/outputs.ts:184](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L184)*
+*Defined in [apis/avm/outputs.ts:184](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L184)*
 
 Returns a base-58 string representing the [Output](_apis_avm_outputs_.output.md).
 
@@ -389,7 +389,7 @@ ___
 
 *Inherited from [Output](_apis_avm_outputs_.output.md)*
 
-*Defined in [apis/avm/outputs.ts:196](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L196)*
+*Defined in [apis/avm/outputs.ts:196](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L196)*
 
 **Returns:** *function*
 

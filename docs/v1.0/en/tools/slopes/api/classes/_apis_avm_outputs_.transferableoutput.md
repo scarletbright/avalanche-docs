@@ -31,7 +31,7 @@
 
 \+ **new TransferableOutput**(`assetID`: Buffer, `output`: [Output](_apis_avm_outputs_.output.md)): *[TransferableOutput](_apis_avm_outputs_.transferableoutput.md)*
 
-*Defined in [apis/avm/outputs.ts:277](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L277)*
+*Defined in [apis/avm/outputs.ts:277](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L277)*
 
 Class representing an [TransferableOutput](_apis_avm_outputs_.transferableoutput.md) for a transaction.
 
@@ -50,7 +50,7 @@ Name | Type | Default | Description |
 
 • **assetID**: *Buffer* =  Buffer.alloc(AVMConstants.ASSETIDLEN)
 
-*Defined in [apis/avm/outputs.ts:240](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L240)*
+*Defined in [apis/avm/outputs.ts:240](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L240)*
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 • **output**: *[Output](_apis_avm_outputs_.output.md)*
 
-*Defined in [apis/avm/outputs.ts:241](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L241)*
+*Defined in [apis/avm/outputs.ts:241](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L241)*
 
 ## Methods
 
@@ -66,7 +66,7 @@ ___
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-*Defined in [apis/avm/outputs.ts:262](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L262)*
+*Defined in [apis/avm/outputs.ts:262](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L262)*
 
 **Parameters:**
 
@@ -83,7 +83,7 @@ ___
 
 ▸ **getAssetID**(): *Buffer*
 
-*Defined in [apis/avm/outputs.ts:254](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L254)*
+*Defined in [apis/avm/outputs.ts:254](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L254)*
 
 **Returns:** *Buffer*
 
@@ -93,7 +93,7 @@ ___
 
 ▸ **getOutput**(): *[Output](_apis_avm_outputs_.output.md)*
 
-*Defined in [apis/avm/outputs.ts:258](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L258)*
+*Defined in [apis/avm/outputs.ts:258](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L258)*
 
 **Returns:** *[Output](_apis_avm_outputs_.output.md)*
 
@@ -103,7 +103,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [apis/avm/outputs.ts:271](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L271)*
+*Defined in [apis/avm/outputs.ts:271](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L271)*
 
 **Returns:** *Buffer*
 
@@ -113,7 +113,7 @@ ___
 
 ▸ **comparator**(): *function*
 
-*Defined in [apis/avm/outputs.ts:246](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/outputs.ts#L246)*
+*Defined in [apis/avm/outputs.ts:246](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L246)*
 
 Returns a function used to sort an array of [TransferableOutput](_apis_avm_outputs_.transferableoutput.md)s
 

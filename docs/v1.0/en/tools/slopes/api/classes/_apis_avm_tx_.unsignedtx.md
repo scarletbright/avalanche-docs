@@ -31,7 +31,7 @@ Class representing an unsigned transaction.
 
 \+ **new UnsignedTx**(`transaction`: [BaseTx](_apis_avm_tx_.basetx.md)): *[UnsignedTx](_apis_avm_tx_.unsignedtx.md)*
 
-*Defined in [apis/avm/tx.ts:480](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/tx.ts#L480)*
+*Defined in [apis/avm/tx.ts:480](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L480)*
 
 **Parameters:**
 
@@ -47,7 +47,7 @@ Name | Type | Default |
 
 • **transaction**: *[BaseTx](_apis_avm_tx_.basetx.md)*
 
-*Defined in [apis/avm/tx.ts:448](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/tx.ts#L448)*
+*Defined in [apis/avm/tx.ts:448](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L448)*
 
 ## Methods
 
@@ -55,7 +55,7 @@ Name | Type | Default |
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-*Defined in [apis/avm/tx.ts:454](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/tx.ts#L454)*
+*Defined in [apis/avm/tx.ts:454](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L454)*
 
 **Parameters:**
 
@@ -72,7 +72,7 @@ ___
 
 ▸ **getTransaction**(): *[BaseTx](_apis_avm_tx_.basetx.md)*
 
-*Defined in [apis/avm/tx.ts:450](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/tx.ts#L450)*
+*Defined in [apis/avm/tx.ts:450](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L450)*
 
 **Returns:** *[BaseTx](_apis_avm_tx_.basetx.md)*
 
@@ -82,7 +82,7 @@ ___
 
 ▸ **sign**(`kc`: [AVMKeyChain](_apis_avm_keychain_.avmkeychain.md)): *[Tx](_apis_avm_tx_.tx.md)*
 
-*Defined in [apis/avm/tx.ts:475](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/tx.ts#L475)*
+*Defined in [apis/avm/tx.ts:475](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L475)*
 
 Signs this [UnsignedTx](_apis_avm_tx_.unsignedtx.md) and returns signed [Tx](_apis_avm_tx_.tx.md)
 
@@ -102,6 +102,6 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [apis/avm/tx.ts:461](https://github.com/ava-labs/slopes/blob/2d2915d/src/apis/avm/tx.ts#L461)*
+*Defined in [apis/avm/tx.ts:461](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/tx.ts#L461)*
 
 **Returns:** *Buffer*
