@@ -53,7 +53,7 @@ let slopes = new SlopesCore("127.0.0.1", 9650, "https");
 
 \+ **new SlopesCore**(`ip`: string, `port`: number, `protocol`: string): *[SlopesCore](_slopes_.slopescore.md)*
 
-*Defined in [slopes.ts:224](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L224)*
+*Defined in [slopes.ts:224](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L224)*
 
 Creates a new Slopes instance. Sets the address and port of the main AVA Client.
 
@@ -73,7 +73,7 @@ Name | Type | Default | Description |
 
 • **apis**: *object*
 
-*Defined in [slopes.ts:23](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L23)*
+*Defined in [slopes.ts:23](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L23)*
 
 #### Type declaration:
 
@@ -85,7 +85,7 @@ ___
 
 • **ip**: *string*
 
-*Defined in [slopes.ts:20](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L20)*
+*Defined in [slopes.ts:20](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L20)*
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 • **networkID**: *number* = 3
 
-*Defined in [slopes.ts:18](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L18)*
+*Defined in [slopes.ts:18](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L18)*
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 • **port**: *number*
 
-*Defined in [slopes.ts:21](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L21)*
+*Defined in [slopes.ts:21](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L21)*
 
 ___
 
@@ -109,7 +109,7 @@ ___
 
 • **protocol**: *string*
 
-*Defined in [slopes.ts:19](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L19)*
+*Defined in [slopes.ts:19](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L19)*
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 • **url**: *string*
 
-*Defined in [slopes.ts:22](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L22)*
+*Defined in [slopes.ts:22](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L22)*
 
 ## Methods
 
@@ -125,7 +125,7 @@ ___
 
 ▸ **addAPI**<**GA**>(`apiName`: string, `constructorFN`: object, `baseurl`: string, ...`args`: Array‹any›): *void*
 
-*Defined in [slopes.ts:100](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L100)*
+*Defined in [slopes.ts:100](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L100)*
 
 Adds an API to the middleware. The API resolves to a registered blockchain's RPC.
 
@@ -162,7 +162,7 @@ ___
 
 ▸ **api**<**GA**>(`apiName`: string): *GA*
 
-*Defined in [slopes.ts:113](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L113)*
+*Defined in [slopes.ts:113](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L113)*
 
 Retrieves a reference to an API by its apiName label.
 
@@ -184,7 +184,7 @@ ___
 
 ▸ **delete**(`baseurl`: string, `getdata`: object, `headers`: object, `axiosConfig`: AxiosRequestConfig): *Promise‹[RequestResponseData](_utils_types_.requestresponsedata.md)›*
 
-*Defined in [slopes.ts:174](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L174)*
+*Defined in [slopes.ts:174](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L174)*
 
 Makes a DELETE call to an API.
 
@@ -207,7 +207,7 @@ ___
 
 ▸ **get**(`baseurl`: string, `getdata`: object, `headers`: object, `axiosConfig`: AxiosRequestConfig): *Promise‹[RequestResponseData](_utils_types_.requestresponsedata.md)›*
 
-*Defined in [slopes.ts:159](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L159)*
+*Defined in [slopes.ts:159](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L159)*
 
 Makes a GET call to an API.
 
@@ -230,7 +230,7 @@ ___
 
 ▸ **getIP**(): *string*
 
-*Defined in [slopes.ts:49](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L49)*
+*Defined in [slopes.ts:49](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L49)*
 
 Returns the IP for the AVA node.
 
@@ -242,7 +242,7 @@ ___
 
 ▸ **getNetworkID**(): *number*
 
-*Defined in [slopes.ts:70](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L70)*
+*Defined in [slopes.ts:70](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L70)*
 
 Returns the networkID;
 
@@ -254,7 +254,7 @@ ___
 
 ▸ **getPort**(): *number*
 
-*Defined in [slopes.ts:56](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L56)*
+*Defined in [slopes.ts:56](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L56)*
 
 Returns the port for the AVA node.
 
@@ -266,7 +266,7 @@ ___
 
 ▸ **getProtocol**(): *string*
 
-*Defined in [slopes.ts:42](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L42)*
+*Defined in [slopes.ts:42](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L42)*
 
 Returns the protocol such as "http", "https", "git", "ws", etc.
 
@@ -278,7 +278,7 @@ ___
 
 ▸ **getURL**(): *string*
 
-*Defined in [slopes.ts:63](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L63)*
+*Defined in [slopes.ts:63](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L63)*
 
 Returns the URL of the AVA node (ip + port);
 
@@ -290,7 +290,7 @@ ___
 
 ▸ **patch**(`baseurl`: string, `getdata`: object, `postdata`: string | object | ArrayBuffer | ArrayBufferView, `headers`: object, `axiosConfig`: AxiosRequestConfig): *Promise‹[RequestResponseData](_utils_types_.requestresponsedata.md)›*
 
-*Defined in [slopes.ts:222](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L222)*
+*Defined in [slopes.ts:222](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L222)*
 
 Makes a PATCH call to an API.
 
@@ -314,7 +314,7 @@ ___
 
 ▸ **post**(`baseurl`: string, `getdata`: object, `postdata`: string | object | ArrayBuffer | ArrayBufferView, `headers`: object, `axiosConfig`: AxiosRequestConfig): *Promise‹[RequestResponseData](_utils_types_.requestresponsedata.md)›*
 
-*Defined in [slopes.ts:190](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L190)*
+*Defined in [slopes.ts:190](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L190)*
 
 Makes a POST call to an API.
 
@@ -338,7 +338,7 @@ ___
 
 ▸ **put**(`baseurl`: string, `getdata`: object, `postdata`: string | object | ArrayBuffer | ArrayBufferView, `headers`: object, `axiosConfig`: AxiosRequestConfig): *Promise‹[RequestResponseData](_utils_types_.requestresponsedata.md)›*
 
-*Defined in [slopes.ts:206](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L206)*
+*Defined in [slopes.ts:206](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L206)*
 
 Makes a PUT call to an API.
 
@@ -362,7 +362,7 @@ ___
 
 ▸ **setAddress**(`ip`: string, `port`: number, `protocol`: string): *void*
 
-*Defined in [slopes.ts:32](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L32)*
+*Defined in [slopes.ts:32](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L32)*
 
 Sets the address and port of the main AVA Client.
 
@@ -382,7 +382,7 @@ ___
 
 ▸ **setNetworkID**(`netid`: number): *void*
 
-*Defined in [slopes.ts:77](https://github.com/ava-labs/slopes/blob/65cee65/src/slopes.ts#L77)*
+*Defined in [slopes.ts:77](https://github.com/ava-labs/slopes/blob/ba50532/src/slopes.ts#L77)*
 
 Sets the networkID
 

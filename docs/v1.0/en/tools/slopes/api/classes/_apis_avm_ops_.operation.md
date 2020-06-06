@@ -37,7 +37,7 @@ A class representing an operation. All operation types must extend on this class
 
 \+ **new Operation**(): *[Operation](_apis_avm_ops_.operation.md)*
 
-*Defined in [apis/avm/ops.ts:104](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/ops.ts#L104)*
+*Defined in [apis/avm/ops.ts:104](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/ops.ts#L104)*
 
 **Returns:** *[Operation](_apis_avm_ops_.operation.md)*
 
@@ -47,7 +47,7 @@ A class representing an operation. All operation types must extend on this class
 
 • **sigCount**: *Buffer* =  Buffer.alloc(4)
 
-*Defined in [apis/avm/ops.ts:31](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/ops.ts#L31)*
+*Defined in [apis/avm/ops.ts:31](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/ops.ts#L31)*
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 • **sigIdxs**: *Array‹[SigIdx](_apis_avm_types_.sigidx.md)›* =  []
 
-*Defined in [apis/avm/ops.ts:32](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/ops.ts#L32)*
+*Defined in [apis/avm/ops.ts:32](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/ops.ts#L32)*
 
 ## Methods
 
@@ -63,7 +63,7 @@ ___
 
 ▸ **addSignatureIdx**(`addressIdx`: number, `address`: Buffer): *void*
 
-*Defined in [apis/avm/ops.ts:53](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/ops.ts#L53)*
+*Defined in [apis/avm/ops.ts:53](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/ops.ts#L53)*
 
 Creates and adds a [SigIdx](_apis_avm_types_.sigidx.md) to the [Operation](_apis_avm_ops_.operation.md).
 
@@ -82,7 +82,7 @@ ___
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-*Defined in [apis/avm/ops.ts:63](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/ops.ts#L63)*
+*Defined in [apis/avm/ops.ts:63](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/ops.ts#L63)*
 
 **Parameters:**
 
@@ -99,7 +99,7 @@ ___
 
 ▸ **getCredentialID**(): *number*
 
-*Defined in [apis/avm/ops.ts:43](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/ops.ts#L43)*
+*Defined in [apis/avm/ops.ts:43](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/ops.ts#L43)*
 
 **Returns:** *number*
 
@@ -109,7 +109,7 @@ ___
 
 ▸ **getOperationID**(): *number*
 
-*Defined in [apis/avm/ops.ts:34](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/ops.ts#L34)*
+*Defined in [apis/avm/ops.ts:34](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/ops.ts#L34)*
 
 **Returns:** *number*
 
@@ -119,7 +119,7 @@ ___
 
 ▸ **getSigIdxs**(): *Array‹[SigIdx](_apis_avm_types_.sigidx.md)›*
 
-*Defined in [apis/avm/ops.ts:39](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/ops.ts#L39)*
+*Defined in [apis/avm/ops.ts:39](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/ops.ts#L39)*
 
 Returns the array of [SigIdx](_apis_avm_types_.sigidx.md) for this [Operation](_apis_avm_ops_.operation.md)
 
@@ -131,7 +131,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [apis/avm/ops.ts:78](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/ops.ts#L78)*
+*Defined in [apis/avm/ops.ts:78](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/ops.ts#L78)*
 
 **Returns:** *Buffer*
 
@@ -141,7 +141,7 @@ ___
 
 ▸ **comparator**(): *function*
 
-*Defined in [apis/avm/ops.ts:90](https://github.com/ava-labs/slopes/blob/65cee65/src/apis/avm/ops.ts#L90)*
+*Defined in [apis/avm/ops.ts:90](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/ops.ts#L90)*
 
 **Returns:** *function*
 
