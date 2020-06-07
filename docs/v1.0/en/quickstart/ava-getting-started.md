@@ -32,7 +32,12 @@ Run `echo $GOPATH`. **It should not be empty**
 
 Let's install Gecko, the Go implementation of an AVA node, and connect to the AVA Public Testnet.
 
-### Download Gecko Source Code
+### Download Gecko
+
+The node is a binary program. You can either download the source code and then build the binary program, or you can download the pre-built binary.
+You can do either of the below. You don't need to do both.
+
+#### Build Gecko from Source
 
 Download the Gecko repository:
 
@@ -41,8 +46,6 @@ go get -v -d github.com/ava-labs/gecko/...
 ```
 
 (Note to advanced users: Gecko uses Go modules, so you can actually clone the [Gecko repository](https://github.com/ava-labs/gecko) other locations on your machine.)
-
-### Build Executable
 
 Change to the `gecko` directory:
 
@@ -57,6 +60,24 @@ Build Gecko:
 ```
 
 The binary, named `ava`, is in `gecko/build`. 
+
+#### Download Gecko Binary
+
+Go to our [releases page](https://github.com/ava-labs/gecko/releases) and select the release you want (probably the latest one.)
+
+Under `Assets`, select the appropriate file.
+
+For MacOS:  
+Download the file named `gecko-osx-<VERSION>.zip`  
+Unzip the file with `unzip gecko-osx-<VERSION>.zip`  
+The resulting folder, `build`, contains the binaries.  
+You can run the node with `./build/ava`
+
+For Linux:  
+Download the file named `gecko-linux-<VERSION>.tar.gz`. 
+Unzip the file with `tar -xvf gecko-linux-<VERSION>.tar.gz`  
+The resulting folder, `gecko-<VERSION>`, contains the binaries.  
+You can run the node with `./gecko-<VERSION>/ava`
 
 ### Start a Node and Connect to Test Network
 
