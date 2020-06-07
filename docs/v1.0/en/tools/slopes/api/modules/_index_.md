@@ -1,4 +1,4 @@
-[slopes - v1.7.3](../README.md) › ["index"](_index_.md)
+[slopes - v1.7.4](../README.md) › ["index"](_index_.md)
 
 # External module: "index"
 

@@ -1,4 +1,4 @@
-[slopes - v1.7.3](../README.md) › ["apis/health/api"](_apis_health_api_.md)
+[slopes - v1.7.4](../README.md) › ["apis/health/api"](_apis_health_api_.md)
 
 # External module: "apis/health/api"
 

@@ -1,4 +1,4 @@
-[slopes - v1.7.3](../README.md) › ["apis/platform/api"](_apis_platform_api_.md)
+[slopes - v1.7.4](../README.md) › ["apis/platform/api"](_apis_platform_api_.md)
 
 # External module: "apis/platform/api"
 

@@ -1,4 +1,4 @@
-[slopes - v1.7.3](../README.md) › ["apis/avm/inputs"](_apis_avm_inputs_.md)
+[slopes - v1.7.4](../README.md) › ["apis/avm/inputs"](_apis_avm_inputs_.md)
 
 # External module: "apis/avm/inputs"
 
@@ -21,7 +21,7 @@
 
 ▸ **SelectInputClass**(`inputid`: number, ...`args`: Array‹any›): *[Input](../classes/_apis_avm_inputs_.input.md)*
 
-*Defined in [apis/avm/inputs.ts:21](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/inputs.ts#L21)*
+*Defined in [apis/avm/inputs.ts:21](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/inputs.ts#L21)*
 
 Takes a buffer representing the output and returns the proper [Input](../classes/_apis_avm_inputs_.input.md) instance.
 
