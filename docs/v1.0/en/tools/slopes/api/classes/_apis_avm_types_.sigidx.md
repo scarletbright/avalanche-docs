@@ -40,7 +40,7 @@ Type representing a [Signature](_apis_avm_types_.signature.md) index used in [In
 
 *Overrides [NBytes](_utils_types_.nbytes.md).[constructor](_utils_types_.nbytes.md#constructor)*
 
-*Defined in [apis/avm/types.ts:34](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/types.ts#L34)*
+*Defined in [apis/avm/types.ts:34](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/types.ts#L34)*
 
 Type representing a [Signature](_apis_avm_types_.signature.md) index used in [Input](_apis_avm_inputs_.input.md)
 
@@ -54,7 +54,7 @@ Type representing a [Signature](_apis_avm_types_.signature.md) index used in [In
 
 *Inherited from [NBytes](_utils_types_.nbytes.md).[bsize](_utils_types_.nbytes.md#protected-bsize)*
 
-*Defined in [utils/types.ts:400](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L400)*
+*Defined in [utils/types.ts:400](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L400)*
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 *Inherited from [NBytes](_utils_types_.nbytes.md).[bytes](_utils_types_.nbytes.md#protected-bytes)*
 
-*Defined in [utils/types.ts:399](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L399)*
+*Defined in [utils/types.ts:399](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L399)*
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 • **source**: *Buffer*
 
-*Defined in [apis/avm/types.ts:20](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/types.ts#L20)*
+*Defined in [apis/avm/types.ts:20](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/types.ts#L20)*
 
 ## Methods
 
@@ -82,7 +82,7 @@ ___
 
 *Inherited from [NBytes](_utils_types_.nbytes.md).[fromBuffer](_utils_types_.nbytes.md#frombuffer)*
 
-*Defined in [utils/types.ts:433](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L433)*
+*Defined in [utils/types.ts:433](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L433)*
 
 Takes a [[Buffer]], verifies its length, and stores it.
 
@@ -105,7 +105,7 @@ ___
 
 *Inherited from [NBytes](_utils_types_.nbytes.md).[fromString](_utils_types_.nbytes.md#fromstring)*
 
-*Defined in [utils/types.ts:416](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L416)*
+*Defined in [utils/types.ts:416](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L416)*
 
 Takes a base-58 encoded string, verifies its length, and stores it.
 
@@ -127,7 +127,7 @@ ___
 
 *Inherited from [NBytes](_utils_types_.nbytes.md)*
 
-*Defined in [utils/types.ts:407](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L407)*
+*Defined in [utils/types.ts:407](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L407)*
 
 Returns the length of the [Buffer](https://github.com/feross/buffer).
 
@@ -141,7 +141,7 @@ ___
 
 ▸ **getSource**(): *Buffer*
 
-*Defined in [apis/avm/types.ts:32](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/types.ts#L32)*
+*Defined in [apis/avm/types.ts:32](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/types.ts#L32)*
 
 Retrieves the source address for the signature
 
@@ -153,7 +153,7 @@ ___
 
 ▸ **setSource**(`address`: Buffer): *void*
 
-*Defined in [apis/avm/types.ts:25](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/types.ts#L25)*
+*Defined in [apis/avm/types.ts:25](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/types.ts#L25)*
 
 Sets the source address for the signature
 
@@ -173,7 +173,7 @@ ___
 
 *Inherited from [NBytes](_utils_types_.nbytes.md).[toBuffer](_utils_types_.nbytes.md#tobuffer)*
 
-*Defined in [utils/types.ts:455](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L455)*
+*Defined in [utils/types.ts:455](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L455)*
 
 Returns the stored [Buffer](https://github.com/feross/buffer).
 
@@ -189,7 +189,7 @@ ___
 
 *Inherited from [NBytes](_utils_types_.nbytes.md).[toString](_utils_types_.nbytes.md#tostring)*
 
-*Defined in [utils/types.ts:464](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L464)*
+*Defined in [utils/types.ts:464](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L464)*
 
 Returns a base-58 string of the stored [Buffer](https://github.com/feross/buffer).
 

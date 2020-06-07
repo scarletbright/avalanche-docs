@@ -45,7 +45,7 @@ Class representing a base for all transactions.
 
 \+ **new BaseTx**(`networkid`: number, `blockchainid`: Buffer, `outs`: Array‹[TransferableOutput](_apis_avm_outputs_.transferableoutput.md)›, `ins`: Array‹[TransferableInput](_apis_avm_inputs_.transferableinput.md)›): *[BaseTx](_apis_avm_tx_.basetx.md)*
 
-*Defined in [apis/avm/tx.ts:179](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L179)*
+*Defined in [apis/avm/tx.ts:179](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/tx.ts#L179)*
 
 Class representing a BaseTx which is the foundation for all transactions.
 
@@ -66,7 +66,7 @@ Name | Type | Default | Description |
 
 • **blockchainid**: *Buffer* =  Buffer.alloc(32)
 
-*Defined in [apis/avm/tx.ts:46](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L46)*
+*Defined in [apis/avm/tx.ts:46](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/tx.ts#L46)*
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 • **ins**: *Array‹[TransferableInput](_apis_avm_inputs_.transferableinput.md)›*
 
-*Defined in [apis/avm/tx.ts:50](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L50)*
+*Defined in [apis/avm/tx.ts:50](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/tx.ts#L50)*
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 • **networkid**: *Buffer* =  Buffer.alloc(4)
 
-*Defined in [apis/avm/tx.ts:45](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L45)*
+*Defined in [apis/avm/tx.ts:45](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/tx.ts#L45)*
 
 ___
 
@@ -90,7 +90,7 @@ ___
 
 • **numins**: *Buffer* =  Buffer.alloc(4)
 
-*Defined in [apis/avm/tx.ts:49](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L49)*
+*Defined in [apis/avm/tx.ts:49](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/tx.ts#L49)*
 
 ___
 
@@ -98,7 +98,7 @@ ___
 
 • **numouts**: *Buffer* =  Buffer.alloc(4)
 
-*Defined in [apis/avm/tx.ts:47](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L47)*
+*Defined in [apis/avm/tx.ts:47](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/tx.ts#L47)*
 
 ___
 
@@ -106,7 +106,7 @@ ___
 
 • **outs**: *Array‹[TransferableOutput](_apis_avm_outputs_.transferableoutput.md)›*
 
-*Defined in [apis/avm/tx.ts:48](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L48)*
+*Defined in [apis/avm/tx.ts:48](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/tx.ts#L48)*
 
 ## Methods
 
@@ -114,7 +114,7 @@ ___
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-*Defined in [apis/avm/tx.ts:96](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L96)*
+*Defined in [apis/avm/tx.ts:96](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/tx.ts#L96)*
 
 Takes a [Buffer](https://github.com/feross/buffer) containing an [BaseTx](_apis_avm_tx_.basetx.md), parses it, populates the class, and returns the length of the BaseTx in bytes.
 
@@ -137,7 +137,7 @@ ___
 
 ▸ **getBlockchainID**(): *Buffer*
 
-*Defined in [apis/avm/tx.ts:69](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L69)*
+*Defined in [apis/avm/tx.ts:69](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/tx.ts#L69)*
 
 Returns the Buffer representation of the BlockchainID
 
@@ -149,7 +149,7 @@ ___
 
 ▸ **getIns**(): *Array‹[TransferableInput](_apis_avm_inputs_.transferableinput.md)›*
 
-*Defined in [apis/avm/tx.ts:76](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L76)*
+*Defined in [apis/avm/tx.ts:76](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/tx.ts#L76)*
 
 Returns the array of [TransferableInput](_apis_avm_inputs_.transferableinput.md)s
 
@@ -161,7 +161,7 @@ ___
 
 ▸ **getNetworkID**(): *number*
 
-*Defined in [apis/avm/tx.ts:62](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L62)*
+*Defined in [apis/avm/tx.ts:62](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/tx.ts#L62)*
 
 Returns the NetworkID as a number
 
@@ -173,7 +173,7 @@ ___
 
 ▸ **getOuts**(): *Array‹[TransferableOutput](_apis_avm_outputs_.transferableoutput.md)›*
 
-*Defined in [apis/avm/tx.ts:83](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L83)*
+*Defined in [apis/avm/tx.ts:83](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/tx.ts#L83)*
 
 Returns the array of [TransferableOutput](_apis_avm_outputs_.transferableoutput.md)s
 
@@ -185,7 +185,7 @@ ___
 
 ▸ **getTxType**(): *number*
 
-*Defined in [apis/avm/tx.ts:55](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L55)*
+*Defined in [apis/avm/tx.ts:55](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/tx.ts#L55)*
 
 Returns the id of the [BaseTx](_apis_avm_tx_.basetx.md)
 
@@ -197,7 +197,7 @@ ___
 
 ▸ **sign**(`msg`: Buffer, `kc`: [AVMKeyChain](_apis_avm_keychain_.avmkeychain.md)): *Array‹[Credential](_apis_avm_credentials_.credential.md)›*
 
-*Defined in [apis/avm/tx.ts:164](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L164)*
+*Defined in [apis/avm/tx.ts:164](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/tx.ts#L164)*
 
 Takes the bytes of an [UnsignedTx](_apis_avm_tx_.unsignedtx.md) and returns an array of [Credential](_apis_avm_credentials_.credential.md)s
 
@@ -218,7 +218,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [apis/avm/tx.ts:126](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L126)*
+*Defined in [apis/avm/tx.ts:126](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/tx.ts#L126)*
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [BaseTx](_apis_avm_tx_.basetx.md).
 
@@ -230,7 +230,7 @@ ___
 
 ▸ **toString**(): *string*
 
-*Defined in [apis/avm/tx.ts:152](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/tx.ts#L152)*
+*Defined in [apis/avm/tx.ts:152](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/tx.ts#L152)*
 
 Returns a base-58 representation of the [BaseTx](_apis_avm_tx_.basetx.md).
 

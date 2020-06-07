@@ -35,7 +35,7 @@
 
 • **n12345_avm**: *object* =  Object.assign({}, n2_avm)
 
-*Defined in [utils/types.ts:509](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L509)*
+*Defined in [utils/types.ts:509](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L509)*
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 • **n12345_contracts**: *object & object* =  Object.assign({}, n2_contracts)
 
-*Defined in [utils/types.ts:513](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L513)*
+*Defined in [utils/types.ts:513](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L513)*
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 • **n12345_platform**: *object & object* =  Object.assign({}, n2_platform)
 
-*Defined in [utils/types.ts:511](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L511)*
+*Defined in [utils/types.ts:511](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L511)*
 
 ## Object literals
 
@@ -59,25 +59,25 @@ ___
 
 ### ▪ **n2_avm**: *object*
 
-*Defined in [utils/types.ts:473](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L473)*
+*Defined in [utils/types.ts:473](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L473)*
 
 ###  alias
 
 • **alias**: *string* = "X"
 
-*Defined in [utils/types.ts:475](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L475)*
+*Defined in [utils/types.ts:475](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L475)*
 
 ###  blockchainID
 
 • **blockchainID**: *string* = "4ktRjsAKxgMr2aEzv9SWmrU7Xk5FniHUrVCX4P1TZSfTLZWFM"
 
-*Defined in [utils/types.ts:474](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L474)*
+*Defined in [utils/types.ts:474](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L474)*
 
 ###  vm
 
 • **vm**: *string* = "avm"
 
-*Defined in [utils/types.ts:476](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L476)*
+*Defined in [utils/types.ts:476](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L476)*
 
 ___
 
@@ -85,25 +85,25 @@ ___
 
 ### ▪ **n2_contracts**: *object*
 
-*Defined in [utils/types.ts:485](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L485)*
+*Defined in [utils/types.ts:485](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L485)*
 
 ###  alias
 
 • **alias**: *string* = "C"
 
-*Defined in [utils/types.ts:487](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L487)*
+*Defined in [utils/types.ts:487](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L487)*
 
 ###  blockchainID
 
 • **blockchainID**: *string* = "2mUYSXfLrDtigwbzj1LxKVsHwELghc5sisoXrzJwLqAAQHF4i"
 
-*Defined in [utils/types.ts:486](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L486)*
+*Defined in [utils/types.ts:486](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L486)*
 
 ###  vm
 
 • **vm**: *string* = "contracts"
 
-*Defined in [utils/types.ts:488](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L488)*
+*Defined in [utils/types.ts:488](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L488)*
 
 ___
 
@@ -111,25 +111,25 @@ ___
 
 ### ▪ **n2_platform**: *object*
 
-*Defined in [utils/types.ts:479](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L479)*
+*Defined in [utils/types.ts:479](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L479)*
 
 ###  alias
 
 • **alias**: *string* = "P"
 
-*Defined in [utils/types.ts:481](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L481)*
+*Defined in [utils/types.ts:481](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L481)*
 
 ###  blockchainID
 
 • **blockchainID**: *string* = "11111111111111111111111111111111LpoYY"
 
-*Defined in [utils/types.ts:480](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L480)*
+*Defined in [utils/types.ts:480](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L480)*
 
 ###  vm
 
 • **vm**: *string* = "platform"
 
-*Defined in [utils/types.ts:482](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L482)*
+*Defined in [utils/types.ts:482](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L482)*
 
 ___
 
@@ -137,25 +137,25 @@ ___
 
 ### ▪ **n3_avm**: *object*
 
-*Defined in [utils/types.ts:491](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L491)*
+*Defined in [utils/types.ts:491](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L491)*
 
 ###  alias
 
 • **alias**: *string* = "X"
 
-*Defined in [utils/types.ts:493](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L493)*
+*Defined in [utils/types.ts:493](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L493)*
 
 ###  blockchainID
 
 • **blockchainID**: *string* = "rrEWX7gc7D9mwcdrdBxBTdqh1a7WDVsMuadhTZgyXfFcRz45L"
 
-*Defined in [utils/types.ts:492](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L492)*
+*Defined in [utils/types.ts:492](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L492)*
 
 ###  vm
 
 • **vm**: *string* = "avm"
 
-*Defined in [utils/types.ts:494](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L494)*
+*Defined in [utils/types.ts:494](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L494)*
 
 ___
 
@@ -163,25 +163,25 @@ ___
 
 ### ▪ **n3_contracts**: *object*
 
-*Defined in [utils/types.ts:503](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L503)*
+*Defined in [utils/types.ts:503](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L503)*
 
 ###  alias
 
 • **alias**: *string* = "C"
 
-*Defined in [utils/types.ts:505](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L505)*
+*Defined in [utils/types.ts:505](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L505)*
 
 ###  blockchainID
 
 • **blockchainID**: *string* = "zJytnh96Pc8rM337bBrtMvJDbEdDNjcXG3WkTNCiLp18ergm9"
 
-*Defined in [utils/types.ts:504](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L504)*
+*Defined in [utils/types.ts:504](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L504)*
 
 ###  vm
 
 • **vm**: *string* = "contracts"
 
-*Defined in [utils/types.ts:506](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L506)*
+*Defined in [utils/types.ts:506](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L506)*
 
 ___
 
@@ -189,22 +189,22 @@ ___
 
 ### ▪ **n3_platform**: *object*
 
-*Defined in [utils/types.ts:497](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L497)*
+*Defined in [utils/types.ts:497](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L497)*
 
 ###  alias
 
 • **alias**: *string* = "P"
 
-*Defined in [utils/types.ts:499](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L499)*
+*Defined in [utils/types.ts:499](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L499)*
 
 ###  blockchainID
 
 • **blockchainID**: *string* = "11111111111111111111111111111111LpoYY"
 
-*Defined in [utils/types.ts:498](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L498)*
+*Defined in [utils/types.ts:498](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L498)*
 
 ###  vm
 
 • **vm**: *string* = "platform"
 
-*Defined in [utils/types.ts:500](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L500)*
+*Defined in [utils/types.ts:500](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L500)*

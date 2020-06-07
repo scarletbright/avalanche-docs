@@ -34,6 +34,7 @@ let slopes = new Slopes("127.0.0.1", 9650, "https");
 
 * [AVM](_index_.slopes.md#avm)
 * [Admin](_index_.slopes.md#admin)
+* [Health](_index_.slopes.md#health)
 * [NodeKeys](_index_.slopes.md#nodekeys)
 * [Platform](_index_.slopes.md#platform)
 * [addAPI](_index_.slopes.md#addapi)
@@ -59,7 +60,7 @@ let slopes = new Slopes("127.0.0.1", 9650, "https");
 
 *Overrides [SlopesCore](_slopes_.slopescore.md).[constructor](_slopes_.slopescore.md#constructor)*
 
-*Defined in [index.ts:53](https://github.com/ava-labs/slopes/blob/48cc94f/src/index.ts#L53)*
+*Defined in [index.ts:61](https://github.com/ava-labs/slopes/blob/51a37ef/src/index.ts#L61)*
 
 Creates a new AVA instance. Sets the address and port of the main AVA Client.
 
@@ -84,7 +85,7 @@ Name | Type | Default | Description |
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md).[apis](_slopes_.slopescore.md#protected-apis)*
 
-*Defined in [slopes.ts:23](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L23)*
+*Defined in [slopes.ts:23](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L23)*
 
 #### Type declaration:
 
@@ -98,7 +99,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md).[ip](_slopes_.slopescore.md#protected-ip)*
 
-*Defined in [slopes.ts:20](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L20)*
+*Defined in [slopes.ts:20](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L20)*
 
 ___
 
@@ -108,7 +109,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md).[networkID](_slopes_.slopescore.md#protected-networkid)*
 
-*Defined in [slopes.ts:18](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L18)*
+*Defined in [slopes.ts:18](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L18)*
 
 ___
 
@@ -118,7 +119,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md).[port](_slopes_.slopescore.md#protected-port)*
 
-*Defined in [slopes.ts:21](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L21)*
+*Defined in [slopes.ts:21](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L21)*
 
 ___
 
@@ -128,7 +129,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md).[protocol](_slopes_.slopescore.md#protected-protocol)*
 
-*Defined in [slopes.ts:19](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L19)*
+*Defined in [slopes.ts:19](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L19)*
 
 ___
 
@@ -138,7 +139,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md).[url](_slopes_.slopescore.md#protected-url)*
 
-*Defined in [slopes.ts:22](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L22)*
+*Defined in [slopes.ts:22](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L22)*
 
 ## Methods
 
@@ -146,7 +147,7 @@ ___
 
 ▸ **AVM**(): *[AVMAPI](_apis_avm_api_.avmapi.md)‹›*
 
-*Defined in [index.ts:37](https://github.com/ava-labs/slopes/blob/48cc94f/src/index.ts#L37)*
+*Defined in [index.ts:38](https://github.com/ava-labs/slopes/blob/51a37ef/src/index.ts#L38)*
 
 Returns a reference to the AVM RPC.
 
@@ -158,7 +159,7 @@ ___
 
 ▸ **Admin**(): *[AdminAPI](_apis_admin_api_.adminapi.md)‹›*
 
-*Defined in [index.ts:30](https://github.com/ava-labs/slopes/blob/48cc94f/src/index.ts#L30)*
+*Defined in [index.ts:31](https://github.com/ava-labs/slopes/blob/51a37ef/src/index.ts#L31)*
 
 Returns a reference to the Admin RPC.
 
@@ -166,11 +167,23 @@ Returns a reference to the Admin RPC.
 
 ___
 
+###  Health
+
+▸ **Health**(): *[HealthAPI](_apis_health_api_.healthapi.md)‹›*
+
+*Defined in [index.ts:59](https://github.com/ava-labs/slopes/blob/51a37ef/src/index.ts#L59)*
+
+Returns a reference to the Health RPC for a node.
+
+**Returns:** *[HealthAPI](_apis_health_api_.healthapi.md)‹›*
+
+___
+
 ###  NodeKeys
 
 ▸ **NodeKeys**(): *[KeystoreAPI](_apis_keystore_api_.keystoreapi.md)‹›*
 
-*Defined in [index.ts:51](https://github.com/ava-labs/slopes/blob/48cc94f/src/index.ts#L51)*
+*Defined in [index.ts:52](https://github.com/ava-labs/slopes/blob/51a37ef/src/index.ts#L52)*
 
 Returns a reference to the Keystore RPC for a node. We label it "NodeKeys" to reduce confusion about what it's accessing.
 
@@ -182,7 +195,7 @@ ___
 
 ▸ **Platform**(): *[PlatformAPI](_apis_platform_api_.platformapi.md)‹›*
 
-*Defined in [index.ts:44](https://github.com/ava-labs/slopes/blob/48cc94f/src/index.ts#L44)*
+*Defined in [index.ts:45](https://github.com/ava-labs/slopes/blob/51a37ef/src/index.ts#L45)*
 
 Returns a reference to the Platform RPC.
 
@@ -196,7 +209,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md)*
 
-*Defined in [slopes.ts:100](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L100)*
+*Defined in [slopes.ts:100](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L100)*
 
 Adds an API to the middleware. The API resolves to a registered blockchain's RPC.
 
@@ -235,7 +248,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md)*
 
-*Defined in [slopes.ts:113](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L113)*
+*Defined in [slopes.ts:113](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L113)*
 
 Retrieves a reference to an API by its apiName label.
 
@@ -259,7 +272,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md)*
 
-*Defined in [slopes.ts:174](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L174)*
+*Defined in [slopes.ts:174](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L174)*
 
 Makes a DELETE call to an API.
 
@@ -284,7 +297,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md)*
 
-*Defined in [slopes.ts:159](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L159)*
+*Defined in [slopes.ts:159](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L159)*
 
 Makes a GET call to an API.
 
@@ -309,7 +322,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md)*
 
-*Defined in [slopes.ts:49](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L49)*
+*Defined in [slopes.ts:49](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L49)*
 
 Returns the IP for the AVA node.
 
@@ -323,7 +336,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md)*
 
-*Defined in [slopes.ts:70](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L70)*
+*Defined in [slopes.ts:70](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L70)*
 
 Returns the networkID;
 
@@ -337,7 +350,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md)*
 
-*Defined in [slopes.ts:56](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L56)*
+*Defined in [slopes.ts:56](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L56)*
 
 Returns the port for the AVA node.
 
@@ -351,7 +364,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md)*
 
-*Defined in [slopes.ts:42](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L42)*
+*Defined in [slopes.ts:42](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L42)*
 
 Returns the protocol such as "http", "https", "git", "ws", etc.
 
@@ -365,7 +378,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md)*
 
-*Defined in [slopes.ts:63](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L63)*
+*Defined in [slopes.ts:63](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L63)*
 
 Returns the URL of the AVA node (ip + port);
 
@@ -379,7 +392,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md)*
 
-*Defined in [slopes.ts:222](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L222)*
+*Defined in [slopes.ts:222](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L222)*
 
 Makes a PATCH call to an API.
 
@@ -405,7 +418,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md)*
 
-*Defined in [slopes.ts:190](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L190)*
+*Defined in [slopes.ts:190](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L190)*
 
 Makes a POST call to an API.
 
@@ -431,7 +444,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md)*
 
-*Defined in [slopes.ts:206](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L206)*
+*Defined in [slopes.ts:206](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L206)*
 
 Makes a PUT call to an API.
 
@@ -457,7 +470,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md)*
 
-*Defined in [slopes.ts:32](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L32)*
+*Defined in [slopes.ts:32](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L32)*
 
 Sets the address and port of the main AVA Client.
 
@@ -479,7 +492,7 @@ ___
 
 *Inherited from [SlopesCore](_slopes_.slopescore.md)*
 
-*Defined in [slopes.ts:77](https://github.com/ava-labs/slopes/blob/48cc94f/src/slopes.ts#L77)*
+*Defined in [slopes.ts:77](https://github.com/ava-labs/slopes/blob/51a37ef/src/slopes.ts#L77)*
 
 Sets the networkID
 

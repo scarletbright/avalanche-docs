@@ -47,7 +47,7 @@ extending [KeyPair](_utils_types_.keypair.md) which is used as the key in [KeyCh
 
 \+ **new KeyChain**(`chainid`: string): *[KeyChain](_utils_types_.keychain.md)*
 
-*Defined in [utils/types.ts:383](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L383)*
+*Defined in [utils/types.ts:383](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L383)*
 
 Returns instance of [KeyChain](_utils_types_.keychain.md).
 
@@ -65,7 +65,7 @@ Name | Type |
 
 • **chainid**: *string* = ""
 
-*Defined in [utils/types.ts:272](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L272)*
+*Defined in [utils/types.ts:272](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L272)*
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 • **importKey**: *function*
 
-*Defined in [utils/types.ts:290](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L290)*
+*Defined in [utils/types.ts:290](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L290)*
 
 Given a private key, makes a new [KeyPair](_utils_types_.keypair.md), returns the address.
 
@@ -97,7 +97,7 @@ ___
 
 • **keys**: *object*
 
-*Defined in [utils/types.ts:271](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L271)*
+*Defined in [utils/types.ts:271](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L271)*
 
 #### Type declaration:
 
@@ -109,7 +109,7 @@ ___
 
 • **makeKey**: *function*
 
-*Defined in [utils/types.ts:281](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L281)*
+*Defined in [utils/types.ts:281](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L281)*
 
 Makes a new [KeyPair](_utils_types_.keypair.md), returns the address.
 
@@ -133,7 +133,7 @@ Name | Type |
 
 ▸ **addKey**(`newKey`: KPClass): *void*
 
-*Defined in [utils/types.ts:315](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L315)*
+*Defined in [utils/types.ts:315](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L315)*
 
 Adds the key pair to the list of the keys managed in the [KeyChain](_utils_types_.keychain.md).
 
@@ -151,7 +151,7 @@ ___
 
 ▸ **getAddressStrings**(): *Array‹string›*
 
-*Defined in [utils/types.ts:306](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L306)*
+*Defined in [utils/types.ts:306](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L306)*
 
 Gets an array of addresses stored in the [KeyChain](_utils_types_.keychain.md).
 
@@ -165,7 +165,7 @@ ___
 
 ▸ **getAddresses**(): *Array‹Buffer›*
 
-*Defined in [utils/types.ts:297](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L297)*
+*Defined in [utils/types.ts:297](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L297)*
 
 Gets an array of addresses stored in the [KeyChain](_utils_types_.keychain.md).
 
@@ -179,7 +179,7 @@ ___
 
 ▸ **getChainID**(): *string*
 
-*Defined in [utils/types.ts:369](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L369)*
+*Defined in [utils/types.ts:369](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L369)*
 
 Returns the chainID associated with this [KeyChain](_utils_types_.keychain.md).
 
@@ -193,7 +193,7 @@ ___
 
 ▸ **getKey**(`address`: Buffer): *KPClass*
 
-*Defined in [utils/types.ts:360](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L360)*
+*Defined in [utils/types.ts:360](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L360)*
 
 Returns the [KeyPair](_utils_types_.keypair.md) listed under the provided address
 
@@ -213,7 +213,7 @@ ___
 
 ▸ **hasKey**(`address`: Buffer): *boolean*
 
-*Defined in [utils/types.ts:349](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L349)*
+*Defined in [utils/types.ts:349](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L349)*
 
 Checks if there is a key associated with the provided address.
 
@@ -233,7 +233,7 @@ ___
 
 ▸ **removeKey**(`key`: KPClass | Buffer): *boolean*
 
-*Defined in [utils/types.ts:327](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L327)*
+*Defined in [utils/types.ts:327](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L327)*
 
 Removes the key pair from the list of they keys managed in the [KeyChain](_utils_types_.keychain.md).
 
@@ -253,7 +253,7 @@ ___
 
 ▸ **setChainID**(`chainid`: string): *void*
 
-*Defined in [utils/types.ts:378](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L378)*
+*Defined in [utils/types.ts:378](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L378)*
 
 Sets the the chainID associated with this [KeyChain](_utils_types_.keychain.md) and all associated keypairs.
 

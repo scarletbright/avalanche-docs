@@ -48,7 +48,7 @@ Class for representing a private and public keypair in the AVM.
 
 *Overrides [KeyPair](_utils_types_.keypair.md).[constructor](_utils_types_.keypair.md#constructor)*
 
-*Defined in [apis/avm/keychain.ts:191](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/keychain.ts#L191)*
+*Defined in [apis/avm/keychain.ts:191](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/keychain.ts#L191)*
 
 Class for representing a private and public keypair in Slopes.
 
@@ -69,7 +69,7 @@ Name | Type | Default |
 
 *Inherited from [KeyPair](_utils_types_.keypair.md).[chainid](_utils_types_.keypair.md#protected-chainid)*
 
-*Defined in [utils/types.ts:148](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L148)*
+*Defined in [utils/types.ts:148](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L148)*
 
 ___
 
@@ -77,7 +77,7 @@ ___
 
 • **keypair**: *elliptic.ec.KeyPair*
 
-*Defined in [apis/avm/keychain.ts:43](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/keychain.ts#L43)*
+*Defined in [apis/avm/keychain.ts:43](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/keychain.ts#L43)*
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 *Inherited from [KeyPair](_utils_types_.keypair.md).[privk](_utils_types_.keypair.md#protected-privk)*
 
-*Defined in [utils/types.ts:147](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L147)*
+*Defined in [utils/types.ts:147](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L147)*
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 *Inherited from [KeyPair](_utils_types_.keypair.md).[pubk](_utils_types_.keypair.md#protected-pubk)*
 
-*Defined in [utils/types.ts:146](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L146)*
+*Defined in [utils/types.ts:146](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L146)*
 
 ## Methods
 
@@ -105,7 +105,7 @@ ___
 
 ▸ **addressFromPublicKey**(`pubk`: Buffer): *Buffer*
 
-*Defined in [apis/avm/keychain.ts:114](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/keychain.ts#L114)*
+*Defined in [apis/avm/keychain.ts:114](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/keychain.ts#L114)*
 
 Returns an address given a public key.
 
@@ -127,7 +127,7 @@ ___
 
 *Overrides [KeyPair](_utils_types_.keypair.md).[generateKey](_utils_types_.keypair.md#generatekey)*
 
-*Defined in [apis/avm/keychain.ts:65](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/keychain.ts#L65)*
+*Defined in [apis/avm/keychain.ts:65](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/keychain.ts#L65)*
 
 Generates a new keypair.
 
@@ -147,7 +147,7 @@ ___
 
 *Overrides [KeyPair](_utils_types_.keypair.md).[getAddress](_utils_types_.keypair.md#getaddress)*
 
-*Defined in [apis/avm/keychain.ts:93](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/keychain.ts#L93)*
+*Defined in [apis/avm/keychain.ts:93](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/keychain.ts#L93)*
 
 Returns the address as a [Buffer](https://github.com/feross/buffer).
 
@@ -163,7 +163,7 @@ ___
 
 *Overrides [KeyPair](_utils_types_.keypair.md).[getAddressString](_utils_types_.keypair.md#getaddressstring)*
 
-*Defined in [apis/avm/keychain.ts:102](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/keychain.ts#L102)*
+*Defined in [apis/avm/keychain.ts:102](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/keychain.ts#L102)*
 
 Returns the address's string representation.
 
@@ -179,7 +179,7 @@ ___
 
 *Inherited from [KeyPair](_utils_types_.keypair.md)*
 
-*Defined in [utils/types.ts:246](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L246)*
+*Defined in [utils/types.ts:246](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L246)*
 
 Returns the chainID associated with this key.
 
@@ -195,7 +195,7 @@ ___
 
 *Inherited from [KeyPair](_utils_types_.keypair.md)*
 
-*Defined in [utils/types.ts:200](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L200)*
+*Defined in [utils/types.ts:200](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L200)*
 
 Returns a reference to the private key.
 
@@ -211,7 +211,7 @@ ___
 
 *Overrides [KeyPair](_utils_types_.keypair.md).[getPrivateKeyString](_utils_types_.keypair.md#getprivatekeystring)*
 
-*Defined in [apis/avm/keychain.ts:136](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/keychain.ts#L136)*
+*Defined in [apis/avm/keychain.ts:136](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/keychain.ts#L136)*
 
 Returns a string representation of the private key.
 
@@ -227,7 +227,7 @@ ___
 
 *Inherited from [KeyPair](_utils_types_.keypair.md)*
 
-*Defined in [utils/types.ts:209](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L209)*
+*Defined in [utils/types.ts:209](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L209)*
 
 Returns a reference to the public key.
 
@@ -243,7 +243,7 @@ ___
 
 *Overrides [KeyPair](_utils_types_.keypair.md).[getPublicKeyString](_utils_types_.keypair.md#getpublickeystring)*
 
-*Defined in [apis/avm/keychain.ts:145](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/keychain.ts#L145)*
+*Defined in [apis/avm/keychain.ts:145](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/keychain.ts#L145)*
 
 Returns the public key.
 
@@ -259,7 +259,7 @@ ___
 
 *Overrides [KeyPair](_utils_types_.keypair.md).[importKey](_utils_types_.keypair.md#importkey)*
 
-*Defined in [apis/avm/keychain.ts:80](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/keychain.ts#L80)*
+*Defined in [apis/avm/keychain.ts:80](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/keychain.ts#L80)*
 
 Imports a private key and generates the appropriate public key.
 
@@ -281,7 +281,7 @@ ___
 
 *Overrides [KeyPair](_utils_types_.keypair.md).[recover](_utils_types_.keypair.md#recover)*
 
-*Defined in [apis/avm/keychain.ts:187](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/keychain.ts#L187)*
+*Defined in [apis/avm/keychain.ts:187](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/keychain.ts#L187)*
 
 Recovers the public key of a message signer from a message and its associated signature.
 
@@ -304,7 +304,7 @@ ___
 
 *Inherited from [KeyPair](_utils_types_.keypair.md)*
 
-*Defined in [utils/types.ts:255](https://github.com/ava-labs/slopes/blob/48cc94f/src/utils/types.ts#L255)*
+*Defined in [utils/types.ts:255](https://github.com/ava-labs/slopes/blob/51a37ef/src/utils/types.ts#L255)*
 
 Sets the the chainID associated with this key.
 
@@ -324,7 +324,7 @@ ___
 
 *Overrides [KeyPair](_utils_types_.keypair.md).[sign](_utils_types_.keypair.md#sign)*
 
-*Defined in [apis/avm/keychain.ts:156](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/keychain.ts#L156)*
+*Defined in [apis/avm/keychain.ts:156](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/keychain.ts#L156)*
 
 Takes a message, signs it, and returns the signature.
 
@@ -346,7 +346,7 @@ ___
 
 *Overrides [KeyPair](_utils_types_.keypair.md).[verify](_utils_types_.keypair.md#verify)*
 
-*Defined in [apis/avm/keychain.ts:174](https://github.com/ava-labs/slopes/blob/48cc94f/src/apis/avm/keychain.ts#L174)*
+*Defined in [apis/avm/keychain.ts:174](https://github.com/ava-labs/slopes/blob/51a37ef/src/apis/avm/keychain.ts#L174)*
 
 Verifies that the private key associated with the provided public key produces the signature associated with the given message.
 
