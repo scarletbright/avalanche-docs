@@ -1,6 +1,6 @@
-[slopes - v1.7.2](README.md)
+[slopes - v1.7.4](README.md)
 
-# slopes - v1.7.2
+# slopes - v1.7.4
 
 ## Index
 
@@ -16,6 +16,7 @@
     * [AVM Tx](modules/_apis_avm_tx_.md)
     * [AVM Types](modules/_apis_avm_types_.md)
     * [AVM UTXOs](modules/_apis_avm_utxos_.md)
+  * [Health API](modules/_apis_health_api_.md)
   * [Node Keystore API](modules/_apis_keystore_api_.md)
   * [Platform API](modules/_apis_platform_api_.md)
   * Slopes

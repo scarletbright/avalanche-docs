@@ -1,4 +1,4 @@
-[slopes - v1.7.2](../README.md) › ["apis/avm/types"](../modules/_apis_avm_types_.md) › [Signature](_apis_avm_types_.signature.md)
+[slopes - v1.7.4](../README.md) › ["apis/avm/types"](../modules/_apis_avm_types_.md) › [Signature](_apis_avm_types_.signature.md)
 
 # Class: Signature
 
@@ -37,7 +37,7 @@ Signature for a [Tx](_apis_avm_tx_.tx.md)
 
 *Overrides [NBytes](_utils_types_.nbytes.md).[constructor](_utils_types_.nbytes.md#constructor)*
 
-*Defined in [apis/avm/types.ts:49](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/types.ts#L49)*
+*Defined in [apis/avm/types.ts:49](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/types.ts#L49)*
 
 Signature for a [Tx](_apis_avm_tx_.tx.md)
 
@@ -51,7 +51,7 @@ Signature for a [Tx](_apis_avm_tx_.tx.md)
 
 *Inherited from [NBytes](_utils_types_.nbytes.md).[bsize](_utils_types_.nbytes.md#protected-bsize)*
 
-*Defined in [utils/types.ts:400](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/types.ts#L400)*
+*Defined in [utils/types.ts:400](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L400)*
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 *Inherited from [NBytes](_utils_types_.nbytes.md).[bytes](_utils_types_.nbytes.md#protected-bytes)*
 
-*Defined in [utils/types.ts:399](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/types.ts#L399)*
+*Defined in [utils/types.ts:399](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L399)*
 
 ## Methods
 
@@ -71,7 +71,7 @@ ___
 
 *Inherited from [NBytes](_utils_types_.nbytes.md).[fromBuffer](_utils_types_.nbytes.md#frombuffer)*
 
-*Defined in [utils/types.ts:433](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/types.ts#L433)*
+*Defined in [utils/types.ts:433](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L433)*
 
 Takes a [[Buffer]], verifies its length, and stores it.
 
@@ -94,7 +94,7 @@ ___
 
 *Inherited from [NBytes](_utils_types_.nbytes.md).[fromString](_utils_types_.nbytes.md#fromstring)*
 
-*Defined in [utils/types.ts:416](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/types.ts#L416)*
+*Defined in [utils/types.ts:416](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L416)*
 
 Takes a base-58 encoded string, verifies its length, and stores it.
 
@@ -116,7 +116,7 @@ ___
 
 *Inherited from [NBytes](_utils_types_.nbytes.md)*
 
-*Defined in [utils/types.ts:407](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/types.ts#L407)*
+*Defined in [utils/types.ts:407](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L407)*
 
 Returns the length of the [Buffer](https://github.com/feross/buffer).
 
@@ -132,7 +132,7 @@ ___
 
 *Inherited from [NBytes](_utils_types_.nbytes.md).[toBuffer](_utils_types_.nbytes.md#tobuffer)*
 
-*Defined in [utils/types.ts:455](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/types.ts#L455)*
+*Defined in [utils/types.ts:455](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L455)*
 
 Returns the stored [Buffer](https://github.com/feross/buffer).
 
@@ -148,7 +148,7 @@ ___
 
 *Inherited from [NBytes](_utils_types_.nbytes.md).[toString](_utils_types_.nbytes.md#tostring)*
 
-*Defined in [utils/types.ts:464](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/types.ts#L464)*
+*Defined in [utils/types.ts:464](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L464)*
 
 Returns a base-58 string of the stored [Buffer](https://github.com/feross/buffer).
 

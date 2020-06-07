@@ -1,4 +1,4 @@
-[slopes - v1.7.2](../README.md) › ["utils/crypto"](../modules/_utils_crypto_.md) › [CryptoHelpers](_utils_crypto_.cryptohelpers.md)
+[slopes - v1.7.4](../README.md) › ["utils/crypto"](../modules/_utils_crypto_.md) › [CryptoHelpers](_utils_crypto_.cryptohelpers.md)
 
 # Class: CryptoHelpers
 
@@ -40,7 +40,7 @@ Encryption is using XChaCha20Poly1305 with a random public nonce.
 
 \+ **new CryptoHelpers**(): *[CryptoHelpers](_utils_crypto_.cryptohelpers.md)*
 
-*Defined in [utils/crypto.ts:176](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/crypto.ts#L176)*
+*Defined in [utils/crypto.ts:176](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/crypto.ts#L176)*
 
 **Returns:** *[CryptoHelpers](_utils_crypto_.cryptohelpers.md)*
 
@@ -50,7 +50,7 @@ Encryption is using XChaCha20Poly1305 with a random public nonce.
 
 • **libsodium**: *"/Users/carloscardona/Sites/AVALabs/slopes/node_modules/@types/libsodium-wrappers/index"*
 
-*Defined in [utils/crypto.ts:16](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/crypto.ts#L16)*
+*Defined in [utils/crypto.ts:16](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/crypto.ts#L16)*
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 • **memlimit**: *number* = 524288000
 
-*Defined in [utils/crypto.ts:14](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/crypto.ts#L14)*
+*Defined in [utils/crypto.ts:14](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/crypto.ts#L14)*
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 • **opslimit**: *number* = 3
 
-*Defined in [utils/crypto.ts:15](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/crypto.ts#L15)*
+*Defined in [utils/crypto.ts:15](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/crypto.ts#L15)*
 
 ## Methods
 
@@ -74,7 +74,7 @@ ___
 
 ▸ **_pwcleaner**(`password`: string, `salt`: Uint8Array): *Promise‹Uint8Array›*
 
-*Defined in [utils/crypto.ts:67](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/crypto.ts#L67)*
+*Defined in [utils/crypto.ts:67](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/crypto.ts#L67)*
 
 Internal-intended function for cleaning passwords.
 
@@ -93,7 +93,7 @@ ___
 
 ▸ **decrypt**(`password`: string, `ciphertext`: Buffer, `salt`: Buffer, `nonce`: Buffer): *Promise‹Buffer›*
 
-*Defined in [utils/crypto.ts:171](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/crypto.ts#L171)*
+*Defined in [utils/crypto.ts:171](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/crypto.ts#L171)*
 
 Decrypts ciphertext with the provided password, nonce, ans salt.
 
@@ -114,7 +114,7 @@ ___
 
 ▸ **encrypt**(`password`: string, `plaintext`: Buffer | string, `salt`: Buffer): *Promise‹object›*
 
-*Defined in [utils/crypto.ts:136](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/crypto.ts#L136)*
+*Defined in [utils/crypto.ts:136](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/crypto.ts#L136)*
 
 Encrypts plaintext with the provided password using XChaCha20Poly1305.
 
@@ -136,7 +136,7 @@ ___
 
 ▸ **getMemoryLimit**(): *number*
 
-*Defined in [utils/crypto.ts:21](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/crypto.ts#L21)*
+*Defined in [utils/crypto.ts:21](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/crypto.ts#L21)*
 
 Retrieves the memory limit that can be spent generating password-safe hashes.
 
@@ -148,7 +148,7 @@ ___
 
 ▸ **getOpsLimit**(): *number*
 
-*Defined in [utils/crypto.ts:37](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/crypto.ts#L37)*
+*Defined in [utils/crypto.ts:37](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/crypto.ts#L37)*
 
 Retrieves the cpu limit that can be spent generating password-safe hashes.
 
@@ -160,7 +160,7 @@ ___
 
 ▸ **makeSalt**(): *Promise‹Buffer›*
 
-*Defined in [utils/crypto.ts:101](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/crypto.ts#L101)*
+*Defined in [utils/crypto.ts:101](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/crypto.ts#L101)*
 
 Generates a randomized [Buffer](https://github.com/feross/buffer) to be used as a salt
 
@@ -172,7 +172,7 @@ ___
 
 ▸ **pwhash**(`password`: string, `salt`: Buffer): *Promise‹object›*
 
-*Defined in [utils/crypto.ts:114](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/crypto.ts#L114)*
+*Defined in [utils/crypto.ts:114](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/crypto.ts#L114)*
 
 Produces a password-safe hash.
 
@@ -193,7 +193,7 @@ ___
 
 ▸ **setMemoryLimit**(`memlimit`: number): *void*
 
-*Defined in [utils/crypto.ts:30](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/crypto.ts#L30)*
+*Defined in [utils/crypto.ts:30](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/crypto.ts#L30)*
 
 Sets the memory limit that can be spent generating password-safe hashes.
 
@@ -211,7 +211,7 @@ ___
 
 ▸ **setOpsLimit**(`opslimit`: number): *void*
 
-*Defined in [utils/crypto.ts:46](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/crypto.ts#L46)*
+*Defined in [utils/crypto.ts:46](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/crypto.ts#L46)*
 
 Retrieves the cpu limit that can be spent generating password-safe hashes.
 
@@ -229,7 +229,7 @@ ___
 
 ▸ **sha256**(`message`: string | Buffer | Uint8Array): *Buffer*
 
-*Defined in [utils/crypto.ts:88](https://github.com/ava-labs/slopes/blob/ba50532/src/utils/crypto.ts#L88)*
+*Defined in [utils/crypto.ts:88](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/crypto.ts#L88)*
 
 A SHA256 helper function.
 

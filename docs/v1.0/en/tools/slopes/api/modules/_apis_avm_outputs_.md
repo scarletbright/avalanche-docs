@@ -1,4 +1,4 @@
-[slopes - v1.7.2](../README.md) › ["apis/avm/outputs"](_apis_avm_outputs_.md)
+[slopes - v1.7.4](../README.md) › ["apis/avm/outputs"](_apis_avm_outputs_.md)
 
 # External module: "apis/avm/outputs"
 
@@ -27,7 +27,7 @@
 
 • **bintools**: *[BinTools](../classes/_utils_bintools_.bintools.md)‹›* =  BinTools.getInstance()
 
-*Defined in [apis/avm/outputs.ts:9](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L9)*
+*Defined in [apis/avm/outputs.ts:9](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/outputs.ts#L9)*
 
 ## Functions
 
@@ -35,7 +35,7 @@
 
 ▸ **SelectOutputClass**(`outputid`: number, ...`args`: Array‹any›): *[Output](../classes/_apis_avm_outputs_.output.md)*
 
-*Defined in [apis/avm/outputs.ts:18](https://github.com/ava-labs/slopes/blob/ba50532/src/apis/avm/outputs.ts#L18)*
+*Defined in [apis/avm/outputs.ts:18](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/outputs.ts#L18)*
 
 Takes a buffer representing the output and returns the proper Output instance.
 
