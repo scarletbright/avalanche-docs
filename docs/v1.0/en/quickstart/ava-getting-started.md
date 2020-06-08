@@ -70,8 +70,8 @@ Under `Assets`, select the appropriate file.
 For MacOS:  
 Download the file named `gecko-osx-<VERSION>.zip`  
 Unzip the file with `unzip gecko-osx-<VERSION>.zip`  
-The resulting folder, `build`, contains the binaries.  
-You can run the node with `./build/ava`
+The resulting folder, `gecko-<VERSION>`, contains the binaries.  
+You can run the node with `./gecko-<VERSION>/ava`
 
 For Linux:  
 Download the file named `gecko-linux-<VERSION>.tar.gz`. 
