@@ -90,10 +90,14 @@ The resulting folder, `gecko-<VERSION>`, contains the binaries.
 You can run the node with `./gecko-<VERSION>/ava`
 
 For Linux:  
-Download the file named `gecko-linux-<VERSION>.tar.gz`. 
+Download the file named `gecko-linux-<VERSION>.tar.gz`  
 Unzip the file with `tar -xvf gecko-linux-<VERSION>.tar.gz`  
 The resulting folder, `gecko-<VERSION>`, contains the binaries.  
 You can run the node with `./gecko-<VERSION>/ava`
+
+### Will upgrading my node give me a new node ID?
+
+No.
 
 ### What version am I running?
 
