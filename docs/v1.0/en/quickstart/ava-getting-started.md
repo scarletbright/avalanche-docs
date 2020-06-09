@@ -14,7 +14,9 @@ In this tutorial, which should take less than 10 minutes, we will:
 * Acquire and send AVA, the AVA network's native token
 * Start validating
 
-If you run into any issues at all, please come ask for help on our [Discord Server!](https://discord.gg/wdkGmJ9)
+
+If you run into any issues at all, **please check the [FAQ](../faq/faq.md)**
+If your issue isn't addressed there, come ask for help on our [Discord Server!](https://discord.gg/wdkGmJ9)
 We will work to get you through any problems.
 
 ## Requirements 
@@ -90,48 +92,19 @@ To start a node and connect it to the AVA test net:
 ./build/ava
 ```
 
-**Note: if your node fails to start with** `problem starting servers: failed to listen on consensus server at 0.0.0.0:9651: unable to listen`,
-**run with**  `./build/ava --staking-port=9652` **(or 9653 or some other unused port). This is a known issue and we're working on it.**
-
 You can use `Ctrl + C` to kill the node.
 
-You will see two warnings that say, in part `Bootstrapping finished with no accepted frontier.` These are OK.
+When the node starts, it has to bootstrap (catch up with the rest of the network.)
+This should take less than 30 minutes (though the amount of time will increase as the network state grows.)
+You will see logs about bootstrapping..
 
-The first time you start a node it will take a few minutes (~15) to bootstrap.  
+When a given chain is done bootstrapping, it will print a log like this:
 
-We are working on a better way to inform the user that bootstrapping is done and the node is ready to process transactions.
-For now, check the balance of the faucet to see if your node is bootstrapped.
+`INFO [06-07|19:54:06] <X Chain> /snow/engine/avalanche/transitive.go#80: bootstrapping finished with 1 vertices in the accepted frontier`
 
-```sh
-curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :2,
-    "method" :"avm.getBalance",
-    "params" :{
-        "address":"X-6cesTteH62Y5mLoDBUASaBvCXuL2AthL",
-        "assetID":"AVA"
-    }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/X
-```
+If you make an API call to a chain that is not done bootstrapping, it will hang or 404.
 
-If the response is this:
-
-```json
-{
-    "jsonrpc":"2.0",
-    "id"     :2,
-    "result" :{
-        "balance": 0,
-        "utxoIDs":null
-    }
-}
-```
-
-or if the API call hangs or returns a 404 error, then your node isn't bootstrapped.
-
-If it doesn't bootstrap in a few minutes, check the [AVA explorer](https://explorer.ava.network/) to see if there are recent transactions on the network.
-If so, the issue is probably your node; contact us on [Discord.](https://discord.gg/wdkGmJ9)
-If not, the test network is probably down.
+If your node never finishes bootstrapping, contact us on [Discord.](https://discord.gg/wdkGmJ9)
 
 ## Create a Keystore User
 
@@ -195,8 +168,7 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-If this call returns a 404 error, your node isn't finished bootstrapping. Wait a few more minutes and try again.
-If it stills gives you a 404, contact us on [Discord](https://discord.gg/wdkGmJ9) and we'll help you.
+If this call returns a 404 or hangs, your node probably isn't finished bootstrapping.
 
 Note that we make this request to `127.0.0.1:9650/ext/bc/X`.
 The `bc/X` portion signifies that the request is being sent to the blockchain whose ID (or alias) is `X` (ie the X-Chain.)
