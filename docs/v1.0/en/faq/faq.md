@@ -95,7 +95,7 @@ Unzip the file with `tar -xvf gecko-linux-<VERSION>.tar.gz`
 The resulting folder, `gecko-<VERSION>`, contains the binaries.  
 You can run the node with `./gecko-<VERSION>/ava`
 
-### Will upgrading my node give me a new node ID?
+### Will restarting/upgrading my node give me a new node ID?
 
 No.
 
