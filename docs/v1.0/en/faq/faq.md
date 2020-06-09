@@ -420,13 +420,9 @@ Do:
 
 `kill -9 29861` (or whatever number appears in the second column)
 
-### On start, node prints `error while creating vm: Unrecognized remote plugin`
+### Node prints a lot of messages that begin `2020-06-09T12:45:02.548-0400 [DEBUG] plugin.sh: DEBUG[06-09|12:45:02.548] `
 
-This message means your node is not running the C-Chain; it's looking in the wrong location for a binary.
-
-To fix this, you can use the `--plugin-dir` command-line argument.
-
-If you are in the directory containing the `ava` binary, start your node with: `./ava --plugin-dir=$(pwd)/plugins`
+This is a known issue. We're working on it! You can ignore these logs.
 
 ### Node prints `NAT Traversal failed ...`
 
