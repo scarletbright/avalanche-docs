@@ -49,9 +49,49 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "address": "X-KqpU28P2ipUxfTfwaT847wWxyXB4XuWad"
+        "address": "X-EKpEPX56YA1dsaHBsW8X5nGqNSwJ7JrWH"
     },
     "id": 1
+}
+```
+
+### avm.listAddresses
+
+List addresses controlled by the given user.
+
+#### Signature
+
+```go
+avm.listAddresses({
+    username: string,
+    password: string
+}) -> {addresses: []string}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "avm.listAddresses",
+    "params": {
+        "username":"myUsername",
+        "password":"myPassword"
+    },
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "addresses": ["X-EKpEPX56YA1dsaHBsW8X5nGqNSwJ7JrWH"]
+    },
+    "id": 84
 }
 ```
 
@@ -72,13 +112,13 @@ avm.getBalance({
 
 ```json
 curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :2,
-    "method" :"avm.getBalance",
-    "params" :{
-        "address":"X-KqpU28P2ipUxfTfwaT847wWxyXB4XuWad",
-        "assetID":"2sLRGHdLCZkxKnAew9M91GcN4DWVP9WwSrLTYNTqdZAXFB57Py"
-    }
+  "jsonrpc":"2.0",
+  "id"     : 1,
+  "method" :"avm.getBalance",
+  "params" :{
+      "address":"X-EKpEPX56YA1dsaHBsW8X5nGqNSwJ7JrWH",
+      "assetID": "2pYGetDWyKdHxpFxh2LHeoLNCH6H5vxxCxHQtFnnFaYxLsqtHC"
+  }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
@@ -89,7 +129,13 @@ curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :2,
     "result" :{
-        "balance":18944
+        "balance":"299999999999900",
+        "utxoIDs":[
+            {
+                "txID":"WPQdyLNqHfiEKp4zcCpayRHYDVYuh1hqs9c1RqgZXS4VPgdvo",
+                "outputIndex":1
+            }
+        ]
     }
 }
 ```
@@ -627,7 +673,7 @@ curl -X POST --data '{
         "to":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
         "amount": 500,
     	"username":"myUsername",
-    	"password":"myPassword",
+    	"password":"myPassword"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```

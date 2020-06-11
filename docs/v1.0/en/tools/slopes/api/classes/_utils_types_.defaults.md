@@ -1,4 +1,4 @@
-[slopes - v1.4.3](../README.md) › [Globals](../globals.md) › ["utils/types"](../modules/_utils_types_.md) › [Defaults](_utils_types_.defaults.md)
+[slopes - v1.7.4](../README.md) › ["utils/types"](../modules/_utils_types_.md) › [Defaults](_utils_types_.defaults.md)
 
 # Class: Defaults
 
@@ -18,19 +18,19 @@
 
 ### ▪ **network**: *object*
 
-*Defined in [utils/types.ts:498](https://github.com/ava-labs/slopes/blob/709e172/src/utils/types.ts#L498)*
+*Defined in [utils/types.ts:517](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L517)*
 
 ###  1
 
 • **1**: *object*
 
-*Defined in [utils/types.ts:499](https://github.com/ava-labs/slopes/blob/709e172/src/utils/types.ts#L499)*
+*Defined in [utils/types.ts:518](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L518)*
 
 #### Type declaration:
 
 ▪ **12345**: *object*
 
-*Defined in [utils/types.ts:511](https://github.com/ava-labs/slopes/blob/709e172/src/utils/types.ts#L511)*
+*Defined in [utils/types.ts:541](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L541)*
 
 * **11111111111111111111111111111111LpoYY**: *object & object* =  n12345_platform
 
@@ -52,7 +52,7 @@
 
 ▪ **2**: *object*
 
-*Defined in [utils/types.ts:500](https://github.com/ava-labs/slopes/blob/709e172/src/utils/types.ts#L500)*
+*Defined in [utils/types.ts:519](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L519)*
 
 * **11111111111111111111111111111111LpoYY**: *object* =  n2_platform
 
@@ -71,3 +71,25 @@
 * **contracts**: *object* =  n2_contracts
 
 * **platform**: *object* =  n2_platform
+
+▪ **3**: *object*
+
+*Defined in [utils/types.ts:530](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L530)*
+
+* **11111111111111111111111111111111LpoYY**: *object* =  n3_platform
+
+* **C**: *object* =  n3_contracts
+
+* **P**: *object* =  n3_platform
+
+* **X**: *object* =  n3_avm
+
+* **avm**: *object* =  n3_avm
+
+* **contracts**: *object* =  n3_contracts
+
+* **platform**: *object* =  n3_platform
+
+* **rrEWX7gc7D9mwcdrdBxBTdqh1a7WDVsMuadhTZgyXfFcRz45L**: *object* =  n3_avm
+
+* **zJytnh96Pc8rM337bBrtMvJDbEdDNjcXG3WkTNCiLp18ergm9**: *object* =  n3_contracts

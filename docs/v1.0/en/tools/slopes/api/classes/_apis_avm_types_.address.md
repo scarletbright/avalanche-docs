@@ -1,4 +1,4 @@
-[slopes - v1.4.3](../README.md) › [Globals](../globals.md) › ["apis/avm/types"](../modules/_apis_avm_types_.md) › [Address](_apis_avm_types_.address.md)
+[slopes - v1.7.4](../README.md) › ["apis/avm/types"](../modules/_apis_avm_types_.md) › [Address](_apis_avm_types_.address.md)
 
 # Class: Address
 
@@ -38,7 +38,7 @@ Class for representing an address used in [Output](_apis_avm_outputs_.output.md)
 
 *Overrides [NBytes](_utils_types_.nbytes.md).[constructor](_utils_types_.nbytes.md#constructor)*
 
-*Defined in [apis/avm/types.ts:102](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L102)*
+*Defined in [apis/avm/types.ts:103](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/types.ts#L103)*
 
 Class for representing an address used in [Output](_apis_avm_outputs_.output.md) types
 
@@ -52,7 +52,7 @@ Class for representing an address used in [Output](_apis_avm_outputs_.output.md)
 
 *Inherited from [NBytes](_utils_types_.nbytes.md).[bsize](_utils_types_.nbytes.md#protected-bsize)*
 
-*Defined in [utils/types.ts:400](https://github.com/ava-labs/slopes/blob/709e172/src/utils/types.ts#L400)*
+*Defined in [utils/types.ts:400](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L400)*
 
 ___
 
@@ -62,25 +62,26 @@ ___
 
 *Inherited from [NBytes](_utils_types_.nbytes.md).[bytes](_utils_types_.nbytes.md#protected-bytes)*
 
-*Defined in [utils/types.ts:399](https://github.com/ava-labs/slopes/blob/709e172/src/utils/types.ts#L399)*
+*Defined in [utils/types.ts:399](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L399)*
 
 ## Methods
 
 ###  fromBuffer
 
-▸ **fromBuffer**(`buff`: Buffer): *number*
+▸ **fromBuffer**(`buff`: Buffer, `offset`: number): *number*
 
 *Inherited from [NBytes](_utils_types_.nbytes.md).[fromBuffer](_utils_types_.nbytes.md#frombuffer)*
 
-*Defined in [utils/types.ts:433](https://github.com/ava-labs/slopes/blob/709e172/src/utils/types.ts#L433)*
+*Defined in [utils/types.ts:433](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L433)*
 
 Takes a [[Buffer]], verifies its length, and stores it.
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`buff` | Buffer |
+Name | Type | Default |
+------ | ------ | ------ |
+`buff` | Buffer | - |
+`offset` | number | 0 |
 
 **Returns:** *number*
 
@@ -94,7 +95,7 @@ ___
 
 *Overrides [NBytes](_utils_types_.nbytes.md).[fromString](_utils_types_.nbytes.md#fromstring)*
 
-*Defined in [apis/avm/types.ts:86](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L86)*
+*Defined in [apis/avm/types.ts:87](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/types.ts#L87)*
 
 Takes a base-58 string containing an [Address](_apis_avm_types_.address.md), parses it, populates the class, and returns the length of the Address in bytes.
 
@@ -116,7 +117,7 @@ ___
 
 *Inherited from [NBytes](_utils_types_.nbytes.md)*
 
-*Defined in [utils/types.ts:407](https://github.com/ava-labs/slopes/blob/709e172/src/utils/types.ts#L407)*
+*Defined in [utils/types.ts:407](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L407)*
 
 Returns the length of the [Buffer](https://github.com/feross/buffer).
 
@@ -132,7 +133,7 @@ ___
 
 *Inherited from [NBytes](_utils_types_.nbytes.md).[toBuffer](_utils_types_.nbytes.md#tobuffer)*
 
-*Defined in [utils/types.ts:454](https://github.com/ava-labs/slopes/blob/709e172/src/utils/types.ts#L454)*
+*Defined in [utils/types.ts:455](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L455)*
 
 Returns the stored [Buffer](https://github.com/feross/buffer).
 
@@ -148,7 +149,7 @@ ___
 
 *Overrides [NBytes](_utils_types_.nbytes.md).[toString](_utils_types_.nbytes.md#tostring)*
 
-*Defined in [apis/avm/types.ts:76](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L76)*
+*Defined in [apis/avm/types.ts:77](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/types.ts#L77)*
 
 Returns a base-58 representation of the [Address](_apis_avm_types_.address.md).
 
@@ -160,7 +161,7 @@ ___
 
 ▸ **comparitor**(): *function*
 
-*Defined in [apis/avm/types.ts:68](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/types.ts#L68)*
+*Defined in [apis/avm/types.ts:69](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/types.ts#L69)*
 
 Returns a function used to sort an array of [Address](_apis_avm_types_.address.md)es
 

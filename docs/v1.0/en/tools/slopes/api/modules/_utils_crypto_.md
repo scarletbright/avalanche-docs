@@ -1,4 +1,4 @@
-[slopes - v1.4.3](../README.md) › [Globals](../globals.md) › ["utils/crypto"](_utils_crypto_.md)
+[slopes - v1.7.4](../README.md) › ["utils/crypto"](_utils_crypto_.md)
 
 # External module: "utils/crypto"
 

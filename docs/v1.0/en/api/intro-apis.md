@@ -24,9 +24,13 @@ Allows clients to interact with the P-Chain (Platform Chain), which maintains AV
 
 Allows clients to use an AVA node's built-in keystore.
 
+## [Health API](./health.md)
+
+Allows client to check a node's health.
+
 ## [Metrics API](./metrics.md) 
 
-Allows clients to collect statistics about a node's performance.
+Allows clients to collect Prometheus metrics about a node.
 
 ## [Admin API](./admin.md)
 

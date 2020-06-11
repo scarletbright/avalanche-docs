@@ -1,10 +1,10 @@
-[slopes - v1.4.3](../README.md) › [Globals](../globals.md) › ["apis/avm/inputs"](../modules/_apis_avm_inputs_.md) › [SecpInput](_apis_avm_inputs_.secpinput.md)
+[slopes - v1.7.4](../README.md) › ["apis/avm/inputs"](../modules/_apis_avm_inputs_.md) › [SecpInput](_apis_avm_inputs_.secpinput.md)
 
 # Class: SecpInput
 
 ## Hierarchy
 
-* [Input](_apis_avm_inputs_.input.md)
+  ↳ [AmountInput](_apis_avm_inputs_.amountinput.md)
 
   ↳ **SecpInput**
 
@@ -18,21 +18,17 @@
 
 * [amount](_apis_avm_inputs_.secpinput.md#protected-amount)
 * [amountValue](_apis_avm_inputs_.secpinput.md#protected-amountvalue)
-* [assetid](_apis_avm_inputs_.secpinput.md#protected-assetid)
-* [inputid](_apis_avm_inputs_.secpinput.md#protected-inputid)
-* [numAddr](_apis_avm_inputs_.secpinput.md#protected-numaddr)
+* [sigCount](_apis_avm_inputs_.secpinput.md#protected-sigcount)
 * [sigIdxs](_apis_avm_inputs_.secpinput.md#protected-sigidxs)
-* [txid](_apis_avm_inputs_.secpinput.md#protected-txid)
-* [txidx](_apis_avm_inputs_.secpinput.md#protected-txidx)
 
 ### Methods
 
 * [addSignatureIdx](_apis_avm_inputs_.secpinput.md#addsignatureidx)
 * [fromBuffer](_apis_avm_inputs_.secpinput.md#frombuffer)
-* [getAssetID](_apis_avm_inputs_.secpinput.md#getassetid)
+* [getAmount](_apis_avm_inputs_.secpinput.md#getamount)
+* [getCredentialID](_apis_avm_inputs_.secpinput.md#getcredentialid)
 * [getInputID](_apis_avm_inputs_.secpinput.md#getinputid)
 * [getSigIdxs](_apis_avm_inputs_.secpinput.md#getsigidxs)
-* [getUTXOID](_apis_avm_inputs_.secpinput.md#getutxoid)
 * [toBuffer](_apis_avm_inputs_.secpinput.md#tobuffer)
 * [toString](_apis_avm_inputs_.secpinput.md#tostring)
 * [comparator](_apis_avm_inputs_.secpinput.md#static-comparator)
@@ -41,22 +37,21 @@
 
 ###  constructor
 
-\+ **new SecpInput**(`txid?`: Buffer, `txidx?`: Buffer, `amount?`: BN, `assetID?`: Buffer): *[SecpInput](_apis_avm_inputs_.secpinput.md)*
+\+ **new SecpInput**(`amount`: BN): *[SecpInput](_apis_avm_inputs_.secpinput.md)*
+
+*Inherited from [AmountInput](_apis_avm_inputs_.amountinput.md).[constructor](_apis_avm_inputs_.amountinput.md#constructor)*
 
 *Overrides [Input](_apis_avm_inputs_.input.md).[constructor](_apis_avm_inputs_.input.md#constructor)*
 
-*Defined in [apis/avm/inputs.ts:230](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L230)*
+*Defined in [apis/avm/inputs.ts:262](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/inputs.ts#L262)*
 
-Class representing an Input for a transaction.
+An [AmountInput](_apis_avm_inputs_.amountinput.md) class which issues a payment on an assetID.
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`txid?` | Buffer | A [Buffer](https://github.com/feross/buffer) containing the transaction ID of the referenced UTXO |
-`txidx?` | Buffer | A [Buffer](https://github.com/feross/buffer) containing the index of the output in the transaction consumed in the [Input](_apis_avm_inputs_.input.md) |
-`amount?` | BN | A [BN](https://github.com/indutny/bn.js/) containing the amount of the output to be consumed  |
-`assetID?` | Buffer | A [Buffer](https://github.com/feross/buffer) representing the assetID of the [Input](_apis_avm_inputs_.input.md) |
+Name | Type | Default | Description |
+------ | ------ | ------ | ------ |
+`amount` | BN |  undefined | A [BN](https://github.com/indutny/bn.js/) representing the amount in the input  |
 
 **Returns:** *[SecpInput](_apis_avm_inputs_.secpinput.md)*
 
@@ -66,7 +61,9 @@ Name | Type | Description |
 
 • **amount**: *Buffer* =  Buffer.alloc(8)
 
-*Defined in [apis/avm/inputs.ts:147](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L147)*
+*Inherited from [AmountInput](_apis_avm_inputs_.amountinput.md).[amount](_apis_avm_inputs_.amountinput.md#protected-amount)*
+
+*Defined in [apis/avm/inputs.ts:234](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/inputs.ts#L234)*
 
 ___
 
@@ -74,35 +71,19 @@ ___
 
 • **amountValue**: *BN* =  new BN(0)
 
-*Defined in [apis/avm/inputs.ts:148](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L148)*
+*Inherited from [AmountInput](_apis_avm_inputs_.amountinput.md).[amountValue](_apis_avm_inputs_.amountinput.md#protected-amountvalue)*
+
+*Defined in [apis/avm/inputs.ts:235](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/inputs.ts#L235)*
 
 ___
 
-### `Protected` assetid
+### `Protected` sigCount
 
-• **assetid**: *Buffer* =  Buffer.alloc(32)
+• **sigCount**: *Buffer* =  Buffer.alloc(4)
 
-*Inherited from [Input](_apis_avm_inputs_.input.md).[assetid](_apis_avm_inputs_.input.md#protected-assetid)*
+*Inherited from [Input](_apis_avm_inputs_.input.md).[sigCount](_apis_avm_inputs_.input.md#protected-sigcount)*
 
-*Defined in [apis/avm/inputs.ts:49](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L49)*
-
-___
-
-### `Protected` inputid
-
-• **inputid**: *Buffer* =  Buffer.alloc(4)
-
-*Inherited from [Input](_apis_avm_inputs_.input.md).[inputid](_apis_avm_inputs_.input.md#protected-inputid)*
-
-*Defined in [apis/avm/inputs.ts:50](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L50)*
-
-___
-
-### `Protected` numAddr
-
-• **numAddr**: *Buffer* =  Buffer.alloc(4)
-
-*Defined in [apis/avm/inputs.ts:149](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L149)*
+*Defined in [apis/avm/inputs.ts:31](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/inputs.ts#L31)*
 
 ___
 
@@ -110,27 +91,9 @@ ___
 
 • **sigIdxs**: *Array‹[SigIdx](_apis_avm_types_.sigidx.md)›* =  []
 
-*Defined in [apis/avm/inputs.ts:150](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L150)*
+*Inherited from [Input](_apis_avm_inputs_.input.md).[sigIdxs](_apis_avm_inputs_.input.md#protected-sigidxs)*
 
-___
-
-### `Protected` txid
-
-• **txid**: *Buffer* =  Buffer.alloc(32)
-
-*Inherited from [Input](_apis_avm_inputs_.input.md).[txid](_apis_avm_inputs_.input.md#protected-txid)*
-
-*Defined in [apis/avm/inputs.ts:47](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L47)*
-
-___
-
-### `Protected` txidx
-
-• **txidx**: *Buffer* =  Buffer.alloc(4)
-
-*Inherited from [Input](_apis_avm_inputs_.input.md).[txidx](_apis_avm_inputs_.input.md#protected-txidx)*
-
-*Defined in [apis/avm/inputs.ts:48](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L48)*
+*Defined in [apis/avm/inputs.ts:32](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/inputs.ts#L32)*
 
 ## Methods
 
@@ -138,7 +101,9 @@ ___
 
 ▸ **addSignatureIdx**(`addressIdx`: number, `address`: Buffer): *void*
 
-*Defined in [apis/avm/inputs.ts:222](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L222)*
+*Inherited from [Input](_apis_avm_inputs_.input.md)*
+
+*Defined in [apis/avm/inputs.ts:53](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/inputs.ts#L53)*
 
 Creates and adds a [SigIdx](_apis_avm_types_.sigidx.md) to the [Input](_apis_avm_inputs_.input.md).
 
@@ -157,36 +122,48 @@ ___
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
+*Inherited from [AmountInput](_apis_avm_inputs_.amountinput.md).[fromBuffer](_apis_avm_inputs_.amountinput.md#frombuffer)*
+
 *Overrides [Input](_apis_avm_inputs_.input.md).[fromBuffer](_apis_avm_inputs_.input.md#frombuffer)*
 
-*Defined in [apis/avm/inputs.ts:167](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L167)*
+*Defined in [apis/avm/inputs.ts:247](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/inputs.ts#L247)*
 
-Takes a [Buffer](https://github.com/feross/buffer) containing an [Input](_apis_avm_inputs_.input.md), parses it, populates the class, and returns the length of the [Input](_apis_avm_inputs_.input.md) in bytes.
+Popuates the instance from a [Buffer](https://github.com/feross/buffer) representing the [AmountInput](_apis_avm_inputs_.amountinput.md) and returns the size of the output.
 
 **Parameters:**
 
-Name | Type | Default | Description |
------- | ------ | ------ | ------ |
-`bytes` | Buffer | - | A [Buffer](https://github.com/feross/buffer) containing a raw [Input](_apis_avm_inputs_.input.md)  |
-`offset` | number | 0 | - |
+Name | Type | Default |
+------ | ------ | ------ |
+`bytes` | Buffer | - |
+`offset` | number | 0 |
 
 **Returns:** *number*
 
-The length of the raw [Input](_apis_avm_inputs_.input.md)
+___
+
+###  getAmount
+
+▸ **getAmount**(): *BN*
+
+*Inherited from [AmountInput](_apis_avm_inputs_.amountinput.md)*
+
+*Defined in [apis/avm/inputs.ts:240](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/inputs.ts#L240)*
+
+Returns the amount as a [BN](https://github.com/indutny/bn.js/).
+
+**Returns:** *BN*
 
 ___
 
-###  getAssetID
+###  getCredentialID
 
-▸ **getAssetID**(): *Buffer*
+▸ **getCredentialID**(): *number*
 
 *Inherited from [Input](_apis_avm_inputs_.input.md)*
 
-*Defined in [apis/avm/inputs.ts:78](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L78)*
+*Defined in [apis/avm/inputs.ts:43](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/inputs.ts#L43)*
 
-Returns the assetID of the input.
-
-**Returns:** *Buffer*
+**Returns:** *number*
 
 ___
 
@@ -194,11 +171,11 @@ ___
 
 ▸ **getInputID**(): *number*
 
-*Inherited from [Input](_apis_avm_inputs_.input.md)*
+*Overrides [Input](_apis_avm_inputs_.input.md).[getInputID](_apis_avm_inputs_.input.md#abstract-getinputid)*
 
-*Defined in [apis/avm/inputs.ts:71](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L71)*
+*Defined in [apis/avm/inputs.ts:282](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/inputs.ts#L282)*
 
-Returns the number for the input type of the output class.
+Returns the inputID for this input
 
 **Returns:** *number*
 
@@ -208,7 +185,9 @@ ___
 
 ▸ **getSigIdxs**(): *Array‹[SigIdx](_apis_avm_types_.sigidx.md)›*
 
-*Defined in [apis/avm/inputs.ts:156](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L156)*
+*Inherited from [Input](_apis_avm_inputs_.input.md)*
+
+*Defined in [apis/avm/inputs.ts:39](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/inputs.ts#L39)*
 
 Returns the array of [SigIdx](_apis_avm_types_.sigidx.md) for this [Input](_apis_avm_inputs_.input.md)
 
@@ -216,29 +195,17 @@ Returns the array of [SigIdx](_apis_avm_types_.sigidx.md) for this [Input](_apis
 
 ___
 
-###  getUTXOID
-
-▸ **getUTXOID**(): *string*
-
-*Inherited from [Input](_apis_avm_inputs_.input.md)*
-
-*Defined in [apis/avm/inputs.ts:64](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L64)*
-
-Returns a base-58 string representation of the UTXOID this [Input](_apis_avm_inputs_.input.md) references.
-
-**Returns:** *string*
-
-___
-
 ###  toBuffer
 
 ▸ **toBuffer**(): *Buffer*
 
+*Inherited from [AmountInput](_apis_avm_inputs_.amountinput.md).[toBuffer](_apis_avm_inputs_.amountinput.md#tobuffer)*
+
 *Overrides [Input](_apis_avm_inputs_.input.md).[toBuffer](_apis_avm_inputs_.input.md#tobuffer)*
 
-*Defined in [apis/avm/inputs.ts:189](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L189)*
+*Defined in [apis/avm/inputs.ts:257](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/inputs.ts#L257)*
 
-Returns a [Buffer](https://github.com/feross/buffer) representation of the [Input](_apis_avm_inputs_.input.md).
+Returns the buffer representing the [AmountInput](_apis_avm_inputs_.amountinput.md) instance.
 
 **Returns:** *Buffer*
 
@@ -248,9 +215,9 @@ ___
 
 ▸ **toString**(): *string*
 
-*Overrides [Input](_apis_avm_inputs_.input.md).[toString](_apis_avm_inputs_.input.md#tostring)*
+*Inherited from [Input](_apis_avm_inputs_.input.md).[toString](_apis_avm_inputs_.input.md#tostring)*
 
-*Defined in [apis/avm/inputs.ts:212](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L212)*
+*Defined in [apis/avm/inputs.ts:93](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/inputs.ts#L93)*
 
 Returns a base-58 representation of the [Input](_apis_avm_inputs_.input.md).
 
@@ -264,9 +231,7 @@ ___
 
 *Inherited from [Input](_apis_avm_inputs_.input.md)*
 
-*Defined in [apis/avm/inputs.ts:55](https://github.com/ava-labs/slopes/blob/709e172/src/apis/avm/inputs.ts#L55)*
-
-Returns a function used to sort an array of [Input](_apis_avm_inputs_.input.md)s
+*Defined in [apis/avm/inputs.ts:97](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/inputs.ts#L97)*
 
 **Returns:** *function*
 
