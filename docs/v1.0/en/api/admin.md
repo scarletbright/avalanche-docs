@@ -384,3 +384,33 @@ curl -X POST --data '{
     }
 }
 ```
+
+### admin.getNetworkName
+Get the network name this node is running on
+
+#### Signature
+```go
+admin.getNetworkName() -> {networkName: string}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "admin.getNetworkName",
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "networkName":"denali"
+    }
+}
+```
