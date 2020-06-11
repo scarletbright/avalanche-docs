@@ -387,6 +387,7 @@ platform.getCurrentValidators({subnetID: string}) ->
         endTime: int,
         weight: int, (optional)
         stakeAmount: int, (optional)
+        address: string
         id: string
     }
 }
@@ -399,6 +400,7 @@ platform.getCurrentValidators({subnetID: string}) ->
   Omitted if `subnetID` is the default subnet.
 * `stakeAmount` is the amount of nAVA this validator staked.
   Omitted if `subnetID` is not the default subnet.
+* `address` is the P Chain address which was passed in as `destination` when adding the validator.
 * `id` is the validator's ID.
 
 #### Example Call
@@ -420,38 +422,29 @@ curl -X POST --data '{
     "result": {
         "validators": [
             {
-                "startTime": "1572566400",
-                "endtime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ"
+                "startTime": "1591878109",
+                "endtime": "1594469809",
+                "stakeAmount": "319902",
+                "address": "3dAxnVDDZpTZTAUbCboMKsGdi2X1oXbuJ",
+                "id": "NDmcZNsWoPrkN9KSt2A9js639hEQWUmUf"
             },
             {
-                "startTime": "1572566400",
-                "endtime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "GWPcbFJZFfZreETSoWjPimr846mXEKCtu"
+                "startTime": "1591473391",
+                "endtime": "1592855191",
+                "stakeAmount": "10000",
+                "address": "EDCFiDfrqPnGk5PKR7BFdE132CwDmAHRX",
+                "id": "62T5AAwKdFMNi7Gm193A6zyJhVscRfuhP"
             },
             {
-                "startTime": "1572566400",
-                "endtime": "1604102400",
+                "startTime": "1591387125",
+                "endtime": "1622923025",
                 "stakeAmount": "20000000000000",
-                "id": "NFBbbJ4qCmNaCzeW7sxErhvWqvEQMnYcN"
-            },
-            {
-                "startTime": "1572566400",
-                "endtime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg"
-            },
-            {
-                "startTime": "1572566400",
-                "endtime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "P7oB2McjBGgW2NXXWVYjV8JEDFoW9xDE5"
+                "address": "95YUFjhDG892VePMzpwKF9JzewGKvGRi3",
+                "id": "HGZ8ae74J3odT8ESreAdCtdnvWG1J4X5n"
             }
         ]
     },
-    "id": 85
+    "id": 1
 }
 ```
 
@@ -470,6 +463,7 @@ platform.getPendingValidators({subnetID: string}) ->
         endTime: int,
         weight: int, (optional)
         stakeAmount: int, (optional)
+        address: string
         id: string
     }
 }
@@ -482,6 +476,7 @@ platform.getPendingValidators({subnetID: string}) ->
   Omitted if `subnetID` is the default subnet.
 * `stakeAmount` is the amount of nAVA this validator staked.
   Omitted if `subnetID` is not the default subnet.
+* `address` is the P Chain address which was passed in as `destination` when adding the validator.
 * `id` is the validator's ID.
 
 #### Example Call
@@ -503,10 +498,11 @@ curl -X POST --data '{
     "result": {
         "validators": [
             {
-                "startTime": "1572567400",
-                "endtime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ"
+                "startTime": "1592400591",
+                "endtime": "1622923025",
+                "stakeAmount": "10000",
+                "address": "6cesTteH62Y5mLoDBUASaBvCXuL2AthL",
+                "id": "DpL8PTsrjtLzv5J8LL3D2A6YcnCTqrNH9"
             },
         ]
     },
