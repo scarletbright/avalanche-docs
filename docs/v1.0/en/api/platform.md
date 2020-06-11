@@ -312,7 +312,7 @@ platform.getCurrentValidators({subnetID: string}) ->
   Omitted if `subnetID` is the default subnet.
 * `stakeAmount` is the amount of nAVA this validator staked.
   Omitted if `subnetID` is not the default subnet.
-* `address` is the P Chain account which was passed in as `destination` when adding the validator.
+* `address` is the P Chain address which was passed in as `destination` when adding the validator.
 * `id` is the validator's ID.
 
 #### Example Call
@@ -388,7 +388,7 @@ platform.getPendingValidators({subnetID: string}) ->
   Omitted if `subnetID` is the default subnet.
 * `stakeAmount` is the amount of nAVA this validator staked.
   Omitted if `subnetID` is not the default subnet.
-* `address` is the P Chain account which was passed in as `destination` when adding the validator.
+* `address` is the P Chain address which was passed in as `destination` when adding the validator.
 * `id` is the validator's ID.
 
 #### Example Call
