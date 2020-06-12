@@ -1,4 +1,4 @@
-[slopes - v1.7.4](../README.md) › ["apis/avm/utxos"](_apis_avm_utxos_.md)
+[slopes - v1.7.5](../README.md) › ["apis/avm/utxos"](_apis_avm_utxos_.md)
 
 # External module: "apis/avm/utxos"
 

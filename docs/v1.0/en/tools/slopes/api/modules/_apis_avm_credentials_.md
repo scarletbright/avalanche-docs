@@ -1,4 +1,4 @@
-[slopes - v1.7.4](../README.md) › ["apis/avm/credentials"](_apis_avm_credentials_.md)
+[slopes - v1.7.5](../README.md) › ["apis/avm/credentials"](_apis_avm_credentials_.md)
 
 # External module: "apis/avm/credentials"
 
@@ -20,7 +20,7 @@
 
 ▸ **SelectCredentialClass**(`credid`: number, ...`args`: Array‹any›): *[Credential](../classes/_apis_avm_credentials_.credential.md)*
 
-*Defined in [apis/avm/credentials.ts:22](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/credentials.ts#L22)*
+*Defined in [apis/avm/credentials.ts:22](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/credentials.ts#L22)*
 
 Takes a buffer representing the credential and returns the proper [Credential](../classes/_apis_avm_credentials_.credential.md) instance.
 

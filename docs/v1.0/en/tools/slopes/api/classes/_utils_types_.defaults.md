@@ -1,4 +1,4 @@
-[slopes - v1.7.4](../README.md) › ["utils/types"](../modules/_utils_types_.md) › [Defaults](_utils_types_.defaults.md)
+[slopes - v1.7.5](../README.md) › ["utils/types"](../modules/_utils_types_.md) › [Defaults](_utils_types_.defaults.md)
 
 # Class: Defaults
 
@@ -18,19 +18,19 @@
 
 ### ▪ **network**: *object*
 
-*Defined in [utils/types.ts:517](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L517)*
+*Defined in [utils/types.ts:517](https://github.com/ava-labs/slopes/blob/db73b16/src/utils/types.ts#L517)*
 
 ###  1
 
 • **1**: *object*
 
-*Defined in [utils/types.ts:518](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L518)*
+*Defined in [utils/types.ts:518](https://github.com/ava-labs/slopes/blob/db73b16/src/utils/types.ts#L518)*
 
 #### Type declaration:
 
 ▪ **12345**: *object*
 
-*Defined in [utils/types.ts:541](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L541)*
+*Defined in [utils/types.ts:541](https://github.com/ava-labs/slopes/blob/db73b16/src/utils/types.ts#L541)*
 
 * **11111111111111111111111111111111LpoYY**: *object & object* =  n12345_platform
 
@@ -52,7 +52,7 @@
 
 ▪ **2**: *object*
 
-*Defined in [utils/types.ts:519](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L519)*
+*Defined in [utils/types.ts:519](https://github.com/ava-labs/slopes/blob/db73b16/src/utils/types.ts#L519)*
 
 * **11111111111111111111111111111111LpoYY**: *object* =  n2_platform
 
@@ -74,7 +74,7 @@
 
 ▪ **3**: *object*
 
-*Defined in [utils/types.ts:530](https://github.com/ava-labs/slopes/blob/998aaee/src/utils/types.ts#L530)*
+*Defined in [utils/types.ts:530](https://github.com/ava-labs/slopes/blob/db73b16/src/utils/types.ts#L530)*
 
 * **11111111111111111111111111111111LpoYY**: *object* =  n3_platform
 
