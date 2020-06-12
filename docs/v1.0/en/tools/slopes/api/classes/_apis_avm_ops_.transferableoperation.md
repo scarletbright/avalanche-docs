@@ -1,4 +1,4 @@
-[slopes - v1.7.4](../README.md) › ["apis/avm/ops"](../modules/_apis_avm_ops_.md) › [TransferableOperation](_apis_avm_ops_.transferableoperation.md)
+[slopes - v1.7.5](../README.md) › ["apis/avm/ops"](../modules/_apis_avm_ops_.md) › [TransferableOperation](_apis_avm_ops_.transferableoperation.md)
 
 # Class: TransferableOperation
 
@@ -34,7 +34,7 @@ A class which contains an [Operation](_apis_avm_ops_.operation.md) for transfers
 
 \+ **new TransferableOperation**(`assetid`: Buffer, `utxoids`: Array‹[UTXOID](_apis_avm_types_.utxoid.md) | string | Buffer›, `operation`: [Operation](_apis_avm_ops_.operation.md)): *[TransferableOperation](_apis_avm_ops_.transferableoperation.md)*
 
-*Defined in [apis/avm/ops.ts:175](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/ops.ts#L175)*
+*Defined in [apis/avm/ops.ts:175](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/ops.ts#L175)*
 
 **Parameters:**
 
@@ -52,7 +52,7 @@ Name | Type | Default |
 
 • **assetid**: *Buffer* =  Buffer.alloc(32)
 
-*Defined in [apis/avm/ops.ts:115](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/ops.ts#L115)*
+*Defined in [apis/avm/ops.ts:115](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/ops.ts#L115)*
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 • **operation**: *[Operation](_apis_avm_ops_.operation.md)*
 
-*Defined in [apis/avm/ops.ts:117](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/ops.ts#L117)*
+*Defined in [apis/avm/ops.ts:117](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/ops.ts#L117)*
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 • **utxoIDs**: *Array‹[UTXOID](_apis_avm_types_.utxoid.md)›* =  []
 
-*Defined in [apis/avm/ops.ts:116](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/ops.ts#L116)*
+*Defined in [apis/avm/ops.ts:116](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/ops.ts#L116)*
 
 ## Methods
 
@@ -76,7 +76,7 @@ ___
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-*Defined in [apis/avm/ops.ts:119](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/ops.ts#L119)*
+*Defined in [apis/avm/ops.ts:119](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/ops.ts#L119)*
 
 **Parameters:**
 
@@ -93,7 +93,7 @@ ___
 
 ▸ **getAssetID**(): *Buffer*
 
-*Defined in [apis/avm/ops.ts:159](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/ops.ts#L159)*
+*Defined in [apis/avm/ops.ts:159](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/ops.ts#L159)*
 
 Returns the assetID as a [Buffer](https://github.com/feross/buffer).
 
@@ -105,7 +105,7 @@ ___
 
 ▸ **getOperation**(): *[Operation](_apis_avm_ops_.operation.md)*
 
-*Defined in [apis/avm/ops.ts:173](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/ops.ts#L173)*
+*Defined in [apis/avm/ops.ts:173](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/ops.ts#L173)*
 
 Returns the operation
 
@@ -117,7 +117,7 @@ ___
 
 ▸ **getUTXOIDs**(): *Array‹[UTXOID](_apis_avm_types_.utxoid.md)›*
 
-*Defined in [apis/avm/ops.ts:166](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/ops.ts#L166)*
+*Defined in [apis/avm/ops.ts:166](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/ops.ts#L166)*
 
 Returns an array of UTXOIDs in this operation.
 
@@ -129,6 +129,6 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [apis/avm/ops.ts:136](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/ops.ts#L136)*
+*Defined in [apis/avm/ops.ts:136](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/ops.ts#L136)*
 
 **Returns:** *Buffer*

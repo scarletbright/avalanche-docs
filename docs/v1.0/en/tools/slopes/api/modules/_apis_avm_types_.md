@@ -1,4 +1,4 @@
-[slopes - v1.7.4](../README.md) › ["apis/avm/types"](_apis_avm_types_.md)
+[slopes - v1.7.5](../README.md) › ["apis/avm/types"](_apis_avm_types_.md)
 
 # External module: "apis/avm/types"
 
@@ -27,7 +27,7 @@
 
 Ƭ **MergeRule**: *"intersection" | "differenceSelf" | "differenceNew" | "symDifference" | "union" | "unionMinusNew" | "unionMinusSelf" | "ERROR"*
 
-*Defined in [apis/avm/types.ts:267](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/types.ts#L267)*
+*Defined in [apis/avm/types.ts:267](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/types.ts#L267)*
 
 Rules used when merging sets
 
@@ -37,7 +37,7 @@ Rules used when merging sets
 
 ▸ **UnixNow**(): *BN*
 
-*Defined in [apis/avm/types.ts:279](https://github.com/ava-labs/slopes/blob/998aaee/src/apis/avm/types.ts#L279)*
+*Defined in [apis/avm/types.ts:279](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/types.ts#L279)*
 
 Function providing the current UNIX time using a [BN](https://github.com/indutny/bn.js/)
 
