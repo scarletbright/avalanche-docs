@@ -84,12 +84,12 @@ Specifies the directory in which system logs are kept. If `""` is passed in, the
 
 The identity of the network the node should connect to. Can be one of:
 
-* `--network-id=cascade` -> Connect to the Cascade test-network. This aliases `network-2`.
-* `--network-id=testnet` -> Connect to the current test-network. (Right now, this is Cascade.)
+* `--network-id=denali` -> Connect to the Denali test-network. This aliases `network-3`.
+* `--network-id=testnet` -> Connect to the current test-network. (Right now, this is Denali.)
 * `--network-id=local` -> Connect to a local test-network. This aliases `network-12345`.
 * `--network-id=network-{id}` -> Connect to the `id` network. `id` must be in the range `[0, 2^32)`.
 
-`--network-id` defaults to `cascade`.
+`--network-id` defaults to `denali`.
 
 `--public-ip` (string):
 

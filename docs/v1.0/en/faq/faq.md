@@ -71,7 +71,11 @@ Now build the binary:
 `./scripts/build.sh`
 
 This should print `Build Successful`.
-Now you can run your node with `./build/ava`
+
+You can check what version you're running by doing `./build/ava --version`.
+(Note: If this fails, your Gecko version is `0.5.1` or older.)
+
+You can run your node with `./build/ava`
 
 #### Download Binary
 
@@ -82,21 +86,31 @@ Under `Assets`, select the appropriate file.
 For MacOS:  
 Download the file named `gecko-osx-<VERSION>.zip`  
 Unzip the file with `unzip gecko-osx-<VERSION>.zip`  
-The resulting folder, `build`, contains the binaries.  
-You can run the node with `./build/ava`
+The resulting folder, `gecko-<VERSION>`, contains the binaries.  
+You can run the node with `./gecko-<VERSION>/ava`
 
 For Linux:  
-Download the file named `gecko-linux-<VERSION>.tar.gz`. 
+Download the file named `gecko-linux-<VERSION>.tar.gz`  
 Unzip the file with `tar -xvf gecko-linux-<VERSION>.tar.gz`  
 The resulting folder, `gecko-<VERSION>`, contains the binaries.  
 You can run the node with `./gecko-<VERSION>/ava`
+
+### Will restarting/upgrading my node give me a new node ID?
+
+No.
+
+### What version am I running?
+
+Run `./ava --version`.
+It will print the version of AVA you're running.
+To see what the latest release is, see our [releases page.](https://github.com/ava-labs/gecko/releases/)
 
 ### Why am I getting a 404 when I make an API call?
 
 First, make sure you're sending the API call to the right place/following an instruction correctly.
 Then, [make sure your node is connected to peers.](#is-my-node-connected-to-peers)
-It should be connected to at least a few peers.
-Then, [make sure your node is done bootstrapping.](#is-my-node-done-bootstrapping)
+Then, [make sure the chain you're sending the call to is done bootstrapping.](#is-my-node-done-bootstrapping)
+If a problem persists, contact us on [Discord.](https://chat.avalabs.org)
 
 ### Where is my node's data?
 
@@ -119,27 +133,37 @@ By default, they're in `$HOME/.gecko/logs/node`.
 
 Logs specific to a chain are in subdirectory `chain/[CHAIN ID]` where `[CHAIN ID]` is the chain's ID.
 
+### Can I run Gecko on a different machine but keep the node ID / state?
+
+Yes.
+
+To keep your node ID, you'll have to copy your staking key and certificate to the new machine.
+By default, these are at `$HOME/.gecko/staking` and are named `staker.key` and `staker.crt`.
+Place the staking key and certificate on the new machine at `$HOME/.gecko/staking`.
+
+To keep your node's state (keystore users, etc.), you'll have to copy your database directory to the new machine.
+By default, this is at `$HOME/.gecko/db`.
+Place this directory at the same location on the new machine.
+
+Advanced users may place the staking key and database at different locations and point to them at runtime
+using [command-line arguments.](https://docs.ava.network/v1.0/en/references/command-line-interface/)
+
 ### Is my node done bootstrapping?
 
-The simplest way to check is to get a drip from the [AVA faucet](https://faucet.ava.network/) and check that your address's balance changes.
+Each chain bootstraps separately and finishes bootstrapping at different times.
+When a chain starts bootstrapping it prints a log like this:
 
-To check an address's balance, call the X-Chain's `getBalance` method:
-
-```sh
-curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :3,
-    "method" :"avm.getBalance",
-    "params" :{
-        "address":"X-5TQr5hSAZ8ZKuSaYLg5sr4VwvcvwKZ1Mg",
-        "assetID"  :"AVA"
-    }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+```
+INFO [06-07|19:54:03] <X Chain> /snow/engine/common/bootstrapper.go#163: Bootstrapping started syncing with 1 vertices in the accepted frontier
 ```
 
-Replace `X-5TQr5hSAZ8ZKuSaYLg5sr4VwvcvwKZ1Mg` with the address you sent the drip to.
+when it is done bootstrapping, it prints a log like this:
 
-If your node reflects the drip, it's done bootstrapping. Otherwise, it is not.
+```
+INFO [06-07|19:54:06] <X Chain> /snow/engine/avalanche/transitive.go#80: bootstrapping finished with 1 vertices in the accepted frontier
+```
+
+If you see such a log, that chain is done bootstrapping and is ready for API calls and transactions.
 
 ### Is my node in the validator set?
 
@@ -197,13 +221,22 @@ curl -X POST --data '{
 If your node is not in either list, it is not a validator and is not a pending validator.
 
 Please note that even if your node is off, it will appear in the validator list.
-In order to complete certain incentivized testnet challenges, your node must also be on.
+In order to complete certain incentivized testnet challenges, your node must also be running and connected to other nodes.
 
 ### My node is in the validator set. How can I tell that it's actually validating?
 
 There is no good way to tell right now. If your node is connected to peers, it should be validating.
 
+### Is my node counted as being online for the Denali test net?
+
+The way we're checking whether a node is online is by periodically calling `admin.peers` on one of our nodes.
+If your node is on the peer list, your node is considered online for the sake of the Denali test net challenges.
+Note that for some of the Denali challenges, your node needs to both be online and be validating.
+
 ### How can I get involved with AVA?
+
+We want you to be a part of the AVA community!
+Any contribution, no matter how small, is valued and welcome.
 
 You can:
 
@@ -259,8 +292,8 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
 ```
 
-Each entry in the response contains a peer's IP address, public IP address, ID, version, and the time of the last sent and received messages exchanged with this node. If you see none, you are not connected to any peers.
-You should see at least the 5 nodes run by AVA Labs.
+Each entry in the response contains a peer's IP address, public IP address, ID, version, and the time of the last sent and received messages exchanged with this node.
+If you see none, something is wrong and you are not connected to any peers.
 
 ### How do I kill my node?
 
@@ -315,17 +348,18 @@ If you started your node with command-line argument `--http-port=9700` then repl
 
 ### Starting node fails with: `parsing parameters returned with error couldn't create db at ...`
 
-There is already a node running on your machine.
+There is already a node running on your machine. 
 
 ### Node is on the wrong network
 
-If you have already received funds from the faucet and can see them on the explorer, but you still can't send a transaction with your node, you may still be connected to the Cascade test network. Check to make sure that you are are on the right network, by calling `admin.getNetworkID`:
+If you have already received funds from the faucet and can see them on the explorer, but you still can't send a transaction with your node, you may still be connected to an old test network.
+Check to make sure that you are are on the right network, by calling `admin.getNetworkName`:
 
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"admin.getNetworkID"
+    "method" :"admin.getNetworkName"
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
 ```
 
@@ -335,13 +369,13 @@ The expected output is:
 {
     "jsonrpc": "2.0",
     "result": {
-        "networkID": "3"
+        "networkID": "denali"
     },
     "id": 1
 }
 ```
 
-The correct network ID for Denali is 3. If the network ID is 2, then you are on the Cascade test network and need to upgrade.
+If the response is not `denali`, or the API call fails with a 404, you are not on the Denali network.
 
 ### API response says `invalid character 'â' looking for beginning of value`
 
@@ -370,7 +404,7 @@ This should print something like:
 [1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/gecko/build/ava
 ```
 
-Do `kill -9 %1` (or `kill -9 %2` if it printed `[1]+ Stopped`, etc.)
+Do `kill -9 %1` (or `kill -9 %2` if it printed `[2]+ Stopped`, etc.)
 
 If your node is running in the background:
 
@@ -386,26 +420,10 @@ Do:
 
 `kill -9 29861` (or whatever number appears in the second column)
 
-### On start, node prints `error while creating vm: Unrecognized remote plugin`
+### Node prints a lot of messages that begin `2020-06-09T12:45:02.548-0400 [DEBUG] plugin.sh: DEBUG[06-09|12:45:02.548] `
 
-This message means your node is not running the C-Chain; it's looking in the wrong location for a binary.
-
-To fix this, you can use the `--plugin-dir` command-line argument.
-
-If you are in the directory containing the `ava` binary, start your node with: `./ava --plugin-dir=$(pwd)/plugins`
-
-### Node prints `GetFailed called without sending the corresponding Get message`
-
-This is OK. We will likely lower this log level to be less visible in the future.
-
-### Node prints `next scheduled event is at ...`
-
-This is OK. We will likely lower this log level to be less visible in the future.
+This is a known issue. We're working on it! You can ignore these logs.
 
 ### Node prints `NAT Traversal failed ...`
 
 This is OK. It means your node will be able to connect to less peers, but you should still be able to connect to some peers and participate in the network.
-
-### Node print `assertions are enabled. This may slow down execution`
-
-This is OK.
