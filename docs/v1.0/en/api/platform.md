@@ -196,7 +196,7 @@ platform.importKey({
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "method" :"platform.importKey",
     "params" :{
         "username" :"bob",
@@ -211,7 +211,7 @@ curl -X POST --data '{
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "result" :{
         "address":"7u5FQArVaMSgGZzeTE9ckheWtDhU5T3KS"
     }
@@ -241,7 +241,7 @@ platform.exportKey({
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "method" :"platform.exportKey",
     "params" :{
         "username" :"bob",
@@ -256,7 +256,7 @@ curl -X POST --data '{
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "result" :{
         "privateKey":"2w4XiXxPfQK4TypYqnohRL8DRNTz9cGiGmwQ1zmgEqD9c9KWLq"
     }
@@ -306,7 +306,7 @@ curl -X POST --data '{
         "nonce": "0",
         "balance": "0"
     },
-    "id": 84
+    "id": 1
 }
 ```
 
@@ -598,7 +598,7 @@ platform.addDefaultSubnetValidator(
 In this example we use shell command `date` to compute Unix times 10 minutes and 30 days in the future.
 (Note: If you're on a Mac, replace  `$(date` with `$(gdate`. If you don't have `gdate` installed, do `brew install coreutils`.)
 
-```sh
+```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.addDefaultSubnetValidator",
@@ -837,7 +837,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.getSubnets",
     "params": {},
-    "id": 6
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -858,7 +858,7 @@ curl -X POST --data '{
             }
         ]
     },
-    "id": 6
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -1033,7 +1033,7 @@ curl -X POST --data '{
             }
         ]
     },
-    "id": 85
+    "id": 1
 }
 ```
 
