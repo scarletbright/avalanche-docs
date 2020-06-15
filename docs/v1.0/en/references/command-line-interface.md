@@ -26,7 +26,7 @@ When set to true, assertions will execute at runtime throughout the codebase. Th
 
 `--bootstrap-ids` (string):
 
-Bootstrap IDs is an array of validator IDs. These IDs will be used to authenticate bootstrapping peers. This only needs to be set when `--staking-tls-enabled=true`. An example setting of this field would be `--bootstrap-ids="7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg,MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ"`. The default value is the empty set.
+Bootstrap IDs is an array of validator IDs. These IDs will be used to authenticate bootstrapping peers. This only needs to be set when `--p2p-tls-enabled=true`. An example setting of this field would be `--bootstrap-ids="7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg,MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ"`. The default value is the empty set.
 
 `--bootstrap-ips` (string):
 
@@ -104,17 +104,21 @@ Enables signature verification to be disabled for testing. When set to false, si
 
 The port through which the staking server will connect to the AVA network. Defaults to `9651`.
 
-`--staking-tls-cert-file` (string, file path):
+`--p2p-tls-enabled` (boolean):
 
-AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--staking-tls-enabled=true`. This argument specifies the location of the TLS certificate used by the node. This must be specified when `--staking-tls-enabled=true`. The default value is `""`.
+AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers. However, This can be disabled for testing. When TLS is disabled, the `stakingID` will be derived from the IP Address the node claims it owns. This will also disable encryption of inter-node communication. This should only be specified for testing. Defaults to `true`. This must be true when `--staking-tls-enabled=true`.
 
 `--staking-tls-enabled` (boolean):
 
-AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers. However, This can be disabled for testing. When TLS is disabled, the `stakingID` will be derived from the IP Address the node claims it owns. This will also disable encryption of inter-node communication. This should only be specified for testing. Defaults to `true`.
+AVA uses Proof of Stake (PoS) as Sybil resistance to make it prohibitively expensive to attack the network. When this is true, `--p2p-tls-enabled` must be set to true in order to secure P2P communications.
+
+`--staking-tls-cert-file` (string, file path):
+
+AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--p2p-tls-enabled=true`. This argument specifies the location of the TLS certificate used by the node. This must be specified when `--p2p-tls-enabled=true`. The default value is `""`.
 
 `--staking-tls-key-file` (string, file path):
 
-AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--staking-tls-enabled=true`. This argument specifies the location of the TLS private key used by the node. This must be specified when `--staking-tls-enabled=true`. The default value is `""`.
+AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--p2p-tls-enabled=true`. This argument specifies the location of the TLS private key used by the node. This must be specified when `--p2p-tls-enabled=true`. The default value is `""`.
 
 ***
 

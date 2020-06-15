@@ -16,8 +16,9 @@ Avash provides the ability to run Lua scripts which can execute a sequence of sh
 ### Quick Setup
 
  1. Install and build an AVA client
- 2. `go get github.com/ava-labs/avash`
- 3. `cd $GOPATH/src/github.com/ava-labs/avash`
+ 2. `cd $GOPATH`
+ 3. `go get github.com/ava-labs/avash`
+ 3. `cd src/github.com/ava-labs/avash`
  4. `go build`
 
 ## Configuration
@@ -304,7 +305,8 @@ Flags:
       --snow-virtuous-commit-threshold int   Beta value to use for virtuous transactions. (default 5)
       --staking-port uint                    Port of the consensus server. (default 9651)
       --staking-tls-cert-file string         TLS certificate file for staking connections. Relative to the avash binary if doesn't start with '/'. Ex: certs/keys1/staker.crt
-      --staking-tls-enabled                  Require TLS to authenticate staking connections.
+      --p2p-tls-enabled                      Require TLS authentication for all P2P connections.
+      --staking-tls-enabled                  Utilize staking (also requires p2p tls to be enabled).
       --staking-tls-key-file string          TLS private key file for staking connections. Relative to the avash binary if doesn't start with '/'. Ex: certs/keys1/staker.key
       --xput-server-port uint                Port of the deprecated throughput test server. (default 9652)
 ```
