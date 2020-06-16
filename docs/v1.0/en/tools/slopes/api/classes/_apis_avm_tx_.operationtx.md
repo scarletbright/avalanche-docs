@@ -48,7 +48,7 @@ Class representing an unsigned Operation transaction.
 
 *Overrides [BaseTx](_apis_avm_tx_.basetx.md).[constructor](_apis_avm_tx_.basetx.md#constructor)*
 
-*Defined in [apis/avm/tx.ts:416](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L416)*
+*Defined in [apis/avm/tx.ts:416](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L416)*
 
 Class representing an unsigned Operation transaction.
 
@@ -72,7 +72,7 @@ Name | Type | Default | Description |
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md).[blockchainid](_apis_avm_tx_.basetx.md#protected-blockchainid)*
 
-*Defined in [apis/avm/tx.ts:46](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L46)*
+*Defined in [apis/avm/tx.ts:46](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L46)*
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md).[ins](_apis_avm_tx_.basetx.md#protected-ins)*
 
-*Defined in [apis/avm/tx.ts:50](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L50)*
+*Defined in [apis/avm/tx.ts:50](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L50)*
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md).[networkid](_apis_avm_tx_.basetx.md#protected-networkid)*
 
-*Defined in [apis/avm/tx.ts:45](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L45)*
+*Defined in [apis/avm/tx.ts:45](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L45)*
 
 ___
 
@@ -100,7 +100,7 @@ ___
 
 • **numOps**: *Buffer* =  Buffer.alloc(4)
 
-*Defined in [apis/avm/tx.ts:342](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L342)*
+*Defined in [apis/avm/tx.ts:342](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L342)*
 
 ___
 
@@ -110,7 +110,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md).[numins](_apis_avm_tx_.basetx.md#protected-numins)*
 
-*Defined in [apis/avm/tx.ts:49](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L49)*
+*Defined in [apis/avm/tx.ts:49](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L49)*
 
 ___
 
@@ -120,7 +120,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md).[numouts](_apis_avm_tx_.basetx.md#protected-numouts)*
 
-*Defined in [apis/avm/tx.ts:47](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L47)*
+*Defined in [apis/avm/tx.ts:47](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L47)*
 
 ___
 
@@ -128,7 +128,7 @@ ___
 
 • **ops**: *Array‹[TransferableOperation](_apis_avm_ops_.transferableoperation.md)›* =  []
 
-*Defined in [apis/avm/tx.ts:343](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L343)*
+*Defined in [apis/avm/tx.ts:343](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L343)*
 
 ___
 
@@ -138,7 +138,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md).[outs](_apis_avm_tx_.basetx.md#protected-outs)*
 
-*Defined in [apis/avm/tx.ts:48](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L48)*
+*Defined in [apis/avm/tx.ts:48](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L48)*
 
 ## Methods
 
@@ -148,7 +148,7 @@ ___
 
 *Overrides [BaseTx](_apis_avm_tx_.basetx.md).[fromBuffer](_apis_avm_tx_.basetx.md#frombuffer)*
 
-*Defined in [apis/avm/tx.ts:361](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L361)*
+*Defined in [apis/avm/tx.ts:361](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L361)*
 
 Takes a [Buffer](https://github.com/feross/buffer) containing an [OperationTx](_apis_avm_tx_.operationtx.md), parses it, populates the class, and returns the length of the [OperationTx](_apis_avm_tx_.operationtx.md) in bytes.
 
@@ -173,7 +173,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md)*
 
-*Defined in [apis/avm/tx.ts:69](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L69)*
+*Defined in [apis/avm/tx.ts:69](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L69)*
 
 Returns the Buffer representation of the BlockchainID
 
@@ -187,7 +187,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md)*
 
-*Defined in [apis/avm/tx.ts:76](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L76)*
+*Defined in [apis/avm/tx.ts:76](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L76)*
 
 Returns the array of [TransferableInput](_apis_avm_inputs_.transferableinput.md)s
 
@@ -201,7 +201,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md)*
 
-*Defined in [apis/avm/tx.ts:62](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L62)*
+*Defined in [apis/avm/tx.ts:62](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L62)*
 
 Returns the NetworkID as a number
 
@@ -213,7 +213,7 @@ ___
 
 ▸ **getOperations**(): *Array‹[TransferableOperation](_apis_avm_ops_.transferableoperation.md)›*
 
-*Defined in [apis/avm/tx.ts:389](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L389)*
+*Defined in [apis/avm/tx.ts:389](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L389)*
 
 Returns an array of [Operation](_apis_avm_ops_.operation.md)s in this transaction.
 
@@ -227,7 +227,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md)*
 
-*Defined in [apis/avm/tx.ts:83](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L83)*
+*Defined in [apis/avm/tx.ts:83](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L83)*
 
 Returns the array of [TransferableOutput](_apis_avm_outputs_.transferableoutput.md)s
 
@@ -241,7 +241,7 @@ ___
 
 *Overrides [BaseTx](_apis_avm_tx_.basetx.md).[getTxType](_apis_avm_tx_.basetx.md#gettxtype)*
 
-*Defined in [apis/avm/tx.ts:348](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L348)*
+*Defined in [apis/avm/tx.ts:348](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L348)*
 
 Returns the id of the [OperationTx](_apis_avm_tx_.operationtx.md)
 
@@ -255,7 +255,7 @@ ___
 
 *Overrides [BaseTx](_apis_avm_tx_.basetx.md).[sign](_apis_avm_tx_.basetx.md#sign)*
 
-*Defined in [apis/avm/tx.ts:401](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L401)*
+*Defined in [apis/avm/tx.ts:401](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L401)*
 
 Takes the bytes of an [UnsignedTx](_apis_avm_tx_.unsignedtx.md) and returns an array of [Credential](_apis_avm_credentials_.credential.md)s
 
@@ -278,7 +278,7 @@ ___
 
 *Overrides [BaseTx](_apis_avm_tx_.basetx.md).[toBuffer](_apis_avm_tx_.basetx.md#tobuffer)*
 
-*Defined in [apis/avm/tx.ts:377](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L377)*
+*Defined in [apis/avm/tx.ts:377](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L377)*
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [OperationTx](_apis_avm_tx_.operationtx.md).
 
@@ -292,7 +292,7 @@ ___
 
 *Inherited from [BaseTx](_apis_avm_tx_.basetx.md).[toString](_apis_avm_tx_.basetx.md#tostring)*
 
-*Defined in [apis/avm/tx.ts:152](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L152)*
+*Defined in [apis/avm/tx.ts:152](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L152)*
 
 Returns a base-58 representation of the [BaseTx](_apis_avm_tx_.basetx.md).
 
