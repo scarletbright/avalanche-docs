@@ -36,7 +36,7 @@
 
 \+ **new Input**(): *[Input](_apis_avm_inputs_.input.md)*
 
-*Defined in [apis/avm/inputs.ts:111](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/inputs.ts#L111)*
+*Defined in [apis/avm/inputs.ts:111](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/inputs.ts#L111)*
 
 **Returns:** *[Input](_apis_avm_inputs_.input.md)*
 
@@ -46,7 +46,7 @@
 
 • **sigCount**: *Buffer* =  Buffer.alloc(4)
 
-*Defined in [apis/avm/inputs.ts:31](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/inputs.ts#L31)*
+*Defined in [apis/avm/inputs.ts:31](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/inputs.ts#L31)*
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 • **sigIdxs**: *Array‹[SigIdx](_apis_avm_types_.sigidx.md)›* =  []
 
-*Defined in [apis/avm/inputs.ts:32](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/inputs.ts#L32)*
+*Defined in [apis/avm/inputs.ts:32](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/inputs.ts#L32)*
 
 ## Methods
 
@@ -62,7 +62,7 @@ ___
 
 ▸ **addSignatureIdx**(`addressIdx`: number, `address`: Buffer): *void*
 
-*Defined in [apis/avm/inputs.ts:53](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/inputs.ts#L53)*
+*Defined in [apis/avm/inputs.ts:53](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/inputs.ts#L53)*
 
 Creates and adds a [SigIdx](_apis_avm_types_.sigidx.md) to the [Input](_apis_avm_inputs_.input.md).
 
@@ -81,7 +81,7 @@ ___
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-*Defined in [apis/avm/inputs.ts:63](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/inputs.ts#L63)*
+*Defined in [apis/avm/inputs.ts:63](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/inputs.ts#L63)*
 
 **Parameters:**
 
@@ -98,7 +98,7 @@ ___
 
 ▸ **getCredentialID**(): *number*
 
-*Defined in [apis/avm/inputs.ts:43](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/inputs.ts#L43)*
+*Defined in [apis/avm/inputs.ts:43](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/inputs.ts#L43)*
 
 **Returns:** *number*
 
@@ -108,7 +108,7 @@ ___
 
 ▸ **getInputID**(): *number*
 
-*Defined in [apis/avm/inputs.ts:34](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/inputs.ts#L34)*
+*Defined in [apis/avm/inputs.ts:34](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/inputs.ts#L34)*
 
 **Returns:** *number*
 
@@ -118,7 +118,7 @@ ___
 
 ▸ **getSigIdxs**(): *Array‹[SigIdx](_apis_avm_types_.sigidx.md)›*
 
-*Defined in [apis/avm/inputs.ts:39](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/inputs.ts#L39)*
+*Defined in [apis/avm/inputs.ts:39](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/inputs.ts#L39)*
 
 Returns the array of [SigIdx](_apis_avm_types_.sigidx.md) for this [Input](_apis_avm_inputs_.input.md)
 
@@ -130,7 +130,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [apis/avm/inputs.ts:78](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/inputs.ts#L78)*
+*Defined in [apis/avm/inputs.ts:78](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/inputs.ts#L78)*
 
 **Returns:** *Buffer*
 
@@ -140,7 +140,7 @@ ___
 
 ▸ **toString**(): *string*
 
-*Defined in [apis/avm/inputs.ts:93](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/inputs.ts#L93)*
+*Defined in [apis/avm/inputs.ts:93](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/inputs.ts#L93)*
 
 Returns a base-58 representation of the [Input](_apis_avm_inputs_.input.md).
 
@@ -152,7 +152,7 @@ ___
 
 ▸ **comparator**(): *function*
 
-*Defined in [apis/avm/inputs.ts:97](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/inputs.ts#L97)*
+*Defined in [apis/avm/inputs.ts:97](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/inputs.ts#L97)*
 
 **Returns:** *function*
 

@@ -22,7 +22,7 @@
 
 ▸ **SelectTxClass**(`txtype`: number, ...`args`: Array‹any›): *[BaseTx](../classes/_apis_avm_tx_.basetx.md)*
 
-*Defined in [apis/avm/tx.ts:26](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/avm/tx.ts#L26)*
+*Defined in [apis/avm/tx.ts:26](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/avm/tx.ts#L26)*
 
 Takes a buffer representing the output and returns the proper [BaseTx](../classes/_apis_avm_tx_.basetx.md) instance.
 

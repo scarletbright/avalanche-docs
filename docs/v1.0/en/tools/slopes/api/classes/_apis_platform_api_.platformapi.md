@@ -64,7 +64,7 @@ Class for interacting with a node's PlatformAPI
 
 *Overrides [JRPCAPI](_utils_types_.jrpcapi.md).[constructor](_utils_types_.jrpcapi.md#constructor)*
 
-*Defined in [apis/platform/api.ts:478](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L478)*
+*Defined in [apis/platform/api.ts:478](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L478)*
 
 This class should not be instantiated directly. Instead use the [Slopes.addAPI](_index_.slopes.md#addapi) method.
 
@@ -85,7 +85,7 @@ Name | Type | Default | Description |
 
 *Inherited from [APIBase](_utils_types_.apibase.md).[baseurl](_utils_types_.apibase.md#protected-baseurl)*
 
-*Defined in [utils/types.ts:33](https://github.com/ava-labs/slopes/blob/db73b16/src/utils/types.ts#L33)*
+*Defined in [utils/types.ts:33](https://github.com/ava-labs/slopes/blob/be20cee/src/utils/types.ts#L33)*
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 *Inherited from [APIBase](_utils_types_.apibase.md).[core](_utils_types_.apibase.md#protected-core)*
 
-*Defined in [utils/types.ts:32](https://github.com/ava-labs/slopes/blob/db73b16/src/utils/types.ts#L32)*
+*Defined in [utils/types.ts:32](https://github.com/ava-labs/slopes/blob/be20cee/src/utils/types.ts#L32)*
 
 ___
 
@@ -105,7 +105,7 @@ ___
 
 *Inherited from [APIBase](_utils_types_.apibase.md).[db](_utils_types_.apibase.md#protected-db)*
 
-*Defined in [utils/types.ts:34](https://github.com/ava-labs/slopes/blob/db73b16/src/utils/types.ts#L34)*
+*Defined in [utils/types.ts:34](https://github.com/ava-labs/slopes/blob/be20cee/src/utils/types.ts#L34)*
 
 ___
 
@@ -115,7 +115,7 @@ ___
 
 *Inherited from [JRPCAPI](_utils_types_.jrpcapi.md).[jrpcVersion](_utils_types_.jrpcapi.md#protected-jrpcversion)*
 
-*Defined in [utils/types.ts:80](https://github.com/ava-labs/slopes/blob/db73b16/src/utils/types.ts#L80)*
+*Defined in [utils/types.ts:80](https://github.com/ava-labs/slopes/blob/be20cee/src/utils/types.ts#L80)*
 
 ___
 
@@ -125,7 +125,7 @@ ___
 
 *Inherited from [JRPCAPI](_utils_types_.jrpcapi.md).[rpcid](_utils_types_.jrpcapi.md#protected-rpcid)*
 
-*Defined in [utils/types.ts:81](https://github.com/ava-labs/slopes/blob/db73b16/src/utils/types.ts#L81)*
+*Defined in [utils/types.ts:81](https://github.com/ava-labs/slopes/blob/be20cee/src/utils/types.ts#L81)*
 
 ## Methods
 
@@ -133,7 +133,7 @@ ___
 
 ▸ **addDefaultSubnetDelegator**(`id`: string, `startTime`: Date, `endTime`: Date, `stakeAmount`: BN, `payerNonce`: number, `destination`: string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:263](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L263)*
+*Defined in [apis/platform/api.ts:263](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L263)*
 
 Add a delegator to the Default Subnet.
 
@@ -158,7 +158,7 @@ ___
 
 ▸ **addDefaultSubnetValidator**(`id`: string, `startTime`: Date, `endTime`: Date, `stakeAmount`: BN, `payerNonce`: number, `destination`: string, `delegationFeeRate`: BN): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:203](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L203)*
+*Defined in [apis/platform/api.ts:203](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L203)*
 
 Add a validator to the Default Subnet.
 
@@ -184,7 +184,7 @@ ___
 
 ▸ **addNonDefaultSubnetValidator**(`id`: string, `subnetID`: Buffer | string, `startTime`: Date, `endTime`: Date, `weight`: number, `payerNonce`: number): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:232](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L232)*
+*Defined in [apis/platform/api.ts:232](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L232)*
 
 Add a validator to a Subnet other than the Default Subnet. The validator must validate the Default Subnet for the entire duration they validate this Subnet.
 
@@ -211,7 +211,7 @@ ___
 
 *Inherited from [JRPCAPI](_utils_types_.jrpcapi.md)*
 
-*Defined in [utils/types.ts:82](https://github.com/ava-labs/slopes/blob/db73b16/src/utils/types.ts#L82)*
+*Defined in [utils/types.ts:82](https://github.com/ava-labs/slopes/blob/be20cee/src/utils/types.ts#L82)*
 
 **Parameters:**
 
@@ -229,7 +229,7 @@ ___
 
 ▸ **createAccount**(`username`: string, `password`: string, `privateKey`: Buffer | string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:77](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L77)*
+*Defined in [apis/platform/api.ts:77](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L77)*
 
 The P-Chain uses an account model. This method creates a P-Chain account on an existing user in the Keystore.
 
@@ -251,7 +251,7 @@ ___
 
 ▸ **createBlockchain**(`vmID`: string, `name`: string, `payerNonce`: number, `genesis`: string, `subnetID`: Buffer | string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:35](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L35)*
+*Defined in [apis/platform/api.ts:35](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L35)*
 
 Creates a new blockchain.
 
@@ -275,7 +275,7 @@ ___
 
 ▸ **createSubnet**(`controlKeys`: Array‹string›, `threshold`: number, `payerNonce`: number): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:286](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L286)*
+*Defined in [apis/platform/api.ts:286](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L286)*
 
 Create an unsigned transaction to create a new Subnet. The unsigned transaction must be signed with the key of the account paying the transaction fee. The Subnet’s ID is the ID of the transaction that creates it (ie the response from issueTx when issuing the signed transaction).
 
@@ -297,7 +297,7 @@ ___
 
 ▸ **exportAVA**(`amount`: BN, `to`: string, `payerNonce`: number): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:355](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L355)*
+*Defined in [apis/platform/api.ts:355](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L355)*
 
 Send AVA from an account on the P-Chain to an address on the X-Chain. This transaction must be signed with the key of the account that the AVA is sent from and which pays the transaction fee. After issuing this transaction, you must call the X-Chain’s importAVA method to complete the transfer.
 
@@ -319,7 +319,7 @@ ___
 
 ▸ **exportKey**(`username`: string, `password`: string, `address`: string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:449](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L449)*
+*Defined in [apis/platform/api.ts:449](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L449)*
 
 Exports the private key for an address.
 
@@ -341,7 +341,7 @@ ___
 
 ▸ **getAccount**(`address`: string): *Promise‹object›*
 
-*Defined in [apis/platform/api.ts:99](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L99)*
+*Defined in [apis/platform/api.ts:99](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L99)*
 
 The P-Chain uses an account model. An account is identified by an address. This method returns the account with the given address.
 
@@ -363,7 +363,7 @@ ___
 
 *Inherited from [APIBase](_utils_types_.apibase.md)*
 
-*Defined in [utils/types.ts:57](https://github.com/ava-labs/slopes/blob/db73b16/src/utils/types.ts#L57)*
+*Defined in [utils/types.ts:57](https://github.com/ava-labs/slopes/blob/be20cee/src/utils/types.ts#L57)*
 
 Returns the baseurl's path.
 
@@ -375,7 +375,7 @@ ___
 
 ▸ **getBlockchainStatus**(`blockchainID`: string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:59](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L59)*
+*Defined in [apis/platform/api.ts:59](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L59)*
 
 Creates a new blockchain.
 
@@ -395,7 +395,7 @@ ___
 
 ▸ **getBlockchains**(): *Promise‹Array‹object››*
 
-*Defined in [apis/platform/api.ts:339](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L339)*
+*Defined in [apis/platform/api.ts:339](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L339)*
 
 Get all the blockchains that exist (excluding the P-Chain).
 
@@ -409,7 +409,7 @@ ___
 
 ▸ **getCurrentValidators**(`subnetID`: Buffer | string): *Promise‹Array‹object››*
 
-*Defined in [apis/platform/api.ts:134](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L134)*
+*Defined in [apis/platform/api.ts:134](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L134)*
 
 Lists the set of current validators.
 
@@ -431,7 +431,7 @@ ___
 
 *Inherited from [APIBase](_utils_types_.apibase.md)*
 
-*Defined in [utils/types.ts:64](https://github.com/ava-labs/slopes/blob/db73b16/src/utils/types.ts#L64)*
+*Defined in [utils/types.ts:64](https://github.com/ava-labs/slopes/blob/be20cee/src/utils/types.ts#L64)*
 
 Returns the baseurl's database.
 
@@ -443,7 +443,7 @@ ___
 
 ▸ **getPendingValidators**(`subnetID`: Buffer | string): *Promise‹Array‹object››*
 
-*Defined in [apis/platform/api.ts:154](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L154)*
+*Defined in [apis/platform/api.ts:154](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L154)*
 
 Lists the set of pending validators.
 
@@ -465,7 +465,7 @@ ___
 
 *Inherited from [JRPCAPI](_utils_types_.jrpcapi.md)*
 
-*Defined in [utils/types.ts:124](https://github.com/ava-labs/slopes/blob/db73b16/src/utils/types.ts#L124)*
+*Defined in [utils/types.ts:124](https://github.com/ava-labs/slopes/blob/be20cee/src/utils/types.ts#L124)*
 
 Returns the rpcid, a strictly-increasing number, starting from 1, indicating the next request ID that will be sent.
 
@@ -477,7 +477,7 @@ ___
 
 ▸ **getSubnets**(): *Promise‹Array‹object››*
 
-*Defined in [apis/platform/api.ts:433](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L433)*
+*Defined in [apis/platform/api.ts:433](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L433)*
 
 Get all the subnets that exist.
 
@@ -491,7 +491,7 @@ ___
 
 ▸ **importAVA**(`username`: string, `password`: string, `to`: string, `payerNonce`: number): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:376](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L376)*
+*Defined in [apis/platform/api.ts:376](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L376)*
 
 Send AVA from an account on the P-Chain to an address on the X-Chain. This transaction must be signed with the key of the account that the AVA is sent from and which pays the transaction fee. After issuing this transaction, you must call the X-Chain’s importAVA method to complete the transfer.
 
@@ -514,7 +514,7 @@ ___
 
 ▸ **importKey**(`username`: string, `password`: string, `privateKey`: string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:469](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L469)*
+*Defined in [apis/platform/api.ts:469](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L469)*
 
 Give a user control over an address by providing the private key that controls the address.
 
@@ -536,7 +536,7 @@ ___
 
 ▸ **issueTx**(`tx`: string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:419](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L419)*
+*Defined in [apis/platform/api.ts:419](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L419)*
 
 Issue a transaction to the Platform Chain.
 
@@ -556,7 +556,7 @@ ___
 
 ▸ **listAccounts**(`username`: string, `password`: string): *Promise‹Array‹object››*
 
-*Defined in [apis/platform/api.ts:116](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L116)*
+*Defined in [apis/platform/api.ts:116](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L116)*
 
 List the accounts controlled by the user in the Keystore.
 
@@ -577,7 +577,7 @@ ___
 
 ▸ **sampleValidators**(`sampleSize`: number, `subnetID`: Buffer | string): *Promise‹Array‹string››*
 
-*Defined in [apis/platform/api.ts:175](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L175)*
+*Defined in [apis/platform/api.ts:175](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L175)*
 
 Samples `Size` validators from the current validator set.
 
@@ -600,7 +600,7 @@ ___
 
 *Inherited from [APIBase](_utils_types_.apibase.md)*
 
-*Defined in [utils/types.ts:41](https://github.com/ava-labs/slopes/blob/db73b16/src/utils/types.ts#L41)*
+*Defined in [utils/types.ts:41](https://github.com/ava-labs/slopes/blob/be20cee/src/utils/types.ts#L41)*
 
 Sets the path of the APIs baseurl.
 
@@ -618,7 +618,7 @@ ___
 
 ▸ **sign**(`username`: string, `password`: string, `tx`: string, `signer`: string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:400](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L400)*
+*Defined in [apis/platform/api.ts:400](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L400)*
 
 Sign an unsigned or partially signed transaction.
 
@@ -643,7 +643,7 @@ ___
 
 ▸ **validatedBy**(`blockchainID`: string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:304](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L304)*
+*Defined in [apis/platform/api.ts:304](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L304)*
 
 Get the Subnet that validates a given blockchain.
 
@@ -663,7 +663,7 @@ ___
 
 ▸ **validates**(`subnetID`: Buffer | string): *Promise‹Array‹string››*
 
-*Defined in [apis/platform/api.ts:320](https://github.com/ava-labs/slopes/blob/db73b16/src/apis/platform/api.ts#L320)*
+*Defined in [apis/platform/api.ts:320](https://github.com/ava-labs/slopes/blob/be20cee/src/apis/platform/api.ts#L320)*
 
 Get the IDs of the blockchains a Subnet validates.
 
