@@ -797,7 +797,7 @@ An NFT credential is the same as an secp256k1 credential with a different creden
 
 #### NFT Credential Identifier
 
-The `CredentialID` for an NFT credential is `0x0000000f`.
+The `CredentialID` for an NFT credential is `0x0000000e`.
 
 ***
 
