@@ -278,7 +278,7 @@ If it doesn't see [here](https://www.digitalocean.com/community/tutorials/how-to
 
 ### Is there a Javascript library?
 
-[Yes.](http://docs.ava.network/v1.0/en/tools/slopes/)
+[Yes.](http://docs.ava.network/v1.0/en/tools/avalanche.js/)
 
 ### Is my node connected to peers?
 
