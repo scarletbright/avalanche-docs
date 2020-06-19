@@ -51,7 +51,7 @@ initialState.addOutput(secpOutput3, avalanche.AVMConstants.SECPFXID);
 
 ## Creating the signed transaction
 
-Now that we know what we want an asset to look like, we create an output to send to the network. There is an AVM helper function `makeCreateAssetTx()` which does just that. 
+Now that we know what we want an asset to look like, we create an output to send to the network. There is an AVM helper function `buildCreateAssetTx()` which does just that. 
 
 ```js
 // Fetch the UTXOSet for our addresses
