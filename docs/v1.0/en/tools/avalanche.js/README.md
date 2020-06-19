@@ -226,7 +226,7 @@ Now that we know what we want an asset to look like, we create an output to send
 let utxos = await avm.getUTXOs(addresses);
 
 // Make an unsigned Create Asset transaction from the data compiled earlier
-let unsigned = await avm.makeCreateAssetTx(utxos, fee, addresses, initialState, name, symbol, denomination);
+let unsigned = await avm.buildCreateAssetTx(utxos, fee, addresses, initialState, name, symbol, denomination);
 
 let signed = avm.keyChain().signTx(unsigned); //returns a Tx class
 ```
@@ -322,7 +322,7 @@ let friendsAddress = "X-B6D4v1VtPYLbiUvYXtW4Px8oE9imC2vGW"; //AVA serialized add
 //   * An array of addresses sending the funds
 //   * An array of addresses any leftover funds are sent
 //   * The AssetID of the funds being sent
-let unsignedTx = await avm.makeBaseTx(utxos, sendAmount, [friendsAddress], addressStrings, addressStrings, assetid);
+let unsignedTx = await avm.buildBaseTx(utxos, sendAmount, [friendsAddress], addressStrings, addressStrings, assetid);
 let signedTx = avm.signTx(unsignedTx);
 let txid = await avm.issueTx(signedTx);
 ```

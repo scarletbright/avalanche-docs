@@ -58,7 +58,7 @@ Now that we know what we want an asset to look like, we create an output to send
 let utxos = await avm.getUTXOs(addresses);
 
 // Make an unsigned Create Asset transaction from the data compiled earlier
-let unsigned = await avm.makeCreateAssetTx(utxos, fee, addresses, initialState, name, symbol, denomination);
+let unsigned = await avm.buildCreateAssetTx(utxos, fee, addresses, initialState, name, symbol, denomination);
 
 let signed = avm.keyChain().signTx(unsigned); //returns a Tx class
 ```
