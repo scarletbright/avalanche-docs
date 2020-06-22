@@ -105,6 +105,93 @@ Let's make a secp256k1 transfer output with:
 
 ***
 
+### NFT Mint Output
+
+An NFT mint output is an NFT that is owned by a collection of addresses.
+
+#### NFT Mint Output Identifier
+
+The `OutputID` for an NFT mint output type is `0x0000000a`.
+
+#### What NFT Mint Output Contains
+
+An NFT Mint output contains an `OutputID`, `GroupID`, `Threshold`, and `Addresses`.
+
+- **`OutputID`** is an int that defines which type this is. For an NFT mint output the `OutputID` is `0x0000000a`.
+- **`GroupID`** is an int that specifies the group this NFT is issued to.
+- **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
+- **`Addresses`** is a list of unique addresses that correspond to the private keys that can be used to spend this output. Addresses must be sorted lexicographically.
+
+#### Gantt NFT Mint Output Specification
+
+```boo
++-----------+------------+-------------------------------+
+| output_id : int        |                       4 bytes |
++-----------+------------+-------------------------------+
+| group_id  : int        |                       4 bytes |
++-----------+------------+-------------------------------+
+| threshold : int        |                       4 bytes |
++-----------+------------+-------------------------------+
+| addresses : [][20]byte | 4 + 20 * len(addresses) bytes |
++-----------+------------+-------------------------------+
+                         |  + 20 * len(addresses) bytes  |
+                         +-------------------------------+
+```
+
+#### Proto NFT Mint Output Specification
+
+```protobuf
+message NFTMintOutput {
+    uint32 output_id = 1;         // 04 bytes
+    uint32 group_id = 2;          // 04 bytes
+    uint32 threshold = 3;         // 04 bytes
+    repeated bytes addresses = 4; // 04 bytes + 20 bytes * len(addresses)
+}
+```
+
+#### NFT Mint Output Example
+
+Let's make an NFT mint output with:
+
+- **`GroupID`**: 12345
+- **`Threshold`**: 1
+- **`Addresses`**:
+  - 0xc3344128e060128ede3523a24a461c8943ab0859
+  - 0x51025c61fbcfc078f69334f834be6dd26d55a955
+
+```splus
+[
+    OutputID  <- 0x0000000a
+    GroupID   <- 12345 = 0x00003039
+    Threshold <- 1     = 0x00000001
+    Addresses <- [
+        0xc3344128e060128ede3523a24a461c8943ab0859,
+        0x51025c61fbcfc078f69334f834be6dd26d55a955,
+    ]
+]
+=
+[
+    // output type:
+    0x00, 0x00, 0x00, 0x0a,
+    // groupID:
+    0x00, 0x00, 0x30, 0x39,
+    // threshold:
+    0x00, 0x00, 0x00, 0x01,
+    // number of addresses:
+    0x00, 0x00, 0x00, 0x02,
+    // addrs[0]:
+    0x51, 0x02, 0x5c, 0x61, 0xfb, 0xcf, 0xc0, 0x78,
+    0xf6, 0x93, 0x34, 0xf8, 0x34, 0xbe, 0x6d, 0xd2,
+    0x6d, 0x55, 0xa9, 0x55,
+    // addrs[1]:
+    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
+    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
+    0x43, 0xab, 0x08, 0x59,
+]
+```
+
+***
+
 ### NFT Transfer Output
 
 An NFT transfer output is an NFT that is owned by a collection of addresses.
