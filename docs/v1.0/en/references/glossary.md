@@ -31,6 +31,14 @@ In a slight abuse of notation, we also call the main instance of the AVM
 A blockchain is an append-only ledger. Blockchains have the special property that nobody can re-write old sections of the ledger. 
 Applications, such as payments systems, can be built atop blockchains. 
 
+## CB58
+
+CB58 is a format used to represent keys, addresses, and other binary values in web wallets and APIs.
+It uses 58 lowercase letters, uppercase letters, and digits so values are easier to read and write.
+CB58 is similar to [Base58Check], but uses a different checksum algorithm.
+
+[Base58Check]: https://en.bitcoin.it/wiki/Base58Check_encoding
+
 ## Consensus Protocol
 
 A consensus protocol is an algorithm, or series of steps, that a set of computers follow in order to reach agreement on some piece of information.
