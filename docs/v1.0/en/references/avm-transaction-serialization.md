@@ -115,10 +115,11 @@ The `OutputID` for an NFT mint output type is `0x0000000a`.
 
 #### What NFT Mint Output Contains
 
-An NFT Mint output contains an `OutputID`, `GroupID`, `Threshold`, and `Addresses`.
+An NFT Mint output contains an `OutputID`, `GroupID`, `Locktime`, `Threshold`, and `Addresses`.
 
 - **`OutputID`** is an int that defines which type this is. For an NFT mint output the `OutputID` is `0x0000000a`.
 - **`GroupID`** is an int that specifies the group this NFT is issued to.
+- **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
 - **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
 - **`Addresses`** is a list of unique addresses that correspond to the private keys that can be used to spend this output. Addresses must be sorted lexicographically.
 
@@ -129,6 +130,8 @@ An NFT Mint output contains an `OutputID`, `GroupID`, `Threshold`, and `Addresse
 | output_id : int        |                       4 bytes |
 +-----------+------------+-------------------------------+
 | group_id  : int        |                       4 bytes |
++-----------+------------+-------------------------------+
+| locktime  : long       |                       8 bytes |
 +-----------+------------+-------------------------------+
 | threshold : int        |                       4 bytes |
 +-----------+------------+-------------------------------+
@@ -144,8 +147,9 @@ An NFT Mint output contains an `OutputID`, `GroupID`, `Threshold`, and `Addresse
 message NFTMintOutput {
     uint32 output_id = 1;         // 04 bytes
     uint32 group_id = 2;          // 04 bytes
-    uint32 threshold = 3;         // 04 bytes
-    repeated bytes addresses = 4; // 04 bytes + 20 bytes * len(addresses)
+    uint64 locktime = 3;          // 08 bytes
+    uint32 threshold = 4;         // 04 bytes
+    repeated bytes addresses = 5; // 04 bytes + 20 bytes * len(addresses)
 }
 ```
 
@@ -154,6 +158,7 @@ message NFTMintOutput {
 Let's make an NFT mint output with:
 
 - **`GroupID`**: 12345
+- **`Locktime`**: 54321
 - **`Threshold`**: 1
 - **`Addresses`**:
   - 0xc3344128e060128ede3523a24a461c8943ab0859
@@ -162,6 +167,7 @@ Let's make an NFT mint output with:
 ```splus
 [
     OutputID  <- 0x0000000a
+    Locktime  <- 54321 = 0x000000000000d431
     GroupID   <- 12345 = 0x00003039
     Threshold <- 1     = 0x00000001
     Addresses <- [
@@ -173,6 +179,8 @@ Let's make an NFT mint output with:
 [
     // output type:
     0x00, 0x00, 0x00, 0x0a,
+    // locktime:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
     // groupID:
     0x00, 0x00, 0x30, 0x39,
     // threshold:
