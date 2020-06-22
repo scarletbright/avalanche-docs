@@ -115,9 +115,10 @@ The `OutputID` for a SECP256K1 mint output type is `0x00000006`.
 
 #### What SECP256K1 Mint Output Contains
 
-An SECP256K1 Mint output contains an `OutputID`, `Threshold`, and `Addresses`.
+An SECP256K1 Mint output contains an `OutputID`, `Locktime`, `Threshold`, and `Addresses`.
 
 - **`OutputID`** is an int that defines which type this is. For a SECP256K1 mint output the `OutputID` is `0x00000006`.
+- **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
 - **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
 - **`Addresses`** is a list of unique addresses that correspond to the private keys that can be used to spend this output. Addresses must be sorted lexicographically.
 
@@ -127,11 +128,13 @@ An SECP256K1 Mint output contains an `OutputID`, `Threshold`, and `Addresses`.
 +-----------+------------+-------------------------------+
 | output_id : int        |                       4 bytes |
 +-----------+------------+-------------------------------+
+| locktime  : long       |                       8 bytes |
++-----------+------------+-------------------------------+
 | threshold : int        |                       4 bytes |
 +-----------+------------+-------------------------------+
 | addresses : [][20]byte | 4 + 20 * len(addresses) bytes |
 +-----------+------------+-------------------------------+
-                         | 12 + 20 * len(addresses) bytes|
+                         | 20 + 20 * len(addresses) bytes|
                          +-------------------------------+
 ```
 
@@ -140,8 +143,9 @@ An SECP256K1 Mint output contains an `OutputID`, `Threshold`, and `Addresses`.
 ```protobuf
 message SECP256K1MintOutput {
     uint32 output_id = 1;         // 04 bytes
-    uint32 threshold = 2;         // 04 bytes
-    repeated bytes addresses = 3; // 04 bytes + 20 bytes * len(addresses)
+    uint64 locktime = 2;          // 08 bytes
+    uint32 threshold = 3;         // 04 bytes
+    repeated bytes addresses = 4; // 04 bytes + 20 bytes * len(addresses)
 }
 ```
 
@@ -149,6 +153,7 @@ message SECP256K1MintOutput {
 
 Let's make an SECP256K1 mint output with:
 
+- **`Locktime`**: 54321
 - **`Threshold`**: 1
 - **`Addresses`**:
   - 0xc3344128e060128ede3523a24a461c8943ab0859
@@ -158,6 +163,7 @@ Let's make an SECP256K1 mint output with:
 ```splus
 [
     OutputID  <- 0x00000006
+    Locktime  <- 54321 = 0x000000000000d431
     Threshold <- 1     = 0x00000001
     Addresses <- [
         0xc3344128e060128ede3523a24a461c8943ab0859,
@@ -168,6 +174,8 @@ Let's make an SECP256K1 mint output with:
 [
     // output type:
     0x00, 0x00, 0x00, 0x06,
+    // locktime:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
     // threshold:
     0x00, 0x00, 0x00, 0x01,
     // number of addresses:
