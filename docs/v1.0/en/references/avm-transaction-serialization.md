@@ -1164,13 +1164,13 @@ An unsigned export tx contains a `BaseTx`, and `Outs`.
 ### Gantt Unsigned Export Tx Specification
 
 ```boo
-+---------+--------------+--------------------------------------+
-| base_tx : BaseTx        |                 size(base_tx) bytes |
-+---------+--------------+--------------------------------------+
-| outs    : []TransferOut |                4 + size(outs) bytes |
-+---------+--------------+--------------------------------------+
-                         | 4 + size(outs) + size(base_tx) bytes |
-                         +--------------------------------------+
++---------+---------------+--------------------------------------+
+| base_tx : BaseTx        |                  size(base_tx) bytes |
++---------+---------------+--------------------------------------+
+| outs    : []TransferOut |                 4 + size(outs) bytes |
++---------+---------------+--------------------------------------+
+                          | 4 + size(outs) + size(base_tx) bytes |
+                          +--------------------------------------+
 ```
 
 ### Proto Unsigned Export Tx Specification
