@@ -1165,9 +1165,9 @@ An unsigned export tx contains a `BaseTx`, and `Outs`.
 
 ```boo
 +---------+--------------+--------------------------------------+
-| base_tx : BaseTx         |                size(base_tx) bytes |
+| base_tx : BaseTx        |                 size(base_tx) bytes |
 +---------+--------------+--------------------------------------+
-| outs     : []TransferOut |               4 + size(outs) bytes |
+| outs    : []TransferOut |                4 + size(outs) bytes |
 +---------+--------------+--------------------------------------+
                          | 4 + size(outs) + size(base_tx) bytes |
                          +--------------------------------------+
