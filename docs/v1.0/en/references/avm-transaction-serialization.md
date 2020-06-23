@@ -1156,7 +1156,7 @@ The transaction identifier for an export tx is `0x00000004`.
 
 ### What Unsigned Export Tx Contains
 
-An unsigned export tx contains a BaseTx, and Outs.
+An unsigned export tx contains a `BaseTx`, and `Outs`.
 
 * `ID` is defined in BaseTx. For an export tx, the ID is `0x00000004`.
 * `Outs` is a variable length array of Transferable Outputs.
