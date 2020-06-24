@@ -508,13 +508,13 @@ The `OpID` for an NFT mint operation is `0x0000000c`.
 
 #### What NFT Mint Op Contains
 
-An NFT mint operation contains an `OpID`, `AddressIndices`, `GroupID`, `Payload`, `Threshold` and `Output` of addresses.
+An NFT mint operation contains an `OpID`, `AddressIndices`, `GroupID`, `Payload`, and `Output` of addresses.
 
 - **`OpID`** is an int that defines which type this is. For an NFT mint operation the `OpID` is `0x0000000c`.
 - **`AddressIndices`** is a list of unique ints that define the private keys are being used to spend the UTXO. Each UTXO has an array of addresses that can spend the UTXO. Each int represents the index in this address array that will sign this transaction. The array must be sorted low to high.
 - **`GroupID`** is an int that specifies the group this NFT is issued to.
 - **`Payload`** is an arbitrary string of bytes no longer than 1024 bytes.
-- **`Output`** is a threshold and an array of unique addresses that correspond to the private keys that can be used to spend this output. Addresses must be sorted lexicographically.
+- **`Output`** is a locktime, threshold, and an array of unique addresses that correspond to the private keys that can be used to spend this output. Addresses must be sorted lexicographically.
 
 #### Gantt NFT Mint Op Specification
 
@@ -572,6 +572,7 @@ Let's make an NFT mint operation with:
     ]
     GroupID        <- 12345 = 0x00003039
     Payload        <- 0x431100
+    Locktime       <- 54321 = 0x000000000000d431
     Threshold      <- 1     = 0x00000001
     Addresses      <- [
         0xc3344128e060128ede3523a24a461c8943ab0859
@@ -595,6 +596,8 @@ Let's make an NFT mint operation with:
     0x43, 0x11, 0x00,
     // number of outputs:
     0x00, 0x00, 0x00, 0x01,
+    // locktime:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
     // threshold:
     0x00, 0x00, 0x00, 0x01,
     // number of addresses:
