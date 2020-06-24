@@ -41,6 +41,12 @@ Specifies the directory to which the database is persisted. Defaults to `"db"`.
 If set to false, state updates are performed solely to an in-memory database, without making any changes on permanent storage.
 When set to true, state updates are written to a local persistent database. Defaults to `true`.
 
+`--http-host` (string):
+
+The address that HTTP APIs listen on. The default value is `127.0.0.1`.
+This means that by default, your node can only handle API calls made from the same machine.
+To allow API calls from other machines, do `--http-host=[PUBLIC IP OF MACHINE RUNNING NODE]`.
+
 `--http-port` (int):
 
 Each node runs an HTTP server that provides the APIs for interacting with the node and the AVA network.
