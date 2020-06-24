@@ -34,7 +34,7 @@ Allows clients to collect Prometheus metrics about a node.
 
 ## [Admin API](./admin.md)
 
-Allows clients to examine a node's internal state.
+Allows clients to examine a node's internal state, set of connections, and similar internal protocol data.
 
 ## [Info API](./info.md)
 
