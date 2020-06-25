@@ -559,6 +559,7 @@ Let's make an NFT mint operation with:
   - 0x00000003
 - **`GroupID`**: 12345
 - **`Payload`**: 0x431100
+- **`Locktime`**: 54321
 - **`Threshold`**: 1
 - **`Addresses`**:
   - 0xc3344128e060128ede3523a24a461c8943ab0859
@@ -596,6 +597,7 @@ Let's make an NFT mint operation with:
     0x43, 0x11, 0x00,
     // number of outputs:
     0x00, 0x00, 0x00, 0x01,
+    // outputs[0]
     // locktime:
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
     // threshold:
