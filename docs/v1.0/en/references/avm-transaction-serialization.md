@@ -167,8 +167,8 @@ Let's make an NFT mint output with:
 ```splus
 [
     OutputID  <- 0x0000000a
-    Locktime  <- 54321 = 0x000000000000d431
     GroupID   <- 12345 = 0x00003039
+    Locktime  <- 54321 = 0x000000000000d431
     Threshold <- 1     = 0x00000001
     Addresses <- [
         0xc3344128e060128ede3523a24a461c8943ab0859,
@@ -179,10 +179,10 @@ Let's make an NFT mint output with:
 [
     // output type:
     0x00, 0x00, 0x00, 0x0a,
-    // locktime:
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
     // groupID:
     0x00, 0x00, 0x30, 0x39,
+    // locktime:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
     // threshold:
     0x00, 0x00, 0x00, 0x01,
     // number of addresses:
