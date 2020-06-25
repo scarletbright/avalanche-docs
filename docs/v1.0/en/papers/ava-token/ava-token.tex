@@ -99,7 +99,7 @@ The list of these parameters is defined in Figure~\ref{fig:notation}.
 \begin{figure}[hbtp]
 \begin{framed}
 \begin{itemize}
-\item{$\Delta$} : Staking amount, denominated in \AVATokenName{}. This value defines the minimal stake required to be placed as bond before participating in the system. The default value on genesis will be 20,000 \AVATokenName{}.
+\item{$\Delta$} : Staking amount, denominated in \AVATokenName{}. This value defines the minimal stake required to be placed as bond before participating in the system. The default value on genesis will be 2,000 \AVATokenName{}.
 % \item{$\bar{f}$} : The minimal time before a node can request to mint new coins, calculated as elapsed time since last minting event. 
 \item{$\delta_{min}$} : The minimal amount of time required for a node to stake into the system. The default value on genesis will be 2 weeks.
 \item{$\delta_{max}$} : The maximal amount of time a node can stake. The default value on genesis will be 52 weeks.
@@ -116,7 +116,7 @@ Ultimately, we note that governance in \AVATokenName{} has hysteresis, meaning t
 
 \section{Token Economics}
 
-\AVATokenName{} has a capped-supply of 720,000,000 (720M) tokens. The genesis block will have 360M \AVATokenName{} tokens. The rest of the  360M tokens will be minted according to Equation~\ref{equation:minting_function}. For a graphical representation, Figure~\ref{figure:mintingfunction_graph} shows the token emissions curve between \AVATokenName{} and BTC. The principle of the emissions function chosen for \AVAPlatformName{} is simple: reach a capped supply, in a fashion similar to Bitcoin's emissions curve, and yet maintain the ability to govern the rate at which the system reaches this limit.
+\AVATokenName{} has a capped-supply of 720,000,000 (720M) tokens. The genesis block will have 360M \AVATokenName{} tokens. The rest of the  360M tokens will be minted according to Equation~\ref{eq:minting-function}. For a graphical representation, Figure~\ref{fig:mintingfunction-graph} shows the token emissions curve between \AVATokenName{} and BTC. The principle of the emissions function chosen for \AVAPlatformName{} is simple: reach a capped supply, in a fashion similar to Bitcoin's emissions curve, and yet maintain the ability to govern the rate at which the system reaches this limit.
 
 \subsection{Minting Function}
 
@@ -124,7 +124,7 @@ $R_j$ is total number of tokens at year $j$, with $R_1 = 360M$, and $R_l$ repres
 
 \begin{equation}
 R_j = R_{l} + \sum_{\forall u} \rho(u.s_{amount}, u.s_{time}) \times (c_j/L) \times \left(\sum\limits_{i=0}^{j}\ \ddfrac{1}{\left(\gamma + \ddfrac{1}{1 + i^{\lambda}}\right)^i} \right)
-\label{equation:minting_function}
+\label{eq:minting-function}
 \end{equation}
 where, 
 \begin{equation}
@@ -144,7 +144,7 @@ If the entire supply of tokens at year $j$ is staked for the maximum amount of s
 \includegraphics[width=\linewidth]{./mintingfunction_20years.pdf}
 \includegraphics[width=\linewidth]{./mintingfunction_100years.pdf}
 \caption{Token emissions between \AVATokenName{} and BTC, calculated over a 20 year and 100 year horizon, with $\gamma = 1.15$ and $\lambda=1.1$. The curve for ``\AVATokenName{} (100\% staked)'' represents the case where every token is being staked repeatedly for the maximum staking duration of one year, i.e. $\sum_{\forall u} \rho(u.s_{amount}, u.s_{time}) = 1$. On the other hand, the curve of ``\AVATokenName{} (lower)'' represents the case where only 50\% of the tokens are being staked repeatedly over the minimal staking duration of two weeks, i.e. $\sum_{\forall u} \rho(u.s_{amount}, u.s_{time}) = 0.45$. We note that, for simplicity, these graphs represent the case where $\gamma$ and $\lambda$ are fixed at genesis and never governed afterwards. The goal of changing $\gamma$ and $\lambda$ is to increase total supply of tokens in case the empirically observed total staked supply is too low.}
-\label{figure:mintingfunction_graph}
+\label{fig:mintingfunction-graph}
 \end{figure}
 \clearpage
 \section{Minting Mechanism}
