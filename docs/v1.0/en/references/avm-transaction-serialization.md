@@ -584,7 +584,7 @@ Let's make an NFT transfer operation with:
     ]
     GroupID        <- 12345 = 0x00003039
     Payload        <- 0x431100
-    Locktime .     <- 54321 = 0x000000000000d431
+    Locktime       <- 54321 = 0x000000000000d431
     Threshold      <- 1     = 0x00000001
     Addresses      <- [
         0xc3344128e060128ede3523a24a461c8943ab0859,
