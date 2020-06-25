@@ -140,8 +140,8 @@ An NFT transfer output contains an `OutputID`, `GroupID`, `Payload`, `Locktime`,
 +-----------+------------+-------------------------------+
 | addresses : [][20]byte | 4 + 20 * len(addresses) bytes |
 +-----------+------------+-------------------------------+
-                         | 28 + len(payload)             |
-                         |  + 20 * len(addresses) bytes  |
+                         |             28 + len(payload) |
+                         |   + 20 * len(addresses) bytes |
                          +-------------------------------+
 ```
 
