@@ -1,6 +1,6 @@
 # Making API Calls
 
-This guide explains how to make calls to APIs exposed by AVA nodes.
+This guide explains how to make calls to APIs exposed by Avalanche nodes.
 
 ## Endpoint
 

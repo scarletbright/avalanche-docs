@@ -152,7 +152,7 @@ curl -X POST --data '{
 
 ## Next steps
 
-That's it! Your local AVA network is up and running.
+That's it! Your local Avalanche network is up and running.
 It has the default blockchains: the X-Chain, C-Chain and P-Chain.
 The only Subnet that exists is the Default Subnet.
 

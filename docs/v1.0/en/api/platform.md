@@ -1,6 +1,6 @@
 # Platform API
 
-This API allows clients to interact with the P-Chain (Platform Chain), which maintains AVA's validator set and handles blockchain creation.
+This API allows clients to interact with the P-Chain (Platform Chain), which maintains Avalanche's validator set and handles blockchain creation.
 
 ## Endpoint
 
@@ -281,7 +281,7 @@ platform.getAccount({address: string}) ->
 
 * `address` is the account's address.
 * `nonce` is the account's most recently used nonce.
-* `balance` is the account's balance in nAVA.
+* `balance` is the account's balance in nAVAX.
 
 #### Example Call
 
@@ -334,7 +334,7 @@ platform.listAccounts(
 
 * `address` is the account's address.
 * `nonce` is the account's most recently used nonce.
-* `balance` is the account's balance in nAVA.
+* `balance` is the account's balance in nAVAX.
 
 #### Example Call
 
@@ -398,7 +398,7 @@ platform.getCurrentValidators({subnetID: string}) ->
 * `endTime` is the Unix time when the validator stops validating the Subnet.
 * `weight` is the validator's weight when sampling validators.
   Omitted if `subnetID` is the default subnet.
-* `stakeAmount` is the amount of nAVA this validator staked.
+* `stakeAmount` is the amount of nAVAX this validator staked.
   Omitted if `subnetID` is not the default subnet.
 * `address` is the P Chain address which was passed in as `destination` when adding the validator.
 * `id` is the validator's ID.
@@ -474,7 +474,7 @@ platform.getPendingValidators({subnetID: string}) ->
 * `endTime` is the Unix time when the validator stops validating the Subnet.
 * `weight` is the validator's weight when sampling validators.
   Omitted if `subnetID` is the default subnet.
-* `stakeAmount` is the amount of nAVA this validator staked.
+* `stakeAmount` is the amount of nAVAX this validator staked.
   Omitted if `subnetID` is not the default subnet.
 * `address` is the P Chain address which was passed in as `destination` when adding the validator.
 * `id` is the validator's ID.
@@ -583,15 +583,15 @@ platform.addDefaultSubnetValidator(
 
 * `id` is the node ID of the validator.
 * `startTime` is the Unix time when the validator starts validating the Default Subnet.
-* `endTime` is the Unix time when the validator stops validating the Default Subnet (and staked AVA is returned).
-* `stakeAmount` is the amount of nAVA the validator is staking.
-* `payerNonce` is the next unused nonce of the account that is providing the staked AVA and paying the transaction fee.
-* `destination` is the address of the account that the staked AVA will be returned to, as well as a validation reward if the validator is sufficiently responsive and correct while it validated.
+* `endTime` is the Unix time when the validator stops validating the Default Subnet (and staked AVAX is returned).
+* `stakeAmount` is the amount of nAVAX the validator is staking.
+* `payerNonce` is the next unused nonce of the account that is providing the staked AVAX and paying the transaction fee.
+* `destination` is the address of the account that the staked AVAX will be returned to, as well as a validation reward if the validator is sufficiently responsive and correct while it validated.
 * `delegationFeeRate` is the percent fee this validator charges when others delegate stake to them, multiplied by 10,000.
   For example, suppose a validator has `delegationFeeRate` 300,000 and someone delegates to that validator.
   When the delegation period is over, if the delegator is entitled to a reward, 30% of the reward (300,000 / 10,000) goes to the validator and 70% goes to the delegator.
 * `unsignedTx` is the the unsigned transaction.
-  It must be signed (using `sign`) by the key of the account providing the staked AVA/paying the transaction fee before it can be issued.
+  It must be signed (using `sign`) by the key of the account providing the staked AVAX/paying the transaction fee before it can be issued.
 
 #### Example Call
 
@@ -690,7 +690,7 @@ curl -X POST --data '{
 
 Add a delegator to the Default Subnet.
 
-A delegator stakes AVA and specifies a validator (the delegatee) to validate on their behalf.
+A delegator stakes AVAX and specifies a validator (the delegatee) to validate on their behalf.
 The delegatee has an increased probability of being sampled by other validators (weight) in proportion to the stake delegated to them.
 
 The delegatee charges a fee to the delegator; the former receives a percentage of the delegator's validation reward (if any.)
@@ -714,12 +714,12 @@ platform.addDefaultSubnetDelegator(
 
 * `id` is the node ID of the delegatee.
 * `startTime` is the Unix time when the delegator starts delegating.
-* `endTime` is the Unix time when the delegator stops delegating (and staked AVA is returned).
-* `stakeAmount` is the amount of nAVA the delegator is staking.
-* `payerNonce` is the next unused nonce of the account that will provide the staked AVA and pay the transaction fee.
-* `destination` is the address of the account the staked AVA and validation reward (if applicable) are sent to at `endTime`.
+* `endTime` is the Unix time when the delegator stops delegating (and staked AVAX is returned).
+* `stakeAmount` is the amount of nAVAX the delegator is staking.
+* `payerNonce` is the next unused nonce of the account that will provide the staked AVAX and pay the transaction fee.
+* `destination` is the address of the account the staked AVAX and validation reward (if applicable) are sent to at `endTime`.
 * `unsignedTx` is the unsigned transaction.
-  It must be signed (using `sign`) by the key of the account providing the staked AVA and paying the transaction fee before it can be issued.
+  It must be signed (using `sign`) by the key of the account providing the staked AVAX and paying the transaction fee before it can be issued.
 
 #### Example Call
 
@@ -966,7 +966,7 @@ platform.getBlockchains() ->
 }
 ```
 
-* `blockchains` is all of the blockchains that exists on the AVA network.
+* `blockchains` is all of the blockchains that exists on the AVAX network.
 * `id` is the blockchain's ID.
 * `subnetID` is the ID of the Subnet that validates this blockchain.
 * `vmID` is the ID of the Virtual Machine the blockchain runs.
@@ -1037,17 +1037,17 @@ curl -X POST --data '{
 }
 ```
 
-### platform.exportAVA
+### platform.exportAVAX
 
-Send AVA from an account on the P-Chain to an address on the X-Chain.  
+Send AVAX from an account on the P-Chain to an address on the X-Chain.  
 This transaction must be signed with the key of the account that
-the AVA is sent from and which pays the transaction fee.  
-After issuing this transaction, you must call the X-Chain's [`importAVA`](./avm.md#avmimportava) method to complete the transfer. 
+the AVAX is sent from and which pays the transaction fee.  
+After issuing this transaction, you must call the X-Chain's [`importAVAX`](./avm.md#avmimportavax) method to complete the transfer. 
 
 #### Signature
 
 ```go
-platform.exportAVA(
+platform.exportAVAX(
     {
         amount: int,
         to: string,
@@ -1056,16 +1056,16 @@ platform.exportAVA(
 ) -> {unsigndTx: string}
 ```
 
-* `amount` is the amount of nAVA to send.
-* `to` is the address on the X-Chain to send the AVA to. Do not include `X-` in the address.
-* `payerNonce` is the next unused nonce of the account paying the tx fee and providing the sent AVA.
+* `amount` is the amount of nAVAX to send.
+* `to` is the address on the X-Chain to send the AVAX to. Do not include `X-` in the address.
+* `payerNonce` is the next unused nonce of the account paying the tx fee and providing the sent AVAX.
 
 #### Example Call
 
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.exportAVA",
+    "method": "platform.exportAVAX",
     "params": {
     	"to":"G5ZGXEfoWYNFZH5JF9C4QPKAbPTKwRbyB",
     	"amount":1,
@@ -1087,16 +1087,16 @@ curl -X POST --data '{
 }
 ```
 
-### platform.importAVA
+### platform.importAVAX
 
-Complete a transfer of AVA from the X-Chain to the P-Chain.
+Complete a transfer of AVAX from the X-Chain to the P-Chain.
 
-Before this method is called, you must call the X-Chain's [`exportAVA`](./avm.md#avmexportava) method to initiate the transfer.
+Before this method is called, you must call the X-Chain's [`exportAVAX`](./avm.md#avmexportavax) method to initiate the transfer.
 
 #### Signature
 
 ```go
-platform.importAVA(
+platform.importAVAX(
     {
         to: string,
         payerNonce: int,
@@ -1106,8 +1106,8 @@ platform.importAVA(
 ) -> {tx: string}
 ```
 
-* `to` is the ID of the account the AVA is sent to.
-  This must be the same as the `to` argument in the corresponding call to the X-Chain's `exportAVA`.
+* `to` is the ID of the account the AVAX is sent to.
+  This must be the same as the `to` argument in the corresponding call to the X-Chain's `exportAVAX`.
 * `payerNonce` is the next unused nonce of the account specified in `to`.
 * `username` is the user that controls the account specified in `to`.
 * `tx` is the transaction, which should be sent to the network by calling `issueTx`.
@@ -1117,7 +1117,7 @@ platform.importAVA(
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.importAVA",
+    "method": "platform.importAVAX",
     "params": {
     	"username":"bob",
     	"password":"loblaw",

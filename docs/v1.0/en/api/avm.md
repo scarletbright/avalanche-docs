@@ -1,6 +1,6 @@
 # AVM (X-Chain) API
 
-The X-Chain, AVA's native platform for creating and trading assets, is an instance of the AVA Virtual Machine (AVM).
+The X-Chain, Avalanche's native platform for creating and trading assets, is an instance of the Avalanche Virtual Machine (AVM).
 This API allows clients to create and trade assets on the X-Chain and other instances of the AVM.
 
 ## Format
@@ -176,7 +176,7 @@ curl -X POST --data '{
     "result": {
         "balances": [
             {
-                "asset": "AVA",
+                "asset": "AVAX",
                 "balance": "102"
             },
             {
@@ -406,7 +406,7 @@ avm.Send({
 
 * Sends `amount` units of asset with ID `assetID` to address `to`.
   `amount` is denominated in the smallest increment of the asset.
-  For AVA this is 1 nAVA (one billionth of 1 AVA.)
+  For AVAX this is 1 nAVAX (one billionth of 1 AVAX.)
 * The asset is sent from addresses controlled by user `username`.
   (Of course, that user will need to hold at least the balance of the asset being sent.)
 
@@ -418,7 +418,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.send",
     "params" :{
-        "assetID" :"AVA",
+        "assetID" :"AVAX",
         "amount"  :10000,
         "to"      :"X-xMrKg8uUECt5CS9RE9j5hizv2t2SWTbk",
         "username":"userThatControlsAtLeast10000OfThisAsset",
@@ -464,8 +464,8 @@ avm.createFixedCapAsset({
 * `name` is a human-readable name for the asset. Not necessarily unique.
 * `symbol` is a shorthand symbol for the asset. Between 0 and 4 characters. Not necessarily unique. May be omitted.
 * `denomination` determines how balances of this asset are displayed by user interfaces. If `denomination` is 0, 100 units of this asset are displayed as 100. If `denomination` is 1, 100 units of this asset are displayed as 10.0. If `denomination` is 2, 100 units of this asset are displays as .100, etc.
-* In the future, performing a transaction on an AVM instance will require a transaction fee (paid in AVA tokens). `username` and `password` denote the user paying the fee.
-  That user will need to hold enough AVA to cover the fee.
+* In the future, performing a transaction on an AVM instance will require a transaction fee (paid in AVAX tokens). `username` and `password` denote the user paying the fee.
+  That user will need to hold enough AVAX to cover the fee.
   Since there are no transaction fees right now, you can leave `username` and `password` blank.
 * Each element in `initialHolders` specifies that `address` holds `amount` units of the asset at genesis.
 * `assetID` is the ID of the new asset.
@@ -537,8 +537,8 @@ avm.createVariableCapAsset({
 * `denomination` determines how balances of this asset are displayed by user interfaces. If denomination is 0, 100 units of this asset are displayed as 100. If denomination is 1, 100 units of this asset are displayed as 10.0. If denomination is 2, 100 units of this asset are displays as .100, etc.
 * `minterSets` is a list where each element specifies that `threshold` of the addresses
   in `minters` may together mint more of the asset by signing a minting transaction.
-* In the future, performing a transaction on an AVM instance will require a transaction fee (paid in AVA tokens). `username` and `password` denote the user paying the fee.
-  That user will need to hold enough AVA to cover the fee.
+* In the future, performing a transaction on an AVM instance will require a transaction fee (paid in AVAX tokens). `username` and `password` denote the user paying the fee.
+  That user will need to hold enough AVAX to cover the fee.
   Since there are no transaction fees right now, you can leave `username` and `password` blank.
 * `assetID` is the ID of the new asset.
 
@@ -677,15 +677,15 @@ curl -X POST --data '{
 }
 ```
 
-### avm.exportAVA
+### avm.exportAVAX
 
-Send AVA from the X-Chain to an account on the P-Chain.  
-After calling this method, you must call the P-Chain's [`importAVA`](./platform.md#platformimportava) method to complete the transfer. 
+Send AVAX from the X-Chain to an account on the P-Chain.  
+After calling this method, you must call the P-Chain's [`importAVAX`](./platform.md#platformimportavax) method to complete the transfer. 
 
 #### Signature
 
 ```go
-avm.exportAVA({
+avm.exportAVAX({
     to: string,
     amount: int,
     username: string,
@@ -693,9 +693,9 @@ avm.exportAVA({
 }) -> {txID: string}
 ```
 
-* `to` is the ID of the P-Chain account the AVA is sent to.
-* `amount` is the amount of nAVA to send.
-* The AVA is sent from addresses controlled by `username`
+* `to` is the ID of the P-Chain account the AVAX is sent to.
+* `amount` is the amount of nAVAX to send.
+* The AVAX is sent from addresses controlled by `username`
 
 #### Example Call
 
@@ -703,7 +703,7 @@ avm.exportAVA({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"avm.exportAVA",
+    "method" :"avm.exportAVAX",
     "params" :{
         "to":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
         "amount": 500,
@@ -725,24 +725,24 @@ curl -X POST --data '{
 }
 ```
 
-### avm.importAVA
+### avm.importAVAX
 
-Finalize a transfer of AVA from the P-Chain to the X-Chain.
+Finalize a transfer of AVAX from the P-Chain to the X-Chain.
 
-Before this method is called, you must call the P-Chain's [`exportAVA`](./platform.md#platformexportava) method to initiate the transfer.
+Before this method is called, you must call the P-Chain's [`exportAVAX`](./platform.md#platformexportava) method to initiate the transfer.
 
 #### Signature
 
 ```go
-avm.importAVA({
+avm.importAVAX({
     to: string,
     username: string,
     password:string,
 }) -> {txID: string}
 ```
 
-* `to` is the address the AVA is sent to.
-  This must be the same as the `to` argument in the corresponding call to the P-Chain's `exportAVA`,
+* `to` is the address the AVAX is sent to.
+  This must be the same as the `to` argument in the corresponding call to the P-Chain's `exportAVAX`,
   except that the prepended `X-` should be included in this argument.
 * `username` is the user that controls `to`.
 
@@ -752,7 +752,7 @@ avm.importAVA({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"avm.importAVA",
+    "method" :"avm.importAVAX",
     "params" :{
     	"username":"myUsername",
     	"password":"myPassword",
