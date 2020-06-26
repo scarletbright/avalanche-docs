@@ -14,6 +14,8 @@
 
   ↳ [HealthAPI](healthapi.healthapi-1.md)
 
+  ↳ [InfoAPI](infoapi.infoapi-1.md)
+
   ↳ [KeystoreAPI](keystoreapi.keystoreapi-1.md)
 
   ↳ [PlatformAPI](platformapi.platformapi-1.md)
@@ -48,7 +50,7 @@
 
 *Overrides [APIBase](utils_types.apibase.md).[constructor](utils_types.apibase.md#constructor)*
 
-*Defined in [utils/types.ts:127](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L127)*
+*Defined in [utils/types.ts:127](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L127)*
 
 **Parameters:**
 
@@ -68,7 +70,7 @@ Name | Type | Default | Description |
 
 *Inherited from [APIBase](utils_types.apibase.md).[baseurl](utils_types.apibase.md#protected-baseurl)*
 
-*Defined in [utils/types.ts:34](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L34)*
+*Defined in [utils/types.ts:34](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L34)*
 
 ___
 
@@ -78,7 +80,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[core](utils_types.apibase.md#protected-core)*
 
-*Defined in [utils/types.ts:33](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L33)*
+*Defined in [utils/types.ts:33](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L33)*
 
 ___
 
@@ -88,7 +90,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[db](utils_types.apibase.md#protected-db)*
 
-*Defined in [utils/types.ts:35](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L35)*
+*Defined in [utils/types.ts:35](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L35)*
 
 ___
 
@@ -96,7 +98,7 @@ ___
 
 • **jrpcVersion**: *string* = "2.0"
 
-*Defined in [utils/types.ts:81](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L81)*
+*Defined in [utils/types.ts:81](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L81)*
 
 ___
 
@@ -104,7 +106,7 @@ ___
 
 • **rpcid**: *number* = 1
 
-*Defined in [utils/types.ts:82](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L82)*
+*Defined in [utils/types.ts:82](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L82)*
 
 ## Methods
 
@@ -112,7 +114,7 @@ ___
 
 ▸ **callMethod**(`method`: string, `params?`: Array‹object› | object, `baseurl?`: string): *Promise‹[RequestResponseData](utils_types.requestresponsedata.md)›*
 
-*Defined in [utils/types.ts:83](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L83)*
+*Defined in [utils/types.ts:83](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L83)*
 
 **Parameters:**
 
@@ -132,7 +134,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[getBaseURL](utils_types.apibase.md#getbaseurl)*
 
-*Defined in [utils/types.ts:58](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L58)*
+*Defined in [utils/types.ts:58](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L58)*
 
 Returns the baseurl's path.
 
@@ -146,7 +148,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[getDB](utils_types.apibase.md#getdb)*
 
-*Defined in [utils/types.ts:65](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L65)*
+*Defined in [utils/types.ts:65](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L65)*
 
 Returns the baseurl's database.
 
@@ -158,7 +160,7 @@ ___
 
 ▸ **getRPCID**(): *number*
 
-*Defined in [utils/types.ts:125](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L125)*
+*Defined in [utils/types.ts:125](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L125)*
 
 Returns the rpcid, a strictly-increasing number, starting from 1, indicating the next request ID that will be sent.
 
@@ -172,7 +174,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[setBaseURL](utils_types.apibase.md#setbaseurl)*
 
-*Defined in [utils/types.ts:42](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L42)*
+*Defined in [utils/types.ts:42](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L42)*
 
 Sets the path of the APIs baseurl.
 

@@ -33,7 +33,7 @@
 
 *Inherited from [Credential](avmapi_credentials.credential.md).[constructor](avmapi_credentials.credential.md#constructor)*
 
-*Defined in [apis/avm/credentials.ts:71](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/credentials.ts#L71)*
+*Defined in [apis/avm/credentials.ts:71](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/credentials.ts#L71)*
 
 **Parameters:**
 
@@ -51,7 +51,7 @@ Name | Type | Default |
 
 *Inherited from [Credential](avmapi_credentials.credential.md).[sigArray](avmapi_credentials.credential.md#protected-sigarray)*
 
-*Defined in [apis/avm/credentials.ts:36](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/credentials.ts#L36)*
+*Defined in [apis/avm/credentials.ts:36](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/credentials.ts#L36)*
 
 ## Methods
 
@@ -61,7 +61,7 @@ Name | Type | Default |
 
 *Inherited from [Credential](avmapi_credentials.credential.md).[addSignature](avmapi_credentials.credential.md#addsignature)*
 
-*Defined in [apis/avm/credentials.ts:43](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/credentials.ts#L43)*
+*Defined in [apis/avm/credentials.ts:43](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/credentials.ts#L43)*
 
 Adds a signature to the credentials and returns the index off the added signature.
 
@@ -81,7 +81,7 @@ ___
 
 *Inherited from [Credential](avmapi_credentials.credential.md).[fromBuffer](avmapi_credentials.credential.md#frombuffer)*
 
-*Defined in [apis/avm/credentials.ts:48](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/credentials.ts#L48)*
+*Defined in [apis/avm/credentials.ts:48](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/credentials.ts#L48)*
 
 **Parameters:**
 
@@ -100,7 +100,7 @@ ___
 
 *Overrides [Credential](avmapi_credentials.credential.md).[getCredentialID](avmapi_credentials.credential.md#abstract-getcredentialid)*
 
-*Defined in [apis/avm/credentials.ts:83](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/credentials.ts#L83)*
+*Defined in [apis/avm/credentials.ts:83](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/credentials.ts#L83)*
 
 **Returns:** *number*
 
@@ -112,6 +112,6 @@ ___
 
 *Inherited from [Credential](avmapi_credentials.credential.md).[toBuffer](avmapi_credentials.credential.md#tobuffer)*
 
-*Defined in [apis/avm/credentials.ts:60](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/credentials.ts#L60)*
+*Defined in [apis/avm/credentials.ts:60](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/credentials.ts#L60)*
 
 **Returns:** *Buffer*

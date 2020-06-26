@@ -1,8 +1,8 @@
-[avalanche](../README.md) › [HealthAPI](../modules/healthapi.md) › [HealthAPI](healthapi.healthapi-1.md)
+[avalanche](../README.md) › [InfoAPI](../modules/infoapi.md) › [InfoAPI](infoapi.infoapi-1.md)
 
-# Class: HealthAPI
+# Class: InfoAPI
 
-Class for interacting with a node API that is using the node's HealthApi.
+Class for interacting with a node's InfoAPI.
 
 **`remarks`** This extends the [JRPCAPI](utils_types.jrpcapi.md) class. This class should not be directly called. Instead, use the [Avalanche.addAPI](avalanche.avalanche-1.md#addapi) function to register this interface with Avalanche.
 
@@ -10,51 +10,54 @@ Class for interacting with a node API that is using the node's HealthApi.
 
   ↳ [JRPCAPI](utils_types.jrpcapi.md)
 
-  ↳ **HealthAPI**
+  ↳ **InfoAPI**
 
 ## Index
 
 ### Constructors
 
-* [constructor](healthapi.healthapi-1.md#constructor)
+* [constructor](infoapi.infoapi-1.md#constructor)
 
 ### Properties
 
-* [baseurl](healthapi.healthapi-1.md#protected-baseurl)
-* [core](healthapi.healthapi-1.md#protected-core)
-* [db](healthapi.healthapi-1.md#protected-db)
-* [jrpcVersion](healthapi.healthapi-1.md#protected-jrpcversion)
-* [rpcid](healthapi.healthapi-1.md#protected-rpcid)
+* [baseurl](infoapi.infoapi-1.md#protected-baseurl)
+* [core](infoapi.infoapi-1.md#protected-core)
+* [db](infoapi.infoapi-1.md#protected-db)
+* [jrpcVersion](infoapi.infoapi-1.md#protected-jrpcversion)
+* [rpcid](infoapi.infoapi-1.md#protected-rpcid)
 
 ### Methods
 
-* [callMethod](healthapi.healthapi-1.md#callmethod)
-* [getBaseURL](healthapi.healthapi-1.md#getbaseurl)
-* [getDB](healthapi.healthapi-1.md#getdb)
-* [getLiveness](healthapi.healthapi-1.md#getliveness)
-* [getRPCID](healthapi.healthapi-1.md#getrpcid)
-* [setBaseURL](healthapi.healthapi-1.md#setbaseurl)
+* [callMethod](infoapi.infoapi-1.md#callmethod)
+* [getBaseURL](infoapi.infoapi-1.md#getbaseurl)
+* [getBlockchainID](infoapi.infoapi-1.md#getblockchainid)
+* [getDB](infoapi.infoapi-1.md#getdb)
+* [getNetworkID](infoapi.infoapi-1.md#getnetworkid)
+* [getNetworkName](infoapi.infoapi-1.md#getnetworkname)
+* [getNodeID](infoapi.infoapi-1.md#getnodeid)
+* [getNodeVersion](infoapi.infoapi-1.md#getnodeversion)
+* [getRPCID](infoapi.infoapi-1.md#getrpcid)
+* [peers](infoapi.infoapi-1.md#peers)
+* [setBaseURL](infoapi.infoapi-1.md#setbaseurl)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new HealthAPI**(`core`: [AvalancheCore](avalanchecore.avalanchecore-1.md), `baseurl`: string): *[HealthAPI](healthapi.healthapi-1.md)*
+\+ **new InfoAPI**(`core`: [AvalancheCore](avalanchecore.avalanchecore-1.md), `baseurl`: string): *[InfoAPI](infoapi.infoapi-1.md)*
 
 *Overrides [JRPCAPI](utils_types.jrpcapi.md).[constructor](utils_types.jrpcapi.md#constructor)*
 
-*Defined in [apis/health/api.ts:25](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/health/api.ts#L25)*
-
-This class should not be instantiated directly. Instead use the [Avalanche.addAPI](avalanche.avalanche-1.md#addapi) method.
+*Defined in [apis/info/api.ts:88](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/info/api.ts#L88)*
 
 **Parameters:**
 
-Name | Type | Default | Description |
------- | ------ | ------ | ------ |
-`core` | [AvalancheCore](avalanchecore.avalanchecore-1.md) | - | A reference to the Avalanche class |
-`baseurl` | string | "/ext/health" | Defaults to the string "/ext/health" as the path to blockchain's baseurl  |
+Name | Type | Default |
+------ | ------ | ------ |
+`core` | [AvalancheCore](avalanchecore.avalanchecore-1.md) | - |
+`baseurl` | string | "/ext/info" |
 
-**Returns:** *[HealthAPI](healthapi.healthapi-1.md)*
+**Returns:** *[InfoAPI](infoapi.infoapi-1.md)*
 
 ## Properties
 
@@ -142,6 +145,26 @@ Returns the baseurl's path.
 
 ___
 
+###  getBlockchainID
+
+▸ **getBlockchainID**(`alias`: string): *Promise‹string›*
+
+*Defined in [apis/info/api.ts:24](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/info/api.ts#L24)*
+
+Fetches the blockchainID from the node for a given alias.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`alias` | string | The blockchain alias to get the blockchainID  |
+
+**Returns:** *Promise‹string›*
+
+Returns a Promise<string> containing the base 58 string representation of the blockchainID.
+
+___
+
 ###  getDB
 
 ▸ **getDB**(): *StoreAPI*
@@ -156,15 +179,59 @@ Returns the baseurl's database.
 
 ___
 
-###  getLiveness
+###  getNetworkID
 
-▸ **getLiveness**(): *Promise‹object›*
+▸ **getNetworkID**(): *Promise‹number›*
 
-*Defined in [apis/health/api.ts:21](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/health/api.ts#L21)*
+*Defined in [apis/info/api.ts:38](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/info/api.ts#L38)*
 
-**Returns:** *Promise‹object›*
+Fetches the networkID from the node.
 
-Promise for an object containing the health check response
+**Returns:** *Promise‹number›*
+
+Returns a Promise<number> of the networkID.
+
+___
+
+###  getNetworkName
+
+▸ **getNetworkName**(): *Promise‹string›*
+
+*Defined in [apis/info/api.ts:50](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/info/api.ts#L50)*
+
+Fetches the network name this node is running on
+
+**Returns:** *Promise‹string›*
+
+Returns a Promise<string> containing the network name.
+
+___
+
+###  getNodeID
+
+▸ **getNodeID**(): *Promise‹string›*
+
+*Defined in [apis/info/api.ts:61](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/info/api.ts#L61)*
+
+Fetches the nodeID from the node.
+
+**Returns:** *Promise‹string›*
+
+Returns a Promise<string> of the nodeID.
+
+___
+
+###  getNodeVersion
+
+▸ **getNodeVersion**(): *Promise‹string›*
+
+*Defined in [apis/info/api.ts:73](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/info/api.ts#L73)*
+
+Fetches the version of Gecko this node is running
+
+**Returns:** *Promise‹string›*
+
+Returns a Promise<string> containing the version of Gecko.
 
 ___
 
@@ -179,6 +246,20 @@ ___
 Returns the rpcid, a strictly-increasing number, starting from 1, indicating the next request ID that will be sent.
 
 **Returns:** *number*
+
+___
+
+###  peers
+
+▸ **peers**(): *Promise‹Array‹string››*
+
+*Defined in [apis/info/api.ts:84](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/info/api.ts#L84)*
+
+Returns the peers connected to the node.
+
+**Returns:** *Promise‹Array‹string››*
+
+Promise for the list of connected peers in <ip>:<port> format.
 
 ___
 

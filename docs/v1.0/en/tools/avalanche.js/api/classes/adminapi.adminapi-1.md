@@ -54,7 +54,7 @@ Class for interacting with a node's AdminAPI.
 
 *Overrides [JRPCAPI](utils_types.jrpcapi.md).[constructor](utils_types.jrpcapi.md#constructor)*
 
-*Defined in [apis/admin/api.ts:182](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/admin/api.ts#L182)*
+*Defined in [apis/admin/api.ts:182](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/admin/api.ts#L182)*
 
 This class should not be instantiated directly. Instead use the [Avalanche.addAPI](avalanche.avalanche-1.md#addapi) method.
 
@@ -75,7 +75,7 @@ Name | Type | Default | Description |
 
 *Inherited from [APIBase](utils_types.apibase.md).[baseurl](utils_types.apibase.md#protected-baseurl)*
 
-*Defined in [utils/types.ts:34](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L34)*
+*Defined in [utils/types.ts:34](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L34)*
 
 ___
 
@@ -85,7 +85,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[core](utils_types.apibase.md#protected-core)*
 
-*Defined in [utils/types.ts:33](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L33)*
+*Defined in [utils/types.ts:33](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L33)*
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[db](utils_types.apibase.md#protected-db)*
 
-*Defined in [utils/types.ts:35](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L35)*
+*Defined in [utils/types.ts:35](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L35)*
 
 ___
 
@@ -105,7 +105,7 @@ ___
 
 *Inherited from [JRPCAPI](utils_types.jrpcapi.md).[jrpcVersion](utils_types.jrpcapi.md#protected-jrpcversion)*
 
-*Defined in [utils/types.ts:81](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L81)*
+*Defined in [utils/types.ts:81](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L81)*
 
 ___
 
@@ -115,7 +115,7 @@ ___
 
 *Inherited from [JRPCAPI](utils_types.jrpcapi.md).[rpcid](utils_types.jrpcapi.md#protected-rpcid)*
 
-*Defined in [utils/types.ts:82](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L82)*
+*Defined in [utils/types.ts:82](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L82)*
 
 ## Methods
 
@@ -123,7 +123,7 @@ ___
 
 ▸ **alias**(`endpoint`: string, `alias`: string): *Promise‹boolean›*
 
-*Defined in [apis/admin/api.ts:49](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/admin/api.ts#L49)*
+*Defined in [apis/admin/api.ts:49](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/admin/api.ts#L49)*
 
 Assign an API an alias, a different endpoint for the API. The original endpoint will still work. This change only affects this node; other nodes will not know about this alias.
 
@@ -146,7 +146,7 @@ ___
 
 ▸ **aliasChain**(`chain`: string, `alias`: string): *Promise‹boolean›*
 
-*Defined in [apis/admin/api.ts:67](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/admin/api.ts#L67)*
+*Defined in [apis/admin/api.ts:67](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/admin/api.ts#L67)*
 
 Give a blockchain an alias, a different name that can be used any place the blockchain’s ID is used.
 
@@ -169,7 +169,7 @@ ___
 
 *Inherited from [JRPCAPI](utils_types.jrpcapi.md).[callMethod](utils_types.jrpcapi.md#callmethod)*
 
-*Defined in [utils/types.ts:83](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L83)*
+*Defined in [utils/types.ts:83](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L83)*
 
 **Parameters:**
 
@@ -189,7 +189,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[getBaseURL](utils_types.apibase.md#getbaseurl)*
 
-*Defined in [utils/types.ts:58](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L58)*
+*Defined in [utils/types.ts:58](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L58)*
 
 Returns the baseurl's path.
 
@@ -201,7 +201,7 @@ ___
 
 ▸ **getBlockchainID**(`alias`: string): *Promise‹string›*
 
-*Defined in [apis/admin/api.ts:84](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/admin/api.ts#L84)*
+*Defined in [apis/admin/api.ts:84](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/admin/api.ts#L84)*
 
 Fetches the blockchainID from the node for a given alias.
 
@@ -223,7 +223,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[getDB](utils_types.apibase.md#getdb)*
 
-*Defined in [utils/types.ts:65](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L65)*
+*Defined in [utils/types.ts:65](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L65)*
 
 Returns the baseurl's database.
 
@@ -235,7 +235,7 @@ ___
 
 ▸ **getNetworkID**(): *Promise‹number›*
 
-*Defined in [apis/admin/api.ts:34](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/admin/api.ts#L34)*
+*Defined in [apis/admin/api.ts:34](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/admin/api.ts#L34)*
 
 Fetches the networkID from the node.
 
@@ -249,7 +249,7 @@ ___
 
 ▸ **getNetworkName**(): *Promise‹string›*
 
-*Defined in [apis/admin/api.ts:109](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/admin/api.ts#L109)*
+*Defined in [apis/admin/api.ts:109](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/admin/api.ts#L109)*
 
 Fetches the network name this node is running on
 
@@ -263,7 +263,7 @@ ___
 
 ▸ **getNodeID**(): *Promise‹string›*
 
-*Defined in [apis/admin/api.ts:22](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/admin/api.ts#L22)*
+*Defined in [apis/admin/api.ts:22](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/admin/api.ts#L22)*
 
 Fetches the nodeID from the node.
 
@@ -277,7 +277,7 @@ ___
 
 ▸ **getNodeVersion**(): *Promise‹string›*
 
-*Defined in [apis/admin/api.ts:98](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/admin/api.ts#L98)*
+*Defined in [apis/admin/api.ts:98](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/admin/api.ts#L98)*
 
 Fetches the version of Gecko this node is running
 
@@ -293,7 +293,7 @@ ___
 
 *Inherited from [JRPCAPI](utils_types.jrpcapi.md).[getRPCID](utils_types.jrpcapi.md#getrpcid)*
 
-*Defined in [utils/types.ts:125](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L125)*
+*Defined in [utils/types.ts:125](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L125)*
 
 Returns the rpcid, a strictly-increasing number, starting from 1, indicating the next request ID that will be sent.
 
@@ -305,7 +305,7 @@ ___
 
 ▸ **lockProfile**(`filename`: string): *Promise‹boolean›*
 
-*Defined in [apis/admin/api.ts:122](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/admin/api.ts#L122)*
+*Defined in [apis/admin/api.ts:122](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/admin/api.ts#L122)*
 
 Dump the mutex statistics of the node to the specified file.
 
@@ -325,7 +325,7 @@ ___
 
 ▸ **memoryProfile**(`filename`: string): *Promise‹boolean›*
 
-*Defined in [apis/admin/api.ts:138](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/admin/api.ts#L138)*
+*Defined in [apis/admin/api.ts:138](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/admin/api.ts#L138)*
 
 Dump the current memory footprint of the node to the specified file.
 
@@ -345,7 +345,7 @@ ___
 
 ▸ **peers**(): *Promise‹Array‹string››*
 
-*Defined in [apis/admin/api.ts:152](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/admin/api.ts#L152)*
+*Defined in [apis/admin/api.ts:152](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/admin/api.ts#L152)*
 
 Returns the peers connected to the node.
 
@@ -361,7 +361,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[setBaseURL](utils_types.apibase.md#setbaseurl)*
 
-*Defined in [utils/types.ts:42](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L42)*
+*Defined in [utils/types.ts:42](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L42)*
 
 Sets the path of the APIs baseurl.
 
@@ -379,7 +379,7 @@ ___
 
 ▸ **startCPUProfiler**(`filename`: string): *Promise‹boolean›*
 
-*Defined in [apis/admin/api.ts:164](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/admin/api.ts#L164)*
+*Defined in [apis/admin/api.ts:164](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/admin/api.ts#L164)*
 
 Start profiling the cpu utilization of the node. Will dump the profile information into the specified file on stop.
 
@@ -399,7 +399,7 @@ ___
 
 ▸ **stopCPUProfiler**(): *Promise‹boolean›*
 
-*Defined in [apis/admin/api.ts:178](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/admin/api.ts#L178)*
+*Defined in [apis/admin/api.ts:178](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/admin/api.ts#L178)*
 
 Stop the CPU profile that was previously started.
 
