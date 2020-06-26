@@ -14,15 +14,85 @@ This API uses the `json 2.0` RPC format. For more information on making JSON RPC
 
 ## API Methods
 
-### info.getNodeID
-Get the ID of this node.
+### info.getBlockchainID
+
+Given a blockchain's alias, get its ID. (See [admin.aliasChain](./admin.md#adminaliaschain) for more context.)
+
+#### Signature
+
+```go
+info.getBlockchainID({alias:string}) -> {blockchainID:string}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"info.getBlockchainID",
+    "params": {
+        "alias":"X"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "blockchainID":"sV6o671RtkGBcno1FiaDbVcFv2sG5aVXMZYzKdP4VQAWmJQnM"
+    }
+}
+```
+
+### info.getNetworkID
+
+Get the ID of the network this node is participating in.
 
 #### Signature 
+
+```go
+info.getNetworkID() -> {networkID:int}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"info.getNetworkID"
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "networkID":"2"
+    }
+}
+```
+
+### info.getNodeID
+
+Get the ID of this node.
+
+#### Signature
+
 ```go
 info.getNodeID() -> {nodeID: string}
 ```
 
 #### Example Call
+
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
@@ -44,9 +114,11 @@ curl -X POST --data '{
 ```
 
 ### info.peers
+
 Get description of peer connections.
 
 #### Signature 
+
 ```go
 info.peers() -> {peers:[]{
     ip: string,
@@ -59,6 +131,7 @@ info.peers() -> {peers:[]{
 ```
 
 #### Example Call
+
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
@@ -100,69 +173,6 @@ curl -X POST --data '{
              "lastReceived":"2020-06-01T15:22:55Z"
           }
         ]
-    }
-}
-```
-
-### info.getNetworkID
-
-Get the ID of the network this node is participating in.
-
-#### Signature 
-```go
-info.getNetworkID() -> {networkID:int}
-```
-
-#### Example Call
-```json
-curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "method" :"info.getNetworkID"
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
-```
-
-#### Example Response
-
-```json
-{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "result" :{
-        "networkID":"2"
-    }
-}
-```
-
-### info.getBlockchainID
-
-Given a blockchain's alias, get its ID. (See `avm.aliasChain` for more context.)
-
-#### Signature 
-```go
-info.getBlockchainID({alias:string}) -> {blockchainID:string}
-```
-
-#### Example Call
-```json
-curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "method" :"info.getBlockchainID",
-    "params": {
-        "alias":"X"
-    }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
-```
-
-#### Example Response
-
-```json
-{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "result" :{
-        "blockchainID":"sV6o671RtkGBcno1FiaDbVcFv2sG5aVXMZYzKdP4VQAWmJQnM"
     }
 }
 ```
