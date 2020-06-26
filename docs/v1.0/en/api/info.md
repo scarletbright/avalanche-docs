@@ -81,6 +81,38 @@ curl -X POST --data '{
 }
 ```
 
+### info.getNetworkName
+
+Get the name of the network this node is participating in.
+
+#### Signature 
+
+```go
+info.getNetworkName() -> {networkName:string}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"info.getNetworkName"
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "networkName":"local"
+    }
+}
+```
+
 ### info.getNodeID
 
 Get the ID of this node.
@@ -108,6 +140,38 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "result": {
         "nodeID": "5mb46qkSBj81k9g9e4VFjGGSbaaSLFRzD"
+    },
+    "id": 1
+}
+```
+
+### info.getNodeVersion
+
+Get the version of this node.
+
+#### Signature
+
+```go
+info.getNodeVersion() -> {version: string}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"info.getNodeVersion"
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "version": "avalanche/0.5.7"
     },
     "id": 1
 }
