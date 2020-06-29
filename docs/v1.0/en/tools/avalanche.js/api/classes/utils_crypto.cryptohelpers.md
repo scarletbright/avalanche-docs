@@ -40,7 +40,7 @@ Encryption is using XChaCha20Poly1305 with a random public nonce.
 
 \+ **new CryptoHelpers**(): *[CryptoHelpers](utils_crypto.cryptohelpers.md)*
 
-*Defined in [utils/crypto.ts:177](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/crypto.ts#L177)*
+*Defined in [utils/crypto.ts:177](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/crypto.ts#L177)*
 
 **Returns:** *[CryptoHelpers](utils_crypto.cryptohelpers.md)*
 
@@ -50,7 +50,7 @@ Encryption is using XChaCha20Poly1305 with a random public nonce.
 
 • **libsodium**: *typeof libsodiumWrapper*
 
-*Defined in [utils/crypto.ts:17](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/crypto.ts#L17)*
+*Defined in [utils/crypto.ts:17](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/crypto.ts#L17)*
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 • **memlimit**: *number* = 524288000
 
-*Defined in [utils/crypto.ts:15](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/crypto.ts#L15)*
+*Defined in [utils/crypto.ts:15](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/crypto.ts#L15)*
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 • **opslimit**: *number* = 3
 
-*Defined in [utils/crypto.ts:16](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/crypto.ts#L16)*
+*Defined in [utils/crypto.ts:16](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/crypto.ts#L16)*
 
 ## Methods
 
@@ -74,7 +74,7 @@ ___
 
 ▸ **_pwcleaner**(`password`: string, `salt`: Uint8Array): *Promise‹Uint8Array›*
 
-*Defined in [utils/crypto.ts:68](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/crypto.ts#L68)*
+*Defined in [utils/crypto.ts:68](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/crypto.ts#L68)*
 
 Internal-intended function for cleaning passwords.
 
@@ -93,7 +93,7 @@ ___
 
 ▸ **decrypt**(`password`: string, `ciphertext`: Buffer, `salt`: Buffer, `nonce`: Buffer): *Promise‹Buffer›*
 
-*Defined in [utils/crypto.ts:172](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/crypto.ts#L172)*
+*Defined in [utils/crypto.ts:172](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/crypto.ts#L172)*
 
 Decrypts ciphertext with the provided password, nonce, ans salt.
 
@@ -114,7 +114,7 @@ ___
 
 ▸ **encrypt**(`password`: string, `plaintext`: Buffer | string, `salt`: Buffer): *Promise‹object›*
 
-*Defined in [utils/crypto.ts:137](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/crypto.ts#L137)*
+*Defined in [utils/crypto.ts:137](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/crypto.ts#L137)*
 
 Encrypts plaintext with the provided password using XChaCha20Poly1305.
 
@@ -136,7 +136,7 @@ ___
 
 ▸ **getMemoryLimit**(): *number*
 
-*Defined in [utils/crypto.ts:22](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/crypto.ts#L22)*
+*Defined in [utils/crypto.ts:22](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/crypto.ts#L22)*
 
 Retrieves the memory limit that can be spent generating password-safe hashes.
 
@@ -148,7 +148,7 @@ ___
 
 ▸ **getOpsLimit**(): *number*
 
-*Defined in [utils/crypto.ts:38](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/crypto.ts#L38)*
+*Defined in [utils/crypto.ts:38](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/crypto.ts#L38)*
 
 Retrieves the cpu limit that can be spent generating password-safe hashes.
 
@@ -160,7 +160,7 @@ ___
 
 ▸ **makeSalt**(): *Promise‹Buffer›*
 
-*Defined in [utils/crypto.ts:102](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/crypto.ts#L102)*
+*Defined in [utils/crypto.ts:102](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/crypto.ts#L102)*
 
 Generates a randomized [Buffer](https://github.com/feross/buffer) to be used as a salt
 
@@ -172,7 +172,7 @@ ___
 
 ▸ **pwhash**(`password`: string, `salt`: Buffer): *Promise‹object›*
 
-*Defined in [utils/crypto.ts:115](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/crypto.ts#L115)*
+*Defined in [utils/crypto.ts:115](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/crypto.ts#L115)*
 
 Produces a password-safe hash.
 
@@ -193,7 +193,7 @@ ___
 
 ▸ **setMemoryLimit**(`memlimit`: number): *void*
 
-*Defined in [utils/crypto.ts:31](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/crypto.ts#L31)*
+*Defined in [utils/crypto.ts:31](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/crypto.ts#L31)*
 
 Sets the memory limit that can be spent generating password-safe hashes.
 
@@ -211,7 +211,7 @@ ___
 
 ▸ **setOpsLimit**(`opslimit`: number): *void*
 
-*Defined in [utils/crypto.ts:47](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/crypto.ts#L47)*
+*Defined in [utils/crypto.ts:47](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/crypto.ts#L47)*
 
 Retrieves the cpu limit that can be spent generating password-safe hashes.
 
@@ -229,7 +229,7 @@ ___
 
 ▸ **sha256**(`message`: string | Buffer | Uint8Array): *Buffer*
 
-*Defined in [utils/crypto.ts:89](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/crypto.ts#L89)*
+*Defined in [utils/crypto.ts:89](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/crypto.ts#L89)*
 
 A SHA256 helper function.
 

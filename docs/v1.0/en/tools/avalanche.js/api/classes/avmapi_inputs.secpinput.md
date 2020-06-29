@@ -43,7 +43,7 @@
 
 *Overrides [Input](avmapi_inputs.input.md).[constructor](avmapi_inputs.input.md#constructor)*
 
-*Defined in [apis/avm/inputs.ts:263](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L263)*
+*Defined in [apis/avm/inputs.ts:263](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L263)*
 
 An [AmountInput](avmapi_inputs.amountinput.md) class which issues a payment on an assetID.
 
@@ -63,7 +63,7 @@ Name | Type | Default | Description |
 
 *Inherited from [AmountInput](avmapi_inputs.amountinput.md).[amount](avmapi_inputs.amountinput.md#protected-amount)*
 
-*Defined in [apis/avm/inputs.ts:235](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L235)*
+*Defined in [apis/avm/inputs.ts:235](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L235)*
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 *Inherited from [AmountInput](avmapi_inputs.amountinput.md).[amountValue](avmapi_inputs.amountinput.md#protected-amountvalue)*
 
-*Defined in [apis/avm/inputs.ts:236](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L236)*
+*Defined in [apis/avm/inputs.ts:236](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L236)*
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 *Inherited from [Input](avmapi_inputs.input.md).[sigCount](avmapi_inputs.input.md#protected-sigcount)*
 
-*Defined in [apis/avm/inputs.ts:32](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L32)*
+*Defined in [apis/avm/inputs.ts:32](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L32)*
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 *Inherited from [Input](avmapi_inputs.input.md).[sigIdxs](avmapi_inputs.input.md#protected-sigidxs)*
 
-*Defined in [apis/avm/inputs.ts:33](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L33)*
+*Defined in [apis/avm/inputs.ts:33](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L33)*
 
 ## Methods
 
@@ -103,7 +103,7 @@ ___
 
 *Inherited from [Input](avmapi_inputs.input.md).[addSignatureIdx](avmapi_inputs.input.md#addsignatureidx)*
 
-*Defined in [apis/avm/inputs.ts:54](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L54)*
+*Defined in [apis/avm/inputs.ts:54](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L54)*
 
 Creates and adds a [SigIdx](avmapi_types.sigidx.md) to the [Input](avmapi_inputs.input.md).
 
@@ -126,7 +126,7 @@ ___
 
 *Overrides [Input](avmapi_inputs.input.md).[fromBuffer](avmapi_inputs.input.md#frombuffer)*
 
-*Defined in [apis/avm/inputs.ts:248](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L248)*
+*Defined in [apis/avm/inputs.ts:248](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L248)*
 
 Popuates the instance from a [Buffer](https://github.com/feross/buffer) representing the [AmountInput](avmapi_inputs.amountinput.md) and returns the size of the output.
 
@@ -147,7 +147,7 @@ ___
 
 *Inherited from [AmountInput](avmapi_inputs.amountinput.md).[getAmount](avmapi_inputs.amountinput.md#getamount)*
 
-*Defined in [apis/avm/inputs.ts:241](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L241)*
+*Defined in [apis/avm/inputs.ts:241](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L241)*
 
 Returns the amount as a [BN](https://github.com/indutny/bn.js/).
 
@@ -161,7 +161,7 @@ ___
 
 *Inherited from [Input](avmapi_inputs.input.md).[getCredentialID](avmapi_inputs.input.md#getcredentialid)*
 
-*Defined in [apis/avm/inputs.ts:44](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L44)*
+*Defined in [apis/avm/inputs.ts:44](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L44)*
 
 **Returns:** *number*
 
@@ -173,7 +173,7 @@ ___
 
 *Overrides [Input](avmapi_inputs.input.md).[getInputID](avmapi_inputs.input.md#abstract-getinputid)*
 
-*Defined in [apis/avm/inputs.ts:283](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L283)*
+*Defined in [apis/avm/inputs.ts:283](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L283)*
 
 Returns the inputID for this input
 
@@ -187,7 +187,7 @@ ___
 
 *Inherited from [Input](avmapi_inputs.input.md).[getSigIdxs](avmapi_inputs.input.md#getsigidxs)*
 
-*Defined in [apis/avm/inputs.ts:40](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L40)*
+*Defined in [apis/avm/inputs.ts:40](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L40)*
 
 Returns the array of [SigIdx](avmapi_types.sigidx.md) for this [Input](avmapi_inputs.input.md)
 
@@ -203,7 +203,7 @@ ___
 
 *Overrides [Input](avmapi_inputs.input.md).[toBuffer](avmapi_inputs.input.md#tobuffer)*
 
-*Defined in [apis/avm/inputs.ts:258](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L258)*
+*Defined in [apis/avm/inputs.ts:258](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L258)*
 
 Returns the buffer representing the [AmountInput](avmapi_inputs.amountinput.md) instance.
 
@@ -217,7 +217,7 @@ ___
 
 *Inherited from [Input](avmapi_inputs.input.md).[toString](avmapi_inputs.input.md#tostring)*
 
-*Defined in [apis/avm/inputs.ts:94](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L94)*
+*Defined in [apis/avm/inputs.ts:94](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L94)*
 
 Returns a base-58 representation of the [Input](avmapi_inputs.input.md).
 
@@ -231,7 +231,7 @@ ___
 
 *Inherited from [Input](avmapi_inputs.input.md).[comparator](avmapi_inputs.input.md#static-comparator)*
 
-*Defined in [apis/avm/inputs.ts:98](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L98)*
+*Defined in [apis/avm/inputs.ts:98](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L98)*
 
 **Returns:** *function*
 

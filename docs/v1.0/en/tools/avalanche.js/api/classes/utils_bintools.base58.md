@@ -35,7 +35,7 @@ let buff:Buffer = b58.decode(somestring);
 
 • **alphabetIdx0**: *string* = "1"
 
-*Defined in [utils/bintools.ts:235](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/bintools.ts#L235)*
+*Defined in [utils/bintools.ts:235](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/bintools.ts#L235)*
 
 ___
 
@@ -76,7 +76,7 @@ ___
         255, 255, 255, 255, 255, 255, 255, 255
     ]
 
-*Defined in [utils/bintools.ts:236](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/bintools.ts#L236)*
+*Defined in [utils/bintools.ts:236](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/bintools.ts#L236)*
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 • **b58alphabet**: *string* = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 
-*Defined in [utils/bintools.ts:234](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/bintools.ts#L234)*
+*Defined in [utils/bintools.ts:234](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/bintools.ts#L234)*
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 • **big58Radix**: *BN* = new BN(58)
 
-*Defined in [utils/bintools.ts:270](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/bintools.ts#L270)*
+*Defined in [utils/bintools.ts:270](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/bintools.ts#L270)*
 
 ___
 
@@ -100,7 +100,7 @@ ___
 
 • **bigZero**: *BN* = new BN(0)
 
-*Defined in [utils/bintools.ts:271](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/bintools.ts#L271)*
+*Defined in [utils/bintools.ts:271](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/bintools.ts#L271)*
 
 ## Methods
 
@@ -108,7 +108,7 @@ ___
 
 ▸ **decode**(`b`: string): *Buffer*
 
-*Defined in [utils/bintools.ts:305](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/bintools.ts#L305)*
+*Defined in [utils/bintools.ts:305](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/bintools.ts#L305)*
 
 Dencodes a base-58 into a [Buffer](https://github.com/feross/buffer)
 
@@ -128,7 +128,7 @@ ___
 
 ▸ **encode**(`buff`: Buffer): *string*
 
-*Defined in [utils/bintools.ts:280](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/bintools.ts#L280)*
+*Defined in [utils/bintools.ts:280](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/bintools.ts#L280)*
 
 Encodes a [Buffer](https://github.com/feross/buffer) as a base-58 string
 

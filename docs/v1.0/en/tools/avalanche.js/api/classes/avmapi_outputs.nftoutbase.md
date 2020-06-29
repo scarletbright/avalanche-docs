@@ -54,7 +54,7 @@ An [Output](avmapi_outputs.output.md) class which specifies an NFT.
 
 *Overrides [Output](avmapi_outputs.output.md).[constructor](avmapi_outputs.output.md#constructor)*
 
-*Defined in [apis/avm/outputs.ts:404](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L404)*
+*Defined in [apis/avm/outputs.ts:404](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L404)*
 
 An [Output](avmapi_outputs.output.md) class which contains an NFT on an assetID.
 
@@ -78,7 +78,7 @@ Name | Type | Default | Description |
 
 *Inherited from [Output](avmapi_outputs.output.md).[addresses](avmapi_outputs.output.md#protected-addresses)*
 
-*Defined in [apis/avm/outputs.ts:34](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L34)*
+*Defined in [apis/avm/outputs.ts:34](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L34)*
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 • **groupID**: *Buffer* = Buffer.alloc(4)
 
-*Defined in [apis/avm/outputs.ts:363](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L363)*
+*Defined in [apis/avm/outputs.ts:363](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L363)*
 
 ___
 
@@ -96,7 +96,7 @@ ___
 
 *Inherited from [Output](avmapi_outputs.output.md).[locktime](avmapi_outputs.output.md#protected-locktime)*
 
-*Defined in [apis/avm/outputs.ts:31](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L31)*
+*Defined in [apis/avm/outputs.ts:31](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L31)*
 
 ___
 
@@ -106,7 +106,7 @@ ___
 
 *Inherited from [Output](avmapi_outputs.output.md).[numaddrs](avmapi_outputs.output.md#protected-numaddrs)*
 
-*Defined in [apis/avm/outputs.ts:33](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L33)*
+*Defined in [apis/avm/outputs.ts:33](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L33)*
 
 ___
 
@@ -114,7 +114,7 @@ ___
 
 • **payload**: *Buffer*
 
-*Defined in [apis/avm/outputs.ts:365](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L365)*
+*Defined in [apis/avm/outputs.ts:365](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L365)*
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 • **sizePayload**: *Buffer* = Buffer.alloc(4)
 
-*Defined in [apis/avm/outputs.ts:364](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L364)*
+*Defined in [apis/avm/outputs.ts:364](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L364)*
 
 ___
 
@@ -132,7 +132,7 @@ ___
 
 *Inherited from [Output](avmapi_outputs.output.md).[threshold](avmapi_outputs.output.md#protected-threshold)*
 
-*Defined in [apis/avm/outputs.ts:32](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L32)*
+*Defined in [apis/avm/outputs.ts:32](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L32)*
 
 ## Methods
 
@@ -142,7 +142,7 @@ ___
 
 *Overrides [Output](avmapi_outputs.output.md).[fromBuffer](avmapi_outputs.output.md#frombuffer)*
 
-*Defined in [apis/avm/outputs.ts:384](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L384)*
+*Defined in [apis/avm/outputs.ts:384](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L384)*
 
 Popuates the instance from a [Buffer](https://github.com/feross/buffer) representing the [NFTOutBase](avmapi_outputs.nftoutbase.md) and returns the size of the output.
 
@@ -163,7 +163,7 @@ ___
 
 *Inherited from [Output](avmapi_outputs.output.md).[getAddress](avmapi_outputs.output.md#getaddress)*
 
-*Defined in [apis/avm/outputs.ts:90](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L90)*
+*Defined in [apis/avm/outputs.ts:90](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L90)*
 
 Returns the address from the index provided.
 
@@ -185,7 +185,7 @@ ___
 
 *Inherited from [Output](avmapi_outputs.output.md).[getAddressIdx](avmapi_outputs.output.md#getaddressidx)*
 
-*Defined in [apis/avm/outputs.ts:73](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L73)*
+*Defined in [apis/avm/outputs.ts:73](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L73)*
 
 Returns the index of the address.
 
@@ -207,7 +207,7 @@ ___
 
 *Inherited from [Output](avmapi_outputs.output.md).[getAddresses](avmapi_outputs.output.md#getaddresses)*
 
-*Defined in [apis/avm/outputs.ts:58](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L58)*
+*Defined in [apis/avm/outputs.ts:58](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L58)*
 
 Returns an array of [Buffer](https://github.com/feross/buffer)s for the addresses.
 
@@ -219,7 +219,7 @@ ___
 
 ▸ **getGroupID**(): *number*
 
-*Defined in [apis/avm/outputs.ts:370](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L370)*
+*Defined in [apis/avm/outputs.ts:370](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L370)*
 
 Returns the groupID as a number.
 
@@ -233,7 +233,7 @@ ___
 
 *Inherited from [Output](avmapi_outputs.output.md).[getLocktime](avmapi_outputs.output.md#getlocktime)*
 
-*Defined in [apis/avm/outputs.ts:51](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L51)*
+*Defined in [apis/avm/outputs.ts:51](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L51)*
 
 Returns the a [BN](https://github.com/indutny/bn.js/) repersenting the UNIX Timestamp when the lock is made available.
 
@@ -247,7 +247,7 @@ ___
 
 *Inherited from [Output](avmapi_outputs.output.md).[getOutputID](avmapi_outputs.output.md#abstract-getoutputid)*
 
-*Defined in [apis/avm/outputs.ts:39](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L39)*
+*Defined in [apis/avm/outputs.ts:39](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L39)*
 
 Returns the outputID for the output which tells parsers what type it is
 
@@ -259,7 +259,7 @@ ___
 
 ▸ **getPayload**(): *Buffer*
 
-*Defined in [apis/avm/outputs.ts:377](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L377)*
+*Defined in [apis/avm/outputs.ts:377](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L377)*
 
 Returns the payload as a [Buffer](https://github.com/feross/buffer)
 
@@ -273,7 +273,7 @@ ___
 
 *Inherited from [Output](avmapi_outputs.output.md).[getSpenders](avmapi_outputs.output.md#getspenders)*
 
-*Defined in [apis/avm/outputs.ts:119](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L119)*
+*Defined in [apis/avm/outputs.ts:119](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L119)*
 
 Given an array of addresses and an optional timestamp, select an array of address [Buffer](https://github.com/feross/buffer)s of qualified spenders for the output.
 
@@ -294,7 +294,7 @@ ___
 
 *Inherited from [Output](avmapi_outputs.output.md).[getThreshold](avmapi_outputs.output.md#getthreshold)*
 
-*Defined in [apis/avm/outputs.ts:44](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L44)*
+*Defined in [apis/avm/outputs.ts:44](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L44)*
 
 Returns the threshold of signers required to spend this output.
 
@@ -308,7 +308,7 @@ ___
 
 *Inherited from [Output](avmapi_outputs.output.md).[makeTransferable](avmapi_outputs.output.md#maketransferable)*
 
-*Defined in [apis/avm/outputs.ts:193](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L193)*
+*Defined in [apis/avm/outputs.ts:193](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L193)*
 
 **Parameters:**
 
@@ -326,7 +326,7 @@ ___
 
 *Inherited from [Output](avmapi_outputs.output.md).[meetsThreshold](avmapi_outputs.output.md#meetsthreshold)*
 
-*Defined in [apis/avm/outputs.ts:100](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L100)*
+*Defined in [apis/avm/outputs.ts:100](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L100)*
 
 Given an array of address [Buffer](https://github.com/feross/buffer)s and an optional timestamp, returns true if the addresses meet the threshold required to spend the output.
 
@@ -347,7 +347,7 @@ ___
 
 *Overrides [Output](avmapi_outputs.output.md).[toBuffer](avmapi_outputs.output.md#tobuffer)*
 
-*Defined in [apis/avm/outputs.ts:398](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L398)*
+*Defined in [apis/avm/outputs.ts:398](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L398)*
 
 Returns the buffer representing the [NFTOutBase](avmapi_outputs.nftoutbase.md) instance.
 
@@ -361,7 +361,7 @@ ___
 
 *Inherited from [Output](avmapi_outputs.output.md).[toString](avmapi_outputs.output.md#tostring)*
 
-*Defined in [apis/avm/outputs.ts:185](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L185)*
+*Defined in [apis/avm/outputs.ts:185](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L185)*
 
 Returns a base-58 string representing the [Output](avmapi_outputs.output.md).
 
@@ -375,7 +375,7 @@ ___
 
 *Inherited from [Output](avmapi_outputs.output.md).[comparator](avmapi_outputs.output.md#static-comparator)*
 
-*Defined in [apis/avm/outputs.ts:197](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L197)*
+*Defined in [apis/avm/outputs.ts:197](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L197)*
 
 **Returns:** *function*
 

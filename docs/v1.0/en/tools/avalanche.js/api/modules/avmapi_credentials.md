@@ -20,7 +20,7 @@
 
 ▸ **SelectCredentialClass**(`credid`: number, ...`args`: Array‹any›): *[Credential](../classes/avmapi_credentials.credential.md)*
 
-*Defined in [apis/avm/credentials.ts:23](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/credentials.ts#L23)*
+*Defined in [apis/avm/credentials.ts:23](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/credentials.ts#L23)*
 
 Takes a buffer representing the credential and returns the proper [Credential](../classes/avmapi_credentials.credential.md) instance.
 

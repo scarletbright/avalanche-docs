@@ -31,7 +31,7 @@ Class representing an unsigned transaction.
 
 \+ **new UnsignedTx**(`transaction`: [BaseTx](avmapi_transactions.basetx.md)): *[UnsignedTx](avmapi_transactions.unsignedtx.md)*
 
-*Defined in [apis/avm/tx.ts:481](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L481)*
+*Defined in [apis/avm/tx.ts:481](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/tx.ts#L481)*
 
 **Parameters:**
 
@@ -47,7 +47,7 @@ Name | Type | Default |
 
 • **transaction**: *[BaseTx](avmapi_transactions.basetx.md)*
 
-*Defined in [apis/avm/tx.ts:449](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L449)*
+*Defined in [apis/avm/tx.ts:449](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/tx.ts#L449)*
 
 ## Methods
 
@@ -55,7 +55,7 @@ Name | Type | Default |
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-*Defined in [apis/avm/tx.ts:455](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L455)*
+*Defined in [apis/avm/tx.ts:455](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/tx.ts#L455)*
 
 **Parameters:**
 
@@ -72,7 +72,7 @@ ___
 
 ▸ **getTransaction**(): *[BaseTx](avmapi_transactions.basetx.md)*
 
-*Defined in [apis/avm/tx.ts:451](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L451)*
+*Defined in [apis/avm/tx.ts:451](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/tx.ts#L451)*
 
 **Returns:** *[BaseTx](avmapi_transactions.basetx.md)*
 
@@ -82,7 +82,7 @@ ___
 
 ▸ **sign**(`kc`: [AVMKeyChain](avmapi_keychain.avmkeychain.md)): *[Tx](avmapi_transactions.tx.md)*
 
-*Defined in [apis/avm/tx.ts:476](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L476)*
+*Defined in [apis/avm/tx.ts:476](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/tx.ts#L476)*
 
 Signs this [UnsignedTx](avmapi_transactions.unsignedtx.md) and returns signed [Tx](avmapi_transactions.tx.md)
 
@@ -102,6 +102,6 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [apis/avm/tx.ts:462](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L462)*
+*Defined in [apis/avm/tx.ts:462](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/tx.ts#L462)*
 
 **Returns:** *Buffer*
