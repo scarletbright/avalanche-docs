@@ -8,6 +8,14 @@ When running a node, there are a variety of possible configurations that are sup
 
 If set to false, this node will not expose the Admin API. Defaults to `true`.
 
+`--api-auth-required` (bool):
+
+If set to true, API calls require an authorization token. Defaults to `false`. See [here](../api/auth.md) for more information.
+
+`--api-auth-password` (string):
+
+The password needed to create/revoke authorization tokens. If `--api-auth-required=true`, must be specified; otherwise ignored. See [here](../api/auth.md) for more information.
+
 `--api-ipcs-enabled` (bool):
 
 If set to true, this node will expose the IPCs API. Defaults to `false`.
