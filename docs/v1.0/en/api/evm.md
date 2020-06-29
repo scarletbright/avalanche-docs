@@ -12,6 +12,7 @@ This API is identical to Geth's API except that it only supports the following s
 * `net_`
 * `eth_`
 * `personal_`
+* `txpool_`
 
 You can interact with these services the same exact way you'd interact with Geth.
 See the [Ethereum Wiki's JSON-RPC Documentation](https://eth.wiki/json-rpc/API) and [Geth's JSON-RPC Documentation](https://geth.ethereum.org/docs/rpc/server) for a full description of this API.
@@ -130,6 +131,35 @@ curl -X POST --data '{
     "error": {
         "code": -32000,
         "message": "insufficient funds for gas * price + value"
+    }
+}
+```
+### Getting count of pending transactions
+
+"Pending" transactions will be non-zero during periods of heavy network use. "Queued" transactions indicate transactions have been submitted with nonce values ahead of the next expected value for an address, which places them on hold until a transaction with the next expected nonce value is submitted.
+
+#### Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "txpool_status",
+    "params": [],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+        "pending": "0x2f",
+        "queued": "0x0"
     }
 }
 ```
