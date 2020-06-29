@@ -1037,17 +1037,19 @@ curl -X POST --data '{
 }
 ```
 
-### platform.exportAVAX
+### platform.exportAVA
+
+(Note: This method will change to `exportAVAX` in the next release.)
 
 Send AVAX from an account on the P-Chain to an address on the X-Chain.  
 This transaction must be signed with the key of the account that
 the AVAX is sent from and which pays the transaction fee.  
-After issuing this transaction, you must call the X-Chain's [`importAVAX`](./avm.md#avmimportavax) method to complete the transfer. 
+After issuing this transaction, you must call the X-Chain's [`importAVA`](./avm.md#avmimportava) method to complete the transfer. 
 
 #### Signature
 
 ```go
-platform.exportAVAX(
+platform.exportAVA(
     {
         amount: int,
         to: string,
@@ -1065,7 +1067,7 @@ platform.exportAVAX(
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.exportAVAX",
+    "method": "platform.exportAVA",
     "params": {
     	"to":"G5ZGXEfoWYNFZH5JF9C4QPKAbPTKwRbyB",
     	"amount":1,
@@ -1087,16 +1089,18 @@ curl -X POST --data '{
 }
 ```
 
-### platform.importAVAX
+### platform.importAVA
+
+(Note: This method will change to `importAVAX` in the next release.)
 
 Complete a transfer of AVAX from the X-Chain to the P-Chain.
 
-Before this method is called, you must call the X-Chain's [`exportAVAX`](./avm.md#avmexportavax) method to initiate the transfer.
+Before this method is called, you must call the X-Chain's [`exportAVA`](./avm.md#avmexportava) method to initiate the transfer.
 
 #### Signature
 
 ```go
-platform.importAVAX(
+platform.importAVA(
     {
         to: string,
         payerNonce: int,
@@ -1107,7 +1111,7 @@ platform.importAVAX(
 ```
 
 * `to` is the ID of the account the AVAX is sent to.
-  This must be the same as the `to` argument in the corresponding call to the X-Chain's `exportAVAX`.
+  This must be the same as the `to` argument in the corresponding call to the X-Chain's `exportAVA`.
 * `payerNonce` is the next unused nonce of the account specified in `to`.
 * `username` is the user that controls the account specified in `to`.
 * `tx` is the transaction, which should be sent to the network by calling `issueTx`.
@@ -1117,7 +1121,7 @@ platform.importAVAX(
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.importAVAX",
+    "method": "platform.importAVA",
     "params": {
     	"username":"bob",
     	"password":"loblaw",

@@ -237,6 +237,8 @@ The response should look like this:
 
 Now let's send some AVAX:
 
+(Note: The asset ID of AVAX is AVA on nodes running Denali or earlier. The ID will change to AVAX in the next release.)
+
 ```sh
 curl -X POST --data '{
     "jsonrpc":"2.0",
@@ -245,7 +247,7 @@ curl -X POST --data '{
     "params" :{
         "username"   :"YOUR USERNAME HERE",
         "password"   :"YOUR PASSWORD HERE",
-        "assetID"    :"AVAX",
+        "assetID"    :"AVA",
         "amount"     :1000,
         "to"         :"X-FxgGhoAwg3dPTPhHEmjgi27ZPmvc8jQmj"
     }
@@ -311,7 +313,7 @@ curl -X POST --data '{
     "method" :"avm.getBalance",
     "params" :{
         "address":"X-FxgGhoAwg3dPTPhHEmjgi27ZPmvc8jQmj",
-        "assetID"  :"AVAX"
+        "assetID"  :"AVA"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -381,13 +383,15 @@ Let's send some AVAX to your P-Chain account from the X-Chain.
 The minimum stake amount is 10,000 nAVAX, so make sure you have at least this much AVAX in your X-Chain addresses.
 (If you need more, use the faucet a few more times.)
 
-The first step in transferring AVAX from the X-Chain to P-Chain is to call `avm.exportAVAX`:
+The first step in transferring AVAX from the X-Chain to P-Chain is to call `avm.exportAVA`:
+
+(Note: `avm.exportAVA` will change to `avm.exportAVAX` in the next release.)
 
 ```sh
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"avm.exportAVAX",
+    "method" :"avm.exportAVA",
     "params" :{
         "to":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
         "amount": 10000,
@@ -400,12 +404,14 @@ curl -X POST --data '{
 The response contains the transaction ID.
 As before, you can check the transaction's status by calling `avm.getTxStatus`.
 
-The second and final step is to call `platform.importAVAX`:
+The second and final step is to call `platform.importAVA`:
+
+(Note: `avm.importAVA` will change to `avm.importAVAX` in the next release.)
 
 ```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.importAVAX",
+    "method": "platform.importAVA",
     "params": {
     	"username":"YOUR USERNAME HERE",
     	"password":"YOUR PASSWORD HERE",

@@ -176,7 +176,7 @@ curl -X POST --data '{
     "result": {
         "balances": [
             {
-                "asset": "AVAX",
+                "asset": "AVA",
                 "balance": "102"
             },
             {
@@ -410,6 +410,8 @@ avm.Send({
 * The asset is sent from addresses controlled by user `username`.
   (Of course, that user will need to hold at least the balance of the asset being sent.)
 
+(Note: The asset ID of AVAX is AVA on nodes running Denali or earlier. The ID will change to AVAX in the next release.)
+
 #### Example Call
 
 ```json
@@ -418,7 +420,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.send",
     "params" :{
-        "assetID" :"AVAX",
+        "assetID" :"AVA",
         "amount"  :10000,
         "to"      :"X-xMrKg8uUECt5CS9RE9j5hizv2t2SWTbk",
         "username":"userThatControlsAtLeast10000OfThisAsset",
@@ -677,15 +679,17 @@ curl -X POST --data '{
 }
 ```
 
-### avm.exportAVAX
+### avm.exportAVA
+
+(Note: This method will change to `exportAVAX` in the next release.)
 
 Send AVAX from the X-Chain to an account on the P-Chain.  
-After calling this method, you must call the P-Chain's [`importAVAX`](./platform.md#platformimportavax) method to complete the transfer. 
+After calling this method, you must call the P-Chain's [`importAVA`](./platform.md#platformimportava) method to complete the transfer. 
 
 #### Signature
 
 ```go
-avm.exportAVAX({
+avm.exportAVA({
     to: string,
     amount: int,
     username: string,
@@ -703,7 +707,7 @@ avm.exportAVAX({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"avm.exportAVAX",
+    "method" :"avm.exportAVA",
     "params" :{
         "to":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
         "amount": 500,
@@ -725,16 +729,18 @@ curl -X POST --data '{
 }
 ```
 
-### avm.importAVAX
+### avm.importAVA
+
+(Note: This method will change to `importAVAX` in the next release.)
 
 Finalize a transfer of AVAX from the P-Chain to the X-Chain.
 
-Before this method is called, you must call the P-Chain's [`exportAVAX`](./platform.md#platformexportava) method to initiate the transfer.
+Before this method is called, you must call the P-Chain's [`exportAVA`](./platform.md#platformexportava) method to initiate the transfer.
 
 #### Signature
 
 ```go
-avm.importAVAX({
+avm.importAVA({
     to: string,
     username: string,
     password:string,
@@ -742,7 +748,7 @@ avm.importAVAX({
 ```
 
 * `to` is the address the AVAX is sent to.
-  This must be the same as the `to` argument in the corresponding call to the P-Chain's `exportAVAX`,
+  This must be the same as the `to` argument in the corresponding call to the P-Chain's `exportAVA`,
   except that the prepended `X-` should be included in this argument.
 * `username` is the user that controls `to`.
 
@@ -752,7 +758,7 @@ avm.importAVAX({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"avm.importAVAX",
+    "method" :"avm.importAVA",
     "params" :{
     	"username":"myUsername",
     	"password":"myPassword",
