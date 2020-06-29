@@ -1,6 +1,6 @@
 # AVM Transaction Serialization
 
-This file is meant to be the single source of truth for how we serialize transactions in the `AVM`, the AVA Virtual Machine. This document uses the [primitive serialization](./serialization-primitives.md) format for packing and [secp256k1](./cryptographic-primitives.md#cryptography-in-the-ava-virtual-machine) for cryptographic user identification.
+This file is meant to be the single source of truth for how we serialize transactions in the `AVM`, the Avalanche Virtual Machine. This document uses the [primitive serialization](./serialization-primitives.md) format for packing and [secp256k1](./cryptographic-primitives.md#cryptography-in-the-ava-virtual-machine) for cryptographic user identification.
 
 ***
 
@@ -931,7 +931,7 @@ An unsigned create asset tx contains a `BaseTx`, `Name`, `Symbol`, `Denomination
 - **`ID`** is defined in `BaseTx`. For a create asset tx, the ID is `0x00000001`.
 - **`Name`** is a human readable string that defines the name of the asset this transaction will create. The name is not guaranteed to be unique. The name must consist of only printable ASCII characters and must be no longer than 128 characters.
 - **`Symbol`** is a human readable string that defines the symbol of the asset this transaction will create. The symbol is not guaranteed to be unique. The symbol must consist of only printable ASCII characters and must be no longer than 4 characters.
-- **`Denomination`** is a byte that defines the divisibility of the asset this transaction will create. For example, the AVA token is divisible into billionths. Therefore, the denomination of the AVA token is 9. The denomination must be no more than 32.
+- **`Denomination`** is a byte that defines the divisibility of the asset this transaction will create. For example, the AVAX token is divisible into billionths. Therefore, the denomination of the AVAX token is 9. The denomination must be no more than 32.
 - **`InitialStates`** is a variable length array that defines the feature extensions this asset supports, and the initial state of those feature extensions.
 
 ### Gantt Unsigned Create Asset Tx Specification

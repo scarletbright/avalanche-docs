@@ -94,7 +94,7 @@ No.
 ### What version am I running?
 
 Run `./ava --version`.
-It will print the version of AVA you're running.
+It will print the version of Avalanche you're running.
 To see what the latest release is, see our [releases page.](https://github.com/ava-labs/gecko/releases/)
 
 ### Why am I getting a 404 when I make an API call?
@@ -219,14 +219,14 @@ In order to complete certain incentivized testnet challenges, your node must als
 
 There is no good way to tell right now. If your node is connected to peers, it should be validating.
 
-### How can I get involved with AVA?
+### How can I get involved with Avalanche?
 
-We want you to be a part of the AVA community!
+We want you to be a part of the Avalanche community!
 Any contribution, no matter how small, is valued and welcome.
 
 You can:
 
-* [Get a grant](https://www.avalabs.org/ava-x) for working on a project that adds to the AVA ecosystem
+* [Get a grant](https://www.avalabs.org/ava-x) for working on a project that adds to the Avalanche ecosystem
 * [Participate in our bug bounty](https://www.avalabs.org/ava-x/explore-open-grants/bug-bounty)
 * Check out the #dev-chat channel on our [Discord.](https://chat.avalabs.org)
 * Make an issue or pull request on our [Github.](https://github.com/ava-labs/gecko)
@@ -310,7 +310,7 @@ This is useful in tracking which response corresponds to which request.
 You do not need to change this field when making API calls.
 It's OK to make many API calls with the same `id` field.
 
-### Is there a repository of AVA related materials I can learn from?
+### Is there a repository of Avalanche related materials I can learn from?
 
 In addition to this documentation, there is a [community-run repository](https://github.com/tbrunain/awesome-ava-chain) of useful links and resoucres.
 Great thanks to `tbrunain` for this contribution :)
