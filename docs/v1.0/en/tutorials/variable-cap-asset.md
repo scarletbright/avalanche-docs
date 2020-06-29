@@ -49,9 +49,9 @@ avm.createVariableCapAsset({
 * `symbol` is a shorthand symbol for this asset. Between 0 and 4 characters. Not necessarily unique. May be omitted.
 * `minterSets` is a list where each element specifies that `threshold` of the addresses
   in `minters` may together mint more of the asset by signing a minting transaction.
-* In the future, performing a transaction on an AVM instance will require a transaction fee (paid in AVA tokens).
+* In the future, performing a transaction on an AVM instance will require a transaction fee (paid in AVAX tokens).
   `username` and `password` denote the user paying the transaction fee.
-  That user will need to hold enough AVA to pay the fee.
+  That user will need to hold enough AVAX to pay the fee.
   Since there are no transaction fees right now, you can leave `username` and `password` blank.
 * `assetID` is the ID of the new asset that we'll have created.
 

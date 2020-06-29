@@ -1,17 +1,17 @@
 ---
-title: "AVA Quickstart Guide"
+title: "Avalanche Quickstart Guide"
 excerpt: ""
 ---
 
 # Quickstart Guide
 
-The quickest way to learn about AVA is to run a node and interact with the network.
+The quickest way to learn about Avalanche is to run a node and interact with the network.
 
 In this tutorial, which should take less than 10 minutes, we will:
 
-* Install and run an AVA node
+* Install and run an Avalanche node
 * Connect to the public test network
-* Acquire and send AVA, the AVA network's native token
+* Acquire and send AVAX, the Avalanche network's native token
 * Start validating
 
 
@@ -21,7 +21,7 @@ We will work to get you through any problems.
 
 ## Requirements 
 
-AVA is an incredibly lightweight protocol, so the minimum computer requirements are quite modest. 
+Avalanche is an incredibly lightweight protocol, so the minimum computer requirements are quite modest. 
 
 * Hardware: CPU > 2 GHz, RAM > 3 GB, Storage > 5 GB free space.
 * OS: Ubuntu == 18.04 or Mac OS X >= Catalina. (Ubuntu versions other than 18.04 may work but have not been tested.)
@@ -30,9 +30,9 @@ AVA is an incredibly lightweight protocol, so the minimum computer requirements 
 Run `go version`. **It should be 1.13 or above.**
 Run `echo $GOPATH`. **It should not be empty.**
 
-## Run an AVA Node
+## Run an Avalanche Node
 
-Let's install Gecko, the Go implementation of an AVA node, and connect to the AVA Public Testnet.
+Let's install Gecko, the Go implementation of an Avalanche node, and connect to the Avalanche Public Testnet.
 
 ### Download Gecko
 
@@ -83,10 +83,10 @@ You can run the node with `./gecko-<VERSION>/ava`
 
 ### Start a Node and Connect to Test Network
 
-The AVA test network is a sandbox AVA network where AVA tokens are free.
+The Avalanche test network is a sandbox Avalanche network where AVAX tokens are free.
 You can use it to play around in a low-stakes environment.
 
-To start a node and connect it to the AVA test net:
+To start a node and connect it to the Avalanche test net:
 
 ```sh
 ./build/ava
@@ -108,7 +108,7 @@ If your node never finishes bootstrapping, contact us on [Discord.](https://disc
 
 ## Create a Keystore User
 
-AVA nodes provide a built-in **Keystore.**
+Avalanche nodes provide a built-in **Keystore.**
 The Keystore manages users and is a lot like a wallet.
 A user is a password-protected identity that a client can use when interacting with blockchains.
 To create a user, call `keystore.createUser`:
@@ -143,14 +143,14 @@ See the [Keystore API](../api/keystore.md) to see how.
 
 ## Create an Address
 
-AVA is a network of heterogeneous blockchains.
+Avalanche is a network of heterogeneous blockchains.
 One of these blockchains is the X-Chain, which acts as a decentralized platform for creating and trading digital assets.
 (Think X for eXchanging assets.)
 
-There's a special asset on the X-Chain called the [AVA token](../core-concepts/overview.md#the-x-chain), or just AVA. 
-This is the native token of the AVA network, and transaction fees on the AVA network are paid in AVA.
+There's a special asset on the X-Chain called the [AVAX token](../core-concepts/overview.md#the-x-chain). 
+This is the native token of the Avalanche network, and transaction fees on the Avalanche network are paid in AVAX.
 
-Let's acquire some AVA tokens.
+Let's acquire some AVAX tokens.
 First, we'll need to create an address to hold them.
 
 To create a new address on the X-Chain, call `avm.createAddress`, a method of the [X-Chain's API](../api/avm.md):
@@ -185,17 +185,17 @@ The response should look like this:
 ```
 
 Your user now controls the address `X-5TQr5hSAZ8ZKuSaYLg5sr4VwvcvwKZ1Mg` on the X-Chain.
-To tell apart addresses on different chains, the AVA convention is for an address to include the ID of the chain it exists on.
+To tell apart addresses on different chains, the Avalanche convention is for an address to include the ID of the chain it exists on.
 Hence, this address begins `X-`, denoting that it exists on the X-Chain.
 
-## Use the AVA Faucet
+## Use the Avalanche Faucet
 
-Now let's use the AVA test net faucet to send some free AVA to this address.
-The faucet dispenses 20,000 nanoAVA (nAVA) each drop.
+Now let's use the Avalanche test net faucet to send some free AVAX to this address.
+The faucet dispenses 20,000 nanoAVAX (nAVAX) each drop.
 
-**This is only a test network, and AVA on this network has no value.**
+**This is only a test network, and AVAX on this network has no value.**
 
-Go to the [test net faucet](https://faucet.ava.network/) and paste the address you just created to receive 20,000 nAVA.
+Go to the [test net faucet](https://faucet.ava.network/) and paste the address you just created to receive 20,000 nAVAX.
 
 We can check an address's balance of a given asset by calling `avm.getBalance`, another method of the X-Chain's API.
 Let's check that the faucet drip went through.
@@ -207,12 +207,12 @@ curl -X POST --data '{
     "method" :"avm.getBalance",
     "params" :{
         "address":"X-5TQr5hSAZ8ZKuSaYLg5sr4VwvcvwKZ1Mg",
-        "assetID"  :"AVA"
+        "assetID"  :"AVAX"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-Note that AVA has the special ID `AVA`. 
+Note that AVAX has the special ID `AVAX`. 
 Usually an asset ID is an alphanumeric string.
 
 The response should look like this:
@@ -233,9 +233,11 @@ The response should look like this:
 }
 ```
 
-## Send AVA
+## Send AVAX
 
-Now let's send some AVA:
+Now let's send some AVAX:
+
+(Note: The asset ID of AVAX is AVA on nodes running Denali or earlier. The ID will change to AVAX in the next release.)
 
 ```sh
 curl -X POST --data '{
@@ -252,12 +254,12 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-`amount` specifies the number of nAVA to send.
-A nAVA (nanoAVA) is the smallest increment of AVA, and 1,000,000,000 nAVA == 1 AVA. 
+`amount` specifies the number of nAVAX to send.
+A nAVAX (nanoAVAX) is the smallest increment of AVAX, and 1,000,000,000 nAVAX == 1 AVAX. 
 
 When you send this request, the node will authenticate you using your username and password.
 Then, it will look through all the private keys controlled by your user until it finds
-enough nAVA to satisfy the request.
+enough nAVAX to satisfy the request.
 
 The response should look like this:
 
@@ -328,21 +330,21 @@ The response should be:
 }
 ```
 
-In the same fashion, we could check `X-5TQr5hSAZ8ZKuSaYLg5sr4VwvcvwKZ1Mg` to see that AVA we sent was deducted from its balance.
+In the same fashion, we could check `X-5TQr5hSAZ8ZKuSaYLg5sr4VwvcvwKZ1Mg` to see that AVAX we sent was deducted from its balance.
 
 ## Validate the Default Subnet (Stake)
 
-[Subnets](../core-concepts/overview.md#what-are-subnets) are a powerful feature of the AVA network.
+[Subnets](../core-concepts/overview.md#what-are-subnets) are a powerful feature of the Avalanche network.
 A Subnet is a set of validators that work to achieve consensus on a set of blockchains.
 
-The Default Subnet is inherent to the AVA network, and it validates AVA's [built-in blockchains](../core-concepts/overview.md#built-in-blockchains).
-AVA uses Proof-of-Stake, so to become a validator one needs to provide a stake, or bond, in AVA tokens.
+The Default Subnet is inherent to the Avalanche network, and it validates Avalanche's [built-in blockchains](../core-concepts/overview.md#built-in-blockchains).
+Avalanche uses Proof-of-Stake, so to become a validator one needs to provide a stake, or bond, in AVAX tokens.
 
 Let's add your node to the Default Subnet.
 
 ### Create a P-Chain Account
 
-The P-Chain (Platform Chain) manages metadata about the AVA network, including which nodes belong to which Subnets.
+The P-Chain (Platform Chain) manages metadata about the Avalanche network, including which nodes belong to which Subnets.
 The P-Chain uses an account model, so in order to validate the Default Subnet you'll need to first create an account on the P-Chain.
 To do so, call [`platform.createAccount`](../api/platform.md#platformcreateaccount):
 
@@ -374,14 +376,16 @@ The response contains the address of your new account:
 
 ### Fund Your P-Chain Account
 
-As mentioned before, in order validate the Default Subnet, you need to stake some AVA tokens.
-Right now, your P-Chain account has no AVA.
-AVA tokens are transferrable between the X-Chain (where you sent funds with the faucet) and the P-Chain.
-Let's send some AVA to your P-Chain account from the X-Chain.
-The minimum stake amount is 10,000 nAVA, so make sure you have at least this much AVA in your X-Chain addresses.
+As mentioned before, in order validate the Default Subnet, you need to stake some AVAX tokens.
+Right now, your P-Chain account has no AVAX.
+AVAX tokens are transferrable between the X-Chain (where you sent funds with the faucet) and the P-Chain.
+Let's send some AVAX to your P-Chain account from the X-Chain.
+The minimum stake amount is 10,000 nAVAX, so make sure you have at least this much AVAX in your X-Chain addresses.
 (If you need more, use the faucet a few more times.)
 
-The first step in transferring AVA from the X-Chain to P-Chain is to call `avm.exportAVA`:
+The first step in transferring AVAX from the X-Chain to P-Chain is to call `avm.exportAVA`:
+
+(Note: `avm.exportAVA` will change to `avm.exportAVAX` in the next release.)
 
 ```sh
 curl -X POST --data '{
@@ -401,6 +405,8 @@ The response contains the transaction ID.
 As before, you can check the transaction's status by calling `avm.getTxStatus`.
 
 The second and final step is to call `platform.importAVA`:
+
+(Note: `avm.importAVA` will change to `avm.importAVAX` in the next release.)
 
 ```sh
 curl -X POST --data '{
@@ -472,20 +478,20 @@ The response should look like this:
 }
 ```
 
-Great! Now your P-Chain account has enough AVA tokens to provide a stake.
+Great! Now your P-Chain account has enough AVAX tokens to provide a stake.
 
 ### Get Your Node's ID
 
 Your node is uniquely identified by its staking key.
-To get your node's ID, call [`admin.getNodeID:`](../api/admin.md#admingetnodeid)
+To get your node's ID, call [`info.getNodeID:`](../api/info.md#info.getNodeID)
 
 ```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "admin.getNodeID",
+    "method": "info.getNodeID",
     "params":{},
     "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
 
 The response contains your node's ID:
@@ -506,8 +512,8 @@ To add your node to the Default Subnet, you'll issue a transaction to the P-Chai
 When you add a node to the Default Subnet, you specify:
 
 * `id`: The node ID of the node being added
-* `payerNonce`: The next unused nonce of the account providing the transaction fee (the fee is currently 0) and staked AVA tokens.
-* `destination`: The address of the account the AVA (along with a validator reward) will be returned to when the node is done validating.
+* `payerNonce`: The next unused nonce of the account providing the transaction fee (the fee is currently 0) and staked AVAX tokens.
+* `destination`: The address of the account the AVAX (along with a validator reward) will be returned to when the node is done validating.
 * `startTime`: The Unix time the node will start validating the Default Subnet.
 * `endTime`: The Unix time the node will stop validating the Default Subnet.
 
@@ -642,16 +648,16 @@ Awesome! Now just wait until the time reaches `startTime`.
 When it does, your node will start validating the Default Subnet.
 You can verify this by calling [`platform.getCurrentValidators.`](../api/platform.md#platformgetcurrentvalidators) 
 
-When the time reaches `endTime`, the P-Chain account that you specified in `destination` will receive back the staked AVA tokens as well as a validator reward.
+When the time reaches `endTime`, the P-Chain account that you specified in `destination` will receive back the staked AVAX tokens as well as a validator reward.
 Then, if you want, you can rejoin the Default Subnet.
 
 Now that your node is validating the Default Subnet, please leave it running until at least `endTime`.
-We want to have as many nodes as possible participating in consensus in order to stress test the AVA network and achieve true decentralization.
+We want to have as many nodes as possible participating in consensus in order to stress test the Avalanche network and achieve true decentralization.
 Note that in the future you will only receive a validator reward if your node is sufficiently responsive (ie online) while validating.
 
 ## Next Steps
 
-- [Learn more about AVA](../core-concepts/overview.md)
+- [Learn more about Avalanche](../core-concepts/overview.md)
 - [Create and trade a new asset](../tutorials/fixed-cap-asset.md)
 - [Create a new blockchain](../tutorials/create-a-blockchain.md)
 - [Create a new, custom validator set (Subnet)](../tutorials/create-a-subnet.md)

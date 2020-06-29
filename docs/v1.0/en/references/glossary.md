@@ -7,21 +7,21 @@ Addresses hold value and value is transferred between addresses. Real-life entit
 and the value held in them by holding a private key, a secret piece of information that allows them 
 to transfer value from them.
 
-## AVA
+## AVAX
 
-AVA is the AVA network's native asset. It has two special uses on the AVA network:
+AVAX is the Avalanche network's native asset. It has two special uses on the Avalanche network:
 
-* Validators must [stake](../core-concepts/overview.md#what-is-staking) AVA
-* Transaction fees will be paid in AVA
+* Validators must [stake](../core-concepts/overview.md#what-is-staking) AVAX
+* Transaction fees will be paid in AVAX
 
-## [Avalanche](../core-concepts/overview.md#what-is-avalanche)
+## [Avalanche Consensus](../core-concepts/overview.md#what-is-avalanche)
 
-Avalanche is a family of consensus protocols used by blockchains on the AVA network.
+Avalanche is a family of consensus protocols used by blockchains on the Avalanche network.
 Avalanche-based protocols allow computers to agree on a large set of information very quickly and with high security.
 
-## AVA Virtual Machine
+## Avalanche Virtual Machine
 
-The AVA Virtual Machine is one of the AVA network's built-in virtual machines. 
+The Avalanche Virtual Machine is one of the Avalanche network's built-in virtual machines. 
 It defines an application for creating and trading smart assets.
 In a slight abuse of notation, we also call the main instance of the AVM 
 "the AVM" since this is the one people almost always use.
@@ -46,11 +46,11 @@ In a payments system, for example, the computers follow a protocol to agree on w
 
 ## Gecko
 
-Gecko is the Go implementation of an AVA node.
+Gecko is the Go implementation of an Avalanche node.
 
 ## Node
 
-A node is a computer participating in the AVA network.
+A node is a computer participating in the Avalanche network.
 
 ## Smart Digital Assets
 

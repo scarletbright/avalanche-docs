@@ -2,7 +2,7 @@
 
 This document describes the API of the C-Chain, which is an instance of the Ethereum Virtual Machine (EVM.)
 
-Note: Ethereum has its own notion of `networkID` and `chainID`. The C-Chain uses `1` and `43110` for these values, respectively. These have no relationship to AVA's view of networkID and chainID, and are purely internal to the C-Chain. 
+Note: Ethereum has its own notion of `networkID` and `chainID`. The C-Chain uses `1` and `43110` for these values, respectively. These have no relationship to Avalanche's view of networkID and chainID, and are purely internal to the C-Chain. 
 
 ## Methods
 
@@ -19,7 +19,7 @@ See [Geth's RPC Documentation](https://github.com/ethereum/wiki/wiki/JSON-RPC) f
 
 ## JSON-RPC Endpoints
 
-To interact with C-Chain (the main EVM instance on AVA):
+To interact with C-Chain (the main EVM instance on Avalanche):
 
 ```http
 /ext/bc/C/rpc
@@ -35,7 +35,7 @@ where `blockchainID` is the ID of the blockchain running the EVM.
 
 ## WebSocket-RPC Endpoints
 
-To interact with C-Chain (the main EVM instance on AVA):
+To interact with C-Chain (the main EVM instance on Avalanche):
 
 ```http
 /ext/bc/C/ws

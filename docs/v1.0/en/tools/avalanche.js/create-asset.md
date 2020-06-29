@@ -1,6 +1,6 @@
 # Tutorial &mdash; Creating An Asset
 
-This example creates an asset in the AVM and publishes it to the AVA Platform. The first step in this process is to create an instance of Avalanche.js connected to our AVA Platform endpoint of choice.
+This example creates an asset in the AVM and publishes it to the Avalanche Platform. The first step in this process is to create an instance of Avalanche.js connected to our Avalanche Platform endpoint of choice.
 
 ```js
 let myNetworkID = 12345; //default is 3, we want to override that for our local network
@@ -22,7 +22,7 @@ let name = "Rickcoin is the most intelligent coin";
 let symbol = "RICK";
 
 // Where is the decimal point indicate what 1 asset is and where fractional assets begin
-// Ex: 1 AVA is denomination 9, so the smallest unit of AVA is nanoAVA (nAVA) at 10^-9 AVA
+// Ex: 1 AVAX is denomination 9, so the smallest unit of AVAX is nanoAVAX (nAVAX) at 10^-9 AVAX
 let denomination = 9;
 ```
 
@@ -67,21 +67,21 @@ let signed = avm.keyChain().signTx(unsigned); //returns a Tx class
 
 Now that we have a signed transaction ready to send to the network, let's issue it! 
 
-Using the Avalanche.js AVM API, we going to call the issueTx function. This function can take either the Tx class returned in the previous step, a base-58 string AVA serialized representation of the transaction, or a raw Buffer class with the data for the transaction. Examples of each are below:
+Using the Avalanche.js AVM API, we going to call the issueTx function. This function can take either the Tx class returned in the previous step, a base-58 string Avalanche serialized representation of the transaction, or a raw Buffer class with the data for the transaction. Examples of each are below:
 
 ```js
 // using the Tx class
-let txid = await avm.issueTx(signed); //returns an AVA serialized string for the TxID
+let txid = await avm.issueTx(signed); //returns an Avalanche serialized string for the TxID
 ```
 
 ```js
 // using the base-58 representation
-let txid = await avm.issueTx(signed.toString()); //returns an AVA serialized string for the TxID
+let txid = await avm.issueTx(signed.toString()); //returns an Avalanche serialized string for the TxID
 ```
 
 ```js
 // using the transaction Buffer
-let txid = await avm.issueTx(signed.toBuffer()); //returns an AVA serialized string for the TxID
+let txid = await avm.issueTx(signed.toBuffer()); //returns an Avalanche serialized string for the TxID
 ```
 
 We assume ONE of those methods are used to issue the transaction.

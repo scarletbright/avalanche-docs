@@ -6,7 +6,7 @@ Currently there is only one subnet (the default subnet.) We want to allow users 
 
 ## Governable Transaction Fees
 
-Fees are essential for DDoS protection. Right now they’re being statically set at a fixed rate. Fees are already part of the Platform Chain, and we will be making that a governance parameter. We are also exploring a more flexible fee structure for the AVA token DAG.
+Fees are essential for DDoS protection. Right now they’re being statically set at a fixed rate. Fees are already part of the Platform Chain, and we will be making that a governance parameter. We are also exploring a more flexible fee structure for the AVAX token DAG.
 
 ## Cedrus Upgrade
 
@@ -14,11 +14,11 @@ Cedrus is a write-optimized database we're developing to replace LevelDB and the
 
 ## Subnet Incentives
 
-Some subnets will want a method for incentivising validators in the AVA platform to validate for their network. To assist with this, the Platform chain will offer a method to incentivize validators in AVA from a budget allocated to the subnetwork. This budget can increase as needed to keep validators checking the subnetworks.
+Some subnets will want a method for incentivising validators in the Avalanche platform to validate for their network. To assist with this, the Platform chain will offer a method to incentivize validators in AVAX from a budget allocated to the subnetwork. This budget can increase as needed to keep validators checking the subnetworks.
 
 ## Atomic Commitment Across Blockchains
 
-An advantage of the AVA platform is that blockchains are all using the same underlying protocol for consensus on their transactions. This enables transactions to atomically commit across multiple blockchains. These atomic commitments provide the capability for AVA validators to verify transactions across two or more blockchains. We envision atomic commitments as the primary mechanism for token transfer across the AVA platform.
+An advantage of the Avalanche platform is that blockchains are all using the same underlying protocol for consensus on their transactions. This enables transactions to atomically commit across multiple blockchains. These atomic commitments provide the capability for Avalanche validators to verify transactions across two or more blockchains. We envision atomic commitments as the primary mechanism for token transfer across the Avalanche platform.
 
 ## Expand Governance Parameters
 
@@ -34,7 +34,7 @@ Our current implementation stores the entire transaction history. We plan to imp
 
 ## Node Reputation
 
-We plan to add the ability for validators to track the uptime and virtuousness of other validators on the network. Currently, validators always vote to provide staking rewards to a validator leaving the staking set. Once uptime and virtuousness is tracked, a validator can vote to deny staking rewards for the validators which are not adhering to the promises made when they staked their AVA. Doing so improves the quality of service of stakers on the network.
+We plan to add the ability for validators to track the uptime and virtuousness of other validators on the network. Currently, validators always vote to provide staking rewards to a validator leaving the staking set. Once uptime and virtuousness is tracked, a validator can vote to deny staking rewards for the validators which are not adhering to the promises made when they staked their Avalanche. Doing so improves the quality of service of stakers on the network.
 
 ## Blockchain Sandboxing
 
@@ -65,14 +65,13 @@ We’re going to look into the possibility of changing addressing from secp256k1
 The current addressing system mimics the Bitcoin address system. We’re going to augment our system in the following way:
 Add Reed-Solomon codes to private keys in addition to the checksum.
 Add prefix byte for private key similar to WIF for the purpose of determining if a key is mainnet, testnet, or other ([https://en.bitcoin.it/wiki/Wallet_import_format](https://en.bitcoin.it/wiki/Wallet_import_format))
-Add a prefix for versioning addresses of the format bytes(AVA + version#)
+Add a prefix for versioning addresses of the format bytes(Avalanche + version#)
 
 ## Additional Features
 
 * HD Mnemonic Wallet
-* AVA Wallet GUI
-* AVA Network Monitoring
-* AVA DAG Explorer
-* AVA Chain Explorer
+* Avalanche Wallet GUI
+* Avalanche Network Monitoring
+* Avalanche Explorer
 * Binary Consensus on DAG
 * Self-signing RPC Package (WASM?)
