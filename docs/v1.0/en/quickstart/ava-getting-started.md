@@ -477,15 +477,15 @@ Great! Now your P-Chain account has enough AVA tokens to provide a stake.
 ### Get Your Node's ID
 
 Your node is uniquely identified by its staking key.
-To get your node's ID, call [`admin.getNodeID:`](../api/admin.md#admingetnodeid)
+To get your node's ID, call [`info.getNodeID:`](../api/info.md#info.getNodeID)
 
 ```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "admin.getNodeID",
+    "method": "info.getNodeID",
     "params":{},
     "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
 
 The response contains your node's ID:
