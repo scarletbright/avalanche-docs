@@ -196,14 +196,14 @@ platform.importKey({
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "method" :"platform.importKey",
     "params" :{
         "username" :"bob",
         "password":"loblaw",
         "privateKey":"2w4XiXxPfQK4TypYqnohRL8DRNTz9cGiGmwQ1zmgEqD9c9KWLq"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/platform
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
 #### Example Response
@@ -211,7 +211,7 @@ curl -X POST --data '{
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "result" :{
         "address":"7u5FQArVaMSgGZzeTE9ckheWtDhU5T3KS"
     }
@@ -241,14 +241,14 @@ platform.exportKey({
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "method" :"platform.exportKey",
     "params" :{
         "username" :"bob",
         "password":"loblaw",
         "address": "7u5FQArVaMSgGZzeTE9ckheWtDhU5T3KS"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/platform
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
 #### Example Response
@@ -256,7 +256,7 @@ curl -X POST --data '{
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "result" :{
         "privateKey":"2w4XiXxPfQK4TypYqnohRL8DRNTz9cGiGmwQ1zmgEqD9c9KWLq"
     }
@@ -306,7 +306,7 @@ curl -X POST --data '{
         "nonce": "0",
         "balance": "0"
     },
-    "id": 84
+    "id": 1
 }
 ```
 
@@ -387,6 +387,7 @@ platform.getCurrentValidators({subnetID: string}) ->
         endTime: int,
         weight: int, (optional)
         stakeAmount: int, (optional)
+        address: string
         id: string
     }
 }
@@ -399,6 +400,7 @@ platform.getCurrentValidators({subnetID: string}) ->
   Omitted if `subnetID` is the default subnet.
 * `stakeAmount` is the amount of nAVA this validator staked.
   Omitted if `subnetID` is not the default subnet.
+* `address` is the P Chain address which was passed in as `destination` when adding the validator.
 * `id` is the validator's ID.
 
 #### Example Call
@@ -420,38 +422,29 @@ curl -X POST --data '{
     "result": {
         "validators": [
             {
-                "startTime": "1572566400",
-                "endtime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ"
+                "startTime": "1591878109",
+                "endtime": "1594469809",
+                "stakeAmount": "319902",
+                "address": "3dAxnVDDZpTZTAUbCboMKsGdi2X1oXbuJ",
+                "id": "NDmcZNsWoPrkN9KSt2A9js639hEQWUmUf"
             },
             {
-                "startTime": "1572566400",
-                "endtime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "GWPcbFJZFfZreETSoWjPimr846mXEKCtu"
+                "startTime": "1591473391",
+                "endtime": "1592855191",
+                "stakeAmount": "10000",
+                "address": "EDCFiDfrqPnGk5PKR7BFdE132CwDmAHRX",
+                "id": "62T5AAwKdFMNi7Gm193A6zyJhVscRfuhP"
             },
             {
-                "startTime": "1572566400",
-                "endtime": "1604102400",
+                "startTime": "1591387125",
+                "endtime": "1622923025",
                 "stakeAmount": "20000000000000",
-                "id": "NFBbbJ4qCmNaCzeW7sxErhvWqvEQMnYcN"
-            },
-            {
-                "startTime": "1572566400",
-                "endtime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg"
-            },
-            {
-                "startTime": "1572566400",
-                "endtime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "P7oB2McjBGgW2NXXWVYjV8JEDFoW9xDE5"
+                "address": "95YUFjhDG892VePMzpwKF9JzewGKvGRi3",
+                "id": "HGZ8ae74J3odT8ESreAdCtdnvWG1J4X5n"
             }
         ]
     },
-    "id": 85
+    "id": 1
 }
 ```
 
@@ -470,6 +463,7 @@ platform.getPendingValidators({subnetID: string}) ->
         endTime: int,
         weight: int, (optional)
         stakeAmount: int, (optional)
+        address: string
         id: string
     }
 }
@@ -482,6 +476,7 @@ platform.getPendingValidators({subnetID: string}) ->
   Omitted if `subnetID` is the default subnet.
 * `stakeAmount` is the amount of nAVA this validator staked.
   Omitted if `subnetID` is not the default subnet.
+* `address` is the P Chain address which was passed in as `destination` when adding the validator.
 * `id` is the validator's ID.
 
 #### Example Call
@@ -503,10 +498,11 @@ curl -X POST --data '{
     "result": {
         "validators": [
             {
-                "startTime": "1572567400",
-                "endtime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ"
+                "startTime": "1592400591",
+                "endtime": "1622923025",
+                "stakeAmount": "10000",
+                "address": "6cesTteH62Y5mLoDBUASaBvCXuL2AthL",
+                "id": "DpL8PTsrjtLzv5J8LL3D2A6YcnCTqrNH9"
             },
         ]
     },
@@ -602,7 +598,7 @@ platform.addDefaultSubnetValidator(
 In this example we use shell command `date` to compute Unix times 10 minutes and 30 days in the future.
 (Note: If you're on a Mac, replace  `$(date` with `$(gdate`. If you don't have `gdate` installed, do `brew install coreutils`.)
 
-```sh
+```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.addDefaultSubnetValidator",
@@ -841,7 +837,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.getSubnets",
     "params": {},
-    "id": 6
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -862,7 +858,7 @@ curl -X POST --data '{
             }
         ]
     },
-    "id": 6
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -1037,7 +1033,7 @@ curl -X POST --data '{
             }
         ]
     },
-    "id": 85
+    "id": 1
 }
 ```
 

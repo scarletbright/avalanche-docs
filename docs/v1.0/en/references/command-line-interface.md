@@ -26,7 +26,7 @@ When set to true, assertions will execute at runtime throughout the codebase. Th
 
 `--bootstrap-ids` (string):
 
-Bootstrap IDs is an array of validator IDs. These IDs will be used to authenticate bootstrapping peers. This only needs to be set when `--staking-tls-enabled=true`. An example setting of this field would be `--bootstrap-ids="7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg,MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ"`. The default value is the empty set.
+Bootstrap IDs is an array of validator IDs. These IDs will be used to authenticate bootstrapping peers. This only needs to be set when `--p2p-tls-enabled=true`. An example setting of this field would be `--bootstrap-ids="7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg,MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ"`. The default value is the empty set.
 
 `--bootstrap-ips` (string):
 
@@ -40,6 +40,12 @@ Specifies the directory to which the database is persisted. Defaults to `"db"`.
 
 If set to false, state updates are performed solely to an in-memory database, without making any changes on permanent storage.
 When set to true, state updates are written to a local persistent database. Defaults to `true`.
+
+`--http-host` (string):
+
+The address that HTTP APIs listen on. The default value is `127.0.0.1`.
+This means that by default, your node can only handle API calls made from the same machine.
+To allow API calls from other machines, do `--http-host=[PUBLIC IP OF MACHINE RUNNING NODE]`.
 
 `--http-port` (int):
 
@@ -84,12 +90,12 @@ Specifies the directory in which system logs are kept. If `""` is passed in, the
 
 The identity of the network the node should connect to. Can be one of:
 
-* `--network-id=cascade` -> Connect to the Cascade test-network. This aliases `network-2`.
-* `--network-id=testnet` -> Connect to the current test-network. (Right now, this is Cascade.)
+* `--network-id=denali` -> Connect to the Denali test-network. This aliases `network-3`.
+* `--network-id=testnet` -> Connect to the current test-network. (Right now, this is Denali.)
 * `--network-id=local` -> Connect to a local test-network. This aliases `network-12345`.
 * `--network-id=network-{id}` -> Connect to the `id` network. `id` must be in the range `[0, 2^32)`.
 
-`--network-id` defaults to `cascade`.
+`--network-id` defaults to `denali`.
 
 `--public-ip` (string):
 
@@ -104,17 +110,21 @@ Enables signature verification to be disabled for testing. When set to false, si
 
 The port through which the staking server will connect to the AVA network. Defaults to `9651`.
 
-`--staking-tls-cert-file` (string, file path):
+`--p2p-tls-enabled` (boolean):
 
-AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--staking-tls-enabled=true`. This argument specifies the location of the TLS certificate used by the node. This must be specified when `--staking-tls-enabled=true`. The default value is `""`.
+AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers. However, This can be disabled for testing. When TLS is disabled, the `stakingID` will be derived from the IP Address the node claims it owns. This will also disable encryption of inter-node communication. This should only be specified for testing. Defaults to `true`. This must be true when `--staking-tls-enabled=true`.
 
 `--staking-tls-enabled` (boolean):
 
-AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers. However, This can be disabled for testing. When TLS is disabled, the `stakingID` will be derived from the IP Address the node claims it owns. This will also disable encryption of inter-node communication. This should only be specified for testing. Defaults to `true`.
+AVA uses Proof of Stake (PoS) as Sybil resistance to make it prohibitively expensive to attack the network. When this is true, `--p2p-tls-enabled` must be set to true in order to secure P2P communications.
+
+`--staking-tls-cert-file` (string, file path):
+
+AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--p2p-tls-enabled=true`. This argument specifies the location of the TLS certificate used by the node. This must be specified when `--p2p-tls-enabled=true`. The default value is `""`.
 
 `--staking-tls-key-file` (string, file path):
 
-AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--staking-tls-enabled=true`. This argument specifies the location of the TLS private key used by the node. This must be specified when `--staking-tls-enabled=true`. The default value is `""`.
+AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--p2p-tls-enabled=true`. This argument specifies the location of the TLS private key used by the node. This must be specified when `--p2p-tls-enabled=true`. The default value is `""`.
 
 ***
 

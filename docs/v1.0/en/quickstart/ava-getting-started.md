@@ -28,7 +28,7 @@ AVA is an incredibly lightweight protocol, so the minimum computer requirements 
 * Software: [Go](https://golang.org/doc/install) >= 1.13
 
 Run `go version`. **It should be 1.13 or above.**
-Run `echo $GOPATH`. **It should not be empty**
+Run `echo $GOPATH`. **It should not be empty.**
 
 ## Run an AVA Node
 
@@ -39,7 +39,7 @@ Let's install Gecko, the Go implementation of an AVA node, and connect to the AV
 The node is a binary program. You can either download the source code and then build the binary program, or you can download the pre-built binary.
 You can do either of the below. You don't need to do both.
 
-#### Build Gecko from Source
+#### Download Gecko Source Code
 
 Download the Gecko repository:
 
@@ -47,7 +47,7 @@ Download the Gecko repository:
 go get -v -d github.com/ava-labs/gecko/...
 ```
 
-(Note to advanced users: Gecko uses Go modules, so you can actually clone the [Gecko repository](https://github.com/ava-labs/gecko) other locations on your machine.)
+(Note to advanced users: Gecko uses Go modules, so you can actually clone the [Gecko repository](https://github.com/ava-labs/gecko) to locations other than your GOPATH.)
 
 Change to the `gecko` directory:
 
@@ -96,7 +96,7 @@ You can use `Ctrl + C` to kill the node.
 
 When the node starts, it has to bootstrap (catch up with the rest of the network.)
 This should take less than 30 minutes (though the amount of time will increase as the network state grows.)
-You will see logs about bootstrapping..
+You will see logs about bootstrapping.
 
 When a given chain is done bootstrapping, it will print a log like this:
 
@@ -109,9 +109,8 @@ If your node never finishes bootstrapping, contact us on [Discord.](https://disc
 ## Create a Keystore User
 
 AVA nodes provide a built-in **Keystore.**
-The Keystore manages users.
+The Keystore manages users and is a lot like a wallet.
 A user is a password-protected identity that a client can use when interacting with blockchains.
-A keystore user is a lot like a wallet.
 To create a user, call `keystore.createUser`:
 
 ```sh
@@ -336,7 +335,8 @@ In the same fashion, we could check `X-5TQr5hSAZ8ZKuSaYLg5sr4VwvcvwKZ1Mg` to see
 [Subnets](../core-concepts/overview.md#what-are-subnets) are a powerful feature of the AVA network.
 A Subnet is a set of validators that work to achieve consensus on a set of blockchains.
 
-The Default Subnet is inherent to the AVA network, and it validates AVA's [built-in blockchains](../core-concepts/overview.md#built-in-blockchains). AVA uses Proof-of-Stake, so to become a validator one needs to provide a stake, or bond, in AVA tokens.
+The Default Subnet is inherent to the AVA network, and it validates AVA's [built-in blockchains](../core-concepts/overview.md#built-in-blockchains).
+AVA uses Proof-of-Stake, so to become a validator one needs to provide a stake, or bond, in AVA tokens.
 
 Let's add your node to the Default Subnet.
 

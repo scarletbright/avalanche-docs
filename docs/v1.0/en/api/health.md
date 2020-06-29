@@ -35,7 +35,13 @@ health.getLiveness() -> {
 }
 ```
 
-Note: timeOfFirstFailure will be null if this node has not failed.
+* `heartbeat` is the unix timestamp of the last time the network handled a message.
+* `timestamp` is the timestamp of the last health check.
+* `duration` is the execution duration of the last health check in milliseconds.
+* `contiguousFailures` is the number of fails that occurred in a row.
+* `timeOfFirstFailure` is the time of the initial transitional failure.
+
+More information on these measurements can be found in the documentation for the [go-sundheit](https://github.com/AppsFlyer/go-sundheit) library.
 
 #### Example Call
 ```json

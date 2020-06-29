@@ -384,3 +384,63 @@ curl -X POST --data '{
     }
 }
 ```
+
+### admin.getNodeVersion
+Get the version of this node.
+
+#### Signature
+```go
+admin.getNodeVersion() -> {version: string}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "admin.getNodeVersion",
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "version":"avalanche/0.5.5"
+    }
+}
+```
+
+### admin.getNetworkName
+Get the name of the network this node is running on
+
+#### Signature
+```go
+admin.getNetworkName() -> {networkName: string}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "admin.getNetworkName",
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "networkName":"denali"
+    }
+}
+```

@@ -20,20 +20,12 @@ If your question is still unanswered, ask about it on our [Discord](https://chat
 
 [Discord](https://chat.avalabs.org), but please search the documentation and Discord for your issue before asking about it.
 
-### What do I need to do to participate in the Denali testnet?
-
-[See here.](https://medium.com/@collin.cusce/9bbfb353207b)
-
-### Can I run a node even though I'm not participating in the Denali incentivized testnet challenges?
-
-Yes, and we would love it if you did.
-
 ### I think something went wrong or there's a bug. What do I do?
 
 First, re-read any instructions that you were following and make sure that you followed them correctly.
 Then, re-read them again ;)  
-See [known issues](#known-issues) and the #testnet-status and #denali-support channels of our [Discord](https://chat.avalabs.org).
-If your issue is not addressed anywhere, post in the appropriate Discord channel (probably #denali-support or #troubleshooting.)
+See [known issues](#known-issues) and the #testnet-status channel of our [Discord](https://chat.avalabs.org).
+If your issue is not addressed anywhere, post in the appropriate Discord channel (probably #troubleshooting.)
 
 If, after doing the above, you think there is a bug, please make an issue on our [Github.](https://github.com/ava-labs/gecko/issues) 
 Please give as much information and context as possible when describing an issue.
@@ -117,12 +109,12 @@ If a problem persists, contact us on [Discord.](https://chat.avalabs.org)
 By default, the node's database is at `$HOME/.gecko/db`
 **If you delete this directory, it will erase the state of your node, including private keys and keystore users.**
 
-If there is a new release (e.g. Cascade --> Denali), your node's state will be reset.
+If there is a new major release (e.g. Cascade --> Denali), your node's state will be reset.
 Otherwise, upgrading Gecko will not overwrite or destroy your node's state.
 
 The only data not in this folder is your node's staking key/certificate.
 These are in `$HOME/.gecko/staking` by default.
-**If you delete this directory, it will erase your node ID. This will jeopardize your validator reward or your Denali testnet reward (if applicable.)**
+**If you delete this directory, it will erase your node ID. This will jeopardize your validator reward.**
 If your node is a validator and you delete its staking key, it will no longer be a validator when it restarts.
 
 Upgrading Gecko will never erase or change your staking key/certificate.
@@ -227,12 +219,6 @@ In order to complete certain incentivized testnet challenges, your node must als
 
 There is no good way to tell right now. If your node is connected to peers, it should be validating.
 
-### Is my node counted as being online for the Denali test net?
-
-The way we're checking whether a node is online is by periodically calling `admin.peers` on one of our nodes.
-If your node is on the peer list, your node is considered online for the sake of the Denali test net challenges.
-Note that for some of the Denali challenges, your node needs to both be online and be validating.
-
 ### How can I get involved with AVA?
 
 We want you to be a part of the AVA community!
@@ -278,7 +264,7 @@ If it doesn't see [here](https://www.digitalocean.com/community/tutorials/how-to
 
 ### Is there a Javascript library?
 
-[Yes.](http://docs.ava.network/v1.0/en/tools/slopes/)
+[Yes.](http://docs.ava.network/v1.0/en/tools/avalanche.js/)
 
 ### Is my node connected to peers?
 
