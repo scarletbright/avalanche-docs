@@ -20,7 +20,7 @@ We assume that you've already done the [quickstart guide](../quickstart/ava-gett
 
 First, the node you're adding will need to be connected to the AVA Public Testnet.
 
-To start your node and connect to the AVA Public Tesntet, follow the same instructions as in the quickstart guide.
+To start your node and connect to the AVA Public Testnet, follow the same instructions as in the quickstart guide.
 
 ## Add a Validator to the Default Subnet
 
@@ -59,7 +59,7 @@ The response has your node's ID:
 
 In order to add a validator to the Default Subnet, you'll need an account with a sufficient balance of AVA tokens to provide the stake and to pay the transaction fee.
 
-Follow this tutorial to fund a P-Chain account.
+Follow [this tutorial](./atomic-swap.md) to fund a P-Chain account.
 
 To get an account's nonce, call [`platform.getAccount.`](../api/platform.md#platformgetaccount)
 

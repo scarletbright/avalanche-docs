@@ -49,7 +49,47 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "address": "X-KqpU28P2ipUxfTfwaT847wWxyXB4XuWad"
+        "address": "X-EKpEPX56YA1dsaHBsW8X5nGqNSwJ7JrWH"
+    },
+    "id": 1
+}
+```
+
+### avm.listAddresses
+
+List addresses controlled by the given user.
+
+#### Signature
+
+```go
+avm.listAddresses({
+    username: string,
+    password: string
+}) -> {addresses: []string}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "avm.listAddresses",
+    "params": {
+        "username":"myUsername",
+        "password":"myPassword"
+    },
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "addresses": ["X-EKpEPX56YA1dsaHBsW8X5nGqNSwJ7JrWH"]
     },
     "id": 1
 }
@@ -72,13 +112,13 @@ avm.getBalance({
 
 ```json
 curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :2,
-    "method" :"avm.getBalance",
-    "params" :{
-        "address":"X-KqpU28P2ipUxfTfwaT847wWxyXB4XuWad",
-        "assetID":"2sLRGHdLCZkxKnAew9M91GcN4DWVP9WwSrLTYNTqdZAXFB57Py"
-    }
+  "jsonrpc":"2.0",
+  "id"     : 1,
+  "method" :"avm.getBalance",
+  "params" :{
+      "address":"X-EKpEPX56YA1dsaHBsW8X5nGqNSwJ7JrWH",
+      "assetID": "2pYGetDWyKdHxpFxh2LHeoLNCH6H5vxxCxHQtFnnFaYxLsqtHC"
+  }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
@@ -87,9 +127,15 @@ curl -X POST --data '{
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :2,
+    "id"     :1,
     "result" :{
-        "balance":18944
+        "balance":"299999999999900",
+        "utxoIDs":[
+            {
+                "txID":"WPQdyLNqHfiEKp4zcCpayRHYDVYuh1hqs9c1RqgZXS4VPgdvo",
+                "outputIndex":1
+            }
+        ]
     }
 }
 ```
@@ -160,7 +206,7 @@ avm.getUTXOs({addresses: string}) -> {utxos: []string}
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :2,
+    "id"     :1,
     "method" :"avm.getUTXOs",
     "params" :{
         "addresses":["X-xMrKg8uUECt5CS9RE9j5hizv2t2SWTbk"]
@@ -178,7 +224,7 @@ curl -X POST --data '{
             "3ng2kBneUGy8SY98FgNvEMPo2pgL7m9UqcTDbL4svzdNKiuTpQCewGeJyTqppjMjaimnAvQfVfBTWcy2Da2CAKMy9P3Pu6E4nqp7NbrNN1aptYTEGoeg6oMjV76QGiWn37RhFcWuboDLst778nemsE7RrNhccgnHAXCQ"
         ]
     },
-    "id": 2
+    "id": 1
 }
 ```
 
@@ -197,7 +243,7 @@ avm.issueTx({tx: string}) -> {txID: string}
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     : 10,
+    "id"     : 1,
     "method" :"avm.issueTx",
     "params" :{
         "tx":"6sTENqXfk3gahxkJbEPsmX9eJTEFZRSRw83cRJqoHWBiaeAhVbz9QV4i6SLd6Dek4eLsojeR8FbT3arFtsGz9ycpHFaWHLX69edJPEmj2tPApsEqsFd7wDVp7fFxkG6HmySR"
@@ -210,7 +256,7 @@ curl -X POST --data '{
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :10,
+    "id"     :1,
     "result" :{
         "txID":"NUPLwbt2hsYxpQg4H2o451hmTWQ4JZx2zMzM4SinwtHgAdX1JLPHXvWSXEnpecStLj"
     }
@@ -242,7 +288,7 @@ avm.signMintTx({
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     : 8,
+    "id"     : 1,
     "method" :"avm.signMintTx",
     "params" :{
         "tx":"1112yKaDdTb7XZXqX38X8U6ro7EC4GQdxDU48eHTcoQxPtJncHSQEMCi9n3hYaPp33K95i8sntkox5ZMHNq26DeNui4yuSQANXgFEeondXZvq65Pk1jnXbUpkJPkjX4KG1W9XQMAmCNpXs5xHzpX4THcYg3WY569Rj7cdf9Km4FQ3r3VDUAn1dpZLsCyQHeGb8Lr3ub7PGh4pn42KPAWsS6N4xCAGg1GGww2XNBxoDfu81toejPJFuqTJQg6tzgL82uT3amebb4FYQVU5B2gxH5Amevm1zsiTTfNDWui4BfB6e7jt8fc36UWYgb4MiaaApmySUe4ndt7SjFTT6taDkVNFdbUWuNEfiebrYFLpqL86mQ1XD",
@@ -258,7 +304,7 @@ curl -X POST --data '{
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :8,
+    "id"     :1,
     "result" :{
         "tx":"1112yKaDdTb7XZXqX38X8U6ro7EC4GQdxDU48eHTcoQxPtJncHSQEMCi9n3hYaPp33K95i8sntkox5ZMHNq26DeNui4yuSQANXgFEeondXZvq65Pk1jnXbUpkJPkjX4KG1W9XQMAmCNpXs5xHzpX4THcYg3WY569Rj7cdf9Km4FQ3r3VDUAn1dpZLsCyQHeGb8Lr3ub7PGh4pn42KPAWsS6N4xCAGg1GGww2XNBxoDfu81toejPJFuqTJQg6tzgL82uT3amebb4FYQVU5B2gxH5Amevm1zsiTTfNDWui4BfB6e7jt8fc36UWYgb4MiaaApmySUe4ndt7SjFTT6taDkVNFdbUWuNEfiebrYFLpqL86mQ1XD"
     }
@@ -287,7 +333,7 @@ avm.getTxStatus({txID: string}) -> {status: string}
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :4,
+    "id"     :1,
     "method" :"avm.getTxStatus",
     "params" :{
         "txID":"2QouvFWUbjuySRxeX5xMbNCuAaKWfbk5FeEa2JmoF85RKLk2dD"
@@ -300,9 +346,44 @@ curl -X POST --data '{
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :4,
+    "id"     :1,
     "result" :{
         "status":"Accepted"
+    }
+}
+```
+
+### avm.getTx
+
+Returns the specified transaction
+
+#### Signature
+
+```go
+avm.getTx({txID: string}) -> {tx: string}
+```
+  
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"avm.getTx",
+    "params" :{
+        "txID":"2QouvFWUbjuySRxeX5xMbNCuAaKWfbk5FeEa2JmoF85RKLk2dD"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "tx":"1111111vQFqEEHkkAGwJnpdAJgga28zHk9pFARHp1VWe3QM5wC7ztGA5cZAPanFWXHkhbWEbFs9qsEpNZ7QHrzucUUZqLEPrAwJZLrZBik4dEhbsTCF3nS6s2fXVzc5ar2esLFD92WVMZmJNuTUQuKjVkjag2Gy3HHYSqm6bojrG62KrazywKPhrYx8QF9AqNfYYwD3XcSUV1g46r7sQ1WqzM8nyG4qL517JS1YVuTC3aWPeN5cxP6FdvbYexwHcgaBtiQsYbCEeZ9cuJqhE2Pxx8BJFpicLN8FBexb6fzQyBLiFR7yx6v6YBjq7dtu9MBczFdNCnDE4MsG2SyPZsdUv1XxQYVVwDqgqi8Zto5esJKph72YZbrXX3SHVSZBFZXkKbTzyEQFWHCF1jC"
     }
 }
 ```
@@ -334,7 +415,7 @@ avm.Send({
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "method" :"avm.send",
     "params" :{
         "assetID" :"AVA",
@@ -351,7 +432,7 @@ curl -X POST --data '{
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "result" :{
         "txID":"2iXSVLPNVdnFqn65rRvLrsu8WneTFqBJRMqkBJx5vZTwAQb8c1"
     }
@@ -529,7 +610,7 @@ avm.createMintTx({
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     : 7,
+    "id"     : 1,
     "method" :"avm.createMintTx",
     "params" :{
         "amount":10000000,
@@ -548,7 +629,7 @@ curl -X POST --data '{
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :7,
+    "id"     :1,
     "result" :{
         "tx":"NUPLwbt2hsYxpQg4H2o451hmTWQ4JZx2zMzM4SinwtHgAdX1JLPHXvWSXEnpecStLj"
     }
@@ -575,7 +656,7 @@ avm.getAssetDescription({assetID: string}) -> {name: string, symbol: string, den
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "method" :"avm.getAssetDescription",
     "params" :{
         "assetID" :"ZiKfqRXCZgHLgZ4rxGU9Qbycdzuq5DRY4tdSNS9ku8kcNxNLD"
@@ -588,7 +669,7 @@ curl -X POST --data '{
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "result" :{
         "name":"My asset name",
         "symbol":"MyAN"
@@ -621,13 +702,13 @@ avm.exportAVA({
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :2,
+    "id"     :1,
     "method" :"avm.exportAVA",
     "params" :{
         "to":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
         "amount": 500,
     	"username":"myUsername",
-    	"password":"myPassword",
+    	"password":"myPassword"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -640,7 +721,7 @@ curl -X POST --data '{
     "result": {
         "txID": "25VzbNzt3gi2vkE3Kr6H9KJeSR2tXkr8FsBCm3vARnB5foLVmx"
     },
-    "id": 2
+    "id": 1
 }
 ```
 
@@ -715,7 +796,7 @@ avm.exportKey({
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "method" :"avm.exportKey",
     "params" :{
         "username" :"myUsername",
@@ -730,7 +811,7 @@ curl -X POST --data '{
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "result" :{
         "privateKey":"2w4XiXxPfQK4TypYqnohRL8DRNTz9cGiGmwQ1zmgEqD9c9KWLq"
     }
@@ -758,7 +839,7 @@ avm.importKey({
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "method" :"avm.importKey",
     "params" :{
         "username" :"myUsername",
@@ -773,7 +854,7 @@ curl -X POST --data '{
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "result" :{
         "address":"X-7u5FQArVaMSgGZzeTE9ckheWtDhU5T3KS"
     }

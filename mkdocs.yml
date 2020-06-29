@@ -1,5 +1,5 @@
 site_name: AVA Documentation
-site_url: https://docs.ava.network/
+site_url: https://docs.avax.network/
 site_description: AVA Documentation.
 site_author: AVA Community
 copyright: 2020 AVA Labs
@@ -31,6 +31,7 @@ nav:
 - AVA Documentation :
   - Home : index.md
   - Quickstart : ./v1.0/en/quickstart/ava-getting-started.md
+  - FAQ and Known Issues : ./v1.0/en/faq/faq.md
   - System Overview: v1.0/en/core-concepts/overview.md
   - Tutorials:
     - Create a Fixed-Cap Asset         : ./v1.0/en/tutorials/fixed-cap-asset.md
@@ -44,22 +45,24 @@ nav:
   - APIs:
               - Introduction           : ./v1.0/en/api/intro-apis.md
               - Issuing API Calls      : ./v1.0/en/api/issuing-api-calls.md
-              - Keystore API           : ./v1.0/en/api/keystore.md
-              - AVM (X-Chain) API      : ./v1.0/en/api/avm.md
-              - Platform (P-Chain) API : ./v1.0/en/api/platform.md
-              - EVM (C-Chain) API      : ./v1.0/en/api/evm.md
               - Admin API              : ./v1.0/en/api/admin.md
+              - AVM (X-Chain) API      : ./v1.0/en/api/avm.md
+              - EVM (C-Chain) API      : ./v1.0/en/api/evm.md
+              - Health API             : ./v1.0/en/api/health.md
+              - Info API               : ./v1.0/en/api/info.md
               - IPC API                : ./v1.0/en/api/ipc.md
+              - Keystore API           : ./v1.0/en/api/keystore.md
               - Metrics API            : ./v1.0/en/api/metrics.md
+              - Platform (P-Chain) API : ./v1.0/en/api/platform.md
               - Timestamp API          : ./v1.0/en/api/timestamp.md
   - Developer Tools:
               - Overview : ./v1.0/en/tools/index.md
-              - Slopes :
-                  - Overview : ./v1.0/en/tools/slopes/index.md
-                  - API : ./v1.0/en/tools/slopes/api/README.md
-                  - Manage Keys : ./v1.0/en/tools/slopes/managing-keys.md
-                  - Create Asset : ./v1.0/en/tools/slopes/create-asset.md
-                  - Send Asset : ./v1.0/en/tools/slopes/send-coins.md
+              - Avalanche.js :
+                  - Overview : ./v1.0/en/tools/avalanche.js/index.md
+                  - API : ./v1.0/en/tools/avalanche.js/api/README.md
+                  - Manage Keys : ./v1.0/en/tools/avalanche.js/managing-keys.md
+                  - Create Asset : ./v1.0/en/tools/avalanche.js/create-asset.md
+                  - Send Asset : ./v1.0/en/tools/avalanche.js/send-coins.md
               - Avash  : ./v1.0/en/tools/avash.md
   - Reference Materials:
               - Command Line Interface      : v1.0/en/references/command-line-interface.md

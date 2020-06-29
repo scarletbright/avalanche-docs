@@ -175,6 +175,94 @@ curl -X POST --data '{
 }
 ```
 
+### platform.importKey
+
+Give a user control over an address by providing the private key that controls the address.
+
+#### Signature
+
+```go
+platform.importKey({
+    username: string,
+    password:string,
+    privateKey:string
+}) -> {address: string}
+```
+
+* Add `privateKey` to `username`'s set of private keys. `address` is the address `username` now controls with the private key.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"platform.importKey",
+    "params" :{
+        "username" :"bob",
+        "password":"loblaw",
+        "privateKey":"2w4XiXxPfQK4TypYqnohRL8DRNTz9cGiGmwQ1zmgEqD9c9KWLq"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "address":"7u5FQArVaMSgGZzeTE9ckheWtDhU5T3KS"
+    }
+}
+```
+
+### platform.exportKey
+
+Get the private key that controls a given address.  
+The returned private key can be added to a user with `platform.importKey`.
+
+#### Signature
+
+```go
+platform.exportKey({
+    username: string,
+    password:string,
+    address:string
+}) -> {privateKey: string}
+```
+
+* `username` must control `address`.
+* `privateKey` is the string representation of the private key that controls `address`.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"platform.exportKey",
+    "params" :{
+        "username" :"bob",
+        "password":"loblaw",
+        "address": "7u5FQArVaMSgGZzeTE9ckheWtDhU5T3KS"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "privateKey":"2w4XiXxPfQK4TypYqnohRL8DRNTz9cGiGmwQ1zmgEqD9c9KWLq"
+    }
+}
+```
+
 ### platform.getAccount
 
 The P-Chain uses an account model. An account is identified by an address.
@@ -218,7 +306,7 @@ curl -X POST --data '{
         "nonce": "0",
         "balance": "0"
     },
-    "id": 84
+    "id": 1
 }
 ```
 
@@ -299,6 +387,7 @@ platform.getCurrentValidators({subnetID: string}) ->
         endTime: int,
         weight: int, (optional)
         stakeAmount: int, (optional)
+        address: string
         id: string
     }
 }
@@ -311,6 +400,7 @@ platform.getCurrentValidators({subnetID: string}) ->
   Omitted if `subnetID` is the default subnet.
 * `stakeAmount` is the amount of nAVA this validator staked.
   Omitted if `subnetID` is not the default subnet.
+* `address` is the P Chain address which was passed in as `destination` when adding the validator.
 * `id` is the validator's ID.
 
 #### Example Call
@@ -332,38 +422,29 @@ curl -X POST --data '{
     "result": {
         "validators": [
             {
-                "startTime": "1572566400",
-                "endtime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ"
+                "startTime": "1591878109",
+                "endtime": "1594469809",
+                "stakeAmount": "319902",
+                "address": "3dAxnVDDZpTZTAUbCboMKsGdi2X1oXbuJ",
+                "id": "NDmcZNsWoPrkN9KSt2A9js639hEQWUmUf"
             },
             {
-                "startTime": "1572566400",
-                "endtime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "GWPcbFJZFfZreETSoWjPimr846mXEKCtu"
+                "startTime": "1591473391",
+                "endtime": "1592855191",
+                "stakeAmount": "10000",
+                "address": "EDCFiDfrqPnGk5PKR7BFdE132CwDmAHRX",
+                "id": "62T5AAwKdFMNi7Gm193A6zyJhVscRfuhP"
             },
             {
-                "startTime": "1572566400",
-                "endtime": "1604102400",
+                "startTime": "1591387125",
+                "endtime": "1622923025",
                 "stakeAmount": "20000000000000",
-                "id": "NFBbbJ4qCmNaCzeW7sxErhvWqvEQMnYcN"
-            },
-            {
-                "startTime": "1572566400",
-                "endtime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg"
-            },
-            {
-                "startTime": "1572566400",
-                "endtime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "P7oB2McjBGgW2NXXWVYjV8JEDFoW9xDE5"
+                "address": "95YUFjhDG892VePMzpwKF9JzewGKvGRi3",
+                "id": "HGZ8ae74J3odT8ESreAdCtdnvWG1J4X5n"
             }
         ]
     },
-    "id": 85
+    "id": 1
 }
 ```
 
@@ -382,6 +463,7 @@ platform.getPendingValidators({subnetID: string}) ->
         endTime: int,
         weight: int, (optional)
         stakeAmount: int, (optional)
+        address: string
         id: string
     }
 }
@@ -394,6 +476,7 @@ platform.getPendingValidators({subnetID: string}) ->
   Omitted if `subnetID` is the default subnet.
 * `stakeAmount` is the amount of nAVA this validator staked.
   Omitted if `subnetID` is not the default subnet.
+* `address` is the P Chain address which was passed in as `destination` when adding the validator.
 * `id` is the validator's ID.
 
 #### Example Call
@@ -415,10 +498,11 @@ curl -X POST --data '{
     "result": {
         "validators": [
             {
-                "startTime": "1572567400",
-                "endtime": "1604102400",
-                "stakeAmount": "20000000000000",
-                "id": "MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ"
+                "startTime": "1592400591",
+                "endtime": "1622923025",
+                "stakeAmount": "10000",
+                "address": "6cesTteH62Y5mLoDBUASaBvCXuL2AthL",
+                "id": "DpL8PTsrjtLzv5J8LL3D2A6YcnCTqrNH9"
             },
         ]
     },
@@ -514,18 +598,18 @@ platform.addDefaultSubnetValidator(
 In this example we use shell command `date` to compute Unix times 10 minutes and 30 days in the future.
 (Note: If you're on a Mac, replace  `$(date` with `$(gdate`. If you don't have `gdate` installed, do `brew install coreutils`.)
 
-```sh
+```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.addNonDefaultSubnetValidator",
+    "method": "platform.addDefaultSubnetValidator",
     "params": {
-    	"id":"7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg",
-		"subnetID":"zBfoWW1FfkPVRfywpJ1CVQRfnYesEpdFC61hmU2n9JNGhDUEL",
+        "id":"ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+    	"payerNonce":1,
+    	"destination":"Q4MzFZZDPHRPAHFeDs3NiyyaZDvxHKivf",
     	"startTime":'$(date --date="10 minutes" +%s)',
-    	"endTime":'$(date --date="30 days" +%s)',
-    	"weight":1,
-        "payerNonce":2,
-        "delegationFeeRate":100000
+    	"endTime":'$(date --date="2 days" +%s)',
+    	"stakeAmount":1000000,
+    	"delegationFeeRate":100000
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
@@ -723,6 +807,61 @@ curl -X POST --data '{
 }
 ```
 
+
+### platform.getSubnets
+
+Get all the Subnets that exist.
+
+#### Signature
+
+```go
+platform.getSubnets({}) ->
+{
+	subnets: []{
+	        id: string,
+        	controlKeys: []string,
+	        threshold: string
+    }
+}
+```
+
+`id` is the Subnet's ID.  
+`threshold` signatures from addresses in `controlKeys` are needed to add a validator to the subnet.  
+See [here](../tutorials/adding-validators.md#add-a-validator-to-a-non-default-subnet) for information on adding a validator to a Subnet.
+
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "platform.getSubnets",
+    "params": {},
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "subnets": [
+            {
+                "id": "hW8Ma7dLMA7o4xmJf3AXBbo17bXzE7xnThUd3ypM4VAWo1sNJ",
+                "controlKeys": [
+                    "KNjXsaA1sZsaKCD1cd85YXauDuxshTes2",
+                    "Aiz4eEt5xv9t4NCnAWaQJFNz5ABqLtJkR"
+                ],
+                "threshold": "2"
+            }
+        ]
+    },
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
 ### platform.validatedBy
 
 Get the Subnet that validates a given blockchain.
@@ -894,7 +1033,7 @@ curl -X POST --data '{
             }
         ]
     },
-    "id": 85
+    "id": 1
 }
 ```
 
