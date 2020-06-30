@@ -16,7 +16,7 @@ In this tutorial, which should take less than 10 minutes, we will:
 
 
 If you run into any issues at all, **please check the [FAQ](../faq/faq.md)**
-If your issue isn't addressed there, come ask for help on our [Discord Server!](https://discord.gg/wdkGmJ9)
+If your issue isn't addressed there, come ask for help on our [Discord Server!](https://chat.avalabs.org/)
 We will work to get you through any problems.
 
 ## Requirements 
@@ -104,7 +104,7 @@ When a given chain is done bootstrapping, it will print a log like this:
 
 If you make an API call to a chain that is not done bootstrapping, it will hang or 404.
 
-If your node never finishes bootstrapping, contact us on [Discord.](https://discord.gg/wdkGmJ9)
+If your node never finishes bootstrapping, contact us on [Discord.](https://chat.avalabs.org/)
 
 ## Create a Keystore User
 
