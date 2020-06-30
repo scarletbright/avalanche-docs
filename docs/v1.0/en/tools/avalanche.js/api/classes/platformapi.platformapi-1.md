@@ -421,7 +421,7 @@ Name | Type | Default | Description |
 
 **Returns:** *Promise‹Array‹object››*
 
-Promise for an array of validators that are currently staking, see: [platform.getCurrentValidators documentation](https://docs.ava.network/v1.0/en/api/platform/#platformgetcurrentvalidators).
+Promise for an array of validators that are currently staking, see: [platform.getCurrentValidators documentation](https://docs.avax.network/v1.0/en/api/platform/#platformgetcurrentvalidators).
 
 ___
 
@@ -455,7 +455,7 @@ Name | Type | Default | Description |
 
 **Returns:** *Promise‹Array‹object››*
 
-Promise for an array of validators that are pending staking, see: [platform.getPendingValidators documentation](https://docs.ava.network/v1.0/en/api/platform/#platformgetpendingvalidators).
+Promise for an array of validators that are pending staking, see: [platform.getPendingValidators documentation](https://docs.avax.network/v1.0/en/api/platform/#platformgetpendingvalidators).
 
 ___
 

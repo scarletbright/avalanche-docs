@@ -18,7 +18,7 @@ We assume your node is connected to the Public Testnet.
 ## Export AVAX from the X-Chain to the P-Chain
 
 Of course, in order to send AVAX you need to have some AVAX!
-Use the [Public Tesnet Faucet](https://faucet.ava.network/) to send some AVAX to an X-Chain address you hold, just like in the quickstart guide.
+Use the [Public Tesnet Faucet](https://faucet.avax.network/) to send some AVAX to an X-Chain address you hold, just like in the quickstart guide.
 
 To send the AVAX, call the X-Chain's [`exportAVA`](../api/avm.md#avmexportava) method.
 

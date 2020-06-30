@@ -195,7 +195,7 @@ The faucet dispenses 20,000 nanoAVAX (nAVAX) each drop.
 
 **This is only a test network, and AVAX on this network has no value.**
 
-Go to the [test net faucet](https://faucet.ava.network/) and paste the address you just created to receive 20,000 nAVAX.
+Go to the [test net faucet](https://faucet.avax.network/) and paste the address you just created to receive 20,000 nAVAX.
 
 We can check an address's balance of a given asset by calling `avm.getBalance`, another method of the X-Chain's API.
 Let's check that the faucet drip went through.
