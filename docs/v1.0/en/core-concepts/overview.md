@@ -334,4 +334,4 @@ Users can create Subnets, allowing for private blockchains.
 - [Follow the Quickstart guide](../tutorials/fixed-cap-asset.md)
 - [Explore Avalanche's APIs](../api/intro-apis.md)
 - [Explore reference materials](../references/cryptographic-primitives.md)
-- [Read the whitepaper and other papers](../papers/)
+- [Read the whitepaper and other papers](../../papers/)
