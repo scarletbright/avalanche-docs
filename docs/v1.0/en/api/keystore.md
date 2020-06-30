@@ -1,6 +1,6 @@
 # Keystore API
 
-Every node has a built-in keystore. 
+Every node has a built-in keystore.
 Clients create users on the keystore, which act as identities to be used when interacting with blockchains.
 A keystore exists at the node level, so if you create a user on a node it exists *only* on that node.
 However, users may be imported and exported using this API.
@@ -11,7 +11,7 @@ This API uses the `json 2.0` API format. For more information on making JSON RPC
 
 ## Endpoint
 
-```
+```http
 /ext/keystore
 ```
 
@@ -58,40 +58,6 @@ curl -X POST --data '{
     "id"     :1,
     "result" :{
         "success":true
-    }
-}
-```
-
-### keystore.listUsers
-
-List the users in this keystore.
-
-#### Signature
-
-```go
-keystore.ListUsers() -> {users:[]string}
-```
-
-#### Example Call
-
-```json
-curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "method" :"keystore.listUsers"
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/keystore
-```
-
-#### Example Response
-
-```json
-{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "result" :{
-        "users":[
-            "bob"
-        ]
     }
 }
 ```
@@ -206,6 +172,40 @@ curl -X POST --data '{
     "id"     :1,
     "result" :{
         "success":true
+    }
+}
+```
+
+### keystore.listUsers
+
+List the users in this keystore.
+
+#### Signature
+
+```go
+keystore.ListUsers() -> {users:[]string}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"keystore.listUsers"
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/keystore
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "users":[
+            "bob"
+        ]
     }
 }
 ```
