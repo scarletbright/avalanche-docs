@@ -81,11 +81,13 @@ Unzip the file with `unzip gecko-osx-<VERSION>.zip`
 The resulting folder, `gecko-<VERSION>`, contains the binaries.  
 You can run the node with `./gecko-<VERSION>/ava`
 
-For Linux:  
+For Linux x86:  
 Download the file named `gecko-linux-<VERSION>.tar.gz`  
 Unzip the file with `tar -xvf gecko-linux-<VERSION>.tar.gz`  
 The resulting folder, `gecko-<VERSION>`, contains the binaries.  
 You can run the node with `./gecko-<VERSION>/ava`
+
+Note: The Linux binaries are compiled for AMD64 (x86-64) architectures. For ARM platforms, like the Raspberry Pi, please [build from source](#from-source).
 
 ### Will restarting/upgrading my node give me a new node ID?
 
@@ -242,7 +244,7 @@ It should have:
 
 ### What software do I need?
 
-Your operating system should be Ubuntu >= 18.04 or MacOS >= Catalina.
+Your operating system should be 64-bit Ubuntu >= 18.04 or MacOS >= Catalina.
 Other operating systems may work but are not well tested.
 We recommend using Ubuntu 18.04 because that's what we use.
 
@@ -367,6 +369,12 @@ If the response is not `denali`, or the API call fails with a 404, you are not o
 
 You probably pasted the API call from a program that uses smart quotes.
 Replace each character that looks like a quotation mark " with a quotation mark and try again.
+
+### Starting node fails with: `cannot execute binary file: Exec format error`
+
+You are probably using one of the [official releases](https://github.com/ava-labs/gecko/releases) on an architecture it was not build for.  
+The `gecko-linux-<release>.tar.gz` is build for AMD64 (x86-64) architectures. Platforms based on ARM chips, like the Raspberry Pi, are **not** working with it.  
+Instead you need to [build gecko from source](../quickstart/ava-getting-started.md#download-gecko-source-code). Keep in mind you need to use a 64-bit operating system.
 
 ## Known Issues/Bugs
 
