@@ -167,36 +167,51 @@ In this section, we provide an architectural overview of the platform and discus
 \subsection{Architecture}
 
 \subsubsection{Subnetworks} 
-% To begin discussion of the platform, we must discuss the subnet architecture, the basic building block of the platform. 
-The modern internet architecture is described as having a ``narrow waist'' architecture, where there is a single communication protocol stack in the middle, composed of HTTP/TLS/IP/TCP protocols, and a very large array of networks at the bottom and applications at the top. Such a design was not planned, but rather became nascent as the internet evolved and refined in function. Such an architectural model is in stark contrast to how blockchain platforms have been developed to date. Nearly all blockchain platforms follow a monolithic architecture, typically inspired simply by Bitcoin's model. Naturally, this presents a large set of limitations that prevent blockchain platforms from many use cases. 
+A subnetwork, or subnet, is a dynamic set of validators working together to achieve consensus on the state of a set of blockchains.
+Each blockchain is validated by one subnet, and a subnet can validate arbitrarily many blockchains.
+A validator may be a member of arbitrarily many subnets.
+A subnet decides who may enter it, and may require that its constituent validators have certain properties.
+The \AVAPlatformName{} platform supports the creation and operation of arbitrarily many subnets.
+In order to create a new subnet or to join a subnet, one must pay a fee denominated in \AVATokenName{}.
 
-\AVAPlatformName{} is designed under the same architectural model as the internet, and thus it is designed to be extensible, modular, and composable. The \AVAPlatformName{} platform has multiple, logically separate subnetworks, each supporting their own execution environments, rulesets, and validators. When creating a new subnetwork, one can specify a multitude of parameters, including -- but not limited to -- the following:
+The subnet model offers a number of advantages:
 \begin{itemize}
-\item{} Who may propose and validate blocks?
-\item{} What constitutes a valid block?
-\item{} The genesis state of the chain.
-\item{} What state transition occurs when a block is accepted?
-\item{} What RPC endpoints are exposed?
-\item{} What to save to the database, and when?
+\item{} If a validator doesn't care about the blockchains in a given subnet, it will simply not join that subnet.
+This reduces network traffic, as well as the computational resources required of validators.
+This is in contrast to other blockchain projects, in which every validator must validate every transaction, even those they don't care about. 
+\item{} Since subnets decide who may enter them, one can create private subnets.
+That is, each blockchain in the subnet is validated only by a set of trusted validators.
+\item{} One can create a subnet where each validator has certain properties.
+For example, one could create a subnet where each validator is located in a certain jurisdiction, or where each validator
+is bound by some real-world contract. This may be beneficial for compliance reasons.
 \end{itemize}
-The subnet architecture, therefore, allows anyone to deploy their own blockchain that fits their custom requirements. Everything is ultimately a subnetwork in \AVAPlatformName{}, including the subnetwork where the native token, \AVATokenName{}, resides. The subnetwork where \AVATokenName{} resides, labeled by ID-0, is special due to the following properties:
-\begin{enumerate}
-\item Every validator in the \AVAPlatformName{} network is also a validator of the \AVATokenName{} token subnetwork.
-\item Any cross-subnetwork transactions, such as asset transfers, are managed by the \AVATokenName{} token subnetwork.
-\item Creation of a new subnetwork pays fees in \AVATokenName{}, which is required in order to modify the staking subnetwork. 
-\end{enumerate}
-We note that subnets are not isolated networks. They are fully interoperable with the rest of the network, meaning that they can atomically transact with other subnets. 
+
+There is one special subnet called the Default Subnet.
+It is validated by all validators. 
+(That is, in order to validate any subnet, one must also validate the Default Subnet.)
+The Default Subnet validates a set of pre-defined blockchains, including the blockchain where \AVATokenName{} lives and is traded.
 
 \subsubsection{Virtual Machines}
-% While operationally the \AVAPlatformName{} is a collection of subnetworks, these subnets had to be instantiated and launched through some well-defined mechanism. 
-% The toolset that provides the ``blueprint'' for deploying subnets in \AVAPlatformName{} is called the ``virtual-machine'' module (VMs). 
-% Effectively, subnetworks are concrete instantiations of virtual machines, in the same way that objects are concrete instantiation of classes in object oriented languages. 
+% The \AVAPlatformName{} is a collection of blockchains, and these blockchains have to be instantiated and launched through some well-defined mechanism. 
+% The toolset that provides the ``blueprint'' for deploying blockchains in \AVAPlatformName{} is called the ``virtual-machine'' module (VMs). 
+% Effectively, a blockchain is a concrete instantiations of virtual machines, in the same way that objects are concrete instantiation of classes in object-oriented languages. 
 
-In order to launch a new subnet, a developer will first write the code for the corresponding virtual machine, or VM. 
-VMs provide the blueprint for deploying subnets in \AVAPlatformName{}. 
-When ready to create a subnet, the developer specifies the VM to use, as well as the genesis state of that VM. The behavior of a chain/DAG on a given subnet is defined entirely by the VM that the subnet uses. Naturally, since a subnet is just an instance of a VM, there can be arbitrarily many subnets that use the same VM. However, although many subnets may use the same VM, they maintain their own state, which is independent from that of other subnets. For simplicity, we sometimes write that a subnet ``uses'' a VM or that a subnet ``runs'' a VM. In both cases we mean that the subnet is an instance of that VM.
+Each blockchain is an instance of a Virtual Machine (VM.)
+A VM is a blueprint for a blockchain, much like a class is a blueprint for an object in an object-oriented programming language.
+The interface, state and behavior of a blockchain is defined by the VM that the blockchain runs.
+The following properties of a blockchain, and other, are defined by a VM: 
+\begin{itemize}
+\item{} The contents of a block
+\item{} The state transition that occurs when a block is accepted
+\item{} The APIs exposed by the blockchain and their endpoints
+\item{} The data that is persisted to disk
+\end{itemize}
 
-\AVAPlatformName{} supports the development of a rich marketplace of virtual machines that can enjoy strict compliance rulesets, privacy, and innovative new features. Such a flexible repository of FSSs allows both hobbyist developers as well as large enterprises to deploy fully compliant and interoperable business and system logic. The \AVATokenName{} token provides the core infrastructure for enabling the security of the system while simultaneously providing the universal unit of exchange (i.e. interoperation) between any assets deployed on \AVAPlatformName{}. 
+We say that a blockchain ``uses'' or ``runs'' a given VM.
+When creating a blockchain, one specifies the VM it runs, as well as the genesis state of the blockchain.
+A new blockchain can be created using a pre-existing VM, or a developer can code a new one. 
+There can be arbitrarily many blockchains that run the same VM.
+Each blockchain, even those running the same VM, is logically independent from others and maintains its own state.
 
 % The \AVAPlatformName{} platform will allow the tokenization of all types of assets. This includes support for arbitrary scripting languages, multiple types of virtual machines (EVM, WASM, etc), and simple-to-use libraries for token creation. For example, developers can create an asset that has features of both BTC and ZEC. This flexibility enables interoperability amongst various platforms, enabling true backwards compatibility and new, more expressive, transactions. 
 
