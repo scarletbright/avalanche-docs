@@ -87,7 +87,7 @@ Unzip the file with `tar -xvf gecko-linux-<VERSION>.tar.gz`
 The resulting folder, `gecko-<VERSION>`, contains the binaries.  
 You can run the node with `./gecko-<VERSION>/ava`
 
-Note: The Linux binaries are compiled for AMD64 (x86-64) architectures. For ARM platforms, like the Raspberry Pi, please build from source.
+Note: The Linux binaries are compiled for AMD64 (x86-64) architectures. For ARM platforms, like the Raspberry Pi, please [build from source](#from-source).
 
 ### Will restarting/upgrading my node give me a new node ID?
 
@@ -374,7 +374,7 @@ Replace each character that looks like a quotation mark " with a quotation mark 
 
 You are probably using one of the [official releases](https://github.com/ava-labs/gecko/releases) on an architecture it was not build for.  
 The `gecko-linux-<release>.tar.gz` is build for AMD64 (x86-64) architectures. Platforms based on ARM chips, like the Raspberry Pi, are **not** working with it.  
-Instead you need to [build gecko from source](https://github.com/ava-labs/gecko#native-install). Keep in mind you need to use a 64-bit operating system.
+Instead you need to [build gecko from source](../quickstart/ava-getting-started.md#download-gecko-source-code). Keep in mind you need to use a 64-bit operating system.
 
 ## Known Issues/Bugs
 
