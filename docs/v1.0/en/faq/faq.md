@@ -138,7 +138,7 @@ By default, this is at `$HOME/.gecko/db`.
 Place this directory at the same location on the new machine.
 
 Advanced users may place the staking key and database at different locations and point to them at runtime
-using [command-line arguments.](https://docs.ava.network/v1.0/en/references/command-line-interface/)
+using [command-line arguments.](https://docs.avax.network/v1.0/en/references/command-line-interface/)
 
 ### Is my node done bootstrapping?
 
@@ -182,7 +182,7 @@ The response contains your node's ID:
 }
 ```
 
-Then look on the [explorer's validator page](https://explorer.ava.network/validators) and verify your node is present.
+Then look on the [explorer's validator page](https://explorer.avax.network/validators) and verify your node is present.
 
 If the explorer isn't working, you can check this way:
 
@@ -226,8 +226,8 @@ Any contribution, no matter how small, is valued and welcome.
 
 You can:
 
-* [Get a grant](https://www.avalabs.org/ava-x) for working on a project that adds to the Avalanche ecosystem
-* [Participate in our bug bounty](https://www.avalabs.org/ava-x/explore-open-grants/bug-bounty)
+* [Get a grant](https://www.avalabs.org/avalanche-x) for working on a project that adds to the Avalanche ecosystem
+* [Participate in our bug bounty](https://www.avalabs.org/avalanche-x/explore-open-grants/bug-bounty)
 * Check out the #dev-chat channel on our [Discord.](https://chat.avalabs.org)
 * Make an issue or pull request on our [Github.](https://github.com/ava-labs/gecko)
 
@@ -256,15 +256,15 @@ If it doesn't see [here](https://www.digitalocean.com/community/tutorials/how-to
 
 ### Is there a browser-based wallet?
 
-[Yes.](https://wallet.ava.network/)
+[Yes.](https://wallet.avax.network/)
 
 ### Is there an explorer?
 
-[Yes.](https://explorer.ava.network/)
+[Yes.](https://explorer.avax.network/)
 
 ### Is there a Javascript library?
 
-[Yes.](http://docs.ava.network/v1.0/en/tools/avalanche.js/)
+[Yes.](http://docs.avax.network/v1.0/en/tools/avalanche.js/)
 
 ### Is my node connected to peers?
 

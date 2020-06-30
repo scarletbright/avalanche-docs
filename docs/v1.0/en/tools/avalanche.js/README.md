@@ -30,7 +30,7 @@ We built Avalanche.js with ease of use in mind. With this library, any Javascrip
   * Administer a local node
   * Retrieve Avalanche network information from a node
 
-The entirety of the Avalanche.js documentation can be found on our [Avalanche.js documentation page](https://docs.ava.network/v1.0/en/tools/avalanche.js/).
+The entirety of the Avalanche.js documentation can be found on our [Avalanche.js documentation page](https://docs.avax.network/v1.0/en/tools/avalanche.js/).
 
 ### Requirements
 

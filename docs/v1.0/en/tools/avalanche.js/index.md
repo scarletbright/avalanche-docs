@@ -11,7 +11,7 @@ The APIs currently supported by default are:
   * The Admin API
   * The Platform API
 
-We built Avalanche.js with ease of use in mind. With this library, any Javascript developer is able to interact with a node on the Avalanche Platform who has enabled their API endpoints for the developer's consumption. We keep the library up-to-date with the latest changes in the [Avalanche Platform Specification](https://docs.ava.network). 
+We built Avalanche.js with ease of use in mind. With this library, any Javascript developer is able to interact with a node on the Avalanche Platform who has enabled their API endpoints for the developer's consumption. We keep the library up-to-date with the latest changes in the [Avalanche Platform Specification](https://docs.avax.network). 
 
   Using Avalanche.js, developers can:
 

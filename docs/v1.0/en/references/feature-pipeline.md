@@ -24,9 +24,9 @@ An advantage of the Avalanche platform is that blockchains are all using the sam
 
 Currently, the Platform chain has one governable parameter, time. The rest of the parameters are currently hard-coded for testing. We are going to add the ability to change them. This includes specifying how much each parameter can change, based on the last time they were modified.
 
-## NAT Traversal
+## Improved NAT Traversal
 
-Our current library for peer-to-peer communication, salticidae, does not support NAT traversal. The lack of this feature makes it more difficult for nodes to run in heavily virtualized environments. It is essential we enable this functionality to enable development across a wider variety of network environments.  
+NAT Traversal is critical for peer-to-peer communication for nodes that are hidden behind their router. It is essential we improve this functionality to enable development across a wider variety of network environments.
 
 ## Pruning
 
@@ -39,10 +39,6 @@ We plan to add the ability for validators to track the uptime and virtuousness o
 ## Blockchain Sandboxing
 
 It’s important that blockchains not operate outside of their expected environment. We want to give developers freedom to create the blockchain they want, but we also must protect the network from malware threats. Our sandboxing solution will do just that.
-
-## Improve Build Process (inc. static linking salticidae)
-
-Our current build process includes the salticidae library. Salticidae is a highly efficient C++ p2p networking library and serves us well as it interfaces with any client implementation that can utilize C++ libraries. However, the build process needs expanding. We must support Windows, Mac OS X, various Linux and Unix distributions, and potentially other platforms including mobile. For this to work, we must be able to create statically linked version of the salticidae library or add the library to modern package management systems so they can be installed (a la homebrew or apt-get). This will improve our cross-platform capability, which is essential for reaching the widest audience of developers and validators.
 
 ## Memory Management
 

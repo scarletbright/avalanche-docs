@@ -16,7 +16,7 @@ In this tutorial, which should take less than 10 minutes, we will:
 
 
 If you run into any issues at all, **please check the [FAQ](../faq/faq.md)**
-If your issue isn't addressed there, come ask for help on our [Discord Server!](https://discord.gg/wdkGmJ9)
+If your issue isn't addressed there, come ask for help on our [Discord Server!](https://chat.avalabs.org/)
 We will work to get you through any problems.
 
 ## Requirements 
@@ -104,7 +104,7 @@ When a given chain is done bootstrapping, it will print a log like this:
 
 If you make an API call to a chain that is not done bootstrapping, it will hang or 404.
 
-If your node never finishes bootstrapping, contact us on [Discord.](https://discord.gg/wdkGmJ9)
+If your node never finishes bootstrapping, contact us on [Discord.](https://chat.avalabs.org/)
 
 ## Create a Keystore User
 
@@ -195,7 +195,7 @@ The faucet dispenses 20,000 nanoAVAX (nAVAX) each drop.
 
 **This is only a test network, and AVAX on this network has no value.**
 
-Go to the [test net faucet](https://faucet.ava.network/) and paste the address you just created to receive 20,000 nAVAX.
+Go to the [test net faucet](https://faucet.avax.network/) and paste the address you just created to receive 20,000 nAVAX.
 
 We can check an address's balance of a given asset by calling `avm.getBalance`, another method of the X-Chain's API.
 Let's check that the faucet drip went through.
