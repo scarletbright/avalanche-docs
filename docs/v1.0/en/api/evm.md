@@ -182,6 +182,34 @@ curl -X POST --data '{
 }
 ```
 
+### Getting an account's nonce
+
+#### Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_getTransactionCount",
+    "params": [
+        "0x820891f8b95daf5ea7d7ce7667e6bba2dd5c5594",
+        "latest"
+    ],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": "0x0"
+}
+```
+
 ### Send a raw transaction
 
 #### Call
