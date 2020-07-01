@@ -2,7 +2,7 @@
 
 This document describes the API of the C-Chain, which is an instance of the Ethereum Virtual Machine (EVM.)
 
-Note: Ethereum has its own notion of `networkID` and `chainID`. The C-Chain uses `1` and `43110` for these values, respectively. These have no relationship to AVA's view of networkID and chainID, and are purely internal to the C-Chain. 
+Note: Ethereum has its own notion of `networkID` and `chainID`. The C-Chain uses `1` and `43110` for these values, obtained using the `net_version` and `eth_chainId` methods shown below. These have no relationship to AVA's view of networkID and chainID, and are purely internal to the C-Chain. 
 
 ## Methods
 
@@ -74,6 +74,58 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "id": 1,
     "result": "Athereum 1.0"
+}
+```
+
+### Getting the network ID
+
+#### Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "net_version",
+    "params": [],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": "1"
+}
+```
+
+### Getting the chain ID
+
+Not well documented in JSON-RPC references. See instead [EIP694](https://github.com/ethereum/EIPs/issues/694)
+
+#### Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_chainId",
+    "params": [],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": "0xa866"
 }
 ```
 
