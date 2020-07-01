@@ -240,6 +240,72 @@ curl -X POST --data '{
 }
 ```
 
+### Getting a block by hash
+
+#### Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_getBlockByHash",
+    "params": [
+        "0x14d9c2aeec20254d966a947e23eb3172ae5067e66fd4e69aecc3c9d6ff24443a",
+        true
+    ],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc
+```
+
+#### Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+        "difficulty": "0x1",
+        "extraData": "0x64616f2d686172642d666f726b47d8526faa68dca2174ea0a22994d5ca5c1f9ee77a6d6281ba81b0aaf3a972ae",
+        "gasLimit": "0x5ee7167",
+        "gasUsed": "0x5208",
+        "hash": "0x14d9c2aeec20254d966a947e23eb3172ae5067e66fd4e69aecc3c9d6ff24443a",
+        "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "miner": "0x0100000000000000000000000000000000000000",
+        "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "nonce": "0x0000000000000000",
+        "number": "0x5",
+        "parentHash": "0xc4eb127333754eac38fbd0ef4d036fb6ba39cda0fd3600e2ff91447148f4ef07",
+        "receiptsRoot": "0x056b23fbba480696b65fe5a59b8f2148a1299103c4f57df839233af2cf4ca2d2",
+        "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+        "size": "0x29e",
+        "stateRoot": "0xaf8c1c4dc0eaf6f95ff1a30d0353184e0aa415180bcc32abce9db919f7269961",
+        "timestamp": "0x5ed4adf7",
+        "totalDifficulty": "0x5",
+        "transactions": [
+            {
+                "blockHash": "0x14d9c2aeec20254d966a947e23eb3172ae5067e66fd4e69aecc3c9d6ff24443a",
+                "blockNumber": "0x5",
+                "from": "0x572f4d80f10f663b5049f789546f25f70bb62a7f",
+                "gas": "0x5208",
+                "gasPrice": "0x4a817c800",
+                "hash": "0xd33150a3f3783f29084eee4e12098f3ef707557f8deb916677a9af68e05613b7",
+                "input": "0x",
+                "nonce": "0x2",
+                "to": "0xef820a678268b3b44f0237abb6739a6d9578b52f",
+                "transactionIndex": "0x0",
+                "value": "0x2c68af0bb140000",
+                "v": "0x150f0",
+                "r": "0x82b830674f78f2b518d82e4da67867841bbbeff1968fa07d190138da6a774681",
+                "s": "0x1c50991daf54e9426b65a7f3dc958f607189dd07c8131cd9a30ed7c43e3c2df7"
+            }
+        ],
+        "transactionsRoot": "0xac38a6987053157fea9134b9455163d4953d4902c059b8912efcb2733f0b827b",
+        "uncles": []
+    }
+}
+```
+
 ### Getting a block by number
 
 #### Call
