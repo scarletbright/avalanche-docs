@@ -2,29 +2,29 @@
 
 ## Introduction
 
-In this tutorial we'll add a node to the Default Subnet and to a non-default Subnet on the AVA Public Testnet.
+In this tutorial we'll add a node to the Default Subnet and to a non-default Subnet on the Avalanche Public Testnet.
 
-The [Platform Chain (P-Chain)](../core-concepts/overview.md#the-p-chain) manages metadata about the AVA network.
+The [Platform Chain (P-Chain)](../core-concepts/overview.md#the-p-chain) manages metadata about the Avalanche network.
 This includes tracking which nodes are in which Subnets, which blockchains exist and which Subnets are validating which blockchains.
 To add validators to Subnets we'll issue transactions to the P-Chain.
 
 The P-Chain uses an account model.
-Each account has an address that uniquely identifies it, a balance of AVA tokens, and a nonce.
+Each account has an address that uniquely identifies it, a balance of AVAX tokens, and a nonce.
 The nonce is incremented each time the account sends a transaction.
 
 ## Requirements
 
-We assume that you've already done the [quickstart guide](../quickstart/ava-getting-started.md) and [subnet creation tutorial](../tutorials/create-a-subnet.md), and are familiar with the [AVA Network's architecture.](../core-concepts/overview.md)
+We assume that you've already done the [quickstart guide](../quickstart/ava-getting-started.md) and [subnet creation tutorial](../tutorials/create-a-subnet.md), and are familiar with the [Avalanche Network's architecture.](../core-concepts/overview.md)
 
 ## Connect to the Network
 
-First, the node you're adding will need to be connected to the AVA Public Testnet.
+First, the node you're adding will need to be connected to the Avalanche Public Testnet.
 
-To start your node and connect to the AVA Public Testnet, follow the same instructions as in the quickstart guide.
+To start your node and connect to the Avalanche Public Testnet, follow the same instructions as in the quickstart guide.
 
 ## Add a Validator to the Default Subnet
 
-The [Default Subnet](../core-concepts/overview.md#what-are-subnets) is inherent to the AVA network and validates AVA's [built-in blockchains.](../core-concepts/overview.md#built-in-blockchains)
+The [Default Subnet](../core-concepts/overview.md#what-are-subnets) is inherent to the Avalanche network and validates Avalanche's [built-in blockchains.](../core-concepts/overview.md#built-in-blockchains)
 
 Let's get the values needed to make the transaction that adds a node to the Default Subnet.
 
@@ -57,7 +57,7 @@ The response has your node's ID:
 
 ### Nonce
 
-In order to add a validator to the Default Subnet, you'll need an account with a sufficient balance of AVA tokens to provide the stake and to pay the transaction fee.
+In order to add a validator to the Default Subnet, you'll need an account with a sufficient balance of AVAX tokens to provide the stake and to pay the transaction fee.
 
 Follow [this tutorial](./atomic-swap.md) to fund a P-Chain account.
 
@@ -90,8 +90,7 @@ Since we haven't done anything with this account its nonce is 0:
 
 ### Stake Amount
 
-In order to validate the Default Subnet one must stake AVA tokens.
-The minimum amount that one can stake is 10 $\mu$AVA.
+In order to validate the Default Subnet one must stake AVAX tokens.
 
 ### Start and End Time
 
@@ -103,11 +102,11 @@ The start time must be in the future relative to the time the transaction is iss
 
 ### Destination
 
-When a validator leaves the Default Subnet, the staked AVA tokens are sent to an account that is specified in the transaction that added the validator to the Default Subnet.
+When a validator leaves the Default Subnet, the staked AVAX tokens are sent to an account that is specified in the transaction that added the validator to the Default Subnet.
 We call this the *destination* account.
 
 A validator earns a *validation reward* if they are sufficiently responsive and correct while they validate the Default Subnet.
-The validation reward is also sent to the same account as the staked AVA.
+The validation reward is also sent to the same account as the staked AVAX.
 
 A validator's stake is never slashed, regardless of their behavior; they will always receive their stake back when their validation period is over.
 
@@ -164,7 +163,7 @@ The response has the unsigned transaction:
 We need to sign this transaction with the key of the account that is paying the transaction fee and providing the staked tokens.
 
 To do so, call `platform.Sign`.
-Replace `signer` with the address of the account providing the staked AVA and the fee.
+Replace `signer` with the address of the account providing the staked AVAX and the fee.
 The provided user must control that account; provide your username and password to authenticate.
 
 ```json

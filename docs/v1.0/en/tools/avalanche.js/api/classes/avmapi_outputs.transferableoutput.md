@@ -31,7 +31,7 @@
 
 \+ **new TransferableOutput**(`assetID`: Buffer, `output`: [Output](avmapi_outputs.output.md)): *[TransferableOutput](avmapi_outputs.transferableoutput.md)*
 
-*Defined in [apis/avm/outputs.ts:278](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L278)*
+*Defined in [apis/avm/outputs.ts:278](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L278)*
 
 Class representing an [TransferableOutput](avmapi_outputs.transferableoutput.md) for a transaction.
 
@@ -50,7 +50,7 @@ Name | Type | Default | Description |
 
 • **assetID**: *Buffer* = Buffer.alloc(AVMConstants.ASSETIDLEN)
 
-*Defined in [apis/avm/outputs.ts:241](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L241)*
+*Defined in [apis/avm/outputs.ts:241](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L241)*
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 • **output**: *[Output](avmapi_outputs.output.md)*
 
-*Defined in [apis/avm/outputs.ts:242](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L242)*
+*Defined in [apis/avm/outputs.ts:242](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L242)*
 
 ## Methods
 
@@ -66,7 +66,7 @@ ___
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-*Defined in [apis/avm/outputs.ts:263](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L263)*
+*Defined in [apis/avm/outputs.ts:263](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L263)*
 
 **Parameters:**
 
@@ -83,7 +83,7 @@ ___
 
 ▸ **getAssetID**(): *Buffer*
 
-*Defined in [apis/avm/outputs.ts:255](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L255)*
+*Defined in [apis/avm/outputs.ts:255](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L255)*
 
 **Returns:** *Buffer*
 
@@ -93,7 +93,7 @@ ___
 
 ▸ **getOutput**(): *[Output](avmapi_outputs.output.md)*
 
-*Defined in [apis/avm/outputs.ts:259](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L259)*
+*Defined in [apis/avm/outputs.ts:259](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L259)*
 
 **Returns:** *[Output](avmapi_outputs.output.md)*
 
@@ -103,7 +103,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [apis/avm/outputs.ts:272](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L272)*
+*Defined in [apis/avm/outputs.ts:272](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L272)*
 
 **Returns:** *Buffer*
 
@@ -113,7 +113,7 @@ ___
 
 ▸ **comparator**(): *function*
 
-*Defined in [apis/avm/outputs.ts:247](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/outputs.ts#L247)*
+*Defined in [apis/avm/outputs.ts:247](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/outputs.ts#L247)*
 
 Returns a function used to sort an array of [TransferableOutput](avmapi_outputs.transferableoutput.md)s
 

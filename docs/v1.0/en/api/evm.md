@@ -20,7 +20,7 @@ See the [Ethereum Wiki's JSON-RPC Documentation](https://eth.wiki/json-rpc/API) 
 
 ## JSON-RPC Endpoints
 
-To interact with C-Chain (the main EVM instance on AVA):
+To interact with C-Chain (the main EVM instance on Avalanche):
 
 ```http
 /ext/bc/C/rpc
@@ -36,7 +36,7 @@ where `blockchainID` is the ID of the blockchain running the EVM.
 
 ## WebSocket-RPC Endpoints
 
-To interact with C-Chain (the main EVM instance on AVA):
+To interact with C-Chain (the main EVM instance on Avalanche):
 
 ```http
 /ext/bc/C/ws

@@ -21,7 +21,7 @@
 
 ▸ **SelectInputClass**(`inputid`: number, ...`args`: Array‹any›): *[Input](../classes/avmapi_inputs.input.md)*
 
-*Defined in [apis/avm/inputs.ts:22](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L22)*
+*Defined in [apis/avm/inputs.ts:22](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L22)*
 
 Takes a buffer representing the output and returns the proper [Input](../classes/avmapi_inputs.input.md) instance.
 

@@ -45,7 +45,7 @@ Class for representing a key chain in Avalanche.
 
 *Overrides [KeyChain](utils_types.keychain.md).[constructor](utils_types.keychain.md#constructor)*
 
-*Defined in [apis/avm/keychain.ts:254](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/keychain.ts#L254)*
+*Defined in [apis/avm/keychain.ts:254](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/keychain.ts#L254)*
 
 Returns instance of AVMKeyChain.
 
@@ -65,7 +65,7 @@ Name | Type |
 
 *Inherited from [KeyChain](utils_types.keychain.md).[chainid](utils_types.keychain.md#protected-chainid)*
 
-*Defined in [utils/types.ts:273](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L273)*
+*Defined in [utils/types.ts:273](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L273)*
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 *Inherited from [KeyChain](utils_types.keychain.md).[keys](utils_types.keychain.md#protected-keys)*
 
-*Defined in [utils/types.ts:272](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L272)*
+*Defined in [utils/types.ts:272](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L272)*
 
 #### Type declaration:
 
@@ -89,7 +89,7 @@ ___
 
 *Inherited from [KeyChain](utils_types.keychain.md).[addKey](utils_types.keychain.md#addkey)*
 
-*Defined in [utils/types.ts:316](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L316)*
+*Defined in [utils/types.ts:316](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L316)*
 
 Adds the key pair to the list of the keys managed in the [KeyChain](utils_types.keychain.md).
 
@@ -109,7 +109,7 @@ ___
 
 *Inherited from [KeyChain](utils_types.keychain.md).[getAddressStrings](utils_types.keychain.md#getaddressstrings)*
 
-*Defined in [utils/types.ts:307](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L307)*
+*Defined in [utils/types.ts:307](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L307)*
 
 Gets an array of addresses stored in the [KeyChain](utils_types.keychain.md).
 
@@ -125,7 +125,7 @@ ___
 
 *Inherited from [KeyChain](utils_types.keychain.md).[getAddresses](utils_types.keychain.md#getaddresses)*
 
-*Defined in [utils/types.ts:298](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L298)*
+*Defined in [utils/types.ts:298](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L298)*
 
 Gets an array of addresses stored in the [KeyChain](utils_types.keychain.md).
 
@@ -141,7 +141,7 @@ ___
 
 *Inherited from [KeyChain](utils_types.keychain.md).[getChainID](utils_types.keychain.md#getchainid)*
 
-*Defined in [utils/types.ts:370](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L370)*
+*Defined in [utils/types.ts:370](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L370)*
 
 Returns the chainID associated with this [KeyChain](utils_types.keychain.md).
 
@@ -157,7 +157,7 @@ ___
 
 *Inherited from [KeyChain](utils_types.keychain.md).[getKey](utils_types.keychain.md#getkey)*
 
-*Defined in [utils/types.ts:361](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L361)*
+*Defined in [utils/types.ts:361](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L361)*
 
 Returns the [KeyPair](utils_types.keypair.md) listed under the provided address
 
@@ -179,7 +179,7 @@ ___
 
 *Inherited from [KeyChain](utils_types.keychain.md).[hasKey](utils_types.keychain.md#haskey)*
 
-*Defined in [utils/types.ts:350](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L350)*
+*Defined in [utils/types.ts:350](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L350)*
 
 Checks if there is a key associated with the provided address.
 
@@ -201,7 +201,7 @@ ___
 
 *Overrides [KeyChain](utils_types.keychain.md).[importKey](utils_types.keychain.md#importkey)*
 
-*Defined in [apis/avm/keychain.ts:229](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/keychain.ts#L229)*
+*Defined in [apis/avm/keychain.ts:229](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/keychain.ts#L229)*
 
 Given a private key, makes a new key pair, returns the address.
 
@@ -223,7 +223,7 @@ ___
 
 *Overrides [KeyChain](utils_types.keychain.md).[makeKey](utils_types.keychain.md#makekey)*
 
-*Defined in [apis/avm/keychain.ts:216](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/keychain.ts#L216)*
+*Defined in [apis/avm/keychain.ts:216](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/keychain.ts#L216)*
 
 Makes a new key pair, returns the address.
 
@@ -245,7 +245,7 @@ ___
 
 *Inherited from [KeyChain](utils_types.keychain.md).[removeKey](utils_types.keychain.md#removekey)*
 
-*Defined in [utils/types.ts:328](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L328)*
+*Defined in [utils/types.ts:328](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L328)*
 
 Removes the key pair from the list of they keys managed in the [KeyChain](utils_types.keychain.md).
 
@@ -267,7 +267,7 @@ ___
 
 *Inherited from [KeyChain](utils_types.keychain.md).[setChainID](utils_types.keychain.md#setchainid)*
 
-*Defined in [utils/types.ts:379](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L379)*
+*Defined in [utils/types.ts:379](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L379)*
 
 Sets the the chainID associated with this [KeyChain](utils_types.keychain.md) and all associated keypairs.
 
@@ -285,7 +285,7 @@ ___
 
 ▸ **signTx**(`utx`: [UnsignedTx](avmapi_transactions.unsignedtx.md)): *[Tx](avmapi_transactions.tx.md)*
 
-*Defined in [apis/avm/keychain.ts:252](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/keychain.ts#L252)*
+*Defined in [apis/avm/keychain.ts:252](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/keychain.ts#L252)*
 
 DEPRECATED: use UnsignedTx.sign(keychain) instead
 Signs a [UnsignedTx](avmapi_transactions.unsignedtx.md) and returns signed [Tx](avmapi_transactions.tx.md)
