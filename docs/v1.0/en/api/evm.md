@@ -372,6 +372,48 @@ curl -X POST --data '{
 }
 ```
 
+### Getting a transaction by hash
+
+#### Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_getTransactionByHash",
+    "params": [
+        "0xd33150a3f3783f29084eee4e12098f3ef707557f8deb916677a9af68e05613b7"
+    ],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc
+```
+
+#### Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+        "blockHash": "0x14d9c2aeec20254d966a947e23eb3172ae5067e66fd4e69aecc3c9d6ff24443a",
+        "blockNumber": "0x5",
+        "from": "0x572f4d80f10f663b5049f789546f25f70bb62a7f",
+        "gas": "0x5208",
+        "gasPrice": "0x4a817c800",
+        "hash": "0xd33150a3f3783f29084eee4e12098f3ef707557f8deb916677a9af68e05613b7",
+        "input": "0x",
+        "nonce": "0x2",
+        "to": "0xef820a678268b3b44f0237abb6739a6d9578b52f",
+        "transactionIndex": "0x0",
+        "value": "0x2c68af0bb140000",
+        "v": "0x150f0",
+        "r": "0x82b830674f78f2b518d82e4da67867841bbbeff1968fa07d190138da6a774681",
+        "s": "0x1c50991daf54e9426b65a7f3dc958f607189dd07c8131cd9a30ed7c43e3c2df7"
+    }
+}
+```
+
 ### Getting count of pending transactions
 
 "Pending" transactions will be non-zero during periods of heavy network use. "Queued" transactions indicate transactions have been submitted with nonce values ahead of the next expected value for an address, which places them on hold until a transaction with the next expected nonce value is submitted.
