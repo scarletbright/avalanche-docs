@@ -52,6 +52,31 @@ where `blockchainID` is the ID of the blockchain running the EVM.
 
 ## Examples
 
+### Getting the current client version
+
+#### Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "web3_clientVersion",
+    "params": [],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": "Athereum 1.0"
+}
+```
+
 ### Getting the most recent block number
 
 #### Call
@@ -72,8 +97,8 @@ curl -X POST --data '{
 ```json
 {
     "jsonrpc": "2.0",
-     "id": 1,
-     "result": "0x10f"
+    "id": 1,
+    "result": "0x10f"
 }
 ```
 
