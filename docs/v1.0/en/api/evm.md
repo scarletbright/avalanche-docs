@@ -54,7 +54,7 @@ where `blockchainID` is the ID of the blockchain running the EVM.
 
 ### Getting the current client version
 
-#### Call
+#### Example Call
 
 ```json
 curl -X POST --data '{
@@ -67,7 +67,7 @@ curl -X POST --data '{
    127.0.0.1:9650/ext/bc/C/rpc 
 ```
 
-#### Response
+#### Example Response
 
 ```json
 {
@@ -79,7 +79,7 @@ curl -X POST --data '{
 
 ### Getting the network ID
 
-#### Call
+#### Example Call
 
 ```json
 curl -X POST --data '{
@@ -92,7 +92,7 @@ curl -X POST --data '{
    127.0.0.1:9650/ext/bc/C/rpc 
 ```
 
-#### Response
+#### Example Response
 
 ```json
 {
@@ -106,7 +106,7 @@ curl -X POST --data '{
 
 Not well documented in JSON-RPC references. See instead [EIP694](https://github.com/ethereum/EIPs/issues/694)
 
-#### Call
+#### Example Call
 
 ```json
 curl -X POST --data '{
@@ -119,7 +119,7 @@ curl -X POST --data '{
    127.0.0.1:9650/ext/bc/C/rpc 
 ```
 
-#### Response
+#### Example Response
 
 ```json
 {
@@ -131,7 +131,7 @@ curl -X POST --data '{
 
 ### Getting the most recent block number
 
-#### Call
+#### Example Call
 
 ```json
 curl -X POST --data '{
@@ -144,7 +144,7 @@ curl -X POST --data '{
    127.0.0.1:9650/ext/bc/C/rpc 
 ```
 
-#### Response
+#### Example Response
 
 ```json
 {
@@ -156,7 +156,7 @@ curl -X POST --data '{
 
 ### Getting an account's balance
 
-#### Call
+#### Example Call
 
 ```json
 curl -X POST --data '{
@@ -172,7 +172,7 @@ curl -X POST --data '{
    127.0.0.1:9650/ext/bc/C/rpc 
 ```
 
-#### Response
+#### Example Response
 
 ```json
 {
@@ -184,7 +184,7 @@ curl -X POST --data '{
 
 ### Getting an account's nonce
 
-#### Call
+#### Example Call
 
 ```json
 curl -X POST --data '{
@@ -200,7 +200,7 @@ curl -X POST --data '{
    127.0.0.1:9650/ext/bc/C/rpc 
 ```
 
-#### Response
+#### Example Response
 
 ```json
 {
@@ -212,7 +212,7 @@ curl -X POST --data '{
 
 ### Send a raw transaction
 
-#### Call
+#### Example Call
 
 ```json
 curl -X POST --data '{
@@ -227,7 +227,7 @@ curl -X POST --data '{
    127.0.0.1:9650/ext/bc/C/rpc 
 ```
 
-#### Response
+#### Example Response
 
 ```json
 {
@@ -242,7 +242,7 @@ curl -X POST --data '{
 
 ### Getting a block by hash
 
-#### Call
+#### Example Call
 
 ```json
 curl -X POST --data '{
@@ -258,7 +258,7 @@ curl -X POST --data '{
    127.0.0.1:9650/ext/bc/C/rpc
 ```
 
-#### Response
+#### Example Response
 
 ```json
 {
@@ -308,7 +308,7 @@ curl -X POST --data '{
 
 ### Getting a block by number
 
-#### Call
+#### Example Call
 
 ```json
 curl -X POST --data '{
@@ -324,7 +324,7 @@ curl -X POST --data '{
    127.0.0.1:9650/ext/bc/C/rpc
 ```
 
-#### Response
+#### Example Response
 
 ```json
 {
@@ -374,7 +374,7 @@ curl -X POST --data '{
 
 ### Getting a transaction by hash
 
-#### Call
+#### Example Call
 
 ```json
 curl -X POST --data '{
@@ -389,7 +389,7 @@ curl -X POST --data '{
    127.0.0.1:9650/ext/bc/C/rpc
 ```
 
-#### Response
+#### Example Response
 
 ```json
 {
@@ -416,7 +416,7 @@ curl -X POST --data '{
 
 ### Getting a transaction receipt
 
-#### Call
+#### Example Call
 
 ```json
 curl -X POST --data '{
@@ -431,7 +431,7 @@ curl -X POST --data '{
    127.0.0.1:9650/ext/bc/C/rpc
 ```
 
-#### Response
+#### Example Response
 
 ```json
 {
@@ -457,7 +457,7 @@ curl -X POST --data '{
 
 "Pending" transactions will be non-zero during periods of heavy network use. "Queued" transactions indicate transactions have been submitted with nonce values ahead of the next expected value for an address, which places them on hold until a transaction with the next expected nonce value is submitted.
 
-#### Call
+#### Example Call
 
 ```json
 curl -X POST --data '{
@@ -470,7 +470,7 @@ curl -X POST --data '{
    127.0.0.1:9650/ext/bc/C/rpc 
 ```
 
-#### Response
+#### Example Response
 
 ```json
 {
