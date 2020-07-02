@@ -1,6 +1,6 @@
-[avalanche - v2.0.2](README.md)
+[avalanche - v2.1.0](README.md)
 
-# Avalanche.js - v2.0.2
+# Avalanche.js - v2.1.0
 
 ## Index
 
@@ -18,6 +18,7 @@
     * [AVM UTXOs](modules/avmapi_utxos.md)
   * [Health API](modules/healthapi.md)
   * [Info API](modules/infoapi.md)
+  * [Metrics API](modules/metricsapi.md)
   * [Node Keystore API](modules/keystoreapi.md)
   * [Platform API](modules/platformapi.md)
   * Avalanche

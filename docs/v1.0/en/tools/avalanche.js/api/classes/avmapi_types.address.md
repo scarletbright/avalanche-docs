@@ -38,7 +38,7 @@ Class for representing an address used in [Output](avmapi_outputs.output.md) typ
 
 *Overrides [NBytes](utils_types.nbytes.md).[constructor](utils_types.nbytes.md#constructor)*
 
-*Defined in [apis/avm/types.ts:104](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L104)*
+*Defined in [apis/avm/types.ts:104](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L104)*
 
 Class for representing an address used in [Output](avmapi_outputs.output.md) types
 
@@ -52,7 +52,7 @@ Class for representing an address used in [Output](avmapi_outputs.output.md) typ
 
 *Inherited from [NBytes](utils_types.nbytes.md).[bsize](utils_types.nbytes.md#protected-bsize)*
 
-*Defined in [utils/types.ts:401](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L401)*
+*Defined in [utils/types.ts:596](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L596)*
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 *Inherited from [NBytes](utils_types.nbytes.md).[bytes](utils_types.nbytes.md#protected-bytes)*
 
-*Defined in [utils/types.ts:400](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L400)*
+*Defined in [utils/types.ts:595](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L595)*
 
 ## Methods
 
@@ -72,7 +72,7 @@ ___
 
 *Inherited from [NBytes](utils_types.nbytes.md).[fromBuffer](utils_types.nbytes.md#frombuffer)*
 
-*Defined in [utils/types.ts:434](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L434)*
+*Defined in [utils/types.ts:629](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L629)*
 
 Takes a [[Buffer]], verifies its length, and stores it.
 
@@ -95,7 +95,7 @@ ___
 
 *Overrides [NBytes](utils_types.nbytes.md).[fromString](utils_types.nbytes.md#fromstring)*
 
-*Defined in [apis/avm/types.ts:88](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L88)*
+*Defined in [apis/avm/types.ts:88](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L88)*
 
 Takes a base-58 string containing an [Address](avmapi_types.address.md), parses it, populates the class, and returns the length of the Address in bytes.
 
@@ -117,7 +117,7 @@ ___
 
 *Inherited from [NBytes](utils_types.nbytes.md).[getSize](utils_types.nbytes.md#getsize)*
 
-*Defined in [utils/types.ts:408](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L408)*
+*Defined in [utils/types.ts:603](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L603)*
 
 Returns the length of the [Buffer](https://github.com/feross/buffer).
 
@@ -133,7 +133,7 @@ ___
 
 *Inherited from [NBytes](utils_types.nbytes.md).[toBuffer](utils_types.nbytes.md#tobuffer)*
 
-*Defined in [utils/types.ts:456](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L456)*
+*Defined in [utils/types.ts:651](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L651)*
 
 Returns the stored [Buffer](https://github.com/feross/buffer).
 
@@ -149,7 +149,7 @@ ___
 
 *Overrides [NBytes](utils_types.nbytes.md).[toString](utils_types.nbytes.md#tostring)*
 
-*Defined in [apis/avm/types.ts:78](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L78)*
+*Defined in [apis/avm/types.ts:78](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L78)*
 
 Returns a base-58 representation of the [Address](avmapi_types.address.md).
 
@@ -161,7 +161,7 @@ ___
 
 ▸ **comparitor**(): *function*
 
-*Defined in [apis/avm/types.ts:70](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L70)*
+*Defined in [apis/avm/types.ts:70](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L70)*
 
 Returns a function used to sort an array of [Address](avmapi_types.address.md)es
 

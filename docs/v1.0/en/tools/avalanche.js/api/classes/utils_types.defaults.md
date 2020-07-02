@@ -18,19 +18,19 @@
 
 ### ▪ **network**: *object*
 
-*Defined in [utils/types.ts:518](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L518)*
+*Defined in [utils/types.ts:713](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L713)*
 
 ###  1
 
 • **1**: *object*
 
-*Defined in [utils/types.ts:519](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L519)*
+*Defined in [utils/types.ts:714](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L714)*
 
 #### Type declaration:
 
 ▪ **12345**: *object*
 
-*Defined in [utils/types.ts:542](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L542)*
+*Defined in [utils/types.ts:737](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L737)*
 
 * **11111111111111111111111111111111LpoYY**: *object & object* = n12345_platform
 
@@ -52,7 +52,7 @@
 
 ▪ **2**: *object*
 
-*Defined in [utils/types.ts:520](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L520)*
+*Defined in [utils/types.ts:715](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L715)*
 
 * **11111111111111111111111111111111LpoYY**: *object* = n2_platform
 
@@ -74,7 +74,7 @@
 
 ▪ **3**: *object*
 
-*Defined in [utils/types.ts:531](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L531)*
+*Defined in [utils/types.ts:726](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L726)*
 
 * **11111111111111111111111111111111LpoYY**: *object* = n3_platform
 

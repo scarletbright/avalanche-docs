@@ -24,7 +24,7 @@ Response data for HTTP requests.
 
 • **data**: *string | object | Array‹object›*
 
-*Defined in [utils/types.ts:22](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L22)*
+*Defined in [utils/types.ts:22](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L22)*
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 • **headers**: *object*
 
-*Defined in [utils/types.ts:23](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L23)*
+*Defined in [utils/types.ts:23](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L23)*
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 • **request**: *ClientRequest | XMLHttpRequest*
 
-*Defined in [utils/types.ts:26](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L26)*
+*Defined in [utils/types.ts:26](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L26)*
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 • **status**: *number*
 
-*Defined in [utils/types.ts:24](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L24)*
+*Defined in [utils/types.ts:24](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L24)*
 
 ___
 
@@ -56,4 +56,4 @@ ___
 
 • **statusText**: *string*
 
-*Defined in [utils/types.ts:25](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L25)*
+*Defined in [utils/types.ts:25](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L25)*

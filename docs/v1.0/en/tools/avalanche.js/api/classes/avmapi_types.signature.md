@@ -37,7 +37,7 @@ Signature for a [Tx](avmapi_transactions.tx.md)
 
 *Overrides [NBytes](utils_types.nbytes.md).[constructor](utils_types.nbytes.md#constructor)*
 
-*Defined in [apis/avm/types.ts:50](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L50)*
+*Defined in [apis/avm/types.ts:50](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L50)*
 
 Signature for a [Tx](avmapi_transactions.tx.md)
 
@@ -51,7 +51,7 @@ Signature for a [Tx](avmapi_transactions.tx.md)
 
 *Inherited from [NBytes](utils_types.nbytes.md).[bsize](utils_types.nbytes.md#protected-bsize)*
 
-*Defined in [utils/types.ts:401](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L401)*
+*Defined in [utils/types.ts:596](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L596)*
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 *Inherited from [NBytes](utils_types.nbytes.md).[bytes](utils_types.nbytes.md#protected-bytes)*
 
-*Defined in [utils/types.ts:400](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L400)*
+*Defined in [utils/types.ts:595](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L595)*
 
 ## Methods
 
@@ -71,7 +71,7 @@ ___
 
 *Inherited from [NBytes](utils_types.nbytes.md).[fromBuffer](utils_types.nbytes.md#frombuffer)*
 
-*Defined in [utils/types.ts:434](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L434)*
+*Defined in [utils/types.ts:629](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L629)*
 
 Takes a [[Buffer]], verifies its length, and stores it.
 
@@ -94,7 +94,7 @@ ___
 
 *Inherited from [NBytes](utils_types.nbytes.md).[fromString](utils_types.nbytes.md#fromstring)*
 
-*Defined in [utils/types.ts:417](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L417)*
+*Defined in [utils/types.ts:612](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L612)*
 
 Takes a base-58 encoded string, verifies its length, and stores it.
 
@@ -116,7 +116,7 @@ ___
 
 *Inherited from [NBytes](utils_types.nbytes.md).[getSize](utils_types.nbytes.md#getsize)*
 
-*Defined in [utils/types.ts:408](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L408)*
+*Defined in [utils/types.ts:603](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L603)*
 
 Returns the length of the [Buffer](https://github.com/feross/buffer).
 
@@ -132,7 +132,7 @@ ___
 
 *Inherited from [NBytes](utils_types.nbytes.md).[toBuffer](utils_types.nbytes.md#tobuffer)*
 
-*Defined in [utils/types.ts:456](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L456)*
+*Defined in [utils/types.ts:651](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L651)*
 
 Returns the stored [Buffer](https://github.com/feross/buffer).
 
@@ -148,7 +148,7 @@ ___
 
 *Inherited from [NBytes](utils_types.nbytes.md).[toString](utils_types.nbytes.md#tostring)*
 
-*Defined in [utils/types.ts:465](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L465)*
+*Defined in [utils/types.ts:660](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L660)*
 
 Returns a base-58 string of the stored [Buffer](https://github.com/feross/buffer).
 

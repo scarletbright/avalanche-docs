@@ -32,7 +32,7 @@
 
 ▪ **ADDRESSLENGTH**: *number* = 20
 
-*Defined in [apis/avm/types.ts:261](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L261)*
+*Defined in [apis/avm/types.ts:261](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L261)*
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 ▪ **ASSETIDLEN**: *number* = 32
 
-*Defined in [apis/avm/types.ts:257](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L257)*
+*Defined in [apis/avm/types.ts:257](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L257)*
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 ▪ **ASSETNAMELEN**: *number* = 128
 
-*Defined in [apis/avm/types.ts:260](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L260)*
+*Defined in [apis/avm/types.ts:260](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L260)*
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 ▪ **BASETX**: *number* = 0
 
-*Defined in [apis/avm/types.ts:250](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L250)*
+*Defined in [apis/avm/types.ts:250](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L250)*
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 ▪ **BLOCKCHAINIDLEN**: *number* = 32
 
-*Defined in [apis/avm/types.ts:258](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L258)*
+*Defined in [apis/avm/types.ts:258](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L258)*
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 ▪ **CREATEASSETTX**: *number* = 1
 
-*Defined in [apis/avm/types.ts:251](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L251)*
+*Defined in [apis/avm/types.ts:251](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L251)*
 
 ___
 
@@ -80,7 +80,7 @@ ___
 
 ▪ **NFTCREDENTIAL**: *number* = 16
 
-*Defined in [apis/avm/types.ts:255](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L255)*
+*Defined in [apis/avm/types.ts:255](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L255)*
 
 ___
 
@@ -88,7 +88,7 @@ ___
 
 ▪ **NFTXFEROP**: *number* = 13
 
-*Defined in [apis/avm/types.ts:248](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L248)*
+*Defined in [apis/avm/types.ts:248](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L248)*
 
 ___
 
@@ -96,7 +96,7 @@ ___
 
 ▪ **NFTXFEROUTPUTID**: *number* = 11
 
-*Defined in [apis/avm/types.ts:245](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L245)*
+*Defined in [apis/avm/types.ts:245](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L245)*
 
 ___
 
@@ -104,7 +104,7 @@ ___
 
 ▪ **OPERATIONTX**: *number* = 2
 
-*Defined in [apis/avm/types.ts:252](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L252)*
+*Defined in [apis/avm/types.ts:252](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L252)*
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 ▪ **SECPCREDENTIAL**: *number* = 9
 
-*Defined in [apis/avm/types.ts:254](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L254)*
+*Defined in [apis/avm/types.ts:254](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L254)*
 
 ___
 
@@ -120,7 +120,7 @@ ___
 
 ▪ **SECPFXID**: *number* = 0
 
-*Defined in [apis/avm/types.ts:242](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L242)*
+*Defined in [apis/avm/types.ts:242](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L242)*
 
 ___
 
@@ -128,7 +128,7 @@ ___
 
 ▪ **SECPINPUTID**: *number* = 5
 
-*Defined in [apis/avm/types.ts:247](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L247)*
+*Defined in [apis/avm/types.ts:247](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L247)*
 
 ___
 
@@ -136,7 +136,7 @@ ___
 
 ▪ **SECPOUTPUTID**: *number* = 7
 
-*Defined in [apis/avm/types.ts:244](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L244)*
+*Defined in [apis/avm/types.ts:244](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L244)*
 
 ___
 
@@ -144,4 +144,4 @@ ___
 
 ▪ **SYMBOLMAXLEN**: *number* = 4
 
-*Defined in [apis/avm/types.ts:259](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/types.ts#L259)*
+*Defined in [apis/avm/types.ts:259](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L259)*

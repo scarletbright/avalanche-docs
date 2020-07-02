@@ -47,7 +47,7 @@ extending [KeyPair](utils_types.keypair.md) which is used as the key in [KeyChai
 
 \+ **new KeyChain**(`chainid`: string): *[KeyChain](utils_types.keychain.md)*
 
-*Defined in [utils/types.ts:384](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L384)*
+*Defined in [utils/types.ts:579](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L579)*
 
 Returns instance of [KeyChain](utils_types.keychain.md).
 
@@ -65,7 +65,7 @@ Name | Type |
 
 • **chainid**: *string* = ""
 
-*Defined in [utils/types.ts:273](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L273)*
+*Defined in [utils/types.ts:468](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L468)*
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 • **importKey**: *function*
 
-*Defined in [utils/types.ts:291](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L291)*
+*Defined in [utils/types.ts:486](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L486)*
 
 Given a private key, makes a new [KeyPair](utils_types.keypair.md), returns the address.
 
@@ -97,7 +97,7 @@ ___
 
 • **keys**: *object*
 
-*Defined in [utils/types.ts:272](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L272)*
+*Defined in [utils/types.ts:467](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L467)*
 
 #### Type declaration:
 
@@ -109,7 +109,7 @@ ___
 
 • **makeKey**: *function*
 
-*Defined in [utils/types.ts:282](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L282)*
+*Defined in [utils/types.ts:477](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L477)*
 
 Makes a new [KeyPair](utils_types.keypair.md), returns the address.
 
@@ -133,7 +133,7 @@ Name | Type |
 
 ▸ **addKey**(`newKey`: KPClass): *void*
 
-*Defined in [utils/types.ts:316](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L316)*
+*Defined in [utils/types.ts:511](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L511)*
 
 Adds the key pair to the list of the keys managed in the [KeyChain](utils_types.keychain.md).
 
@@ -151,7 +151,7 @@ ___
 
 ▸ **getAddressStrings**(): *Array‹string›*
 
-*Defined in [utils/types.ts:307](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L307)*
+*Defined in [utils/types.ts:502](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L502)*
 
 Gets an array of addresses stored in the [KeyChain](utils_types.keychain.md).
 
@@ -165,7 +165,7 @@ ___
 
 ▸ **getAddresses**(): *Array‹Buffer›*
 
-*Defined in [utils/types.ts:298](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L298)*
+*Defined in [utils/types.ts:493](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L493)*
 
 Gets an array of addresses stored in the [KeyChain](utils_types.keychain.md).
 
@@ -179,7 +179,7 @@ ___
 
 ▸ **getChainID**(): *string*
 
-*Defined in [utils/types.ts:370](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L370)*
+*Defined in [utils/types.ts:565](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L565)*
 
 Returns the chainID associated with this [KeyChain](utils_types.keychain.md).
 
@@ -193,7 +193,7 @@ ___
 
 ▸ **getKey**(`address`: Buffer): *KPClass*
 
-*Defined in [utils/types.ts:361](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L361)*
+*Defined in [utils/types.ts:556](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L556)*
 
 Returns the [KeyPair](utils_types.keypair.md) listed under the provided address
 
@@ -213,7 +213,7 @@ ___
 
 ▸ **hasKey**(`address`: Buffer): *boolean*
 
-*Defined in [utils/types.ts:350](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L350)*
+*Defined in [utils/types.ts:545](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L545)*
 
 Checks if there is a key associated with the provided address.
 
@@ -233,7 +233,7 @@ ___
 
 ▸ **removeKey**(`key`: KPClass | Buffer): *boolean*
 
-*Defined in [utils/types.ts:328](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L328)*
+*Defined in [utils/types.ts:523](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L523)*
 
 Removes the key pair from the list of they keys managed in the [KeyChain](utils_types.keychain.md).
 
@@ -253,7 +253,7 @@ ___
 
 ▸ **setChainID**(`chainid`: string): *void*
 
-*Defined in [utils/types.ts:379](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L379)*
+*Defined in [utils/types.ts:574](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L574)*
 
 Sets the the chainID associated with this [KeyChain](utils_types.keychain.md) and all associated keypairs.
 

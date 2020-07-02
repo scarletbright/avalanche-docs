@@ -43,7 +43,7 @@ Create a class that extends this one and override bsize to make it validate for 
 
 \+ **new NBytes**(): *[NBytes](utils_types.nbytes.md)*
 
-*Defined in [utils/types.ts:467](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L467)*
+*Defined in [utils/types.ts:662](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L662)*
 
 Returns instance of [NBytes](utils_types.nbytes.md).
 
@@ -55,7 +55,7 @@ Returns instance of [NBytes](utils_types.nbytes.md).
 
 • **bsize**: *number*
 
-*Defined in [utils/types.ts:401](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L401)*
+*Defined in [utils/types.ts:596](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L596)*
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 • **bytes**: *Buffer*
 
-*Defined in [utils/types.ts:400](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L400)*
+*Defined in [utils/types.ts:595](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L595)*
 
 ## Methods
 
@@ -71,7 +71,7 @@ ___
 
 ▸ **fromBuffer**(`buff`: Buffer, `offset`: number): *number*
 
-*Defined in [utils/types.ts:434](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L434)*
+*Defined in [utils/types.ts:629](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L629)*
 
 Takes a [[Buffer]], verifies its length, and stores it.
 
@@ -92,7 +92,7 @@ ___
 
 ▸ **fromString**(`b58str`: string): *number*
 
-*Defined in [utils/types.ts:417](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L417)*
+*Defined in [utils/types.ts:612](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L612)*
 
 Takes a base-58 encoded string, verifies its length, and stores it.
 
@@ -112,7 +112,7 @@ ___
 
 ▸ **getSize**(): *number*
 
-*Defined in [utils/types.ts:408](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L408)*
+*Defined in [utils/types.ts:603](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L603)*
 
 Returns the length of the [Buffer](https://github.com/feross/buffer).
 
@@ -126,7 +126,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [utils/types.ts:456](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L456)*
+*Defined in [utils/types.ts:651](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L651)*
 
 Returns the stored [Buffer](https://github.com/feross/buffer).
 
@@ -140,7 +140,7 @@ ___
 
 ▸ **toString**(): *string*
 
-*Defined in [utils/types.ts:465](https://github.com/ava-labs/avalanche.js/blob/3888064/src/utils/types.ts#L465)*
+*Defined in [utils/types.ts:660](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L660)*
 
 Returns a base-58 string of the stored [Buffer](https://github.com/feross/buffer).
 
