@@ -36,7 +36,7 @@
 
 \+ **new Input**(): *[Input](avmapi_inputs.input.md)*
 
-*Defined in [apis/avm/inputs.ts:112](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L112)*
+*Defined in [apis/avm/inputs.ts:112](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/inputs.ts#L112)*
 
 **Returns:** *[Input](avmapi_inputs.input.md)*
 
@@ -46,7 +46,7 @@
 
 • **sigCount**: *Buffer* = Buffer.alloc(4)
 
-*Defined in [apis/avm/inputs.ts:32](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L32)*
+*Defined in [apis/avm/inputs.ts:32](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/inputs.ts#L32)*
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 • **sigIdxs**: *Array‹[SigIdx](avmapi_types.sigidx.md)›* = []
 
-*Defined in [apis/avm/inputs.ts:33](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L33)*
+*Defined in [apis/avm/inputs.ts:33](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/inputs.ts#L33)*
 
 ## Methods
 
@@ -62,7 +62,7 @@ ___
 
 ▸ **addSignatureIdx**(`addressIdx`: number, `address`: Buffer): *void*
 
-*Defined in [apis/avm/inputs.ts:54](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L54)*
+*Defined in [apis/avm/inputs.ts:54](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/inputs.ts#L54)*
 
 Creates and adds a [SigIdx](avmapi_types.sigidx.md) to the [Input](avmapi_inputs.input.md).
 
@@ -81,7 +81,7 @@ ___
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-*Defined in [apis/avm/inputs.ts:64](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L64)*
+*Defined in [apis/avm/inputs.ts:64](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/inputs.ts#L64)*
 
 **Parameters:**
 
@@ -98,7 +98,7 @@ ___
 
 ▸ **getCredentialID**(): *number*
 
-*Defined in [apis/avm/inputs.ts:44](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L44)*
+*Defined in [apis/avm/inputs.ts:44](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/inputs.ts#L44)*
 
 **Returns:** *number*
 
@@ -108,7 +108,7 @@ ___
 
 ▸ **getInputID**(): *number*
 
-*Defined in [apis/avm/inputs.ts:35](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L35)*
+*Defined in [apis/avm/inputs.ts:35](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/inputs.ts#L35)*
 
 **Returns:** *number*
 
@@ -118,7 +118,7 @@ ___
 
 ▸ **getSigIdxs**(): *Array‹[SigIdx](avmapi_types.sigidx.md)›*
 
-*Defined in [apis/avm/inputs.ts:40](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L40)*
+*Defined in [apis/avm/inputs.ts:40](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/inputs.ts#L40)*
 
 Returns the array of [SigIdx](avmapi_types.sigidx.md) for this [Input](avmapi_inputs.input.md)
 
@@ -130,7 +130,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [apis/avm/inputs.ts:79](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L79)*
+*Defined in [apis/avm/inputs.ts:79](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/inputs.ts#L79)*
 
 **Returns:** *Buffer*
 
@@ -140,7 +140,7 @@ ___
 
 ▸ **toString**(): *string*
 
-*Defined in [apis/avm/inputs.ts:94](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L94)*
+*Defined in [apis/avm/inputs.ts:94](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/inputs.ts#L94)*
 
 Returns a base-58 representation of the [Input](avmapi_inputs.input.md).
 
@@ -152,7 +152,7 @@ ___
 
 ▸ **comparator**(): *function*
 
-*Defined in [apis/avm/inputs.ts:98](https://github.com/ava-labs/avalanche.js/blob/3888064/src/apis/avm/inputs.ts#L98)*
+*Defined in [apis/avm/inputs.ts:98](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/inputs.ts#L98)*
 
 **Returns:** *function*
 
