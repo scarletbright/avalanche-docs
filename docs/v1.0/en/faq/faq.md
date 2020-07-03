@@ -166,10 +166,10 @@ First, get your node's ID:
 ```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "admin.getNodeID",
+    "method": "info.getNodeID",
     "params":{},
     "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
 
 The response contains your node's ID:
@@ -270,14 +270,14 @@ If it doesn't see [here](https://www.digitalocean.com/community/tutorials/how-to
 
 ### Is my node connected to peers?
 
-Call `admin.peers`:
+Call `info.peers`:
 
 ```sh
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"admin.peers"
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+    "method" :"info.peers"
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
 
 Each entry in the response contains a peer's IP address, public IP address, ID, version, and the time of the last sent and received messages exchanged with this node.
@@ -293,7 +293,7 @@ In that case:
 Do `CTRL + Z` in the terminal window where you're running the node.
 This should print something like:
 
-```
+```sh
 [1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/gecko/build/ava
 ```
 
@@ -336,19 +336,19 @@ If you started your node with command-line argument `--http-port=9700` then repl
 
 ### Starting node fails with: `parsing parameters returned with error couldn't create db at ...`
 
-There is already a node running on your machine. 
+There is already a node running on your machine.
 
 ### Node is on the wrong network
 
 If you have already received funds from the faucet and can see them on the explorer, but you still can't send a transaction with your node, you may still be connected to an old test network.
-Check to make sure that you are are on the right network, by calling `admin.getNetworkName`:
+Check to make sure that you are are on the right network, by calling `info.getNetworkName`:
 
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"admin.getNetworkName"
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+    "method" :"info.getNetworkName"
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
 
 The expected output is:
@@ -394,7 +394,7 @@ If your node is running in an open terminal tab:
 Do `CTRL + Z` in the terminal window where you're running the node.
 This should print something like:
 
-```
+```sh
 [1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/gecko/build/ava
 ```
 
@@ -406,7 +406,7 @@ Do `ps aux | grep ava`
 
 The output should have a line that looks like this:
 
-```
+```sh
 youruser 29861  8.7  0.2 1459208 34996 pts/2   Sl+  19:44   0:00 ./build/ava
 ```
 

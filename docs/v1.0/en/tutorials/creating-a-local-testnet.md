@@ -95,14 +95,14 @@ When you want to tear down the network, run `exit` to exit Avash.
 ## Verifying Nodes are Connected
 
 We can look at one of the node's peers to ensure that the nodes are connected.
-To do so, call [`admin.peers`.](../api/admin.md#admin-peers)
+To do so, call [`info.peers`.](../api/info.md#info-peers)
 
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"admin.peers"
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+    "method" :"info.peers"
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
 
 `peers` should have 4 entries:
