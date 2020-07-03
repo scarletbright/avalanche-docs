@@ -32,15 +32,15 @@ Let's get the values needed to make the transaction that adds a node to the Defa
 
 Validators identify one another by their node IDs.
 
-To get the ID of your node, call [`admin.getNodeID`:](../api/admin.md#admingetnodeid)
+To get the ID of your node, call [`info.getNodeID`:](../api/info.md#infogetnodeid)
 
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "admin.getNodeID",
+    "method": "info.getNodeID",
     "params":{},
     "id": 84
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
 
 The response has your node's ID:

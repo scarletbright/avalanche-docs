@@ -146,7 +146,7 @@ The response gives us the unsigned transaction:
 
 ## Sign the Transaction
 
-Now we sign the unsigned transaction with the key of the account that pays the transaction fee:
+Now we sign the unsigned transaction with the key of the P Chain account that pays the transaction fee:
 
 ```json
 curl -X POST --data '{
