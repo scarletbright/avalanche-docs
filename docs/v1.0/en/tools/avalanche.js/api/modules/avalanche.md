@@ -13,16 +13,15 @@
 * [AVMKeyPair](avalanche.md#avmkeypair)
 * [Address](avalanche.md#address)
 * [Admin](avalanche.md#admin)
-* [AdminAPI](avalanche.md#adminapi)
 * [AmountInput](avalanche.md#amountinput)
 * [AmountOutput](avalanche.md#amountoutput)
 * [Base58](avalanche.md#base58)
 * [BaseTx](avalanche.md#basetx)
 * [CreateAssetTx](avalanche.md#createassettx)
 * [Credential](avalanche.md#credential)
-* [CryptoHelpers](avalanche.md#cryptohelpers)
 * [Defaults](avalanche.md#defaults)
 * [Health](avalanche.md#health)
+* [Info](avalanche.md#info)
 * [InitialStates](avalanche.md#initialstates)
 * [Input](avalanche.md#input)
 * [JRPCAPI](avalanche.md#jrpcapi)
@@ -110,12 +109,6 @@ ___
 
 ___
 
-###  AdminAPI
-
-• **AdminAPI**:
-
-___
-
 ###  AmountInput
 
 • **AmountInput**:
@@ -152,12 +145,6 @@ ___
 
 ___
 
-###  CryptoHelpers
-
-• **CryptoHelpers**:
-
-___
-
 ###  Defaults
 
 • **Defaults**:
@@ -167,6 +154,12 @@ ___
 ###  Health
 
 • **Health**:
+
+___
+
+###  Info
+
+• **Info**:
 
 ___
 

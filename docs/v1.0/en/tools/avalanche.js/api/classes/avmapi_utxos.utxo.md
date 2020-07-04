@@ -39,7 +39,7 @@ Class for representing a single UTXO.
 
 \+ **new UTXO**(`txid`: Buffer, `outputidx`: Buffer | number, `assetid`: Buffer, `output`: [Output](avmapi_outputs.output.md)): *[UTXO](avmapi_utxos.utxo.md)*
 
-*Defined in [apis/avm/utxos.ts:121](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/utxos.ts#L121)*
+*Defined in [src/apis/avm/utxos.ts:124](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/utxos.ts#L124)*
 
 Class for representing a single UTXO.
 
@@ -60,7 +60,7 @@ Name | Type | Default | Description |
 
 • **assetid**: *Buffer* = Buffer.alloc(32)
 
-*Defined in [apis/avm/utxos.ts:25](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/utxos.ts#L25)*
+*Defined in [src/apis/avm/utxos.ts:33](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/utxos.ts#L33)*
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 • **output**: *[Output](avmapi_outputs.output.md)* = undefined
 
-*Defined in [apis/avm/utxos.ts:26](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/utxos.ts#L26)*
+*Defined in [src/apis/avm/utxos.ts:35](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/utxos.ts#L35)*
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 • **outputidx**: *Buffer* = Buffer.alloc(4)
 
-*Defined in [apis/avm/utxos.ts:24](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/utxos.ts#L24)*
+*Defined in [src/apis/avm/utxos.ts:31](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/utxos.ts#L31)*
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 • **txid**: *Buffer* = Buffer.alloc(32)
 
-*Defined in [apis/avm/utxos.ts:23](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/utxos.ts#L23)*
+*Defined in [src/apis/avm/utxos.ts:29](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/utxos.ts#L29)*
 
 ## Methods
 
@@ -92,7 +92,7 @@ ___
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-*Defined in [apis/avm/utxos.ts:73](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/utxos.ts#L73)*
+*Defined in [src/apis/avm/utxos.ts:73](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/utxos.ts#L73)*
 
 Takes a [Buffer](https://github.com/feross/buffer) containing an [UTXO](avmapi_utxos.utxo.md), parses it, populates the class, and returns the length of the UTXO in bytes.
 
@@ -111,7 +111,7 @@ ___
 
 ▸ **fromString**(`serialized`: string): *number*
 
-*Defined in [apis/avm/utxos.ts:107](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/utxos.ts#L107)*
+*Defined in [src/apis/avm/utxos.ts:110](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/utxos.ts#L110)*
 
 Takes a base-58 string containing an [UTXO](avmapi_utxos.utxo.md), parses it, populates the class, and returns the length of the UTXO in bytes.
 
@@ -134,7 +134,7 @@ ___
 
 ▸ **getAssetID**(): *Buffer*
 
-*Defined in [apis/avm/utxos.ts:47](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/utxos.ts#L47)*
+*Defined in [src/apis/avm/utxos.ts:54](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/utxos.ts#L54)*
 
 Returns the assetID as a [Buffer](https://github.com/feross/buffer).
 
@@ -146,7 +146,7 @@ ___
 
 ▸ **getOutput**(): *[Output](avmapi_outputs.output.md)*
 
-*Defined in [apis/avm/utxos.ts:63](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/utxos.ts#L63)*
+*Defined in [src/apis/avm/utxos.ts:66](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/utxos.ts#L66)*
 
 Returns a reference to the output;
 
@@ -158,7 +158,7 @@ ___
 
 ▸ **getOutputIdx**(): *Buffer*
 
-*Defined in [apis/avm/utxos.ts:39](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/utxos.ts#L39)*
+*Defined in [src/apis/avm/utxos.ts:47](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/utxos.ts#L47)*
 
 Returns a [Buffer](https://github.com/feross/buffer)  of the OutputIdx.
 
@@ -170,7 +170,7 @@ ___
 
 ▸ **getTxID**(): *Buffer*
 
-*Defined in [apis/avm/utxos.ts:31](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/utxos.ts#L31)*
+*Defined in [src/apis/avm/utxos.ts:40](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/utxos.ts#L40)*
 
 Returns a [Buffer](https://github.com/feross/buffer) of the TxID.
 
@@ -182,7 +182,7 @@ ___
 
 ▸ **getUTXOID**(): *string*
 
-*Defined in [apis/avm/utxos.ts:54](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/utxos.ts#L54)*
+*Defined in [src/apis/avm/utxos.ts:59](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/utxos.ts#L59)*
 
 Returns the UTXOID as a base-58 string (UTXOID is a string )
 
@@ -194,7 +194,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [apis/avm/utxos.ts:89](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/utxos.ts#L89)*
+*Defined in [src/apis/avm/utxos.ts:89](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/utxos.ts#L89)*
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [UTXO](avmapi_utxos.utxo.md).
 
@@ -206,7 +206,7 @@ ___
 
 ▸ **toString**(): *string*
 
-*Defined in [apis/avm/utxos.ts:118](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/utxos.ts#L118)*
+*Defined in [src/apis/avm/utxos.ts:121](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/utxos.ts#L121)*
 
 Returns a base-58 representation of the [UTXO](avmapi_utxos.utxo.md).
 

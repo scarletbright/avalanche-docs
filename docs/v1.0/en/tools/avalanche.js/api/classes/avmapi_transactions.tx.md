@@ -32,7 +32,7 @@ Class representing a signed transaction.
 
 \+ **new Tx**(`unsignedTx`: [UnsignedTx](avmapi_transactions.unsignedtx.md), `credentials`: Array‹[Credential](avmapi_credentials.credential.md)›): *[Tx](avmapi_transactions.tx.md)*
 
-*Defined in [apis/avm/tx.ts:564](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/tx.ts#L564)*
+*Defined in [src/apis/avm/tx.ts:530](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L530)*
 
 Class representing a signed transaction.
 
@@ -51,7 +51,7 @@ Name | Type | Default | Description |
 
 • **credentials**: *Array‹[Credential](avmapi_credentials.credential.md)›* = []
 
-*Defined in [apis/avm/tx.ts:493](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/tx.ts#L493)*
+*Defined in [src/apis/avm/tx.ts:459](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L459)*
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 • **unsignedTx**: *[UnsignedTx](avmapi_transactions.unsignedtx.md)* = new UnsignedTx()
 
-*Defined in [apis/avm/tx.ts:492](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/tx.ts#L492)*
+*Defined in [src/apis/avm/tx.ts:457](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L457)*
 
 ## Methods
 
@@ -67,7 +67,7 @@ ___
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-*Defined in [apis/avm/tx.ts:503](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/tx.ts#L503)*
+*Defined in [src/apis/avm/tx.ts:469](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L469)*
 
 Takes a [Buffer](https://github.com/feross/buffer) containing an [Tx](avmapi_transactions.tx.md), parses it, populates the class, and returns the length of the Tx in bytes.
 
@@ -88,7 +88,7 @@ ___
 
 ▸ **fromString**(`serialized`: string): *number*
 
-*Defined in [apis/avm/tx.ts:552](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/tx.ts#L552)*
+*Defined in [src/apis/avm/tx.ts:518](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L518)*
 
 Takes a base-58 string containing an [Tx](avmapi_transactions.tx.md), parses it, populates the class, and returns the length of the Tx in bytes.
 
@@ -111,7 +111,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [apis/avm/tx.ts:522](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/tx.ts#L522)*
+*Defined in [src/apis/avm/tx.ts:488](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L488)*
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [Tx](avmapi_transactions.tx.md).
 
@@ -123,7 +123,7 @@ ___
 
 ▸ **toString**(): *string*
 
-*Defined in [apis/avm/tx.ts:562](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/tx.ts#L562)*
+*Defined in [src/apis/avm/tx.ts:528](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L528)*
 
 Returns a base-58 AVA-serialized representation of the [Tx](avmapi_transactions.tx.md).
 

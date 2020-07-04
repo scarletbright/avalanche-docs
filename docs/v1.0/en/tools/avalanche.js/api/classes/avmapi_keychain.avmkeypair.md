@@ -19,6 +19,7 @@ Class for representing a private and public keypair in the AVM.
 ### Properties
 
 * [chainid](avmapi_keychain.avmkeypair.md#protected-chainid)
+* [entropy](avmapi_keychain.avmkeypair.md#protected-entropy)
 * [keypair](avmapi_keychain.avmkeypair.md#protected-keypair)
 * [privk](avmapi_keychain.avmkeypair.md#protected-privk)
 * [pubk](avmapi_keychain.avmkeypair.md#protected-pubk)
@@ -48,7 +49,7 @@ Class for representing a private and public keypair in the AVM.
 
 *Overrides [KeyPair](utils_types.keypair.md).[constructor](utils_types.keypair.md#constructor)*
 
-*Defined in [apis/avm/keychain.ts:190](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/keychain.ts#L190)*
+*Defined in [src/apis/avm/keychain.ts:183](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/keychain.ts#L183)*
 
 Class for representing a private and public keypair in Avalanche.
 
@@ -69,7 +70,15 @@ Name | Type | Default |
 
 *Inherited from [KeyPair](utils_types.keypair.md).[chainid](utils_types.keypair.md#protected-chainid)*
 
-*Defined in [utils/types.ts:344](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L344)*
+*Defined in [src/utils/types.ts:364](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L364)*
+
+___
+
+### `Protected` entropy
+
+• **entropy**: *Buffer*
+
+*Defined in [src/apis/avm/keychain.ts:43](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/keychain.ts#L43)*
 
 ___
 
@@ -77,7 +86,7 @@ ___
 
 • **keypair**: *elliptic.ec.KeyPair*
 
-*Defined in [apis/avm/keychain.ts:42](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/keychain.ts#L42)*
+*Defined in [src/apis/avm/keychain.ts:41](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/keychain.ts#L41)*
 
 ___
 
@@ -87,7 +96,7 @@ ___
 
 *Inherited from [KeyPair](utils_types.keypair.md).[privk](utils_types.keypair.md#protected-privk)*
 
-*Defined in [utils/types.ts:343](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L343)*
+*Defined in [src/utils/types.ts:362](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L362)*
 
 ___
 
@@ -97,7 +106,7 @@ ___
 
 *Inherited from [KeyPair](utils_types.keypair.md).[pubk](utils_types.keypair.md#protected-pubk)*
 
-*Defined in [utils/types.ts:342](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L342)*
+*Defined in [src/utils/types.ts:360](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L360)*
 
 ## Methods
 
@@ -105,7 +114,7 @@ ___
 
 ▸ **addressFromPublicKey**(`pubk`: Buffer): *Buffer*
 
-*Defined in [apis/avm/keychain.ts:113](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/keychain.ts#L113)*
+*Defined in [src/apis/avm/keychain.ts:113](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/keychain.ts#L113)*
 
 Returns an address given a public key.
 
@@ -127,7 +136,7 @@ ___
 
 *Overrides [KeyPair](utils_types.keypair.md).[generateKey](utils_types.keypair.md#generatekey)*
 
-*Defined in [apis/avm/keychain.ts:64](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/keychain.ts#L64)*
+*Defined in [src/apis/avm/keychain.ts:65](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/keychain.ts#L65)*
 
 Generates a new keypair.
 
@@ -147,7 +156,7 @@ ___
 
 *Overrides [KeyPair](utils_types.keypair.md).[getAddress](utils_types.keypair.md#getaddress)*
 
-*Defined in [apis/avm/keychain.ts:92](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/keychain.ts#L92)*
+*Defined in [src/apis/avm/keychain.ts:94](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/keychain.ts#L94)*
 
 Returns the address as a [Buffer](https://github.com/feross/buffer).
 
@@ -163,7 +172,7 @@ ___
 
 *Overrides [KeyPair](utils_types.keypair.md).[getAddressString](utils_types.keypair.md#getaddressstring)*
 
-*Defined in [apis/avm/keychain.ts:101](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/keychain.ts#L101)*
+*Defined in [src/apis/avm/keychain.ts:101](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/keychain.ts#L101)*
 
 Returns the address's string representation.
 
@@ -179,7 +188,7 @@ ___
 
 *Inherited from [KeyPair](utils_types.keypair.md).[getChainID](utils_types.keypair.md#getchainid)*
 
-*Defined in [utils/types.ts:442](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L442)*
+*Defined in [src/utils/types.ts:461](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L461)*
 
 Returns the chainID associated with this key.
 
@@ -195,7 +204,7 @@ ___
 
 *Inherited from [KeyPair](utils_types.keypair.md).[getPrivateKey](utils_types.keypair.md#getprivatekey)*
 
-*Defined in [utils/types.ts:396](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L396)*
+*Defined in [src/utils/types.ts:419](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L419)*
 
 Returns a reference to the private key.
 
@@ -211,7 +220,7 @@ ___
 
 *Overrides [KeyPair](utils_types.keypair.md).[getPrivateKeyString](utils_types.keypair.md#getprivatekeystring)*
 
-*Defined in [apis/avm/keychain.ts:135](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/keychain.ts#L135)*
+*Defined in [src/apis/avm/keychain.ts:132](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/keychain.ts#L132)*
 
 Returns a string representation of the private key.
 
@@ -227,7 +236,7 @@ ___
 
 *Inherited from [KeyPair](utils_types.keypair.md).[getPublicKey](utils_types.keypair.md#getpublickey)*
 
-*Defined in [utils/types.ts:405](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L405)*
+*Defined in [src/utils/types.ts:426](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L426)*
 
 Returns a reference to the public key.
 
@@ -243,7 +252,7 @@ ___
 
 *Overrides [KeyPair](utils_types.keypair.md).[getPublicKeyString](utils_types.keypair.md#getpublickeystring)*
 
-*Defined in [apis/avm/keychain.ts:144](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/keychain.ts#L144)*
+*Defined in [src/apis/avm/keychain.ts:139](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/keychain.ts#L139)*
 
 Returns the public key.
 
@@ -259,7 +268,7 @@ ___
 
 *Overrides [KeyPair](utils_types.keypair.md).[importKey](utils_types.keypair.md#importkey)*
 
-*Defined in [apis/avm/keychain.ts:79](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/keychain.ts#L79)*
+*Defined in [src/apis/avm/keychain.ts:81](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/keychain.ts#L81)*
 
 Imports a private key and generates the appropriate public key.
 
@@ -281,7 +290,7 @@ ___
 
 *Overrides [KeyPair](utils_types.keypair.md).[recover](utils_types.keypair.md#recover)*
 
-*Defined in [apis/avm/keychain.ts:186](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/keychain.ts#L186)*
+*Defined in [src/apis/avm/keychain.ts:179](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/keychain.ts#L179)*
 
 Recovers the public key of a message signer from a message and its associated signature.
 
@@ -304,7 +313,7 @@ ___
 
 *Inherited from [KeyPair](utils_types.keypair.md).[setChainID](utils_types.keypair.md#setchainid)*
 
-*Defined in [utils/types.ts:451](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L451)*
+*Defined in [src/utils/types.ts:468](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L468)*
 
 Sets the the chainID associated with this key.
 
@@ -324,7 +333,7 @@ ___
 
 *Overrides [KeyPair](utils_types.keypair.md).[sign](utils_types.keypair.md#sign)*
 
-*Defined in [apis/avm/keychain.ts:155](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/keychain.ts#L155)*
+*Defined in [src/apis/avm/keychain.ts:148](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/keychain.ts#L148)*
 
 Takes a message, signs it, and returns the signature.
 
@@ -346,7 +355,7 @@ ___
 
 *Overrides [KeyPair](utils_types.keypair.md).[verify](utils_types.keypair.md#verify)*
 
-*Defined in [apis/avm/keychain.ts:173](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/keychain.ts#L173)*
+*Defined in [src/apis/avm/keychain.ts:166](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/keychain.ts#L166)*
 
 Verifies that the private key associated with the provided public key produces the signature associated with the given message.
 

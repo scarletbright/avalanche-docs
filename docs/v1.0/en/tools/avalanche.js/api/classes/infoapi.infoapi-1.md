@@ -48,7 +48,7 @@ Class for interacting with a node's InfoAPI.
 
 *Overrides [JRPCAPI](utils_types.jrpcapi.md).[constructor](utils_types.jrpcapi.md#constructor)*
 
-*Defined in [apis/info/api.ts:88](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/info/api.ts#L88)*
+*Defined in [src/apis/info/api.ts:75](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/info/api.ts#L75)*
 
 **Parameters:**
 
@@ -67,7 +67,7 @@ Name | Type | Default |
 
 *Inherited from [APIBase](utils_types.apibase.md).[baseurl](utils_types.apibase.md#protected-baseurl)*
 
-*Defined in [utils/types.ts:34](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L34)*
+*Defined in [src/utils/types.ts:39](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L39)*
 
 ___
 
@@ -77,7 +77,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[core](utils_types.apibase.md#protected-core)*
 
-*Defined in [utils/types.ts:33](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L33)*
+*Defined in [src/utils/types.ts:37](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L37)*
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[db](utils_types.apibase.md#protected-db)*
 
-*Defined in [utils/types.ts:35](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L35)*
+*Defined in [src/utils/types.ts:41](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L41)*
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 *Inherited from [JRPCAPI](utils_types.jrpcapi.md).[jrpcVersion](utils_types.jrpcapi.md#protected-jrpcversion)*
 
-*Defined in [utils/types.ts:276](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L276)*
+*Defined in [src/utils/types.ts:291](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L291)*
 
 ___
 
@@ -107,7 +107,7 @@ ___
 
 *Inherited from [JRPCAPI](utils_types.jrpcapi.md).[rpcid](utils_types.jrpcapi.md#protected-rpcid)*
 
-*Defined in [utils/types.ts:277](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L277)*
+*Defined in [src/utils/types.ts:293](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L293)*
 
 ## Methods
 
@@ -117,7 +117,7 @@ ___
 
 *Inherited from [JRPCAPI](utils_types.jrpcapi.md).[callMethod](utils_types.jrpcapi.md#callmethod)*
 
-*Defined in [utils/types.ts:278](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L278)*
+*Defined in [src/utils/types.ts:295](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L295)*
 
 **Parameters:**
 
@@ -137,7 +137,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[getBaseURL](utils_types.apibase.md#getbaseurl)*
 
-*Defined in [utils/types.ts:58](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L58)*
+*Defined in [src/utils/types.ts:64](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L64)*
 
 Returns the baseurl's path.
 
@@ -149,7 +149,7 @@ ___
 
 ▸ **getBlockchainID**(`alias`: string): *Promise‹string›*
 
-*Defined in [apis/info/api.ts:24](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/info/api.ts#L24)*
+*Defined in [src/apis/info/api.ts:23](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/info/api.ts#L23)*
 
 Fetches the blockchainID from the node for a given alias.
 
@@ -171,7 +171,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[getDB](utils_types.apibase.md#getdb)*
 
-*Defined in [utils/types.ts:65](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L65)*
+*Defined in [src/utils/types.ts:69](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L69)*
 
 Returns the baseurl's database.
 
@@ -183,7 +183,7 @@ ___
 
 ▸ **getNetworkID**(): *Promise‹number›*
 
-*Defined in [apis/info/api.ts:38](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/info/api.ts#L38)*
+*Defined in [src/apis/info/api.ts:36](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/info/api.ts#L36)*
 
 Fetches the networkID from the node.
 
@@ -197,7 +197,7 @@ ___
 
 ▸ **getNetworkName**(): *Promise‹string›*
 
-*Defined in [apis/info/api.ts:50](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/info/api.ts#L50)*
+*Defined in [src/apis/info/api.ts:47](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/info/api.ts#L47)*
 
 Fetches the network name this node is running on
 
@@ -211,7 +211,7 @@ ___
 
 ▸ **getNodeID**(): *Promise‹string›*
 
-*Defined in [apis/info/api.ts:61](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/info/api.ts#L61)*
+*Defined in [src/apis/info/api.ts:55](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/info/api.ts#L55)*
 
 Fetches the nodeID from the node.
 
@@ -225,7 +225,7 @@ ___
 
 ▸ **getNodeVersion**(): *Promise‹string›*
 
-*Defined in [apis/info/api.ts:73](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/info/api.ts#L73)*
+*Defined in [src/apis/info/api.ts:66](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/info/api.ts#L66)*
 
 Fetches the version of Gecko this node is running
 
@@ -241,9 +241,10 @@ ___
 
 *Inherited from [JRPCAPI](utils_types.jrpcapi.md).[getRPCID](utils_types.jrpcapi.md#getrpcid)*
 
-*Defined in [utils/types.ts:320](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L320)*
+*Defined in [src/utils/types.ts:340](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L340)*
 
-Returns the rpcid, a strictly-increasing number, starting from 1, indicating the next request ID that will be sent.
+Returns the rpcid, a strictly-increasing number, starting from 1, indicating the next
+request ID that will be sent.
 
 **Returns:** *number*
 
@@ -253,7 +254,7 @@ ___
 
 ▸ **peers**(): *Promise‹Array‹string››*
 
-*Defined in [apis/info/api.ts:84](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/info/api.ts#L84)*
+*Defined in [src/apis/info/api.ts:74](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/info/api.ts#L74)*
 
 Returns the peers connected to the node.
 
@@ -269,7 +270,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[setBaseURL](utils_types.apibase.md#setbaseurl)*
 
-*Defined in [utils/types.ts:42](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L42)*
+*Defined in [src/utils/types.ts:48](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L48)*
 
 Sets the path of the APIs baseurl.
 

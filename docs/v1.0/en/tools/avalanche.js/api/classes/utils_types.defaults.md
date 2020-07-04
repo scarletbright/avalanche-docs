@@ -18,78 +18,78 @@
 
 ### ▪ **network**: *object*
 
-*Defined in [utils/types.ts:713](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L713)*
+*Defined in [src/utils/types.ts:726](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L726)*
 
 ###  1
 
 • **1**: *object*
 
-*Defined in [utils/types.ts:714](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L714)*
+*Defined in [src/utils/types.ts:727](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L727)*
 
 #### Type declaration:
 
 ▪ **12345**: *object*
 
-*Defined in [utils/types.ts:737](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L737)*
+*Defined in [src/utils/types.ts:750](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L750)*
 
-* **11111111111111111111111111111111LpoYY**: *object & object* = n12345_platform
+* **11111111111111111111111111111111LpoYY**: *any* = n12345Platform
 
-* **4R5p2RXDGLqaifZE4hHWH9owe34pfoBULn1DrQTWivjg8o4aH**: *object* = n12345_avm
+* **4R5p2RXDGLqaifZE4hHWH9owe34pfoBULn1DrQTWivjg8o4aH**: *any* = n12345Avm
 
-* **C**: *object & object* = n12345_contracts
+* **C**: *any* = n12345Contracts
 
-* **P**: *object & object* = n12345_platform
+* **P**: *any* = n12345Platform
 
-* **X**: *object* = n12345_avm
+* **X**: *any* = n12345Avm
 
-* **avm**: *object* = n12345_avm
+* **avm**: *any* = n12345Avm
 
-* **contracts**: *object & object* = n12345_contracts
+* **contracts**: *any* = n12345Contracts
 
-* **platform**: *object & object* = n12345_platform
+* **platform**: *any* = n12345Platform
 
-* **tZGm6RCkeGpVETUTp11DW3UYFZmm69zfqxchpHrSF7wgy8rmw**: *object & object* = n12345_contracts
+* **tZGm6RCkeGpVETUTp11DW3UYFZmm69zfqxchpHrSF7wgy8rmw**: *any* = n12345Contracts
 
 ▪ **2**: *object*
 
-*Defined in [utils/types.ts:715](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L715)*
+*Defined in [src/utils/types.ts:728](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L728)*
 
-* **11111111111111111111111111111111LpoYY**: *object* = n2_platform
+* **11111111111111111111111111111111LpoYY**: *object* = n2Platform
 
-* **2mUYSXfLrDtigwbzj1LxKVsHwELghc5sisoXrzJwLqAAQHF4i**: *object* = n2_contracts
+* **2mUYSXfLrDtigwbzj1LxKVsHwELghc5sisoXrzJwLqAAQHF4i**: *object* = n2Contracts
 
-* **4ktRjsAKxgMr2aEzv9SWmrU7Xk5FniHUrVCX4P1TZSfTLZWFM**: *object* = n2_avm
+* **4ktRjsAKxgMr2aEzv9SWmrU7Xk5FniHUrVCX4P1TZSfTLZWFM**: *object* = n2Avm
 
-* **C**: *object* = n2_contracts
+* **C**: *object* = n2Contracts
 
-* **P**: *object* = n2_platform
+* **P**: *object* = n2Platform
 
-* **X**: *object* = n2_avm
+* **X**: *object* = n2Avm
 
-* **avm**: *object* = n2_avm
+* **avm**: *object* = n2Avm
 
-* **contracts**: *object* = n2_contracts
+* **contracts**: *object* = n2Contracts
 
-* **platform**: *object* = n2_platform
+* **platform**: *object* = n2Platform
 
 ▪ **3**: *object*
 
-*Defined in [utils/types.ts:726](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L726)*
+*Defined in [src/utils/types.ts:739](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L739)*
 
-* **11111111111111111111111111111111LpoYY**: *object* = n3_platform
+* **11111111111111111111111111111111LpoYY**: *object* = n3Platform
 
-* **C**: *object* = n3_contracts
+* **C**: *object* = n3Contracts
 
-* **P**: *object* = n3_platform
+* **P**: *object* = n3Platform
 
-* **X**: *object* = n3_avm
+* **X**: *object* = n3Avm
 
-* **avm**: *object* = n3_avm
+* **avm**: *object* = n3Avm
 
-* **contracts**: *object* = n3_contracts
+* **contracts**: *object* = n3Contracts
 
-* **platform**: *object* = n3_platform
+* **platform**: *object* = n3Platform
 
-* **rrEWX7gc7D9mwcdrdBxBTdqh1a7WDVsMuadhTZgyXfFcRz45L**: *object* = n3_avm
+* **rrEWX7gc7D9mwcdrdBxBTdqh1a7WDVsMuadhTZgyXfFcRz45L**: *object* = n3Avm
 
-* **zJytnh96Pc8rM337bBrtMvJDbEdDNjcXG3WkTNCiLp18ergm9**: *object* = n3_contracts
+* **zJytnh96Pc8rM337bBrtMvJDbEdDNjcXG3WkTNCiLp18ergm9**: *object* = n3Contracts
