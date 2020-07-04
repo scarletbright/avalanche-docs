@@ -421,3 +421,7 @@ This is a known issue. We're working on it! You can ignore these logs.
 ### Node prints `NAT Traversal failed ...`
 
 This is OK. It means your node will be able to connect to less peers, but you should still be able to connect to some peers and participate in the network.
+
+### What is AVAX's denomination?
+
+AVAX is denomination 9, so the smallest unit of AVAX is nanoAVAX (nAVAX) at 10^-9 AVAX
