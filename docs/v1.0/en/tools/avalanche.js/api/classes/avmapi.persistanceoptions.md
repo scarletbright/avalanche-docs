@@ -32,7 +32,7 @@ A class for defining the persistance behavior of this an API call.
 
 \+ **new PersistanceOptions**(`name`: string, `overwrite`: boolean, `mergeRule`: [MergeRule](../modules/avmapi_types.md#mergerule)): *[PersistanceOptions](avmapi.persistanceoptions.md)*
 
-*Defined in [apis/avm/api.ts:49](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/api.ts#L49)*
+*Defined in [src/apis/avm/api.ts:46](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/api.ts#L46)*
 
 **`remarks`** 
 The merge rules are as follows:
@@ -60,7 +60,7 @@ Name | Type | Default | Description |
 
 • **mergeRule**: *[MergeRule](../modules/avmapi_types.md#mergerule)* = "union"
 
-*Defined in [apis/avm/api.ts:28](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/api.ts#L28)*
+*Defined in [src/apis/avm/api.ts:31](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/api.ts#L31)*
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 • **name**: *string* = undefined
 
-*Defined in [apis/avm/api.ts:26](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/api.ts#L26)*
+*Defined in [src/apis/avm/api.ts:27](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/api.ts#L27)*
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 • **overwrite**: *boolean* = false
 
-*Defined in [apis/avm/api.ts:27](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/api.ts#L27)*
+*Defined in [src/apis/avm/api.ts:29](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/api.ts#L29)*
 
 ## Methods
 
@@ -84,7 +84,7 @@ ___
 
 ▸ **getMergeRule**(): *[MergeRule](../modules/avmapi_types.md#mergerule)*
 
-*Defined in [apis/avm/api.ts:47](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/api.ts#L47)*
+*Defined in [src/apis/avm/api.ts:46](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/api.ts#L46)*
 
 Returns the [MergeRule](../modules/avmapi_types.md#mergerule) of the instance
 
@@ -96,7 +96,7 @@ ___
 
 ▸ **getName**(): *string*
 
-*Defined in [apis/avm/api.ts:33](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/api.ts#L33)*
+*Defined in [src/apis/avm/api.ts:36](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/api.ts#L36)*
 
 Returns the namespace of the instance
 
@@ -108,7 +108,7 @@ ___
 
 ▸ **getOverwrite**(): *boolean*
 
-*Defined in [apis/avm/api.ts:40](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/api.ts#L40)*
+*Defined in [src/apis/avm/api.ts:41](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/api.ts#L41)*
 
 Returns the overwrite rule of the instance
 

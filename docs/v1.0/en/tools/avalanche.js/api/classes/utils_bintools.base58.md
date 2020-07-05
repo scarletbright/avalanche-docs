@@ -2,7 +2,8 @@
 
 # Class: Base58
 
-A Base58 class that uses the cross-platform Buffer module. Built so that Typescript will accept the code.
+A Base58 class that uses the cross-platform Buffer module. Built so that Typescript
+will accept the code.
 
 ```js
 let b58:Base58 = new Base58();
@@ -35,48 +36,48 @@ let buff:Buffer = b58.decode(somestring);
 
 • **alphabetIdx0**: *string* = "1"
 
-*Defined in [utils/bintools.ts:235](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L235)*
+*Defined in [src/utils/bintools.ts:22](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L22)*
 
 ___
 
 ### `Protected` b58
 
 • **b58**: *number[]* = [
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 0, 1, 2, 3, 4, 5, 6,
-        7, 8, 255, 255, 255, 255, 255, 255,
-        255, 9, 10, 11, 12, 13, 14, 15,
-        16, 255, 17, 18, 19, 20, 21, 255,
-        22, 23, 24, 25, 26, 27, 28, 29,
-        30, 31, 32, 255, 255, 255, 255, 255,
-        255, 33, 34, 35, 36, 37, 38, 39,
-        40, 41, 42, 43, 255, 44, 45, 46,
-        47, 48, 49, 50, 51, 52, 53, 54,
-        55, 56, 57, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255,
-        255, 255, 255, 255, 255, 255, 255, 255
-    ]
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 0, 1, 2, 3, 4, 5, 6,
+    7, 8, 255, 255, 255, 255, 255, 255,
+    255, 9, 10, 11, 12, 13, 14, 15,
+    16, 255, 17, 18, 19, 20, 21, 255,
+    22, 23, 24, 25, 26, 27, 28, 29,
+    30, 31, 32, 255, 255, 255, 255, 255,
+    255, 33, 34, 35, 36, 37, 38, 39,
+    40, 41, 42, 43, 255, 44, 45, 46,
+    47, 48, 49, 50, 51, 52, 53, 54,
+    55, 56, 57, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255,
+  ]
 
-*Defined in [utils/bintools.ts:236](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L236)*
+*Defined in [src/utils/bintools.ts:24](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L24)*
 
 ___
 
@@ -84,7 +85,7 @@ ___
 
 • **b58alphabet**: *string* = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 
-*Defined in [utils/bintools.ts:234](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L234)*
+*Defined in [src/utils/bintools.ts:20](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L20)*
 
 ___
 
@@ -92,7 +93,7 @@ ___
 
 • **big58Radix**: *BN* = new BN(58)
 
-*Defined in [utils/bintools.ts:270](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L270)*
+*Defined in [src/utils/bintools.ts:59](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L59)*
 
 ___
 
@@ -100,7 +101,7 @@ ___
 
 • **bigZero**: *BN* = new BN(0)
 
-*Defined in [utils/bintools.ts:271](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L271)*
+*Defined in [src/utils/bintools.ts:61](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L61)*
 
 ## Methods
 
@@ -108,7 +109,7 @@ ___
 
 ▸ **decode**(`b`: string): *Buffer*
 
-*Defined in [utils/bintools.ts:305](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L305)*
+*Defined in [src/utils/bintools.ts:95](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L95)*
 
 Dencodes a base-58 into a [Buffer](https://github.com/feross/buffer)
 
@@ -128,7 +129,7 @@ ___
 
 ▸ **encode**(`buff`: Buffer): *string*
 
-*Defined in [utils/bintools.ts:280](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L280)*
+*Defined in [src/utils/bintools.ts:70](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L70)*
 
 Encodes a [Buffer](https://github.com/feross/buffer) as a base-58 string
 

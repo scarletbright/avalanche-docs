@@ -33,7 +33,7 @@
 
 \+ **new Credential**(`sigarray`: Array‹[Signature](avmapi_types.signature.md)›): *[Credential](avmapi_credentials.credential.md)*
 
-*Defined in [apis/avm/credentials.ts:71](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/credentials.ts#L71)*
+*Defined in [src/apis/avm/credentials.ts:70](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/credentials.ts#L70)*
 
 **Parameters:**
 
@@ -49,7 +49,7 @@ Name | Type | Default |
 
 • **sigArray**: *Array‹[Signature](avmapi_types.signature.md)›* = []
 
-*Defined in [apis/avm/credentials.ts:36](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/credentials.ts#L36)*
+*Defined in [src/apis/avm/credentials.ts:35](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/credentials.ts#L35)*
 
 ## Methods
 
@@ -57,7 +57,7 @@ Name | Type | Default |
 
 ▸ **addSignature**(`sig`: [Signature](avmapi_types.signature.md)): *number*
 
-*Defined in [apis/avm/credentials.ts:43](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/credentials.ts#L43)*
+*Defined in [src/apis/avm/credentials.ts:42](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/credentials.ts#L42)*
 
 Adds a signature to the credentials and returns the index off the added signature.
 
@@ -75,7 +75,7 @@ ___
 
 ▸ **fromBuffer**(`bytes`: any, `offset`: number): *number*
 
-*Defined in [apis/avm/credentials.ts:48](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/credentials.ts#L48)*
+*Defined in [src/apis/avm/credentials.ts:47](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/credentials.ts#L47)*
 
 **Parameters:**
 
@@ -92,7 +92,7 @@ ___
 
 ▸ **getCredentialID**(): *number*
 
-*Defined in [apis/avm/credentials.ts:38](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/credentials.ts#L38)*
+*Defined in [src/apis/avm/credentials.ts:37](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/credentials.ts#L37)*
 
 **Returns:** *number*
 
@@ -102,6 +102,6 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [apis/avm/credentials.ts:60](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/credentials.ts#L60)*
+*Defined in [src/apis/avm/credentials.ts:59](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/credentials.ts#L59)*
 
 **Returns:** *Buffer*

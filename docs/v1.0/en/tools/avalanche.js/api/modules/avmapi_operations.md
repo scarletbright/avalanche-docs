@@ -24,7 +24,7 @@
 
 • **bintools**: *[BinTools](../classes/utils_bintools.bintools.md)‹›* = BinTools.getInstance()
 
-*Defined in [apis/avm/ops.ts:10](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/ops.ts#L10)*
+*Defined in [src/apis/avm/ops.ts:10](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/ops.ts#L10)*
 
 ## Functions
 
@@ -32,7 +32,7 @@
 
 ▸ **SelectOperationClass**(`opid`: number, ...`args`: Array‹any›): *[Operation](../classes/avmapi_operations.operation.md)*
 
-*Defined in [apis/avm/ops.ts:19](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/ops.ts#L19)*
+*Defined in [src/apis/avm/ops.ts:19](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/ops.ts#L19)*
 
 Takes a buffer representing the output and returns the proper [Operation](../classes/avmapi_operations.operation.md) instance.
 

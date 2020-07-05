@@ -2,12 +2,15 @@
 
 # Class: BinTools
 
-A class containing tools useful in interacting with binary data cross-platform using nodejs & javascript.
+A class containing tools useful in interacting with binary data cross-platform using
+nodejs & javascript.
 
-This class should never be instantiated directly. Instead, invoke the "BinTools.getInstance()" static
-function to grab the singleton instance of the tools.
+This class should never be instantiated directly. Instead,
+invoke the "BinTools.getInstance()" static * function to grab the singleton
+instance of the tools.
 
-Everything in this library uses the [feross's Buffer class](https://github.com/feross/buffer).
+Everything in this library uses
+the [feross's Buffer class](https://github.com/feross/buffer).
 
 ```js
 const bintools = BinTools.getInstance();
@@ -55,7 +58,7 @@ let b58str = bintools.bufferToB58(Buffer.from("Wubalubadubdub!"));
 
 \+ **new BinTools**(): *[BinTools](utils_bintools.bintools.md)*
 
-*Defined in [utils/bintools.ts:23](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L23)*
+*Defined in [src/utils/bintools.ts:145](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L145)*
 
 **Returns:** *[BinTools](utils_bintools.bintools.md)*
 
@@ -65,7 +68,7 @@ let b58str = bintools.bufferToB58(Buffer.from("Wubalubadubdub!"));
 
 • **b58**: *[Base58](utils_bintools.base58.md)*
 
-*Defined in [utils/bintools.ts:27](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L27)*
+*Defined in [src/utils/bintools.ts:151](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L151)*
 
 ___
 
@@ -73,7 +76,7 @@ ___
 
 ▪ **instance**: *[BinTools](utils_bintools.bintools.md)*
 
-*Defined in [utils/bintools.ts:23](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L23)*
+*Defined in [src/utils/bintools.ts:145](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L145)*
 
 ## Methods
 
@@ -81,9 +84,10 @@ ___
 
 ▸ **addChecksum**(`buff`: Buffer): *Buffer*
 
-*Defined in [utils/bintools.ts:152](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L152)*
+*Defined in [src/utils/bintools.ts:277](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L277)*
 
-Takes a [Buffer](https://github.com/feross/buffer) and adds a checksum, returning a [Buffer](https://github.com/feross/buffer) with the 4-byte checksum appended.
+Takes a [Buffer](https://github.com/feross/buffer) and adds a checksum, returning
+a [Buffer](https://github.com/feross/buffer) with the 4-byte checksum appended.
 
 **Parameters:**
 
@@ -99,7 +103,7 @@ ___
 
 ▸ **addressToString**(`chainid`: string, `bytes`: Buffer): *string*
 
-*Defined in [utils/bintools.ts:195](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L195)*
+*Defined in [src/utils/bintools.ts:324](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L324)*
 
 **Parameters:**
 
@@ -116,9 +120,10 @@ ___
 
 ▸ **avaDeserialize**(`bytes`: Buffer | string): *Buffer*
 
-*Defined in [utils/bintools.ts:185](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L185)*
+*Defined in [src/utils/bintools.ts:314](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L314)*
 
-Takes an AVA serialized [Buffer](https://github.com/feross/buffer) or base-58 string and returns a [Buffer](https://github.com/feross/buffer) of the original data. Throws on error.
+Takes an AVA serialized [Buffer](https://github.com/feross/buffer) or base-58 string
+and returns a [Buffer](https://github.com/feross/buffer) of the original data. Throws on error.
 
 **Parameters:**
 
@@ -134,9 +139,10 @@ ___
 
 ▸ **avaSerialize**(`bytes`: Buffer): *string*
 
-*Defined in [utils/bintools.ts:175](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L175)*
+*Defined in [src/utils/bintools.ts:303](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L303)*
 
-Takes a [Buffer](https://github.com/feross/buffer) and returns a base-58 string with checksum as per the AVA standard.
+Takes a [Buffer](https://github.com/feross/buffer) and returns a base-58 string with
+checksum as per the AVA standard.
 
 **Parameters:**
 
@@ -154,7 +160,7 @@ ___
 
 ▸ **b58ToBuffer**(`b58str`: string): *Buffer*
 
-*Defined in [utils/bintools.ts:90](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L90)*
+*Defined in [src/utils/bintools.ts:213](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L213)*
 
 Takes a base-58 string and returns a [Buffer](https://github.com/feross/buffer).
 
@@ -172,9 +178,10 @@ ___
 
 ▸ **bufferToB58**(`buff`: Buffer): *string*
 
-*Defined in [utils/bintools.ts:81](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L81)*
+*Defined in [src/utils/bintools.ts:205](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L205)*
 
-Takes a [Buffer](https://github.com/feross/buffer) and returns a base-58 string of the [Buffer](https://github.com/feross/buffer).
+Takes a [Buffer](https://github.com/feross/buffer) and returns a base-58 string of
+the [Buffer](https://github.com/feross/buffer).
 
 **Parameters:**
 
@@ -190,9 +197,10 @@ ___
 
 ▸ **bufferToString**(`buff`: Buffer): *string*
 
-*Defined in [utils/bintools.ts:45](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L45)*
+*Defined in [src/utils/bintools.ts:169](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L169)*
 
-Produces a string from a [Buffer](https://github.com/feross/buffer) representing a string.
+Produces a string from a [Buffer](https://github.com/feross/buffer)
+representing a string.
 
 **Parameters:**
 
@@ -208,9 +216,10 @@ ___
 
 ▸ **copyFrom**(`buff`: Buffer, `start`: number, `end`: number): *Buffer*
 
-*Defined in [utils/bintools.ts:68](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L68)*
+*Defined in [src/utils/bintools.ts:191](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L191)*
 
-Makes a copy (no reference) of a [Buffer](https://github.com/feross/buffer) over provided indecies.
+Makes a copy (no reference) of a [Buffer](https://github.com/feross/buffer)
+over provided indecies.
 
 **Parameters:**
 
@@ -228,7 +237,7 @@ ___
 
 ▸ **fromArrayBufferToBuffer**(`ab`: ArrayBuffer): *Buffer*
 
-*Defined in [utils/bintools.ts:113](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L113)*
+*Defined in [src/utils/bintools.ts:235](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L235)*
 
 Takes an ArrayBuffer and converts it to a [Buffer](https://github.com/feross/buffer).
 
@@ -246,9 +255,10 @@ ___
 
 ▸ **fromBNToBuffer**(`bn`: BN, `length?`: number): *Buffer*
 
-*Defined in [utils/bintools.ts:136](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L136)*
+*Defined in [src/utils/bintools.ts:260](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L260)*
 
-Takes a [BN](https://github.com/indutny/bn.js/) and converts it to a [Buffer](https://github.com/feross/buffer).
+Takes a [BN](https://github.com/indutny/bn.js/) and converts it
+to a [Buffer](https://github.com/feross/buffer).
 
 **Parameters:**
 
@@ -265,7 +275,7 @@ ___
 
 ▸ **fromBufferToArrayBuffer**(`buff`: Buffer): *ArrayBuffer*
 
-*Defined in [utils/bintools.ts:99](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L99)*
+*Defined in [src/utils/bintools.ts:221](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L221)*
 
 Takes a [Buffer](https://github.com/feross/buffer) and returns an ArrayBuffer.
 
@@ -283,9 +293,10 @@ ___
 
 ▸ **fromBufferToBN**(`buff`: Buffer): *BN*
 
-*Defined in [utils/bintools.ts:126](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L126)*
+*Defined in [src/utils/bintools.ts:250](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L250)*
 
-Takes a [Buffer](https://github.com/feross/buffer) and converts it to a [BN](https://github.com/indutny/bn.js/).
+Takes a [Buffer](https://github.com/feross/buffer) and converts it
+to a [BN](https://github.com/indutny/bn.js/).
 
 **Parameters:**
 
@@ -301,9 +312,10 @@ ___
 
 ▸ **parseAddress**(`addr`: string, `blockchainID`: string, `alias`: string, `addrlen`: number): *Buffer*
 
-*Defined in [utils/bintools.ts:209](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L209)*
+*Defined in [src/utils/bintools.ts:339](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L339)*
 
-Takes an address and returns its [Buffer](https://github.com/feross/buffer) representation if valid.
+Takes an address and returns its [Buffer](https://github.com/feross/buffer)
+representation if valid.
 
 **Parameters:**
 
@@ -316,7 +328,8 @@ Name | Type | Default |
 
 **Returns:** *Buffer*
 
-A [Buffer](https://github.com/feross/buffer) for the address if valid, undefined if not valid.
+A [Buffer](https://github.com/feross/buffer) for the address if valid,
+undefined if not valid.
 
 ___
 
@@ -324,7 +337,7 @@ ___
 
 ▸ **stringToAddress**(`address`: string): *Buffer*
 
-*Defined in [utils/bintools.ts:199](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L199)*
+*Defined in [src/utils/bintools.ts:327](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L327)*
 
 **Parameters:**
 
@@ -340,7 +353,7 @@ ___
 
 ▸ **stringToBuffer**(`str`: string): *Buffer*
 
-*Defined in [utils/bintools.ts:54](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L54)*
+*Defined in [src/utils/bintools.ts:176](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L176)*
 
 Produces a [Buffer](https://github.com/feross/buffer) from a string.
 
@@ -358,9 +371,10 @@ ___
 
 ▸ **validateChecksum**(`buff`: Buffer): *boolean*
 
-*Defined in [utils/bintools.ts:162](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L162)*
+*Defined in [src/utils/bintools.ts:288](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L288)*
 
-Takes a [Buffer](https://github.com/feross/buffer) with an appended 4-byte checksum and returns true if the checksum is valid, otherwise false.
+Takes a [Buffer](https://github.com/feross/buffer) with an appended 4-byte checksum
+and returns true if the checksum is valid, otherwise false.
 
 **Parameters:**
 
@@ -376,7 +390,7 @@ ___
 
 ▸ **getInstance**(): *[BinTools](utils_bintools.bintools.md)*
 
-*Defined in [utils/bintools.ts:33](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/bintools.ts#L33)*
+*Defined in [src/utils/bintools.ts:156](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/bintools.ts#L156)*
 
 Retrieves the BinTools singleton.
 

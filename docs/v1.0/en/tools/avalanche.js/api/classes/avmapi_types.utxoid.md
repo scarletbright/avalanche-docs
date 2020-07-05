@@ -38,7 +38,7 @@ Class for representing a UTXOID used in [[TransferableOp]] types
 
 *Overrides [NBytes](utils_types.nbytes.md).[constructor](utils_types.nbytes.md#constructor)*
 
-*Defined in [apis/avm/types.ts:158](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L158)*
+*Defined in [src/apis/avm/types.ts:184](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/types.ts#L184)*
 
 Class for representing a UTXOID used in [[TransferableOp]] types
 
@@ -52,7 +52,7 @@ Class for representing a UTXOID used in [[TransferableOp]] types
 
 *Inherited from [NBytes](utils_types.nbytes.md).[bsize](utils_types.nbytes.md#protected-bsize)*
 
-*Defined in [utils/types.ts:596](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L596)*
+*Defined in [src/utils/types.ts:610](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L610)*
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 *Inherited from [NBytes](utils_types.nbytes.md).[bytes](utils_types.nbytes.md#protected-bytes)*
 
-*Defined in [utils/types.ts:595](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L595)*
+*Defined in [src/utils/types.ts:608](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L608)*
 
 ## Methods
 
@@ -72,7 +72,7 @@ ___
 
 *Inherited from [NBytes](utils_types.nbytes.md).[fromBuffer](utils_types.nbytes.md#frombuffer)*
 
-*Defined in [utils/types.ts:629](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L629)*
+*Defined in [src/utils/types.ts:641](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L641)*
 
 Takes a [[Buffer]], verifies its length, and stores it.
 
@@ -95,7 +95,7 @@ ___
 
 *Overrides [NBytes](utils_types.nbytes.md).[fromString](utils_types.nbytes.md#fromstring)*
 
-*Defined in [apis/avm/types.ts:142](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L142)*
+*Defined in [src/apis/avm/types.ts:168](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/types.ts#L168)*
 
 Takes a base-58 string containing an [UTXOID](avmapi_types.utxoid.md), parses it, populates the class, and returns the length of the UTXOID in bytes.
 
@@ -117,7 +117,7 @@ ___
 
 *Inherited from [NBytes](utils_types.nbytes.md).[getSize](utils_types.nbytes.md#getsize)*
 
-*Defined in [utils/types.ts:603](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L603)*
+*Defined in [src/utils/types.ts:617](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L617)*
 
 Returns the length of the [Buffer](https://github.com/feross/buffer).
 
@@ -133,7 +133,7 @@ ___
 
 *Inherited from [NBytes](utils_types.nbytes.md).[toBuffer](utils_types.nbytes.md#tobuffer)*
 
-*Defined in [utils/types.ts:651](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L651)*
+*Defined in [src/utils/types.ts:663](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L663)*
 
 Returns the stored [Buffer](https://github.com/feross/buffer).
 
@@ -149,7 +149,7 @@ ___
 
 *Overrides [NBytes](utils_types.nbytes.md).[toString](utils_types.nbytes.md#tostring)*
 
-*Defined in [apis/avm/types.ts:132](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L132)*
+*Defined in [src/apis/avm/types.ts:157](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/types.ts#L157)*
 
 Returns a base-58 representation of the [UTXOID](avmapi_types.utxoid.md).
 
@@ -161,7 +161,7 @@ ___
 
 ▸ **comparitor**(): *function*
 
-*Defined in [apis/avm/types.ts:124](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/avm/types.ts#L124)*
+*Defined in [src/apis/avm/types.ts:151](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/types.ts#L151)*
 
 Returns a function used to sort an array of [UTXOID](avmapi_types.utxoid.md)s
 

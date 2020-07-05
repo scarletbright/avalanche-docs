@@ -64,9 +64,10 @@ Class for interacting with a node's PlatformAPI
 
 *Overrides [JRPCAPI](utils_types.jrpcapi.md).[constructor](utils_types.jrpcapi.md#constructor)*
 
-*Defined in [apis/platform/api.ts:478](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L478)*
+*Defined in [src/apis/platform/api.ts:520](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L520)*
 
-This class should not be instantiated directly. Instead use the [Avalanche.addAPI](avalanche.avalanche-1.md#addapi) method.
+This class should not be instantiated directly.
+Instead use the [Avalanche.addAPI](avalanche.avalanche-1.md#addapi) method.
 
 **Parameters:**
 
@@ -85,7 +86,7 @@ Name | Type | Default | Description |
 
 *Inherited from [APIBase](utils_types.apibase.md).[baseurl](utils_types.apibase.md#protected-baseurl)*
 
-*Defined in [utils/types.ts:34](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L34)*
+*Defined in [src/utils/types.ts:39](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L39)*
 
 ___
 
@@ -95,7 +96,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[core](utils_types.apibase.md#protected-core)*
 
-*Defined in [utils/types.ts:33](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L33)*
+*Defined in [src/utils/types.ts:37](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L37)*
 
 ___
 
@@ -105,7 +106,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[db](utils_types.apibase.md#protected-db)*
 
-*Defined in [utils/types.ts:35](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L35)*
+*Defined in [src/utils/types.ts:41](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L41)*
 
 ___
 
@@ -115,7 +116,7 @@ ___
 
 *Inherited from [JRPCAPI](utils_types.jrpcapi.md).[jrpcVersion](utils_types.jrpcapi.md#protected-jrpcversion)*
 
-*Defined in [utils/types.ts:276](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L276)*
+*Defined in [src/utils/types.ts:291](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L291)*
 
 ___
 
@@ -125,7 +126,7 @@ ___
 
 *Inherited from [JRPCAPI](utils_types.jrpcapi.md).[rpcid](utils_types.jrpcapi.md#protected-rpcid)*
 
-*Defined in [utils/types.ts:277](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L277)*
+*Defined in [src/utils/types.ts:293](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L293)*
 
 ## Methods
 
@@ -133,7 +134,7 @@ ___
 
 ▸ **addDefaultSubnetDelegator**(`id`: string, `startTime`: Date, `endTime`: Date, `stakeAmount`: BN, `payerNonce`: number, `destination`: string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:263](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L263)*
+*Defined in [src/apis/platform/api.ts:291](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L291)*
 
 Add a delegator to the Default Subnet.
 
@@ -158,7 +159,7 @@ ___
 
 ▸ **addDefaultSubnetValidator**(`id`: string, `startTime`: Date, `endTime`: Date, `stakeAmount`: BN, `payerNonce`: number, `destination`: string, `delegationFeeRate`: BN): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:204](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L204)*
+*Defined in [src/apis/platform/api.ts:218](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L218)*
 
 Add a validator to the Default Subnet.
 
@@ -184,7 +185,7 @@ ___
 
 ▸ **addNonDefaultSubnetValidator**(`id`: string, `subnetID`: Buffer | string, `startTime`: Date, `endTime`: Date, `weight`: number, `payerNonce`: number): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:233](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L233)*
+*Defined in [src/apis/platform/api.ts:253](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L253)*
 
 Add a validator to a Subnet other than the Default Subnet. The validator must validate the Default Subnet for the entire duration they validate this Subnet.
 
@@ -211,7 +212,7 @@ ___
 
 *Inherited from [JRPCAPI](utils_types.jrpcapi.md).[callMethod](utils_types.jrpcapi.md#callmethod)*
 
-*Defined in [utils/types.ts:278](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L278)*
+*Defined in [src/utils/types.ts:295](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L295)*
 
 **Parameters:**
 
@@ -229,7 +230,7 @@ ___
 
 ▸ **createAccount**(`username`: string, `password`: string, `privateKey`: Buffer | string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:78](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L78)*
+*Defined in [src/apis/platform/api.ts:80](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L80)*
 
 The P-Chain uses an account model. This method creates a P-Chain account on an existing user in the Keystore.
 
@@ -251,7 +252,7 @@ ___
 
 ▸ **createBlockchain**(`vmID`: string, `name`: string, `payerNonce`: number, `genesis`: string, `subnetID`: Buffer | string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:36](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L36)*
+*Defined in [src/apis/platform/api.ts:35](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L35)*
 
 Creates a new blockchain.
 
@@ -275,9 +276,10 @@ ___
 
 ▸ **createSubnet**(`controlKeys`: Array‹string›, `threshold`: number, `payerNonce`: number): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:286](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L286)*
+*Defined in [src/apis/platform/api.ts:321](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L321)*
 
-Create an unsigned transaction to create a new Subnet. The unsigned transaction must be signed with the key of the account paying the transaction fee. The Subnet’s ID is the ID of the transaction that creates it (ie the response from issueTx when issuing the signed transaction).
+Create an unsigned transaction to create a new Subnet. The unsigned transaction must be
+signed with the key of the account paying the transaction fee. The Subnet’s ID is the ID of the transaction that creates it (ie the response from issueTx when issuing the signed transaction).
 
 **Parameters:**
 
@@ -297,9 +299,12 @@ ___
 
 ▸ **exportAVA**(`amount`: BN, `to`: string, `payerNonce`: number): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:355](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L355)*
+*Defined in [src/apis/platform/api.ts:394](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L394)*
 
-Send AVA from an account on the P-Chain to an address on the X-Chain. This transaction must be signed with the key of the account that the AVA is sent from and which pays the transaction fee. After issuing this transaction, you must call the X-Chain’s importAVA method to complete the transfer.
+Send AVA from an account on the P-Chain to an address on the X-Chain. This transaction
+must be signed with the key of the account that the AVA is sent from and which pays the
+transaction fee. After issuing this transaction, you must call the X-Chain’s importAVA
+method to complete the transfer.
 
 **Parameters:**
 
@@ -311,7 +316,8 @@ Name | Type | Description |
 
 **Returns:** *Promise‹string›*
 
-Promise for an unsigned transaction to be signed by the account the the AVA is sent from and pays the transaction fee.
+Promise for an unsigned transaction to be signed by the account the the AVA is
+sent from and pays the transaction fee.
 
 ___
 
@@ -319,7 +325,7 @@ ___
 
 ▸ **exportKey**(`username`: string, `password`: string, `address`: string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:449](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L449)*
+*Defined in [src/apis/platform/api.ts:493](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L493)*
 
 Exports the private key for an address.
 
@@ -341,7 +347,7 @@ ___
 
 ▸ **getAccount**(`address`: string): *Promise‹object›*
 
-*Defined in [apis/platform/api.ts:100](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L100)*
+*Defined in [src/apis/platform/api.ts:104](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L104)*
 
 The P-Chain uses an account model. An account is identified by an address. This method returns the account with the given address.
 
@@ -363,7 +369,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[getBaseURL](utils_types.apibase.md#getbaseurl)*
 
-*Defined in [utils/types.ts:58](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L58)*
+*Defined in [src/utils/types.ts:64](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L64)*
 
 Returns the baseurl's path.
 
@@ -375,7 +381,7 @@ ___
 
 ▸ **getBlockchainStatus**(`blockchainID`: string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:60](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L60)*
+*Defined in [src/apis/platform/api.ts:63](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L63)*
 
 Creates a new blockchain.
 
@@ -395,7 +401,7 @@ ___
 
 ▸ **getBlockchains**(): *Promise‹Array‹object››*
 
-*Defined in [apis/platform/api.ts:339](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L339)*
+*Defined in [src/apis/platform/api.ts:374](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L374)*
 
 Get all the blockchains that exist (excluding the P-Chain).
 
@@ -409,7 +415,7 @@ ___
 
 ▸ **getCurrentValidators**(`subnetID`: Buffer | string): *Promise‹Array‹object››*
 
-*Defined in [apis/platform/api.ts:135](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L135)*
+*Defined in [src/apis/platform/api.ts:138](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L138)*
 
 Lists the set of current validators.
 
@@ -431,7 +437,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[getDB](utils_types.apibase.md#getdb)*
 
-*Defined in [utils/types.ts:65](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L65)*
+*Defined in [src/utils/types.ts:69](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L69)*
 
 Returns the baseurl's database.
 
@@ -443,7 +449,7 @@ ___
 
 ▸ **getPendingValidators**(`subnetID`: Buffer | string): *Promise‹Array‹object››*
 
-*Defined in [apis/platform/api.ts:155](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L155)*
+*Defined in [src/apis/platform/api.ts:158](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L158)*
 
 Lists the set of pending validators.
 
@@ -465,9 +471,10 @@ ___
 
 *Inherited from [JRPCAPI](utils_types.jrpcapi.md).[getRPCID](utils_types.jrpcapi.md#getrpcid)*
 
-*Defined in [utils/types.ts:320](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L320)*
+*Defined in [src/utils/types.ts:340](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L340)*
 
-Returns the rpcid, a strictly-increasing number, starting from 1, indicating the next request ID that will be sent.
+Returns the rpcid, a strictly-increasing number, starting from 1, indicating the next
+request ID that will be sent.
 
 **Returns:** *number*
 
@@ -477,13 +484,14 @@ ___
 
 ▸ **getSubnets**(): *Promise‹Array‹object››*
 
-*Defined in [apis/platform/api.ts:433](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L433)*
+*Defined in [src/apis/platform/api.ts:478](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L478)*
 
 Get all the subnets that exist.
 
 **Returns:** *Promise‹Array‹object››*
 
-Promise for an array of objects containing fields "id", "controlKeys", and "threshold".
+Promise for an array of objects containing fields "id",
+"controlKeys", and "threshold".
 
 ___
 
@@ -491,9 +499,12 @@ ___
 
 ▸ **importAVA**(`username`: string, `password`: string, `to`: string, `payerNonce`: number): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:376](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L376)*
+*Defined in [src/apis/platform/api.ts:419](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L419)*
 
-Send AVA from an account on the P-Chain to an address on the X-Chain. This transaction must be signed with the key of the account that the AVA is sent from and which pays the transaction fee. After issuing this transaction, you must call the X-Chain’s importAVA method to complete the transfer.
+Send AVA from an account on the P-Chain to an address on the X-Chain. This transaction
+must be signed with the key of the account that the AVA is sent from and which pays
+the transaction fee. After issuing this transaction, you must call the X-Chain’s
+importAVA method to complete the transfer.
 
 **Parameters:**
 
@@ -506,7 +517,8 @@ Name | Type | Description |
 
 **Returns:** *Promise‹string›*
 
-Promise for a string for the transaction, which should be sent to the network by calling issueTx.
+Promise for a string for the transaction, which should be sent to the network
+by calling issueTx.
 
 ___
 
@@ -514,7 +526,7 @@ ___
 
 ▸ **importKey**(`username`: string, `password`: string, `privateKey`: string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:469](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L469)*
+*Defined in [src/apis/platform/api.ts:512](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L512)*
 
 Give a user control over an address by providing the private key that controls the address.
 
@@ -536,7 +548,7 @@ ___
 
 ▸ **issueTx**(`tx`: string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:419](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L419)*
+*Defined in [src/apis/platform/api.ts:464](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L464)*
 
 Issue a transaction to the Platform Chain.
 
@@ -556,7 +568,7 @@ ___
 
 ▸ **listAccounts**(`username`: string, `password`: string): *Promise‹Array‹object››*
 
-*Defined in [apis/platform/api.ts:117](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L117)*
+*Defined in [src/apis/platform/api.ts:120](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L120)*
 
 List the accounts controlled by the user in the Keystore.
 
@@ -577,7 +589,7 @@ ___
 
 ▸ **sampleValidators**(`sampleSize`: number, `subnetID`: Buffer | string): *Promise‹Array‹string››*
 
-*Defined in [apis/platform/api.ts:176](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L176)*
+*Defined in [src/apis/platform/api.ts:179](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L179)*
 
 Samples `Size` validators from the current validator set.
 
@@ -600,7 +612,7 @@ ___
 
 *Inherited from [APIBase](utils_types.apibase.md).[setBaseURL](utils_types.apibase.md#setbaseurl)*
 
-*Defined in [utils/types.ts:42](https://github.com/ava-labs/avalanche.js/blob/c723742/src/utils/types.ts#L42)*
+*Defined in [src/utils/types.ts:48](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L48)*
 
 Sets the path of the APIs baseurl.
 
@@ -618,11 +630,14 @@ ___
 
 ▸ **sign**(`username`: string, `password`: string, `tx`: string, `signer`: string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:400](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L400)*
+*Defined in [src/apis/platform/api.ts:446](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L446)*
 
 Sign an unsigned or partially signed transaction.
 
-Transactions to add non-default Subnets require signatures from control keys and from the account paying the transaction fee. If `signer` is a control key and the transaction needs more signatures from control keys, `sign` will provide a control signature. Otherwise, `signer` will sign to pay the transaction fee.
+Transactions to add non-default Subnets require signatures from control keys and
+from the account paying the transaction fee. If `signer` is a control key and the
+transaction needs more signatures from control keys, `sign` will provide a control
+signature. Otherwise, `signer` will sign to pay the transaction fee.
 
 **Parameters:**
 
@@ -643,7 +658,7 @@ ___
 
 ▸ **validatedBy**(`blockchainID`: string): *Promise‹string›*
 
-*Defined in [apis/platform/api.ts:304](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L304)*
+*Defined in [src/apis/platform/api.ts:340](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L340)*
 
 Get the Subnet that validates a given blockchain.
 
@@ -663,7 +678,7 @@ ___
 
 ▸ **validates**(`subnetID`: Buffer | string): *Promise‹Array‹string››*
 
-*Defined in [apis/platform/api.ts:320](https://github.com/ava-labs/avalanche.js/blob/c723742/src/apis/platform/api.ts#L320)*
+*Defined in [src/apis/platform/api.ts:356](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/platform/api.ts#L356)*
 
 Get the IDs of the blockchains a Subnet validates.
 
