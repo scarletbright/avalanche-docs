@@ -35,9 +35,16 @@ The Avalanche virtual machine uses elliptic curve cryptography, specifically `se
 
 ### Secp256k1 Addresses
 
-Avalanche is not prescriptive about addressing schemes, choosing to instead leave addressing up to the VM. The default addressing scheme for the X-Chain and the P-Chain is relies on Secp256k1. Avalanche follows similar approach as Bitcoin and hashes the ECDSA public key. The 33-byte compressed representation of the public key is hashed with sha256 **once**. The result is then hashed with ripemd160 to yield a 20-byte address. 
+Avalanche is not prescriptive about addressing schemes, choosing to instead leave addressing up to each blockchain.
 
-Node RPCs and third-party applications use the convention `chaindID-address` to identify where the address intends to reside. Chain aliases work in lieu of chainID as well for this scheme. When transmitting information through external applications, the CB58 convention is required.
+The addressing scheme of the X-Chain and the P-Chain relies on secp256k1.
+Avalanche follows similar approach as Bitcoin and hashes the ECDSA public key.
+The 33-byte compressed representation of the public key is hashed with sha256 **once**.
+The result is then hashed with ripemd160 to yield a 20-byte address. 
+
+Avalanche uses the convention `chainID-address` to specify which chain an address exists on.
+`chainID` may be replaced with an alias of the chain.
+When transmitting information through external applications, the CB58 convention is required.
 
 Read more about the [addressing scheme](../glossary/#address) and [CB58](../glossary/#cb58) in the [Glossary](../glossary/). 
 
