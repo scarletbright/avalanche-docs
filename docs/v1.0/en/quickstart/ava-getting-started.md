@@ -95,7 +95,7 @@ To start a node and connect it to the Avalanche test net:
 You can use `Ctrl + C` to kill the node.
 
 When the node starts, it has to bootstrap (catch up with the rest of the network.)
-This should take less than 30 minutes (though the amount of time will increase as the network state grows.)
+This should take a few hours.
 You will see logs about bootstrapping.
 
 When a given chain is done bootstrapping, it will print a log like this:
