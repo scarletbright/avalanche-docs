@@ -426,3 +426,25 @@ This is OK. It means your node will be able to connect to less peers, but you sh
 ### What is AVAX's denomination?
 
 AVAX is denomination 9, so the smallest unit of AVAX is nanoAVAX (nAVAX) at 10^-9 AVAX
+
+## Web Wallet
+
+### What's up with the new wallet?
+
+Avalanche's [Web Wallet](https://wallet.avax.network) is an HD Wallet (hierachical deterministic) based on the BIP 32, 39 and 44 standards. It follows industry best practices for security, wallet interoperability and hardware wallet integration.
+
+### When hardware wallet integration?
+
+There is an Avalanche-X grant for [ledger support](https://www.avalabs.org/avalanche-x/explore-open-grants/ledger-support).
+
+### What is the HD Path?
+
+`m / 44' / 9000'`
+
+### My address keeps changing after each transaction. Why?
+
+HD wallets support generating a new address for every transaction. This is a convention to increase privacy. Previous addresses may be reused and your wallet's balance will be correct.
+
+### For the token sale should I use the address from the keygen site or the web wallet?
+
+Use the address from [the keygen site](https://keygen.avax.network). This will guarantee the tokens you buy will be delivered to a new wallet with the correct address.
