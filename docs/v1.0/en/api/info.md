@@ -177,6 +177,43 @@ curl -X POST --data '{
 }
 ```
 
+### info.isBootstrapped
+
+Check whether a given chain is done bootstrapping
+
+#### Signature
+
+```go
+info.isBootstrapped(chain: string) -> {isBootstrapped: bool}
+```
+
+* `chain` is the ID or alias of a chain
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"info.isBootstrapped",
+    "params": {
+        "chain":"X"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "isBootstrapped": true
+    },
+    "id": 1
+}
+```
+
 ### info.peers
 
 Get description of peer connections.

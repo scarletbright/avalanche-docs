@@ -145,19 +145,20 @@ using [command-line arguments.](https://docs.avax.network/v1.0/en/references/com
 ### Is my node done bootstrapping?
 
 Each chain bootstraps separately and finishes bootstrapping at different times.
-When a chain starts bootstrapping it prints a log like this:
 
-```
-INFO [06-07|19:54:03] <X Chain> /snow/engine/common/bootstrapper.go#163: Bootstrapping started syncing with 1 vertices in the accepted frontier
-```
+To check whether a given chain is done bootstrapping, call API method [`info.isBootstrapped`.](../api/info.md#infoisbootstrapped)
+For example, to see if the X-Chain is done bootstrapping:
 
-when it is done bootstrapping, it prints a log like this:
-
+```sh
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "info.isBootstrapped",
+    "params":{
+        "chain":"X"
+    },
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
-INFO [06-07|19:54:06] <X Chain> /snow/engine/avalanche/transitive.go#80: bootstrapping finished with 1 vertices in the accepted frontier
-```
-
-If you see such a log, that chain is done bootstrapping and is ready for API calls and transactions.
 
 ### Is my node in the validator set?
 
