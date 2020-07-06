@@ -431,7 +431,7 @@ AVAX is denomination 9, so the smallest unit of AVAX is nanoAVAX (nAVAX) at 10^-
 
 ### What's up with the new wallet?
 
-Avalanche's [Web Wallet](https://wallet.avax.network) is an HD Wallet (hierachical deterministic) based on the BIP 32, 39 and 44 standards. It follows industry best practices for security, wallet interoperability and hardware wallet integration.
+Avalanche's [Web Wallet](https://wallet.avax.network) is an HD Wallet (hierarchical deterministic) based on the BIP 32, 39 and 44 standards. It follows industry best practices for security, wallet interoperability and hardware wallet integration.
 
 ### When hardware wallet integration?
 
