@@ -81,11 +81,13 @@ Unzip the file with `unzip gecko-osx-<VERSION>.zip`
 The resulting folder, `gecko-<VERSION>`, contains the binaries.  
 You can run the node with `./gecko-<VERSION>/ava`
 
-For Linux:  
+For Linux x86:  
 Download the file named `gecko-linux-<VERSION>.tar.gz`  
 Unzip the file with `tar -xvf gecko-linux-<VERSION>.tar.gz`  
 The resulting folder, `gecko-<VERSION>`, contains the binaries.  
 You can run the node with `./gecko-<VERSION>/ava`
+
+Note: The Linux binaries are compiled for AMD64 (x86-64) architectures. For ARM platforms, like the Raspberry Pi, please [build from source](#from-source).
 
 ### Will restarting/upgrading my node give me a new node ID?
 
@@ -94,7 +96,7 @@ No.
 ### What version am I running?
 
 Run `./ava --version`.
-It will print the version of AVA you're running.
+It will print the version of Avalanche you're running.
 To see what the latest release is, see our [releases page.](https://github.com/ava-labs/gecko/releases/)
 
 ### Why am I getting a 404 when I make an API call?
@@ -138,24 +140,25 @@ By default, this is at `$HOME/.gecko/db`.
 Place this directory at the same location on the new machine.
 
 Advanced users may place the staking key and database at different locations and point to them at runtime
-using [command-line arguments.](https://docs.ava.network/v1.0/en/references/command-line-interface/)
+using [command-line arguments.](https://docs.avax.network/v1.0/en/references/command-line-interface/)
 
 ### Is my node done bootstrapping?
 
 Each chain bootstraps separately and finishes bootstrapping at different times.
-When a chain starts bootstrapping it prints a log like this:
 
-```
-INFO [06-07|19:54:03] <X Chain> /snow/engine/common/bootstrapper.go#163: Bootstrapping started syncing with 1 vertices in the accepted frontier
-```
+To check whether a given chain is done bootstrapping, call API method [`info.isBootstrapped`.](../api/info.md#infoisbootstrapped)
+For example, to see if the X-Chain is done bootstrapping:
 
-when it is done bootstrapping, it prints a log like this:
-
+```sh
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "info.isBootstrapped",
+    "params":{
+        "chain":"X"
+    },
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
-INFO [06-07|19:54:06] <X Chain> /snow/engine/avalanche/transitive.go#80: bootstrapping finished with 1 vertices in the accepted frontier
-```
-
-If you see such a log, that chain is done bootstrapping and is ready for API calls and transactions.
 
 ### Is my node in the validator set?
 
@@ -164,10 +167,10 @@ First, get your node's ID:
 ```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "admin.getNodeID",
+    "method": "info.getNodeID",
     "params":{},
     "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
 
 The response contains your node's ID:
@@ -182,7 +185,7 @@ The response contains your node's ID:
 }
 ```
 
-Then look on the [explorer's validator page](https://explorer.ava.network/validators) and verify your node is present.
+Then look on the [explorer's validator page](https://explorer.avax.network/validators) and verify your node is present.
 
 If the explorer isn't working, you can check this way:
 
@@ -219,15 +222,15 @@ In order to complete certain incentivized testnet challenges, your node must als
 
 There is no good way to tell right now. If your node is connected to peers, it should be validating.
 
-### How can I get involved with AVA?
+### How can I get involved with Avalanche?
 
-We want you to be a part of the AVA community!
+We want you to be a part of the Avalanche community!
 Any contribution, no matter how small, is valued and welcome.
 
 You can:
 
-* [Get a grant](https://www.avalabs.org/ava-x) for working on a project that adds to the AVA ecosystem
-* [Participate in our bug bounty](https://www.avalabs.org/ava-x/explore-open-grants/bug-bounty)
+* [Get a grant](https://www.avalabs.org/avalanche-x) for working on a project that adds to the Avalanche ecosystem
+* [Participate in our bug bounty](https://www.avalabs.org/avalanche-x/explore-open-grants/bug-bounty)
 * Check out the #dev-chat channel on our [Discord.](https://chat.avalabs.org)
 * Make an issue or pull request on our [Github.](https://github.com/ava-labs/gecko)
 
@@ -242,7 +245,7 @@ It should have:
 
 ### What software do I need?
 
-Your operating system should be Ubuntu >= 18.04 or MacOS >= Catalina.
+Your operating system should be 64-bit Ubuntu >= 18.04 or MacOS >= Catalina.
 Other operating systems may work but are not well tested.
 We recommend using Ubuntu 18.04 because that's what we use.
 
@@ -256,26 +259,26 @@ If it doesn't see [here](https://www.digitalocean.com/community/tutorials/how-to
 
 ### Is there a browser-based wallet?
 
-[Yes.](https://wallet.ava.network/)
+[Yes.](https://wallet.avax.network/)
 
 ### Is there an explorer?
 
-[Yes.](https://explorer.ava.network/)
+[Yes.](https://explorer.avax.network/)
 
 ### Is there a Javascript library?
 
-[Yes.](http://docs.ava.network/v1.0/en/tools/avalanche.js/)
+[Yes.](http://docs.avax.network/v1.0/en/tools/avalanche.js/)
 
 ### Is my node connected to peers?
 
-Call `admin.peers`:
+Call `info.peers`:
 
 ```sh
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"admin.peers"
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+    "method" :"info.peers"
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
 
 Each entry in the response contains a peer's IP address, public IP address, ID, version, and the time of the last sent and received messages exchanged with this node.
@@ -291,7 +294,7 @@ In that case:
 Do `CTRL + Z` in the terminal window where you're running the node.
 This should print something like:
 
-```
+```sh
 [1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/gecko/build/ava
 ```
 
@@ -310,7 +313,7 @@ This is useful in tracking which response corresponds to which request.
 You do not need to change this field when making API calls.
 It's OK to make many API calls with the same `id` field.
 
-### Is there a repository of AVA related materials I can learn from?
+### Is there a repository of Avalanche related materials I can learn from?
 
 In addition to this documentation, there is a [community-run repository](https://github.com/tbrunain/awesome-ava-chain) of useful links and resoucres.
 Great thanks to `tbrunain` for this contribution :)
@@ -334,19 +337,19 @@ If you started your node with command-line argument `--http-port=9700` then repl
 
 ### Starting node fails with: `parsing parameters returned with error couldn't create db at ...`
 
-There is already a node running on your machine. 
+There is already a node running on your machine.
 
 ### Node is on the wrong network
 
 If you have already received funds from the faucet and can see them on the explorer, but you still can't send a transaction with your node, you may still be connected to an old test network.
-Check to make sure that you are are on the right network, by calling `admin.getNetworkName`:
+Check to make sure that you are are on the right network, by calling `info.getNetworkName`:
 
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"admin.getNetworkName"
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+    "method" :"info.getNetworkName"
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
 
 The expected output is:
@@ -368,6 +371,12 @@ If the response is not `denali`, or the API call fails with a 404, you are not o
 You probably pasted the API call from a program that uses smart quotes.
 Replace each character that looks like a quotation mark " with a quotation mark and try again.
 
+### Starting node fails with: `cannot execute binary file: Exec format error`
+
+You are probably using one of the [official releases](https://github.com/ava-labs/gecko/releases) on an architecture it was not build for.  
+The `gecko-linux-<release>.tar.gz` is build for AMD64 (x86-64) architectures. Platforms based on ARM chips, like the Raspberry Pi, are **not** working with it.  
+Instead you need to [build gecko from source](../quickstart/ava-getting-started.md#download-gecko-source-code). Keep in mind you need to use a 64-bit operating system.
+
 ## Known Issues/Bugs
 
 This section contains bugs and issues that we're aware of.
@@ -386,7 +395,7 @@ If your node is running in an open terminal tab:
 Do `CTRL + Z` in the terminal window where you're running the node.
 This should print something like:
 
-```
+```sh
 [1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/gecko/build/ava
 ```
 
@@ -398,7 +407,7 @@ Do `ps aux | grep ava`
 
 The output should have a line that looks like this:
 
-```
+```sh
 youruser 29861  8.7  0.2 1459208 34996 pts/2   Sl+  19:44   0:00 ./build/ava
 ```
 
@@ -413,3 +422,29 @@ This is a known issue. We're working on it! You can ignore these logs.
 ### Node prints `NAT Traversal failed ...`
 
 This is OK. It means your node will be able to connect to less peers, but you should still be able to connect to some peers and participate in the network.
+
+### What is AVAX's denomination?
+
+AVAX is denomination 9, so the smallest unit of AVAX is nanoAVAX (nAVAX) at 10^-9 AVAX
+
+## Web Wallet
+
+### What's up with the new wallet?
+
+Avalanche's [Web Wallet](https://wallet.avax.network) is an HD Wallet (hierarchical deterministic) based on the BIP 32, 39 and 44 standards. It follows industry best practices for security, wallet interoperability and hardware wallet integration.
+
+### When hardware wallet integration?
+
+There is an Avalanche-X grant for [ledger support](https://www.avalabs.org/avalanche-x/explore-open-grants/ledger-support).
+
+### What is the HD Path?
+
+`m / 44' / 9000'`
+
+### My address keeps changing after each transaction. Why?
+
+HD wallets support generating a new address for every transaction. This is a convention to increase privacy. Previous addresses may be reused and your wallet's balance will be correct.
+
+### For the token sale should I use the address from the keygen site or the web wallet?
+
+Use the address from [the keygen site](https://keygen.avax.network). This will guarantee the tokens you buy will be delivered to a new wallet with the correct address.

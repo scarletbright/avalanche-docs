@@ -45,7 +45,7 @@ All APIs that need key pairs should extend on this class.
 
 \+ **new KeyPair**(`chainid`: string): *[KeyPair](utils_types.keypair.md)*
 
-*Defined in [utils/types.ts:258](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L258)*
+*Defined in [src/utils/types.ts:470](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L470)*
 
 **Parameters:**
 
@@ -61,7 +61,7 @@ Name | Type |
 
 • **chainid**: *string* = ""
 
-*Defined in [utils/types.ts:149](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L149)*
+*Defined in [src/utils/types.ts:364](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L364)*
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 • **generateKey**: *function*
 
-*Defined in [utils/types.ts:156](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L156)*
+*Defined in [src/utils/types.ts:371](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L371)*
 
 Generates a new keypair.
 
@@ -91,7 +91,7 @@ ___
 
 • **getAddress**: *function*
 
-*Defined in [utils/types.ts:233](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L233)*
+*Defined in [src/utils/types.ts:447](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L447)*
 
 Returns the address.
 
@@ -107,7 +107,7 @@ ___
 
 • **getAddressString**: *function*
 
-*Defined in [utils/types.ts:240](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L240)*
+*Defined in [src/utils/types.ts:454](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L454)*
 
 Returns the address's string representation.
 
@@ -123,7 +123,7 @@ ___
 
 • **getPrivateKeyString**: *function*
 
-*Defined in [utils/types.ts:219](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L219)*
+*Defined in [src/utils/types.ts:433](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L433)*
 
 Returns a string representation of the private key.
 
@@ -139,7 +139,7 @@ ___
 
 • **getPublicKeyString**: *function*
 
-*Defined in [utils/types.ts:226](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L226)*
+*Defined in [src/utils/types.ts:440](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L440)*
 
 Returns the public key.
 
@@ -155,7 +155,7 @@ ___
 
 • **importKey**: *function*
 
-*Defined in [utils/types.ts:164](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L164)*
+*Defined in [src/utils/types.ts:380](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L380)*
 
 Imports a private key and generates the appropriate public key.
 
@@ -179,7 +179,7 @@ ___
 
 • **privk**: *Buffer*
 
-*Defined in [utils/types.ts:148](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L148)*
+*Defined in [src/utils/types.ts:362](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L362)*
 
 ___
 
@@ -187,7 +187,7 @@ ___
 
 • **pubk**: *Buffer*
 
-*Defined in [utils/types.ts:147](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L147)*
+*Defined in [src/utils/types.ts:360](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L360)*
 
 ___
 
@@ -195,7 +195,7 @@ ___
 
 • **recover**: *function*
 
-*Defined in [utils/types.ts:183](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L183)*
+*Defined in [src/utils/types.ts:400](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L400)*
 
 Recovers the public key of a message signer from a message and its associated signature.
 
@@ -203,7 +203,8 @@ Recovers the public key of a message signer from a message and its associated si
 
 **`param`** The signature that's signed on the message
 
-**`returns`** A [Buffer](https://github.com/feross/buffer) containing the public key of the signer
+**`returns`** A [Buffer](https://github.com/feross/buffer) containing the public
+key of the signer
 
 #### Type declaration:
 
@@ -222,7 +223,7 @@ ___
 
 • **sign**: *function*
 
-*Defined in [utils/types.ts:173](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L173)*
+*Defined in [src/utils/types.ts:389](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L389)*
 
 Takes a message, signs it, and returns the signature.
 
@@ -246,9 +247,10 @@ ___
 
 • **verify**: *function*
 
-*Defined in [utils/types.ts:194](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L194)*
+*Defined in [src/utils/types.ts:412](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L412)*
 
-Verifies that the private key associated with the provided public key produces the signature associated with the given message.
+Verifies that the private key associated with the provided public key produces the
+signature associated with the given message.
 
 **`param`** The message associated with the signature
 
@@ -276,7 +278,7 @@ Name | Type |
 
 ▸ **getChainID**(): *string*
 
-*Defined in [utils/types.ts:247](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L247)*
+*Defined in [src/utils/types.ts:461](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L461)*
 
 Returns the chainID associated with this key.
 
@@ -290,7 +292,7 @@ ___
 
 ▸ **getPrivateKey**(): *Buffer*
 
-*Defined in [utils/types.ts:201](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L201)*
+*Defined in [src/utils/types.ts:419](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L419)*
 
 Returns a reference to the private key.
 
@@ -304,7 +306,7 @@ ___
 
 ▸ **getPublicKey**(): *Buffer*
 
-*Defined in [utils/types.ts:210](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L210)*
+*Defined in [src/utils/types.ts:426](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L426)*
 
 Returns a reference to the public key.
 
@@ -318,7 +320,7 @@ ___
 
 ▸ **setChainID**(`chainid`: string): *void*
 
-*Defined in [utils/types.ts:256](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/utils/types.ts#L256)*
+*Defined in [src/utils/types.ts:468](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/utils/types.ts#L468)*
 
 Sets the the chainID associated with this key.
 
