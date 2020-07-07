@@ -269,6 +269,36 @@ curl -X POST --data '{
 }
 ```
 
+### Creating a new account (using plaintext private key)
+
+If the private key is known upfront, it can be provided as plaintext to load into the EVM account database. For more secure account management, consider using wallet software instead. The example below loads the private key `0x627119bb8286874a15d562d32829613311a678da26ca7a6a785ec4ad85937d06` with the passphrase `this is my passphrase`. Note that `0x` prefix cannot be included in the private key argument, otherwise the EVM will throw an error. The example response returns the associated public key.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "personal_importRawKey",
+    "params": [
+        "627119bb8286874a15d562d32829613311a678da26ca7a6a785ec4ad85937d06",
+        "this is my passphrase"
+    ],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": "0x1c5b0e12e90e9c52235babad76cfccab2519bb95"
+}
+```
+
 ### Send a raw transaction
 
 #### Example Call
