@@ -358,7 +358,57 @@ curl -X POST --data '{
 }
 ```
 
+### Signing a transaction
+
+This method will create a signed transaction, but will not publish it automatically to the network. Instead, the `raw` result output should be used with `eth_sendRawTransaction` to execute the transaction.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_signTransaction",
+    "params": [{
+        "from": "0xa64b27635c967dfe9674926bc004626163ddce97",
+        "to": "0x1c5b0e12e90e9c52235babad76cfccab2519bb95",
+        "gas": "0x5208",
+        "gasPrice": "0x0",
+        "nonce": "0x0",
+        "value": "0x0"
+    }],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+        "raw": "0xf8628080825208941c5b0e12e90e9c52235babad76cfccab2519bb958080830150efa0308ca8002f3df1a468eea9973d2d618eb866e2ef0a57cba4d34efb3025b70a0aa0592b7b0a803e7b70ec26dd74ab85aa71126198eff5552e5be638e6e26a455ee0",
+        "tx": {
+            "nonce": "0x0",
+            "gasPrice": "0x0",
+            "gas": "0x5208",
+            "to": "0x1c5b0e12e90e9c52235babad76cfccab2519bb95",
+            "value": "0x0",
+            "input": "0x",
+            "v": "0x150ef",
+            "r": "0x308ca8002f3df1a468eea9973d2d618eb866e2ef0a57cba4d34efb3025b70a0a",
+            "s": "0x592b7b0a803e7b70ec26dd74ab85aa71126198eff5552e5be638e6e26a455ee0",
+            "hash": "0xda2fe3e76501e7201b1603a5d1b2e45c79240d623eeab0365aeba843a678f048"
+        }
+    }
+}
+```
+
 ### Send a raw transaction
+
+Example below shows a raw transaction published to the network and its associated transaction hash.
 
 #### Example Call
 
@@ -368,7 +418,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "eth_sendRawTransaction",
     "params": [
-        "0xf869808082520894a4e0aa1263542f6a3b6af0cf2a25008c2631eaf6872386f26fc1000080830150f0a03004a3aa8f417cdaff0539fc6fdbb17fafa6388b98fc5bb04cb9bf5e9acfc361a05354b602c07b9e341c247d631775f1a94d7eb306ba199e22011cde6958dd7835"
+        "0xf8628080825208941c5b0e12e90e9c52235babad76cfccab2519bb958080830150efa0308ca8002f3df1a468eea9973d2d618eb866e2ef0a57cba4d34efb3025b70a0aa0592b7b0a803e7b70ec26dd74ab85aa71126198eff5552e5be638e6e26a455ee0"
     ]
 }' -H 'Content-Type: application/json' \
    -H 'cache-control: no-cache' \
@@ -381,10 +431,7 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "id": 1,
-    "error": {
-        "code": -32000,
-        "message": "insufficient funds for gas * price + value"
-    }
+    "result": "0xda2fe3e76501e7201b1603a5d1b2e45c79240d623eeab0365aeba843a678f048"
 }
 ```
 
