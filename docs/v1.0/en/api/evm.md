@@ -435,6 +435,37 @@ curl -X POST --data '{
 }
 ```
 
+### Call a contract
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_call",
+    "params": [
+        {
+            "to": "0x197E90f9FAD81970bA7976f33CbD77088E5D7cf7",
+            "data": "0xc92aecc4"
+        },
+        "latest"
+    ]
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": "0x"
+}
+```
+
 ### Getting a block by hash
 
 #### Example Call
