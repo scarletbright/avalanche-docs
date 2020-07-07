@@ -299,6 +299,34 @@ curl -X POST --data '{
 }
 ```
 
+### Listing accounts loaded in EVM node
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "personal_listAccounts",
+    "params": [],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": [
+        "0xa64b27635c967dfe9674926bc004626163ddce97",
+        "0x1c5b0e12e90e9c52235babad76cfccab2519bb95"
+    ]
+}
+```
+
 ### Send a raw transaction
 
 #### Example Call
