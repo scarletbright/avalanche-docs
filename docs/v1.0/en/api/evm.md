@@ -240,6 +240,36 @@ curl -X POST --data '{
 }
 ```
 
+### Creating a new account (private key generated automatically)
+
+The EVM will create a new account using the passphrase `cheese` to encrypt and store the new account credentials. `cheese` is not the seed phrase and cannot be used to restore this account from scratch. Calling this function repeatedly with the same passphrase will create multiple unique accounts. Also keep in mind there are no options to export private keys stored in the EVM database. Users are encouraged to use wallet software instead for safer account creation and backup. This method is more suitable for quick account creation for a testnet.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "personal_newAccount",
+    "params": [
+        "cheese"
+    ],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Example Response
+
+```json
+{"jsonrpc":"2.0","id":1,}
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": "0xa64b27635c967dfe9674926bc004626163ddce97"
+}
+```
+
 ### Send a raw transaction
 
 #### Example Call
