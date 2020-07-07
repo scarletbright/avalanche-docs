@@ -210,6 +210,36 @@ curl -X POST --data '{
 }
 ```
 
+### Calculate a cryptographic hash
+
+The input parameter contains hexidecimal bytes of arbitrary length. The example here uses the UTF-8 text string "snowstorm" converted to hexidecimal bytes.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "web3_sha3",
+    "params": [
+        "0x736e6f7773746f726d"
+    ],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Example Response
+
+```json
+{"jsonrpc":"2.0","id":1,}
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": "0x627119bb8286874a15d562d32829613311a678da26ca7a6a785ec4ad85937d06"
+}
+```
+
 ### Send a raw transaction
 
 #### Example Call
