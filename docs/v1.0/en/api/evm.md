@@ -327,6 +327,37 @@ curl -X POST --data '{
 }
 ```
 
+### Unlocking an account
+
+Personal accounts loaded directly in the EVM can only sign transactions while in an unlocked state. The example below unlocks the listed account address for 60 seconds. Note the associated passphrase `cheese` must be provided for authorization.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "personal_unlockAccount",
+    "params": [
+        "0xa64b27635c967dfe9674926bc004626163ddce97",
+        "cheese",
+        60
+    ],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": true
+}
+```
+
 ### Send a raw transaction
 
 #### Example Call
