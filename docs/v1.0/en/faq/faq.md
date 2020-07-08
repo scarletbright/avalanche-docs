@@ -142,6 +142,7 @@ Place this directory at the same location on the new machine.
 Advanced users may place the staking key and database at different locations and point to them at runtime
 using [command-line arguments.](https://docs.avax.network/v1.0/en/references/command-line-interface/)
 
+<!-- TODO put this back once isBootstrapped is in an official release
 ### Is my node done bootstrapping?
 
 Each chain bootstraps separately and finishes bootstrapping at different times.
@@ -159,6 +160,7 @@ curl -X POST --data '{
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
+-->
 
 ### Is my node in the validator set?
 

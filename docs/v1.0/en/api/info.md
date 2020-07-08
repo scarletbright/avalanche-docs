@@ -177,6 +177,7 @@ curl -X POST --data '{
 }
 ```
 
+<!-- TODO put this back once isBootstrapped is in an official release
 ### info.isBootstrapped
 
 Check whether a given chain is done bootstrapping
@@ -213,6 +214,7 @@ curl -X POST --data '{
     "id": 1
 }
 ```
+-->
 
 ### info.peers
 
