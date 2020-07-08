@@ -210,7 +210,205 @@ curl -X POST --data '{
 }
 ```
 
+### Calculate a cryptographic hash
+
+The input parameter contains hexidecimal bytes of arbitrary length. The example here uses the UTF-8 text string "snowstorm" converted to hexidecimal bytes.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "web3_sha3",
+    "params": [
+        "0x736e6f7773746f726d"
+    ],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Example Response
+
+```json
+{"jsonrpc":"2.0","id":1,}
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": "0x627119bb8286874a15d562d32829613311a678da26ca7a6a785ec4ad85937d06"
+}
+```
+
+### Creating a new account (private key generated automatically)
+
+The EVM will create a new account using the passphrase `cheese` to encrypt and store the new account credentials. `cheese` is not the seed phrase and cannot be used to restore this account from scratch. Calling this function repeatedly with the same passphrase will create multiple unique accounts. Also keep in mind there are no options to export private keys stored in the EVM database. Users are encouraged to use wallet software instead for safer account creation and backup. This method is more suitable for quick account creation for a testnet.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "personal_newAccount",
+    "params": [
+        "cheese"
+    ],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": "0xa64b27635c967dfe9674926bc004626163ddce97"
+}
+```
+
+### Creating a new account (using plaintext private key)
+
+If the private key is known upfront, it can be provided as plaintext to load into the EVM account database. For more secure account management, consider using wallet software instead. The example below loads the private key `0x627119bb8286874a15d562d32829613311a678da26ca7a6a785ec4ad85937d06` with the passphrase `this is my passphrase`. Note that `0x` prefix cannot be included in the private key argument, otherwise the EVM will throw an error. The example response returns the associated public key.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "personal_importRawKey",
+    "params": [
+        "627119bb8286874a15d562d32829613311a678da26ca7a6a785ec4ad85937d06",
+        "this is my passphrase"
+    ],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": "0x1c5b0e12e90e9c52235babad76cfccab2519bb95"
+}
+```
+
+### Listing accounts loaded in EVM node
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "personal_listAccounts",
+    "params": [],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": [
+        "0xa64b27635c967dfe9674926bc004626163ddce97",
+        "0x1c5b0e12e90e9c52235babad76cfccab2519bb95"
+    ]
+}
+```
+
+### Unlocking an account
+
+Personal accounts loaded directly in the EVM can only sign transactions while in an unlocked state. The example below unlocks the listed account address for 60 seconds. Note the associated passphrase `cheese` must be provided for authorization.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "personal_unlockAccount",
+    "params": [
+        "0xa64b27635c967dfe9674926bc004626163ddce97",
+        "cheese",
+        60
+    ],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": true
+}
+```
+
+### Signing a transaction
+
+This method will create a signed transaction, but will not publish it automatically to the network. Instead, the `raw` result output should be used with `eth_sendRawTransaction` to execute the transaction.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_signTransaction",
+    "params": [{
+        "from": "0xa64b27635c967dfe9674926bc004626163ddce97",
+        "to": "0x1c5b0e12e90e9c52235babad76cfccab2519bb95",
+        "gas": "0x5208",
+        "gasPrice": "0x0",
+        "nonce": "0x0",
+        "value": "0x0"
+    }],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+        "raw": "0xf8628080825208941c5b0e12e90e9c52235babad76cfccab2519bb958080830150efa0308ca8002f3df1a468eea9973d2d618eb866e2ef0a57cba4d34efb3025b70a0aa0592b7b0a803e7b70ec26dd74ab85aa71126198eff5552e5be638e6e26a455ee0",
+        "tx": {
+            "nonce": "0x0",
+            "gasPrice": "0x0",
+            "gas": "0x5208",
+            "to": "0x1c5b0e12e90e9c52235babad76cfccab2519bb95",
+            "value": "0x0",
+            "input": "0x",
+            "v": "0x150ef",
+            "r": "0x308ca8002f3df1a468eea9973d2d618eb866e2ef0a57cba4d34efb3025b70a0a",
+            "s": "0x592b7b0a803e7b70ec26dd74ab85aa71126198eff5552e5be638e6e26a455ee0",
+            "hash": "0xda2fe3e76501e7201b1603a5d1b2e45c79240d623eeab0365aeba843a678f048"
+        }
+    }
+}
+```
+
 ### Send a raw transaction
+
+Example below shows a raw transaction published to the network and its associated transaction hash.
 
 #### Example Call
 
@@ -220,7 +418,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "eth_sendRawTransaction",
     "params": [
-        "0xf869808082520894a4e0aa1263542f6a3b6af0cf2a25008c2631eaf6872386f26fc1000080830150f0a03004a3aa8f417cdaff0539fc6fdbb17fafa6388b98fc5bb04cb9bf5e9acfc361a05354b602c07b9e341c247d631775f1a94d7eb306ba199e22011cde6958dd7835"
+        "0xf8628080825208941c5b0e12e90e9c52235babad76cfccab2519bb958080830150efa0308ca8002f3df1a468eea9973d2d618eb866e2ef0a57cba4d34efb3025b70a0aa0592b7b0a803e7b70ec26dd74ab85aa71126198eff5552e5be638e6e26a455ee0"
     ]
 }' -H 'Content-Type: application/json' \
    -H 'cache-control: no-cache' \
@@ -233,10 +431,38 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "id": 1,
-    "error": {
-        "code": -32000,
-        "message": "insufficient funds for gas * price + value"
-    }
+    "result": "0xda2fe3e76501e7201b1603a5d1b2e45c79240d623eeab0365aeba843a678f048"
+}
+```
+
+### Call a contract
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_call",
+    "params": [
+        {
+            "to": "0x197E90f9FAD81970bA7976f33CbD77088E5D7cf7",
+            "data": "0xc92aecc4"
+        },
+        "latest"
+    ]
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc 
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": "0x"
 }
 ```
 
