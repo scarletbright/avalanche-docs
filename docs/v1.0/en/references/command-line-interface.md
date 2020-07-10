@@ -6,7 +6,7 @@ When running a node, there are a variety of possible configurations that are sup
 
 `--api-admin-enabled` (bool):
 
-If set to false, this node will not expose the Admin API. Defaults to `true`.
+If set to false, this node will not expose the Admin API. Defaults to `false`.
 
 `--api-ipcs-enabled` (bool):
 
@@ -34,7 +34,7 @@ Bootstrap IPs is an array of IPv4:port pairs. These IP Addresses will be used to
 
 `--db-dir` (string, file path):
 
-Specifies the directory to which the database is persisted. Defaults to `"db"`.
+Specifies the directory to which the database is persisted. Defaults to `"$HOME/.gecko/db"`.
 
 `--db-enabled` (bool):
 
@@ -84,7 +84,7 @@ The log level determines which events to display to the screen. If left blank, w
 
 `--log-dir` (string, file path):
 
-Specifies the directory in which system logs are kept. If `""` is passed in, the logging directory defaults to `"~/.gecko/logs"`.
+Specifies the directory in which system logs are kept. Defaults to `"$HOME/.gecko/logs"`.
 
 `--network-id` (string):
 
