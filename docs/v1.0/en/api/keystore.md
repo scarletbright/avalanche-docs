@@ -5,6 +5,8 @@ Clients create users on the keystore, which act as identities to be used when in
 A keystore exists at the node level, so if you create a user on a node it exists *only* on that node.
 However, users may be imported and exported using this API.
 
+**You should only create a keystore user on a node that you operate, as the node operator has access to your plaintext password.**
+
 ## Format
 
 This API uses the `json 2.0` API format. For more information on making JSON RPC calls, see [here.](./issuing-api-calls.md)

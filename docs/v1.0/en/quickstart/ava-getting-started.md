@@ -111,6 +111,7 @@ If your node never finishes bootstrapping, contact us on [Discord.](https://chat
 Avalanche nodes provide a built-in **Keystore.**
 The Keystore manages users and is a lot like a wallet.
 A user is a password-protected identity that a client can use when interacting with blockchains.
+**You should only create a keystore user on a node that you operate, as the node operator has access to your plaintext password.**
 To create a user, call `keystore.createUser`:
 
 ```sh
