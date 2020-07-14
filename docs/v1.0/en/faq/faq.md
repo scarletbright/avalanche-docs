@@ -140,7 +140,7 @@ By default, this is at `$HOME/.gecko/db`.
 Place this directory at the same location on the new machine.
 
 Advanced users may place the staking key and database at different locations and point to them at runtime
-using [command-line arguments.](https://docs.avax.network/v1.0/en/references/command-line-interface/)
+using [command-line arguments.](../../references/command-line-interface/)
 
 <!-- TODO put this back once isBootstrapped is in an official release
 ### Is my node done bootstrapping?
@@ -269,7 +269,7 @@ If it doesn't see [here](https://www.digitalocean.com/community/tutorials/how-to
 
 ### Is there a Javascript library?
 
-[Yes.](http://docs.avax.network/v1.0/en/tools/avalanche.js/)
+[Yes.](../../tools/avalanche.js/)
 
 ### Is my node connected to peers?
 
