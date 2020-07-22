@@ -811,7 +811,7 @@ The transaction identifier for a base tx is `0x00000000`.
 
 ### What Unsigned Base Tx Contains
 
-An unsigned base tx contains an `CodecVersion`, `ID`, `NetworkID`, `BlockchainID`, `Outputs`, and `Inputs`.
+An unsigned base tx contains a `CodecVersion`, `ID`, `NetworkID`, `BlockchainID`, `Outputs`, and `Inputs`.
 
 - **`CodecVersion`** is a short that defines which codec version. Default is `0x0000`.
 - **`ID`** is an int that defines which transaction type this is. Default is `0x00000000`.
