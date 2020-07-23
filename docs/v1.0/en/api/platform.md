@@ -768,6 +768,46 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
+
+### platform.getUTXOs
+
+Get the UTXOs that reference a given address.
+
+#### Signature
+
+```go
+platform.getUTXOs({addresses: string}) -> {utxos: []string}
+```
+
+* `UTXOs` is a list of UTXOs such that each UTXO references at least one address in `addresses`
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"platform.getUTXOs",
+    "params" :{
+        "addresses":["P-xMrKg8uUECt5CS9RE9j5hizv2t2SWTbk"]
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
+```
+
+#### Example Response
+
+```go
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "utxos": [
+            "117xBYKW2hg64MpJr6zpm4s5ocAVN4bG8UnfcmhJCHdoLJjjhkxtNTyCgC48LydTwJdao6mSii7JHxg57Z1KavZFtY5V78v173FU2vjJBudEfLbVb2pgkZXrFUULvW5cZLeTRFq5GN63C13xmLAibj1mz39KUySj7PEX8A"
+        ]
+    },
+    "id": 1
+}
+```
+
 ### platform.exportAVA
 
 (Note: This method will change to `exportAVAX` in the next release.)
