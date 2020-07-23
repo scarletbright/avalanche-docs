@@ -204,43 +204,31 @@ curl -X POST --data '{
 }
 ```
 
+### platform.createAddress
 
-### platform.createAccount
-
-The P-Chain uses an account model.
-This method creates an account.
+Create a new address controlled by the given user.
 
 #### Signature
 
 ```go
-platform.createAccount(
-    {
-        username: string,
-        password: string,
-        privateKey: string (optional)
-    }
-) -> {address: string}
+platform.createAddress({
+    username: string,
+    password:string
+}) -> {address: string}
 ```
-
-* `username` is the user that controls the new account.
-* `password` is user's password.
-* `privateKey` is the private key that controls the account.
-  If omitted, a new private key is generated.
-* `address` is the address of the newly created account
 
 #### Example Call
 
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.createAccount",
+    "method": "platform.createAddress",
     "params": {
-        "username":"bob",
-        "password":"loblaw",
-        "privateKey":"24jUJ9vZexUM6expyMcT48LBx27k1m7xpraoV62oSQAHdziao5"
+        "username":"myUsername",
+        "password":"myPassword"
     },
     "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
 ```
 
 #### Example Response
@@ -249,7 +237,7 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "address": "Q4MzFZZDPHRPAHFeDs3NiyyaZDvxHKivf"
+        "address": "P-EKpEPX56YA1dsaHBsW8X5nGqNSwJ7JrWH"
     },
     "id": 1
 }
@@ -374,50 +362,49 @@ curl -X POST --data '{
 }
 ```
 
-### platform.getAccount
 
-The P-Chain uses an account model. An account is identified by an address.
-This method returns the account with the given address.
+### platform.getBalance
+
+Get the balance of an asset controlled by a given address.
 
 #### Signature
 
 ```go
-platform.getAccount({address: string}) ->
-{
-    address: string,
-    nonce: int,
-    balance: int
-}
+platform.getBalance({
+    address:string,
+    assetID: string
+}) -> {balance: int}
 ```
-
-* `address` is the account's address.
-* `nonce` is the account's most recently used nonce.
-* `balance` is the account's balance in nAVAX.
 
 #### Example Call
 
 ```json
 curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "method" :"platform.getAccount",
-    "params" :{
-        "address": "NcbCRXGMpHxukVmT8sirZcDnCLh1ykWp4"
-    }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+  "jsonrpc":"2.0",
+  "id"     : 1,
+  "method" :"platform.getBalance",
+  "params" :{
+      "address":"P-6Y3kysjF9jnHnYkdS9yGAuoHyae2eNmeV",
+      "assetID": "AVA"
+  }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
 ```
 
 #### Example Response
 
 ```json
 {
-    "jsonrpc": "2.0",
-    "result": {
-        "address": "NcbCRXGMpHxukVmT8sirZcDnCLh1ykWp4",
-        "nonce": "0",
-        "balance": "0"
-    },
-    "id": 1
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "balance":"20000000000000",
+        "utxoIDs":[
+            {
+                "txID":"11111111111111111111111111111111LpoYY",
+                "outputIndex":0
+            }
+        ]
+    }
 }
 ```
 
@@ -978,44 +965,32 @@ curl -X POST --data '{
 }
 ```
 
-### platform.listAccounts
+### platform.listAddresses
 
-List the accounts controlled by the specified user.
+List addresses controlled by the given user.
 
 #### Signature
 
 ```go
-platform.listAccounts(
-    {
-        username: string,
-        password: string
-    }
-) ->
-{
-    accounts: []{
-        address: string,
-        nonce: int,
-        balance: int
-    }
-}
+platform.listAddresses({
+    username: string,
+    password: string
+}) -> {addresses: []string}
 ```
-
-* `address` is the account's address.
-* `nonce` is the account's most recently used nonce.
-* `balance` is the account's balance in nAVAX.
 
 #### Example Call
 
 ```json
 curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "method" :"platform.listAccounts",
-    "params" :{
-        "username": "bob",
-        "password": "loblaw"
-    }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+    "jsonrpc": "2.0",
+    "method": "platform.listAddresses",
+    "params": {
+        "username":"myUsername",
+        "password":"myPassword"
+    },
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
+
 ```
 
 #### Example Response
@@ -1024,23 +999,11 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "accounts": [
-            {
-                "address": "Q4MzFZZDPHRPAHFeDs3NiyyaZDvxHKivf",
-                "nonce": "0",
-                "balance": "0"
-            },
-            {
-                "address": "NcbCRXGMpHxukVmT8sirZcDnCLh1ykWp4",
-                "nonce": "0",
-                "balance": "0"
-            }
-        ]
+        "addresses": ["P-EKpEPX56YA1dsaHBsW8X5nGqNSwJ7JrWH"]
     },
     "id": 1
 }
 ```
-
 
 ### platform.sampleValidators
 
