@@ -843,7 +843,6 @@ Before this method is called, you must call the X-Chain's [`exportAVA`](./avm.md
 platform.importAVA(
     {
         to: string,
-        payerNonce: int,
         username: string,
         password: string
     }
@@ -852,7 +851,6 @@ platform.importAVA(
 
 * `to` is the ID of the account the AVAX is sent to.
   This must be the same as the `to` argument in the corresponding call to the X-Chain's `exportAVA`.
-* `payerNonce` is the next unused nonce of the account specified in `to`.
 * `username` is the user that controls the account specified in `to`.
 * `tx` is the transaction, which should be sent to the network by calling `issueTx`.
 
@@ -865,8 +863,7 @@ curl -X POST --data '{
     "params": {
         "username":"bob",
         "password":"loblaw",
-        "to":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
-        "payerNonce":1
+        "to":"P-Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
@@ -878,7 +875,7 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "tx": "1117xBwcr5fo1Ch4umyzjYgnuoFhSwBHdMCam2wRe8SxcJJvQRKSmufXM8aSqKaDmX4TjvzPaUbSn33TAQsbZDhzcHEGviuthncY5VQfUJogyMoFGXUtu3M8NbwNhrYtmSRkFdmN4w933janKvJYKNnsDMvMkmasxrFj8fQxE6Ej8eyU2Jqj2gnTxU2WD3NusFNKmPfgJs8DRCWgYyJVodnGvT43hovggVaWHHD8yYi9WJ64pLCvtCcEYkQeEeA5NE8eTxPtWJrwSMTciHHVdHMpxdVAY6Ptr2rMcYSacr8TZzw59XJfbQT4R6DCsHYQAPJAUfDNeX2JuiBk9xonfKmGcJcGXwdJZ3QrvHHHfHCeuxqS13AfU"
+        "txID": "P63NjowXaQJXt5cmspqdoD3VcuQdXUPM5eoZE2Vcg63aVEx8R"
     },
     "id": 1
 }
