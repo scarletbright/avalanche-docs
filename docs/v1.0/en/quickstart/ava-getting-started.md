@@ -201,6 +201,8 @@ Go to the [test net faucet](https://faucet.avax.network/) and paste the address 
 We can check an address's balance of a given asset by calling `avm.getBalance`, another method of the X-Chain's API.
 Let's check that the faucet drip went through.
 
+(Note: The asset ID of AVAX is AVA on nodes running Denali or earlier. The ID will change to AVAX in the next release.)
+
 ```sh
 curl -X POST --data '{
     "jsonrpc":"2.0",
@@ -208,7 +210,7 @@ curl -X POST --data '{
     "method" :"avm.getBalance",
     "params" :{
         "address":"X-5TQr5hSAZ8ZKuSaYLg5sr4VwvcvwKZ1Mg",
-        "assetID"  :"AVAX"
+        "assetID"  :"AVA"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -303,7 +305,7 @@ The response should look like this:
 }
 ```
 
-You might also see that `status` is `Pending` if the network has not yet finalized the transaction.
+You might also see that `status` is `Processing` if the network has not yet finalized the transaction.
 
 Once you see that the transaction is `Accepted`, check the balance of the `to` address to see that it has the AVA we sent:
 
