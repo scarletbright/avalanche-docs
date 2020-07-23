@@ -617,6 +617,42 @@ curl -X POST --data '{
 }
 ```
 
+### platform.getHeight
+
+Returns the height of the last accepted block.
+
+#### Signature 
+
+```go
+platform.getHeight() ->
+{
+      height: int,
+}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "platform.getHeight",
+    "params": {},
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "height": "1"
+    },
+    "id": 1
+}
+```
+
 ### platform.getPendingValidators
 
 List the validators in the pending validator set of the specified Subnet.
