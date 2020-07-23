@@ -926,10 +926,10 @@ platform.importAVA(
 ) -> {tx: string}
 ```
 
-* `to` is the ID of the account the AVAX is sent to.
-  This must be the same as the `to` argument in the corresponding call to the X-Chain's `exportAVA`.
 * `username` is the user that controls the account specified in `to`.
-* `tx` is the transaction, which should be sent to the network by calling `issueTx`.
+* `password` is `username`'s password.
+* `to` is the ID of the P Chain account the AVAX is sent to.
+  This must be the same as the `to` argument in the corresponding call to the X-Chain's `exportAVA`.
 
 #### Example Call
 
