@@ -39,7 +39,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "info.getNodeID",
     "params":{},
-    "id": 84
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
 
@@ -51,7 +51,7 @@ The response has your node's ID:
     "result": {
         "nodeID": "ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK"
     },
-    "id": 84
+    "id": 1
 }
 ```
 
@@ -129,18 +129,18 @@ Below, we use the shell command `date` to compute the Unix time 10 minutes and 2
 
 (Note: If you're on a Mac, replace  `$(date` with `$(gdate`. If you don't have `gdate` installed, do `brew install coreutils`.)
 
-```sh
+```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.addDefaultSubnetValidator",
     "params": {
-    	"id":"ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
-    	"payerNonce":1,
-    	"destination":"Q4MzFZZDPHRPAHFeDs3NiyyaZDvxHKivf",
-    	"startTime":'$(date --date="10 minutes" +%s)',
-    	"endTime":'$(date --date="2 days" +%s)',
-    	"stakeAmount":1000000,
-    	"delegationFeeRate":100000
+        "id":"ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+        "payerNonce":1,
+        "destination":"Q4MzFZZDPHRPAHFeDs3NiyyaZDvxHKivf",
+        "startTime":'$(date --date="10 minutes" +%s)',
+        "endTime":'$(date --date="2 days" +%s)',
+        "stakeAmount":1000000,
+        "delegationFeeRate":100000
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
@@ -171,12 +171,12 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.sign",
     "params": {
-    	"tx":"111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLphtYaxdM1EA3Aj4yej8ABSfmjb9NMrtxQac9cnWwCER7GHSzFULB25hAtzGtJ8XhsrKcvtpAM8FwjRzg3Bg1q6V8GTKGMC219bYMETS48GMFGh4nts1Jsf246rjZ26r1Vyok8MdnoaxjQWR6cKq",
-    	"signer":"6Y3kysjF9jnHnYkdS9yGAuoHyae2eNmeV",
-    	"username":"YOUR USERNAME",
-    	"password":"YOUR PASSWORD"
+        "tx":"111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLphtYaxdM1EA3Aj4yej8ABSfmjb9NMrtxQac9cnWwCER7GHSzFULB25hAtzGtJ8XhsrKcvtpAM8FwjRzg3Bg1q6V8GTKGMC219bYMETS48GMFGh4nts1Jsf246rjZ26r1Vyok8MdnoaxjQWR6cKq",
+        "signer":"6Y3kysjF9jnHnYkdS9yGAuoHyae2eNmeV",
+        "username":"YOUR USERNAME",
+        "password":"YOUR PASSWORD"
     },
-    "id": 2
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -188,7 +188,7 @@ This returns the signed transaction:
     "result": {
         "Tx": "111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLphtYaxdM1EA3Aj4yej8ABSfmjb9NMrtxQac9cnWwCER7GHSzFULB4RoAjStfe26qQxhS91KvCCX3WBLmpyvNXHzgWk3uJP45cPv15RHGymFboPUcxNTwGij1NgQpKPcL4YxcDnKvNjrcQzKiXAz"
     },
-    "id": 2
+    "id": 1
 }
 ```
 
@@ -201,9 +201,9 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.issueTx",
     "params": {
-    	"tx":"111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLphtYaxdM1EA3Aj4yej8ABSfmjb9NMrtxQac9cnWwCER7GHSzFULB4RoAjStfe26qQxhS91KvCCX3WBLmpyvNXHzgWk3uJP45cPv15RHGymFboPUcxNTwGij1NgQpKPcL4YxcDnKvNjrcQzKiXAz"
+        "tx":"111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLphtYaxdM1EA3Aj4yej8ABSfmjb9NMrtxQac9cnWwCER7GHSzFULB4RoAjStfe26qQxhS91KvCCX3WBLmpyvNXHzgWk3uJP45cPv15RHGymFboPUcxNTwGij1NgQpKPcL4YxcDnKvNjrcQzKiXAz"
     },
-    "id": 3
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -219,7 +219,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.getPendingValidators",
     "params": {},
-    "id": 4
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -263,19 +263,19 @@ The API call to create the unsigned transaction looks very similar to the one we
 
 (Note: If you're on a Mac, replace  `$(date` with `$(gdate`. If you don't have `gdate` installed, do `brew install coreutils`.)
 
-```sh
+```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.addNonDefaultSubnetValidator",
     "params": {
-    	"id":"ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
-		"subnetID":"nTd2Q2nTLp8M9qv2VKHMdvYhtNWX7aTPa4SMEK7x7yJHbcWvr",
-    	"startTime":'$(date --date="10 minutes" +%s)',
-    	"endTime":'$(date --date="2 days" +%s)',
-    	"weight":1,
-    	"payerNonce":3
+        "id":"ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+        "subnetID":"nTd2Q2nTLp8M9qv2VKHMdvYhtNWX7aTPa4SMEK7x7yJHbcWvr",
+        "startTime":'$(date --date="10 minutes" +%s)',
+        "endTime":'$(date --date="2 days" +%s)',
+        "weight":1,
+        "payerNonce":3
     },
-    "id": 5
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -287,7 +287,7 @@ The response has the unsigned transaction:
     "result": {
         "unsignedTx": "1115PJEszaVtWiXtNfyeSvUX385ih3x7V1AyiWFqYKUHp5orbz1oJ9CizuU2dK8pKJpoFtFD1MQMmvi6p4uC1GkoiGg54ujbVDnMwidhkinAhbeVPKsX6Ekdg3hLk5SWHkjDGnaNSavu4K86Z4fu1tB1xgfk9vyACzDjCU4w5rksPfqEZA48zskrh6cuK1QW1ruXPje8iWaNfzjr7cYdFa6EaPC4BcTS"
     },
-    "id": 5
+    "id": 1
 }
 ```
 
@@ -308,12 +308,12 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.sign",
     "params": {
-    	"tx":"1115PJEszaVtWiXtNfyeSvUX385ih3x7V1AyiWFqYKUHp5orbz1oJ9CizuU2dK8pKJpoFtFD1MQMmvi6p4uC1GkoiGg54ujbVDnMwidhkinAhbeVPKsX6Ekdg3hLk5SWHkjDGnaNSavu4K86Z4fu1tB1xgfk9vyACzDjCU4w5rksPfqEZA48zskrh6cuK1QW1ruXPje8iWaNfzjr7cYdFa6EaPC4BcTS",
-    	"signer":"98vMGrh2nWNr8oDNKVK9jdxN1bwkeg4Jd",
-    	"username":"USER THAT CONTROL THE SIGNER'S KEY",
-    	"password":"THAT USER'S PASSWORD"
+        "tx":"1115PJEszaVtWiXtNfyeSvUX385ih3x7V1AyiWFqYKUHp5orbz1oJ9CizuU2dK8pKJpoFtFD1MQMmvi6p4uC1GkoiGg54ujbVDnMwidhkinAhbeVPKsX6Ekdg3hLk5SWHkjDGnaNSavu4K86Z4fu1tB1xgfk9vyACzDjCU4w5rksPfqEZA48zskrh6cuK1QW1ruXPje8iWaNfzjr7cYdFa6EaPC4BcTS",
+        "signer":"98vMGrh2nWNr8oDNKVK9jdxN1bwkeg4Jd",
+        "username":"USER THAT CONTROL THE SIGNER'S KEY",
+        "password":"THAT USER'S PASSWORD"
     },
-    "id": 6
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -325,7 +325,7 @@ The partially signed transaction:
     "result": {
         "Tx": "1112i3pBsJBwde3PTEVXNpSpd6HKymaFvF9ejGjbuQR3omM4oa6CR9d51maB57ri6PxphfHYANkTQGpotbdRr6c2AzpVotzBfHSfx5Zdt29xcYZQFvAmY3KT9yXA1JEJguX9D6BHvCMFW9n9uymMP2Y7iPwAmSQLJLe53c8LFFzor3bsARJjA16EPnX5gwsXoG1ePJQSSFb6oNkxtSi2dHwNK1zdRvr5V8iUTTbvvzvaFFHxafNAhbzwr9eBKT9iAis2gGC6U1ZokWqsevRSwruyZGYWoLx7VEfCECtKSfU5VAzdw7H1DcXPj"
     },
-    "id": 6
+    "id": 1
 }
 ```
 
@@ -336,12 +336,12 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.sign",
     "params": {
-    	"tx":"1112i3pBsJBwde3PTEVXNpSpd6HKymaFvF9ejGjbuQR3omM4oa6CR9d51maB57ri6PxphfHYANkTQGpotbdRr6c2AzpVotzBfHSfx5Zdt29xcYZQFvAmY3KT9yXA1JEJguX9D6BHvCMFW9n9uymMP2Y7iPwAmSQLJLe53c8LFFzor3bsARJjA16EPnX5gwsXoG1ePJQSSFb6oNkxtSi2dHwNK1zdRvr5V8iUTTbvvzvaFFHxafNAhbzwr9eBKT9iAis2gGC6U1ZokWqsevRSwruyZGYWoLx7VEfCECtKSfU5VAzdw7H1DcXPj",
-    	"signer":"6UGRmWANxejv1uM5T8BiRR2VPFSk1aFWA",
-    	"username":"USER THAT CONTROL THE SIGNER'S KEY",
-    	"password":"THAT USER'S PASSWORD"
+        "tx":"1112i3pBsJBwde3PTEVXNpSpd6HKymaFvF9ejGjbuQR3omM4oa6CR9d51maB57ri6PxphfHYANkTQGpotbdRr6c2AzpVotzBfHSfx5Zdt29xcYZQFvAmY3KT9yXA1JEJguX9D6BHvCMFW9n9uymMP2Y7iPwAmSQLJLe53c8LFFzor3bsARJjA16EPnX5gwsXoG1ePJQSSFb6oNkxtSi2dHwNK1zdRvr5V8iUTTbvvzvaFFHxafNAhbzwr9eBKT9iAis2gGC6U1ZokWqsevRSwruyZGYWoLx7VEfCECtKSfU5VAzdw7H1DcXPj",
+        "signer":"6UGRmWANxejv1uM5T8BiRR2VPFSk1aFWA",
+        "username":"USER THAT CONTROL THE SIGNER'S KEY",
+        "password":"THAT USER'S PASSWORD"
     },
-    "id": 7
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -353,7 +353,7 @@ The partially signed transaction is now:
     "result": {
         "Tx": "1112i3pBsJBwde3PTEVXNpSpd6HKymaFvF9ejGjbuQR3omM4oa6CR9d51maB57ri6PxphfHYANkTQGpotbdRr6c2AzpVotzBfHSfx5Zdt29xcYZQFvAmY3KT9yXA1JEJgtvLy65ptUR1iUPFWA8mu2AhrxSQHsNhcz4tXedaBHnjSYhHhWhJq5brsyR2M7fBAPWxNtNSZVdzG129sJYG5BWmqucNxoCWqSuarmACupejamG8HPgmyr9jZzkUnnzmBfYAjJ3DSRdFoYK7AhEP8mLzBATzxzdfi3BHwgmApRPLT1neAxLm2HRu3"
     },
-    "id": 7
+    "id": 1
 }
 ```
 
@@ -364,12 +364,12 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.sign",
     "params": {
-    	"tx":"111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLsFAf7GaCbLiBWEfaDfEaQ7L1qMgeimPbewtBPphXSnHy6mx86YZvBKFTyE659CYAb6kKcj3L8osr4Kf8Qd3zJCAFPbSy8sxowA27p1SJuueVw5kHdWannWzfFmPNN7DBV8wpymmktGT3gbgq7ZV",
-    	"signer":"6Y3kysjF9jnHnYkdS9yGAuoHyae2eNmeV",
-    	"username":"USER THAT CONTROLS THE SIGNER'S KEY",
-    	"password":"THAT USER'S PASSWORD"
+        "tx":"111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLsFAf7GaCbLiBWEfaDfEaQ7L1qMgeimPbewtBPphXSnHy6mx86YZvBKFTyE659CYAb6kKcj3L8osr4Kf8Qd3zJCAFPbSy8sxowA27p1SJuueVw5kHdWannWzfFmPNN7DBV8wpymmktGT3gbgq7ZV",
+        "signer":"6Y3kysjF9jnHnYkdS9yGAuoHyae2eNmeV",
+        "username":"USER THAT CONTROLS THE SIGNER'S KEY",
+        "password":"THAT USER'S PASSWORD"
     },
-    "id": 8
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -381,7 +381,7 @@ This gives the signed transaction:
     "result": {
         "Tx": "1112i3pBsJBwde3PTEVXNpSpd6HKymaFvF9ejGjbuQR3omM4oa6CR9d51maB57ri6PxphfHYANkTQGpotbdRr6c2AzpVotzBfHSfx5Zdt29xcYZQFvAmY3KT9yXA1JEJgtvLy65ptUR1iUPFWA8mu2AhrxSQHsNhcz4tXedaBHnjSYhHhWhJq5brsyR2M7fBAPWxNtNSZVdzG129sJYG5BWmqucqH1UdeYfaUKVzEXxt53ta6SGe5RTKrAYjr3x8NbfDB3ZXwU4udttVZrVDCNMWo4HJMJH9E5rdFeuovaD3L8nrQR4PCBpHm"
     },
-    "id": 8
+    "id": 1
 }
 ```
 
@@ -394,9 +394,9 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.issueTx",
     "params": {
-    	"tx":"1112i3pBsJBwde3PTEVXNpSpd6HKymaFvF9ejGjbuQR3omM4oa6CR9d51maB57ri6PxphfHYANkTQGpotbdRr6c2AzpVotzBfHSfx5Zdt29xcYZQFvAmY3KT9yXA1JEJgtvLy65ptUR1iUPFWA8mu2AhrxSQHsNhcz4tXedaBHnjSYhHhWhJq5brsyR2M7fBAPWxNtNSZVdzG129sJYG5BWmqucqH1UdeYfaUKVzEXxt53ta6SGe5RTKrAYjr3x8NbfDB3ZXwU4udttVZrVDCNMWo4HJMJH9E5rdFeuovaD3L8nrQR4PCBpHm"
+        "tx":"1112i3pBsJBwde3PTEVXNpSpd6HKymaFvF9ejGjbuQR3omM4oa6CR9d51maB57ri6PxphfHYANkTQGpotbdRr6c2AzpVotzBfHSfx5Zdt29xcYZQFvAmY3KT9yXA1JEJgtvLy65ptUR1iUPFWA8mu2AhrxSQHsNhcz4tXedaBHnjSYhHhWhJq5brsyR2M7fBAPWxNtNSZVdzG129sJYG5BWmqucqH1UdeYfaUKVzEXxt53ta6SGe5RTKrAYjr3x8NbfDB3ZXwU4udttVZrVDCNMWo4HJMJH9E5rdFeuovaD3L8nrQR4PCBpHm"
     },
-    "id": 9
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -411,7 +411,7 @@ curl -X POST --data '{
     "params": {
         "subnetID":"nTd2Q2nTLp8M9qv2VKHMdvYhtNWX7aTPa4SMEK7x7yJHbcWvr"
     },
-    "id": 10
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -425,12 +425,12 @@ The response confirms the node has been added:
             {
                 "id": "ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
                 "startTime":1584042912,
-    	        "endTime":1584121156,
+                "endTime":1584121156,
                 "weight": "1"
             }
         ]
     },
-    "id": 10
+    "id": 1
 }
 ```
 

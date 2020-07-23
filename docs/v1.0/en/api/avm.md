@@ -201,7 +201,7 @@ curl -X POST --data '{
 
 Create a new fixed-cap, fungible asset.
 A quantity of it is created at initialization and then no more is ever created.
-The asset can be sent with `avm.sendFungibleAsset`.
+The asset can be sent with `avm.send`.
 
 #### Signature
 

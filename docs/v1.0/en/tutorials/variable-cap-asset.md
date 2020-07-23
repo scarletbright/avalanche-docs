@@ -122,7 +122,7 @@ We'll use `avm.createMintTx` to create the unsigned mint transaction.
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     : 7,
+    "id"     : 1,
     "method" :"avm.createMintTx",
     "params" :{
         "amount":10000000,
@@ -141,7 +141,7 @@ The response should look like this:
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :7,
+    "id"     :1,
     "result" :{
         "tx":"1112yKaDdxEJYZEdDc3gkmjksVUPSw1uE5iEBXgBJ8mtG5Hcdys1wfqbMewcGQiwrX4oARgu9RSouv7BfJwAimBHCPnELJ4s8mNrv7UCfShuVE6c7BzdRSKXZr1eLiBdpjZRfGBT5fV4CUxd31zuvpozJSYyGD8ugzejmz2s2peTb4pzCyCa9GL8hajP9wMcokH1hLW2KK9FCkMZ8fUHgABPvSQFHwFvEroYPqVNwetFdz39enBVcZF7xTajCU718NCeqYtMMApNmwJzXXejCTPAN1Uo4hKoeuRaAwQXJRvoVHK9iDq4DumFx84FYVCuKPF1C78Khd3qB2kNUoVm6fwt4aDd1A8pyBhNUkSweP4Bcdo4U3"
     }
@@ -160,7 +160,7 @@ We specify that this signature is being provided by `X-EMFBcgAKyToN7PSAaFkyTFhVm
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     : 8,
+    "id"     : 1,
     "method" :"avm.signMintTx",
     "params" :{
         "tx":"1112yKaDdxEJYZEdDc3gkmjksVUPSw1uE5iEBXgBJ8mtG5Hcdys1wfqbMewcGQiwrX4oARgu9RSouv7BfJwAimBHCPnELJ4s8mNrv7UCfShuVE6c7BzdRSKXZr1eLiBdpjZRfGBT5fV4CUxd31zuvpozJSYyGD8ugzejmz2s2peTb4pzCyCa9GL8hajP9wMcokH1hLW2KK9FCkMZ8fUHgABPvSQFHwFvEroYPqVNwetFdz39enBVcZF7xTajCU718NCeqYtMMApNmwJzXXejCTPAN1Uo4hKoeuRaAwQXJRvoVHK9iDq4DumFx84FYVCuKPF1C78Khd3qB2kNUoVm6fwt4aDd1A8pyBhNUkSweP4Bcdo4U3",
@@ -176,7 +176,7 @@ The result should look like this:
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :8,
+    "id"     :1,
     "result" :{
         "tx":"111DodqUkFYB5DCHpPtzwmfEur9TnNRK8G7AvJixtMXhvKybf3FY4FZimmwxvA2RkqpQGBi7Dad161ZX3DZ6pohH7fUM1G9N57b43k29rWRyqcZw3r2Gj24KhC8FTbWJGAVAdVRg1biufVgD5apRq7tuz5uCMCFpCifqjkYdeAj7R15nENQiknTqHaTMWzY7UGxwMgbo1HfQmraDnUELnHWpJ9sCi5tnFVY97MtCGg15tyPyeXQRVPvdFtB3FCrFhPct3KEGiwxukhHSgb9xs66oTgcnJJLgSxmwgS6tFNvMVFJJqA7gtMyXnDU3do7gSJzKhrvofgPFMVw62J8AhqLCSWWkqnFrV4eDTTEWyoUUomEkXhsioy839UmdcE1u7fnc8kHCJ2hMfDMcKgLihyYVJDmBD87phm1hSFuWGHSNZruBBRktCSFWHFZCBEZxLHu221PLiDL3RmsKXHA5PJxk9gzw7eQm9qRFJ5AEPzDzN2f6P1mXZRC8co8MeqkBDApKXftrqGgw5szYifwsr7KSZXFmEhyxqjsEVKFDncR6he"
     }
@@ -189,7 +189,7 @@ Let's sign the partially signed transaction with the signature of
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     : 9,
+    "id"     : 1,
     "method" :"avm.signMintTx",
     "params" :{
         "tx":"111DodqUkFYB5DCHpPtzwmfEur9TnNRK8G7AvJixtMXhvKybf3FY4FZimmwxvA2RkqpQGBi7Dad161ZX3DZ6pohH7fUM1G9N57b43k29rWRyqcZw3r2Gj24KhC8FTbWJGAVAdVRg1biufVgD5apRq7tuz5uCMCFpCifqjkYdeAj7R15nENQiknTqHaTMWzY7UGxwMgbo1HfQmraDnUELnHWpJ9sCi5tnFVY97MtCGg15tyPyeXQRVPvdFtB3FCrFhPct3KEGiwxukhHSgb9xs66oTgcnJJLgSxmwgS6tFNvMVFJJqA7gtMyXnDU3do7gSJzKhrvofgPFMVw62J8AhqLCSWWkqnFrV4eDTTEWyoUUomEkXhsioy839UmdcE1u7fnc8kHCJ2hMfDMcKgLihyYVJDmBD87phm1hSFuWGHSNZruBBRktCSFWHFZCBEZxLHu221PLiDL3RmsKXHA5PJxk9gzw7eQm9qRFJ5AEPzDzN2f6P1mXZRC8co8MeqkBDApKXftrqGgw5szYifwsr7KSZXFmEhyxqjsEVKFDncR6he",
@@ -205,7 +205,7 @@ The result should look like this:
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :9,
+    "id"     :1,
     "result" :{
         "tx":"111DodqUkFYB5DCHpPtzwmfEur9TnNRK8G7AvJixtMXhvKybf3FY4FZimmwxvA2RkqpQGBi7Dad161ZX3DZ6pohH7fUM1G9N57b43k29rWRyqcZw3r2Gj24KhC8FTbWJGAVAdVRg1biufVgD5apRq7tuz5uCMCFpCifqjkYdeAj7R15nENQiknTqHaTMWzY7UGxwMgbo1HfQmraDnUELnHWpJ9sCi5tnFVY97MtCGg15tyPyeXQRVPvdFtB3FCrFhPct3KEGiwxukhHSgb9xs66oTgcnJJLgSxmwgS6tFNvMVFJJqA7gtMyXnDU3do7gSJzKhrvofgPFMVw62J8AhqLCSWWkqnFrV4eDTTEWyoUUomEkXhsioy839UmdcE1u7fnc8kHCJ2hMfDMcKgLihyYVJDmBD87phm1hSFuWGHSNZruBBRktCSFWHFZCBEZxLHu221PLiDL3RmsKckXp87ywsGT9SDfXjjRuHFq3fmpaDXSYZrGuW3XpFScs8r4Ho1aHmiGdsLUVH1BbWaGkPDTCxMMhDaVDfMMLeLT2ULQyjA"
     }
@@ -225,7 +225,7 @@ To send the signed transaction to the network, thereby minting more shares, we u
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     : 10,
+    "id"     : 1,
     "method" :"avm.issueTx",
     "params" :{
         "tx":"111DodqUkFYB5DCHpPtzwmfEur9TnNRK8G7AvJixtMXhvKybf3FY4FZimmwxvA2RkqpQGBi7Dad161ZX3DZ6pohH7fUM1G9N57b43k29rWRyqcZw3r2Gj24KhC8FTbWJGAVAdVRg1biufVgD5apRq7tuz5uCMCFpCifqjkYdeAj7R15nENQiknTqHaTMWzY7UGxwMgbo1HfQmraDnUELnHWpJ9sCi5tnFVY97MtCGg15tyPyeXQRVPvdFtB3FCrFhPct3KEGiwxukhHSgb9xs66oTgcnJJLgSxmwgS6tFNvMVFJJqA7gtMyXnDU3do7gSJzKhrvofgPFMVw62J8AhqLCSWWkqnFrV4eDTTEWyoUUomEkXhsioy839UmdcE1u7fnc8kHCJ2hMfDMcKgLihyYVJDmBD87phm1hSFuWGHSNZruBBRktCSFWHFZCBEZxLHu221PLiDL3RmsKckXp87ywsGT9SDfXjjRuHFq3fmpaDXSYZrGuW3XpFScs8r4Ho1aHmiGdsLUVH1BbWaGkPDTCxMMhDaVDfMMLeLT2ULQyjA"
@@ -238,7 +238,7 @@ The result should look like this:
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :10,
+    "id"     :1,
     "result" :{
         "txID":"2W5AZ3w94dteqXHvsAkw8FfDcZHSf8F93Qsn3pBsqLTM3RBGRG"
     }
@@ -258,7 +258,7 @@ To verify this we'll use `avm.getBalance`:
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :2,
+    "id"     :1,
     "method" :"avm.getBalance",
     "params" :{
         "address":"X-3dj8tFUAv8zCF8nktYFvonJcRMv8H8ARJ",
@@ -272,7 +272,7 @@ The response confirms that our asset creation was successful, and that the expec
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :2,
+    "id"     :1,
     "result" :{
         "balance":10000000
     }
@@ -291,7 +291,7 @@ To send the 100 shares:
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "method" :"avm.send",
     "params" :{
         "username":"yourUsername",
@@ -308,7 +308,7 @@ Let's check the balances of the `to` address:
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :6,
+    "id"     :1,
     "method" :"avm.getBalance",
     "params" :{
         "address":"X-LzAcZRDqv3GFsvszqFo22SNKLvFKwKknk",
@@ -322,7 +322,7 @@ The response should be:
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :6,
+    "id"     :1,
     "result" :{
         "balance":100
     }
