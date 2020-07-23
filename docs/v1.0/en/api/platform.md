@@ -876,6 +876,7 @@ platform.exportKey({
 ```
 
 * `username` must control `address`.
+* `password` is `username`'s password.
 * `privateKey` is the string representation of the private key that controls `address`.
 
 #### Example Call
@@ -888,7 +889,7 @@ curl -X POST --data '{
     "params" :{
         "username" :"bob",
         "password":"loblaw",
-        "address": "7u5FQArVaMSgGZzeTE9ckheWtDhU5T3KS"
+        "address": "P-4aSYmEcMhjH4VAtVn6P6okqufrWWEw4fQ"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
@@ -900,7 +901,7 @@ curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
     "result" :{
-        "privateKey":"2w4XiXxPfQK4TypYqnohRL8DRNTz9cGiGmwQ1zmgEqD9c9KWLq"
+        "privateKey":"Lf49kAJw3CbaL783vmbeAJvhscJqC7vi5yBYLxw2XfbzNS5RS"
     }
 }
 ```
