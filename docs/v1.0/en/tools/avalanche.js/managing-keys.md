@@ -1,6 +1,6 @@
 # Tutorial &mdash; Managing AVM Keys
 
-Avalanche.js comes with its own AVM Keychain. This keychain is used in the functions of the API, enabling them to sign using keys it's registered. The first step in this process is to create an instance of Avalanche.js connected to our AVA Platform endpoint of choice.
+Avalanche.js comes with its own AVM Keychain. This keychain is used in the functions of the API, enabling them to sign using keys it's registered. The first step in this process is to create an instance of Avalanche.js connected to our Avalanche Platform endpoint of choice.
 
 ```js
 let myNetworkID = 12345; //default is 3, we want to override that for our local network
@@ -34,7 +34,7 @@ let mypk = bintools.avaDeserialize("24jUJ9vZexUM6expyMcT48LBx27k1m7xpraoV62oSQAH
 let newAddress2 = myKeychain.importKey(mypk); //returns a Buffer for the address
 ```
 
-... or an AVA serialized string works, too:
+... or an Avalanche serialized string works, too:
 
 ```js
 let mypk = "24jUJ9vZexUM6expyMcT48LBx27k1m7xpraoV62oSQAHdziao5";
@@ -61,10 +61,10 @@ let address = keypair.getAddress(); //returns Buffer
 let addressString = keypair.getAddressString(); //returns string
 
 let pubk = keypair.getPublicKey(); //returns Buffer
-let pubkstr = keypair.getPublicKeyString(); //returns an AVA serialized string
+let pubkstr = keypair.getPublicKeyString(); //returns an Avalanche serialized string
 
 let privk = keypair.getPrivateKey(); //returns Buffer
-let privkstr = keypair.getPrivateKeyString(); //returns an AVA serialized string
+let privkstr = keypair.getPrivateKeyString(); //returns an Avalanche serialized string
 
 keypair.generateKey(); //creates a new random keypair
 
