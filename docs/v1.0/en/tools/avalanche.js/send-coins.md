@@ -1,6 +1,6 @@
 # Tutorial &mdash; Sending An Asset
 
-This example sends an asset in the AVM to a single recipient. The first step in this process is to create an instance of Avalanche connected to our AVA Platform endpoint of choice.
+This example sends an asset in the AVM to a single recipient. The first step in this process is to create an instance of Avalanche connected to our Avalanche Platform endpoint of choice.
 
 ```js
 let myNetworkID = 12345; //default is 3, we want to override that for our local network
@@ -37,7 +37,7 @@ We have 400 coins! We're going to now send 100 of those coins to our friend's ad
 
 ```js
 let sendAmount = new BN(100); //amounts are in BN format
-let friendsAddress = "X-B6D4v1VtPYLbiUvYXtW4Px8oE9imC2vGW"; //AVA serialized address format
+let friendsAddress = "X-B6D4v1VtPYLbiUvYXtW4Px8oE9imC2vGW"; //Avalanche serialized address format
 
 //The below returns a UnsignedTx
 //Parameters sent are (in order of appearance):

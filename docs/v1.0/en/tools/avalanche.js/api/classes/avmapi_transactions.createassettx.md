@@ -52,7 +52,7 @@
 
 *Overrides [BaseTx](avmapi_transactions.basetx.md).[constructor](avmapi_transactions.basetx.md#constructor)*
 
-*Defined in [apis/avm/tx.ts:306](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L306)*
+*Defined in [src/apis/avm/tx.ts:272](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L272)*
 
 Class representing an unsigned Create Asset transaction.
 
@@ -79,7 +79,7 @@ Name | Type | Default | Description |
 
 *Inherited from [BaseTx](avmapi_transactions.basetx.md).[blockchainid](avmapi_transactions.basetx.md#protected-blockchainid)*
 
-*Defined in [apis/avm/tx.ts:47](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L47)*
+*Defined in [src/apis/avm/tx.ts:28](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L28)*
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 • **denomination**: *Buffer* = Buffer.alloc(1)
 
-*Defined in [apis/avm/tx.ts:205](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L205)*
+*Defined in [src/apis/avm/tx.ts:184](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L184)*
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 • **initialstate**: *[InitialStates](avmapi_types.initialstates.md)* = new InitialStates()
 
-*Defined in [apis/avm/tx.ts:206](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L206)*
+*Defined in [src/apis/avm/tx.ts:186](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L186)*
 
 ___
 
@@ -105,7 +105,7 @@ ___
 
 *Inherited from [BaseTx](avmapi_transactions.basetx.md).[ins](avmapi_transactions.basetx.md#protected-ins)*
 
-*Defined in [apis/avm/tx.ts:51](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L51)*
+*Defined in [src/apis/avm/tx.ts:36](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L36)*
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 • **name**: *string* = ""
 
-*Defined in [apis/avm/tx.ts:203](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L203)*
+*Defined in [src/apis/avm/tx.ts:180](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L180)*
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 *Inherited from [BaseTx](avmapi_transactions.basetx.md).[networkid](avmapi_transactions.basetx.md#protected-networkid)*
 
-*Defined in [apis/avm/tx.ts:46](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L46)*
+*Defined in [src/apis/avm/tx.ts:26](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L26)*
 
 ___
 
@@ -133,7 +133,7 @@ ___
 
 *Inherited from [BaseTx](avmapi_transactions.basetx.md).[numins](avmapi_transactions.basetx.md#protected-numins)*
 
-*Defined in [apis/avm/tx.ts:50](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L50)*
+*Defined in [src/apis/avm/tx.ts:34](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L34)*
 
 ___
 
@@ -143,7 +143,7 @@ ___
 
 *Inherited from [BaseTx](avmapi_transactions.basetx.md).[numouts](avmapi_transactions.basetx.md#protected-numouts)*
 
-*Defined in [apis/avm/tx.ts:48](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L48)*
+*Defined in [src/apis/avm/tx.ts:30](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L30)*
 
 ___
 
@@ -153,7 +153,7 @@ ___
 
 *Inherited from [BaseTx](avmapi_transactions.basetx.md).[outs](avmapi_transactions.basetx.md#protected-outs)*
 
-*Defined in [apis/avm/tx.ts:49](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L49)*
+*Defined in [src/apis/avm/tx.ts:32](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L32)*
 
 ___
 
@@ -161,7 +161,7 @@ ___
 
 • **symbol**: *string* = ""
 
-*Defined in [apis/avm/tx.ts:204](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L204)*
+*Defined in [src/apis/avm/tx.ts:182](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L182)*
 
 ## Methods
 
@@ -171,7 +171,7 @@ ___
 
 *Overrides [BaseTx](avmapi_transactions.basetx.md).[fromBuffer](avmapi_transactions.basetx.md#frombuffer)*
 
-*Defined in [apis/avm/tx.ts:263](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L263)*
+*Defined in [src/apis/avm/tx.ts:229](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L229)*
 
 Takes a [Buffer](https://github.com/feross/buffer) containing an [CreateAssetTx](avmapi_transactions.createassettx.md), parses it, populates the class, and returns the length of the [CreateAssetTx](avmapi_transactions.createassettx.md) in bytes.
 
@@ -196,7 +196,7 @@ ___
 
 *Inherited from [BaseTx](avmapi_transactions.basetx.md).[getBlockchainID](avmapi_transactions.basetx.md#getblockchainid)*
 
-*Defined in [apis/avm/tx.ts:70](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L70)*
+*Defined in [src/apis/avm/tx.ts:53](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L53)*
 
 Returns the Buffer representation of the BlockchainID
 
@@ -208,7 +208,7 @@ ___
 
 ▸ **getDenomination**(): *number*
 
-*Defined in [apis/avm/tx.ts:242](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L242)*
+*Defined in [src/apis/avm/tx.ts:213](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L213)*
 
 Returns the numeric representation of the denomination
 
@@ -220,7 +220,7 @@ ___
 
 ▸ **getDenominationBuffer**(): *Buffer*
 
-*Defined in [apis/avm/tx.ts:250](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L250)*
+*Defined in [src/apis/avm/tx.ts:218](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L218)*
 
 Returns the [Buffer](https://github.com/feross/buffer) representation of the denomination
 
@@ -232,7 +232,7 @@ ___
 
 ▸ **getInitialStates**(): *[InitialStates](avmapi_types.initialstates.md)*
 
-*Defined in [apis/avm/tx.ts:218](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L218)*
+*Defined in [src/apis/avm/tx.ts:198](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L198)*
 
 Returns the array of array of [Output](avmapi_outputs.output.md)s for the initial state
 
@@ -246,7 +246,7 @@ ___
 
 *Inherited from [BaseTx](avmapi_transactions.basetx.md).[getIns](avmapi_transactions.basetx.md#getins)*
 
-*Defined in [apis/avm/tx.ts:77](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L77)*
+*Defined in [src/apis/avm/tx.ts:58](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L58)*
 
 Returns the array of [TransferableInput](avmapi_inputs.transferableinput.md)s
 
@@ -258,7 +258,7 @@ ___
 
 ▸ **getName**(): *string*
 
-*Defined in [apis/avm/tx.ts:225](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L225)*
+*Defined in [src/apis/avm/tx.ts:203](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L203)*
 
 Returns the string representation of the name
 
@@ -272,7 +272,7 @@ ___
 
 *Inherited from [BaseTx](avmapi_transactions.basetx.md).[getNetworkID](avmapi_transactions.basetx.md#getnetworkid)*
 
-*Defined in [apis/avm/tx.ts:63](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L63)*
+*Defined in [src/apis/avm/tx.ts:48](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L48)*
 
 Returns the NetworkID as a number
 
@@ -286,7 +286,7 @@ ___
 
 *Inherited from [BaseTx](avmapi_transactions.basetx.md).[getOuts](avmapi_transactions.basetx.md#getouts)*
 
-*Defined in [apis/avm/tx.ts:84](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L84)*
+*Defined in [src/apis/avm/tx.ts:63](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L63)*
 
 Returns the array of [TransferableOutput](avmapi_outputs.transferableoutput.md)s
 
@@ -298,7 +298,7 @@ ___
 
 ▸ **getSymbol**(): *string*
 
-*Defined in [apis/avm/tx.ts:233](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L233)*
+*Defined in [src/apis/avm/tx.ts:208](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L208)*
 
 Returns the string representation of the symbol
 
@@ -312,7 +312,7 @@ ___
 
 *Overrides [BaseTx](avmapi_transactions.basetx.md).[getTxType](avmapi_transactions.basetx.md#gettxtype)*
 
-*Defined in [apis/avm/tx.ts:211](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L211)*
+*Defined in [src/apis/avm/tx.ts:191](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L191)*
 
 Returns the id of the [CreateAssetTx](avmapi_transactions.createassettx.md)
 
@@ -326,7 +326,7 @@ ___
 
 *Inherited from [BaseTx](avmapi_transactions.basetx.md).[sign](avmapi_transactions.basetx.md#sign)*
 
-*Defined in [apis/avm/tx.ts:165](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L165)*
+*Defined in [src/apis/avm/tx.ts:142](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L142)*
 
 Takes the bytes of an [UnsignedTx](avmapi_transactions.unsignedtx.md) and returns an array of [Credential](avmapi_credentials.credential.md)s
 
@@ -349,7 +349,7 @@ ___
 
 *Overrides [BaseTx](avmapi_transactions.basetx.md).[toBuffer](avmapi_transactions.basetx.md#tobuffer)*
 
-*Defined in [apis/avm/tx.ts:289](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L289)*
+*Defined in [src/apis/avm/tx.ts:255](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L255)*
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [CreateAssetTx](avmapi_transactions.createassettx.md).
 
@@ -363,7 +363,7 @@ ___
 
 *Inherited from [BaseTx](avmapi_transactions.basetx.md).[toString](avmapi_transactions.basetx.md#tostring)*
 
-*Defined in [apis/avm/tx.ts:153](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L153)*
+*Defined in [src/apis/avm/tx.ts:130](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L130)*
 
 Returns a base-58 representation of the [BaseTx](avmapi_transactions.basetx.md).
 
