@@ -29,13 +29,13 @@ Your call should look like this:
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :2,
+    "id"     :1,
     "method" :"avm.exportAVA",
     "params" :{
         "to":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
         "amount": 500,
-    	"username":"myUsername",
-    	"password":"myPassword"
+        "username":"myUsername",
+        "password":"myPassword"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -62,7 +62,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "avm.getTxStatus",
     "params":{
-    	"TxID":"MqEaeWc4rfkw9fhRMuMTN7KUTNpFmh9Fd7KSre1ZqTsTQG73h"
+        "txID":"MqEaeWc4rfkw9fhRMuMTN7KUTNpFmh9Fd7KSre1ZqTsTQG73h"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
@@ -85,7 +85,7 @@ We can also call [`getBalance`](../api/avm.md#avmgetbalance) to check that the A
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :2,
+    "id"     :1,
     "method" :"avm.getBalance",
     "params" :{
         "address":"X-ADDRESSGOESHERE",
@@ -110,10 +110,10 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.importAVA",
     "params": {
-    	"username":"myUsername",
-    	"password":"myPassword",
-		"to":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
-		"payerNonce":1
+        "username":"myUsername",
+        "password":"myPassword",
+        "to":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
+        "payerNonce":1
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
@@ -140,7 +140,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.issueTx",
     "params": {
-    	"tx":"1117xBwcr5fo1Ch4umyzjYgnuoFhSwBHdMCam2wRe8SxcJJvQRKSmufXM8aSqKaDmX4TjvzPaUbSn33TAQsbZDhzcHEGviuthncY5VQfUJogyMoFGXUtu3M8NbwNhrYtmSRkFdmN4w933janKvJYKNnsDMvMkmasxrFj8fQxE6Ej8eyU2Jqj2gnTxU2WD3NusFNKmPfgJs8DRCWgYyJVodnGvT43hovggVaWHHD8yYi9WJ64pLCvtCcEYkQeEeA5NE8eTxPtWJrwSMTciHHVdHMpxdVAY6Ptr2rMcYSacr8TZzw59XJfbQT4R6DCsHYQAPJAUfDNeX2JuiBk9xonfKmGcJcGXwdJZ3QrvHHHfHCeuxqS13AfU"
+        "tx":"1117xBwcr5fo1Ch4umyzjYgnuoFhSwBHdMCam2wRe8SxcJJvQRKSmufXM8aSqKaDmX4TjvzPaUbSn33TAQsbZDhzcHEGviuthncY5VQfUJogyMoFGXUtu3M8NbwNhrYtmSRkFdmN4w933janKvJYKNnsDMvMkmasxrFj8fQxE6Ej8eyU2Jqj2gnTxU2WD3NusFNKmPfgJs8DRCWgYyJVodnGvT43hovggVaWHHD8yYi9WJ64pLCvtCcEYkQeEeA5NE8eTxPtWJrwSMTciHHVdHMpxdVAY6Ptr2rMcYSacr8TZzw59XJfbQT4R6DCsHYQAPJAUfDNeX2JuiBk9xonfKmGcJcGXwdJZ3QrvHHHfHCeuxqS13AfU"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
@@ -153,7 +153,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.getAccount",
     "params":{
-    	"address":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH"
+        "address":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
@@ -187,9 +187,9 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.exportAVA",
     "params": {
-    	"to":"G5ZGXEfoWYNFZH5JF9C4QPKAbPTKwRbyB",
-    	"amount":250,
-		"payerNonce":2
+        "to":"G5ZGXEfoWYNFZH5JF9C4QPKAbPTKwRbyB",
+        "amount":250,
+        "payerNonce":2
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
@@ -216,10 +216,10 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.sign",
     "params": {
-    	"tx":"1112Y8Y5ibRqMDtby9NSdpK9u3n1yGywybAAVYnhCkFYcRzEYbR7J5Ci6SX98PmgS2LpRf5pcu6YAgLYGiTuQpiSucRcX4dv7HbVnEsrQnjcieGbgkf9PFS126hC8xce4pEZUzr9jReVdfXe3g9BSUsXLj2XcWrnD6iTgHpiC18jjyjg1wjm1Vs4TcXhG472MRvGspucJ8LuUE91WV7353Kxdc2e7Trw2Sd6iV",
-    	"signer":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
-    	"username":"myUsername",
-    	"password":"myPassword"
+        "tx":"1112Y8Y5ibRqMDtby9NSdpK9u3n1yGywybAAVYnhCkFYcRzEYbR7J5Ci6SX98PmgS2LpRf5pcu6YAgLYGiTuQpiSucRcX4dv7HbVnEsrQnjcieGbgkf9PFS126hC8xce4pEZUzr9jReVdfXe3g9BSUsXLj2XcWrnD6iTgHpiC18jjyjg1wjm1Vs4TcXhG472MRvGspucJ8LuUE91WV7353Kxdc2e7Trw2Sd6iV",
+        "signer":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
+        "username":"myUsername",
+        "password":"myPassword"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
@@ -244,7 +244,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.issueTx",
     "params": {
-    	"tx":"1112Y8Y5ibRqMDtby9NSdpK9u3n1yGywybAAVYnhCkFYcRzEYbR7J5Ci6SX98PmgS2LpRf5pcu6YAgLYGiTuQpiSucRcX4dv7HbVnEsrQnjcieGbgkf9PFS126hC8xce4pEZUzrAzm53EwXPbbF1uWemTQUfFs44xha8Yn4JtgEwT3Q42VywckUVncKvfX2wtbz3RaDvavYhxUM7TbxSMJwAo8Xq45RjKZDpmw"
+        "tx":"1112Y8Y5ibRqMDtby9NSdpK9u3n1yGywybAAVYnhCkFYcRzEYbR7J5Ci6SX98PmgS2LpRf5pcu6YAgLYGiTuQpiSucRcX4dv7HbVnEsrQnjcieGbgkf9PFS126hC8xce4pEZUzrAzm53EwXPbbF1uWemTQUfFs44xha8Yn4JtgEwT3Q42VywckUVncKvfX2wtbz3RaDvavYhxUM7TbxSMJwAo8Xq45RjKZDpmw"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
@@ -257,7 +257,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.getAccount",
     "params":{
-    	"address":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH"
+        "address":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
@@ -287,8 +287,8 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.importAVA",
     "params" :{
-    	"username":"myUsername",
-    	"password":"myPassword",
+        "username":"myUsername",
+        "password":"myPassword",
         "to":"X-G5ZGXEfoWYNFZH5JF9C4QPKAbPTKwRbyB"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X

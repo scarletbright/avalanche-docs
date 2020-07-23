@@ -88,7 +88,7 @@ To verify this we call `avm.getBalance`:
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :2,
+    "id"     :1,
     "method" :"avm.getBalance",
     "params" :{
         "address":"X-Dxs8JWAzDZX1VXcLZT5GZR7TyfX8h9ic9",
@@ -102,7 +102,7 @@ The response confirms that our asset creation was successful, and that the expec
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :2,
+    "id"     :1,
     "result" :{
         "balance":10000000
     }
@@ -119,7 +119,7 @@ Therefore, this time we'll need to fill in `username` and `password`.
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "method" :"avm.send",
     "params" :{
         "username":"yourUsername",
@@ -138,7 +138,7 @@ The response from the above call should look like this:
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "result" :{
         "txID":"2EAgR1YbsaJrwFiU4DpwjUfTLkt97WrjQYYNQny13AheewnxSR"
     }
@@ -153,7 +153,7 @@ We can check the status of the transaction with `avm.getTxStatus`:
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :4,
+    "id"     :1,
     "method" :"avm.getTxStatus",
     "params" :{
         "txID":"2EAgR1YbsaJrwFiU4DpwjUfTLkt97WrjQYYNQny13AheewnxSR"
@@ -166,7 +166,7 @@ The response should look like this
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :4,
+    "id"     :1,
     "result" :{
         "status":"Accepted"
     }
@@ -180,7 +180,7 @@ Now let's check the balance of the `to` address:
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :6,
+    "id"     :1,
     "method" :"avm.getBalance",
     "params" :{
         "address":"X-9R5xWj1DkMtGVDQmyTB4uNnvYdCnj57pa",
@@ -194,7 +194,7 @@ The response should be:
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :6,
+    "id"     :1,
     "result" :{
         "balance":100
     }
