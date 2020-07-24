@@ -46,6 +46,8 @@ platform.addDefaultSubnetDelegator(
 * `endTime` is the Unix time when the delegator stops delegating (and staked AVAX is returned).
 * `stakeAmount` is the amount of nAVAX the delegator is staking.
 * `destination` is the address of the account the staked AVAX and validation reward (if applicable) are sent to at `endTime`.
+* `username` is the user that controls the key signing `tx`.
+* `password` is `username`'s password.
 * `txID` is the transaction ID
 
 #### Example Call
@@ -94,9 +96,11 @@ platform.addDefaultSubnetValidator(
         stakeAmount: int,
         payerNonce: int,
         destination: string,
-        delegationFeeRate: int
+        delegationFeeRate: int,
+        username: string,
+        password: string
     }
-) -> {unsignedTx: string}
+) -> {txID: string}
 ```
 
 * `id` is the node ID of the validator.
@@ -108,8 +112,9 @@ platform.addDefaultSubnetValidator(
 * `delegationFeeRate` is the percent fee this validator charges when others delegate stake to them, multiplied by 10,000.
   For example, suppose a validator has `delegationFeeRate` 300,000 and someone delegates to that validator.
   When the delegation period is over, if the delegator is entitled to a reward, 30% of the reward (300,000 / 10,000) goes to the validator and 70% goes to the delegator.
-* `unsignedTx` is the the unsigned transaction.
-  It must be signed (using `sign`) by the key of the account providing the staked AVAX/paying the transaction fee before it can be issued.
+* `username` is the user that controls the key signing `tx`.
+* `password` is `username`'s password.
+* `txID` is the transaction ID
 
 #### Example Call
 
@@ -127,7 +132,9 @@ curl -X POST --data '{
         "startTime":'$(date --date="10 minutes" +%s)',
         "endTime":'$(date --date="2 days" +%s)',
         "stakeAmount":1000000,
-        "delegationFeeRate":100000
+        "delegationFeeRate":100000,
+        "username":"username",
+        "password":"password"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
@@ -137,18 +144,18 @@ curl -X POST --data '{
 
 ```json
 {
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "result" :{
-        "unsignedTx": "1115K3jV5Yxr145wi6kEYpN1nPz3GEBkzG8mpF2s2959VsR54YGenLJrgdg3UEE7vFPNDE5n3Cq9Vs71HEjUUoVSyrt9Z3X7M5sKLCX5WScTcQocxjnXfFowZxFe4uH8iJU7jnCZgeKK5bWsfnWy2b9PbCQMN2uNLvwyKRp4ZxcgRptkuXRMCKHfhbHVKBYmr5e2VbBBht19be57uFUP5yVdMxKnxecs"
-    }
+    "jsonrpc": "2.0",
+    "result": {
+        "txID": "6pb3mthunogehapzqmubmx6n38ii3lzytvdrxumovwkqftzls"
+    },
+    "id": 1
 }
 ```
 
 ### platform.addNonDefaultSubnetValidator
 
 Add a validator to a Subnet other than the Default Subnet.
-The validator must validate the Default Subnet for the entire duration they validate this Subnet.
+The Validator must validate the Default Subnet for the entire duration they validate this Subnet.
 
 #### Signature
 
@@ -160,39 +167,41 @@ platform.addNonDefaultSubnetValidator(
         startTime: int,
         endTime: int,
         weight: int,
-        payerNonce: int
+        username: string,
+        password: string
     }
-) -> {unsignedTx: string}
+) -> {txID: string}
 ```
 
-* `id` is the node ID of the validator.
-* `subnetID` is the Subnet they will validate.
-* `startTime` is the Unix time when the validator starts validating the Subnet.
-* `endTime` is the Unix time when the validator stops validating the Subnet.
+* `id` is the node id of the validator.
+* `subnetID` is the subnet they will validate.
+* `startTime` is the unix time when the validator starts validating the subnet.
+* `endTime` is the unix time when the validator stops validating the subnet.
 * `weight` is the validator's weight used for sampling.
-* `payerNonce` is the next unused nonce of the account that will pay the transaction fee for this transaction.
-* `unsignedTx` is the unsigned transaction.
-  It must be signed (using `sign`) by the proper number of the Subnet's control keys and by the key of the account paying the transaction fee before it can be issued.
+* `username` is the user that controls the key signing `tx`.
+* `password` is `username`'s password.
+* `txID` is the transaction id
 
-#### Example Call
+#### example call
 
 ```json
-curl -X POST --data '{
+curl -x post --data '{
     "jsonrpc": "2.0",
-    "method": "platform.addNonDefaultSubnetValidator",
+    "method": "platform.addnondefaultsubnetvalidator",
     "params": {
-        "id":"7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg",
-        "subnetID":"zBfoWW1FfkPVRfywpJ1CVQRfnYesEpdFC61hmU2n9JNGhDUEL",
-        "startTime":1583524047,
-        "endTime":1604102399,
+        "id":"7xhw2mdxuds44j42tcb6u5579esbst3lg",
+        "subnetid":"zbfoww1ffkpvrfywpj1cvqrfnyesepdfc61hmu2n9jnghduel",
+        "starttime":1583524047,
+        "endtime":1604102399,
         "weight":1,
-        "payerNonce":2
+        "username":"username",
+        "password":"password"
     },
     "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+}' -h 'content-type:application/json;' 127.0.0.1:9650/ext/p
 ```
 
-#### Example Response
+#### example response
 
 ```json
 {
@@ -686,7 +695,7 @@ platform.getPendingValidators({subnetID: string}) ->
 * `stakeAmount` is the amount of nAVAX this validator staked.
   Omitted if `subnetID` is not the default subnet.
 * `address` is the P Chain address which was passed in as `destination` when adding the validator.
-* `id` is the validator's ID.
+* `id` is the validator's NodeID.
 
 #### Example Call
 
@@ -710,8 +719,8 @@ curl -X POST --data '{
                 "startTime": "1592400591",
                 "endtime": "1622923025",
                 "stakeAmount": "10000",
-                "address": "6cesTteH62Y5mLoDBUASaBvCXuL2AthL",
-                "id": "DpL8PTsrjtLzv5J8LL3D2A6YcnCTqrNH9"
+                "address": "P-6cesTteH62Y5mLoDBUASaBvCXuL2AthL",
+                "id": "NodeID-DpL8PTsrjtLzv5J8LL3D2A6YcnCTqrNH9"
             },
         ]
     },
