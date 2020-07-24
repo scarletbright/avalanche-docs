@@ -34,20 +34,19 @@ platform.addDefaultSubnetDelegator(
         startTime: int,
         endTime: int,
         stakeAmount: int,
-        payerNonce: int,
-        destination: string
+        destination: string,
+        username: string,
+        password: string
     }
-) -> {unsignedTx: string}
+) -> {txID: string}
 ```
 
 * `id` is the node ID of the delegatee.
 * `startTime` is the Unix time when the delegator starts delegating.
 * `endTime` is the Unix time when the delegator stops delegating (and staked AVAX is returned).
 * `stakeAmount` is the amount of nAVAX the delegator is staking.
-* `payerNonce` is the next unused nonce of the account that will provide the staked AVAX and pay the transaction fee.
 * `destination` is the address of the account the staked AVAX and validation reward (if applicable) are sent to at `endTime`.
-* `unsignedTx` is the unsigned transaction.
-  It must be signed (using `sign`) by the key of the account providing the staked AVAX and paying the transaction fee before it can be issued.
+* `txID` is the transaction ID
 
 #### Example Call
 
@@ -57,11 +56,12 @@ curl -X POST --data '{
     "method": "platform.addDefaultSubnetDelegator",
     "params": {
         "id":"MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ",
-        "payerNonce":1,
         "destination":"Q4MzFZZDPHRPAHFeDs3NiyyaZDvxHKivf",
         "startTime":1594102400,
         "endTime":1604102400,
-        "stakeAmount":100000
+        "stakeAmount":100000,
+        "username":"username",
+        "password":"password"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
@@ -71,11 +71,11 @@ curl -X POST --data '{
 
 ```json
 {
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "result" :{
-        "unsignedTx": "111Bit5JNASbJyTLrd2kWkYRoc96swEWoWdmEhuGAFK3rCAyTnTzomuFwgx1SCUdUE71KbtXPnqj93KGr3CeftpPN37kVyqBaAQ5xaDjr7wU8riGS89NDJ8AwVgZgnFkgF3uMfwCiCuPvvubGyQxNHE4TM9iDgj6h3URdGQ4JntP44wokCEP3ADn7sMM8kUTbmcNo84U87"
-    }
+    "jsonrpc": "2.0",
+    "result": {
+        "txID": "6pB3MtHUNogeHapZqMUBmx6N38ii3LzytVDrXuMovwKQFTZLs"
+    },
+    "id": 1
 }
 ```
 
@@ -361,7 +361,6 @@ curl -X POST --data '{
     "id": 1
 }
 ```
-
 
 ### platform.getBalance
 
