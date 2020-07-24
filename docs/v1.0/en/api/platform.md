@@ -365,15 +365,21 @@ curl -X POST --data '{
 
 ### platform.getBalance
 
-Get the balance of an asset controlled by a given address.
+Get the balance of AVAX controlled by a given address.
 
 #### Signature
 
 ```go
 platform.getBalance({
-    address:string,
-    assetID: string
-}) -> {balance: int}
+    address:string
+}) -> {{
+    balance: int,
+    utxoIDs: []{
+        txID: string,
+        outputIndex: int
+        }
+    }
+}
 ```
 
 #### Example Call
@@ -384,8 +390,7 @@ curl -X POST --data '{
   "id"     : 1,
   "method" :"platform.getBalance",
   "params" :{
-      "address":"P-6Y3kysjF9jnHnYkdS9yGAuoHyae2eNmeV",
-      "assetID": "AVA"
+      "address":"P-6Y3kysjF9jnHnYkdS9yGAuoHyae2eNmeV"
   }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
 ```
