@@ -67,7 +67,8 @@ nav:
               - Command Line Interface      : v1.0/en/references/command-line-interface.md
               - Cryptographic Primitives    : v1.0/en/references/cryptographic-primitives.md
               - Serialization Primitives    : v1.0/en/references/serialization-primitives.md
-              - Transaction Format          : v1.0/en/references/avm-transaction-serialization.md
+              - AVM Transaction Format      : v1.0/en/references/avm-transaction-serialization.md
+              - Platform Transaction Format : v1.0/en/references/platform-transaction-serialization.md
               - Network Protocol            : v1.0/en/references/network-protocol.md
               - Glossary                    : v1.0/en/references/glossary.md
   - Papers                                  : v1.0/en/papers/index.md
