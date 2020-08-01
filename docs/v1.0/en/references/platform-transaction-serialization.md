@@ -1,6 +1,6 @@
 # Platform Transaction Serialization
 
-This file is meant to be the single source of truth for how we serialize transactions in Avalanchee's Platform Virtual Machine, the `Platform` Chain. This document uses the [primitive serialization](./serialization-primitives.md) format for packing and [secp256k1](./cryptographic-primitives.md#cryptography-in-the-ava-virtual-machine) for cryptographic user identification.
+This file is meant to be the single source of truth for how we serialize transactions in Avalanche's Platform Virtual Machine, aka the `Platform Chain` or `P-Chain`. This document uses the [primitive serialization](./serialization-primitives.md) format for packing and [secp256k1](./cryptographic-primitives.md#cryptography-in-the-avalanche-virtual-machine) for cryptographic user identification.
 
 ***
 
