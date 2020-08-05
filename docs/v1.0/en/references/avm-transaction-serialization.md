@@ -861,10 +861,10 @@ message BaseTx {
 
 Let's make an unsigned base tx that uses the inputs and outputs from the previous examples:
 
-- `CodecID`: `0`
-- `ID`: `0`
-- `NetworkID`: `3`
-- `BlockchainID`: `0xffffffffeeeeeeeeddddddddcccccccbbbbbbbbaaaaaaaa9999999988888888`
+- **`CodecID`**: `0`
+- **`ID`**: `0`
+- **`NetworkID`**: `3`
+- **`BlockchainID`**: `0xffffffffeeeeeeeeddddddddcccccccbbbbbbbbaaaaaaaa9999999988888888`
 - **`Outputs`**:
   - `"Example Transferable Output as defined above"`
 - **`Inputs`**:
