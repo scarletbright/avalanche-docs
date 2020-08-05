@@ -1263,8 +1263,9 @@ A utxo is a standalone representation of a transaction output.
 
 ### What UTXO Contains
 
-A UTXO contains signed transaction contains a `TxID`, `UTXOIndex`, and `Output`.
+A UTXO contains signed transaction contains a `CodecID`, `TxID`, `UTXOIndex`, and `Output`.
 
+- **`CodecID`** is a short that defines which codec version. Default is `0x0000`.
 - **`TxID`** is a 32-byte transaction ID. Transaction IDs are calculated by taking sha256 of the bytes of the signed transaction.
 - **`UTXOIndex`** is an int that specifies which output in the transaction specified by **`TxID`** that this utxo was created by.
 - **`AssetID`** is a 32-byte array that defines which asset this utxo references.
@@ -1274,6 +1275,8 @@ A UTXO contains signed transaction contains a `TxID`, `UTXOIndex`, and `Output`.
 
 ```boo
 +--------------+----------+-------------------------+
+| codec_id     : short    |                 2 bytes |
++---------------+-----------------------------------+
 | tx_id        : [32]byte |                32 bytes |
 +--------------+----------+-------------------------+
 | output_index : int      |                 4 bytes |
@@ -1290,6 +1293,7 @@ A UTXO contains signed transaction contains a `TxID`, `UTXOIndex`, and `Output`.
 
 ```protobuf
 message Utxo {
+    uint16 codec_id = 1;         // 02 bytes
     bytes tx_id = 1;         // 32 bytes
     uint32 output_index = 2; // 04 bytes
     bytes asset_id = 3;      // 32 bytes
@@ -1301,6 +1305,7 @@ message Utxo {
 
 Let's make a UTXO from the signed transaction created above:
 
+- **`CodecID`**: `0`
 - **`TxID`**: `0xf966750f438867c3c9828ddcdbe660e21ccdbb36a9276958f011ba472f75d4e7`
 - **`UTXOIndex`**: 0 = 0x00000000
 - **`AssetID`**: `0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`
@@ -1308,6 +1313,7 @@ Let's make a UTXO from the signed transaction created above:
 
 ```splus
 [
+    CodecID   <- 0 = 0x0000
     TxID      <- 0xf966750f438867c3c9828ddcdbe660e21ccdbb36a9276958f011ba472f75d4e7
     UTXOIndex <- 0x00000000
     AssetID   <- 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
@@ -1315,6 +1321,8 @@ Let's make a UTXO from the signed transaction created above:
 ]
 =
 [
+    // codec_id:
+    0x00, 0x00,
     // txID:
     0xf9, 0x66, 0x75, 0x0f, 0x43, 0x88, 0x67, 0xc3,
     0xc9, 0x82, 0x8d, 0xdc, 0xdb, 0xe6, 0x60, 0xe2,
