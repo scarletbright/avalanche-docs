@@ -842,6 +842,125 @@ curl -X POST --data '{
 }
 ```
 
+### platform.getUTXOs
+
+Gets the UTXOs that reference a given set address.
+
+#### Signature
+
+```go
+platform.getUTXOs(
+    {
+        addresses: string,
+        limit: int,
+        startIndex: {
+            address: string,
+            utxo: string
+        }
+    },
+) -> 
+{
+    numFetched: int
+    utxos: []string,
+    stopIndex: {
+        address: string,
+        utxo: string
+    }
+}
+```
+
+* `utxos` is a list of UTXOs such that each UTXO references at least one address in `addresses`.
+* At most `limit` UTXOs are returned. If `limit` is omitted or greater than 1024, it is set to 1024.
+* This method supports pagination. `stopIndex` denotes the last UTXO returned. To get the next set of UTXOs,
+  use the value of `stopIndex` as `startIndex` in the next call.
+* If `startIndex` is omitted, will fetch all UTXOs up to `limit`. 
+* When using pagination (ie when `startIndex` is provided), UTXOs are not guaranteed to be unique across multiple calls. 
+  That is, a UTXO may appear in the result of the first call, and then again in the second call.
+* When using pagination, consistency is not guaranteed across multiple calls.
+  That is, the UTXO set of the addresses may have changed between calls.
+
+#### Example
+
+Suppose we want all UTXOs that reference at least one of `P-xMrKg8uUECt5CS9RE9j5hizv2t2SWTbk` and `P-DjU3SbP9ZfPW8YAvFdjivR4Hjfxu2VCLu`.
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"platform.getUTXOs",
+    "params" :{
+        "addresses":["P-xMrKg8uUECt5CS9RE9j5hizv2t2SWTbk", "P-DjU3SbP9ZfPW8YAvFdjivR4Hjfxu2VCLu"],
+        "limit":5
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
+```
+
+This gives response:
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "numFetched": "5",
+        "utxos": [
+            "11PQ1sNw9tcXjVki7261souJnr1TPFrdVCu5JGZC7Shedq3a7xvnTXkBQ162qMYxoerMdwzCM2iM1wEQPwTxZbtkPASf2tWvddnsxPEYndVSxLv8PDFMwBGp6UoL35gd9MQW3UitpfmFsLnAUCSAZHWCgqft2iHKnKRQRz",
+            "11RCDVNLzFT8KmriEJN7W1in6vB2cPteTZHnwaQF6kt8B2UANfUkcroi8b8ZSEXJE74LzX1mmBvtU34K6VZPNAVxzF6KfEA8RbYT7xhraioTsHqxVr2DJhZHpR3wGWdjUnRrqSSeeKGE76HTiQQ8WXoABesvs8GkhVpXMK",
+            "11GxS4Kj2od4bocNWMQiQhcBEHsC3ZgBP6edTgYbGY7iiXgRVjPKQGkhX5zj4NC62ZdYR3sZAgp6nUc75RJKwcvBKm4MGjHvje7GvegYFCt4RmwRbFDDvbeMYusEnfVwvpYwQycXQdPFMe12z4SP4jXjnueernYbRtC4qL",
+            "11S1AL9rxocRf2NVzQkZ6bfaWxgCYch7Bp2mgzBT6f5ru3XEMiVZM6F8DufeaVvJZnvnHWtZqocoSRZPHT5GM6qqCmdbXuuqb44oqdSMRvLphzhircmMnUbNz4TjBxcChtks3ZiVFhdkCb7kBNLbBEmtuHcDxM7MkgPjHw",
+            "11Cn3i2T9SMArCmamYUBt5xhNEsrdRCYKQsANw3EqBkeThbQgAKxVJomfc2DE4ViYcPtz4tcEfja38nY7kQV7gGb3Fq5gxvbLdb4yZatwCZE7u4mrEXT3bNZy46ByU8A3JnT91uJmfrhHPV1M3NUHYbt6Q3mJ3bFM1KQjE"
+        ],
+        "endIndex": {
+            "address": "P-DjU3SbP9ZfPW8YAvFdjivR4Hjfxu2VCLu",
+            "utxo": "kbUThAUfmBXUmRgTpgD6r3nLj7rJUGho6xyht5nouNNypH45j"
+        }
+    },
+    "id": 1
+}
+```
+
+Since `numFetched` is the same as `limit`, we can tell that there may be more UTXOs that were not fetched.
+We call the method again, this time with `startIndex`:
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :2,
+    "method" :"platform.getUTXOs",
+    "params" :{
+        "addresses":["P-DjU3SbP9ZfPW8YAvFdjivR4Hjfxu2VCLu"],
+        "limit":5,
+        "endIndex": {
+            "address": "P-DjU3SbP9ZfPW8YAvFdjivR4Hjfxu2VCLu",
+            "utxo": "kbUThAUfmBXUmRgTpgD6r3nLj7rJUGho6xyht5nouNNypH45j"
+        }
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
+```
+
+This gives response:
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "numFetched": "4",
+        "utxos": [
+            "115ZLnNqzCsyugMY5kbLnsyP2y4se4GJBbKHjyQnbPfRBitqLaxMizsaXbDMU61fHV2MDd7fGsDnkMzsTewULi94mcjk1bfvP7aHYUG2i3XELpV9guqsCtv7m3m3Kg4Ya1m6tAWqT7PhvAaW4D3fk8W1KnXu5JTWvYBqD2",
+            "11QASUuhw9M1r52maTFUZ4fnuQby9inX77VYxePQoNavEyCPuHN5cCWPQnwf8fMrydFXVMPAcS4UJAcLjSFskNEmtVPDMY4UyHwh2MChBju6Y7V8yYf3JBmYt767NPsdS3EqgufYJMowpud8fNyH1to4pAdd6A9CYbD8KG",
+            "11MHPUWT8CsdrtMWstYpFR3kobsvRrLB4W8tP9kDjhjgLkCJf9aaJQM832oPcvKBsRhCCxfKdWr2UWPztRCU9HEv4qXVwRhg9fknAXzY3a9rXXPk9HmArxMHLzGzRECkXpXb2dAeqaCsZ637MPMrJeWiovgeAG8c5dAw2q",
+            "11K9kKhFg75JJQUFJEGiTmbdFm7r1Uw5zsyDLDY1uVc8zo42WNbgcpscNQhyNqNPKrgtavqtRppQNXSEHnBQxEEh5KbAEcb8SxVZjSCqhNxME8UTrconBkTETSA23SjUSk8AkbTRrLz5BAqB6jo9195xNmM3WLWt7mLJ24"
+        ],
+        "endIndex": {
+            "address": "P-DjU3SbP9ZfPW8YAvFdjivR4Hjfxu2VCLu",
+            "utxo": "21jG2RfqyHUUgkTLe2tUp6ETGLriSDTW3th8JXFbPRNiSZ11jK"
+        }
+    },
+    "id": 1
+}
+```
+
+Since `numFetched` is less than `limit`, we know that we are done fetching UTXOs and don't need to call this method again.
+
 ### platform.importAVA
 
 (Note: This method will change to `importAVAX` in the next release.)
