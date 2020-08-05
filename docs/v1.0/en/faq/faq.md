@@ -346,10 +346,6 @@ There is an Avalanche-X grant for [ledger support](https://www.avalabs.org/avala
 
 HD wallets support generating a new address for every transaction. This is a convention to increase privacy. Previous addresses may be reused and your wallet's balance will be correct.
 
-### For the token sale should I use the address from the keygen site or the web wallet?
-
-Use the address from [the keygen site](https://keygen.avax.network). This will guarantee the tokens you buy will be delivered to a new wallet with the correct address.
-
 ## Common Problems
 
 ### API call fails with `Failed to connect to 127.0.0.1 port 9650: Connection refused`
@@ -442,10 +438,6 @@ youruser 29861  8.7  0.2 1459208 34996 pts/2   Sl+  19:44   0:00 ./build/ava
 Do:
 
 `kill -9 29861` (or whatever number appears in the second column)
-
-### Node prints a lot of messages that begin `2020-06-09T12:45:02.548-0400 [DEBUG] plugin.sh: DEBUG[06-09|12:45:02.548] `
-
-This is a known issue. We're working on it! You can ignore these logs.
 
 ### Node prints `NAT Traversal failed ...`
 
