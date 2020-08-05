@@ -6,7 +6,7 @@ When running a node, there are a variety of possible configurations that are sup
 
 `--api-admin-enabled` (bool):
 
-If set to false, this node will not expose the Admin API. Defaults to `true`.
+If set to false, this node will not expose the Admin API. Defaults to `false`.
 
 `--api-ipcs-enabled` (bool):
 
@@ -30,11 +30,11 @@ Bootstrap IDs is an array of validator IDs. These IDs will be used to authentica
 
 `--bootstrap-ips` (string):
 
-Bootstrap IPs is an array of IPv4:port pairs. These IP Addresses will be used to bootstrap the current AVA state. An example setting of this field would be `--bootstrap-ips="127.0.0.1:12345,1.2.3.4:5678"`. The default value is the empty set.
+Bootstrap IPs is an array of IPv4:port pairs. These IP Addresses will be used to bootstrap the current Avalanche state. An example setting of this field would be `--bootstrap-ips="127.0.0.1:12345,1.2.3.4:5678"`. The default value is the empty set.
 
 `--db-dir` (string, file path):
 
-Specifies the directory to which the database is persisted. Defaults to `"db"`.
+Specifies the directory to which the database is persisted. Defaults to `"$HOME/.gecko/db"`.
 
 `--db-enabled` (bool):
 
@@ -49,7 +49,7 @@ To allow API calls from other machines, do `--http-host=[PUBLIC IP OF MACHINE RU
 
 `--http-port` (int):
 
-Each node runs an HTTP server that provides the APIs for interacting with the node and the AVA network.
+Each node runs an HTTP server that provides the APIs for interacting with the node and the Avalanche network.
 This argument specifies the port that the http server will listen on. The default value is `9650`.
 
 `--http-tls-cert-file` (string, file path):
@@ -84,7 +84,7 @@ The log level determines which events to display to the screen. If left blank, w
 
 `--log-dir` (string, file path):
 
-Specifies the directory in which system logs are kept. If `""` is passed in, the logging directory defaults to `"~/.gecko/logs"`.
+Specifies the directory in which system logs are kept. Defaults to `"$HOME/.gecko/logs"`.
 
 `--network-id` (string):
 
@@ -108,23 +108,23 @@ Enables signature verification to be disabled for testing. When set to false, si
 
 `--staking-port` (string):
 
-The port through which the staking server will connect to the AVA network. Defaults to `9651`.
+The port through which the staking server will connect to the Avalanche network. Defaults to `9651`.
 
 `--p2p-tls-enabled` (boolean):
 
-AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers. However, This can be disabled for testing. When TLS is disabled, the `stakingID` will be derived from the IP Address the node claims it owns. This will also disable encryption of inter-node communication. This should only be specified for testing. Defaults to `true`. This must be true when `--staking-tls-enabled=true`.
+Avalanche uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers. However, This can be disabled for testing. When TLS is disabled, the `stakingID` will be derived from the IP Address the node claims it owns. This will also disable encryption of inter-node communication. This should only be specified for testing. Defaults to `true`. This must be true when `--staking-tls-enabled=true`.
 
 `--staking-tls-enabled` (boolean):
 
-AVA uses Proof of Stake (PoS) as Sybil resistance to make it prohibitively expensive to attack the network. When this is true, `--p2p-tls-enabled` must be set to true in order to secure P2P communications.
+Avalanche uses Proof of Stake (PoS) as Sybil resistance to make it prohibitively expensive to attack the network. When this is true, `--p2p-tls-enabled` must be set to true in order to secure P2P communications.
 
 `--staking-tls-cert-file` (string, file path):
 
-AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--p2p-tls-enabled=true`. This argument specifies the location of the TLS certificate used by the node. This must be specified when `--p2p-tls-enabled=true`. The default value is `""`.
+Avalanche uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--p2p-tls-enabled=true`. This argument specifies the location of the TLS certificate used by the node. This must be specified when `--p2p-tls-enabled=true`. The default value is `""`.
 
 `--staking-tls-key-file` (string, file path):
 
-AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--p2p-tls-enabled=true`. This argument specifies the location of the TLS private key used by the node. This must be specified when `--p2p-tls-enabled=true`. The default value is `""`.
+Avalanche uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--p2p-tls-enabled=true`. This argument specifies the location of the TLS private key used by the node. This must be specified when `--p2p-tls-enabled=true`. The default value is `""`.
 
 ***
 
@@ -134,7 +134,7 @@ The following options affect the correctness of the platform. They may need to b
 
 `--ava-tx-fee` (int):
 
-The required amount of nAVA to be burned for a transaction to be valid. This parameter requires network agreement in its current form. Changing this value from the default should only be done on private networks. Defaults to `0` nAVA per transaction.
+The required amount of nAVAX to be burned for a transaction to be valid. This parameter requires network agreement in its current form. Changing this value from the default should only be done on private networks. Defaults to `0` nAVAX per transaction.
 
 `--snow-avalanche-batch-size` (int):
 

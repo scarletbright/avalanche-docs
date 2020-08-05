@@ -42,7 +42,7 @@ A [Operation](avmapi_operations.operation.md) class which specifies a NFT Transf
 
 *Overrides [Operation](avmapi_operations.operation.md).[constructor](avmapi_operations.operation.md#constructor)*
 
-*Defined in [apis/avm/ops.ts:243](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/ops.ts#L243)*
+*Defined in [src/apis/avm/ops.ts:231](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/ops.ts#L231)*
 
 An [Operation](avmapi_operations.operation.md) class which contains an NFT on an assetID.
 
@@ -60,7 +60,7 @@ Name | Type | Default | Description |
 
 • **output**: *[NFTTransferOutput](avmapi_outputs.nfttransferoutput.md)*
 
-*Defined in [apis/avm/ops.ts:205](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/ops.ts#L205)*
+*Defined in [src/apis/avm/ops.ts:195](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/ops.ts#L195)*
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 *Inherited from [Operation](avmapi_operations.operation.md).[sigCount](avmapi_operations.operation.md#protected-sigcount)*
 
-*Defined in [apis/avm/ops.ts:32](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/ops.ts#L32)*
+*Defined in [src/apis/avm/ops.ts:32](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/ops.ts#L32)*
 
 ___
 
@@ -80,7 +80,7 @@ ___
 
 *Inherited from [Operation](avmapi_operations.operation.md).[sigIdxs](avmapi_operations.operation.md#protected-sigidxs)*
 
-*Defined in [apis/avm/ops.ts:33](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/ops.ts#L33)*
+*Defined in [src/apis/avm/ops.ts:34](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/ops.ts#L34)*
 
 ## Methods
 
@@ -90,7 +90,7 @@ ___
 
 *Inherited from [Operation](avmapi_operations.operation.md).[addSignatureIdx](avmapi_operations.operation.md#addsignatureidx)*
 
-*Defined in [apis/avm/ops.ts:54](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/ops.ts#L54)*
+*Defined in [src/apis/avm/ops.ts:51](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/ops.ts#L51)*
 
 Creates and adds a [SigIdx](avmapi_types.sigidx.md) to the [Operation](avmapi_operations.operation.md).
 
@@ -111,7 +111,7 @@ ___
 
 *Overrides [Operation](avmapi_operations.operation.md).[fromBuffer](avmapi_operations.operation.md#frombuffer)*
 
-*Defined in [apis/avm/ops.ts:221](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/ops.ts#L221)*
+*Defined in [src/apis/avm/ops.ts:209](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/ops.ts#L209)*
 
 Popuates the instance from a [Buffer](https://github.com/feross/buffer) representing the [NFTTransferOperation](avmapi_operations.nfttransferoperation.md) and returns the size of the output.
 
@@ -132,7 +132,7 @@ ___
 
 *Inherited from [Operation](avmapi_operations.operation.md).[getCredentialID](avmapi_operations.operation.md#getcredentialid)*
 
-*Defined in [apis/avm/ops.ts:44](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/ops.ts#L44)*
+*Defined in [src/apis/avm/ops.ts:43](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/ops.ts#L43)*
 
 **Returns:** *number*
 
@@ -144,7 +144,7 @@ ___
 
 *Overrides [Operation](avmapi_operations.operation.md).[getOperationID](avmapi_operations.operation.md#abstract-getoperationid)*
 
-*Defined in [apis/avm/ops.ts:210](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/ops.ts#L210)*
+*Defined in [src/apis/avm/ops.ts:200](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/ops.ts#L200)*
 
 Returns the operation ID.
 
@@ -156,7 +156,7 @@ ___
 
 ▸ **getOutput**(): *[NFTTransferOutput](avmapi_outputs.nfttransferoutput.md)*
 
-*Defined in [apis/avm/ops.ts:214](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/ops.ts#L214)*
+*Defined in [src/apis/avm/ops.ts:204](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/ops.ts#L204)*
 
 **Returns:** *[NFTTransferOutput](avmapi_outputs.nfttransferoutput.md)*
 
@@ -168,7 +168,7 @@ ___
 
 *Inherited from [Operation](avmapi_operations.operation.md).[getSigIdxs](avmapi_operations.operation.md#getsigidxs)*
 
-*Defined in [apis/avm/ops.ts:40](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/ops.ts#L40)*
+*Defined in [src/apis/avm/ops.ts:41](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/ops.ts#L41)*
 
 Returns the array of [SigIdx](avmapi_types.sigidx.md) for this [Operation](avmapi_operations.operation.md)
 
@@ -182,7 +182,7 @@ ___
 
 *Overrides [Operation](avmapi_operations.operation.md).[toBuffer](avmapi_operations.operation.md#tobuffer)*
 
-*Defined in [apis/avm/ops.ts:230](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/ops.ts#L230)*
+*Defined in [src/apis/avm/ops.ts:218](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/ops.ts#L218)*
 
 Returns the buffer representing the [NFTTransferOperation](avmapi_operations.nfttransferoperation.md) instance.
 
@@ -194,7 +194,7 @@ ___
 
 ▸ **toString**(): *string*
 
-*Defined in [apis/avm/ops.ts:241](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/ops.ts#L241)*
+*Defined in [src/apis/avm/ops.ts:229](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/ops.ts#L229)*
 
 Returns a base-58 string representing the [NFTTransferOperation](avmapi_operations.nfttransferoperation.md).
 
@@ -208,7 +208,7 @@ ___
 
 *Inherited from [Operation](avmapi_operations.operation.md).[comparator](avmapi_operations.operation.md#static-comparator)*
 
-*Defined in [apis/avm/ops.ts:91](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/ops.ts#L91)*
+*Defined in [src/apis/avm/ops.ts:88](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/ops.ts#L88)*
 
 **Returns:** *function*
 

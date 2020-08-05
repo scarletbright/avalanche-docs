@@ -1,4 +1,4 @@
-This is the repository containing the documentation for the AVA Platform. 
+This is the repository containing the documentation for the Avalanche Platform. 
 
 
 # Installing
