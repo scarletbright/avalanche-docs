@@ -37,7 +37,7 @@
 
 \+ **new TransferableInput**(`txid`: Buffer, `outputidx`: Buffer, `assetID`: Buffer, `input`: [Input](avmapi_inputs.input.md)): *[TransferableInput](avmapi_inputs.transferableinput.md)*
 
-*Defined in [apis/avm/inputs.ts:211](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L211)*
+*Defined in [src/apis/avm/inputs.ts:198](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/inputs.ts#L198)*
 
 Class representing an [TransferableInput](avmapi_inputs.transferableinput.md) for a transaction.
 
@@ -58,7 +58,7 @@ Name | Type | Default | Description |
 
 • **assetid**: *Buffer* = Buffer.alloc(32)
 
-*Defined in [apis/avm/inputs.ts:121](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L121)*
+*Defined in [src/apis/avm/inputs.ts:117](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/inputs.ts#L117)*
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 • **input**: *[Input](avmapi_inputs.input.md)*
 
-*Defined in [apis/avm/inputs.ts:122](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L122)*
+*Defined in [src/apis/avm/inputs.ts:119](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/inputs.ts#L119)*
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 • **outputidx**: *Buffer* = Buffer.alloc(4)
 
-*Defined in [apis/avm/inputs.ts:120](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L120)*
+*Defined in [src/apis/avm/inputs.ts:115](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/inputs.ts#L115)*
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 • **txid**: *Buffer* = Buffer.alloc(32)
 
-*Defined in [apis/avm/inputs.ts:119](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L119)*
+*Defined in [src/apis/avm/inputs.ts:113](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/inputs.ts#L113)*
 
 ## Methods
 
@@ -90,7 +90,7 @@ ___
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-*Defined in [apis/avm/inputs.ts:179](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L179)*
+*Defined in [src/apis/avm/inputs.ts:166](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/inputs.ts#L166)*
 
 Takes a [Buffer](https://github.com/feross/buffer) containing an [TransferableInput](avmapi_inputs.transferableinput.md), parses it, populates the class, and returns the length of the [TransferableInput](avmapi_inputs.transferableinput.md) in bytes.
 
@@ -111,7 +111,7 @@ ___
 
 ▸ **getAssetID**(): *Buffer*
 
-*Defined in [apis/avm/inputs.ts:168](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L168)*
+*Defined in [src/apis/avm/inputs.ts:157](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/inputs.ts#L157)*
 
 Returns the assetID of the input.
 
@@ -123,7 +123,7 @@ ___
 
 ▸ **getInput**(): *[Input](avmapi_inputs.input.md)*
 
-*Defined in [apis/avm/inputs.ts:161](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L161)*
+*Defined in [src/apis/avm/inputs.ts:152](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/inputs.ts#L152)*
 
 Returns the input.
 
@@ -135,7 +135,7 @@ ___
 
 ▸ **getOutputIdx**(): *Buffer*
 
-*Defined in [apis/avm/inputs.ts:146](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L146)*
+*Defined in [src/apis/avm/inputs.ts:140](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/inputs.ts#L140)*
 
 Returns a [Buffer](https://github.com/feross/buffer)  of the OutputIdx.
 
@@ -147,7 +147,7 @@ ___
 
 ▸ **getTxID**(): *Buffer*
 
-*Defined in [apis/avm/inputs.ts:138](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L138)*
+*Defined in [src/apis/avm/inputs.ts:133](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/inputs.ts#L133)*
 
 Returns a [Buffer](https://github.com/feross/buffer) of the TxID.
 
@@ -159,7 +159,7 @@ ___
 
 ▸ **getUTXOID**(): *string*
 
-*Defined in [apis/avm/inputs.ts:154](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L154)*
+*Defined in [src/apis/avm/inputs.ts:147](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/inputs.ts#L147)*
 
 Returns a base-58 string representation of the UTXOID this [TransferableInput](avmapi_inputs.transferableinput.md) references.
 
@@ -171,7 +171,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-*Defined in [apis/avm/inputs.ts:195](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L195)*
+*Defined in [src/apis/avm/inputs.ts:182](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/inputs.ts#L182)*
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [TransferableInput](avmapi_inputs.transferableinput.md).
 
@@ -183,7 +183,7 @@ ___
 
 ▸ **toString**(): *string*
 
-*Defined in [apis/avm/inputs.ts:208](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L208)*
+*Defined in [src/apis/avm/inputs.ts:195](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/inputs.ts#L195)*
 
 Returns a base-58 representation of the [TransferableInput](avmapi_inputs.transferableinput.md).
 
@@ -195,7 +195,7 @@ ___
 
 ▸ **comparator**(): *function*
 
-*Defined in [apis/avm/inputs.ts:127](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/inputs.ts#L127)*
+*Defined in [src/apis/avm/inputs.ts:124](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/inputs.ts#L124)*
 
 Returns a function used to sort an array of [TransferableInput](avmapi_inputs.transferableinput.md)s
 

@@ -13,16 +13,15 @@
 * [AVMKeyPair](avalanche.md#avmkeypair)
 * [Address](avalanche.md#address)
 * [Admin](avalanche.md#admin)
-* [AdminAPI](avalanche.md#adminapi)
 * [AmountInput](avalanche.md#amountinput)
 * [AmountOutput](avalanche.md#amountoutput)
 * [Base58](avalanche.md#base58)
 * [BaseTx](avalanche.md#basetx)
 * [CreateAssetTx](avalanche.md#createassettx)
 * [Credential](avalanche.md#credential)
-* [CryptoHelpers](avalanche.md#cryptohelpers)
 * [Defaults](avalanche.md#defaults)
 * [Health](avalanche.md#health)
+* [Info](avalanche.md#info)
 * [InitialStates](avalanche.md#initialstates)
 * [Input](avalanche.md#input)
 * [JRPCAPI](avalanche.md#jrpcapi)
@@ -30,6 +29,7 @@
 * [KeyPair](avalanche.md#keypair)
 * [Keystore](avalanche.md#keystore)
 * [MergeRule](avalanche.md#mergerule)
+* [Metrics](avalanche.md#metrics)
 * [NBytes](avalanche.md#nbytes)
 * [NFTCredential](avalanche.md#nftcredential)
 * [NFTOutBase](avalanche.md#nftoutbase)
@@ -40,6 +40,7 @@
 * [Output](avalanche.md#output)
 * [PersistanceOptions](avalanche.md#persistanceoptions)
 * [Platform](avalanche.md#platform)
+* [RESTAPI](avalanche.md#restapi)
 * [RequestResponseData](avalanche.md#requestresponsedata)
 * [SecpCredential](avalanche.md#secpcredential)
 * [SecpInput](avalanche.md#secpinput)
@@ -108,12 +109,6 @@ ___
 
 ___
 
-###  AdminAPI
-
-• **AdminAPI**:
-
-___
-
 ###  AmountInput
 
 • **AmountInput**:
@@ -150,12 +145,6 @@ ___
 
 ___
 
-###  CryptoHelpers
-
-• **CryptoHelpers**:
-
-___
-
 ###  Defaults
 
 • **Defaults**:
@@ -165,6 +154,12 @@ ___
 ###  Health
 
 • **Health**:
+
+___
+
+###  Info
+
+• **Info**:
 
 ___
 
@@ -207,6 +202,12 @@ ___
 ###  MergeRule
 
 • **MergeRule**:
+
+___
+
+###  Metrics
+
+• **Metrics**:
 
 ___
 
@@ -267,6 +268,12 @@ ___
 ###  Platform
 
 • **Platform**:
+
+___
+
+###  RESTAPI
+
+• **RESTAPI**:
 
 ___
 

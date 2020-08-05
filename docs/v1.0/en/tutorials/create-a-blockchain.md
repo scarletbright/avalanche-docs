@@ -2,8 +2,8 @@
 
 ## Introduction
 
-One of the core features of the AVA network is the ability to create new blockchains.
-AVA currently supports creation of new instances of the AVM (the Virtual Machine the X-Chain runs) and the Timestamp VM.
+One of the core features of the Avalanche network is the ability to create new blockchains.
+Avalanche currently supports creation of new instances of the AVM (the Virtual Machine the X-Chain runs) and the Timestamp VM.
 
 In this tutorial we'll create a new instance of the AVM.
 
@@ -173,7 +173,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.createBlockchain",
     "params" : {
-    	"subnetID": "KL1e8io1Zi2kr8cTXxvi321pAzfQuUa8tmBfadqpf9K2dc2TT",
+        "subnetID": "KL1e8io1Zi2kr8cTXxvi321pAzfQuUa8tmBfadqpf9K2dc2TT",
         "vmID":"avm",
         "name":"My new AVM",
         "payerNonce":8,
@@ -203,17 +203,17 @@ This is the same thing we do when adding a validator to a Subnet.
 (As a reminder, you can find out what a Subnet's threshold and control keys are by calling [`platform.getSubnet`.](../api/platform.md#platformgetsubnet))
 
 Suppose that the Subnet has threshold 1 and user `bob` has control key `4sEEgYu1mrFyyEQotuTBTxrRnYJ61SAAn`.
-Then to sign the transaction: 
+Then to sign the transaction:
 
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.sign",
     "params": {
-    	"tx":"111KqXN6mRBbpZt1Mzmjuk4wmnBBpyWu62DWr18HUFa69DqEHdQMqAXiWnd1pzrWcBMWy69chiLc1qFoGEDxoKdas1JQJp58r8mbFJNcUfdj4QvJpdUTMSttb5HZUH9iGB1ZpdPyWepwuxFwqJgBs2qtVGtt2mSahvY1CDBQK5FVMhh85NBskgeNHDxyhxXPxz1JwAGtHma6KdE1pQKps9NX57tP1nqVtheDtSH7VkJJtNpQ8Dj1FCsVZtWm7nMGg7MK1YNEhgm2HBMV14qF1AujEn8onJWJGb5sakbgieghGFNwpyEwiBkoKSxHDoxvD9HiGdquT7froaYNsWQeJGUMJ21EpRnwffPsNN6S4zFPCdJ3MGvaLWdmfmmCm37nj4QaVQh4kEfZb7qN3txYCS2a3vvCyJ9fMDp5YnZidDx3NGWJcaMVzBBLNMD5cP54GhXdSJzJmxC2EKCtRqp62VFSoYW7iVnnQU7bw91JMkxvyW4inMj11GqmoZQhMTwU4eeDQeJy6CQrf1fYTjNEQBcy31mrqgRujJDp3LRbfMhEfQ12CZeAoyEFXRH58Jdg2pE6Ez5RaPkRUJHfXTjNYiio71RYEiByGNZs7tAbDApxPWJZzracqsDsaRMT5JmUCd5XUh9HyaXgwyLNZ6YsJLCQ9MKm4iwj2qAdWpAT1oGDYJpif2fUFNrTzNftcwsx5P9ZLjPc3FQdMTx2abiUSEyX2VqXGN4pfXCZedoozFKe9AdZV8bMerG6nYhzvE2s7wUYPwvRz1RjXgRi1aEcAmHRkLprWhBa9FHtcbQPWBpfxD7fEwTk6qLjGWPFCkgYPgB9pGbGRYW6zkECiPfzd8e1J9qFJm4FMtm1GFT9MmHHbRcRbodareyZc28YMx4JjaU3iLQ4ivkNPWBC2R27oU1L3uz1vheUHHFpMLGZZBJzbKvoXKxkydm6e",
-    	"signer":"4sEEgYu1mrFyyEQotuTBTxrRnYJ61SAAn",
-    	"username":"bob",
-    	"password":"correct horse battery staple"
+        "tx":"111KqXN6mRBbpZt1Mzmjuk4wmnBBpyWu62DWr18HUFa69DqEHdQMqAXiWnd1pzrWcBMWy69chiLc1qFoGEDxoKdas1JQJp58r8mbFJNcUfdj4QvJpdUTMSttb5HZUH9iGB1ZpdPyWepwuxFwqJgBs2qtVGtt2mSahvY1CDBQK5FVMhh85NBskgeNHDxyhxXPxz1JwAGtHma6KdE1pQKps9NX57tP1nqVtheDtSH7VkJJtNpQ8Dj1FCsVZtWm7nMGg7MK1YNEhgm2HBMV14qF1AujEn8onJWJGb5sakbgieghGFNwpyEwiBkoKSxHDoxvD9HiGdquT7froaYNsWQeJGUMJ21EpRnwffPsNN6S4zFPCdJ3MGvaLWdmfmmCm37nj4QaVQh4kEfZb7qN3txYCS2a3vvCyJ9fMDp5YnZidDx3NGWJcaMVzBBLNMD5cP54GhXdSJzJmxC2EKCtRqp62VFSoYW7iVnnQU7bw91JMkxvyW4inMj11GqmoZQhMTwU4eeDQeJy6CQrf1fYTjNEQBcy31mrqgRujJDp3LRbfMhEfQ12CZeAoyEFXRH58Jdg2pE6Ez5RaPkRUJHfXTjNYiio71RYEiByGNZs7tAbDApxPWJZzracqsDsaRMT5JmUCd5XUh9HyaXgwyLNZ6YsJLCQ9MKm4iwj2qAdWpAT1oGDYJpif2fUFNrTzNftcwsx5P9ZLjPc3FQdMTx2abiUSEyX2VqXGN4pfXCZedoozFKe9AdZV8bMerG6nYhzvE2s7wUYPwvRz1RjXgRi1aEcAmHRkLprWhBa9FHtcbQPWBpfxD7fEwTk6qLjGWPFCkgYPgB9pGbGRYW6zkECiPfzd8e1J9qFJm4FMtm1GFT9MmHHbRcRbodareyZc28YMx4JjaU3iLQ4ivkNPWBC2R27oU1L3uz1vheUHHFpMLGZZBJzbKvoXKxkydm6e",
+        "signer":"4sEEgYu1mrFyyEQotuTBTxrRnYJ61SAAn",
+        "username":"bob",
+        "password":"correct horse battery staple"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
@@ -242,10 +242,10 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.sign",
     "params": {
-    	"tx":"1118LY8kjED4Fz83KX7r7HZ1jPPBMYBfRs7TPg32UfKktNiKw6L5m4kqDhWym4i7sNZsaEdcqdCUeYVpQYw8ydrfTKo9rJyvEHJXuiSbVJp5FGHgqfrmSB4yFkkYWLZjqFbWsj7dCxLaHUCTLYePRQqnvH6Vu8FnVk6JQzD7Sz3cNL3CPzJ2GMnzFbQtwdoQkzQL8PWXstQYmwo2VGU7LZnPaHr28zEv5q6EAo7c7dcL4aiC6pmX5XRpkvSB2mfrKSFK2XAAitmxxpCtkS5G8vLt4z36rzuq6F2T2zudL87TLPG6KqbZVPGBG4y9RkzQTMuPvaDx7BYfMXasvikWcHxQo3WCcHkeLaLCFwbwby82iBXaSHXe9Z3jvpoXjFcnmdrWMDvztp3d8c31WmEg2cudvvRqXNTaichWo7iME8KY3Kgf7xSCUWh4YjpbwdM5iYcAxPVZ2WxK53gbS6z2p9Hz1PKYoQyPjjmXQf2H65R2ZjdG4JsnXWw7a7d2WMbfKMYJQQHLzRv6hfp89LXE5368YCm2WzSJPSJxZFfVwX2rNGq34oL72Efvti6TGz6zT5aJdgqsN4QqDUBD5tNQ54B7hE3nDN66Rj1wsd3snfCBHSqpnvKLk3N9g5AZDLf6s5mRjbjrgcbvYMxiVNp4QVwW3gUTS1eEmyg9A5Ebpa4w9vKQBx8B5GuQaKmE4LV5epsM1tzh9MCJaYLUq6EGiQ9pr9Wp9VWqzULiMjuHwaQ2igyhDAcAJSgBhwN4ZtSSvvcFEnpeeSFkg7y5NxzKgsYKZG9xapKV4rkZmwccNNa7heH6yY1oFoiJn4TCtTpEmGgpt57JAQoLkQ3L2d5SahGqKsZWuwTE11EocDV2aqffptsAMTw86ax3asRXfW3BoCLaMncEKzzCeShPZJaJyKCYAF7mK5zurLz9akbNxwvML4fcNX7Bg6zqhrQoFRAiTUHzxEJ2kpubgWmzuUZHBEVpLKwZm5YY8bkVF3AXEPF4NuXdXezov2xAFcuSuy56uAMDQeEwTokYRAZzCH",
-    	"signer":"6Y3kysjF9jnHnYkdS9yGAuoHyae2eNmeV",
-    	"username":"bob",
-    	"password":"correct horse battery staple"
+        "tx":"1118LY8kjED4Fz83KX7r7HZ1jPPBMYBfRs7TPg32UfKktNiKw6L5m4kqDhWym4i7sNZsaEdcqdCUeYVpQYw8ydrfTKo9rJyvEHJXuiSbVJp5FGHgqfrmSB4yFkkYWLZjqFbWsj7dCxLaHUCTLYePRQqnvH6Vu8FnVk6JQzD7Sz3cNL3CPzJ2GMnzFbQtwdoQkzQL8PWXstQYmwo2VGU7LZnPaHr28zEv5q6EAo7c7dcL4aiC6pmX5XRpkvSB2mfrKSFK2XAAitmxxpCtkS5G8vLt4z36rzuq6F2T2zudL87TLPG6KqbZVPGBG4y9RkzQTMuPvaDx7BYfMXasvikWcHxQo3WCcHkeLaLCFwbwby82iBXaSHXe9Z3jvpoXjFcnmdrWMDvztp3d8c31WmEg2cudvvRqXNTaichWo7iME8KY3Kgf7xSCUWh4YjpbwdM5iYcAxPVZ2WxK53gbS6z2p9Hz1PKYoQyPjjmXQf2H65R2ZjdG4JsnXWw7a7d2WMbfKMYJQQHLzRv6hfp89LXE5368YCm2WzSJPSJxZFfVwX2rNGq34oL72Efvti6TGz6zT5aJdgqsN4QqDUBD5tNQ54B7hE3nDN66Rj1wsd3snfCBHSqpnvKLk3N9g5AZDLf6s5mRjbjrgcbvYMxiVNp4QVwW3gUTS1eEmyg9A5Ebpa4w9vKQBx8B5GuQaKmE4LV5epsM1tzh9MCJaYLUq6EGiQ9pr9Wp9VWqzULiMjuHwaQ2igyhDAcAJSgBhwN4ZtSSvvcFEnpeeSFkg7y5NxzKgsYKZG9xapKV4rkZmwccNNa7heH6yY1oFoiJn4TCtTpEmGgpt57JAQoLkQ3L2d5SahGqKsZWuwTE11EocDV2aqffptsAMTw86ax3asRXfW3BoCLaMncEKzzCeShPZJaJyKCYAF7mK5zurLz9akbNxwvML4fcNX7Bg6zqhrQoFRAiTUHzxEJ2kpubgWmzuUZHBEVpLKwZm5YY8bkVF3AXEPF4NuXdXezov2xAFcuSuy56uAMDQeEwTokYRAZzCH",
+        "signer":"6Y3kysjF9jnHnYkdS9yGAuoHyae2eNmeV",
+        "username":"bob",
+        "password":"correct horse battery staple"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
@@ -272,7 +272,7 @@ To issue the transaction to the network we call `platforn.issueTx`:
     "jsonrpc": "2.0",
     "method": "platform.issueTx",
     "params": {
-    	"tx":"1118LY8kjED4Fz83KX7r7HZ1jPPBMYBfRs7TPg32UfKktNiKw6L5m4kqDhWym4i7sNZsaEdcqdCUeYVpQYw8ydrfTKo9rJyvEHJXuiSbVJp5FGHgqfrmSB4yFkkYWLZjqFbWsj7dCxLaHUCTLYePRQqnvH6Vu8FnVk6JQzD7Sz3cNL3CPzJ2GMnzFbQtwdoQkzQL8PWXstQYmwo2VGU7LZnPaHr28zEv5q6EAo7c7dcL4aiC6pmX5XRpkvSB2mfrKSFK2XAAitmxxpCtkS5G8vLt4z36rzuq6F2T2zudL87TLPG6KqbZVPGBG4y9RkzQTMuPvaDx7BYfMXasvikWcHxQo3WCcHkeLaLCFwbwby82iBXaSHXe9Z3jvpoXjFcnmdrWMDvztp3d8c31WmEg2cudvvRqXNTaichWo7iME8KY3Kgf7xSCUWh4YjpbwdM5iYcAxPVZ2WxK53gbS6z2p9Hz1PKYoQyPjjmXQf2H65R2ZjdG4JsnXWw7a7d2WMbfKMYJQQHLzRv6hfp89LXE5368YCm2WzSJPSJxZFfVwX2rNGq34oL72Efvti6TGz6zT5aJdgqsN4QqDUBD5tNQ54B7hE3nDN66Rj1wsd3snfCBHSqpnvKLk3N9g5AZDLf6s5mRjbjrgcbvYMxiVNp4QVwW3gUTS1eEmyg9A5Ebpa4w9vKQBx8B5GuQaKmE4LV5epsM1tzh9MCJaYLUq6EGiQ9pr9Wp9VWqzULiMjuHwaQ2igyhDAcAJSgBhwN4ZtSSvvcFEnpeeSFkg7y5NxzKgsYKZG9xapKV4rkZmwccNNa7heH6yY1oFoiJn4TCtTpEmGgpt57JAQoLkQ3L2d5Sao6GguTGEGoLFt3mKdU12akA7xWD7dE7C3dieobVYY66y9Gim5bYgK44YpHrBwcwkhxABmPGTCExZBqd8E6wdzQCnJ4LbGZnrwV9KExThGLxexyTN24RbRn9EHUNF1gmWknRNZ1rnWB9fBPA8X8kwkKF8YZGoYS7MhzAyhCKjLui9mAcs17VzWpAHAEJ8V"
+        "tx":"1118LY8kjED4Fz83KX7r7HZ1jPPBMYBfRs7TPg32UfKktNiKw6L5m4kqDhWym4i7sNZsaEdcqdCUeYVpQYw8ydrfTKo9rJyvEHJXuiSbVJp5FGHgqfrmSB4yFkkYWLZjqFbWsj7dCxLaHUCTLYePRQqnvH6Vu8FnVk6JQzD7Sz3cNL3CPzJ2GMnzFbQtwdoQkzQL8PWXstQYmwo2VGU7LZnPaHr28zEv5q6EAo7c7dcL4aiC6pmX5XRpkvSB2mfrKSFK2XAAitmxxpCtkS5G8vLt4z36rzuq6F2T2zudL87TLPG6KqbZVPGBG4y9RkzQTMuPvaDx7BYfMXasvikWcHxQo3WCcHkeLaLCFwbwby82iBXaSHXe9Z3jvpoXjFcnmdrWMDvztp3d8c31WmEg2cudvvRqXNTaichWo7iME8KY3Kgf7xSCUWh4YjpbwdM5iYcAxPVZ2WxK53gbS6z2p9Hz1PKYoQyPjjmXQf2H65R2ZjdG4JsnXWw7a7d2WMbfKMYJQQHLzRv6hfp89LXE5368YCm2WzSJPSJxZFfVwX2rNGq34oL72Efvti6TGz6zT5aJdgqsN4QqDUBD5tNQ54B7hE3nDN66Rj1wsd3snfCBHSqpnvKLk3N9g5AZDLf6s5mRjbjrgcbvYMxiVNp4QVwW3gUTS1eEmyg9A5Ebpa4w9vKQBx8B5GuQaKmE4LV5epsM1tzh9MCJaYLUq6EGiQ9pr9Wp9VWqzULiMjuHwaQ2igyhDAcAJSgBhwN4ZtSSvvcFEnpeeSFkg7y5NxzKgsYKZG9xapKV4rkZmwccNNa7heH6yY1oFoiJn4TCtTpEmGgpt57JAQoLkQ3L2d5Sao6GguTGEGoLFt3mKdU12akA7xWD7dE7C3dieobVYY66y9Gim5bYgK44YpHrBwcwkhxABmPGTCExZBqd8E6wdzQCnJ4LbGZnrwV9KExThGLxexyTN24RbRn9EHUNF1gmWknRNZ1rnWB9fBPA8X8kwkKF8YZGoYS7MhzAyhCKjLui9mAcs17VzWpAHAEJ8V"
     },
     "id": 1
 }
@@ -289,7 +289,6 @@ The response contains the transaction's ID, which is also the ID of the new bloc
     "id": 1
 }
 ```
-
 
 ## Verify Success
 
@@ -363,7 +362,7 @@ You can interact with this new instance of the AVM almost the same way you'd int
 There are two small differences:
 
 * The API endpoint of your blockchain is `127.0.0.1:9650/ext/bc/zpFTwJwzPh3b9N6Ahccy4fXdJFHJJdhGah5z731J6ZspcYKpK`.
-* Addresses are prepended with `zpFTwJwzPh3b9N6Ahccy4fXdJFHJJdhGah5z731J6ZspcYKpK-` rather than `X-`. 
+* Addresses are prepended with `zpFTwJwzPh3b9N6Ahccy4fXdJFHJJdhGah5z731J6ZspcYKpK-` rather than `X-`.
 
 In the genesis data we specified that address `8UeduLccQuSmYiY3fGQEyotM9uXxoHoQQ` has 100,000 units of the asset with alias `asset1`.
 Let's verify that:
@@ -371,7 +370,7 @@ Let's verify that:
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :2,
+    "id"     :1,
     "method" :"avm.getBalance",
     "params" :{
         "address":"zpFTwJwzPh3b9N6Ahccy4fXdJFHJJdhGah5z731J6ZspcYKpK-8UeduLccQuSmYiY3fGQEyotM9uXxoHoQQ",

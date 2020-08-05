@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This tutorial illustrates how AVA can be used to create and trade a fixed-cap, fungible asset.
+This tutorial illustrates how Avalanche can be used to create and trade a fixed-cap, fungible asset.
 A quantity of the asset is created at the asset's initialization, and then no more is ever created. 
 
 Suppose there is an Income Sharing Agreement (ISA) with 10M shares, and no more shares are ever created.
@@ -35,8 +35,8 @@ avm.createFixedCapAsset({
 * `name` is a human-readable name for the asset. Not necessarily unique.
 * `symbol` is a shorthand symbol for the asset. Between 0 and 4 characters. Not necessarily unique. May be omitted.
 * `denomination` determines how balances of this asset are displayed by user interfaces. If denomination is 0, 100 units of this asset are displayed as 100. If denomination is 1, 100 units of this asset are displayed as 10.0. If denomination is 2, 100 units of this asset are displays as .100, etc.
-* Performing a transaction on the X-Chain will require a transaction fee in AVA in the future. `username` and `password` denote the user paying the fee.
-  That user will need to hold enough AVA to cover the fee.
+* Performing a transaction on the X-Chain will require a transaction fee in AVAX in the future. `username` and `password` denote the user paying the fee.
+  That user will need to hold enough AVAX to cover the fee.
   Since there are no transaction fees right now, you can leave `username` and `password` blank.
 * Each element in `initialHolders` specifies that `address` holds `amount` units of the asset at genesis.
 * `assetID` is the ID of the new asset.
@@ -88,7 +88,7 @@ To verify this we call `avm.getBalance`:
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :2,
+    "id"     :1,
     "method" :"avm.getBalance",
     "params" :{
         "address":"X-Dxs8JWAzDZX1VXcLZT5GZR7TyfX8h9ic9",
@@ -102,7 +102,7 @@ The response confirms that our asset creation was successful, and that the expec
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :2,
+    "id"     :1,
     "result" :{
         "balance":10000000
     }
@@ -119,7 +119,7 @@ Therefore, this time we'll need to fill in `username` and `password`.
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "method" :"avm.send",
     "params" :{
         "username":"yourUsername",
@@ -138,7 +138,7 @@ The response from the above call should look like this:
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :3,
+    "id"     :1,
     "result" :{
         "txID":"2EAgR1YbsaJrwFiU4DpwjUfTLkt97WrjQYYNQny13AheewnxSR"
     }
@@ -153,7 +153,7 @@ We can check the status of the transaction with `avm.getTxStatus`:
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :4,
+    "id"     :1,
     "method" :"avm.getTxStatus",
     "params" :{
         "txID":"2EAgR1YbsaJrwFiU4DpwjUfTLkt97WrjQYYNQny13AheewnxSR"
@@ -166,7 +166,7 @@ The response should look like this
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :4,
+    "id"     :1,
     "result" :{
         "status":"Accepted"
     }
@@ -180,7 +180,7 @@ Now let's check the balance of the `to` address:
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :6,
+    "id"     :1,
     "method" :"avm.getBalance",
     "params" :{
         "address":"X-9R5xWj1DkMtGVDQmyTB4uNnvYdCnj57pa",
@@ -194,7 +194,7 @@ The response should be:
 ```json
 {
     "jsonrpc":"2.0",
-    "id"     :6,
+    "id"     :1,
     "result" :{
         "balance":100
     }
