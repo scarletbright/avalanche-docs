@@ -1285,7 +1285,7 @@ A UTXO contains signed transaction contains a `CodecID`, `TxID`, `UTXOIndex`, an
 +--------------+----------+-------------------------+
 | output       : Output   |      size(output) bytes |
 +--------------+----------+-------------------------+
-                          | 68 + size(output) bytes |
+                          | 70 + size(output) bytes |
                           +-------------------------+
 ```
 
@@ -1293,7 +1293,7 @@ A UTXO contains signed transaction contains a `CodecID`, `TxID`, `UTXOIndex`, an
 
 ```protobuf
 message Utxo {
-    uint16 codec_id = 1;         // 02 bytes
+    uint16 codec_id = 1;     // 02 bytes
     bytes tx_id = 1;         // 32 bytes
     uint32 output_index = 2; // 04 bytes
     bytes asset_id = 3;      // 32 bytes
