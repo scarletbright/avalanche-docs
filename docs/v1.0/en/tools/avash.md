@@ -1,21 +1,21 @@
 ---
 title: "Avash"
-excerpt: "The AVA Shell Client"
+excerpt: "The Avalanche Shell Client"
 ---
-Avash is a temporary stateful shell execution environment used to deploy local and remote networks and run tests on them. AVA nodes locally deployed by Avash are exited when Avash exits.
+Avash is a temporary stateful shell execution environment used to deploy local and remote networks and run tests on them. Avalanche nodes locally deployed by Avash are exited when Avash exits.
 
-Avash provides the ability to run Lua scripts which can execute a sequence of shell commands in Avash. This allows for automation of regular tasks. For instance, one could create a Lua script to deploy a network of AVA nodes where each node has some given configuration. This makes testing easier.
+Avash provides the ability to run Lua scripts which can execute a sequence of shell commands in Avash. This allows for automation of regular tasks. For instance, one could create a Lua script to deploy a network of Avalanche nodes where each node has some given configuration. This makes testing easier.
 
 ## Installation
 
 ### Requirements
 
   * Golang 1.13+
-  * An AVA Client Implementing AVA Standard CLI Flags"
+  * An Avalanche Client Implementing Avalanche Standard CLI Flags"
 
 ### Quick Setup
 
- 1. Install and build an AVA client
+ 1. Install and build an Avalanche client
  2. `cd $GOPATH`
  3. `go get github.com/ava-labs/avash`
  3. `cd src/github.com/ava-labs/avash`
@@ -47,7 +47,7 @@ The field arguments are described as follows:
 #### `avalocation`
 
 ```
-File path to AVA binary.
+File path to Avalanche binary.
 
 Type:
   optional, <filepath>
@@ -125,7 +125,7 @@ help procmanager start
 
 Avash comes with the following root commands:
 
- * `avawallet` - Tools for interacting with AVA Payments over the network.
+ * `avawallet` - Tools for interacting with Avalanche Payments over the network.
  * `callrpc` - Issues an RPC call to a node.
  * `exit` - Exit the shell.
  * `help` - Help about any command.
@@ -143,7 +143,7 @@ These can be enumerated or auto-completed using the tab key and are explained in
 **Warning**: Like all things in Avash, this wallet is temporarily held in memory and all data is cleaned up on exit. This should be used for testing.
 
 ```
-Tools for interacting with AVA Payments over the network. Using this 
+Tools for interacting with Avalanche Payments over the network. Using this 
 	command we can create, send, and get the status of a transaction.
 
 Usage:
@@ -225,7 +225,7 @@ hosts:
         # ...
 ```
 
-This format can be scaled to simultaneously deploy many nodes on many hosts, using `-` in YAML syntax to add new elements to the host list and each host's node list. A full list of CLI flags can be found [here](https://docs.ava.network/v1.0/en/references/command-line-interface/), where `--node-flag` corresponds to `nodeflag` in our configuration file.
+This format can be scaled to simultaneously deploy many nodes on many hosts, using `-` in YAML syntax to add new elements to the host list and each host's node list. A full list of CLI flags can be found [here](../../references/command-line-interface/), where `--node-flag` corresponds to `nodeflag` in our configuration file.
 
 #### `procmanager`
 
@@ -279,10 +279,10 @@ Usage:
 
 Flags:
       --assertions-enabled                   Turn on assertion execution. (default true)
-      --ava-tx-fee uint                      Ava transaction fee, in nAVA.
+      --ava-tx-fee uint                      Ava transaction fee, in nAVAX.
       --bootstrap-ids string                 Comma separated list of bootstrap peer ids to connect to. Example: JR4dVmy6ffUGAKCBDkyCbeZbyHQBeDsET,8CrVPQZ4VSqgL8zTdvL14G8HqAfrBr4z
       --bootstrap-ips string                 Comma separated list of bootstrap nodes to connect to. Example: 127.0.0.1:9630,127.0.0.1:9620
-      --client-location string               Path to AVA node client, defaulting to the config file's value.
+      --client-location string               Path to Avalanche node client, defaulting to the config file's value.
       --data-dir string                      Name of directory for the data stash.
       --db-dir string                        Database directory for Ava state. (default "db1")
       --db-enabled                           Turn on persistent storage. (default true)

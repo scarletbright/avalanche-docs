@@ -1,17 +1,17 @@
-# Avalanche.js - The AVA Platform JavaScript Library
+# Avalanche.js - The Avalanche Platform JavaScript Library
 
 ## Overview
 
-Avalanche.js is a JavaScript Library for interfacing with the AVA Platform. It is built using TypeScript and intended to support both browser and Node.js. The Avalanche.js library allows one to issue commands to the AVA node APIs. 
+Avalanche.js is a JavaScript Library for interfacing with the Avalanche Platform. It is built using TypeScript and intended to support both browser and Node.js. The Avalanche.js library allows one to issue commands to the Avalanche node APIs. 
 
 The APIs currently supported by default are:
 
-  * The AVA Virtual Machine (AVM) API
+  * The Avalanche Virtual Machine (AVM) API
   * The Keystore API
   * The Admin API
   * The Platform API
 
-We built Avalanche.js with ease of use in mind. With this library, any Javascript developer is able to interact with a node on the AVA Platform who has enabled their API endpoints for the developer's consumption. We keep the library up-to-date with the latest changes in the [AVA Platform Specification](https://docs.ava.network). 
+We built Avalanche.js with ease of use in mind. With this library, any Javascript developer is able to interact with a node on the Avalanche Platform who has enabled their API endpoints for the developer's consumption. We keep the library up-to-date with the latest changes in the [Avalanche Platform Specification](https://docs.avax.network). 
 
   Using Avalanche.js, developers can:
 
@@ -22,7 +22,7 @@ We built Avalanche.js with ease of use in mind. With this library, any Javascrip
   * Issue signed transactions to the AVM
   * Create a Subnetwork
   * Administer a local node
-  * Retrieve AVA network information from a node
+  * Retrieve Avalanche network information from a node
 
 ## Requirements
 

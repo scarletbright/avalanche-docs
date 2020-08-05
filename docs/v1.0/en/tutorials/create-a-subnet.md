@@ -65,8 +65,8 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.createAccount",
     "params": {
-    	"username":"USERNAME 1 GOES HERE",
-    	"password":"PASSWORD 1 GOES HERE"
+        "username":"USERNAME 1 GOES HERE",
+        "password":"PASSWORD 1 GOES HERE"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
@@ -92,10 +92,10 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.createAccount",
     "params": {
-    	"username":"USERNAME 2 GOES HERE",
-    	"password":"PASSWORD 2 GOES HERE"
+        "username":"USERNAME 2 GOES HERE",
+        "password":"PASSWORD 2 GOES HERE"
     },
-    "id": 2
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -107,7 +107,7 @@ The response contains the second control key, which is held by the user we just 
     "result": {
         "address": "Aiz4eEt5xv9t4NCnAWaQJFNz5ABqLtJkR"
     },
-    "id": 2
+    "id": 1
 }
 ```
 
@@ -121,14 +121,14 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.createSubnet",
     "params": {
-    	"controlKeys":[
-    		"KNjXsaA1sZsaKCD1cd85YXauDuxshTes2",
-    		"Aiz4eEt5xv9t4NCnAWaQJFNz5ABqLtJkR"
-    	],
-    	"threshold":2,
-    	"payerNonce":1
+        "controlKeys":[
+            "KNjXsaA1sZsaKCD1cd85YXauDuxshTes2",
+            "Aiz4eEt5xv9t4NCnAWaQJFNz5ABqLtJkR"
+        ],
+        "threshold":2,
+        "payerNonce":1
     },
-    "id": 3
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -140,25 +140,25 @@ The response gives us the unsigned transaction:
     "result": {
         "unsignedTx": "1112LA7e8GvkGHDkxZa9Q7kszr1HN6ppLb9KCUv41BzceP3uyzYFQN1jUgZdAjchGkGPXYJn9P1N36qdxpSaGLotkCZv4UXUToksTiGHBK3nGB1J2sxfgsqjfH1TesstRqqX2QDF5k6DP2E6JWni89fZvZGZPdPWoTp5de3iePnTPNMgSn"
     },
-    "id": 3
+    "id": 1
 }
 ```
 
 ## Sign the Transaction
 
-Now we sign the unsigned transaction with the key of the account that pays the transaction fee:
+Now we sign the unsigned transaction with the key of the P Chain account that pays the transaction fee:
 
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.sign",
     "params": {
-    	"tx":"1112LA7e8GvkGHDkxZa9Q7kszr1HN6ppLb9KCUv41BzceP3uyzYFQN1jUgZdAjchGkGPXYJn9P1N36qdxpSaGLotkCZv4UXUToksTiGHBK3nGB1J2sxfgsqjfH1TesstRqqX2QDF5k6DP2E6JWni89fZvZGZPdPWoTp5de3iePnTPNMgSn",
-    	"signer":"6Y3kysjF9jnHnYkdS9yGAuoHyae2eNmeV",
-    	"username":"USER THAT CONTROLS ACCOUNT PAYING FEE",
-    	"password":"THEIR PASSWORD"
+        "tx":"1112LA7e8GvkGHDkxZa9Q7kszr1HN6ppLb9KCUv41BzceP3uyzYFQN1jUgZdAjchGkGPXYJn9P1N36qdxpSaGLotkCZv4UXUToksTiGHBK3nGB1J2sxfgsqjfH1TesstRqqX2QDF5k6DP2E6JWni89fZvZGZPdPWoTp5de3iePnTPNMgSn",
+        "signer":"6Y3kysjF9jnHnYkdS9yGAuoHyae2eNmeV",
+        "username":"USER THAT CONTROLS ACCOUNT PAYING FEE",
+        "password":"THEIR PASSWORD"
     },
-    "id": 4
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -170,7 +170,7 @@ And we get the signed transaction:
     "result": {
         "Tx": "1112LA7e8GvkGHDkxZa9Q7kszr1HN6ppLb9KCUv41BzceP3uyzYFQN1jUgZdAjchGkGPXYJn9P1N36qdxpSaYA31WmW6WQAa9KP5WQaToxwZoYazubE5jEVj3K2ZsrqZmEFVLRhUds4LEyngRpXGnf3x91Sf7ZKxp32yyoBRueWbRrc6Yr"
     },
-    "id": 4
+    "id": 1
 }
 ```
 
@@ -185,7 +185,7 @@ curl -X POST --data '{
     "params": {
     	"tx":"1112LA7e8GvkGHDkxZa9Q7kszr1HN6ppLb9KCUv41BzceP3uyzYFQN1jUgZdAjchGkGPXYJn9P1N36qdxpSaYA31WmW6WQAa9KP5WQaToxwZoYazubE5jEVj3K2ZsrqZmEFVLRhUds4LEyngRpXGnf3x91Sf7ZKxp32yyoBRueWbRrc6Yr"
     },
-    "id": 5
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -197,7 +197,7 @@ The transaction ID is the ID of the new Subnet:
     "result": {
         "txID": "hW8Ma7dLMA7o4xmJf3AXBbo17bXzE7xnThUd3ypM4VAWo1sNJ"
     },
-    "id": 5
+    "id": 1
 }
 ```
 
@@ -210,7 +210,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.getSubnets",
     "params": {},
-    "id": 6
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -231,7 +231,7 @@ The response confirms that our Subnet was created:
             }
         ]
     },
-    "id": 6
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -248,10 +248,10 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "keystore.exportUser",
     "params":{
-    	"username":"USERNAME 1 GOES HERE",
-    	"password":"PASSWORD 1 GOES HERE"
+        "username":"USERNAME 1 GOES HERE",
+        "password":"PASSWORD 1 GOES HERE"
     },
-    "id": 7
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/keystore
 ```
 
@@ -263,7 +263,7 @@ This gives the user's (encrypted) data:
     "result": {
         "user": "3xnxQ4r7a49tcALqnod6L9jLjQ5KEiZucQfAYZGmfQ67b62TXYsx7iKeBh8YSNu4mdkL1tDKtnSCHGQaZtJdirbyfV991yLdeyioKVcK76VzDdTcha63rQ5qXJtKGktjNL7fMdSxkYzwKhgEz2wuQiWcnoLUrDRnrj71a8VJ6m36eoZ4fspGeyncktYuRoJp8ppVzUKiFf5T4BWpwet4Y6gbkc44v9rYo4Qo7XcDuPHMJ7ZWKX7ZTHtAvEhkpUP1jVvKCxhrFqF4ftomrhKmBQdxyRKevXA6ToFV77xicWuNkPbQ2hsGJpuN8xeWsKp514a5QDXPbuBVNuBJgHmsTSuHSsAwatjDPL2QDpvB1TZnU81XuXRs68Zcs6fFjwCGumbT29jcSBZsoSkL9uC1sK9krDLWKJGhSNWvFTYTRkJb8iw9J48xX7uf5GKT1CNKf1uLTPkFB8guBhb1obJF17TVNKyxix8LbvK9kLq7yr1zF8LzEgDoCF5Yw3yYvYJc7MFiTA3TiZcm4LKjDGhmR2zmH19fQ1SyEacSRtMkZomLrnrSQpNomrebQsnGm2Mv9es88SahdjDFHADqcxqsd5aigydCQCm2mj8beXQNqK5jRL6oYyd8rxD8WdbbkVRed5X2aMXqkWFXc97sa5ToyqyBpWXrfDg3yPjYyo29ywCd2Untt7M2TpYyUGwGZo9tYzEiS5ozGgWFN3HkZurBENjScdJgGJG3S1iwXheYgMjqhYyRTh3FgM7GU5XM56aDKWbX6HH8Xzf71mUWEH1PFvPsTvMgrYzKK9oeHbAJeh87WrrNFFJp5wmYCgyxxMtyFxHw7W3b7EoTKYw9GoaCvHRSqM1UBchy94uWKp812d7iB5e734NDzad9mikwtPwJasP8Y5i89HpPJG8NQW2Sbq2HbBvtVe4yj3FrATLNqRvGZmDjQtBFjkss2KVaRYQH3pCd4mWD7gTnDhJmpzk3j1GQXUZ7xUBgsV8QNymx5CtsVx1JRT63FuKnafr8FL3GncZLXsmQvxYaDoo9ufXXEbEuSyVDGyHGjosrabGAGuQJ7CVWQPaKbSjdSfiuXhjECjd8a688aMJZtLjh4nMorsuTW4squwo3rVSUvLqGW5eUb4gBvBhoK9RTL2F35QYAVSwEbWhut8uQ2QKLSLz8gRT2eBT3Grz8FWXpM3hKRk7xcw2ZuXLiPfsRftVsoyneAqsEQnqvN61B7wzChSzvYETjZPgEN6AqFqd1xoCXQiD7XvBnvjvVFiWt3TL6szX9Hyo3qVQH41qx82fQbxq3jjwCbrAowhd1aF1txCnxcXr5s8MNFefG2XhdPSqckTGTCRUUVAJ7m4p"
     },
-    "id": 7
+    "id": 1
 }
 ```
 
@@ -276,11 +276,11 @@ curl -X POST --data '
     "jsonrpc": "2.0",
     "method": "keystore.importUser",
     "params":{
-    	"username":"USERNAME 1 GOES HERE",
-    	"password":"PASSWORD 1 GOES HERE",
-    	"user":"3xnxQ4r7a49tcALqnod6L9jLjQ5KEiZucQfAYZGmfQ67b62TXYsx7iKeBh8YSNu4mdkL1tDKtnSCHGQaZtJdirbyfV991yLdeyioKVcK76VzDdTcha63rQ5qXJtKGktjNL7fMdSxkYzwKhgEz2wuQiWcnoLUrDRnrj71a8VJ6m36eoZ4fspGeyncktYuRoJp8ppVzUKiFf5T4BWpwet4Y6gbkc44v9rYo4Qo7XcDuPHMJ7ZWKX7ZTHtAvEhkpUP1jVvKCxhrFqF4ftomrhKmBQdxyRKevXA6ToFV77xicWuNkPbQ2hsGJpuN8xeWsKp514a5QDXPbuBVNuBJgHmsTSuHSsAwatjDPL2QDpvB1TZnU81XuXRs68Zcs6fFjwCGumbT29jcSBZsoSkL9uC1sK9krDLWKJGhSNWvFTYTRkJb8iw9J48xX7uf5GKT1CNKf1uLTPkFB8guBhb1obJF17TVNKyxix8LbvK9kLq7yr1zF8LzEgDoCF5Yw3yYvYJc7MFiTA3TiZcm4LKjDGhmR2zmH19fQ1SyEacSRtMkZomLrnrSQpNomrebQsnGm2Mv9es88SahdjDFHADqcxqsd5aigydCQCm2mj8beXQNqK5jRL6oYyd8rxD8WdbbkVRed5X2aMXqkWFXc97sa5ToyqyBpWXrfDg3yPjYyo29ywCd2Untt7M2TpYyUGwGZo9tYzEiS5ozGgWFN3HkZurBENjScdJgGJG3S1iwXheYgMjqhYyRTh3FgM7GU5XM56aDKWbX6HH8Xzf71mUWEH1PFvPsTvMgrYzKK9oeHbAJeh87WrrNFFJp5wmYCgyxxMtyFxHw7W3b7EoTKYw9GoaCvHRSqM1UBchy94uWKp812d7iB5e734NDzad9mikwtPwJasP8Y5i89HpPJG8NQW2Sbq2HbBvtVe4yj3FrATLNqRvGZmDjQtBFjkss2KVaRYQH3pCd4mWD7gTnDhJmpzk3j1GQXUZ7xUBgsV8QNymx5CtsVx1JRT63FuKnafr8FL3GncZLXsmQvxYaDoo9ufXXEbEuSyVDGyHGjosrabGAGuQJ7CVWQPaKbSjdSfiuXhjECjd8a688aMJZtLjh4nMorsuTW4squwo3rVSUvLqGW5eUb4gBvBhoK9RTL2F35QYAVSwEbWhut8uQ2QKLSLz8gRT2eBT3Grz8FWXpM3hKRk7xcw2ZuXLiPfsRftVsoyneAqsEQnqvN61B7wzChSzvYETjZPgEN6AqFqd1xoCXQiD7XvBnvjvVFiWt3TL6szX9Hyo3qVQH41qx82fQbxq3jjwCbrAowhd1aF1txCnxcXr5s8MNFefG2XhdPSqckTGTCRUUVAJ7m4p"
+        "username":"USERNAME 1 GOES HERE",
+        "password":"PASSWORD 1 GOES HERE",
+        "user":"3xnxQ4r7a49tcALqnod6L9jLjQ5KEiZucQfAYZGmfQ67b62TXYsx7iKeBh8YSNu4mdkL1tDKtnSCHGQaZtJdirbyfV991yLdeyioKVcK76VzDdTcha63rQ5qXJtKGktjNL7fMdSxkYzwKhgEz2wuQiWcnoLUrDRnrj71a8VJ6m36eoZ4fspGeyncktYuRoJp8ppVzUKiFf5T4BWpwet4Y6gbkc44v9rYo4Qo7XcDuPHMJ7ZWKX7ZTHtAvEhkpUP1jVvKCxhrFqF4ftomrhKmBQdxyRKevXA6ToFV77xicWuNkPbQ2hsGJpuN8xeWsKp514a5QDXPbuBVNuBJgHmsTSuHSsAwatjDPL2QDpvB1TZnU81XuXRs68Zcs6fFjwCGumbT29jcSBZsoSkL9uC1sK9krDLWKJGhSNWvFTYTRkJb8iw9J48xX7uf5GKT1CNKf1uLTPkFB8guBhb1obJF17TVNKyxix8LbvK9kLq7yr1zF8LzEgDoCF5Yw3yYvYJc7MFiTA3TiZcm4LKjDGhmR2zmH19fQ1SyEacSRtMkZomLrnrSQpNomrebQsnGm2Mv9es88SahdjDFHADqcxqsd5aigydCQCm2mj8beXQNqK5jRL6oYyd8rxD8WdbbkVRed5X2aMXqkWFXc97sa5ToyqyBpWXrfDg3yPjYyo29ywCd2Untt7M2TpYyUGwGZo9tYzEiS5ozGgWFN3HkZurBENjScdJgGJG3S1iwXheYgMjqhYyRTh3FgM7GU5XM56aDKWbX6HH8Xzf71mUWEH1PFvPsTvMgrYzKK9oeHbAJeh87WrrNFFJp5wmYCgyxxMtyFxHw7W3b7EoTKYw9GoaCvHRSqM1UBchy94uWKp812d7iB5e734NDzad9mikwtPwJasP8Y5i89HpPJG8NQW2Sbq2HbBvtVe4yj3FrATLNqRvGZmDjQtBFjkss2KVaRYQH3pCd4mWD7gTnDhJmpzk3j1GQXUZ7xUBgsV8QNymx5CtsVx1JRT63FuKnafr8FL3GncZLXsmQvxYaDoo9ufXXEbEuSyVDGyHGjosrabGAGuQJ7CVWQPaKbSjdSfiuXhjECjd8a688aMJZtLjh4nMorsuTW4squwo3rVSUvLqGW5eUb4gBvBhoK9RTL2F35QYAVSwEbWhut8uQ2QKLSLz8gRT2eBT3Grz8FWXpM3hKRk7xcw2ZuXLiPfsRftVsoyneAqsEQnqvN61B7wzChSzvYETjZPgEN6AqFqd1xoCXQiD7XvBnvjvVFiWt3TL6szX9Hyo3qVQH41qx82fQbxq3jjwCbrAowhd1aF1txCnxcXr5s8MNFefG2XhdPSqckTGTCRUUVAJ7m4p"
     },
-    "id": 8
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9652/ext/keystore
 ```
 
@@ -299,7 +299,7 @@ curl -X POST --data '{
             }
         ]
     },
-    "id": 8
+    "id": 1
 }
 }' -H 'content-type:application/json;' 127.0.0.1:9652/ext/P
 ```
