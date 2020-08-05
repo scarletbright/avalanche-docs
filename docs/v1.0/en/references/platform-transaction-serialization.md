@@ -12,9 +12,9 @@ The transaction identifier for a base tx is `0x0000000a`.
 
 ### What Unsigned Base Tx Contains
 
-An unsigned base tx contains a `CodecVersion`, `ID`, `NetworkID`, `BlockchainID`, `Outputs`, `Inputs`, and `Memo`.
+An unsigned base tx contains a `CodecID`, `ID`, `NetworkID`, `BlockchainID`, `Outputs`, `Inputs`, and `Memo`.
 
-- **`CodecVersion`** is a short that defines which codec version. Default is `0x0000`.
+- **`CodecID`** is a short that defines which codec version. Default is `0x0000`.
 - **`ID`** is an int that defines which transaction type this is. Default is `0x0000000a`.
 - **`NetworkID`** is an int that defines which network this transaction is meant to be issued to. This value is meant to support transaction routing and is not designed for replay attack prevention.
 - **`BlockchainID`** is a 32-byte array that defines which blockchain this transaction was issued to. This is used for replay attack prevention for transactions that could potentially be valid across network or blockchain. In practice this is always the empty ID.
@@ -62,7 +62,7 @@ message BaseTx {
 
 Let's make an unsigned base tx that uses the inputs and outputs from the previous examples:
 
-- `CodecVersion`: `0`
+- `CodecID`: `0`
 - `ID`: `10`
 - `NetworkID`: `12345`
 - `BlockchainID`: `0x000000000000000000000000000000000000000000000000000000000000000`
@@ -71,7 +71,7 @@ Let's make an unsigned base tx that uses the inputs and outputs from the previou
 
 ```splus
 [
-    CodecVersion <- 0 = 0x0000
+    CodecID <- 0 = 0x0000
     ID           <- 10 = 0x0000000a
     NetworkID    <- 12345 = 0x00003039
     BlockchainID <- 0x000000000000000000000000000000000000000000000000000000000000000
