@@ -26,7 +26,7 @@ An unsigned base tx contains a `CodecID`, `ID`, `NetworkID`, `BlockchainID`, `Ou
 
 ```boo
 +---------------+----------------------+-----------------------------------------+
-| codec_version : short                |                                 2 bytes |
+| codec_id      : short                |                                 2 bytes |
 +---------------+----------------------+-----------------------------------------+
 | id            : int                  |                                 4 bytes |
 +---------------+----------------------+-----------------------------------------+
@@ -48,7 +48,7 @@ An unsigned base tx contains a `CodecID`, `ID`, `NetworkID`, `BlockchainID`, `Ou
 
 ```protobuf
 message BaseTx {
-    uint16 codec_version = 1;    // 02 bytes
+    uint16 codec_id = 1;         // 02 bytes
     uint32 id = 2;               // 04 bytes
     uint32 network_id = 3;       // 04 bytes
     bytes blockchain_id = 4;     // 32 bytes
@@ -71,7 +71,7 @@ Let's make an unsigned base tx that uses the inputs and outputs from the previou
 
 ```splus
 [
-    CodecID <- 0 = 0x0000
+    CodecID      <- 0 = 0x0000
     ID           <- 10 = 0x0000000a
     NetworkID    <- 12345 = 0x00003039
     BlockchainID <- 0x000000000000000000000000000000000000000000000000000000000000000
@@ -84,7 +84,7 @@ Let's make an unsigned base tx that uses the inputs and outputs from the previou
 ]
 =
 [
-    // codec_version:
+    // codec_id:
     0x00, 0x00,
     // id:
     0x00, 0x00, 0x00, 0x0a,
