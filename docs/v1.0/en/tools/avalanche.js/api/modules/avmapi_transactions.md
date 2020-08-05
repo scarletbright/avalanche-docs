@@ -22,7 +22,7 @@
 
 ▸ **SelectTxClass**(`txtype`: number, ...`args`: Array‹any›): *[BaseTx](../classes/avmapi_transactions.basetx.md)*
 
-*Defined in [apis/avm/tx.ts:27](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/tx.ts#L27)*
+*Defined in [src/apis/avm/tx.ts:555](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/tx.ts#L555)*
 
 Takes a buffer representing the output and returns the proper [BaseTx](../classes/avmapi_transactions.basetx.md) instance.
 

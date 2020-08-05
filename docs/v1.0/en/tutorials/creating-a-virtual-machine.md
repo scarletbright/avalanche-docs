@@ -2,7 +2,7 @@
 
 ## Introduction
 
-One of the core features of the AVA network is the creation of new, custom blockchains, which
+One of the core features of the Avalanche network is the creation of new, custom blockchains, which
 are defined by [Virtual Machines.](../core-concepts/overview.md#what-are-virtual-machines)
 
 In this tutorial, we'll create a very simple Virtual Machine.
@@ -20,16 +20,16 @@ which has a timestamp from today, has as its payload the hash of your manuscript
 (This follows from the fact that finding the pre-image of a hash is impossible.)
 
 Before we get to the implementation of the Virtual Machine, we'll look at the interface that a Virtual Machine
-must implement to be compatible with AVA's Avalanche consensus engine.
+must implement to be compatible with the platform's Avalanche consensus engine.
 
 We'll show and explain all the code that constitutes this Virtual Machine in snippets.
 In-line comments explain what's going on in the code.
 At the bottom of some snippets, we expound further on some portions of the code.
-If you want to see the code in one place, rather than in snippets, you can see it in our [Github repository.](https://github.com/ava-labs/gecko/tree/platform/vms/timestamp)
+If you want to see the code in one place, rather than in snippets, you can see it in our [Github repository.](https://github.com/ava-labs/gecko/tree/master/vms/timestampvm)
 
 ## The `snowman.VM` Interface
 
-To reach consensus on linear blockchains (as opposed to DAG blockchains), AVA uses the Avalanche-powered **Snowman** consensus engine.
+To reach consensus on linear blockchains (as opposed to DAG blockchains), Avalanche uses the Avalanche-powered **Snowman** consensus engine.
 The blockchain we're defining is linear, so it will use Snowman. 
 In order to be compatible with Snowman, the Virtual Machine that defines the blockchain must implement the `snowman.VM` interface, which
 we include below from its declaration in [`github.com/ava-labs/gecko/snow/engine/snowman/vm.go`.](https://github.com/ava-labs/gecko/blob/master/snow/engine/snowman/vm.go)

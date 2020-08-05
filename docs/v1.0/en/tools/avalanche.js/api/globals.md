@@ -1,6 +1,6 @@
-[avalanche - v2.0.0](README.md)
+[avalanche - v2.2.1](README.md)
 
-# Avalanche.js - v2.0.0
+# Avalanche.js - v2.2.1
 
 ## Index
 
@@ -17,6 +17,8 @@
     * [AVM Types](modules/avmapi_types.md)
     * [AVM UTXOs](modules/avmapi_utxos.md)
   * [Health API](modules/healthapi.md)
+  * [Info API](modules/infoapi.md)
+  * [Metrics API](modules/metricsapi.md)
   * [Node Keystore API](modules/keystoreapi.md)
   * [Platform API](modules/platformapi.md)
   * Avalanche
@@ -24,6 +26,5 @@
     * [Avalanche Baseclass](modules/avalanchecore.md)
   * Utils
     * [BinTools](modules/utils_bintools.md)
-    * [CryptoHelpers](modules/utils_crypto.md)
     * [DB](modules/utils_db.md)
     * [Types](modules/utils_types.md)
