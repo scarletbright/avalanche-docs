@@ -2,29 +2,29 @@
 
 ## Introduction
 
-In this tutorial we'll add a node to the Default Subnet and to a non-default Subnet on the AVA Public Testnet.
+In this tutorial we'll add a node to the Default Subnet and to a non-default Subnet on the Avalanche Public Testnet.
 
-The [Platform Chain (P-Chain)](../core-concepts/overview.md#the-p-chain) manages metadata about the AVA network.
+The [Platform Chain (P-Chain)](../core-concepts/overview.md#the-p-chain) manages metadata about the Avalanche network.
 This includes tracking which nodes are in which Subnets, which blockchains exist and which Subnets are validating which blockchains.
 To add validators to Subnets we'll issue transactions to the P-Chain.
 
 The P-Chain uses an account model.
-Each account has an address that uniquely identifies it, a balance of AVA tokens, and a nonce.
+Each account has an address that uniquely identifies it, a balance of AVAX tokens, and a nonce.
 The nonce is incremented each time the account sends a transaction.
 
 ## Requirements
 
-We assume that you've already done the [quickstart guide](../quickstart/ava-getting-started.md) and [subnet creation tutorial](../tutorials/create-a-subnet.md), and are familiar with the [AVA Network's architecture.](../core-concepts/overview.md)
+We assume that you've already done the [quickstart guide](../quickstart/ava-getting-started.md) and [subnet creation tutorial](../tutorials/create-a-subnet.md), and are familiar with the [Avalanche Network's architecture.](../core-concepts/overview.md)
 
 ## Connect to the Network
 
-First, the node you're adding will need to be connected to the AVA Public Testnet.
+First, the node you're adding will need to be connected to the Avalanche Public Testnet.
 
-To start your node and connect to the AVA Public Testnet, follow the same instructions as in the quickstart guide.
+To start your node and connect to the Avalanche Public Testnet, follow the same instructions as in the quickstart guide.
 
 ## Add a Validator to the Default Subnet
 
-The [Default Subnet](../core-concepts/overview.md#what-are-subnets) is inherent to the AVA network and validates AVA's [built-in blockchains.](../core-concepts/overview.md#built-in-blockchains)
+The [Default Subnet](../core-concepts/overview.md#what-are-subnets) is inherent to the Avalanche network and validates Avalanche's [built-in blockchains.](../core-concepts/overview.md#built-in-blockchains)
 
 Let's get the values needed to make the transaction that adds a node to the Default Subnet.
 
@@ -32,15 +32,15 @@ Let's get the values needed to make the transaction that adds a node to the Defa
 
 Validators identify one another by their node IDs.
 
-To get the ID of your node, call [`admin.getNodeID`:](../api/admin.md#admingetnodeid)
+To get the ID of your node, call [`info.getNodeID`:](../api/info.md#infogetnodeid)
 
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "admin.getNodeID",
+    "method": "info.getNodeID",
     "params":{},
-    "id": 84
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
 
 The response has your node's ID:
@@ -51,13 +51,13 @@ The response has your node's ID:
     "result": {
         "nodeID": "ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK"
     },
-    "id": 84
+    "id": 1
 }
 ```
 
 ### Nonce
 
-In order to add a validator to the Default Subnet, you'll need an account with a sufficient balance of AVA tokens to provide the stake and to pay the transaction fee.
+In order to add a validator to the Default Subnet, you'll need an account with a sufficient balance of AVAX tokens to provide the stake and to pay the transaction fee.
 
 Follow [this tutorial](./atomic-swap.md) to fund a P-Chain account.
 
@@ -90,8 +90,7 @@ Since we haven't done anything with this account its nonce is 0:
 
 ### Stake Amount
 
-In order to validate the Default Subnet one must stake AVA tokens.
-The minimum amount that one can stake is 10 $\mu$AVA.
+In order to validate the Default Subnet one must stake AVAX tokens.
 
 ### Start and End Time
 
@@ -103,11 +102,11 @@ The start time must be in the future relative to the time the transaction is iss
 
 ### Destination
 
-When a validator leaves the Default Subnet, the staked AVA tokens are sent to an account that is specified in the transaction that added the validator to the Default Subnet.
+When a validator leaves the Default Subnet, the staked AVAX tokens are sent to an account that is specified in the transaction that added the validator to the Default Subnet.
 We call this the *destination* account.
 
 A validator earns a *validation reward* if they are sufficiently responsive and correct while they validate the Default Subnet.
-The validation reward is also sent to the same account as the staked AVA.
+The validation reward is also sent to the same account as the staked AVAX.
 
 A validator's stake is never slashed, regardless of their behavior; they will always receive their stake back when their validation period is over.
 
@@ -130,18 +129,18 @@ Below, we use the shell command `date` to compute the Unix time 10 minutes and 2
 
 (Note: If you're on a Mac, replace  `$(date` with `$(gdate`. If you don't have `gdate` installed, do `brew install coreutils`.)
 
-```sh
+```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.addDefaultSubnetValidator",
     "params": {
-    	"id":"ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
-    	"payerNonce":1,
-    	"destination":"Q4MzFZZDPHRPAHFeDs3NiyyaZDvxHKivf",
-    	"startTime":'$(date --date="10 minutes" +%s)',
-    	"endTime":'$(date --date="2 days" +%s)',
-    	"stakeAmount":1000000,
-    	"delegationFeeRate":100000
+        "id":"ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+        "payerNonce":1,
+        "destination":"Q4MzFZZDPHRPAHFeDs3NiyyaZDvxHKivf",
+        "startTime":'$(date --date="10 minutes" +%s)',
+        "endTime":'$(date --date="2 days" +%s)',
+        "stakeAmount":1000000,
+        "delegationFeeRate":100000
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
@@ -164,7 +163,7 @@ The response has the unsigned transaction:
 We need to sign this transaction with the key of the account that is paying the transaction fee and providing the staked tokens.
 
 To do so, call `platform.Sign`.
-Replace `signer` with the address of the account providing the staked AVA and the fee.
+Replace `signer` with the address of the account providing the staked AVAX and the fee.
 The provided user must control that account; provide your username and password to authenticate.
 
 ```json
@@ -172,12 +171,12 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.sign",
     "params": {
-    	"tx":"111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLphtYaxdM1EA3Aj4yej8ABSfmjb9NMrtxQac9cnWwCER7GHSzFULB25hAtzGtJ8XhsrKcvtpAM8FwjRzg3Bg1q6V8GTKGMC219bYMETS48GMFGh4nts1Jsf246rjZ26r1Vyok8MdnoaxjQWR6cKq",
-    	"signer":"6Y3kysjF9jnHnYkdS9yGAuoHyae2eNmeV",
-    	"username":"YOUR USERNAME",
-    	"password":"YOUR PASSWORD"
+        "tx":"111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLphtYaxdM1EA3Aj4yej8ABSfmjb9NMrtxQac9cnWwCER7GHSzFULB25hAtzGtJ8XhsrKcvtpAM8FwjRzg3Bg1q6V8GTKGMC219bYMETS48GMFGh4nts1Jsf246rjZ26r1Vyok8MdnoaxjQWR6cKq",
+        "signer":"6Y3kysjF9jnHnYkdS9yGAuoHyae2eNmeV",
+        "username":"YOUR USERNAME",
+        "password":"YOUR PASSWORD"
     },
-    "id": 2
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -189,7 +188,7 @@ This returns the signed transaction:
     "result": {
         "Tx": "111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLphtYaxdM1EA3Aj4yej8ABSfmjb9NMrtxQac9cnWwCER7GHSzFULB4RoAjStfe26qQxhS91KvCCX3WBLmpyvNXHzgWk3uJP45cPv15RHGymFboPUcxNTwGij1NgQpKPcL4YxcDnKvNjrcQzKiXAz"
     },
-    "id": 2
+    "id": 1
 }
 ```
 
@@ -202,9 +201,9 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.issueTx",
     "params": {
-    	"tx":"111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLphtYaxdM1EA3Aj4yej8ABSfmjb9NMrtxQac9cnWwCER7GHSzFULB4RoAjStfe26qQxhS91KvCCX3WBLmpyvNXHzgWk3uJP45cPv15RHGymFboPUcxNTwGij1NgQpKPcL4YxcDnKvNjrcQzKiXAz"
+        "tx":"111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLphtYaxdM1EA3Aj4yej8ABSfmjb9NMrtxQac9cnWwCER7GHSzFULB4RoAjStfe26qQxhS91KvCCX3WBLmpyvNXHzgWk3uJP45cPv15RHGymFboPUcxNTwGij1NgQpKPcL4YxcDnKvNjrcQzKiXAz"
     },
-    "id": 3
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -220,7 +219,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.getPendingValidators",
     "params": {},
-    "id": 4
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -264,19 +263,19 @@ The API call to create the unsigned transaction looks very similar to the one we
 
 (Note: If you're on a Mac, replace  `$(date` with `$(gdate`. If you don't have `gdate` installed, do `brew install coreutils`.)
 
-```sh
+```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.addNonDefaultSubnetValidator",
     "params": {
-    	"id":"ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
-		"subnetID":"nTd2Q2nTLp8M9qv2VKHMdvYhtNWX7aTPa4SMEK7x7yJHbcWvr",
-    	"startTime":'$(date --date="10 minutes" +%s)',
-    	"endTime":'$(date --date="2 days" +%s)',
-    	"weight":1,
-    	"payerNonce":3
+        "id":"ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+        "subnetID":"nTd2Q2nTLp8M9qv2VKHMdvYhtNWX7aTPa4SMEK7x7yJHbcWvr",
+        "startTime":'$(date --date="10 minutes" +%s)',
+        "endTime":'$(date --date="2 days" +%s)',
+        "weight":1,
+        "payerNonce":3
     },
-    "id": 5
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -288,7 +287,7 @@ The response has the unsigned transaction:
     "result": {
         "unsignedTx": "1115PJEszaVtWiXtNfyeSvUX385ih3x7V1AyiWFqYKUHp5orbz1oJ9CizuU2dK8pKJpoFtFD1MQMmvi6p4uC1GkoiGg54ujbVDnMwidhkinAhbeVPKsX6Ekdg3hLk5SWHkjDGnaNSavu4K86Z4fu1tB1xgfk9vyACzDjCU4w5rksPfqEZA48zskrh6cuK1QW1ruXPje8iWaNfzjr7cYdFa6EaPC4BcTS"
     },
-    "id": 5
+    "id": 1
 }
 ```
 
@@ -309,12 +308,12 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.sign",
     "params": {
-    	"tx":"1115PJEszaVtWiXtNfyeSvUX385ih3x7V1AyiWFqYKUHp5orbz1oJ9CizuU2dK8pKJpoFtFD1MQMmvi6p4uC1GkoiGg54ujbVDnMwidhkinAhbeVPKsX6Ekdg3hLk5SWHkjDGnaNSavu4K86Z4fu1tB1xgfk9vyACzDjCU4w5rksPfqEZA48zskrh6cuK1QW1ruXPje8iWaNfzjr7cYdFa6EaPC4BcTS",
-    	"signer":"98vMGrh2nWNr8oDNKVK9jdxN1bwkeg4Jd",
-    	"username":"USER THAT CONTROL THE SIGNER'S KEY",
-    	"password":"THAT USER'S PASSWORD"
+        "tx":"1115PJEszaVtWiXtNfyeSvUX385ih3x7V1AyiWFqYKUHp5orbz1oJ9CizuU2dK8pKJpoFtFD1MQMmvi6p4uC1GkoiGg54ujbVDnMwidhkinAhbeVPKsX6Ekdg3hLk5SWHkjDGnaNSavu4K86Z4fu1tB1xgfk9vyACzDjCU4w5rksPfqEZA48zskrh6cuK1QW1ruXPje8iWaNfzjr7cYdFa6EaPC4BcTS",
+        "signer":"98vMGrh2nWNr8oDNKVK9jdxN1bwkeg4Jd",
+        "username":"USER THAT CONTROL THE SIGNER'S KEY",
+        "password":"THAT USER'S PASSWORD"
     },
-    "id": 6
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -326,7 +325,7 @@ The partially signed transaction:
     "result": {
         "Tx": "1112i3pBsJBwde3PTEVXNpSpd6HKymaFvF9ejGjbuQR3omM4oa6CR9d51maB57ri6PxphfHYANkTQGpotbdRr6c2AzpVotzBfHSfx5Zdt29xcYZQFvAmY3KT9yXA1JEJguX9D6BHvCMFW9n9uymMP2Y7iPwAmSQLJLe53c8LFFzor3bsARJjA16EPnX5gwsXoG1ePJQSSFb6oNkxtSi2dHwNK1zdRvr5V8iUTTbvvzvaFFHxafNAhbzwr9eBKT9iAis2gGC6U1ZokWqsevRSwruyZGYWoLx7VEfCECtKSfU5VAzdw7H1DcXPj"
     },
-    "id": 6
+    "id": 1
 }
 ```
 
@@ -337,12 +336,12 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.sign",
     "params": {
-    	"tx":"1112i3pBsJBwde3PTEVXNpSpd6HKymaFvF9ejGjbuQR3omM4oa6CR9d51maB57ri6PxphfHYANkTQGpotbdRr6c2AzpVotzBfHSfx5Zdt29xcYZQFvAmY3KT9yXA1JEJguX9D6BHvCMFW9n9uymMP2Y7iPwAmSQLJLe53c8LFFzor3bsARJjA16EPnX5gwsXoG1ePJQSSFb6oNkxtSi2dHwNK1zdRvr5V8iUTTbvvzvaFFHxafNAhbzwr9eBKT9iAis2gGC6U1ZokWqsevRSwruyZGYWoLx7VEfCECtKSfU5VAzdw7H1DcXPj",
-    	"signer":"6UGRmWANxejv1uM5T8BiRR2VPFSk1aFWA",
-    	"username":"USER THAT CONTROL THE SIGNER'S KEY",
-    	"password":"THAT USER'S PASSWORD"
+        "tx":"1112i3pBsJBwde3PTEVXNpSpd6HKymaFvF9ejGjbuQR3omM4oa6CR9d51maB57ri6PxphfHYANkTQGpotbdRr6c2AzpVotzBfHSfx5Zdt29xcYZQFvAmY3KT9yXA1JEJguX9D6BHvCMFW9n9uymMP2Y7iPwAmSQLJLe53c8LFFzor3bsARJjA16EPnX5gwsXoG1ePJQSSFb6oNkxtSi2dHwNK1zdRvr5V8iUTTbvvzvaFFHxafNAhbzwr9eBKT9iAis2gGC6U1ZokWqsevRSwruyZGYWoLx7VEfCECtKSfU5VAzdw7H1DcXPj",
+        "signer":"6UGRmWANxejv1uM5T8BiRR2VPFSk1aFWA",
+        "username":"USER THAT CONTROL THE SIGNER'S KEY",
+        "password":"THAT USER'S PASSWORD"
     },
-    "id": 7
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -354,7 +353,7 @@ The partially signed transaction is now:
     "result": {
         "Tx": "1112i3pBsJBwde3PTEVXNpSpd6HKymaFvF9ejGjbuQR3omM4oa6CR9d51maB57ri6PxphfHYANkTQGpotbdRr6c2AzpVotzBfHSfx5Zdt29xcYZQFvAmY3KT9yXA1JEJgtvLy65ptUR1iUPFWA8mu2AhrxSQHsNhcz4tXedaBHnjSYhHhWhJq5brsyR2M7fBAPWxNtNSZVdzG129sJYG5BWmqucNxoCWqSuarmACupejamG8HPgmyr9jZzkUnnzmBfYAjJ3DSRdFoYK7AhEP8mLzBATzxzdfi3BHwgmApRPLT1neAxLm2HRu3"
     },
-    "id": 7
+    "id": 1
 }
 ```
 
@@ -365,12 +364,12 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.sign",
     "params": {
-    	"tx":"111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLsFAf7GaCbLiBWEfaDfEaQ7L1qMgeimPbewtBPphXSnHy6mx86YZvBKFTyE659CYAb6kKcj3L8osr4Kf8Qd3zJCAFPbSy8sxowA27p1SJuueVw5kHdWannWzfFmPNN7DBV8wpymmktGT3gbgq7ZV",
-    	"signer":"6Y3kysjF9jnHnYkdS9yGAuoHyae2eNmeV",
-    	"username":"USER THAT CONTROLS THE SIGNER'S KEY",
-    	"password":"THAT USER'S PASSWORD"
+        "tx":"111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLsFAf7GaCbLiBWEfaDfEaQ7L1qMgeimPbewtBPphXSnHy6mx86YZvBKFTyE659CYAb6kKcj3L8osr4Kf8Qd3zJCAFPbSy8sxowA27p1SJuueVw5kHdWannWzfFmPNN7DBV8wpymmktGT3gbgq7ZV",
+        "signer":"6Y3kysjF9jnHnYkdS9yGAuoHyae2eNmeV",
+        "username":"USER THAT CONTROLS THE SIGNER'S KEY",
+        "password":"THAT USER'S PASSWORD"
     },
-    "id": 8
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -382,7 +381,7 @@ This gives the signed transaction:
     "result": {
         "Tx": "1112i3pBsJBwde3PTEVXNpSpd6HKymaFvF9ejGjbuQR3omM4oa6CR9d51maB57ri6PxphfHYANkTQGpotbdRr6c2AzpVotzBfHSfx5Zdt29xcYZQFvAmY3KT9yXA1JEJgtvLy65ptUR1iUPFWA8mu2AhrxSQHsNhcz4tXedaBHnjSYhHhWhJq5brsyR2M7fBAPWxNtNSZVdzG129sJYG5BWmqucqH1UdeYfaUKVzEXxt53ta6SGe5RTKrAYjr3x8NbfDB3ZXwU4udttVZrVDCNMWo4HJMJH9E5rdFeuovaD3L8nrQR4PCBpHm"
     },
-    "id": 8
+    "id": 1
 }
 ```
 
@@ -395,9 +394,9 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.issueTx",
     "params": {
-    	"tx":"1112i3pBsJBwde3PTEVXNpSpd6HKymaFvF9ejGjbuQR3omM4oa6CR9d51maB57ri6PxphfHYANkTQGpotbdRr6c2AzpVotzBfHSfx5Zdt29xcYZQFvAmY3KT9yXA1JEJgtvLy65ptUR1iUPFWA8mu2AhrxSQHsNhcz4tXedaBHnjSYhHhWhJq5brsyR2M7fBAPWxNtNSZVdzG129sJYG5BWmqucqH1UdeYfaUKVzEXxt53ta6SGe5RTKrAYjr3x8NbfDB3ZXwU4udttVZrVDCNMWo4HJMJH9E5rdFeuovaD3L8nrQR4PCBpHm"
+        "tx":"1112i3pBsJBwde3PTEVXNpSpd6HKymaFvF9ejGjbuQR3omM4oa6CR9d51maB57ri6PxphfHYANkTQGpotbdRr6c2AzpVotzBfHSfx5Zdt29xcYZQFvAmY3KT9yXA1JEJgtvLy65ptUR1iUPFWA8mu2AhrxSQHsNhcz4tXedaBHnjSYhHhWhJq5brsyR2M7fBAPWxNtNSZVdzG129sJYG5BWmqucqH1UdeYfaUKVzEXxt53ta6SGe5RTKrAYjr3x8NbfDB3ZXwU4udttVZrVDCNMWo4HJMJH9E5rdFeuovaD3L8nrQR4PCBpHm"
     },
-    "id": 9
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -412,7 +411,7 @@ curl -X POST --data '{
     "params": {
         "subnetID":"nTd2Q2nTLp8M9qv2VKHMdvYhtNWX7aTPa4SMEK7x7yJHbcWvr"
     },
-    "id": 10
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -426,12 +425,12 @@ The response confirms the node has been added:
             {
                 "id": "ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
                 "startTime":1584042912,
-    	        "endTime":1584121156,
+                "endTime":1584121156,
                 "weight": "1"
             }
         ]
     },
-    "id": 10
+    "id": 1
 }
 ```
 

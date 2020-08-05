@@ -27,7 +27,7 @@
 
 Ƭ **MergeRule**: *"intersection" | "differenceSelf" | "differenceNew" | "symDifference" | "union" | "unionMinusNew" | "unionMinusSelf" | "ERROR"*
 
-*Defined in [apis/avm/types.ts:268](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/types.ts#L268)*
+*Defined in [src/apis/avm/types.ts:270](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/types.ts#L270)*
 
 Rules used when merging sets
 
@@ -37,7 +37,7 @@ Rules used when merging sets
 
 ▸ **UnixNow**(): *BN*
 
-*Defined in [apis/avm/types.ts:280](https://github.com/ava-labs/avalanche.js/blob/4d26b45/src/apis/avm/types.ts#L280)*
+*Defined in [src/apis/avm/types.ts:282](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/apis/avm/types.ts#L282)*
 
 Function providing the current UNIX time using a [BN](https://github.com/indutny/bn.js/)
 
