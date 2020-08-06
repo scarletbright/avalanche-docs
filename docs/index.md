@@ -1,7 +1,7 @@
 # Welcome to Avalanche!
 
 !!! example "New Tutorial"
-     [Learn how to deploy a Solidity smart contract on Avalanche using Remix, Metamask and Truffle.](v1.0/en/tutorials/deploy-a-smart-contract.md)
+     [Learn how to deploy a Solidity smart contract on Avalanche using Remix and Metamask.](v1.0/en/tutorials/deploy-a-smart-contract.md)
 
 ## What is Avalanche?
 
