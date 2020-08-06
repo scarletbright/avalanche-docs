@@ -1,8 +1,11 @@
-# Welcome to Avalanche! 
+# Welcome to Avalanche!
+
+!!! example "New Tutorial"
+     [Learn how to deploy a Solidity smart contract on Avalanche using Remix, Metamask and Truffle.](v1.0/en/tutorials/deploy-a-smart-contract.md)
 
 ## What is Avalanche?
 
-Avalanche is: 
+Avalanche is:
 
 * A heterogeneous network of custom, interoperable blockchains and custom validator sets
 * A platform for defining, launching and maintaining custom blockchains
@@ -19,22 +22,22 @@ The Avalanche platform uses a novel consensus protocol created by distributed sy
 
 Avalanche handles thousands of transactions per second and can accommodate thousands of validators with no loss of performance.
 
-### Security 
+### Security
 
 Avalanche provides stronger security guarantees than either classical or longest-chain consensus protocols.
 
 ### Smart Contract Support
 
-Avalanche supports [creation and use of Solidity smart contracts](https://medium.com/avalabs/deploy-a-smart-contract-on-ava-using-remix-and-metamask-98933a93f436) as well as all your favorite Ethereum tools like Remix, Metamask, Truffle and more. 
+Avalanche supports [creation and use of Solidity smart contracts](v1.0/en/tutorials/deploy-a-smart-contract.md) as well as all your favorite Ethereum tools like Remix, Metamask, Truffle and more.
 
 ### Private/public Blockchains
 
 Users can create their own public or private blockchains.
 
 ### Finance-focused
+
 Avalanche was built with serving financial markets in mind.
-It has native support for easily creating and trading digital smart assets with complex custom rulesets 
-that define how the asset is handled and traded.
+It has native support for easily creating and trading digital smart assets with complex custom rulesets that define how the asset is handled and traded.
 The assets could represent financial instruments such as equities, bonds, debt,
 fractionalized real estate, or anything else.
 
