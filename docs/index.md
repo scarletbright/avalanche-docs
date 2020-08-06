@@ -1,5 +1,8 @@
 # Welcome to Avalanche! 
 
+!!! example "New Tutorial" 
+     Learn how to deploy a Solidity smart contract on Avalanche using Remix, Metamask and Truffle.
+
 ## What is Avalanche?
 
 Avalanche is: 
@@ -10,6 +13,7 @@ Avalanche is:
 * A way to store and transfer value without a centralized entity
 
 ## Key Features
+
 
 ### Speed
 
@@ -25,7 +29,7 @@ Avalanche provides stronger security guarantees than either classical or longest
 
 ### Smart Contract Support
 
-Avalanche supports [creation and use of Solidity smart contracts](https://medium.com/avalabs/deploy-a-smart-contract-on-ava-using-remix-and-metamask-98933a93f436) as well as all your favorite Ethereum tools like Remix, Metamask, Truffle and more. 
+Avalanche supports [creation and use of Solidity smart contracts](v1.0/en/tutorials/deploy-a-smart-contract.md) as well as all your favorite Ethereum tools like Remix, Metamask, Truffle and more. 
 
 ### Private/public Blockchains
 

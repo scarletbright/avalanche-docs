@@ -6,7 +6,7 @@ Note: Ethereum has its own notion of `networkID` and `chainID`. The C-Chain uses
 
 ## Deploying a Smart Contract
 
-For a tutorial on deploying a Solidity smart contract on the C-Chain, see [here.](https://medium.com/avalabs/deploy-a-smart-contract-on-ava-using-remix-and-metamask-98933a93f436)
+For a tutorial on deploying a Solidity smart contract on the C-Chain, see [here.](../tutorials/deploy-a-smart-contract.md)
 
 ## Methods
 

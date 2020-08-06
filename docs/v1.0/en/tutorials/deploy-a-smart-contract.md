@@ -2,7 +2,7 @@
 
 The Avalanche network is a subnet that has three chains: P-Chain, X-Chain, and C-Chain.
 
-![Avalanche network infrastructure](/assets/images/avalanche-network-infrastructure.png)
+![Avalanche network infrastructure](../../../images/avalanche-network-infrastructure.png)
 
 The C-Chain is an instance of the Ethereum Virtual Machine powered by Avalanche’s Snowman consensus engine.
 
@@ -12,9 +12,9 @@ Today we will deploy and test a smart contract on Avalanche using Remix and Meta
 
 ## Step 1. Setting up MetaMask
 
-![Metamask custom rpc](/assets/images/metamask-custom-rpc.png)
+![Metamask custom rpc](../../../images/metamask-custom-rpc.png)
 
-![Metamask settings](/assets/images/metamask-settings.png)
+![Metamask settings](../../../images/metamask-settings.png)
 
 * **Network Name**: Avalanche C-Chain
 * **New RPC URL**: [https://testapi.avax.network/ext/bc/C/rpc](https://testapi.avax.network/ext/bc/C/rpc)
@@ -22,50 +22,52 @@ Today we will deploy and test a smart contract on Avalanche using Remix and Meta
 * **Symbol**: C-AVAX
 * **Explorer**: [https://cchain.explorer.avax.network](https://cchain.explorer.avax.network)
 
-![Metamask account](/assets/images/metamask-account.png)
+![Metamask account](../../../images/metamask-account.png)
 
 ## Step 2. Funding your C-Chain address
 
 Navigate to [https://faucet.avax.network](https://faucet.avax.network) and paste your C-AVAX address. All you need to do is add a “C-” prefix and the faucet will switch from AVAX to C-AVAX.
 
-Step 3. Remix: Connect MetaMask and Deploy a smart contract.
+![Faucet](../../../images/faucet.png)
 
-![Remix dashboard](/assets/images/remix-dashboard.png)
+## Step 3. Remix: Connect MetaMask and deploy a smart contract.
+
+![Remix dashboard](../../../images/remix-dashboard.png)
 
 Open [Remix](https://remix.ethereum.org) -> Select Solidity
 
-![Solidity on remix](/assets/images/solidity1.png)
+![Solidity on remix](../../../images/solidity1.png)
 
 Load or create the smart contracts that we want to compile and deploy using Remix file explorer.
 
 For this example, we will deploy an ERC20 contract from [OpenZeppelin](https://openzeppelin.com/contracts)
 
-![Solidity on remix](/assets/images/solidity2.png)
+![Solidity on remix](../../../images/solidity2.png)
 
 Navigate to Deploy Tab -> Open the “ENVIRONMENT” drop-down and select Injected Web3 (make sure MetaMask is loaded)
 
-![Solidity on remix](/assets/images/solidity3.png)
+![Solidity on remix](../../../images/solidity3.png)
 
 Once we injected the web3-> Go back to the compiler and compile the selected contract -> Navigate to Deploy Tab
 
-![Solidity on remix](/assets/images/solidity4.png)
+![Solidity on remix](../../../images/solidity4.png)
 
 Now the smart contract is compiled, MetaMask is injected, and we are ready to deploy our ERC20. Click “Deploy”
 
-![Solidity on remix](/assets/images/solidity5.png)
+![Solidity on remix](../../../images/solidity5.png)
 
 Confirm the transaction on the MetaMask popup
 
-![Solidity on remix](/assets/images/solidity6.png)
+![Solidity on remix](../../../images/solidity6.png)
 
 Our contract is successfully deployed!
 
-![Solidity on remix](/assets/images/solidity7.png)
+![Solidity on remix](../../../images/solidity7.png)
 
 Now we can expand it by selecting it from the “Deployed Contracts” tab and test it out.
 
-![Compiler](/assets/images/compiler.png)
+![Compiler](../../../images/compiler.png)
 
 The contract ABI and Bytecode are available on the compiler tab
 
-If you had any difficulties following this tutorial or simply want to discuss Avalanche tech with us you can join our community at [Discord](https://discord.gg/ccc8vEP)!
+If you had any difficulties following this tutorial or simply want to discuss Avalanche tech with us you can join our community at [Discord](https://chat.avalabs.org)!

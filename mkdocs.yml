@@ -33,7 +33,7 @@ nav:
   - FAQ and Known Issues : ./v1.0/en/faq/faq.md
   - System Overview: v1.0/en/core-concepts/overview.md
   - Tutorials:
-    - Deploy a Smart Contract          : ./v1.0/en/tutorials/deploy-a-smart-contract-on-avalanche-using-remix-and-metamask.md
+    - Deploy a Smart Contract          : ./v1.0/en/tutorials/deploy-a-smart-contract.md
     - Create a Fixed-Cap Asset         : ./v1.0/en/tutorials/fixed-cap-asset.md
     - Create a Variable-Cap Asset      : ./v1.0/en/tutorials/variable-cap-asset.md
     - Create a Subnet                  : ./v1.0/en/tutorials/create-a-subnet.md
