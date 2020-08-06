@@ -23,6 +23,10 @@ Avalanche handles thousands of transactions per second and can accommodate thous
 
 Avalanche provides stronger security guarantees than either classical or longest-chain consensus protocols.
 
+### Smart Contract Support
+
+Avalanche supports [creation and use of Solidity smart contracts](https://medium.com/avalabs/deploy-a-smart-contract-on-ava-using-remix-and-metamask-98933a93f436) as well as all your favorite Ethereum tools like Remix, Metamask, Truffle and more. 
+
 ### Private/public Blockchains
 
 Users can create their own public or private blockchains.
