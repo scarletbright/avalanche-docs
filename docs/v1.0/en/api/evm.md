@@ -4,6 +4,10 @@ This document describes the API of the C-Chain, which is an instance of the Ethe
 
 Note: Ethereum has its own notion of `networkID` and `chainID`. The C-Chain uses `1` and `43110` for these values, obtained using the `net_version` and `eth_chainId` methods shown below. These have no relationship to AVA's view of networkID and chainID, and are purely internal to the C-Chain. 
 
+## Deploying a Smart Contract
+
+For a tutorial on deploying a Solidity smart contract on the C-Chain, see [here.](../tutorials/deploy-a-smart-contract.md)
+
 ## Methods
 
 This API is identical to Geth's API except that it only supports the following services:
