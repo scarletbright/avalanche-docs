@@ -2,7 +2,7 @@
 
 The Avalanche network is a subnet that has three chains: P-Chain, X-Chain, and C-Chain.
 
-![Avalanche network infrastructure](../../../images/avalanche-network-infrastructure.png)
+![Avalanche network infrastructure](../../../images/network-infrastructure.png)
 
 The C-Chain is an instance of the Ethereum Virtual Machine powered by Avalanche’s Snowman consensus engine.
 
