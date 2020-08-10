@@ -9,7 +9,7 @@ that allows Avalanche to process thousands of transactions per second with low l
 
 ## [Avalanche Platform Specification](https://files.avalabs.org/papers/platform.pdf)
 
-This paper is a technical description of the AVAX platform.
+This paper is a technical description of the Avalanche platform.
 
 ## [Avalanche Token (AVAX) Specification](https://files.avalabs.org/papers/token.pdf)
 
