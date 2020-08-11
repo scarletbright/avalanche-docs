@@ -139,7 +139,7 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "nodeID": "5mb46qkSBj81k9g9e4VFjGGSbaaSLFRzD"
+        "nodeID": "NodeID-5mb46qkSBj81k9g9e4VFjGGSbaaSLFRzD"
     },
     "id": 1
 }
