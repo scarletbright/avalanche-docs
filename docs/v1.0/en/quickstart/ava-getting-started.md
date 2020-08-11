@@ -503,7 +503,7 @@ The response contains your node's ID:
 {
     "jsonrpc": "2.0",
     "result": {
-        "nodeID": "ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK"
+        "nodeID": "NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK"
     },
     "id": 1
 }

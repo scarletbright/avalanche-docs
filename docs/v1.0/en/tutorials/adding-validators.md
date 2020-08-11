@@ -62,7 +62,7 @@ The response has your node's ID:
 {
     "jsonrpc": "2.0",
     "result": {
-        "nodeID": "nodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK"
+        "nodeID": "NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK"
     },
     "id": 1
 }
@@ -106,7 +106,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.addDefaultSubnetValidator",
     "params": {
-        "nodeID":"nodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+        "nodeID":"NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
         "startTime":'$(date --date="10 minutes" +%s)',
         "endTime":'$(date --date="2 days" +%s)',
         "stakeAmount":1000000,
@@ -163,7 +163,7 @@ The response should include the node we just added:
     "result": {
         "validators": [
             {
-                "nodeID": "nodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+                "nodeID": "NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
                 "startTime": "1584021450",
                 "endtime": "1584121156",
                 "stakeAmount": "1000000",
@@ -234,7 +234,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.addNonDefaultSubnetValidator",
     "params": {
-        "nodeID":"nodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+        "nodeID":"NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
         "subnetID":"nTd2Q2nTLp8M9qv2VKHMdvYhtNWX7aTPa4SMEK7x7yJHbcWvr",
         "startTime":'$(date --date="10 minutes" +%s)',
         "endTime":'$(date --date="2 days" +%s)',
@@ -290,7 +290,7 @@ The response should include the node we just added:
     "result": {
         "validators": [
             {
-                "nodeID": "nodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+                "nodeID": "NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
                 "startTime":1584042912,
                 "endTime":1584121156,
                 "weight": "1"

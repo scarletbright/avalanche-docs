@@ -181,7 +181,7 @@ The response contains your node's ID:
 {
     "jsonrpc": "2.0",
     "result": {
-        "nodeID": "ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK"
+        "nodeID": "NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK"
     },
     "id": 1
 }
@@ -243,7 +243,7 @@ It should have:
 
 * CPU >= 2 GHz
 * RAM >= 4 GB
-* Free disk space >= 5 GB
+* Free disk space >= 10 GB
 
 ### What software do I need?
 
@@ -283,7 +283,7 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
 
-Each entry in the response contains a peer's IP address, public IP address, ID, version, and the time of the last sent and received messages exchanged with this node.
+Each entry in the response contains a peer's IP address, public IP address, node ID, version, and the time of the last sent and received messages exchanged with this node.
 If you see none, something is wrong and you are not connected to any peers.
 
 ### How do I kill my node?

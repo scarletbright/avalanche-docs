@@ -28,6 +28,7 @@ admin.alias(endpoint:string, alias:string) -> {success:bool}
 
 * `endpoint` is the original endpoint of the API. `endpoint` should only include the part of the endpoint after `/ext/`.
 * The API being aliased can now be called at `ext/alias`.
+* `alias` can be at most 512 characters.
 
 #### Example Call
 
