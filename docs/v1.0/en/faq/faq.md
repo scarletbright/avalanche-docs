@@ -64,10 +64,10 @@ Now build the binary:
 
 This should print `Build Successful`.
 
-You can check what version you're running by doing `./build/ava --version`.
+You can check what version you're running by doing `./build/avalanche --version`.
 (Note: If this fails, your Gecko version is `0.5.1` or older.)
 
-You can run your node with `./build/ava`
+You can run your node with `./build/avalanche`
 
 #### Download Binary
 
@@ -297,7 +297,7 @@ Do `CTRL + Z` in the terminal window where you're running the node.
 This should print something like:
 
 ```sh
-[1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/gecko/build/ava
+[1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/gecko/build/avalanche
 ```
 
 Do `kill -9 %1` (or `kill -9 %2` if it printed `[2]+ Stopped`, etc.)
@@ -420,7 +420,7 @@ Do `CTRL + Z` in the terminal window where you're running the node.
 This should print something like:
 
 ```sh
-[1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/gecko/build/ava
+[1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/gecko/build/avalanche
 ```
 
 Do `kill -9 %1` (or `kill -9 %2` if it printed `[2]+ Stopped`, etc.)
@@ -432,7 +432,7 @@ Do `ps aux | grep ava`
 The output should have a line that looks like this:
 
 ```sh
-youruser 29861  8.7  0.2 1459208 34996 pts/2   Sl+  19:44   0:00 ./build/ava
+youruser 29861  8.7  0.2 1459208 34996 pts/2   Sl+  19:44   0:00 ./build/avalanche
 ```
 
 Do:

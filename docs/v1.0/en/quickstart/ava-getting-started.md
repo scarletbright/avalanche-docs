@@ -23,7 +23,7 @@ We will work to get you through any problems.
 
 Avalanche is an incredibly lightweight protocol, so the minimum computer requirements are quite modest. 
 
-* Hardware: CPU > 2 GHz, RAM > 3 GB, Storage > 5 GB free space.
+* Hardware: CPU > 2 GHz, RAM > 4 GB, Storage > 10 GB free space.
 * OS: Ubuntu == 18.04 or Mac OS X >= Catalina. (Ubuntu versions other than 18.04 may work but have not been tested.)
 * Software: [Go](https://golang.org/doc/install) >= 1.13
 
@@ -61,7 +61,7 @@ Build Gecko:
 ./scripts/build.sh
 ```
 
-The binary, named `ava`, is in `gecko/build`. 
+The binary, named `avalanche`, is in `gecko/build`. 
 
 #### Download Gecko Binary
 
@@ -89,7 +89,7 @@ You can use it to play around in a low-stakes environment.
 To start a node and connect it to the Avalanche test net:
 
 ```sh
-./build/ava
+./build/avalanche
 ```
 
 You can use `Ctrl + C` to kill the node.
