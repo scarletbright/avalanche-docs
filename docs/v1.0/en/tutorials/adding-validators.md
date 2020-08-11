@@ -34,7 +34,7 @@ platform.addDefaultSubnetValidator(
         endTime: int,
         stakeAmount: int,
         rewardAddress: string,
-        delegationFeeRate: int,
+        delegationFeeRate: float,
         username: string,
         password: string
     }
@@ -88,9 +88,8 @@ A validator's stake is never slashed, regardless of their behavior; they will al
 
 ### `delegationFeeRate`
 
-Avalanche allows for delegation of stake. This parameter is the percent fee this validator charges when others delegate stake to them, multiplied by 10,000.
-
-For example, suppose a validator has `delegationFeeRate` 300,000 and someone delegates to this validator. When the delegation period is over, if the delegator is entitled to a reward, 30% of the reward (300,000 / 10,000) goes to the validator and 70% goes to the delegator.
+Avalanche allows for delegation of stake. This parameter is the percent fee this validator charges when others delegate stake to them.
+For example, if `delegationFeeRate` is `1.2345` and someone delegates to this validator, then when the delegation period is over, 1.2345% of the reward goes to the validator and the rest goes to the delegator.
 
 ### `username` and `password`
 
@@ -110,8 +109,8 @@ curl -X POST --data '{
         "startTime":'$(date --date="10 minutes" +%s)',
         "endTime":'$(date --date="2 days" +%s)',
         "stakeAmount":1000000,
-        "rewardAddress":"P-Q4MzFZZDPHRPAHFeDs3NiyyaZDvxHKivf",
-        "delegationFeeRate":100000,
+        "rewardAddress":"P-avax1d4wfwrfgu4dkkyq7dlhx0lt69y2hjkjeejnhca",
+        "delegationFeeRate":10,
         "username":"USERNAME",
         "password":"PASSWORD"
     },
@@ -183,7 +182,7 @@ The staked AVAX will be returned to an address controlled by `username`, and the
 Now let's add the same node to a non-default Subnet (that is, any Subnet other than the Default Subnet.)
 The following will make more sense if you've already done this [tutorial on creating a Subnet.](../tutorials/create-a-subnet.md)
 
-Suppose that the Subnet has ID `nTd2Q2nTLp8M9qv2VKHMdvYhtNWX7aTPa4SMEK7x7yJHbcWvr`, threshold 2, and its control keys belong to addresses `P-98vMGrh2nWNr8oDNKVK9jdxN1bwkeg4Jd` and `P-6UGRmWANxejv1uM5T8BiRR2VPFSk1aFWA`.
+Suppose that the Subnet has ID `nTd2Q2nTLp8M9qv2VKHMdvYhtNWX7aTPa4SMEK7x7yJHbcWvr`, threshold 2, and that `username` holds at least 2 control keys.
 
 To add the validator, we'll call API method `addNonDefaultSubnetValidator`. Its signature is:
 

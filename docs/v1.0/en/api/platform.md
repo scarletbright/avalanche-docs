@@ -95,7 +95,7 @@ platform.addDefaultSubnetValidator(
         endTime: int,
         stakeAmount: int,
         rewardAddress: string,
-        delegationFeeRate: int,
+        delegationFeeRate: float,
         username: string,
         password: string
     }
@@ -129,7 +129,7 @@ curl -X POST --data '{
         "startTime":'$(date --date="10 minutes" +%s)',
         "endTime":'$(date --date="2 days" +%s)',
         "stakeAmount":1000000,
-        "delegationFeeRate":100000,
+        "delegationFeeRate":10,
         "username":"username",
         "password":"password"
     },
