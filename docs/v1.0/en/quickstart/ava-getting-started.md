@@ -97,12 +97,26 @@ You can use `Ctrl + C` to kill the node.
 When the node starts, it has to bootstrap (catch up with the rest of the network.)
 This should take a few hours.
 You will see logs about bootstrapping.
-
 When a given chain is done bootstrapping, it will print a log like this:
 
 `INFO [06-07|19:54:06] <X Chain> /snow/engine/avalanche/transitive.go#80: bootstrapping finished with 1 vertices in the accepted frontier`
 
-If you make an API call to a chain that is not done bootstrapping, it will hang or 404.
+To check if a given chain is done bootstrapping, call [info.isBootstrapped](../api/info.md#infoisbootstrapped) like so:
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"info.isBootstrapped",
+    "params": {
+        "chain":"X"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
+```
+
+If this returns `true`, the chain is bootstrapped.
+
+If you make an API call to a chain that is not done bootstrapping, it will return `API call rejected because chain is not done bootstrapping`.
 
 If your node never finishes bootstrapping, contact us on [Discord.](https://chat.avalabs.org/)
 
@@ -126,7 +140,7 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/keystore
 ```
 
-The response should look like this:
+The response should be:
 
 ```json
 {
@@ -180,13 +194,13 @@ The response should look like this:
     "jsonrpc":"2.0",
     "id":2,
     "result" :{
-        "address":"X-5TQr5hSAZ8ZKuSaYLg5sr4VwvcvwKZ1Mg"
+        "address":"X-avax1xeaj0h9uy7c5jn6fxjp0rg4g39jeh0hl27vf75"
     }
 }
 ```
 
-Your user now controls the address `X-5TQr5hSAZ8ZKuSaYLg5sr4VwvcvwKZ1Mg` on the X-Chain.
-To tell apart addresses on different chains, the Avalanche convention is for an address to include the ID of the chain it exists on.
+Your user now controls the address `X-avax1xeaj0h9uy7c5jn6fxjp0rg4g39jeh0hl27vf75` on the X-Chain.
+To tell apart addresses on different chains, the Avalanche convention is for an address to include the ID or alias of the chain it exists on.
 Hence, this address begins `X-`, denoting that it exists on the X-Chain.
 
 ## Use the Avalanche Faucet
@@ -201,16 +215,14 @@ Go to the [test net faucet](https://faucet.avax.network/) and paste the address 
 We can check an address's balance of a given asset by calling `avm.getBalance`, another method of the X-Chain's API.
 Let's check that the faucet drip went through.
 
-(Note: The asset ID of AVAX is AVA on nodes running Denali or earlier. The ID will change to AVAX in the next release.)
-
 ```sh
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :3,
     "method" :"avm.getBalance",
     "params" :{
-        "address":"X-5TQr5hSAZ8ZKuSaYLg5sr4VwvcvwKZ1Mg",
-        "assetID"  :"AVA"
+        "address":"X-avax1xeaj0h9uy7c5jn6fxjp0rg4g39jeh0hl27vf75",
+        "assetID"  :"AVAX"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -240,8 +252,6 @@ The response should look like this:
 
 Now let's send some AVAX:
 
-(Note: The asset ID of AVAX is AVA on nodes running Denali or earlier. The ID will change to AVAX in the next release.)
-
 ```sh
 curl -X POST --data '{
     "jsonrpc":"2.0",
@@ -250,9 +260,9 @@ curl -X POST --data '{
     "params" :{
         "username"   :"YOUR USERNAME HERE",
         "password"   :"YOUR PASSWORD HERE",
-        "assetID"    :"AVA",
+        "assetID"    :"AVAX",
         "amount"     :1000,
-        "to"         :"X-FxgGhoAwg3dPTPhHEmjgi27ZPmvc8jQmj"
+        "to"         :"X-avax1w4nt49gyv4e99ldqevy50l2kz55y9efghep0cs"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -264,7 +274,7 @@ When you send this request, the node will authenticate you using your username a
 Then, it will look through all the private keys controlled by your user until it finds
 enough nAVAX to satisfy the request.
 
-The response should look like this:
+The response contains the ID of this transaction:
 
 ```json
 {
@@ -293,7 +303,7 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-The response should look like this:
+The response should indicate that the transaction was accepted:
 
 ```json
 {
@@ -315,8 +325,8 @@ curl -X POST --data '{
     "id"     :7,
     "method" :"avm.getBalance",
     "params" :{
-        "address":"X-FxgGhoAwg3dPTPhHEmjgi27ZPmvc8jQmj",
-        "assetID"  :"AVA"
+        "address":"X-avax1w4nt49gyv4e99ldqevy50l2kz55y9efghep0cs",
+        "assetID"  :"AVAX"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -333,7 +343,7 @@ The response should be:
 }
 ```
 
-In the same fashion, we could check `X-5TQr5hSAZ8ZKuSaYLg5sr4VwvcvwKZ1Mg` to see that AVAX we sent was deducted from its balance.
+In the same fashion, we could check `X-avax1xeaj0h9uy7c5jn6fxjp0rg4g39jeh0hl27vf75` to see that AVAX we sent was deducted from its balance.
 
 ## Validate the Default Subnet (Stake)
 
@@ -345,16 +355,15 @@ Avalanche uses Proof-of-Stake, so to become a validator one needs to provide a s
 
 Let's add your node to the Default Subnet.
 
-### Create a P-Chain Account
+### Create a P-Chain Address
 
 The P-Chain (Platform Chain) manages metadata about the Avalanche network, including which nodes belong to which Subnets.
-The P-Chain uses an account model, so in order to validate the Default Subnet you'll need to first create an account on the P-Chain.
-To do so, call [`platform.createAccount`](../api/platform.md#platformcreateaccount):
+We create an address on the P-Chain by calling[`platform.createAddress`](../api/platform.md#platformcreateaddress):
 
 ```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.createAccount",
+    "method": "platform.createAddress",
     "params": {
     	"username":"YOUR USERNAME HERE",
     	"password":"YOUR PASSWORD HERE"
@@ -363,41 +372,39 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
-Note that this API call is sent to the P-Chain (`127.0.0.1:9650/ext/P`) rather than the X-Chain (`127.0.0.1:9650/ext/X`) like previous API calls.
+Note that this API call is sent to the P-Chain (`127.0.0.1:9650/ext/P`) rather than the X-Chain (`127.0.0.1:9650/ext/X`).
 
-The response contains the address of your new account:
+The response contains the new address your user controls:
 
 ```json
 {
     "jsonrpc": "2.0",
     "result": {
-        "address": "Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH"
+        "address": "P-avax1u8fe28yeftny3f4ewy6exc4d5832uhclf5mvur"
     },
     "id": 1
 }
 ```
 
-### Fund Your P-Chain Account
+### Fund Your P-Chain Address
 
 As mentioned before, in order validate the Default Subnet, you need to stake some AVAX tokens.
-Right now, your P-Chain account has no AVAX.
+Right now, your P-Chain address has no AVAX.
 AVAX tokens are transferrable between the X-Chain (where you sent funds with the faucet) and the P-Chain.
-Let's send some AVAX to your P-Chain account from the X-Chain.
-The minimum stake amount is 10,000 nAVAX, so make sure you have at least this much AVAX in your X-Chain addresses.
-(If you need more, use the faucet a few more times.)
+Let's send some AVAX to your P-Chain address from the X-Chain.
+The minimum stake amount on the test network is 10,000 nAVAX, so make sure you have at least this much AVAX in your X-Chain addresses.
+(If you need more, use the faucet again.)
 
-The first step in transferring AVAX from the X-Chain to P-Chain is to call `avm.exportAVA`:
-
-(Note: `avm.exportAVA` will change to `avm.exportAVAX` in the next release.)
+The first step in transferring AVAX from the X-Chain to P-Chain is to call `avm.exportAVAX`:
 
 ```sh
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"avm.exportAVA",
+    "method" :"avm.exportAVAX",
     "params" :{
-        "to":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
-        "amount": 10000,
+        "to":"P-avax1u8fe28yeftny3f4ewy6exc4d5832uhclf5mvur",
+        "amount": 20000,
     	"username":"YOUR USERNAME HERE",
     	"password":"YOUR PASSWORD HERE"
     }
@@ -407,75 +414,68 @@ curl -X POST --data '{
 The response contains the transaction ID.
 As before, you can check the transaction's status by calling `avm.getTxStatus`.
 
-The second and final step is to call `platform.importAVA`:
-
-(Note: `avm.importAVA` will change to `avm.importAVAX` in the next release.)
+Once the transaction is completed, call `platform.importAVAX` to complete the transfer:
 
 ```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.importAVA",
     "params": {
+        "to":"P-avax1u8fe28yeftny3f4ewy6exc4d5832uhclf5mvur",
     	"username":"YOUR USERNAME HERE",
-    	"password":"YOUR PASSWORD HERE",
-		"to":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
-		"payerNonce":1
+    	"password":"YOUR PASSWORD HERE"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
 ```
 
-`payerNonce` is the next unused nonce of your P-Chain account, which is 1 since your P-Chain account has not sent any transactions.
-
-The response contains the transaction:
-
-This call returns the transaction:
+The response contains the transaction ID:
 
 ```json
 {
     "jsonrpc": "2.0",
     "result": {
-        "tx": "1117xBwcr5fo1Ch4umyzjYgnuoFhSwBHdMCam2wRe8SxcJJvQRKSmufXM8aSqKaDmX4TjvzPaUbSn33TAQsbZDhzcHEGviuthncY5VQfUJogyMoFGXUtu3M8NbwNhrYtmSRkFdmN4w933janKvJYKNnsDMvMkmasxrFj8fQxE6Ej8eyU2Jqj2gnTxU2WD3NusFNKmPfgJs8DRCWgYyJVodnGvT43hovggVaWHHD8yYi9WJ64pLCvtCcEYkQeEeA5NE8eTxPtWJrwSMTciHHVdHMpxdVAY6Ptr2rMcYSacr8TZzw59XJfbQT4R6DCsHYQAPJAUfDNeX2JuiBk9xonfKmGcJcGXwdJZ3QrvHHHfHCeuxqS13AfU"
+        "txID": "ow2yyp9ZZVtxTYg6jAZJtnYetEwfu6UxKaw5hY6UAVbGnDwRN"
     },
     "id": 1
 }
 ```
 
-Which you can issue to the P-Chain by calling `platform.issueTx`:
+We can check the transaction's status with `platform.getTxStatus`:
 
 ```sh
 curl -X POST --data '{
-    "jsonrpc": "2.0",
-    "method": "platform.issueTx",
-    "params": {
-    	"tx":"1117xBwcr5fo1Ch4umyzjYgnuoFhSwBHdMCam2wRe8SxcJJvQRKSmufXM8aSqKaDmX4TjvzPaUbSn33TAQsbZDhzcHEGviuthncY5VQfUJogyMoFGXUtu3M8NbwNhrYtmSRkFdmN4w933janKvJYKNnsDMvMkmasxrFj8fQxE6Ej8eyU2Jqj2gnTxU2WD3NusFNKmPfgJs8DRCWgYyJVodnGvT43hovggVaWHHD8yYi9WJ64pLCvtCcEYkQeEeA5NE8eTxPtWJrwSMTciHHVdHMpxdVAY6Ptr2rMcYSacr8TZzw59XJfbQT4R6DCsHYQAPJAUfDNeX2JuiBk9xonfKmGcJcGXwdJZ3QrvHHHfHCeuxqS13AfU"
-    },
-    "id": 1
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"platform.getTxStatus",
+    "params" :{
+        "txID":"ow2yyp9ZZVtxTYg6jAZJtnYetEwfu6UxKaw5hY6UAVbGnDwRN"
+    }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
 ```
 
-Now check the balance of your P-Chain account by calling `platform.getAccount`:
+It should be `Committed`, meaning the transfer is complete.
+
+We can check the balance of the P-Chain address by calling `platform.getBalance`:
 
 ```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.getAccount",
+    "method": "platform.getBalance",
     "params":{
-    	"address":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH"
+    	"address":"P-avax1u8fe28yeftny3f4ewy6exc4d5832uhclf5mvur"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
 ```
 
-The response should look like this:
+The response confirms that the funds are there:
 
 ```json
 {
     "jsonrpc": "2.0",
     "result": {
-        "address": "Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
-        "nonce": "1",
-        "balance": "10000"
+        "balance": "20000"
     },
     "id": 1
 }
@@ -483,12 +483,34 @@ The response should look like this:
 
 Great! Now your P-Chain account has enough AVAX tokens to provide a stake.
 
-### Get Your Node's ID
+### Issue the Transaction
 
-Your node is uniquely identified by its staking key.
-To get your node's ID, call [`info.getNodeID:`](../api/info.md#info.getNodeID)
+To add a node the Default Subnet, we'll call [`platform.addDefaultSubnetValidator`](../api/platform.md#platformadddefaultsubnetvalidator).
 
-```sh
+This method's signature is:
+
+```go
+platform.addDefaultSubnetValidator(
+    {
+        nodeID: string,
+        startTime: int,
+        endTime: int,
+        stakeAmount: int,
+        rewardAddress: string,
+        delegationFeeRate: int,
+        username: string,
+        password: string
+    }
+) -> {txID: string}
+```
+
+Let's go through and examine these arguments.
+
+### `nodeID`
+
+This is the node ID of the validator being added. To get your node's ID, call [`info.getNodeID`:](../api/info.md#infogetnodeid)
+
+```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "info.getNodeID",
@@ -497,7 +519,7 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
 
-The response contains your node's ID:
+The response has your node's ID:
 
 ```json
 {
@@ -509,126 +531,95 @@ The response contains your node's ID:
 }
 ```
 
-### Create the Unsigned Transaction
+### `startTime` and `endTime`
 
-To add your node to the Default Subnet, you'll issue a transaction to the P-Chain.
-When you add a node to the Default Subnet, you specify:
+When one issues a transaction to join the Default Subnet they specify the time they will enter (start validating) and leave (stop validating.)
+The minimum duration that one can validate the Default Subnet is 24 hours, and the maximum duration is one year.
+One can re-enter the Default Subnet after leaving, it's just that the maximum *continuous* duration is one year.
+`startTime` and `endTime` are the Unix times when your validator will start and stop validating the Default Subnet, respectively. `startTime` must be in the future relative to the time the transaction is issued.
 
-* `id`: The node ID of the node being added
-* `payerNonce`: The next unused nonce of the account providing the transaction fee (the fee is currently 0) and staked AVAX tokens.
-* `rewardAddress`: The address the validator reward goes to when the node is done validating, if there is a reward.
-* `startTime`: The Unix time the node will start validating the Default Subnet.
-* `endTime`: The Unix time the node will stop validating the Default Subnet.
+### `stakeAmount`
 
-The place you're most likely to get tripped up is `startTime` and `endTime`.
+In order to validate the Default Subnet one must stake AVAX tokens.
+This parameter defines the amount of AVAX staked.
 
-`startTime` must be in the future relative to the time this transaction is issued.
-To get the current Unix time, see [here.](https://www.unixtimestamp.com/)
-Below, we use the shell command `date` to compute the Unix time 10 minutes from now.
+### `rewardAddress`
 
-`endTime` must be between 1 day (the minimum staking period) and 365 days (the maximum staking period) ahead of `startTime`.
-Below, we use the shell command `date` to compute the Unix time 2 days from now.
+When a validator stops validating the Default Subnet, they will receive a reward if they are sufficiently responsive and correct while they validated the Default Subnet. These tokens are sent to `rewardAddress`. The original stake will be sent back to an address controlled by `username`.
 
+A validator's stake is never slashed, regardless of their behavior; they will always receive their stake back when they're done validating.
+
+### `delegationFeeRate`
+
+Avalanche allows for delegation of stake. This parameter is the percent fee this validator charges when others delegate stake to them, multiplied by 10,000.
+
+For example, suppose a validator has `delegationFeeRate` 300,000 and someone delegates to this validator. When the delegation period is over, if the delegator is entitled to a reward, 30% of the reward (300,000 / 10,000) goes to the validator and 70% goes to the delegator.
+
+### `username` and `password`
+
+These parameters are the username and password of the user that pays the transaction fee, provides the staked AVAX and to whom the staked AVAX will be returned.
+
+### Issue the Transaction
+
+Now let's issue the transaction. We use the shell command `date` to compute the Unix time 10 minutes and 2 days in the future to use as the values of `startTime` and `endTime`, respectively.
 (Note: If you're on a Mac, replace  `$(date` with `$(gdate`. If you don't have `gdate` installed, do `brew install coreutils`.)
 
-Now let's create the unsigned transaction:
-
-```sh
+```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.addDefaultSubnetValidator",
     "params": {
-    	"id":"ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
-    	"payerNonce":2,
-    	"rewardAddress":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
-    	"startTime":'$(date --date="10 minutes" +%s)',
-    	"endTime":'$(date --date="2 days" +%s)',
-    	"stakeAmount":10000,
-        "delegationFeeRate":100000
+        "nodeID":"NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+        "startTime":'$(date --date="10 minutes" +%s)',
+        "endTime":'$(date --date="2 days" +%s)',
+        "stakeAmount":1000000,
+        "rewardAddress":"P-Q4MzFZZDPHRPAHFeDs3NiyyaZDvxHKivf",
+        "delegationFeeRate":100000,
+        "username":"USERNAME",
+        "password":"PASSWORD"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
-The response has the unsigned transaction:
+The response has the transaction ID:
 
 ```json
 {
     "jsonrpc": "2.0",
     "result": {
-        "unsignedTx": "111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLphtYaxdM1EA3Aj4yej8ABSfmjb9NMrtxQac9cnWwCER7GHSzFULB25hAtzGtJ8XhsrKcvtpAM8FwjRzg3Bg1q6V8GTKGMC219bYMETS48GMFGh4nts1Jsf246rjZ26r1Vyok8MdnoaxjQWR6cKq"
+        "txID": "6pb3mthunogehapzqmubmx6n38ii3lzytvdrxumovwkqftzls"
     },
     "id": 1
 }
 ```
 
-### Sign the Transaction
-
-We need to sign this transaction with the key of the account that is paying the transaction fee and providing the staked tokens.
-
-To do so, call `platform.Sign`.
-
-```sh
-curl -X POST --data '{
-    "jsonrpc": "2.0",
-    "method": "platform.sign",
-    "params": {
-    	"tx":"111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLphtYaxdM1EA3Aj4yej8ABSfmjb9NMrtxQac9cnWwCER7GHSzFULB25hAtzGtJ8XhsrKcvtpAM8FwjRzg3Bg1q6V8GTKGMC219bYMETS48GMFGh4nts1Jsf246rjZ26r1Vyok8MdnoaxjQWR6cKq",
-    	"signer":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
-    	"username":"YOUR USERNAME HERE",
-    	"password":"YOUR PASSWORD HERE"
-    },
-    "id": 2
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
-```
-
-This returns the signed transaction:
+We can check the transaction's status by calling `platform.getTxStatus`:
 
 ```json
-{
-    "jsonrpc": "2.0",
-    "result": {
-        "Tx": "111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLphtYaxdM1EA3Aj4yej8ABSfmjb9NMrtxQac9cnWwCER7GHSzFULB4RoAjStfe26qQxhS91KvCCX3WBLmpyvNXHzgWk3uJP45cPv15RHGymFboPUcxNTwGij1NgQpKPcL4YxcDnKvNjrcQzKiXAz"
-    },
-    "id": 2
-}
-```
-
-### Issue the Transaction
-
-Finally, we issue the transaction to the network by calling [`platform.issueTx`](../api/platform.md#platformissuetx)
-
-```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.issueTx",
+    "method": "platform.getTxStatus",
     "params": {
-    	"tx":"111fRKBNoBhBfeGvBzvz6r9dZUKbEnUypM6tjiSyYrWM4ojSTuL2Syxv8cFLphtYaxdM1EA3Aj4yej8ABSfmjb9NMrtxQac9cnWwCER7GHSzFULB4RoAjStfe26qQxhS91KvCCX3WBLmpyvNXHzgWk3uJP45cPv15RHGymFboPUcxNTwGij1NgQpKPcL4YxcDnKvNjrcQzKiXAz"
+        "txID":"6pb3mthunogehapzqmubmx6n38ii3lzytvdrxumovwkqftzls"
     },
-    "id": 3
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
-Look out for errors printed by the node, which may indicate that your `startTime` is in the past, for example.
-If so, try building and issuing the transaction again with corrected arguments.
+The status should be `Committed`, meaning the transaction was successful.
+We can call [`platform.getPendingValidators`](../api/platform.md#platformgetpendingvalidators) and see that the node is now in the pending validator set for the Default Subnet:
 
-### Verify Success
-
-Now we can call [`platform.getPendingValidators`](../api/platform.md#platformgetpendingvalidators) to verify that the node has been added to the pending validator set of the Default Subnet.
-A Subnet's pending validator set contains the nodes that are slated to start validating in the future.
-
-If we don't provide any arguments, this method returns the pending validator set of the Default Subnet:
-
-```sh
+```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.getPendingValidators",
     "params": {},
-    "id": 4
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
-The response should confirm that the node with ID `ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK` will start validating the Default Subnet in the future.
+The response should include the node we just added:
 
 ```json
 {
@@ -636,28 +627,21 @@ The response should confirm that the node with ID `ARCLrphAHZ28xZEBfUL7SVAmzkTZN
     "result": {
         "validators": [
             {
-                "id": "ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+                "nodeID": "NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
                 "startTime": "1584021450",
                 "endtime": "1584121156",
-                "stakeAmount": "10000",
+                "stakeAmount": "1000000",
             }
-        ]
+        ] 
     },
-    "id": 4
+    "id": 1
 }
 ```
 
-Awesome! Now just wait until the time reaches `startTime`.
-When it does, your node will start validating the Default Subnet.
-You can verify this by calling [`platform.getCurrentValidators.`](../api/platform.md#platformgetcurrentvalidators) 
-
-When the time reaches `endTime`, the P-Chain address `rewardAddress` will receive the validator reward, if there is one.
-The staked AVAX tokens will be returned to an address held by the user that issued the transaction.
+When the time reaches `startTime`, this node will start validating the Default Subnet.
+When it reaches `endTime`, this node will stop validating the Default Subnet.
+The staked AVAX will be returned to an address controlled by `username`, and the rewards, if any, will be given to `rewardAddress`.
 Then, if you want, you can rejoin the Default Subnet.
-
-Now that your node is validating the Default Subnet, please leave it running until at least `endTime`.
-We want to have as many nodes as possible participating in consensus in order to stress test the Avalanche network and achieve true decentralization.
-Note that in the future you will only receive a validator reward if your node is sufficiently responsive (ie online) while validating.
 
 ## Next Steps
 
