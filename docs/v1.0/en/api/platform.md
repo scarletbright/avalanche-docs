@@ -30,22 +30,22 @@ The delegation period must be a subset of the perdiod that the delegatee validat
 ```go
 platform.addDefaultSubnetDelegator(
     {
-        id: string,
+        nodeID: string,
         startTime: int,
         endTime: int,
         stakeAmount: int,
-        destination: string,
+        rewardAddress: string,
         username: string,
         password: string
     }
 ) -> {txID: string}
 ```
 
-* `id` is the node ID of the delegatee.
+* `nodeID` is the node ID of the delegatee.
 * `startTime` is the Unix time when the delegator starts delegating.
 * `endTime` is the Unix time when the delegator stops delegating (and staked AVAX is returned).
 * `stakeAmount` is the amount of nAVAX the delegator is staking.
-* `destination` is the address the staked AVAX and validation reward (if applicable) are sent to at `endTime`.
+* `rewardAddress` is the address the validator reward goes to, if there is one.
 * `username` is the user that pays the transaction fee.
 * `password` is `username`'s password.
 * `txID` is the transaction ID
@@ -58,7 +58,7 @@ curl -X POST --data '{
     "method": "platform.addDefaultSubnetDelegator",
     "params": {
         "id":"MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ",
-        "destination":"P-Q4MzFZZDPHRPAHFeDs3NiyyaZDvxHKivf",
+        "rewardAddress":"P-Q4MzFZZDPHRPAHFeDs3NiyyaZDvxHKivf",
         "startTime":1594102400,
         "endTime":1604102400,
         "stakeAmount":100000,
@@ -90,11 +90,11 @@ Add a validator to the Default Subnet.
 ```go
 platform.addDefaultSubnetValidator(
     {
-        id: string,
+        nodeID: string,
         startTime: int,
         endTime: int,
         stakeAmount: int,
-        destination: string,
+        rewardAddress: string,
         delegationFeeRate: int,
         username: string,
         password: string
@@ -102,14 +102,14 @@ platform.addDefaultSubnetValidator(
 ) -> {txID: string}
 ```
 
-* `id` is the node ID of the validator.
+* `nodeID` is the node ID of the validator being added.
 * `startTime` is the Unix time when the validator starts validating the Default Subnet.
 * `endTime` is the Unix time when the validator stops validating the Default Subnet (and staked AVAX is returned).
 * `stakeAmount` is the amount of nAVAX the validator is staking.
-* `destination` is the address the staked AVAX will be returned to, as well as a validation reward if the validator is sufficiently responsive and correct while it validated.
-* `delegationFeeRate` is the percent fee this validator charges when others delegate stake to them, multiplied by 10,000.
-  For example, suppose a validator has `delegationFeeRate` 300,000 and someone delegates to that validator.
-  When the delegation period is over, if the delegator is entitled to a reward, 30% of the reward (300,000 / 10,000) goes to the validator and 70% goes to the delegator.
+* `rewardAddress` is the address the validator reward will go to, if there is one.
+* `delegationFeeRate` is the percent fee this validator charges when others delegate stake to them.
+  Up to 4 decimal places allowed; additional decimal places are ignored. Must be between 0 and 100, inclusive.
+  For example, if `delegationFeeRate` is `1.2345` and someone delegates to this validator, then when the delegation period is over, 1.2345% of the reward goes to the validator and the rest goes to the delegator.
 * `username` is the user that pays the transaction fee.
 * `password` is `username`'s password.
 * `txID` is the transaction ID
@@ -124,8 +124,8 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.addDefaultSubnetValidator",
     "params": {
-        "id":"ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
-        "destination":"P-Q4MzFZZDPHRPAHFeDs3NiyyaZDvxHKivf",
+        "nodeID":"ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+        "rewardAddress":"P-Q4MzFZZDPHRPAHFeDs3NiyyaZDvxHKivf",
         "startTime":'$(date --date="10 minutes" +%s)',
         "endTime":'$(date --date="2 days" +%s)',
         "stakeAmount":1000000,
@@ -170,7 +170,7 @@ platform.addNonDefaultSubnetValidator(
 ) -> {txID: string}
 ```
 
-* `id` is the node id of the validator.
+* `nodeID` is the node ID of the validator.
 * `subnetID` is the subnet they will validate.
 * `startTime` is the unix time when the validator starts validating the subnet.
 * `endTime` is the unix time when the validator stops validating the subnet.
@@ -186,7 +186,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.addnondefaultsubnetvalidator",
     "params": {
-        "id":"7xhw2mdxuds44j42tcb6u5579esbst3lg",
+        "nodeID":"7xhw2mdxuds44j42tcb6u5579esbst3lg",
         "subnetID":"zbfoww1ffkpvrfywpj1cvqrfnyesepdfc61hmu2n9jnghduel",
         "startTime":1583524047,
         "endTime":1604102399,
@@ -584,7 +584,7 @@ platform.getCurrentValidators({subnetID: string}) ->
   Omitted if `subnetID` is the default subnet.
 * `stakeAmount` is the amount of nAVAX this validator staked.
   Omitted if `subnetID` is not the default subnet.
-* `id` is the validator's ID.
+* `nodeID` is the validator's node ID.
 
 #### Example Call
 
@@ -691,7 +691,7 @@ platform.getPendingValidators({subnetID: string}) ->
   Omitted if `subnetID` is the default subnet.
 * `stakeAmount` is the amount of nAVAX this validator staked.
   Omitted if `subnetID` is not the default subnet.
-* `id` is the validator's NodeID.
+* `nodeID` is the validator's node ID.
 
 #### Example Call
 
@@ -1000,7 +1000,7 @@ We call the method again, this time with `startIndex`:
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     :2,
+    "id"     :1,
     "method" :"platform.getUTXOs",
     "params" :{
         "addresses":["P-DjU3SbP9ZfPW8YAvFdjivR4Hjfxu2VCLu"],

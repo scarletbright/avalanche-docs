@@ -29,7 +29,7 @@ This method's signature is:
 ```go
 platform.addDefaultSubnetValidator(
     {
-        id: string,
+        nodeID: string,
         startTime: int,
         endTime: int,
         stakeAmount: int,
@@ -43,7 +43,7 @@ platform.addDefaultSubnetValidator(
 
 Let's go through and examine these arguments.
 
-### `id`
+### `nodeID`
 
 This is the node ID of the validator being added. To get your node's ID, call [`info.getNodeID`:](../api/info.md#infogetnodeid)
 
@@ -106,7 +106,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.addDefaultSubnetValidator",
     "params": {
-        "id":"ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+        "nodeID":"nodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
         "startTime":'$(date --date="10 minutes" +%s)',
         "endTime":'$(date --date="2 days" +%s)',
         "stakeAmount":1000000,
@@ -163,7 +163,7 @@ The response should include the node we just added:
     "result": {
         "validators": [
             {
-                "id": "nodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+                "nodeID": "nodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
                 "startTime": "1584021450",
                 "endtime": "1584121156",
                 "stakeAmount": "1000000",
@@ -190,7 +190,7 @@ To add the validator, we'll call API method `addNonDefaultSubnetValidator`. Its 
 ```go
 platform.addNonDefaultSubnetValidator(
     {
-        id: string,
+        nodeID: string,
         subnetID: string,
         startTime: int,
         endTime: int,
@@ -203,7 +203,7 @@ platform.addNonDefaultSubnetValidator(
 
 Let's examine the parameters:
 
-### `id`
+### `nodeID`
 
 This is the node ID of the validator being added to the subnet.
 **This validator must validate the Default Subnet for the entire duration that it validates this Subnet.**
@@ -234,7 +234,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.addNonDefaultSubnetValidator",
     "params": {
-        "id":"nodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+        "nodeID":"nodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
         "subnetID":"nTd2Q2nTLp8M9qv2VKHMdvYhtNWX7aTPa4SMEK7x7yJHbcWvr",
         "startTime":'$(date --date="10 minutes" +%s)',
         "endTime":'$(date --date="2 days" +%s)',
@@ -290,7 +290,7 @@ The response should include the node we just added:
     "result": {
         "validators": [
             {
-                "id": "nodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+                "nodeID": "nodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
                 "startTime":1584042912,
                 "endTime":1584121156,
                 "weight": "1"

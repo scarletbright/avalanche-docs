@@ -516,7 +516,7 @@ When you add a node to the Default Subnet, you specify:
 
 * `id`: The node ID of the node being added
 * `payerNonce`: The next unused nonce of the account providing the transaction fee (the fee is currently 0) and staked AVAX tokens.
-* `destination`: The address of the account the AVAX (along with a validator reward) will be returned to when the node is done validating.
+* `rewardAddress`: The address the validator reward goes to when the node is done validating, if there is a reward.
 * `startTime`: The Unix time the node will start validating the Default Subnet.
 * `endTime`: The Unix time the node will stop validating the Default Subnet.
 
@@ -540,7 +540,7 @@ curl -X POST --data '{
     "params": {
     	"id":"ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
     	"payerNonce":2,
-    	"destination":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
+    	"rewardAddress":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
     	"startTime":'$(date --date="10 minutes" +%s)',
     	"endTime":'$(date --date="2 days" +%s)',
     	"stakeAmount":10000,
@@ -651,7 +651,8 @@ Awesome! Now just wait until the time reaches `startTime`.
 When it does, your node will start validating the Default Subnet.
 You can verify this by calling [`platform.getCurrentValidators.`](../api/platform.md#platformgetcurrentvalidators) 
 
-When the time reaches `endTime`, the P-Chain account that you specified in `destination` will receive back the staked AVAX tokens as well as a validator reward.
+When the time reaches `endTime`, the P-Chain address `rewardAddress` will receive the validator reward, if there is one.
+The staked AVAX tokens will be returned to an address held by the user that issued the transaction.
 Then, if you want, you can rejoin the Default Subnet.
 
 Now that your node is validating the Default Subnet, please leave it running until at least `endTime`.
