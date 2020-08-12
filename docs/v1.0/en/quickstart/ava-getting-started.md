@@ -358,7 +358,7 @@ Let's add your node to the Default Subnet.
 ### Create a P-Chain Address
 
 The P-Chain (Platform Chain) manages metadata about the Avalanche network, including which nodes belong to which Subnets.
-We create an address on the P-Chain by calling[`platform.createAddress`](../api/platform.md#platformcreateaddress):
+We create an address on the P-Chain by calling [`platform.createAddress`](../api/platform.md#platformcreateaddress):
 
 ```sh
 curl -X POST --data '{
@@ -419,7 +419,7 @@ Once the transaction is completed, call `platform.importAVAX` to complete the tr
 ```sh
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.importAVA",
+    "method": "platform.importAVAX",
     "params": {
         "to":"P-avax1u8fe28yeftny3f4ewy6exc4d5832uhclf5mvur",
     	"username":"YOUR USERNAME HERE",

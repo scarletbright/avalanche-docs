@@ -396,17 +396,15 @@ After calling this method, you must call `importAVAX` on the other chain to comp
 #### Signature
 
 ```go
-avm.exportAVA({
+avm.exportAVAX({
     to: string,
     amount: int,
-    destinationChain: string,
     username: string,
     password:string,
 }) -> {txID: string}
 ```
 
-* `to` is the ID of the P-Chain account the AVAX is sent to.
-* `destinationChain` is the ID or an alias of the chain the AVAX is being sent to.
+* `to` is the P-Chain address the AVAX is sent to.
 * `amount` is the amount of nAVAX to send.
 * The AVAX is sent from addresses controlled by `username`
 
@@ -416,7 +414,7 @@ avm.exportAVA({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"avm.exportAVA",
+    "method" :"avm.exportAVAX",
     "params" :{
         "to":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
         "destinationChain":"P",
@@ -816,18 +814,16 @@ This gives response:
 
 Since `numFetched` is less than `limit`, we know that we are done fetching UTXOs and don't need to call this method again.
 
-### avm.importAVA
-
-(Note: This method will change to `importAVAX` in the next release.)
+### avm.importAVAX
 
 Finalize a transfer of AVAX from the P-Chain to the X-Chain.
 
-Before this method is called, you must call the P-Chain's [`exportAVA`](./platform.md#platformexportava) method to initiate the transfer.
+Before this method is called, you must call the P-Chain's [`exportAVAX`](./platform.md#platformexportavax) method to initiate the transfer.
 
 #### Signature
 
 ```go
-avm.importAVA({
+avm.importAVAX({
     to: string,
     username: string,
     password:string,
@@ -835,7 +831,7 @@ avm.importAVA({
 ```
 
 * `to` is the address the AVAX is sent to.
-  This must be the same as the `to` argument in the corresponding call to the P-Chain's `exportAVA`,
+  This must be the same as the `to` argument in the corresponding call to the P-Chain's `exportAVAX`,
   except that the prepended `X-` should be included in this argument.
 * `username` is the user that controls `to`.
 
@@ -845,7 +841,7 @@ avm.importAVA({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"avm.importAVA",
+    "method" :"avm.importAVAX",
     "params" :{
     	"username":"myUsername",
     	"password":"myPassword",

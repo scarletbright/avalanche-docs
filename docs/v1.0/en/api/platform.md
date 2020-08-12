@@ -818,17 +818,15 @@ curl -X POST --data '{
 }
 ```
 
-### platform.exportAVA
-
-(Note: This method will change to `exportAVAX` in the next release.)
+### platform.exportAVAX
 
 Send AVAX from an address on the P-Chain to an address on the X-Chain. 
-After issuing this transaction, you must call the X-Chain's [`importAVA`](./avm.md#avmimportava) method to complete the transfer.
+After issuing this transaction, you must call the X-Chain's [`importAVAX`](./avm.md#avmimportavax) method to complete the transfer.
 
 #### Signature
 
 ```go
-platform.exportAVA(
+platform.exportAVAX(
     {
         amount: int,
         to: string,
@@ -839,7 +837,7 @@ platform.exportAVA(
 ```
 
 * `amount` is the amount of nAVAX to send.
-* `to` is the address on the X-Chain to send the AVAX to. Do not include `X-` in the address.
+* `to` is the address on the X-Chain to send the AVAX to.
 * `username` is the user sending the AVAX and paying the transaction fee.
 * `password` is `username`'s password.
 * `txID` is the ID of this transaction.
@@ -849,7 +847,7 @@ platform.exportAVA(
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.exportAVA",
+    "method": "platform.exportAVAX",
     "params": {
         "to":"G5ZGXEfoWYNFZH5JF9C4QPKAbPTKwRbyB",
         "amount":1,
@@ -1037,18 +1035,16 @@ This gives response:
 
 Since `numFetched` is less than `limit`, we know that we are done fetching UTXOs and don't need to call this method again.
 
-### platform.importAVA
-
-(Note: This method will change to `importAVAX` in the next release.)
+### platform.importAVAX
 
 Complete a transfer of AVAX from the X-Chain to the P-Chain.
 
-Before this method is called, you must call the X-Chain's [`exportAVA`](./avm.md#avmexportava) method to initiate the transfer.
+Before this method is called, you must call the X-Chain's [`exportAVAX`](./avm.md#avmexportavax) method to initiate the transfer.
 
 #### Signature
 
 ```go
-platform.importAVA(
+platform.importAVAX(
     {
         to: string,
         username: string,
@@ -1060,14 +1056,14 @@ platform.importAVA(
 * `username` is the user that controls the address specified in `to`.
 * `password` is `username`'s password.
 * `to` is the ID of the address the AVAX is imported to.
-  This must be the same as the `to` argument in the corresponding call to the X-Chain's `exportAVA`.
+  This must be the same as the `to` argument in the corresponding call to the X-Chain's `exportAVAX`.
 
 #### Example Call
 
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.importAVA",
+    "method": "platform.importAVAX",
     "params": {
         "username":"bob",
         "password":"loblaw",
