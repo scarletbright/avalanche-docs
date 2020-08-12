@@ -999,8 +999,6 @@ avm.Send({
 * The asset is sent from addresses controlled by user `username`.
   (Of course, that user will need to hold at least the balance of the asset being sent.)
 
-(Note: The asset ID of AVAX is AVA on nodes running Denali or earlier. The ID will change to AVAX in the next release.)
-
 #### Example Call
 
 ```json
@@ -1009,7 +1007,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.send",
     "params" :{
-        "assetID" :"AVA",
+        "assetID" :"AVAX",
         "amount"  :10000,
         "to"      :"X-avax1yzt57wd8me6xmy3t42lz8m5lg6yruy79m6whsf",
         "username":"userThatControlsAtLeast10000OfThisAsset",

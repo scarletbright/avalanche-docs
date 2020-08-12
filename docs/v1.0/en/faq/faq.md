@@ -79,13 +79,13 @@ For MacOS:
 Download the file named `gecko-osx-<VERSION>.zip`  
 Unzip the file with `unzip gecko-osx-<VERSION>.zip`  
 The resulting folder, `gecko-<VERSION>`, contains the binaries.  
-You can run the node with `./gecko-<VERSION>/ava`
+You can run the node with `./gecko-<VERSION>/avalanche`
 
 For Linux x86:  
 Download the file named `gecko-linux-<VERSION>.tar.gz`  
 Unzip the file with `tar -xvf gecko-linux-<VERSION>.tar.gz`  
 The resulting folder, `gecko-<VERSION>`, contains the binaries.  
-You can run the node with `./gecko-<VERSION>/ava`
+You can run the node with `./gecko-<VERSION>/avalanche`
 
 Note: The Linux binaries are compiled for AMD64 (x86-64) architectures. For ARM platforms, like the Raspberry Pi, please [build from source](#from-source).
 
@@ -95,7 +95,7 @@ No.
 
 ### What version am I running?
 
-Run `./ava --version`.
+Run `./avalanche --version`.
 It will print the version of Avalanche you're running.
 To see what the latest release is, see our [releases page.](https://github.com/ava-labs/gecko/releases/)
 
@@ -408,9 +408,9 @@ Please also see our [Github issues.](https://github.com/ava-labs/gecko/issues)
 
 ### Node won't start with `failed to listen on consensus server at 0.0.0.0:9651: unable to listen`
 
-To get around this, run the `ava` binary with `--staking-port=9652` (or `9653` or `9654` or ...)
+To get around this, run the `avalanche` binary with `--staking-port=9652` (or `9653` or `9654` or ...)
 
-Example: `./ava --staking-port=9652`
+Example: `./avalanche --staking-port=9652`
 
 ### Node won't quit with `CTRL + C`
 

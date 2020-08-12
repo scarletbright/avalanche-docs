@@ -53,7 +53,7 @@ Type:
   optional, <filepath>
 
 Default:
-  $GOPATH/src/github.com/ava-labs/gecko/build/ava
+  $GOPATH/src/github.com/ava-labs/gecko/build/avalanche
 ```
 
 #### `datadir`
@@ -270,7 +270,7 @@ Usage:
 #### `startnode`
 
 ```
-Starts an ava client node using procmanager and gives it a name. Example:
+Starts an Avalanche client node using procmanager and gives it a name. Example:
 	
 startnode MyNode1 --public-ip=127.0.0.1 --staking-port=9651 --http-port=9650 ... 
 
@@ -279,12 +279,12 @@ Usage:
 
 Flags:
       --assertions-enabled                   Turn on assertion execution. (default true)
-      --ava-tx-fee uint                      Ava transaction fee, in nAVAX.
+      --avax-tx-fee uint                     Transaction fee, in nAVAX.
       --bootstrap-ids string                 Comma separated list of bootstrap peer ids to connect to. Example: JR4dVmy6ffUGAKCBDkyCbeZbyHQBeDsET,8CrVPQZ4VSqgL8zTdvL14G8HqAfrBr4z
       --bootstrap-ips string                 Comma separated list of bootstrap nodes to connect to. Example: 127.0.0.1:9630,127.0.0.1:9620
       --client-location string               Path to Avalanche node client, defaulting to the config file's value.
       --data-dir string                      Name of directory for the data stash.
-      --db-dir string                        Database directory for Ava state. (default "db1")
+      --db-dir string                        Database directory for Avalanche state. (default "db1")
       --db-enabled                           Turn on persistent storage. (default true)
   -h, --help                                 help for startnode
       --http-port uint                       Port of the HTTP server. (default 9650)

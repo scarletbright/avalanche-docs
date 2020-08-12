@@ -439,7 +439,7 @@ platform.getBlockchains() ->
 }
 ```
 
-* `blockchains` is all of the blockchains that exists on the AVAX network.
+* `blockchains` is all of the blockchains that exists on the Avalanche network.
 * `name` is the human-readable name of this blockchain.
 * `id` is the blockchain's ID.
 * `subnetID` is the ID of the Subnet that validates this blockchain.

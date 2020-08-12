@@ -73,13 +73,13 @@ For MacOS:
 Download the file named `gecko-osx-<VERSION>.zip`  
 Unzip the file with `unzip gecko-osx-<VERSION>.zip`  
 The resulting folder, `gecko-<VERSION>`, contains the binaries.  
-You can run the node with `./gecko-<VERSION>/ava`
+You can run the node with `./gecko-<VERSION>/avalanche`
 
 For Linux:  
 Download the file named `gecko-linux-<VERSION>.tar.gz`.  
 Unzip the file with `tar -xvf gecko-linux-<VERSION>.tar.gz`  
 The resulting folder, `gecko-<VERSION>`, contains the binaries.  
-You can run the node with `./gecko-<VERSION>/ava`
+You can run the node with `./gecko-<VERSION>/avalanche`
 
 ### Start a Node and Connect to Test Network
 
@@ -317,7 +317,7 @@ The response should indicate that the transaction was accepted:
 
 You might also see that `status` is `Processing` if the network has not yet finalized the transaction.
 
-Once you see that the transaction is `Accepted`, check the balance of the `to` address to see that it has the AVA we sent:
+Once you see that the transaction is `Accepted`, check the balance of the `to` address to see that it has the AVAX we sent:
 
 ```sh
 curl -X POST --data '{
