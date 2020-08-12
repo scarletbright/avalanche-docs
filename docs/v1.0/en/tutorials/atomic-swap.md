@@ -30,7 +30,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.exportAVAX",
     "params" :{
-        "to":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
+        "to":"P-avax1wkmfja9ve3lt3n9ye4qp3l3gj9k2mz7ep45j7q",
         "amount": 500,
         "username":"myUsername",
         "password":"myPassword"
@@ -39,7 +39,7 @@ curl -X POST --data '{
 ```
 
 where `to` is the address of a P-Chain account you hold.
-(See [here](../api/platform.md#platformcreateaccount) for instructions on creating a new P-Chain account)
+(See [here](../api/platform.md#platformcreateaddress) for instructions on creating a new P-Chain address)
 
 The response should look like this:
 
@@ -87,7 +87,7 @@ curl -X POST --data '{
     "method" :"avm.getBalance",
     "params" :{
         "address":"X-ADDRESSGOESHERE",
-        "assetID":"AVA"
+        "assetID":"AVAX"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -106,50 +106,50 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.importAVAX",
     "params": {
+        "to":"P-avax1wkmfja9ve3lt3n9ye4qp3l3gj9k2mz7ep45j7q",
         "username":"myUsername",
         "password":"myPassword",
-        "to":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
-        "payerNonce":1
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
 ```
 
-where `to` is the same as in the call to `avm.exportAVAX`, and `username` controls the account specified in `to`.
-
-This call returns the transaction:
+This returns the transaction ID:
 
 ```json
 {
     "jsonrpc": "2.0",
     "result": {
-        "tx": "1117xBwcr5fo1Ch4umyzjYgnuoFhSwBHdMCam2wRe8SxcJJvQRKSmufXM8aSqKaDmX4TjvzPaUbSn33TAQsbZDhzcHEGviuthncY5VQfUJogyMoFGXUtu3M8NbwNhrYtmSRkFdmN4w933janKvJYKNnsDMvMkmasxrFj8fQxE6Ej8eyU2Jqj2gnTxU2WD3NusFNKmPfgJs8DRCWgYyJVodnGvT43hovggVaWHHD8yYi9WJ64pLCvtCcEYkQeEeA5NE8eTxPtWJrwSMTciHHVdHMpxdVAY6Ptr2rMcYSacr8TZzw59XJfbQT4R6DCsHYQAPJAUfDNeX2JuiBk9xonfKmGcJcGXwdJZ3QrvHHHfHCeuxqS13AfU"
+        "txID": "2sxo3ySETZ4xzXqAtgsUvZ5pdkqG4SML4c7Z7NoKLZcp77YNXC"
     },
     "id": 1
 }
 ```
 
-Which we can issue to the network with `issueTx`:
+We can check that the transaction was accepted with:
+
 
 ```json
 curl -X POST --data '{
-    "jsonrpc": "2.0",
-    "method": "platform.issueTx",
-    "params": {
-        "tx":"1117xBwcr5fo1Ch4umyzjYgnuoFhSwBHdMCam2wRe8SxcJJvQRKSmufXM8aSqKaDmX4TjvzPaUbSn33TAQsbZDhzcHEGviuthncY5VQfUJogyMoFGXUtu3M8NbwNhrYtmSRkFdmN4w933janKvJYKNnsDMvMkmasxrFj8fQxE6Ej8eyU2Jqj2gnTxU2WD3NusFNKmPfgJs8DRCWgYyJVodnGvT43hovggVaWHHD8yYi9WJ64pLCvtCcEYkQeEeA5NE8eTxPtWJrwSMTciHHVdHMpxdVAY6Ptr2rMcYSacr8TZzw59XJfbQT4R6DCsHYQAPJAUfDNeX2JuiBk9xonfKmGcJcGXwdJZ3QrvHHHfHCeuxqS13AfU"
-    },
-    "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"avm.getTxStatus",
+    "params" :{
+        "txID":"2sxo3ySETZ4xzXqAtgsUvZ5pdkqG4SML4c7Z7NoKLZcp77YNXC"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-Now we can check the account's balance and verify that is has the AVAX:
+It should be `Committed`, meaning the transfer is complete.
+We can also check the balance of the address with:
+
 
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.getAccount",
+    "method": "platform.getBalance",
     "params":{
-        "address":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH"
+        "address":"P-avax1wkmfja9ve3lt3n9ye4qp3l3gj9k2mz7ep45j7q"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
@@ -161,16 +161,20 @@ The response should look like this:
 {
     "jsonrpc": "2.0",
     "result": {
-        "address": "Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
-        "nonce": "1",
-        "balance": "500"
+        "balance": "20000",
+        "utxoIDs": [
+            {
+                "txID": "2sxo3ySETZ4xzXqAtgsUvZ5pdkqG4SML4c7Z7NoKLZcp77YNXC",
+                "outputIndex": 0
+            }
+        ]
     },
-    "id": 1
+    "id": 84
 }
 ```
 
 Woo! We successfully moved AVAX from the X-Chain to the P-Chain.
-Now we can use the AVAX held by this P-Chain account to provide a stake in order to validate the Default Subnet.
+Now we can use the AVAX held by this P-Chain address to provide a stake in order to validate the Default Subnet.
 
 ## Export AVAX from the P-Chain to the X-Chain
 
@@ -192,87 +196,9 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
-where `to` is the X-Chain address (without the `X-`) the AVAX is being sent to.
+where `to` is the X-Chain address the AVAX is being sent to.
 
-This returns the unsigned transaction:
-
-```json
-{
-    "jsonrpc": "2.0",
-    "result": {
-        "unsignedTx": "1112Y8Y5ibRqMDtby9NSdpK9u3n1yGywybAAVYnhCkFYcRzEYbR7J5Ci6SX98PmgS2LpRf5pcu6YAgLYGiTuQpiSucRcX4dv7HbVnEsrQnjcieGbgkf9PFS126hC8xce4pEZUzr9jReVdfXe3g9BSUsXLj2XcWrnD6iTgHpiC18jjyjg1wjm1Vs4TcXhG472MRvGspucJ8LuUE91WV7353Kxdc2e7Trw2Sd6iV"
-    },
-    "id": 1
-}
-```
-
-Now we sign with the key of the account that the AVA is being sent from:
-
-```json
-curl -X POST --data '{
-    "jsonrpc": "2.0",
-    "method": "platform.sign",
-    "params": {
-        "tx":"1112Y8Y5ibRqMDtby9NSdpK9u3n1yGywybAAVYnhCkFYcRzEYbR7J5Ci6SX98PmgS2LpRf5pcu6YAgLYGiTuQpiSucRcX4dv7HbVnEsrQnjcieGbgkf9PFS126hC8xce4pEZUzr9jReVdfXe3g9BSUsXLj2XcWrnD6iTgHpiC18jjyjg1wjm1Vs4TcXhG472MRvGspucJ8LuUE91WV7353Kxdc2e7Trw2Sd6iV",
-        "signer":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
-        "username":"myUsername",
-        "password":"myPassword"
-    },
-    "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
-```
-
-This returns the signed transaction:
-
-```json
-{
-    "jsonrpc": "2.0",
-    "result": {
-        "tx": "1112Y8Y5ibRqMDtby9NSdpK9u3n1yGywybAAVYnhCkFYcRzEYbR7J5Ci6SX98PmgS2LpRf5pcu6YAgLYGiTuQpiSucRcX4dv7HbVnEsrQnjcieGbgkf9PFS126hC8xce4pEZUzrAzm53EwXPbbF1uWemTQUfFs44xha8Yn4JtgEwT3Q42VywckUVncKvfX2wtbz3RaDvavYhxUM7TbxSMJwAo8Xq45RjKZDpmw"
-    },
-    "id": 1
-}
-```
-
-Which we issue to the network:
-
-```json
-curl -X POST --data '{
-    "jsonrpc": "2.0",
-    "method": "platform.issueTx",
-    "params": {
-        "tx":"1112Y8Y5ibRqMDtby9NSdpK9u3n1yGywybAAVYnhCkFYcRzEYbR7J5Ci6SX98PmgS2LpRf5pcu6YAgLYGiTuQpiSucRcX4dv7HbVnEsrQnjcieGbgkf9PFS126hC8xce4pEZUzrAzm53EwXPbbF1uWemTQUfFs44xha8Yn4JtgEwT3Q42VywckUVncKvfX2wtbz3RaDvavYhxUM7TbxSMJwAo8Xq45RjKZDpmw"
-    },
-    "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
-```
-
-We can see that the AVAX was deducted from the account:
-
-```json
-curl -X POST --data '{
-    "jsonrpc": "2.0",
-    "method": "platform.getAccount",
-    "params":{
-        "address":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH"
-    },
-    "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
-```
-
-The response should look like this:
-
-```json
-{
-    "jsonrpc": "2.0",
-    "result": {
-        "address": "Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
-        "nonce": "2",
-        "balance": "250"
-    },
-    "id": 1
-}
-```
+Just as before, this returns the transaction ID, and we can check that the transaction was committed with another call to `platform.getTxStatus`.
 
 ## Import AVAX to the X-Chain from the P-Chain
 
@@ -284,17 +210,16 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.importAVAX",
     "params" :{
+        "to":"X-avax1fjn5rffqvny7uk3tjegjs6snwjs3hhgcpcxfax",
         "username":"myUsername",
         "password":"myPassword",
-        "to":"X-avax1fjn5rffqvny7uk3tjegjs6snwjs3hhgcpcxfax"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-Note that `to` is the same address specified in our call to `platform.exportAVAX` except that we include `X-` in the address.
-`username` must control the address in `to` for the transfer to succeed.
+Note that `to` is the same address specified in our call to `platform.exportAVAX`.
 
-Just as before, we can call `avm.getBalance` to verify the funds were sent.
+Just as before, we can call `avm.getBalance` to verify the funds were received.
 
 ## Wrapping Up
 

@@ -416,8 +416,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.exportAVAX",
     "params" :{
-        "to":"Bg6e45gxCUTLXcfUuoy3go2U6V3bRZ5jH",
-        "destinationChain":"P",
+        "to":"P-avax1q9c6ltuxpsqz7ul8j0h0d0ha439qt70sr3x2m0",
         "amount": 500,
         "username":"myUsername",
         "password":"myPassword"
@@ -817,7 +816,6 @@ Since `numFetched` is less than `limit`, we know that we are done fetching UTXOs
 ### avm.importAVAX
 
 Finalize a transfer of AVAX from the P-Chain to the X-Chain.
-
 Before this method is called, you must call the P-Chain's [`exportAVAX`](./platform.md#platformexportavax) method to initiate the transfer.
 
 #### Signature
@@ -831,8 +829,7 @@ avm.importAVAX({
 ```
 
 * `to` is the address the AVAX is sent to.
-  This must be the same as the `to` argument in the corresponding call to the P-Chain's `exportAVAX`,
-  except that the prepended `X-` should be included in this argument.
+  This must be the same as the `to` argument in the corresponding call to the P-Chain's `exportAVAX`.
 * `username` is the user that controls `to`.
 
 #### Example Call
@@ -843,9 +840,9 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.importAVAX",
     "params" :{
+        "to":"X-avax1s7aygrkrtxflmrlyadlhqu70a6f4a4n8l2tru8",
     	"username":"myUsername",
-    	"password":"myPassword",
-        "to":"X-avax1s7aygrkrtxflmrlyadlhqu70a6f4a4n8l2tru8"
+    	"password":"myPassword"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -888,7 +885,7 @@ curl -X POST --data '{
     "params" :{
         "username" :"myUsername",
         "password":"myPassword",
-        "privateKey":"2w4XiXxPfQK4TypYqnohRL8DRNTz9cGiGmwQ1zmgEqD9c9KWLq"
+        "privateKey":"PrivateKey-2w4XiXxPfQK4TypYqnohRL8DRNTz9cGiGmwQ1zmgEqD9c9KWLq"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```

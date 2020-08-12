@@ -849,7 +849,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.exportAVAX",
     "params": {
-        "to":"G5ZGXEfoWYNFZH5JF9C4QPKAbPTKwRbyB",
+        "to":"X-avax1yv8cwj9kq3527feemtmh5gkvezna5xys08mxet",
         "amount":1,
         "username":"username",
         "password":"password"
