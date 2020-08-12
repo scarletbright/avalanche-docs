@@ -1003,7 +1003,7 @@ curl -X POST --data '{
     "params" :{
         "addresses":["P-avax1fquvrjkj7ma5srtayfvx7kncu7um3ym73ztydr"],
         "limit":5,
-        "endIndex": {
+        "startIndex": {
             "address": "P-avax1fquvrjkj7ma5srtayfvx7kncu7um3ym73ztydr",
             "utxo": "kbUThAUfmBXUmRgTpgD6r3nLj7rJUGho6xyht5nouNNypH45j"
         }
