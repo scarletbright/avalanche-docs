@@ -38,7 +38,7 @@ curl -X POST --data '{
     "method" :"admin.alias",
     "params": {
         "alias":"myAlias",
-        "endpoint":"bc/x"
+        "endpoint":"bc/X"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
 ```
