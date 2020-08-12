@@ -18,7 +18,7 @@ In this tutorial we'll create a new Subnet with 2 control keys and a threshold o
 ## Generate the Control Keys
 
 First, let's generate the 2 control keys.
-To do so we call [`platform.createAddress`](../api/platform.md#platformcreateaccount)
+To do so we call [`platform.createAddress`](../api/platform.md#platformcreateaddress)
 This generates a new private key and stores it for a user.
 
 To generate the first key:

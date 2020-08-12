@@ -481,7 +481,7 @@ The response confirms that the funds are there:
 }
 ```
 
-Great! Now your P-Chain account has enough AVAX tokens to provide a stake.
+Great! Now your P-Chain address has enough AVAX tokens to provide a stake.
 
 ### Issue the Transaction
 

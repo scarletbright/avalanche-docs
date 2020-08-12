@@ -38,8 +38,8 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-where `to` is the address of a P-Chain account you hold.
-(See [here](../api/platform.md#platformcreateaddress) for instructions on creating a new P-Chain address)
+where `to` is the address of a P-Chain address you hold.
+(See [here](../api/platform.md#platformcreateaddress) for instructions on creating a new P-Chain address.)
 
 The response should look like this:
 
