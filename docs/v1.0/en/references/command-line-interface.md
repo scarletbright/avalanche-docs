@@ -45,7 +45,7 @@ When set to true, state updates are written to a local persistent database. Defa
 
 The address that HTTP APIs listen on. The default value is `127.0.0.1`.
 This means that by default, your node can only handle API calls made from the same machine.
-To allow API calls from other machines, do `--http-host=[PUBLIC IP OF MACHINE RUNNING NODE]`.
+To allow API calls from other machines, do `--http-host=`.
 
 `--http-port` (int):
 
