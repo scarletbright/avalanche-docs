@@ -53,7 +53,7 @@ curl -X POST --data '{
         "symbol":"ISAS",
         "initialHolders": [
             {
-                "address": "X-Dxs8JWAzDZX1VXcLZT5GZR7TyfX8h9ic9",
+                "address": "X-avax10pvk9anjqrjfv2xudkdptza654695uwc8ecyg5",
                 "amount": 10000000
             }
         ],
@@ -89,7 +89,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.getBalance",
     "params" :{
-        "address":"X-Dxs8JWAzDZX1VXcLZT5GZR7TyfX8h9ic9",
+        "address":"X-avax10pvk9anjqrjfv2xudkdptza654695uwc8ecyg5",
         "assetID":"keMuoTQSGjqZbNVTCcbrwuNNNv9eEEZWBaRY3TapcgjkoZmQ1"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
@@ -124,7 +124,7 @@ curl -X POST --data '{
         "password":"PASSWORD GOES HERE",
         "assetID" :"keMuoTQSGjqZbNVTCcbrwuNNNv9eEEZWBaRY3TapcgjkoZmQ1",
         "amount"  :100,
-        "to"      :"X-9R5xWj1DkMtGVDQmyTB4uNnvYdCnj57pa"
+        "to"      :"X-avax1t8sl0knfzly3t3sherctxwezy533ega3sxww2k"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -181,7 +181,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.getBalance",
     "params" :{
-        "address":"X-9R5xWj1DkMtGVDQmyTB4uNnvYdCnj57pa",
+        "address":"X-avax1t8sl0knfzly3t3sherctxwezy533ega3sxww2k",
         "assetID":"keMuoTQSGjqZbNVTCcbrwuNNNv9eEEZWBaRY3TapcgjkoZmQ1"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X

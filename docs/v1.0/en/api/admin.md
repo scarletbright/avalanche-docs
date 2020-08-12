@@ -1,6 +1,8 @@
 # Admin API
 
 This API can be used for measuring node health and debugging.
+Note that the Admin API is disabled by default for security reasons.
+To run a node with the Admin API enabled, use [command line argument](../references/command-line-interface.md) `--api-admin-enabled=true`.
 
 ## Format
 
@@ -16,7 +18,7 @@ This API uses the `json 2.0` RPC format. For more information on making JSON RPC
 
 ### admin.alias
 
-Assign an API an alias, a different endpoint for the API.
+Assign an API endpoint an alias, a different endpoint for the API.
 The original endpoint will still work.
 This change only affects this node; other nodes will not know about this alias.
 
@@ -39,7 +41,7 @@ curl -X POST --data '{
     "method" :"admin.alias",
     "params": {
         "alias":"myAlias",
-        "endpoint":"bc/x"
+        "endpoint":"bc/X"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
 ```

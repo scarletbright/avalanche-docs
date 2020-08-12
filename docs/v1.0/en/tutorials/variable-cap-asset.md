@@ -67,15 +67,15 @@ curl -X POST --data '{
         "minterSets":[
             {
                 "minters": [
-                    "X-No525ybWCY8jNwkPE8tcwwfFnQTWsL3aH"
+                    "X-avax1ghstjukrtw8935lryqtnh643xe9a94u3tc75c7"
                 ],
                 "threshold": 1
             },
             {
                 "minters": [
-                    "X-EMFBcgAKyToN7PSAaFkyTFhVmgXqK3BRG",
-                    "X-BuHCPN7JmzKJZnHrLgEvSo6pQeL1kivzM",
-                    "X-AomEKCh7bDsh2rPMS8aq6jzG1Q3g3GMNh"
+                    "X-avax1k4nr26c80jaquzm9369j5a4shmwcjn0vmemcjz",
+                    "X-avax1yell3e4nln0m39cfpdhgqprsd87jkh4qnakklx",
+                    "X-avax1ztkzsrjnkn0cek5ryvhqswdtcg23nhge3nnr5e"
                 ],
                 "threshold": 2
             }
@@ -119,7 +119,7 @@ curl -X POST --data '{
     "params" :{
         "amount":10000000,
         "assetID":"i1EqsthjiFTxunrj8WD2xFSrQ5p2siEKQacmCCB5qBFVqfSL2",
-        "to":"X-3dj8tFUAv8zCF8nktYFvonJcRMv8H8ARJ",
+        "to":"X-avax1a202a8pu5w4vnerwzp84j68yknm6lf47drfsdv",
         "username":"USERNAME GOES HERE",
         "password":"PASSWORD GOES HERE"
     }
@@ -176,7 +176,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.getBalance",
     "params" :{
-        "address":"X-3dj8tFUAv8zCF8nktYFvonJcRMv8H8ARJ",
+        "address":"X-avax1a202a8pu5w4vnerwzp84j68yknm6lf47drfsdv",
         "assetID":"i1EqsthjiFTxunrj8WD2xFSrQ5p2siEKQacmCCB5qBFVqfSL2"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
@@ -196,12 +196,7 @@ The response confirms that our asset creation was successful, and that the expec
 
 ### Send the Asset
 
-Let's send 100 shares to another address by using `avm.send`.
-
-To send the shares, we need to prove that we control the address the shares are being sent from (`X-3dj8tFUAv8zCF8nktYFvonJcRMv8H8ARJ`).
-Therefore, this time we'll need to fill in `username` and `password`.
-
-To send the 100 shares:
+Let's send 100 shares to another address by using `avm.send`. To do so:
 
 ```json
 curl -X POST --data '{
@@ -213,7 +208,7 @@ curl -X POST --data '{
         "password":"PASSWORD GOES HERE",
         "assetID" :"i1EqsthjiFTxunrj8WD2xFSrQ5p2siEKQacmCCB5qBFVqfSL2",
         "amount"  :100,
-        "to"      :"X-LzAcZRDqv3GFsvszqFo22SNKLvFKwKknk"
+        "to"      :"X-avax1qwnlpknmdkkl22rhmad0dcn80wfasp2y3yg3x0"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -226,7 +221,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.getBalance",
     "params" :{
-        "address":"X-LzAcZRDqv3GFsvszqFo22SNKLvFKwKknk",
+        "address":"X-avax1qwnlpknmdkkl22rhmad0dcn80wfasp2y3yg3x0",
         "assetID":"i1EqsthjiFTxunrj8WD2xFSrQ5p2siEKQacmCCB5qBFVqfSL2"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
