@@ -6,7 +6,7 @@ This file is meant to be the single source of truth for how we serialize transac
 
 ## Outputs
 
-Outputs have two possible types: `SECP256K1TransferOutput`, and `NFTTransferOutput`.
+Outputs have four possible types: `SECP256K1TransferOutput`, `SECP256K1MintOutput`, `NFTTransferOutput` and `NFTMintOutput`.
 
 ***
 
@@ -14,15 +14,10 @@ Outputs have two possible types: `SECP256K1TransferOutput`, and `NFTTransferOutp
 
 A [secp256k1](./cryptographic-primitives.md#cryptography-in-the-avalanche-virtual-machine) transfer output allows for sending a quantity of an asset to a collection of addresses after a specified unix time.
 
-#### SECP256K1 Transfer Output Identifier
-
-The `OutputID` for a secp256k1 transfer output type is `0x00000007`.
-
 #### What SECP256K1 Transfer Output Contains
 
-A secp256k1 transfer output contains an `OutputID`, `Amount`, `Locktime`, `Threshold`, and `Addresses`.
+A secp256k1 transfer output contains an `Amount`, `Locktime`, `Threshold`, and `Addresses`.
 
-- **`OutputID`** is an int that defines which type this is. For a secp256k1 transfer output the `OutputID` is `0x00000007`.
 - **`Amount`** is a long that specifies the quantity of the asset that this output owns. Must be positive.
 - **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
 - **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
@@ -31,8 +26,6 @@ A secp256k1 transfer output contains an `OutputID`, `Amount`, `Locktime`, `Thres
 #### Gantt SECP256K1 Transfer Output Specification
 
 ```boo
-+-----------+------------+--------------------------------+
-| output_id : int        |                        4 bytes |
 +-----------+------------+--------------------------------+
 | amount    : long       |                        8 bytes |
 +-----------+------------+--------------------------------+
@@ -50,11 +43,10 @@ A secp256k1 transfer output contains an `OutputID`, `Amount`, `Locktime`, `Thres
 
 ```protobuf
 message SECP256K1TransferOutput {
-    uint32 output_id = 1;         // 04 bytes
-    uint64 amount = 2;            // 08 bytes
-    uint64 locktime = 3;          // 08 bytes
-    uint32 threshold = 4;         // 04 bytes
-    repeated bytes addresses = 5; // 04 bytes + 20 bytes * len(addresses)
+    uint64 amount = 1;            // 08 bytes
+    uint64 locktime = 2;          // 08 bytes
+    uint32 threshold = 3;         // 04 bytes
+    repeated bytes addresses = 4; // 04 bytes + 20 bytes * len(addresses)
 }
 ```
 
@@ -71,7 +63,6 @@ Let's make a secp256k1 transfer output with:
 
 ```splus
 [
-    OutputID  <- 0x00000007
     Amount    <- 12345 = 0x0000000000003039
     Locktime  <- 54321 = 0x000000000000d431
     Threshold <- 1     = 0x00000001
@@ -82,8 +73,6 @@ Let's make a secp256k1 transfer output with:
 ]
 =
 [
-    // output type:
-    0x00, 0x00, 0x00, 0x07,
     // amount:
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x39,
     // locktime:
@@ -180,88 +169,6 @@ Let's make an SECP256K1 mint output with:
 ]
 ```
 
-### NFT Mint Output
-
-An NFT mint output is an NFT that is owned by a collection of addresses.
-
-#### What NFT Mint Output Contains
-
-An NFT Mint output contains an `GroupID`, `Locktime`, `Threshold`, and `Addresses`.
-
-- **`GroupID`** is an int that specifies the group this NFT is issued to.
-- **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
-- **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
-- **`Addresses`** is a list of unique addresses that correspond to the private keys that can be used to spend this output. Addresses must be sorted lexicographically.
-
-#### Gantt NFT Mint Output Specification
-
-```boo
-+-----------+------------+--------------------------------+
-| group_id  : int        |                        4 bytes |
-+-----------+------------+--------------------------------+
-| locktime  : long       |                        8 bytes |
-+-----------+------------+--------------------------------+
-| threshold : int        |                        4 bytes |
-+-----------+------------+--------------------------------+
-| addresses : [][20]byte |  4 + 20 * len(addresses) bytes |
-+-----------+------------+--------------------------------+
-                         | 24 + 20 * len(addresses) bytes |
-                         +--------------------------------+
-```
-
-#### Proto NFT Mint Output Specification
-
-```protobuf
-message NFTMintOutput {
-    uint32 group_id = 1;          // 04 bytes
-    uint64 locktime = 2;          // 08 bytes
-    uint32 threshold = 3;         // 04 bytes
-    repeated bytes addresses = 4; // 04 bytes + 20 bytes * len(addresses)
-}
-```
-
-#### NFT Mint Output Example
-
-Let's make an NFT mint output with:
-
-- **`GroupID`**: 12345
-- **`Locktime`**: 54321
-- **`Threshold`**: 1
-- **`Addresses`**:
-  - 0xc3344128e060128ede3523a24a461c8943ab0859
-  - 0x51025c61fbcfc078f69334f834be6dd26d55a955
-
-```splus
-[
-    GroupID   <- 12345 = 0x00003039
-    Locktime  <- 54321 = 0x000000000000d431
-    Threshold <- 1     = 0x00000001
-    Addresses <- [
-        0xc3344128e060128ede3523a24a461c8943ab0859,
-        0x51025c61fbcfc078f69334f834be6dd26d55a955,
-    ]
-]
-=
-[
-    // groupID:
-    0x00, 0x00, 0x30, 0x39,
-    // locktime:
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
-    // threshold:
-    0x00, 0x00, 0x00, 0x01,
-    // number of addresses:
-    0x00, 0x00, 0x00, 0x02,
-    // addrs[0]:
-    0x51, 0x02, 0x5c, 0x61, 0xfb, 0xcf, 0xc0, 0x78,
-    0xf6, 0x93, 0x34, 0xf8, 0x34, 0xbe, 0x6d, 0xd2,
-    0x6d, 0x55, 0xa9, 0x55,
-    // addrs[1]:
-    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
-    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
-    0x43, 0xab, 0x08, 0x59,
-]
-```
-
 ***
 
 ### NFT Transfer Output
@@ -273,7 +180,7 @@ An NFT transfer output is an NFT that is owned by a collection of addresses.
 An NFT transfer output contains an `GroupID`, `Payload`, `Locktime`, `Threshold`, and `Addresses`.
 
 - **`GroupID`** is an int that specifies the group this NFT was issued with.
-- **`Payload`** is an arbitrary string of bytes long longer than 1024 bytes.
+- **`Payload`** is an arbitrary string of bytes no long longer than 1024 bytes.
 - **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
 - **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
 - **`Addresses`** is a list of unique addresses that correspond to the private keys that can be used to spend this output. Addresses must be sorted lexicographically.
@@ -292,7 +199,7 @@ An NFT transfer output contains an `GroupID`, `Payload`, `Locktime`, `Threshold`
 +-----------+------------+-------------------------------+
 | addresses : [][20]byte | 4 + 20 * len(addresses) bytes |
 +-----------+------------+-------------------------------+
-                         | 28 + len(payload)             |
+                         | 24 + len(payload)             |
                          |  + 20 * len(addresses) bytes  |
                          +-------------------------------+
 ```
@@ -340,6 +247,91 @@ Let's make an NFT transfer output with:
     0x00, 0x00, 0x00, 0x03,
     // payload:
     0x43, 0x11, 0x00,
+    // locktime:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
+    // threshold:
+    0x00, 0x00, 0x00, 0x01,
+    // number of addresses:
+    0x00, 0x00, 0x00, 0x02,
+    // addrs[0]:
+    0x51, 0x02, 0x5c, 0x61, 0xfb, 0xcf, 0xc0, 0x78,
+    0xf6, 0x93, 0x34, 0xf8, 0x34, 0xbe, 0x6d, 0xd2,
+    0x6d, 0x55, 0xa9, 0x55,
+    // addrs[1]:
+    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
+    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
+    0x43, 0xab, 0x08, 0x59,
+]
+```
+
+***
+
+
+### NFT Mint Output
+
+An NFT mint output is an NFT that is owned by a collection of addresses.
+
+#### What NFT Mint Output Contains
+
+An NFT Mint output contains an `GroupID`, `Locktime`, `Threshold`, and `Addresses`.
+
+- **`GroupID`** is an int that specifies the group this NFT is issued to.
+- **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
+- **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
+- **`Addresses`** is a list of unique addresses that correspond to the private keys that can be used to spend this output. Addresses must be sorted lexicographically.
+
+#### Gantt NFT Mint Output Specification
+
+```boo
++-----------+------------+--------------------------------+
+| group_id  : int        |                        4 bytes |
++-----------+------------+--------------------------------+
+| locktime  : long       |                        8 bytes |
++-----------+------------+--------------------------------+
+| threshold : int        |                        4 bytes |
++-----------+------------+--------------------------------+
+| addresses : [][20]byte |  4 + 20 * len(addresses) bytes |
++-----------+------------+--------------------------------+
+                         | 20 + 20 * len(addresses) bytes |
+                         +--------------------------------+
+```
+
+#### Proto NFT Mint Output Specification
+
+```protobuf
+message NFTMintOutput {
+    uint32 group_id = 1;          // 04 bytes
+    uint64 locktime = 2;          // 08 bytes
+    uint32 threshold = 3;         // 04 bytes
+    repeated bytes addresses = 4; // 04 bytes + 20 bytes * len(addresses)
+}
+```
+
+#### NFT Mint Output Example
+
+Let's make an NFT mint output with:
+
+- **`GroupID`**: 12345
+- **`Locktime`**: 54321
+- **`Threshold`**: 1
+- **`Addresses`**:
+  - 0xc3344128e060128ede3523a24a461c8943ab0859
+  - 0x51025c61fbcfc078f69334f834be6dd26d55a955
+
+```splus
+[
+    GroupID   <- 12345 = 0x00003039
+    Locktime  <- 54321 = 0x000000000000d431
+    Threshold <- 1     = 0x00000001
+    Addresses <- [
+        0xc3344128e060128ede3523a24a461c8943ab0859,
+        0x51025c61fbcfc078f69334f834be6dd26d55a955,
+    ]
+]
+=
+[
+    // groupID:
+    0x00, 0x00, 0x30, 0x39,
     // locktime:
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
     // threshold:
@@ -411,15 +403,14 @@ Let's make a transferable output:
     0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
     0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
     // output:
-    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x30, 0x39, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0xd4, 0x31, 0x00, 0x00, 0x00, 0x01,
-    0x00, 0x00, 0x00, 0x02, 0x51, 0x02, 0x5c, 0x61,
-    0xfb, 0xcf, 0xc0, 0x78, 0xf6, 0x93, 0x34, 0xf8,
-    0x34, 0xbe, 0x6d, 0xd2, 0x6d, 0x55, 0xa9, 0x55,
-    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
-    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
-    0x43, 0xab, 0x08, 0x59,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x39,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
+    0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02,
+    0x51, 0x02, 0x5c, 0x61, 0xfb, 0xcf, 0xc0, 0x78,
+    0xf6, 0x93, 0x34, 0xf8, 0x34, 0xbe, 0x6d, 0xd2,
+    0x6d, 0x55, 0xa9, 0x55, 0xc3, 0x34, 0x41, 0x28,
+    0xe0, 0x60, 0x12, 0x8e, 0xde, 0x35, 0x23, 0xa2,
+    0x4a, 0x46, 0x1c, 0x89, 0x43, 0xab, 0x08, 0x59,
 ]
 ```
 
@@ -478,15 +469,14 @@ Let's make an initial state:
     // num outputs:
     0x00, 0x00, 0x00, 0x01,
     // output:
-    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x30, 0x39, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0xd4, 0x31, 0x00, 0x00, 0x00, 0x01,
-    0x00, 0x00, 0x00, 0x02, 0x51, 0x02, 0x5c, 0x61,
-    0xfb, 0xcf, 0xc0, 0x78, 0xf6, 0x93, 0x34, 0xf8,
-    0x34, 0xbe, 0x6d, 0xd2, 0x6d, 0x55, 0xa9, 0x55,
-    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
-    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
-    0x43, 0xab, 0x08, 0x59,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x39,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
+    0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02,
+    0x51, 0x02, 0x5c, 0x61, 0xfb, 0xcf, 0xc0, 0x78,
+    0xf6, 0x93, 0x34, 0xf8, 0x34, 0xbe, 0x6d, 0xd2,
+    0x6d, 0x55, 0xa9, 0x55, 0xc3, 0x34, 0x41, 0x28,
+    0xe0, 0x60, 0x12, 0x8e, 0xde, 0x35, 0x23, 0xa2,
+    0x4a, 0x46, 0x1c, 0x89, 0x43, 0xab, 0x08, 0x59,
 ]
 ```
 
@@ -502,23 +492,20 @@ Inputs have one possible type: `SECP256K1TransferInput`.
 
 A [secp256k1](../cryptographic-primitives/#cryptography-in-the-avalanche-virtual-machine) transfer input allows for spending an unspent secp256k1 transfer output.
 
-#### SECP256K1 Transfer Input Identifier
+#### SECP256K1 Transfer Input Type ID
 
-The `InputID` for a payment input is `0x00000005`.
+The type ID is `0x00000005`.
 
 #### What SECP256K1 Transfer Input Contains
 
-A secp256k1 transfer input contains an `InputID`, `Amount` and `AddressIndices`.
+A secp256k1 transfer input contains an `Amount` and `AddressIndices`.
 
-- **`InputID`** is an int that defines which type this is. For a secp256k1 transfer input the `InputID` is `0x00000005`.
 - **`Amount`** is a long that specifies the quantity that this input should be consuming from the UTXO. Must be positive. Must be equal to the amount specified in the UTXO.
 - **`AddressIndices`** is a list of unique ints that define the private keys are being used to spend the UTXO. Each UTXO has an array of addresses that can spend the UTXO. Each int represents the index in this address array that will sign this transaction. The array must be sorted low to high.
 
 #### Gantt SECP256K1 Transfer Input Specification
 
 ```boo
-+-----------------+-------+-------------------------------------+
-| input_id        : int   |                             4 bytes |
 +-----------------+-------+-------------------------------------+
 | amount          : long  |                             8 bytes |
 +-----------------+-------+-------------------------------------+
@@ -532,9 +519,8 @@ A secp256k1 transfer input contains an `InputID`, `Amount` and `AddressIndices`.
 
 ```protobuf
 message SECP256K1TransferInput {
-    uint32 input_id = 1;                 // 04 bytes
-    uint64 amount = 2;                   // 08 bytes
-    repeated uint32 address_indices = 3; // 04 bytes + 4 bytes * len(address_indices)
+    uint64 amount = 1;                   // 08 bytes
+    repeated uint32 address_indices = 2; // 04 bytes + 4 bytes * len(address_indices)
 }
 ```
 
@@ -554,8 +540,6 @@ Let's make a payment input with:
 ]
 =
 [
-    // input type:
-    0x00, 0x00, 0x00, 0x05,
     // amount:
     0x00, 0x00, 0x00, 0x00, 0x07, 0x5b, 0xcd, 0x15,
     // length:
@@ -640,9 +624,9 @@ Let's make a transferable input:
     0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
     0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
     // input:
-    0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00,
-    0x07, 0x5b, 0xcd, 0x15, 0x00, 0x00, 0x00, 0x02,
-    0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x07,
+    0x00, 0x00, 0x00, 0x00, 0x07, 0x5b, 0xcd, 0x15, 
+    0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 
+    0x00, 0x00, 0x00, 0x07
 ]
 ```
 
@@ -667,17 +651,17 @@ An SECP256K1 Mint operation contains an `AddressIndices`, `MintOutput`, and `Tra
 #### Gantt SECP256K1 Mint Operation Specification
 
 ```boo
-+-----------+------------+---------------------------------------+
-| address_indices : []int   | 4 + 4 * len(address_indices) bytes |
-+-----------+------------+---------------------------------------+
-| mint_output     : MintOutput     |     size(mint_output) bytes |
-+-----------+------------+---------------------------------------+
-| transfer_output : TransferOutput | size(transfer_output) bytes |
-+-----------+------------+---------------------------------------+
-                         |             8 + size(address_indices) |
-                         |                   + size(mint_output) |
-                         |         + size(transfer_output) bytes |
-                         +---------------------------------------+
++----------------------------------+------------------------------------+
+| address_indices : []int          | 4 + 4 * len(address_indices) bytes |
++----------------------------------+------------------------------------+
+| mint_output     : MintOutput     |            size(mint_output) bytes |
++----------------------------------+------------------------------------+
+| transfer_output : TransferOutput |        size(transfer_output) bytes |
++----------------------------------+------------------------------------+
+                                   |          8 + size(address_indices) |
+                                   |                + size(mint_output) |
+                                   |      + size(transfer_output) bytes |
+                                   +------------------------------------+
 ```
 
 #### Proto SECP256K1 Mint Operation Specification
@@ -705,7 +689,7 @@ Let's make an SECP256K1 mint operation with:
 [
     AddressIndices <- [0x00000007, 0x00000003]
     MintOutput <- 0x00000006000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c89
-    TransferOutput <- 0x000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859
+    TransferOutput <- 0x0000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859
 ]
 =
 [
@@ -731,8 +715,6 @@ Let's make an SECP256K1 mint operation with:
     0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
     0x43, 0xab, 0x08, 0x59,
     // transfer output
-    // output type:
-    0x00, 0x00, 0x00, 0x07,
     // amount:
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x39,
     // locktime:
@@ -860,23 +842,20 @@ Let's make an NFT mint operation with:
 
 An NFT transfer operation sending an unspent NFT transfer output to a new set of owners.
 
-#### NFT Transfer Op Identifier
+#### NFT Transfer Op Type ID
 
-The `OpID` for an NFT transfer operation is `0x0000000d`.
+The type ID for an NFT transfer operation is `0x0000000d`.
 
 #### What NFT Transfer Op Contains
 
-An NFT transfer operation contains an `OpID`, `AddressIndices`, and an untyped `NFTTransferOutput`.
+An NFT transfer operation contains an `AddressIndices` and an untyped `NFTTransferOutput`.
 
-- **`OpID`** is an int that defines which type this is. For an NFT transfer operation the `OpID` is `0x0000000d`.
 - **`AddressIndices`** is a list of unique ints that define the private keys are being used to spend the UTXO. Each UTXO has an array of addresses that can spend the UTXO. Each int represents the index in this address array that will sign this transaction. The array must be sorted low to high.
 - **`NFTTransferOutput`** is the output of this operation and must be an NFT Transfer Output. This output doesn't have the **`OutputID`**, because the type is known by the context of being in this operation.
 
 #### Gantt NFT Transfer Op Specification
 
 ```boo
-+-----------------+------------+------------------------------------+
-| op_id           : int        |                            4 bytes |
 +-----------------+------------+------------------------------------+
 | address_indices : []int      | 4 + 4 * len(address_indices) bytes |
 +-----------------+------------+------------------------------------+
@@ -900,13 +879,12 @@ An NFT transfer operation contains an `OpID`, `AddressIndices`, and an untyped `
 
 ```protobuf
 message NFTTransferOp {
-    uint32 op_id = 1;                    // 04 bytes
-    repeated uint32 address_indices = 2; // 04 bytes + 4 bytes * len(address_indices)
-    uint32 group_id = 3;                 // 04 bytes
-    bytes payload = 4;                   // 04 bytes + len(payload)
-    uint64 locktime = 5;                 // 08 bytes
-    uint32 threshold = 6;                // 04 bytes
-    repeated bytes addresses = 7;        // 04 bytes + 20 bytes * len(addresses)
+    repeated uint32 address_indices = 1; // 04 bytes + 4 bytes * len(address_indices)
+    uint32 group_id = 2;                 // 04 bytes
+    bytes payload = 3;                   // 04 bytes + len(payload)
+    uint64 locktime = 4;                 // 08 bytes
+    uint32 threshold = 5;                // 04 bytes
+    repeated bytes addresses = 6;        // 04 bytes + 20 bytes * len(addresses)
 }
 ```
 
@@ -927,7 +905,6 @@ Let's make an NFT transfer operation with:
 
 ```splus
 [
-    OpID       <- 0x0000000d
     AddressIndices <- [
         0x00000007,
         0x00000003,
@@ -943,8 +920,6 @@ Let's make an NFT transfer operation with:
 ]
 =
 [
-    // op type:
-    0x00, 0x00, 0x00, 0x0d,
     // number of address indices:
     0x00, 0x00, 0x00, 0x02,
     // address index 0:
@@ -1081,9 +1056,9 @@ Credentials have two possible types: `SECP256K1Credential`, and `NFTCredential`.
 
 A [secp256k1](../cryptographic-primitives/#cryptography-in-the-avalanche-virtual-machine) credential contains a list of 65-byte recoverable signatures.
 
-#### SECP256K1 Credential Identifier
+#### SECP256K1 Credential Type ID
 
-The `CredentialID` for a SECP256K1 credential is `0x00000009`.
+The type ID for a SECP256K1 credential is `0x00000009`.
 
 #### What SECP256K1 Credential Contains
 
@@ -1092,8 +1067,6 @@ The `CredentialID` for a SECP256K1 credential is `0x00000009`.
 #### Gantt SECP256K1 Credential Specification
 
 ```boo
-+-----------------+------------+---------------------------------+
-| credential_type : int        |                         4 bytes |
 +-----------------+------------+---------------------------------+
 | signatures      : [][65]byte |  4 + 65 * len(signatures) bytes |
 +-----------------+------------+---------------------------------+
@@ -1105,8 +1078,7 @@ The `CredentialID` for a SECP256K1 credential is `0x00000009`.
 
 ```protobuf
 message SECP256K1Credential {
-    uint32 credential_type = 1;    // 4 bytes
-    repeated bytes signatures = 2; // 4 bytes + 65 bytes * len(signatures)
+    repeated bytes signatures = 1; // 4 bytes + 65 bytes * len(signatures)
 }
 ```
 
@@ -1127,8 +1099,6 @@ Let's make a payment input with:
 ]
 =
 [
-    // credential type:
-    0x00, 0x00, 0x00, 0x09,
     // length:
     0x00, 0x00, 0x00, 0x02,
     // sig[0]
@@ -1160,9 +1130,9 @@ Let's make a payment input with:
 
 An NFT credential is the same as an secp256k1 credential with a different credential identifier.
 
-#### NFT Credential Identifier
+#### NFT Credential Type ID
 
-The `CredentialID` for an NFT credential is `0x0000000e`.
+The type ID for an NFT credential is `0x0000000e`.
 
 ***
 
@@ -1708,15 +1678,14 @@ Let’s make an unsigned export tx that uses the outputs from the previous examp
     0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
     0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
     // output:
-    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x30, 0x39, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0xd4, 0x31, 0x00, 0x00, 0x00, 0x01,
-    0x00, 0x00, 0x00, 0x02, 0x51, 0x02, 0x5c, 0x61,
-    0xfb, 0xcf, 0xc0, 0x78, 0xf6, 0x93, 0x34, 0xf8,
-    0x34, 0xbe, 0x6d, 0xd2, 0x6d, 0x55, 0xa9, 0x55,
-    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
-    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
-    0x43, 0xab, 0x08, 0x59,
+     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x39,
+     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
+     0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02,
+     0x51, 0x02, 0x5c, 0x61, 0xfb, 0xcf, 0xc0, 0x78,
+     0xf6, 0x93, 0x34, 0xf8, 0x34, 0xbe, 0x6d, 0xd2,
+     0x6d, 0x55, 0xa9, 0x55, 0xc3, 0x34, 0x41, 0x28,
+     0xe0, 0x60, 0x12, 0x8e, 0xde, 0x35, 0x23, 0xa2,
+     0x4a, 0x46, 0x1c, 0x89, 0x43, 0xab, 0x08, 0x59,
 ]
 ```
 
@@ -1730,7 +1699,7 @@ A signed transaction is an unsigned transaction with the addition of an array of
 
 A signed transaction contains an `UnsignedTx`, `Credentials`.
 
-- **`UnsignedTxTypeID` is the type identifier of the unsigned transaction.
+- **`UnsignedTxTypeID`** is the type identifier of the unsigned transaction.
   For an unsigned `CreateAssetTx` this is `0x00000001`.
   For an unsigned `OperationTx` this is `0x00000002`.
   For an unsigned `ImportTx` this is `0x00000003`.
@@ -1845,7 +1814,7 @@ Let's make a signed transaction that uses the unsigned transaction and credentia
 
 ## UTXO
 
-A utxo is a standalone representation of a transaction output.
+A UTXO is a standalone representation of a transaction output.
 
 ### What UTXO Contains
 
