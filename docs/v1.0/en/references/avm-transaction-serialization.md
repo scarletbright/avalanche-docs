@@ -571,7 +571,118 @@ Let's make a transferable input:
 
 ## Operations
 
-Operations have one possible type: `NFTTransferOp`.
+Operations have two possible types: `SECP256K1MintOperation` and `NFTTransferOp`.
+
+### SECP256K1 Mint Operation
+
+A SECP256K1 mint operation consumes a SECP256K1 mint output, creates a new mint output and sends a transfer output to a new set of owners.
+
+#### SECP256K1 Mint Output Identifier
+
+The `OpID` for a SECP256K1 mint operation type is `0x00000008`.
+
+#### What SECP256K1 Mint Operation Contains
+
+An SECP256K1 Mint operation contains an `OpID`, `AddressIndices`, `MintOutput`, and `TransferOutput`.
+
+- **`OpID`** is an int that defines which type this is. For a SECP256K1 mint operation the `OpID` is `0x00000008`.
+- **`AddressIndices`** is a list of unique ints that define the private keys are being used to spend the UTXO. Each UTXO has an array of addresses that can spend the UTXO. Each int represents the index in this address array that will sign this transaction. The array must be sorted low to high.
+- **`MintOutput`** is a SECP256K1 Mint output.
+- **`TransferOutput`** is a SECP256K1 Transfer output
+
+#### Gantt SECP256K1 Mint Operation Specification
+
+```boo
++-----------+------------+---------------------------------------+
+| op_id           : int            |                     4 bytes |
++-----------+------------+---------------------------------------+
+| address_indices : []int   | 4 + 4 * len(address_indices) bytes |
++-----------+------------+---------------------------------------+
+| mint_output     : MintOutput     |     size(mint_output) bytes |
++-----------+------------+---------------------------------------+
+| transfer_output : TransferOutput | size(transfer_output) bytes |
++-----------+------------+---------------------------------------+
+                         |             4 + size(address_indices) |
+                         |                   + size(mint_output) |
+                         |         + size(transfer_output) bytes |
+                         +---------------------------------------+
+```
+
+#### Proto SECP256K1 Mint Operation Specification
+
+```protobuf
+message SECP256K1MintOperation {
+    uint32 op_id = 1;                    // 04 bytes
+    repeated uint32 address_indices = 2; // size(address_indices)
+    MintOutput mint_output = 3;          // size(mint_output
+    TransferOutput transfer_output = 4;  // size(transfer_output)
+}
+```
+
+#### SECP256K1 Mint Operation Example
+
+Let's make an SECP256K1 mint operation with:
+
+- **`AddressIndices`**:
+  - 0x00000007
+  - 0x00000003
+- **`MintOutput`**: "Example SECP256K1 Mint Output from above"
+- **`TransferOutput`**: "Example SECP256K1 Transfer Output from above"
+
+
+```splus
+[
+    OutputID  <- 0x00000008
+    AddressIndices <- [0x00000007, 0x00000003]
+    MintOutput <- 0x00000006000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c89
+    TransferOutput <- 0x000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859
+]
+=
+[
+    // output type:
+    0x00, 0x00, 0x00, 0x08,
+    // number of address_indices:
+    0x00, 0x00, 0x00, 0x02,
+    // address_indices[0]:
+    0x00, 0x00, 0x00, 0x07,
+    // address_indices[1]:
+    0x00, 0x00, 0x00, 0x03,
+    // mint output
+    // output type:
+    0x00, 0x00, 0x00, 0x06,
+    // threshold:
+    0x00, 0x00, 0x00, 0x01,
+    // number of addresses:
+    0x00, 0x00, 0x00, 0x02,
+    // addrs[0]:
+    0x51, 0x02, 0x5c, 0x61, 0xfb, 0xcf, 0xc0, 0x78,
+    0xf6, 0x93, 0x34, 0xf8, 0x34, 0xbe, 0x6d, 0xd2,
+    0x6d, 0x55, 0xa9, 0x55,
+    // addrs[1]:
+    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
+    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
+    0x43, 0xab, 0x08, 0x59,
+    // transfer output
+    // output type:
+    0x00, 0x00, 0x00, 0x07,
+    // amount:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x39,
+    // locktime:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
+    // threshold:
+    0x00, 0x00, 0x00, 0x01,
+    // number of addresses:
+    0x00, 0x00, 0x00, 0x02,
+    // addrs[0]:
+    0x51, 0x02, 0x5c, 0x61, 0xfb, 0xcf, 0xc0, 0x78,
+    0xf6, 0x93, 0x34, 0xf8, 0x34, 0xbe, 0x6d, 0xd2,
+    0x6d, 0x55, 0xa9, 0x55,
+    // addrs[1]:
+    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
+    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
+    0x43, 0xab, 0x08, 0x59,
+]
+```
 
 ***
 
