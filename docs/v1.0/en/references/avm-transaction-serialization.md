@@ -270,10 +270,11 @@ An NFT transfer output is an NFT that is owned by a collection of addresses.
 
 #### What NFT Transfer Output Contains
 
-An NFT transfer output contains an `GroupID`, `Payload`, `Threshold`, and `Addresses`.
+An NFT transfer output contains an `GroupID`, `Payload`, `Locktime`, `Threshold`, and `Addresses`.
 
 - **`GroupID`** is an int that specifies the group this NFT was issued with.
 - **`Payload`** is an arbitrary string of bytes long longer than 1024 bytes.
+- **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
 - **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
 - **`Addresses`** is a list of unique addresses that correspond to the private keys that can be used to spend this output. Addresses must be sorted lexicographically.
 
@@ -285,11 +286,13 @@ An NFT transfer output contains an `GroupID`, `Payload`, `Threshold`, and `Addre
 +-----------+------------+-------------------------------+
 | payload   : []byte     |        4 + len(payload) bytes |
 +-----------+------------+-------------------------------+
+| locktime  : long       |                       8 bytes |
++-----------+------------+-------------------------------+
 | threshold : int        |                       4 bytes |
 +-----------+------------+-------------------------------+
 | addresses : [][20]byte | 4 + 20 * len(addresses) bytes |
 +-----------+------------+-------------------------------+
-                         | 20 + len(payload)             |
+                         | 28 + len(payload)             |
                          |  + 20 * len(addresses) bytes  |
                          +-------------------------------+
 ```
@@ -300,8 +303,9 @@ An NFT transfer output contains an `GroupID`, `Payload`, `Threshold`, and `Addre
 message NFTTransferOutput {
     uint32 group_id = 1;          // 04 bytes
     bytes payload = 2;            // 04 bytes + len(payload)
-    uint32 threshold = 3;         // 04 bytes
-    repeated bytes addresses = 4; // 04 bytes + 20 bytes * len(addresses)
+    uint64 locktime = 3           // 08 bytes
+    uint32 threshold = 4;         // 04 bytes
+    repeated bytes addresses = 5; // 04 bytes + 20 bytes * len(addresses)
 }
 ```
 
@@ -311,6 +315,7 @@ Let's make an NFT transfer output with:
 
 - **`GroupID`**: 12345
 - **`Payload`**: 0x431100
+- **`Locktime`**: 54321
 - **`Threshold`**: 1
 - **`Addresses`**:
   - 0xc3344128e060128ede3523a24a461c8943ab0859
@@ -320,6 +325,7 @@ Let's make an NFT transfer output with:
 [
     GroupID   <- 12345 = 0x00003039
     Payload   <- 0x431100
+    Locktime  <- 54321 = 0x000000000000d431
     Threshold <- 1     = 0x00000001
     Addresses <- [
         0xc3344128e060128ede3523a24a461c8943ab0859,
@@ -334,6 +340,8 @@ Let's make an NFT transfer output with:
     0x00, 0x00, 0x00, 0x03,
     // payload:
     0x43, 0x11, 0x00,
+    // locktime:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
     // threshold:
     0x00, 0x00, 0x00, 0x01,
     // number of addresses:
@@ -844,6 +852,7 @@ Let's make an NFT mint operation with:
     0xf6, 0x93, 0x34, 0xf8, 0x34, 0xbe, 0x6d, 0xd2,
     0x6d, 0x55, 0xa9, 0x55,
 ]
+```
 
 ***
 
@@ -875,11 +884,13 @@ An NFT transfer operation contains an `OpID`, `AddressIndices`, and an untyped `
 +-----------------+------------+------------------------------------+
 | payload         : []byte     |             4 + len(payload) bytes |
 +-----------------+------------+------------------------------------+
+| locktime        : long       |                            8 bytes |
++-----------+------------+------------------------------------------+
 | threshold       : int        |                            4 bytes |
 +-----------------+------------+------------------------------------+
 | addresses       : [][20]byte |      4 + 20 * len(addresses) bytes |
 +-----------------+------------+------------------------------------+
-                               |                  24 + len(payload) |
+                               |                  32 + len(payload) |
                                |        + 4 * len(address_indices)  |
                                |        + 20 * len(addresses) bytes |
                                +------------------------------------+
@@ -893,8 +904,9 @@ message NFTTransferOp {
     repeated uint32 address_indices = 2; // 04 bytes + 4 bytes * len(address_indices)
     uint32 group_id = 3;                 // 04 bytes
     bytes payload = 4;                   // 04 bytes + len(payload)
-    uint32 threshold = 5;                // 04 bytes
-    repeated bytes addresses = 6;        // 04 bytes + 20 bytes * len(addresses)
+    uint64 locktime = 5;                 // 08 bytes
+    uint32 threshold = 6;                // 04 bytes
+    repeated bytes addresses = 7;        // 04 bytes + 20 bytes * len(addresses)
 }
 ```
 
@@ -907,6 +919,7 @@ Let's make an NFT transfer operation with:
   - 0x00000003
 - **`GroupID`**: 12345
 - **`Payload`**: 0x431100
+- **`Locktime`**: 54321
 - **`Threshold`**: 1
 - **`Addresses`**:
   - 0xc3344128e060128ede3523a24a461c8943ab0859
@@ -921,6 +934,7 @@ Let's make an NFT transfer operation with:
     ]
     GroupID        <- 12345 = 0x00003039
     Payload        <- 0x431100
+    Locktime       <- 54321 = 0x000000000000d431
     Threshold      <- 1     = 0x00000001
     Addresses      <- [
         0xc3344128e060128ede3523a24a461c8943ab0859,
@@ -943,6 +957,8 @@ Let's make an NFT transfer operation with:
     0x00, 0x00, 0x00, 0x03,
     // payload:
     0x43, 0x11, 0x00,
+    // locktime:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
     // threshold:
     0x00, 0x00, 0x00, 0x01,
     // number of addresses:
