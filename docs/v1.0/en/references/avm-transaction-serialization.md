@@ -571,7 +571,7 @@ Let's make a transferable input:
 
 ## Operations
 
-Operations have two possible types: `SECP256K1MintOperation` and `NFTTransferOp`.
+Operations have three possible types: `SECP256K1MintOperation`, `NFTMintOp`, and `NFTTransferOp`.
 
 ### SECP256K1 Mint Operation
 
@@ -673,6 +673,107 @@ Let's make an SECP256K1 mint operation with:
 ]
 ```
 
+### NFT Mint Op
+
+An NFT mint operation consumes an NFT mint output and sends an unspent output to a new set of owners.
+
+#### What NFT Mint Op Contains
+
+An NFT mint operation contains a `AddressIndices`, `GroupID`, `Payload`, and `Output` of addresses.
+
+- **`AddressIndices`** is a list of unique ints that define the private keys are being used to spend the UTXO. Each UTXO has an array of addresses that can spend the UTXO. Each int represents the index in this address array that will sign this transaction. The array must be sorted low to high.
+- **`GroupID`** is an int that specifies the group this NFT is issued to.
+- **`Payload`** is an arbitrary string of bytes no longer than 1024 bytes.
+- **`Output`** is a locktime, threshold, and an array of unique addresses that correspond to the private keys that can be used to spend this output. Addresses must be sorted lexicographically.
+
+#### Gantt NFT Mint Op Specification
+
+```boo
++-----------------+------------+------------------------------------+
+| address_indices : []int      |    4 + size(address_indices) bytes |
++-----------------+------------+------------------------------------+
+| group_id        : int        |                            4 bytes |
++-----------------+------------+------------------------------------+
+| payload         : []byte     |             4 + len(payload) bytes |
++-----------------+------------+------------------------------------+
+| outputs         : []Output   |            4 + size(outputs) bytes |
++-----------------+------------+------------------------------------+
+                               |                                4 + |
+                               |          4 * size(address_indices) |
+                               |                                4 + |
+                               |                   4 + len(payload) |
+                               |            4 + size(outputs) bytes |
+                               +------------------------------------+
+```
+
+#### Proto NFT Mint Op Specification
+
+```protobuf
+message NFTMintOp {
+    repeated uint32 address_indices = 1; // 04 bytes + size(address_indices)
+    uint32 group_id = 2;                 // 04 bytes
+    bytes payload = 3;                   // 04 bytes + len(payload)
+    repeated bytes outputs = 4;          // 04 bytes + size(outputs)
+}
+```
+
+#### NFT Mint Op Example
+
+Let's make an NFT mint operation with:
+
+- **`AddressIndices`**:
+  - 0x00000007
+  - 0x00000003
+- **`GroupID`**: 12345
+- **`Payload`**: 0x431100
+- **`Locktime`**: 54321
+- **`Threshold`**: 1
+- **`Addresses`**:
+  - 0xc3344128e060128ede3523a24a461c8943ab0859
+
+```splus
+[
+    AddressIndices <- [
+        0x00000007,
+        0x00000003,
+    ]
+    GroupID        <- 12345 = 0x00003039
+    Payload        <- 0x431100
+    Locktime       <- 54321 = 0x000000000000d431
+    Threshold      <- 1     = 0x00000001
+    Addresses      <- [
+        0xc3344128e060128ede3523a24a461c8943ab0859
+    ]
+]
+=
+[
+    // number of address indices:
+    0x00, 0x00, 0x00, 0x02,
+    // address index 0:
+    0x00, 0x00, 0x00, 0x03,
+    // address index 1:
+    0x00, 0x00, 0x00, 0x07,
+    // groupID:
+    0x00, 0x00, 0x30, 0x39,
+    // length of payload:
+    0x00, 0x00, 0x00, 0x03,
+    // payload:
+    0x43, 0x11, 0x00,
+    // number of outputs:
+    0x00, 0x00, 0x00, 0x01,
+    // outputs[0]
+    // locktime:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
+    // threshold:
+    0x00, 0x00, 0x00, 0x01,
+    // number of addresses:
+    0x00, 0x00, 0x00, 0x01,
+    // addrs[0]:
+    0x51, 0x02, 0x5c, 0x61, 0xfb, 0xcf, 0xc0, 0x78,
+    0xf6, 0x93, 0x34, 0xf8, 0x34, 0xbe, 0x6d, 0xd2,
+    0x6d, 0x55, 0xa9, 0x55,
+]
+
 ***
 
 ### NFT Transfer Op
@@ -707,7 +808,7 @@ An NFT transfer operation contains an `OpID`, `AddressIndices`, and an untyped `
 +-----------------+------------+------------------------------------+
 | addresses       : [][20]byte |      4 + 20 * len(addresses) bytes |
 +-----------------+------------+------------------------------------+
-                               |       24 + len(payload)            |
+                               |                  24 + len(payload) |
                                |        + 4 * len(address_indices)  |
                                |        + 20 * len(addresses) bytes |
                                +------------------------------------+
