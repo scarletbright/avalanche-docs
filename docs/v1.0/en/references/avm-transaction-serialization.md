@@ -268,15 +268,10 @@ Let's make an NFT mint output with:
 
 An NFT transfer output is an NFT that is owned by a collection of addresses.
 
-#### NFT Transfer Output Identifier
-
-The `OutputID` for an NFT transfer output type is `0x0000000b`.
-
 #### What NFT Transfer Output Contains
 
-An NFT transfer output contains an `OutputID`, `GroupID`, `Payload`, `Threshold`, and `Addresses`.
+An NFT transfer output contains an `GroupID`, `Payload`, `Threshold`, and `Addresses`.
 
-- **`OutputID`** is an int that defines which type this is. For an NFT transfer output the `OutputID` is `0x0000000b`.
 - **`GroupID`** is an int that specifies the group this NFT was issued with.
 - **`Payload`** is an arbitrary string of bytes long longer than 1024 bytes.
 - **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
@@ -285,8 +280,6 @@ An NFT transfer output contains an `OutputID`, `GroupID`, `Payload`, `Threshold`
 #### Gantt NFT Transfer Output Specification
 
 ```boo
-+-----------+------------+-------------------------------+
-| output_id : int        |                       4 bytes |
 +-----------+------------+-------------------------------+
 | group_id  : int        |                       4 bytes |
 +-----------+------------+-------------------------------+
@@ -305,11 +298,10 @@ An NFT transfer output contains an `OutputID`, `GroupID`, `Payload`, `Threshold`
 
 ```protobuf
 message NFTTransferOutput {
-    uint32 output_id = 1;         // 04 bytes
-    uint32 group_id = 2;          // 04 bytes
-    bytes payload = 3;            // 04 bytes + len(payload)
-    uint32 threshold = 4;         // 04 bytes
-    repeated bytes addresses = 5; // 04 bytes + 20 bytes * len(addresses)
+    uint32 group_id = 1;          // 04 bytes
+    bytes payload = 2;            // 04 bytes + len(payload)
+    uint32 threshold = 3;         // 04 bytes
+    repeated bytes addresses = 4; // 04 bytes + 20 bytes * len(addresses)
 }
 ```
 
@@ -326,7 +318,6 @@ Let's make an NFT transfer output with:
 
 ```splus
 [
-    OutputID  <- 0x0000000b
     GroupID   <- 12345 = 0x00003039
     Payload   <- 0x431100
     Threshold <- 1     = 0x00000001
@@ -337,8 +328,6 @@ Let's make an NFT transfer output with:
 ]
 =
 [
-    // output type:
-    0x00, 0x00, 0x00, 0x0b,
     // groupID:
     0x00, 0x00, 0x30, 0x39,
     // length of payload:
