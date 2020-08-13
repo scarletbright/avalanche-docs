@@ -577,15 +577,10 @@ Operations have two possible types: `SECP256K1MintOperation` and `NFTTransferOp`
 
 A SECP256K1 mint operation consumes a SECP256K1 mint output, creates a new mint output and sends a transfer output to a new set of owners.
 
-#### SECP256K1 Mint Output Identifier
-
-The `OpID` for a SECP256K1 mint operation type is `0x00000008`.
-
 #### What SECP256K1 Mint Operation Contains
 
-An SECP256K1 Mint operation contains an `OpID`, `AddressIndices`, `MintOutput`, and `TransferOutput`.
+An SECP256K1 Mint operation contains an `AddressIndices`, `MintOutput`, and `TransferOutput`.
 
-- **`OpID`** is an int that defines which type this is. For a SECP256K1 mint operation the `OpID` is `0x00000008`.
 - **`AddressIndices`** is a list of unique ints that define the private keys are being used to spend the UTXO. Each UTXO has an array of addresses that can spend the UTXO. Each int represents the index in this address array that will sign this transaction. The array must be sorted low to high.
 - **`MintOutput`** is a SECP256K1 Mint output.
 - **`TransferOutput`** is a SECP256K1 Transfer output
@@ -594,15 +589,13 @@ An SECP256K1 Mint operation contains an `OpID`, `AddressIndices`, `MintOutput`, 
 
 ```boo
 +-----------+------------+---------------------------------------+
-| op_id           : int            |                     4 bytes |
-+-----------+------------+---------------------------------------+
 | address_indices : []int   | 4 + 4 * len(address_indices) bytes |
 +-----------+------------+---------------------------------------+
 | mint_output     : MintOutput     |     size(mint_output) bytes |
 +-----------+------------+---------------------------------------+
 | transfer_output : TransferOutput | size(transfer_output) bytes |
 +-----------+------------+---------------------------------------+
-                         |             4 + size(address_indices) |
+                         |             8 + size(address_indices) |
                          |                   + size(mint_output) |
                          |         + size(transfer_output) bytes |
                          +---------------------------------------+
@@ -612,10 +605,9 @@ An SECP256K1 Mint operation contains an `OpID`, `AddressIndices`, `MintOutput`, 
 
 ```protobuf
 message SECP256K1MintOperation {
-    uint32 op_id = 1;                    // 04 bytes
-    repeated uint32 address_indices = 2; // size(address_indices)
-    MintOutput mint_output = 3;          // size(mint_output
-    TransferOutput transfer_output = 4;  // size(transfer_output)
+    repeated uint32 address_indices = 1; // size(address_indices)
+    MintOutput mint_output = 2;          // size(mint_output
+    TransferOutput transfer_output = 3;  // size(transfer_output)
 }
 ```
 
@@ -632,15 +624,12 @@ Let's make an SECP256K1 mint operation with:
 
 ```splus
 [
-    OutputID  <- 0x00000008
     AddressIndices <- [0x00000007, 0x00000003]
     MintOutput <- 0x00000006000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c89
     TransferOutput <- 0x000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859
 ]
 =
 [
-    // output type:
-    0x00, 0x00, 0x00, 0x08,
     // number of address_indices:
     0x00, 0x00, 0x00, 0x02,
     // address_indices[0]:
