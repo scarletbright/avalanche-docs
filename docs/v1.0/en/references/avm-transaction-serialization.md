@@ -801,33 +801,24 @@ The `CredentialID` for an NFT credential is `0x0000000e`.
 
 ***
 
-## Unsigned Transaction
+## Unsigned Transactions
 
-Unsigned transactions contain the full content of a transaction with only the signatures missing. Unsigned transactions have three possible types: `BaseTx`, `CreateAssetTx`, and `OperationTx`.
+Unsigned transactions contain the full content of a transaction with only the signatures missing. Unsigned transactions have two possible types: `CreateAssetTx`, and `OperationTx`.
+They both embed `BaseTx`, which contains common fields an operations.
 
-### Unsigned Base Tx Identifier
+### What Base Tx Contains
 
-The transaction identifier for a base tx is `0x00000000`.
+A base tx contains a `NetworkID`, `BlockchainID`, `Outputs`, `Inputs`, and `Memo`.
 
-### What Unsigned Base Tx Contains
-
-An unsigned base tx contains a `CodecID`, `ID`, `NetworkID`, `BlockchainID`, `Outputs`, `Inputs`, and `Memo`.
-
-- **`CodecID`** is a short that defines which codec version. Default is `0x0000`.
-- **`ID`** is an int that defines which transaction type this is. Default is `0x00000000`.
 - **`NetworkID`** is an int that defines which network this transaction is meant to be issued to. This value is meant to support transaction routing and is not designed for replay attack prevention.
 - **`BlockchainID`** is a 32-byte array that defines which blockchain this transaction was issued to. This is used for replay attack prevention for transactions that could potentially be valid across network or blockchain.
 - **`Outputs`** is an array of transferable output objects. Outputs must be sorted lexicographically by their serialized representation. The total quantity of the assets created in these outputs must be less than or equal to the total quantity of each asset consumed in the inputs minus the transaction fee.
 - **`Inputs`** is an array of transferable input objects. Inputs must be sorted and unique. Inputs are sorted first lexicographically by their **`TxID`** and then by the **`UTXOIndex`** from low to high. If there are inputs that have the same **`TxID`** and **`UTXOIndex`**, then the transaction is invalid as this would result in a double spend.
 - **`Memo`** Memo field contains arbitrary bytes, up to 256 bytes.
 
-### Gantt Unsigned Base Tx Specification
+### Gantt Base Tx Specification
 
 ```boo
-+---------------+----------------------+-----------------------------------------+
-| codec_id      : short                |                                 2 bytes |
-+---------------+----------------------+-----------------------------------------+
-| id            : int                  |                                 4 bytes |
 +---------------+----------------------+-----------------------------------------+
 | network_id    : int                  |                                 4 bytes |
 +---------------+----------------------+-----------------------------------------+
@@ -839,30 +830,26 @@ An unsigned base tx contains a `CodecID`, `ID`, `NetworkID`, `BlockchainID`, `Ou
 +---------------+----------------------+-----------------------------------------+
 | memo          : [256]byte            |                    4 + size(memo) bytes |
 +---------------+----------------------+-----------------------------------------+
-                          | 54 + size(outputs) + size(inputs) + size(memo) bytes |
+                          | 48 + size(outputs) + size(inputs) + size(memo) bytes |
                           +------------------------------------------------------+
 ```
 
-### Proto Unsigned Base Tx Specification
+### Proto Base Tx Specification
 
 ```protobuf
 message BaseTx {
-    uint16 codec_id = 1;         // 02 bytes
-    uint32 id = 2;               // 04 bytes
-    uint32 network_id = 3;       // 04 bytes
-    bytes blockchain_id = 4;     // 32 bytes
-    repeated Output outputs = 5; // 04 bytes + size(outs)
-    repeated Input inputs = 6;   // 04 bytes + size(ins)
-    bytes memo = 7;              // 04 bytes + size(memo)
+    uint32 network_id = 1;       // 04 bytes
+    bytes blockchain_id = 2;     // 32 bytes
+    repeated Output outputs = 3; // 04 bytes + size(outs)
+    repeated Input inputs = 4;   // 04 bytes + size(ins)
+    bytes memo = 5;              // 04 bytes + size(memo)
 }
 ```
 
-### Unsigned Base Tx Example
+### Base Tx Example
 
-Let's make an unsigned base tx that uses the inputs and outputs from the previous examples:
+Let's make an base tx that uses the inputs and outputs from the previous examples:
 
-- **`CodecID`**: `0`
-- **`ID`**: `0`
 - **`NetworkID`**: `3`
 - **`BlockchainID`**: `0xffffffffeeeeeeeeddddddddcccccccbbbbbbbbaaaaaaaa9999999988888888`
 - **`Outputs`**:
@@ -873,8 +860,6 @@ Let's make an unsigned base tx that uses the inputs and outputs from the previou
 
 ```splus
 [
-    CodecID      <- 0 = 0x0000
-    ID           <- 0 = 0x00000000
     NetworkID    <- 3 = 0x00000003
     BlockchainID <- 0xffffffffeeeeeeeeddddddddcccccccbbbbbbbbaaaaaaaa9999999988888888
     Outputs      <- [
@@ -887,10 +872,6 @@ Let's make an unsigned base tx that uses the inputs and outputs from the previou
 ]
 =
 [
-    // codec_id:
-    0x00, 0x00,
-    // id:
-    0x00, 0x00, 0x00, 0x00,
     // networkID:
     0x00, 0x00, 0x00, 0x03,
     // blockchainID:
@@ -938,15 +919,15 @@ Let's make an unsigned base tx that uses the inputs and outputs from the previou
 
 ***
 
-### Unsigned Create Asset Tx Identifier
+### Unsigned Create Asset Tx Type ID
 
-The transaction identifier for a create asset tx is `0x00000001`.
+The transaction type ID for an unsigned `CreateAssetTx` is `0x0001`.
 
 ### What Unsigned Create Asset Tx Contains
 
 An unsigned create asset tx contains a `BaseTx`, `Name`, `Symbol`, `Denomination`, and `InitialStates`.
 
-- **`ID`** is defined in `BaseTx`. For a create asset tx, the ID is `0x00000001`.
+- **`BaseTx`**
 - **`Name`** is a human readable string that defines the name of the asset this transaction will create. The name is not guaranteed to be unique. The name must consist of only printable ASCII characters and must be no longer than 128 characters.
 - **`Symbol`** is a human readable string that defines the symbol of the asset this transaction will create. The symbol is not guaranteed to be unique. The symbol must consist of only printable ASCII characters and must be no longer than 4 characters.
 - **`Denomination`** is a byte that defines the divisibility of the asset this transaction will create. For example, the AVAX token is divisible into billionths. Therefore, the denomination of the AVAX token is 9. The denomination must be no more than 32.
@@ -1065,15 +1046,15 @@ Let's make an unsigned base tx that uses the inputs and outputs from the previou
 
 ***
 
-### Unsigned Operation Tx Identifier
+### Unsigned Operation Tx Type ID
 
-The transaction identifier for an operation tx is `0x00000002`.
+The transaction type ID for an unsigned `OperationTx` is `0x0002`.
 
 ### What Unsigned Operation Tx Contains
 
 An unsigned operation tx contains a `BaseTx`, and `Ops`.
 
-- **`ID`** is defined in `BaseTx`. For an operation tx, the ID is `0x00000002`.
+- **`BaseTx`**
 - **`Ops`** is a variable length array of Transferable Ops.
 
 ### Gantt Unsigned Operation Tx Specification
@@ -1182,26 +1163,32 @@ A signed transaction is an unsigned transaction with the addition of an array of
 
 A signed transaction contains an `UnsignedTx`, `Credentials`.
 
+- **`UnsignedTxTypeID` is the type identifier of the unsigned transaction.
+  For an unsigned `CreateAssetTx` this is `0x0001`.
+  For an unsigned `OperationTx` this is `0x0002`.
 - **`UnsignedTx`** is an unsigned transaction, as described above.
 - **`Credentials`** is an array of credentials. Each credential will be paired with the input in the same index at this credential.
 
 ### Gantt Signed Transaction Specification
 
 ```boo
-+-------------+--------------+------------------------------------------------+
-| unsigned_tx : UnsignedTx   |                        size(unsigned_tx) bytes |
-+-------------+--------------+------------------------------------------------+
-| credentials : []Credential |                    4 + size(credentials) bytes |
-+-------------+--------------+------------------------------------------------+
-                             | 4 + size(unsigned_tx) + len(credentials) bytes |
-                             +------------------------------------------------+
++---------------------+--------------+------------------------------------------------+
+| unsigned_tx_type_ID : int          |                                        4 bytes |
++---------------------+--------------+------------------------------------------------+
+| unsigned_tx         : UnsignedTx   |                        size(unsigned_tx) bytes |
++---------------------+--------------+------------------------------------------------+
+| credentials         : []Credential |                    4 + size(credentials) bytes |
++---------------------+--------------+------------------------------------------------+
+                                     | 8 + size(unsigned_tx) + len(credentials) bytes |
+                                     +------------------------------------------------+
 ```
 
 ### Proto Signed Transaction Specification
 
 ```protobuf
 message Tx {
-    UnsignedTx unsigned_tx = 1;          // size(unsigned_tx)
+    uint32 unsigned_tx_type_id = 1       // 4 bytes
+    UnsignedTx unsigned_tx = 2;          // size(unsigned_tx)
     repeated Credential credentials = 2; // 4 bytes + size(credentials)
 }
 ```
@@ -1210,12 +1197,16 @@ message Tx {
 
 Let's make a signed transaction that uses the unsigned transaction and credential from the previous examples.
 
+- **`UnsignedTxTypeID`**:
+`0x0001`
 - **`UnsignedTx`**: `0x00000000000100000003ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000003000000070000000400010203`
 - **`Credentials`**
-  - `0x0000000900000002000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1e1d1f202122232425262728292a2b2c2e2d2f303132333435363738393a3b3c3d3e3f00404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5e5d5f606162636465666768696a6b6c6e6d6f707172737475767778797a7b7c7d7e7f00`
+  `0x0000000900000002000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1e1d1f202122232425262728292a2b2c2e2d2f303132333435363738393a3b3c3d3e3f00404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5e5d5f606162636465666768696a6b6c6e6d6f707172737475767778797a7b7c7d7e7f00`
 
 ```splus
 [
+    UnsignedTxTypeID <-
+    0x0001
     UnsignedTx  <- 0x00000000000100000003ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000003000000070000000400010203
     Credentials <- [
         0x0000000900000002000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1e1d1f202122232425262728292a2b2c2e2d2f303132333435363738393a3b3c3d3e3f00404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5e5d5f606162636465666768696a6b6c6e6d6f707172737475767778797a7b7c7d7e7f00,
@@ -1223,6 +1214,8 @@ Let's make a signed transaction that uses the unsigned transaction and credentia
 ]
 =
 [
+    // Unsigned tx type ID
+    0x00, 0x00, 0x00x, 0x01,
     // unsigned transaction:
     0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00,
     0x00, 0x03, 0xff, 0xff, 0xff, 0xff, 0xee, 0xee,
