@@ -6,8 +6,8 @@ This file is meant to be the single source of truth for how we serialize transac
 
 ## Codec ID
 
-Some data is prepended with a codec ID (uint32) that denotes how the data should be deserialized.
-Right now, the only valid codec ID is 0 (`0x00 0x00 0x00 0x00`).
+Some data is prepended with a codec ID (unt16) that denotes how the data should be deserialized.
+Right now, the only valid codec ID is 0 (`0x00 0x00`).
 
 ## Outputs
 
@@ -1775,13 +1775,13 @@ A signed transaction contains a `CodecID`, `UnsignedTx`, and `Credentials`.
 
 ```boo
 +---------------------+--------------+------------------------------------------------+
-| codec_id            : uint32       |                                        4 bytes |
+| codec_id            : uint16       |                                        2 bytes |
 +---------------------+--------------+------------------------------------------------+
 | unsigned_tx         : UnsignedTx   |                        size(unsigned_tx) bytes |
 +---------------------+--------------+------------------------------------------------+
 | credentials         : []Credential |                    4 + size(credentials) bytes |
 +---------------------+--------------+------------------------------------------------+
-                                     | 8 + size(unsigned_tx) + len(credentials) bytes |
+                                     | 6 + size(unsigned_tx) + len(credentials) bytes |
                                      +------------------------------------------------+
 ```
 
@@ -1789,7 +1789,7 @@ A signed transaction contains a `CodecID`, `UnsignedTx`, and `Credentials`.
 
 ```protobuf
 message Tx {
-    uint32 codec_id = 1;                 // 4 bytes
+    uint32 codec_id = 1;                 // 2 bytes
     UnsignedTx unsigned_tx = 2;          // size(unsigned_tx)
     repeated Credential credentials = 3; // 4 bytes + size(credentials)
 }
@@ -1890,7 +1890,7 @@ A UTXO contains signed transaction contains a `CodecID`, `TxID`, `UTXOIndex`, an
 
 ```boo
 +--------------+----------+-------------------------+
-| codec_id     : [32]byte |                 4 bytes |
+| codec_id     : uint16   |                 2 bytes |
 +--------------+----------+-------------------------+
 | tx_id        : [32]byte |                32 bytes |
 +--------------+----------+-------------------------+
@@ -1900,7 +1900,7 @@ A UTXO contains signed transaction contains a `CodecID`, `TxID`, `UTXOIndex`, an
 +--------------+----------+-------------------------+
 | output       : Output   |      size(output) bytes |
 +--------------+----------+-------------------------+
-                          | 68 + size(output) bytes |
+                          | 70 + size(output) bytes |
                           +-------------------------+
 ```
 
@@ -1927,7 +1927,7 @@ Let's make a UTXO from the signed transaction created above:
 
 ```splus
 [
-    CodecID   <- 0x00000000
+    CodecID   <- 0x0000
     TxID      <- 0xf966750f438867c3c9828ddcdbe660e21ccdbb36a9276958f011ba472f75d4e7
     UTXOIndex <- 0x00000000
     AssetID   <- 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
@@ -1936,7 +1936,7 @@ Let's make a UTXO from the signed transaction created above:
 =
 [
     // Codec ID:
-    0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00,
     // txID:
     0xf9, 0x66, 0x75, 0x0f, 0x43, 0x88, 0x67, 0xc3,
     0xc9, 0x82, 0x8d, 0xdc, 0xdb, 0xe6, 0x60, 0xe2,
