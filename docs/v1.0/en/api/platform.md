@@ -57,7 +57,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.addDefaultSubnetDelegator",
     "params": {
-        "id":"MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ",
+        "nodeID":"NodeID-MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ",
         "rewardAddress":"P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy",
         "startTime":1594102400,
         "endTime":1604102400,
