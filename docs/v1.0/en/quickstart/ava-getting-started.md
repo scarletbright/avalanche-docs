@@ -422,6 +422,7 @@ curl -X POST --data '{
     "method": "platform.importAVAX",
     "params": {
         "to":"P-avax1u8fe28yeftny3f4ewy6exc4d5832uhclf5mvur",
+        "sourceChain":"X",
     	"username":"YOUR USERNAME HERE",
     	"password":"YOUR PASSWORD HERE"
     },

@@ -823,6 +823,7 @@ Before this method is called, you must call the P-Chain's [`exportAVAX`](./platf
 ```go
 avm.importAVAX({
     to: string,
+    sourceChain: string,
     username: string,
     password:string,
 }) -> {txID: string}
@@ -830,6 +831,8 @@ avm.importAVAX({
 
 * `to` is the address the AVAX is sent to.
   This must be the same as the `to` argument in the corresponding call to the P-Chain's `exportAVAX`.
+* `sourceChain` is the ID or alias of the chain the AVAX is being imported from.
+  To import funds from the P-Chain, use `"P"`.
 * `username` is the user that controls `to`.
 
 #### Example Call
@@ -841,6 +844,7 @@ curl -X POST --data '{
     "method" :"avm.importAVAX",
     "params" :{
         "to":"X-avax1s7aygrkrtxflmrlyadlhqu70a6f4a4n8l2tru8",
+        "sourceChain":"P",
     	"username":"myUsername",
     	"password":"myPassword"
     }
