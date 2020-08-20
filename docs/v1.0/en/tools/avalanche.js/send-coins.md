@@ -1,12 +1,19 @@
 # Tutorial &mdash; Sending An Asset
 
-This example sends an asset in the AVM to a single recipient. The first step in this process is to create an instance of Avalanche connected to our Avalanche Platform endpoint of choice.
+This example sends an asset in the XChain to a single recipient. The first step in this process is to create an instance of Avalanche connected to our Avalanche Platform endpoint of choice.
 
 ```js
-let myNetworkID = 12345; //default is 3, we want to override that for our local network
-let myBlockchainID = "GJABrZ9A6UQFpwjPU8MDxDd8vuyRoDVeDAXc694wJ5t3zEkhU"; // The AVM blockchainID on this network
+import {
+    Avalanche,
+    BinTools,
+    Buffer,
+    BN
+  } from "avalanche" 
+
+let myNetworkID = 1; //default is 3, we want to override that for our local network
+let myBlockchainID = "GJABrZ9A6UQFpwjPU8MDxDd8vuyRoDVeDAXc694wJ5t3zEkhU"; // The XChain blockchainID on this network
 let ava = new avalanche.Avalanche("localhost", 9650, "http", myNetworkID, myBlockchainID);
-let avm = ava.AVM(); //returns a reference to the AVM API used by Avalanche.js
+let xchain = ava.XChain(); //returns a reference to the XChain used by Avalanche.js
 ```
 
 We're also assuming that the keystore contains a list of addresses used in this transaction.
@@ -20,9 +27,9 @@ For the case of this example, we're going to create a simple transaction that sp
 However, we do need to get the UTXO Set for the addresses we're managing. 
 
 ```js
-let myAddresses = avm.keyChain().getAddresses(); //returns an array of addresses the keychain manages
-let addressStrings = avm.keyChain().getAddressStrings(); //returns an array of addresses the keychain manages as strings
-let utxos = await avm.getUTXOs(myAddresses);
+let myAddresses = xchain.keyChain().getAddresses(); //returns an array of addresses the keychain manages
+let addressStrings = xchain.keyChain().getAddressStrings(); //returns an array of addresses the keychain manages as strings
+let utxos = await xchain.getUTXOs(myAddresses);
 ```
 
 ## Spending the UTXOs
@@ -37,7 +44,7 @@ We have 400 coins! We're going to now send 100 of those coins to our friend's ad
 
 ```js
 let sendAmount = new BN(100); //amounts are in BN format
-let friendsAddress = "X-B6D4v1VtPYLbiUvYXtW4Px8oE9imC2vGW"; //Avalanche serialized address format
+let friendsAddress = "X-avax1k26jvfdzyukms95puxcceyzsa3lzwf5ftt0fjk"; // address format is Bech32
 
 //The below returns a UnsignedTx
 //Parameters sent are (in order of appearance):
@@ -47,20 +54,20 @@ let friendsAddress = "X-B6D4v1VtPYLbiUvYXtW4Px8oE9imC2vGW"; //Avalanche serializ
 //   * An array of addresses sending the funds
 //   * An array of addresses any leftover funds are sent
 //   * The AssetID of the funds being sent
-let unsignedTx = await avm.buildBaseTx(utxos, sendAmount, [friendsAddress], addressStrings, addressStrings, assetid);
-let signedTx = avm.signTx(unsignedTx);
-let txid = await avm.issueTx(signedTx);
+let unsignedTx = await xchain.buildBaseTx(utxos, sendAmount, [friendsAddress], addressStrings, addressStrings, assetid);
+let signedTx = xchain.signTx(unsignedTx);
+let txid = await xchain.issueTx(signedTx);
 ```
 
 And the transaction is sent!
 
 ## Get the status of the transaction
 
-Now that we sent the transaction to the network, it takes a few seconds to determine if the transaction has gone through. We can get an updated status on the transaction using the TxID through the AVM API.
+Now that we sent the transaction to the network, it takes a few seconds to determine if the transaction has gone through. We can get an updated status on the transaction using the TxID through the XChain.
 
 ```js
 // returns one of: "Accepted", "Processing", "Unknown", and "Rejected"
-let status = await avm.getTxStatus(txid);
+let status = await xchain.getTxStatus(txid);
 ```
 
 The statuses can be one of "Accepted", "Processing", "Unknown", and "Rejected":
@@ -77,7 +84,7 @@ The transaction finally came back as "Accepted", now let's update the UTXOSet an
 *Note: In a real network the balance isn't guaranteed to match this scenario. Transaction fees or additional spends may vary the balance. For the purpose of this example, we assume neither of those cases.*
 
 ```js
-let updatedUTXOs = await avm.getUTXOs();
+let updatedUTXOs = await xchain.getUTXOs();
 let newBalance = updatedUTXOs.getBalance(myAddresses, assetid);
 if(newBalance.toNumber() != mybalance.sub(sendAmount).toNumber()){
     throw Error("heyyy these should equal!");

@@ -6,10 +6,13 @@ Avalanche.js is a JavaScript Library for interfacing with the Avalanche Platform
 
 The APIs currently supported by default are:
 
-  * The Avalanche Virtual Machine (AVM) API
-  * The Keystore API
-  * The Admin API
-  * The Platform API
+  * Admin API
+  * AVM API (X-Chain)
+  * Health API
+  * Info API
+  * Keystore API
+  * Metrics API
+  * PlatformVM API
 
 We built Avalanche.js with ease of use in mind. With this library, any Javascript developer is able to interact with a node on the Avalanche Platform who has enabled their API endpoints for the developer's consumption. We keep the library up-to-date with the latest changes in the [Avalanche Platform Specification](https://docs.avax.network). 
 
@@ -19,7 +22,7 @@ We built Avalanche.js with ease of use in mind. With this library, any Javascrip
   * Retrieve balances on addresses
   * Get UTXOs for addresses
   * Build and sign transactions
-  * Issue signed transactions to the AVM
+  * Issue signed transactions to the X-Chain
   * Create a Subnetwork
   * Administer a local node
   * Retrieve Avalanche network information from a node
@@ -59,17 +62,20 @@ const avalanche = require("avalanche");
 Or into your TypeScript project like this:
 
 ```js
-import * as avalanche from "avalanche"
+import { Avalanche } from "avalanche"
 ```
 
 ## Importing essentials
 
 ```js
-import * as avalanche from "avalanche";
-import BN from 'bn.js';
-import { Buffer } from 'buffer/'; // the slash forces this library over native Node.js Buffer
+import {
+    Avalanche,
+    BinTools,
+    Buffer,
+    BN
+  } from "avalanche"
 
-let bintools = avalanche.BinTools.getInstance();
+let bintools = BinTools.getInstance();
 ```
 
 The above lines import the libraries used in the tutorials. The libraries include:
