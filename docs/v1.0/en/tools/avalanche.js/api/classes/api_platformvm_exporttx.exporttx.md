@@ -51,7 +51,7 @@ Class representing an unsigned Export transaction.
 
 *Overrides [BaseTx](api_platformvm_basetx.basetx.md).[constructor](api_platformvm_basetx.basetx.md#constructor)*
 
-Defined in src/apis/platformvm/exporttx.ts:76
+Defined in src/apis/platformvm/exporttx.ts:77
 
 Class representing an unsigned Export transaction.
 
@@ -59,7 +59,7 @@ Class representing an unsigned Export transaction.
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
-`networkid` | number | 3 | Optional networkid, default 3 |
+`networkid` | number | DefaultNetworkID | Optional networkid, [DefaultNetworkID](../modules/common_constants.md#const-defaultnetworkid) |
 `blockchainid` | Buffer | Buffer.alloc(32, 16) | Optional blockchainid, default Buffer.alloc(32, 16) |
 `destinationChain` | Buffer | undefined | Optional chainid which identifies where the funds will send to. |
 `outs` | Array‹[TransferableOutput](api_platformvm_outputs.transferableoutput.md)› | undefined | Optional array of the [TransferableOutput](api_avm_outputs.transferableoutput.md)s |
@@ -77,7 +77,7 @@ Name | Type | Default | Description |
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[blockchainid](common_transactions.standardbasetx.md#protected-blockchainid)*
 
-Defined in src/common/tx.ts:23
+Defined in src/common/tx.ts:24
 
 ___
 
@@ -85,7 +85,7 @@ ___
 
 • **destinationChain**: *Buffer* = Buffer.alloc(32)
 
-Defined in src/apis/platformvm/exporttx.ts:21
+Defined in src/apis/platformvm/exporttx.ts:22
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 • **exportOuts**: *Array‹[TransferableOutput](api_platformvm_outputs.transferableoutput.md)›* = []
 
-Defined in src/apis/platformvm/exporttx.ts:23
+Defined in src/apis/platformvm/exporttx.ts:24
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[ins](common_transactions.standardbasetx.md#protected-ins)*
 
-Defined in src/common/tx.ts:27
+Defined in src/common/tx.ts:28
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[memo](common_transactions.standardbasetx.md#protected-memo)*
 
-Defined in src/common/tx.ts:28
+Defined in src/common/tx.ts:29
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[networkid](common_transactions.standardbasetx.md#protected-networkid)*
 
-Defined in src/common/tx.ts:22
+Defined in src/common/tx.ts:23
 
 ___
 
@@ -131,7 +131,7 @@ ___
 
 • **numOuts**: *Buffer* = Buffer.alloc(4)
 
-Defined in src/apis/platformvm/exporttx.ts:22
+Defined in src/apis/platformvm/exporttx.ts:23
 
 ___
 
@@ -141,7 +141,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[numins](common_transactions.standardbasetx.md#protected-numins)*
 
-Defined in src/common/tx.ts:26
+Defined in src/common/tx.ts:27
 
 ___
 
@@ -151,7 +151,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[numouts](common_transactions.standardbasetx.md#protected-numouts)*
 
-Defined in src/common/tx.ts:24
+Defined in src/common/tx.ts:25
 
 ___
 
@@ -161,7 +161,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[outs](common_transactions.standardbasetx.md#protected-outs)*
 
-Defined in src/common/tx.ts:25
+Defined in src/common/tx.ts:26
 
 ## Methods
 
@@ -171,7 +171,7 @@ Defined in src/common/tx.ts:25
 
 *Overrides [BaseTx](api_platformvm_basetx.basetx.md).[fromBuffer](api_platformvm_basetx.basetx.md#frombuffer)*
 
-Defined in src/apis/platformvm/exporttx.ts:41
+Defined in src/apis/platformvm/exporttx.ts:42
 
 Takes a [Buffer](https://github.com/feross/buffer) containing an [ExportTx](api_platformvm_exporttx.exporttx.md), parses it, populates the class, and returns the length of the [ExportTx](api_platformvm_exporttx.exporttx.md) in bytes.
 
@@ -196,7 +196,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getBlockchainID](common_transactions.standardbasetx.md#getblockchainid)*
 
-Defined in src/common/tx.ts:43
+Defined in src/common/tx.ts:44
 
 Returns the Buffer representation of the BlockchainID
 
@@ -208,7 +208,7 @@ ___
 
 ▸ **getExportOutputs**(): *Array‹[TransferableOutput](api_platformvm_outputs.transferableoutput.md)›*
 
-Defined in src/apis/platformvm/exporttx.ts:74
+Defined in src/apis/platformvm/exporttx.ts:75
 
 Returns an array of [TransferableOutput](api_avm_outputs.transferableoutput.md)s in this transaction.
 
@@ -222,7 +222,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getIns](common_transactions.standardbasetx.md#getins)*
 
-Defined in src/common/tx.ts:48
+Defined in src/common/tx.ts:49
 
 Returns the array of [TransferableInput](api_avm_inputs.transferableinput.md)s
 
@@ -236,7 +236,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getMemo](common_transactions.standardbasetx.md#getmemo)*
 
-Defined in src/common/tx.ts:58
+Defined in src/common/tx.ts:59
 
 Returns the [Buffer](https://github.com/feross/buffer) representation of the memo
 
@@ -250,7 +250,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getNetworkID](common_transactions.standardbasetx.md#getnetworkid)*
 
-Defined in src/common/tx.ts:38
+Defined in src/common/tx.ts:39
 
 Returns the NetworkID as a number
 
@@ -264,7 +264,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getOuts](common_transactions.standardbasetx.md#getouts)*
 
-Defined in src/common/tx.ts:53
+Defined in src/common/tx.ts:54
 
 Returns the array of [TransferableOutput](api_avm_outputs.transferableoutput.md)s
 
@@ -278,7 +278,7 @@ ___
 
 *Overrides [BaseTx](api_platformvm_basetx.basetx.md).[getTxType](api_platformvm_basetx.basetx.md#gettxtype)*
 
-Defined in src/apis/platformvm/exporttx.ts:28
+Defined in src/apis/platformvm/exporttx.ts:29
 
 Returns the id of the [ExportTx](api_platformvm_exporttx.exporttx.md)
 
@@ -294,7 +294,7 @@ ___
 
 *Overrides [StandardBaseTx](common_transactions.standardbasetx.md).[sign](common_transactions.standardbasetx.md#abstract-sign)*
 
-Defined in src/apis/platformvm/basetx.ts:79
+Defined in src/apis/platformvm/basetx.ts:80
 
 Takes the bytes of an [UnsignedTx](api_avm_transactions.unsignedtx.md) and returns an array of [Credential](common_signature.credential.md)s
 
@@ -317,7 +317,7 @@ ___
 
 *Overrides [StandardBaseTx](common_transactions.standardbasetx.md).[toBuffer](common_transactions.standardbasetx.md#tobuffer)*
 
-Defined in src/apis/platformvm/exporttx.ts:59
+Defined in src/apis/platformvm/exporttx.ts:60
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [ExportTx](api_platformvm_exporttx.exporttx.md).
 
@@ -331,7 +331,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[toString](common_transactions.standardbasetx.md#tostring)*
 
-Defined in src/common/tx.ts:95
+Defined in src/common/tx.ts:96
 
 Returns a base-58 representation of the [StandardBaseTx](common_transactions.standardbasetx.md).
 

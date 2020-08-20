@@ -49,7 +49,7 @@ Class representing an unsigned transaction.
 
 \+ **new StandardUnsignedTx**(`transaction`: SBTx, `codecid`: number): *[StandardUnsignedTx](common_transactions.standardunsignedtx.md)*
 
-Defined in src/common/tx.ts:237
+Defined in src/common/tx.ts:238
 
 **Parameters:**
 
@@ -66,7 +66,7 @@ Name | Type | Default |
 
 • **codecid**: *number* = 0
 
-Defined in src/common/tx.ts:148
+Defined in src/common/tx.ts:149
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 • **transaction**: *SBTx*
 
-Defined in src/common/tx.ts:149
+Defined in src/common/tx.ts:150
 
 ## Methods
 
@@ -82,7 +82,7 @@ Defined in src/common/tx.ts:149
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset?`: number): *number*
 
-Defined in src/common/tx.ts:216
+Defined in src/common/tx.ts:217
 
 **Parameters:**
 
@@ -99,7 +99,7 @@ ___
 
 ▸ **getBurn**(`assetID`: Buffer): *BN*
 
-Defined in src/common/tx.ts:207
+Defined in src/common/tx.ts:208
 
 Returns the number of burned tokens as a BN
 
@@ -117,7 +117,7 @@ ___
 
 ▸ **getCodecID**(): *number*
 
-Defined in src/common/tx.ts:154
+Defined in src/common/tx.ts:155
 
 Returns the CodecID as a number
 
@@ -129,7 +129,7 @@ ___
 
 ▸ **getCodecIDBuffer**(): *Buffer*
 
-Defined in src/common/tx.ts:159
+Defined in src/common/tx.ts:160
 
 Returns the [Buffer](https://github.com/feross/buffer) representation of the CodecID
 
@@ -141,7 +141,7 @@ ___
 
 ▸ **getInputTotal**(`assetID`: Buffer): *BN*
 
-Defined in src/common/tx.ts:168
+Defined in src/common/tx.ts:169
 
 Returns the inputTotal as a BN
 
@@ -159,7 +159,7 @@ ___
 
 ▸ **getOutputTotal**(`assetID`: Buffer): *BN*
 
-Defined in src/common/tx.ts:188
+Defined in src/common/tx.ts:189
 
 Returns the outputTotal as a BN
 
@@ -177,7 +177,7 @@ ___
 
 ▸ **getTransaction**(): *SBTx*
 
-Defined in src/common/tx.ts:214
+Defined in src/common/tx.ts:215
 
 Returns the Transaction
 
@@ -189,7 +189,7 @@ ___
 
 ▸ **sign**(`kc`: KCClass): *[StandardTx](common_transactions.standardtx.md)‹KPClass, KCClass, [StandardUnsignedTx](common_transactions.standardunsignedtx.md)‹KPClass, KCClass, SBTx››*
 
-Defined in src/common/tx.ts:233
+Defined in src/common/tx.ts:234
 
 Signs this [UnsignedTx](api_avm_transactions.unsignedtx.md) and returns signed [StandardTx](common_transactions.standardtx.md)
 
@@ -209,6 +209,6 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-Defined in src/common/tx.ts:218
+Defined in src/common/tx.ts:219
 
 **Returns:** *Buffer*

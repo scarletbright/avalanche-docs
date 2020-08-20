@@ -269,7 +269,7 @@ Name | Type | Default | Description |
 `symbol` | string | - | String for the ticker symbol of the asset |
 `memo` | [PayloadBase](common_payload.payloadbase.md) &#124; Buffer | undefined | Optional contains arbitrary bytes, up to 256 bytes |
 `asOf` | BN | UnixNow() | Optional. The timestamp to verify the transaction against as a [BN](https://github.com/indutny/bn.js/) |
-`locktime` | BN | new BN(0) | Optional. The locktime field created in the resulting mint output  ```js Example minterSets: [      {          "minters":[              "X-4peJsFvhdn7XjhNF4HWAQy6YaJts27s9q"          ],          "threshold": 1      },      {          "minters": [              "X-dcJ6z9duLfyQTgbjq2wBCowkvcPZHVDF",              "X-2fE6iibqfERz5wenXE6qyvinsxDvFhHZk",              "X-7ieAJbfrGQbpNZRAQEpZCC1Gs1z5gz4HU"          ],          "threshold": 2      } ] ```  |
+`locktime` | BN | new BN(0) | Optional. The locktime field created in the resulting mint output  ```js Example minterSets: [      {          "minters":[              "X-avax1ghstjukrtw8935lryqtnh643xe9a94u3tc75c7"          ],          "threshold": 1      },      {          "minters": [              "X-avax1yell3e4nln0m39cfpdhgqprsd87jkh4qnakklx",              "X-avax1k4nr26c80jaquzm9369j5a4shmwcjn0vmemcjz",              "X-avax1ztkzsrjnkn0cek5ryvhqswdtcg23nhge3nnr5e"          ],          "threshold": 2      } ] ```  |
 
 **Returns:** *Promise‹[UnsignedTx](api_avm_transactions.unsignedtx.md)›*
 
@@ -497,7 +497,7 @@ Name | Type | Description |
 `name` | string | The human-readable name for the asset |
 `symbol` | string | Optional. The shorthand symbol for the asset. Between 0 and 4 characters |
 `denomination` | number | Optional. Determines how balances of this asset are displayed by user interfaces. Default is 0 |
-`initialHolders` | Array‹object› | An array of objects containing the field "address" and "amount" to establish the genesis values for the new asset  ```js Example initialHolders: [     {         "address": "X-7sik3Pr6r1FeLrvK1oWwECBS8iJ5VPuSh",         "amount": 10000     },     {         "address": "X-7sik3Pr6r1FeLrvK1oWwECBS8iJ5VPuSh",         "amount": 50000     } ] ```  |
+`initialHolders` | Array‹object› | An array of objects containing the field "address" and "amount" to establish the genesis values for the new asset  ```js Example initialHolders: [     {         "address": "X-avax1kj06lhgx84h39snsljcey3tpc046ze68mek3g5",         "amount": 10000     },     {         "address": "X-avax1am4w6hfrvmh3akduzkjthrtgtqafalce6an8cr",         "amount": 50000     } ] ```  |
 
 **Returns:** *Promise‹string›*
 
@@ -522,7 +522,7 @@ Name | Type | Description |
 `name` | string | The human-readable name for the asset |
 `symbol` | string | Optional. The shorthand symbol for the asset -- between 0 and 4 characters |
 `denomination` | number | Optional. Determines how balances of this asset are displayed by user interfaces. Default is 0 |
-`minterSets` | Array‹object› | is a list where each element specifies that threshold of the addresses in minters may together mint more of the asset by signing a minting transaction  ```js Example minterSets: [      {          "minters":[              "X-4peJsFvhdn7XjhNF4HWAQy6YaJts27s9q"          ],          "threshold": 1      },      {          "minters": [              "X-dcJ6z9duLfyQTgbjq2wBCowkvcPZHVDF",              "X-2fE6iibqfERz5wenXE6qyvinsxDvFhHZk",              "X-7ieAJbfrGQbpNZRAQEpZCC1Gs1z5gz4HU"          ],          "threshold": 2      } ] ```  |
+`minterSets` | Array‹object› | is a list where each element specifies that threshold of the addresses in minters may together mint more of the asset by signing a minting transaction  ```js Example minterSets: [      {          "minters":[              "X-avax1am4w6hfrvmh3akduzkjthrtgtqafalce6an8cr"          ],          "threshold": 1      },      {          "minters": [              "X-avax1am4w6hfrvmh3akduzkjthrtgtqafalce6an8cr",              "X-avax1kj06lhgx84h39snsljcey3tpc046ze68mek3g5",              "X-avax1yell3e4nln0m39cfpdhgqprsd87jkh4qnakklx"          ],          "threshold": 2      } ] ```  |
 
 **Returns:** *Promise‹string›*
 

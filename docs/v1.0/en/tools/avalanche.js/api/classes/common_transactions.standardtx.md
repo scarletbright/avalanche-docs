@@ -45,7 +45,7 @@ Class representing a signed transaction.
 
 \+ **new StandardTx**(`unsignedTx`: SUBTx, `credentials`: Array‹[Credential](common_signature.credential.md)›): *[StandardTx](common_transactions.standardtx.md)*
 
-Defined in src/common/tx.ts:312
+Defined in src/common/tx.ts:313
 
 Class representing a signed transaction.
 
@@ -64,7 +64,7 @@ Name | Type | Default | Description |
 
 • **credentials**: *Array‹[Credential](common_signature.credential.md)›* = []
 
-Defined in src/common/tx.ts:256
+Defined in src/common/tx.ts:257
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 • **unsignedTx**: *SUBTx* = undefined
 
-Defined in src/common/tx.ts:255
+Defined in src/common/tx.ts:256
 
 ## Methods
 
@@ -80,7 +80,7 @@ Defined in src/common/tx.ts:255
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset?`: number): *number*
 
-Defined in src/common/tx.ts:265
+Defined in src/common/tx.ts:266
 
 **Parameters:**
 
@@ -97,7 +97,7 @@ ___
 
 ▸ **fromString**(`serialized`: string): *number*
 
-Defined in src/common/tx.ts:300
+Defined in src/common/tx.ts:301
 
 Takes a base-58 string containing an [StandardTx](common_transactions.standardtx.md), parses it, populates the class, and returns the length of the Tx in bytes.
 
@@ -120,7 +120,7 @@ ___
 
 ▸ **getUnsignedTx**(): *SUBTx*
 
-Defined in src/common/tx.ts:261
+Defined in src/common/tx.ts:262
 
 Returns the [StandardUnsignedTx](common_transactions.standardunsignedtx.md)
 
@@ -132,7 +132,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-Defined in src/common/tx.ts:270
+Defined in src/common/tx.ts:271
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [StandardTx](common_transactions.standardtx.md).
 
@@ -144,7 +144,7 @@ ___
 
 ▸ **toString**(): *string*
 
-Defined in src/common/tx.ts:310
+Defined in src/common/tx.ts:311
 
 Returns a cb58 representation of the [StandardTx](common_transactions.standardtx.md).
 

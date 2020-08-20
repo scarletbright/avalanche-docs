@@ -57,7 +57,7 @@ Class representing an unsigned AddDefaultSubnetDelegatorTx transaction.
 
 *Overrides [ValidatorTx](api_platformvm_validationtx.validatortx.md).[constructor](api_platformvm_validationtx.validatortx.md#constructor)*
 
-Defined in src/apis/platformvm/validationtx.ts:135
+Defined in src/apis/platformvm/validationtx.ts:136
 
 Class representing an unsigned Import transaction.
 
@@ -65,7 +65,7 @@ Class representing an unsigned Import transaction.
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
-`networkid` | number | 1 | Optional networkid, default 3 |
+`networkid` | number | DefaultNetworkID | Optional networkid, [DefaultNetworkID](../modules/common_constants.md#const-defaultnetworkid) |
 `blockchainid` | Buffer | Buffer.alloc(32, 16) | Optional blockchainid, default Buffer.alloc(32, 16) |
 `outs` | Array‹[TransferableOutput](api_platformvm_outputs.transferableoutput.md)› | undefined | Optional array of the [TransferableOutput](api_avm_outputs.transferableoutput.md)s |
 `ins` | Array‹[TransferableInput](api_platformvm_inputs.transferableinput.md)› | undefined | Optional array of the [TransferableInput](api_avm_inputs.transferableinput.md)s |
@@ -87,7 +87,7 @@ Name | Type | Default | Description |
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[blockchainid](common_transactions.standardbasetx.md#protected-blockchainid)*
 
-Defined in src/common/tx.ts:23
+Defined in src/common/tx.ts:24
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 *Inherited from [ValidatorTx](api_platformvm_validationtx.validatortx.md).[endTime](api_platformvm_validationtx.validatortx.md#protected-endtime)*
 
-Defined in src/apis/platformvm/validationtx.ts:25
+Defined in src/apis/platformvm/validationtx.ts:26
 
 ___
 
@@ -107,7 +107,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[ins](common_transactions.standardbasetx.md#protected-ins)*
 
-Defined in src/common/tx.ts:27
+Defined in src/common/tx.ts:28
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[memo](common_transactions.standardbasetx.md#protected-memo)*
 
-Defined in src/common/tx.ts:28
+Defined in src/common/tx.ts:29
 
 ___
 
@@ -127,7 +127,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[networkid](common_transactions.standardbasetx.md#protected-networkid)*
 
-Defined in src/common/tx.ts:22
+Defined in src/common/tx.ts:23
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 *Inherited from [ValidatorTx](api_platformvm_validationtx.validatortx.md).[nodeID](api_platformvm_validationtx.validatortx.md#protected-nodeid)*
 
-Defined in src/apis/platformvm/validationtx.ts:23
+Defined in src/apis/platformvm/validationtx.ts:24
 
 ___
 
@@ -147,7 +147,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[numins](common_transactions.standardbasetx.md#protected-numins)*
 
-Defined in src/common/tx.ts:26
+Defined in src/common/tx.ts:27
 
 ___
 
@@ -157,7 +157,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[numouts](common_transactions.standardbasetx.md#protected-numouts)*
 
-Defined in src/common/tx.ts:24
+Defined in src/common/tx.ts:25
 
 ___
 
@@ -167,7 +167,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[outs](common_transactions.standardbasetx.md#protected-outs)*
 
-Defined in src/common/tx.ts:25
+Defined in src/common/tx.ts:26
 
 ___
 
@@ -175,7 +175,7 @@ ___
 
 • **rewardAddress**: *Buffer* = Buffer.alloc(20)
 
-Defined in src/apis/platformvm/validationtx.ts:92
+Defined in src/apis/platformvm/validationtx.ts:93
 
 ___
 
@@ -183,7 +183,7 @@ ___
 
 • **stakeAmount**: *Buffer* = Buffer.alloc(8)
 
-Defined in src/apis/platformvm/validationtx.ts:90
+Defined in src/apis/platformvm/validationtx.ts:91
 
 ___
 
@@ -191,7 +191,7 @@ ___
 
 • **stakeOuts**: *Array‹[TransferableOutput](api_platformvm_outputs.transferableoutput.md)›* = []
 
-Defined in src/apis/platformvm/validationtx.ts:91
+Defined in src/apis/platformvm/validationtx.ts:92
 
 ___
 
@@ -201,7 +201,7 @@ ___
 
 *Inherited from [ValidatorTx](api_platformvm_validationtx.validatortx.md).[startTime](api_platformvm_validationtx.validatortx.md#protected-starttime)*
 
-Defined in src/apis/platformvm/validationtx.ts:24
+Defined in src/apis/platformvm/validationtx.ts:25
 
 ## Methods
 
@@ -211,7 +211,7 @@ Defined in src/apis/platformvm/validationtx.ts:24
 
 *Overrides [ValidatorTx](api_platformvm_validationtx.validatortx.md).[fromBuffer](api_platformvm_validationtx.validatortx.md#frombuffer)*
 
-Defined in src/apis/platformvm/validationtx.ts:101
+Defined in src/apis/platformvm/validationtx.ts:102
 
 **Parameters:**
 
@@ -230,7 +230,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getBlockchainID](common_transactions.standardbasetx.md#getblockchainid)*
 
-Defined in src/common/tx.ts:43
+Defined in src/common/tx.ts:44
 
 Returns the Buffer representation of the BlockchainID
 
@@ -244,7 +244,7 @@ ___
 
 *Inherited from [ValidatorTx](api_platformvm_validationtx.validatortx.md).[getEndTime](api_platformvm_validationtx.validatortx.md#getendtime)*
 
-Defined in src/apis/platformvm/validationtx.ts:39
+Defined in src/apis/platformvm/validationtx.ts:40
 
 **Returns:** *BN‹›*
 
@@ -256,7 +256,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getIns](common_transactions.standardbasetx.md#getins)*
 
-Defined in src/common/tx.ts:48
+Defined in src/common/tx.ts:49
 
 Returns the array of [TransferableInput](api_avm_inputs.transferableinput.md)s
 
@@ -270,7 +270,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getMemo](common_transactions.standardbasetx.md#getmemo)*
 
-Defined in src/common/tx.ts:58
+Defined in src/common/tx.ts:59
 
 Returns the [Buffer](https://github.com/feross/buffer) representation of the memo
 
@@ -284,7 +284,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getNetworkID](common_transactions.standardbasetx.md#getnetworkid)*
 
-Defined in src/common/tx.ts:38
+Defined in src/common/tx.ts:39
 
 Returns the NetworkID as a number
 
@@ -298,7 +298,7 @@ ___
 
 *Inherited from [ValidatorTx](api_platformvm_validationtx.validatortx.md).[getNodeID](api_platformvm_validationtx.validatortx.md#getnodeid)*
 
-Defined in src/apis/platformvm/validationtx.ts:27
+Defined in src/apis/platformvm/validationtx.ts:28
 
 **Returns:** *Buffer*
 
@@ -310,7 +310,7 @@ ___
 
 *Inherited from [ValidatorTx](api_platformvm_validationtx.validatortx.md).[getNodeIDString](api_platformvm_validationtx.validatortx.md#getnodeidstring)*
 
-Defined in src/apis/platformvm/validationtx.ts:31
+Defined in src/apis/platformvm/validationtx.ts:32
 
 **Returns:** *string*
 
@@ -322,7 +322,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getOuts](common_transactions.standardbasetx.md#getouts)*
 
-Defined in src/common/tx.ts:53
+Defined in src/common/tx.ts:54
 
 Returns the array of [TransferableOutput](api_avm_outputs.transferableoutput.md)s
 
@@ -336,7 +336,7 @@ ___
 
 *Inherited from [ValidatorTx](api_platformvm_validationtx.validatortx.md).[getStartTime](api_platformvm_validationtx.validatortx.md#getstarttime)*
 
-Defined in src/apis/platformvm/validationtx.ts:35
+Defined in src/apis/platformvm/validationtx.ts:36
 
 **Returns:** *BN‹›*
 
@@ -348,7 +348,7 @@ ___
 
 *Overrides [BaseTx](api_platformvm_basetx.basetx.md).[getTxType](api_platformvm_basetx.basetx.md#gettxtype)*
 
-Defined in src/apis/platformvm/validationtx.ts:97
+Defined in src/apis/platformvm/validationtx.ts:98
 
 Returns the id of the [AddDefaultSubnetDelegatorTx](api_platformvm_validationtx.adddefaultsubnetdelegatortx.md)
 
@@ -364,7 +364,7 @@ ___
 
 *Overrides [StandardBaseTx](common_transactions.standardbasetx.md).[sign](common_transactions.standardbasetx.md#abstract-sign)*
 
-Defined in src/apis/platformvm/basetx.ts:79
+Defined in src/apis/platformvm/basetx.ts:80
 
 Takes the bytes of an [UnsignedTx](api_avm_transactions.unsignedtx.md) and returns an array of [Credential](common_signature.credential.md)s
 
@@ -387,7 +387,7 @@ ___
 
 *Overrides [ValidatorTx](api_platformvm_validationtx.validatortx.md).[toBuffer](api_platformvm_validationtx.validatortx.md#tobuffer)*
 
-Defined in src/apis/platformvm/validationtx.ts:122
+Defined in src/apis/platformvm/validationtx.ts:123
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [ImportTx](api_avm_importtx.importtx.md).
 
@@ -401,7 +401,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[toString](common_transactions.standardbasetx.md#tostring)*
 
-Defined in src/common/tx.ts:95
+Defined in src/common/tx.ts:96
 
 Returns a base-58 representation of the [StandardBaseTx](common_transactions.standardbasetx.md).
 

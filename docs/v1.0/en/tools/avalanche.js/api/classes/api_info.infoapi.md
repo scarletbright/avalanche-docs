@@ -37,6 +37,7 @@ Class for interacting with a node's InfoAPI.
 * [getNodeID](api_info.infoapi.md#getnodeid)
 * [getNodeVersion](api_info.infoapi.md#getnodeversion)
 * [getRPCID](api_info.infoapi.md#getrpcid)
+* [getTxFee](api_info.infoapi.md#gettxfee)
 * [peers](api_info.infoapi.md#peers)
 * [setBaseURL](api_info.infoapi.md#setbaseurl)
 
@@ -48,7 +49,7 @@ Class for interacting with a node's InfoAPI.
 
 *Overrides [JRPCAPI](common_jrpcapi.jrpcapi.md).[constructor](common_jrpcapi.jrpcapi.md#constructor)*
 
-Defined in src/apis/info/api.ts:76
+Defined in src/apis/info/api.ts:87
 
 **Parameters:**
 
@@ -149,7 +150,7 @@ ___
 
 ▸ **getBlockchainID**(`alias`: string): *Promise‹string›*
 
-Defined in src/apis/info/api.ts:24
+Defined in src/apis/info/api.ts:25
 
 Fetches the blockchainID from the node for a given alias.
 
@@ -183,7 +184,7 @@ ___
 
 ▸ **getNetworkID**(): *Promise‹number›*
 
-Defined in src/apis/info/api.ts:37
+Defined in src/apis/info/api.ts:38
 
 Fetches the networkID from the node.
 
@@ -197,7 +198,7 @@ ___
 
 ▸ **getNetworkName**(): *Promise‹string›*
 
-Defined in src/apis/info/api.ts:48
+Defined in src/apis/info/api.ts:59
 
 Fetches the network name this node is running on
 
@@ -211,7 +212,7 @@ ___
 
 ▸ **getNodeID**(): *Promise‹string›*
 
-Defined in src/apis/info/api.ts:56
+Defined in src/apis/info/api.ts:67
 
 Fetches the nodeID from the node.
 
@@ -225,7 +226,7 @@ ___
 
 ▸ **getNodeVersion**(): *Promise‹string›*
 
-Defined in src/apis/info/api.ts:67
+Defined in src/apis/info/api.ts:78
 
 Fetches the version of Gecko this node is running
 
@@ -250,11 +251,25 @@ request ID that will be sent.
 
 ___
 
+###  getTxFee
+
+▸ **getTxFee**(): *Promise‹BN›*
+
+Defined in src/apis/info/api.ts:49
+
+Fetches the transaction fee from the node.
+
+**Returns:** *Promise‹BN›*
+
+Returns a Promise<number> of the transaction fee in nAVAX.
+
+___
+
 ###  peers
 
 ▸ **peers**(): *Promise‹Array‹string››*
 
-Defined in src/apis/info/api.ts:75
+Defined in src/apis/info/api.ts:86
 
 Returns the peers connected to the node.
 
