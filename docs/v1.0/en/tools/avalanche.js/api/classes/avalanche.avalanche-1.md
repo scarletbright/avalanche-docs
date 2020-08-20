@@ -2,7 +2,7 @@
 
 # Class: Avalanche
 
-Avalanche.js is middleware for interacting with AVA node RPC APIs.
+Avalanche.js is middleware for interacting with Avalanche node RPC APIs.
 
 Example usage:
 ```js
@@ -24,6 +24,7 @@ let avalanche = new Avalanche("127.0.0.1", 9650, "https");
 ### Properties
 
 * [apis](avalanche.avalanche-1.md#protected-apis)
+* [hrp](avalanche.avalanche-1.md#protected-hrp)
 * [ip](avalanche.avalanche-1.md#protected-ip)
 * [networkID](avalanche.avalanche-1.md#protected-networkid)
 * [port](avalanche.avalanche-1.md#protected-port)
@@ -32,17 +33,18 @@ let avalanche = new Avalanche("127.0.0.1", 9650, "https");
 
 ### Methods
 
-* [AVM](avalanche.avalanche-1.md#avm)
 * [Admin](avalanche.avalanche-1.md#admin)
 * [Health](avalanche.avalanche-1.md#health)
 * [Info](avalanche.avalanche-1.md#info)
 * [Metrics](avalanche.avalanche-1.md#metrics)
 * [NodeKeys](avalanche.avalanche-1.md#nodekeys)
-* [Platform](avalanche.avalanche-1.md#platform)
+* [PChain](avalanche.avalanche-1.md#pchain)
+* [XChain](avalanche.avalanche-1.md#xchain)
 * [addAPI](avalanche.avalanche-1.md#addapi)
 * [api](avalanche.avalanche-1.md#api)
 * [delete](avalanche.avalanche-1.md#delete)
 * [get](avalanche.avalanche-1.md#get)
+* [getHRP](avalanche.avalanche-1.md#gethrp)
 * [getIP](avalanche.avalanche-1.md#getip)
 * [getNetworkID](avalanche.avalanche-1.md#getnetworkid)
 * [getPort](avalanche.avalanche-1.md#getport)
@@ -52,29 +54,31 @@ let avalanche = new Avalanche("127.0.0.1", 9650, "https");
 * [post](avalanche.avalanche-1.md#post)
 * [put](avalanche.avalanche-1.md#put)
 * [setAddress](avalanche.avalanche-1.md#setaddress)
+* [setHRP](avalanche.avalanche-1.md#sethrp)
 * [setNetworkID](avalanche.avalanche-1.md#setnetworkid)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new Avalanche**(`ip`: string, `port`: number, `protocol`: string, `networkID`: number, `avmChainID`: string, `skipinit`: boolean): *[Avalanche](avalanche.avalanche-1.md)*
+\+ **new Avalanche**(`ip`: string, `port`: number, `protocol`: string, `networkID`: number, `XChainID`: string, `hrp`: string, `skipinit`: boolean): *[Avalanche](avalanche.avalanche-1.md)*
 
 *Overrides [AvalancheCore](avalanchecore.avalanchecore-1.md).[constructor](avalanchecore.avalanchecore-1.md#constructor)*
 
-*Defined in [src/index.ts:62](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/index.ts#L62)*
+Defined in src/index.ts:64
 
-Creates a new AVA instance. Sets the address and port of the main AVA Client.
+Creates a new Avalanche instance. Sets the address and port of the main Avalanche Client.
 
 **Parameters:**
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
-`ip` | string | - | The hostname to resolve to reach the AVA Client RPC APIs |
-`port` | number | - | The port to resolve to reach the AVA Client RPC APIs |
+`ip` | string | - | The hostname to resolve to reach the Avalanche Client RPC APIs |
+`port` | number | - | The port to resolve to reach the Avalanche Client RPC APIs |
 `protocol` | string | "http" | The protocol string to use before a "://" in a request, ex: "http", "https", "git", "ws", etc ... |
-`networkID` | number | 3 | - |
-`avmChainID` | string | undefined | Sets the blockchainID for the AVM. Will try to auto-detect, otherwise default "4R5p2RXDGLqaifZE4hHWH9owe34pfoBULn1DrQTWivjg8o4aH" |
+`networkID` | number | DefaultNetworkID | - |
+`XChainID` | string | undefined | - |
+`hrp` | string | undefined | - |
 `skipinit` | boolean | false | Skips creating the APIs  |
 
 **Returns:** *[Avalanche](avalanche.avalanche-1.md)*
@@ -87,11 +91,21 @@ Name | Type | Default | Description |
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[apis](avalanchecore.avalanchecore-1.md#protected-apis)*
 
-*Defined in [src/avalanche.ts:28](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L28)*
+Defined in src/avalanche.ts:31
 
 #### Type declaration:
 
-* \[ **k**: *string*\]: [APIBase](utils_types.apibase.md)
+* \[ **k**: *string*\]: [APIBase](common_apibase.apibase.md)
+
+___
+
+### `Protected` hrp
+
+• **hrp**: *string* = ""
+
+*Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[hrp](avalanchecore.avalanchecore-1.md#protected-hrp)*
+
+Defined in src/avalanche.ts:21
 
 ___
 
@@ -101,17 +115,17 @@ ___
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[ip](avalanchecore.avalanchecore-1.md#protected-ip)*
 
-*Defined in [src/avalanche.ts:22](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L22)*
+Defined in src/avalanche.ts:25
 
 ___
 
 ### `Protected` networkID
 
-• **networkID**: *number* = 3
+• **networkID**: *number* = 0
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[networkID](avalanchecore.avalanchecore-1.md#protected-networkid)*
 
-*Defined in [src/avalanche.ts:18](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L18)*
+Defined in src/avalanche.ts:19
 
 ___
 
@@ -121,7 +135,7 @@ ___
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[port](avalanchecore.avalanchecore-1.md#protected-port)*
 
-*Defined in [src/avalanche.ts:24](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L24)*
+Defined in src/avalanche.ts:27
 
 ___
 
@@ -131,7 +145,7 @@ ___
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[protocol](avalanchecore.avalanchecore-1.md#protected-protocol)*
 
-*Defined in [src/avalanche.ts:20](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L20)*
+Defined in src/avalanche.ts:23
 
 ___
 
@@ -141,92 +155,92 @@ ___
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[url](avalanchecore.avalanchecore-1.md#protected-url)*
 
-*Defined in [src/avalanche.ts:26](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L26)*
+Defined in src/avalanche.ts:29
 
 ## Methods
 
-###  AVM
-
-▸ **AVM**(): *[AVMAPI](avmapi.avmapi-1.md)‹›*
-
-*Defined in [src/index.ts:36](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/index.ts#L36)*
-
-Returns a reference to the AVM RPC.
-
-**Returns:** *[AVMAPI](avmapi.avmapi-1.md)‹›*
-
-___
-
 ###  Admin
 
-▸ **Admin**(): *[AdminAPI](adminapi.adminapi-1.md)‹›*
+▸ **Admin**(): *[AdminAPI](api_admin.adminapi.md)‹›*
 
-*Defined in [src/index.ts:31](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/index.ts#L31)*
+Defined in src/index.ts:33
 
 Returns a reference to the Admin RPC.
 
-**Returns:** *[AdminAPI](adminapi.adminapi-1.md)‹›*
+**Returns:** *[AdminAPI](api_admin.adminapi.md)‹›*
 
 ___
 
 ###  Health
 
-▸ **Health**(): *[HealthAPI](healthapi.healthapi-1.md)‹›*
+▸ **Health**(): *[HealthAPI](api_health.healthapi.md)‹›*
 
-*Defined in [src/index.ts:41](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/index.ts#L41)*
+Defined in src/index.ts:43
 
 Returns a reference to the Health RPC for a node.
 
-**Returns:** *[HealthAPI](healthapi.healthapi-1.md)‹›*
+**Returns:** *[HealthAPI](api_health.healthapi.md)‹›*
 
 ___
 
 ###  Info
 
-▸ **Info**(): *[InfoAPI](infoapi.infoapi-1.md)‹›*
+▸ **Info**(): *[InfoAPI](api_info.infoapi.md)‹›*
 
-*Defined in [src/index.ts:46](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/index.ts#L46)*
+Defined in src/index.ts:48
 
 Returns a reference to the Info RPC for a node.
 
-**Returns:** *[InfoAPI](infoapi.infoapi-1.md)‹›*
+**Returns:** *[InfoAPI](api_info.infoapi.md)‹›*
 
 ___
 
 ###  Metrics
 
-▸ **Metrics**(): *[MetricsAPI](metricsapi.metricsapi-1.md)‹›*
+▸ **Metrics**(): *[MetricsAPI](api_metrics.metricsapi.md)‹›*
 
-*Defined in [src/index.ts:51](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/index.ts#L51)*
+Defined in src/index.ts:53
 
 Returns a reference to the Metrics RPC.
 
-**Returns:** *[MetricsAPI](metricsapi.metricsapi-1.md)‹›*
+**Returns:** *[MetricsAPI](api_metrics.metricsapi.md)‹›*
 
 ___
 
 ###  NodeKeys
 
-▸ **NodeKeys**(): *[KeystoreAPI](keystoreapi.keystoreapi-1.md)‹›*
+▸ **NodeKeys**(): *[KeystoreAPI](api_keystore.keystoreapi.md)‹›*
 
-*Defined in [src/index.ts:57](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/index.ts#L57)*
+Defined in src/index.ts:59
 
 Returns a reference to the Keystore RPC for a node. We label it "NodeKeys" to reduce
 confusion about what it's accessing.
 
-**Returns:** *[KeystoreAPI](keystoreapi.keystoreapi-1.md)‹›*
+**Returns:** *[KeystoreAPI](api_keystore.keystoreapi.md)‹›*
 
 ___
 
-###  Platform
+###  PChain
 
-▸ **Platform**(): *[PlatformAPI](platformapi.platformapi-1.md)‹›*
+▸ **PChain**(): *[PlatformVMAPI](api_platformvm.platformvmapi.md)‹›*
 
-*Defined in [src/index.ts:62](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/index.ts#L62)*
+Defined in src/index.ts:64
 
-Returns a reference to the Platform RPC.
+Returns a reference to the PlatformVM RPC pointed at the P-Chain.
 
-**Returns:** *[PlatformAPI](platformapi.platformapi-1.md)‹›*
+**Returns:** *[PlatformVMAPI](api_platformvm.platformvmapi.md)‹›*
+
+___
+
+###  XChain
+
+▸ **XChain**(): *[AVMAPI](api_avm.avmapi.md)‹›*
+
+Defined in src/index.ts:38
+
+Returns a reference to the AVM RPC pointed at the X-Chain.
+
+**Returns:** *[AVMAPI](api_avm.avmapi.md)‹›*
 
 ___
 
@@ -236,7 +250,7 @@ ___
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[addAPI](avalanchecore.avalanchecore-1.md#addapi)*
 
-*Defined in [src/avalanche.ts:96](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L96)*
+Defined in src/avalanche.ts:116
 
 Adds an API to the middleware. The API resolves to a registered blockchain's RPC.
 
@@ -252,7 +266,7 @@ avalanche.addAPI("mychain", MyVMClass, "/ext/bc/mychain");
 
 **Type parameters:**
 
-▪ **GA**: *[APIBase](utils_types.apibase.md)*
+▪ **GA**: *[APIBase](common_apibase.apibase.md)*
 
 Class of the API being added
 
@@ -275,13 +289,13 @@ ___
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[api](avalanchecore.avalanchecore-1.md#api)*
 
-*Defined in [src/avalanche.ts:112](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L112)*
+Defined in src/avalanche.ts:132
 
 Retrieves a reference to an API by its apiName label.
 
 **Type parameters:**
 
-▪ **GA**: *[APIBase](utils_types.apibase.md)*
+▪ **GA**: *[APIBase](common_apibase.apibase.md)*
 
 **Parameters:**
 
@@ -295,11 +309,11 @@ ___
 
 ###  delete
 
-▸ **delete**(`baseurl`: string, `getdata`: object, `headers`: object, `axiosConfig`: AxiosRequestConfig): *Promise‹[RequestResponseData](utils_types.requestresponsedata.md)›*
+▸ **delete**(`baseurl`: string, `getdata`: object, `headers`: object, `axiosConfig`: AxiosRequestConfig): *Promise‹[RequestResponseData](common_apibase.requestresponsedata.md)›*
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[delete](avalanchecore.avalanchecore-1.md#delete)*
 
-*Defined in [src/avalanche.ts:184](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L184)*
+Defined in src/avalanche.ts:204
 
 Makes a DELETE call to an API.
 
@@ -312,19 +326,19 @@ Name | Type | Default | Description |
 `headers` | object | {} | An array HTTP Request Headers |
 `axiosConfig` | AxiosRequestConfig | undefined | Configuration for the axios javascript library that will be the foundation for the rest of the parameters  |
 
-**Returns:** *Promise‹[RequestResponseData](utils_types.requestresponsedata.md)›*
+**Returns:** *Promise‹[RequestResponseData](common_apibase.requestresponsedata.md)›*
 
-A promise for [RequestResponseData](../modules/avalanche.md#requestresponsedata)
+A promise for [RequestResponseData](common_apibase.requestresponsedata.md)
 
 ___
 
 ###  get
 
-▸ **get**(`baseurl`: string, `getdata`: object, `headers`: object, `axiosConfig`: AxiosRequestConfig): *Promise‹[RequestResponseData](utils_types.requestresponsedata.md)›*
+▸ **get**(`baseurl`: string, `getdata`: object, `headers`: object, `axiosConfig`: AxiosRequestConfig): *Promise‹[RequestResponseData](common_apibase.requestresponsedata.md)›*
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[get](avalanchecore.avalanchecore-1.md#get)*
 
-*Defined in [src/avalanche.ts:161](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L161)*
+Defined in src/avalanche.ts:181
 
 Makes a GET call to an API.
 
@@ -337,9 +351,25 @@ Name | Type | Default | Description |
 `headers` | object | {} | An array HTTP Request Headers |
 `axiosConfig` | AxiosRequestConfig | undefined | Configuration for the axios javascript library that will be the foundation for the rest of the parameters  |
 
-**Returns:** *Promise‹[RequestResponseData](utils_types.requestresponsedata.md)›*
+**Returns:** *Promise‹[RequestResponseData](common_apibase.requestresponsedata.md)›*
 
-A promise for [RequestResponseData](../modules/avalanche.md#requestresponsedata)
+A promise for [RequestResponseData](common_apibase.requestresponsedata.md)
+
+___
+
+###  getHRP
+
+▸ **getHRP**(): *string*
+
+*Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[getHRP](avalanchecore.avalanchecore-1.md#gethrp)*
+
+Defined in src/avalanche.ts:86
+
+Returns the Human-Readable-Part of the network associated with this key.
+
+**Returns:** *string*
+
+The [KeyPair](common_keychain.keypair.md)'s Human-Readable-Part of the network's Bech32 addressing scheme
 
 ___
 
@@ -349,9 +379,9 @@ ___
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[getIP](avalanchecore.avalanchecore-1.md#getip)*
 
-*Defined in [src/avalanche.ts:53](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L53)*
+Defined in src/avalanche.ts:56
 
-Returns the IP for the AVA node.
+Returns the IP for the Avalanche node.
 
 **Returns:** *string*
 
@@ -363,7 +393,7 @@ ___
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[getNetworkID](avalanchecore.avalanchecore-1.md#getnetworkid)*
 
-*Defined in [src/avalanche.ts:68](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L68)*
+Defined in src/avalanche.ts:71
 
 Returns the networkID;
 
@@ -377,9 +407,9 @@ ___
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[getPort](avalanchecore.avalanchecore-1.md#getport)*
 
-*Defined in [src/avalanche.ts:58](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L58)*
+Defined in src/avalanche.ts:61
 
-Returns the port for the AVA node.
+Returns the port for the Avalanche node.
 
 **Returns:** *number*
 
@@ -391,7 +421,7 @@ ___
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[getProtocol](avalanchecore.avalanchecore-1.md#getprotocol)*
 
-*Defined in [src/avalanche.ts:48](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L48)*
+Defined in src/avalanche.ts:51
 
 Returns the protocol such as "http", "https", "git", "ws", etc.
 
@@ -405,9 +435,9 @@ ___
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[getURL](avalanchecore.avalanchecore-1.md#geturl)*
 
-*Defined in [src/avalanche.ts:63](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L63)*
+Defined in src/avalanche.ts:66
 
-Returns the URL of the AVA node (ip + port);
+Returns the URL of the Avalanche node (ip + port);
 
 **Returns:** *string*
 
@@ -415,11 +445,11 @@ ___
 
 ###  patch
 
-▸ **patch**(`baseurl`: string, `getdata`: object, `postdata`: string | object | ArrayBuffer | ArrayBufferView, `headers`: object, `axiosConfig`: AxiosRequestConfig): *Promise‹[RequestResponseData](utils_types.requestresponsedata.md)›*
+▸ **patch**(`baseurl`: string, `getdata`: object, `postdata`: string | object | ArrayBuffer | ArrayBufferView, `headers`: object, `axiosConfig`: AxiosRequestConfig): *Promise‹[RequestResponseData](common_apibase.requestresponsedata.md)›*
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[patch](avalanchecore.avalanchecore-1.md#patch)*
 
-*Defined in [src/avalanche.ts:258](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L258)*
+Defined in src/avalanche.ts:278
 
 Makes a PATCH call to an API.
 
@@ -433,19 +463,19 @@ Name | Type | Default | Description |
 `headers` | object | {} | An array HTTP Request Headers |
 `axiosConfig` | AxiosRequestConfig | undefined | Configuration for the axios javascript library that will be the foundation for the rest of the parameters  |
 
-**Returns:** *Promise‹[RequestResponseData](utils_types.requestresponsedata.md)›*
+**Returns:** *Promise‹[RequestResponseData](common_apibase.requestresponsedata.md)›*
 
-A promise for [RequestResponseData](../modules/avalanche.md#requestresponsedata)
+A promise for [RequestResponseData](common_apibase.requestresponsedata.md)
 
 ___
 
 ###  post
 
-▸ **post**(`baseurl`: string, `getdata`: object, `postdata`: string | object | ArrayBuffer | ArrayBufferView, `headers`: object, `axiosConfig`: AxiosRequestConfig): *Promise‹[RequestResponseData](utils_types.requestresponsedata.md)›*
+▸ **post**(`baseurl`: string, `getdata`: object, `postdata`: string | object | ArrayBuffer | ArrayBufferView, `headers`: object, `axiosConfig`: AxiosRequestConfig): *Promise‹[RequestResponseData](common_apibase.requestresponsedata.md)›*
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[post](avalanchecore.avalanchecore-1.md#post)*
 
-*Defined in [src/avalanche.ts:208](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L208)*
+Defined in src/avalanche.ts:228
 
 Makes a POST call to an API.
 
@@ -459,19 +489,19 @@ Name | Type | Default | Description |
 `headers` | object | {} | An array HTTP Request Headers |
 `axiosConfig` | AxiosRequestConfig | undefined | Configuration for the axios javascript library that will be the foundation for the rest of the parameters  |
 
-**Returns:** *Promise‹[RequestResponseData](utils_types.requestresponsedata.md)›*
+**Returns:** *Promise‹[RequestResponseData](common_apibase.requestresponsedata.md)›*
 
-A promise for [RequestResponseData](../modules/avalanche.md#requestresponsedata)
+A promise for [RequestResponseData](common_apibase.requestresponsedata.md)
 
 ___
 
 ###  put
 
-▸ **put**(`baseurl`: string, `getdata`: object, `postdata`: string | object | ArrayBuffer | ArrayBufferView, `headers`: object, `axiosConfig`: AxiosRequestConfig): *Promise‹[RequestResponseData](utils_types.requestresponsedata.md)›*
+▸ **put**(`baseurl`: string, `getdata`: object, `postdata`: string | object | ArrayBuffer | ArrayBufferView, `headers`: object, `axiosConfig`: AxiosRequestConfig): *Promise‹[RequestResponseData](common_apibase.requestresponsedata.md)›*
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[put](avalanchecore.avalanchecore-1.md#put)*
 
-*Defined in [src/avalanche.ts:233](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L233)*
+Defined in src/avalanche.ts:253
 
 Makes a PUT call to an API.
 
@@ -485,9 +515,9 @@ Name | Type | Default | Description |
 `headers` | object | {} | An array HTTP Request Headers |
 `axiosConfig` | AxiosRequestConfig | undefined | Configuration for the axios javascript library that will be the foundation for the rest of the parameters  |
 
-**Returns:** *Promise‹[RequestResponseData](utils_types.requestresponsedata.md)›*
+**Returns:** *Promise‹[RequestResponseData](common_apibase.requestresponsedata.md)›*
 
-A promise for [RequestResponseData](../modules/avalanche.md#requestresponsedata)
+A promise for [RequestResponseData](common_apibase.requestresponsedata.md)
 
 ___
 
@@ -497,17 +527,37 @@ ___
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[setAddress](avalanchecore.avalanchecore-1.md#setaddress)*
 
-*Defined in [src/avalanche.ts:38](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L38)*
+Defined in src/avalanche.ts:41
 
-Sets the address and port of the main AVA Client.
+Sets the address and port of the main Avalanche Client.
 
 **Parameters:**
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
-`ip` | string | - | The hostname to resolve to reach the AVA Client RPC APIs |
-`port` | number | - | The port to resolve to reach the AVA Client RPC APIs |
+`ip` | string | - | The hostname to resolve to reach the Avalanche Client RPC APIs |
+`port` | number | - | The port to resolve to reach the Avalanche Client RPC APIs |
 `protocol` | string | "http" | The protocol string to use before a "://" in a request, ex: "http", "https", "git", "ws", etc ...  |
+
+**Returns:** *void*
+
+___
+
+###  setHRP
+
+▸ **setHRP**(`hrp`: string): *void*
+
+*Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[setHRP](avalanchecore.avalanchecore-1.md#sethrp)*
+
+Defined in src/avalanche.ts:93
+
+Sets the the Human-Readable-Part of the network associated with this key.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`hrp` | string | String for the Human-Readable-Part of Bech32 addresses  |
 
 **Returns:** *void*
 
@@ -519,7 +569,7 @@ ___
 
 *Inherited from [AvalancheCore](avalanchecore.avalanchecore-1.md).[setNetworkID](avalanchecore.avalanchecore-1.md#setnetworkid)*
 
-*Defined in [src/avalanche.ts:73](https://github.com/ava-labs/avalanche.js/blob/eabcc2f/src/avalanche.ts#L73)*
+Defined in src/avalanche.ts:76
 
 Sets the networkID
 

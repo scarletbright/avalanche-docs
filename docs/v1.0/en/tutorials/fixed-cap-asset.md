@@ -35,9 +35,7 @@ avm.createFixedCapAsset({
 * `name` is a human-readable name for the asset. Not necessarily unique.
 * `symbol` is a shorthand symbol for the asset. Between 0 and 4 characters. Not necessarily unique. May be omitted.
 * `denomination` determines how balances of this asset are displayed by user interfaces. If denomination is 0, 100 units of this asset are displayed as 100. If denomination is 1, 100 units of this asset are displayed as 10.0. If denomination is 2, 100 units of this asset are displays as .100, etc.
-* Performing a transaction on the X-Chain will require a transaction fee in AVAX in the future. `username` and `password` denote the user paying the fee.
-  That user will need to hold enough AVAX to cover the fee.
-  Since there are no transaction fees right now, you can leave `username` and `password` blank.
+* Performing a transaction on the X-Chain require a transaction fee paid in AVAX. `username` and `password` denote the user paying the fee.
 * Each element in `initialHolders` specifies that `address` holds `amount` units of the asset at genesis.
 * `assetID` is the ID of the new asset.
   
@@ -55,17 +53,17 @@ curl -X POST --data '{
         "symbol":"ISAS",
         "initialHolders": [
             {
-                "address": "X-Dxs8JWAzDZX1VXcLZT5GZR7TyfX8h9ic9",
+                "address": "X-avax10pvk9anjqrjfv2xudkdptza654695uwc8ecyg5",
                 "amount": 10000000
             }
         ],
-        "username":"yourUsername",
-        "password":"yourPassword"
+        "username":"USERNAME GOES HERE",
+        "password":"PASSWORD GOES HERE"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-The response should look like this:
+The response contains the asset's ID, which is also the ID of this transaction:
 
 ```json
 {
@@ -91,7 +89,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.getBalance",
     "params" :{
-        "address":"X-Dxs8JWAzDZX1VXcLZT5GZR7TyfX8h9ic9",
+        "address":"X-avax10pvk9anjqrjfv2xudkdptza654695uwc8ecyg5",
         "assetID":"keMuoTQSGjqZbNVTCcbrwuNNNv9eEEZWBaRY3TapcgjkoZmQ1"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
@@ -122,11 +120,11 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.send",
     "params" :{
-        "username":"yourUsername",
-        "password":"yourPassword",
+        "username":"USERNAME GOES HERE",
+        "password":"PASSWORD GOES HERE",
         "assetID" :"keMuoTQSGjqZbNVTCcbrwuNNNv9eEEZWBaRY3TapcgjkoZmQ1",
         "amount"  :100,
-        "to"      :"X-9R5xWj1DkMtGVDQmyTB4uNnvYdCnj57pa"
+        "to"      :"X-avax1t8sl0knfzly3t3sherctxwezy533ega3sxww2k"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -183,7 +181,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.getBalance",
     "params" :{
-        "address":"X-9R5xWj1DkMtGVDQmyTB4uNnvYdCnj57pa",
+        "address":"X-avax1t8sl0knfzly3t3sherctxwezy533ega3sxww2k",
         "assetID":"keMuoTQSGjqZbNVTCcbrwuNNNv9eEEZWBaRY3TapcgjkoZmQ1"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X

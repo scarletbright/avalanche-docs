@@ -28,7 +28,7 @@ While Avash can be started without a premade configuration file, it's available 
 Below is the format of an Avash configuration file:
 
 ```yaml
-avalocation: <filepath>
+avalancheLocation: <filepath>
 datadir: <directory>
 log:
   terminal: <log-level>
@@ -44,7 +44,7 @@ The field arguments are described as follows:
 
 ### Fields
 
-#### `avalocation`
+#### `avalancheLocation`
 
 ```
 File path to Avalanche binary.
@@ -53,7 +53,7 @@ Type:
   optional, <filepath>
 
 Default:
-  $GOPATH/src/github.com/ava-labs/gecko/build/ava
+  $GOPATH/src/github.com/ava-labs/gecko/build/avalanche
 ```
 
 #### `datadir`
@@ -270,7 +270,7 @@ Usage:
 #### `startnode`
 
 ```
-Starts an ava client node using procmanager and gives it a name. Example:
+Starts an Avalanche client node using procmanager and gives it a name. Example:
 	
 startnode MyNode1 --public-ip=127.0.0.1 --staking-port=9651 --http-port=9650 ... 
 
@@ -279,12 +279,12 @@ Usage:
 
 Flags:
       --assertions-enabled                   Turn on assertion execution. (default true)
-      --ava-tx-fee uint                      Ava transaction fee, in nAVAX.
+      --avax-tx-fee uint                     Transaction fee, in nAVAX.
       --bootstrap-ids string                 Comma separated list of bootstrap peer ids to connect to. Example: JR4dVmy6ffUGAKCBDkyCbeZbyHQBeDsET,8CrVPQZ4VSqgL8zTdvL14G8HqAfrBr4z
       --bootstrap-ips string                 Comma separated list of bootstrap nodes to connect to. Example: 127.0.0.1:9630,127.0.0.1:9620
       --client-location string               Path to Avalanche node client, defaulting to the config file's value.
       --data-dir string                      Name of directory for the data stash.
-      --db-dir string                        Database directory for Ava state. (default "db1")
+      --db-dir string                        Database directory for Avalanche state. (default "db1")
       --db-enabled                           Turn on persistent storage. (default true)
   -h, --help                                 help for startnode
       --http-port uint                       Port of the HTTP server. (default 9650)
@@ -306,7 +306,7 @@ Flags:
       --staking-port uint                    Port of the consensus server. (default 9651)
       --staking-tls-cert-file string         TLS certificate file for staking connections. Relative to the avash binary if doesn't start with '/'. Ex: certs/keys1/staker.crt
       --p2p-tls-enabled                      Require TLS authentication for all P2P connections.
-      --staking-tls-enabled                  Utilize staking (also requires p2p tls to be enabled).
+      --staking-enabled                  Utilize staking (also requires p2p tls to be enabled).
       --staking-tls-key-file string          TLS private key file for staking connections. Relative to the avash binary if doesn't start with '/'. Ex: certs/keys1/staker.key
       --xput-server-port uint                Port of the deprecated throughput test server. (default 9652)
 ```

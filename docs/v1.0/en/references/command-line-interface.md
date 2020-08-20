@@ -112,9 +112,9 @@ The port through which the staking server will connect to the Avalanche network.
 
 `--p2p-tls-enabled` (boolean):
 
-Avalanche uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers. However, This can be disabled for testing. When TLS is disabled, the `stakingID` will be derived from the IP Address the node claims it owns. This will also disable encryption of inter-node communication. This should only be specified for testing. Defaults to `true`. This must be true when `--staking-tls-enabled=true`.
+Avalanche uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers. However, This can be disabled for testing. When TLS is disabled, the `stakingID` will be derived from the IP Address the node claims it owns. This will also disable encryption of inter-node communication. This should only be specified for testing. Defaults to `true`. This must be true when `--staking-enabled=true`.
 
-`--staking-tls-enabled` (boolean):
+`--staking-enabled` (boolean):
 
 Avalanche uses Proof of Stake (PoS) as Sybil resistance to make it prohibitively expensive to attack the network. When this is true, `--p2p-tls-enabled` must be set to true in order to secure P2P communications.
 
@@ -132,7 +132,7 @@ Avalanche uses two-way authenticated TLS connections to securely identify the `s
 
 The following options affect the correctness of the platform. They may need to be changed network-wide, and as a result, an ordinary user should rarely change from the defaults.
 
-`--ava-tx-fee` (int):
+`--avax-tx-fee` (int):
 
 The required amount of nAVAX to be burned for a transaction to be valid. This parameter requires network agreement in its current form. Changing this value from the default should only be done on private networks. Defaults to `0` nAVAX per transaction.
 

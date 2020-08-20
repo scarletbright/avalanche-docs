@@ -64,10 +64,10 @@ Now build the binary:
 
 This should print `Build Successful`.
 
-You can check what version you're running by doing `./build/ava --version`.
+You can check what version you're running by doing `./build/avalanche --version`.
 (Note: If this fails, your Gecko version is `0.5.1` or older.)
 
-You can run your node with `./build/ava`
+You can run your node with `./build/avalanche`
 
 #### Download Binary
 
@@ -79,13 +79,13 @@ For MacOS:
 Download the file named `gecko-osx-<VERSION>.zip`  
 Unzip the file with `unzip gecko-osx-<VERSION>.zip`  
 The resulting folder, `gecko-<VERSION>`, contains the binaries.  
-You can run the node with `./gecko-<VERSION>/ava`
+You can run the node with `./gecko-<VERSION>/avalanche`
 
 For Linux x86:  
 Download the file named `gecko-linux-<VERSION>.tar.gz`  
 Unzip the file with `tar -xvf gecko-linux-<VERSION>.tar.gz`  
 The resulting folder, `gecko-<VERSION>`, contains the binaries.  
-You can run the node with `./gecko-<VERSION>/ava`
+You can run the node with `./gecko-<VERSION>/avalanche`
 
 Note: The Linux binaries are compiled for AMD64 (x86-64) architectures. For ARM platforms, like the Raspberry Pi, please [build from source](#from-source).
 
@@ -95,7 +95,7 @@ No.
 
 ### What version am I running?
 
-Run `./ava --version`.
+Run `./avalanche --version`.
 It will print the version of Avalanche you're running.
 To see what the latest release is, see our [releases page.](https://github.com/ava-labs/gecko/releases/)
 
@@ -181,7 +181,7 @@ The response contains your node's ID:
 {
     "jsonrpc": "2.0",
     "result": {
-        "nodeID": "ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK"
+        "nodeID": "NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK"
     },
     "id": 1
 }
@@ -243,7 +243,7 @@ It should have:
 
 * CPU >= 2 GHz
 * RAM >= 4 GB
-* Free disk space >= 5 GB
+* Free disk space >= 10 GB
 
 ### What software do I need?
 
@@ -283,7 +283,7 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
 
-Each entry in the response contains a peer's IP address, public IP address, ID, version, and the time of the last sent and received messages exchanged with this node.
+Each entry in the response contains a peer's IP address, public IP address, node ID, version, and the time of the last sent and received messages exchanged with this node.
 If you see none, something is wrong and you are not connected to any peers.
 
 ### How do I kill my node?
@@ -297,7 +297,7 @@ Do `CTRL + Z` in the terminal window where you're running the node.
 This should print something like:
 
 ```sh
-[1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/gecko/build/ava
+[1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/gecko/build/avalanche
 ```
 
 Do `kill -9 %1` (or `kill -9 %2` if it printed `[2]+ Stopped`, etc.)
@@ -408,9 +408,9 @@ Please also see our [Github issues.](https://github.com/ava-labs/gecko/issues)
 
 ### Node won't start with `failed to listen on consensus server at 0.0.0.0:9651: unable to listen`
 
-To get around this, run the `ava` binary with `--staking-port=9652` (or `9653` or `9654` or ...)
+To get around this, run the `avalanche` binary with `--staking-port=9652` (or `9653` or `9654` or ...)
 
-Example: `./ava --staking-port=9652`
+Example: `./avalanche --staking-port=9652`
 
 ### Node won't quit with `CTRL + C`
 
@@ -420,7 +420,7 @@ Do `CTRL + Z` in the terminal window where you're running the node.
 This should print something like:
 
 ```sh
-[1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/gecko/build/ava
+[1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/gecko/build/avalanche
 ```
 
 Do `kill -9 %1` (or `kill -9 %2` if it printed `[2]+ Stopped`, etc.)
@@ -432,7 +432,7 @@ Do `ps aux | grep ava`
 The output should have a line that looks like this:
 
 ```sh
-youruser 29861  8.7  0.2 1459208 34996 pts/2   Sl+  19:44   0:00 ./build/ava
+youruser 29861  8.7  0.2 1459208 34996 pts/2   Sl+  19:44   0:00 ./build/avalanche
 ```
 
 Do:

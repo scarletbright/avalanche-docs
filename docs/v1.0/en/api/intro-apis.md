@@ -18,7 +18,7 @@ Allows clients to interact with the C-Chain, Avalanche's main EVM instance, as w
 
 ## [P-Chain API](./platform.md)
 
-Allows clients to interact with the P-Chain (Platform Chain), which maintains Avalanche's validator set and handles blockchain creation.
+Allows clients to interact with the P-Chain (Platform Chain), which maintains Avalanche's validator set and handles blockchain and subnet creation.
 
 ## [Keystore API](./keystore.md) 
 
