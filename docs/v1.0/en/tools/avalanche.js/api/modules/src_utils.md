@@ -24,6 +24,7 @@
 * [Defaults](src_utils.md#defaults)
 * [EMAILPayload](src_utils.md#emailpayload)
 * [FallbackHRP](src_utils.md#fallbackhrp)
+* [FallbackNetworkName](src_utils.md#fallbacknetworkname)
 * [HEXSTRPayload](src_utils.md#hexstrpayload)
 * [HRPToNetworkID](src_utils.md#hrptonetworkid)
 * [ICOPayload](src_utils.md#icopayload)
@@ -35,6 +36,8 @@
 * [NFTIDPayload](src_utils.md#nftidpayload)
 * [NODEIDPayload](src_utils.md#nodeidpayload)
 * [NetworkIDToHRP](src_utils.md#networkidtohrp)
+* [NetworkIDToNetworkNames](src_utils.md#networkidtonetworknames)
+* [NetworkNameToNetworkID](src_utils.md#networknametonetworkid)
 * [ONIONPayload](src_utils.md#onionpayload)
 * [PCHAINADDRPayload](src_utils.md#pchainaddrpayload)
 * [PChainAlias](src_utils.md#pchainalias)
@@ -175,6 +178,12 @@ ___
 
 ___
 
+###  FallbackNetworkName
+
+• **FallbackNetworkName**:
+
+___
+
 ###  HEXSTRPayload
 
 • **HEXSTRPayload**:
@@ -238,6 +247,18 @@ ___
 ###  NetworkIDToHRP
 
 • **NetworkIDToHRP**:
+
+___
+
+###  NetworkIDToNetworkNames
+
+• **NetworkIDToNetworkNames**:
+
+___
+
+###  NetworkNameToNetworkID
+
+• **NetworkNameToNetworkID**:
 
 ___
 
