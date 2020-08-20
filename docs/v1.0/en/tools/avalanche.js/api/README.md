@@ -1,6 +1,6 @@
-[avalanche - v2.2.1](README.md)
+[avalanche - v2.4.0](README.md)
 
-# Avalanche.js - v2.2.1
+# Avalanche.js - v2.4.0
 
 ## Index
 
