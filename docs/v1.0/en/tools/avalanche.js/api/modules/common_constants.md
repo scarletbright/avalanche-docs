@@ -19,6 +19,7 @@
 * [DefaultNetworkID](common_constants.md#const-defaultnetworkid)
 * [DefaultSubnetID](common_constants.md#const-defaultsubnetid)
 * [FallbackHRP](common_constants.md#const-fallbackhrp)
+* [FallbackNetworkName](common_constants.md#const-fallbacknetworkname)
 * [PChainAlias](common_constants.md#const-pchainalias)
 * [PChainVMName](common_constants.md#const-pchainvmname)
 * [PlatformChainID](common_constants.md#const-platformchainid)
@@ -30,6 +31,8 @@
 
 * [HRPToNetworkID](common_constants.md#const-hrptonetworkid)
 * [NetworkIDToHRP](common_constants.md#const-networkidtohrp)
+* [NetworkIDToNetworkNames](common_constants.md#const-networkidtonetworknames)
+* [NetworkNameToNetworkID](common_constants.md#const-networknametonetworkid)
 * [n12345C](common_constants.md#const-n12345c)
 * [n12345P](common_constants.md#const-n12345p)
 * [n12345X](common_constants.md#const-n12345x)
@@ -52,7 +55,7 @@
 
 Ƭ **MergeRule**: *"intersection" | "differenceSelf" | "differenceNew" | "symDifference" | "union" | "unionMinusNew" | "unionMinusSelf" | "ERROR"*
 
-Defined in src/utils/constants.ts:188
+Defined in src/utils/constants.ts:207
 
 Rules used when merging sets
 
@@ -62,7 +65,7 @@ Rules used when merging sets
 
 • **CChainAlias**: *string* = "C"
 
-Defined in src/utils/constants.ts:31
+Defined in src/utils/constants.ts:50
 
 ___
 
@@ -70,7 +73,7 @@ ___
 
 • **CChainVMName**: *string* = "evm"
 
-Defined in src/utils/constants.ts:34
+Defined in src/utils/constants.ts:53
 
 ___
 
@@ -78,7 +81,7 @@ ___
 
 • **DefaultNetworkID**: *number* = 4
 
-Defined in src/utils/constants.ts:26
+Defined in src/utils/constants.ts:45
 
 ___
 
@@ -86,7 +89,7 @@ ___
 
 • **DefaultSubnetID**: *string* = "11111111111111111111111111111111LpoYY"
 
-Defined in src/utils/constants.ts:29
+Defined in src/utils/constants.ts:48
 
 ___
 
@@ -94,7 +97,15 @@ ___
 
 • **FallbackHRP**: *string* = "custom"
 
-Defined in src/utils/constants.ts:24
+Defined in src/utils/constants.ts:42
+
+___
+
+### `Const` FallbackNetworkName
+
+• **FallbackNetworkName**: *string* = "Custom Network"
+
+Defined in src/utils/constants.ts:43
 
 ___
 
@@ -102,7 +113,7 @@ ___
 
 • **PChainAlias**: *string* = "P"
 
-Defined in src/utils/constants.ts:32
+Defined in src/utils/constants.ts:51
 
 ___
 
@@ -110,7 +121,7 @@ ___
 
 • **PChainVMName**: *string* = "platformvm"
 
-Defined in src/utils/constants.ts:35
+Defined in src/utils/constants.ts:54
 
 ___
 
@@ -118,7 +129,7 @@ ___
 
 • **PlatformChainID**: *string* = "11111111111111111111111111111111LpoYY"
 
-Defined in src/utils/constants.ts:28
+Defined in src/utils/constants.ts:47
 
 ___
 
@@ -134,7 +145,7 @@ ___
 
 • **XChainAlias**: *string* = "X"
 
-Defined in src/utils/constants.ts:30
+Defined in src/utils/constants.ts:49
 
 ___
 
@@ -142,7 +153,7 @@ ___
 
 • **XChainVMName**: *string* = "avm"
 
-Defined in src/utils/constants.ts:33
+Defined in src/utils/constants.ts:52
 
 ## Object literals
 
@@ -222,11 +233,99 @@ Defined in src/utils/constants.ts:12
 
 ___
 
+### `Const` NetworkIDToNetworkNames
+
+### ▪ **NetworkIDToNetworkNames**: *object*
+
+Defined in src/utils/constants.ts:24
+
+###  1
+
+• **1**: *string[]* = ["Avalanche","Mainnet"]
+
+Defined in src/utils/constants.ts:25
+
+###  12345
+
+• **12345**: *string[]* = ["Local Network"]
+
+Defined in src/utils/constants.ts:29
+
+###  2
+
+• **2**: *string[]* = ["Cascade"]
+
+Defined in src/utils/constants.ts:26
+
+###  3
+
+• **3**: *string[]* = ["Denali"]
+
+Defined in src/utils/constants.ts:27
+
+###  4
+
+• **4**: *string[]* = ["Everest", "Testnet"]
+
+Defined in src/utils/constants.ts:28
+
+___
+
+### `Const` NetworkNameToNetworkID
+
+### ▪ **NetworkNameToNetworkID**: *object*
+
+Defined in src/utils/constants.ts:32
+
+###  Avalanche
+
+• **Avalanche**: *number* = 1
+
+Defined in src/utils/constants.ts:33
+
+###  Cascade
+
+• **Cascade**: *number* = 2
+
+Defined in src/utils/constants.ts:35
+
+###  Denali
+
+• **Denali**: *number* = 3
+
+Defined in src/utils/constants.ts:36
+
+###  Everest
+
+• **Everest**: *number* = 4
+
+Defined in src/utils/constants.ts:37
+
+###  Local Network
+
+• **Local Network**: *number* = 12345
+
+Defined in src/utils/constants.ts:39
+
+###  Mainnet
+
+• **Mainnet**: *number* = 1
+
+Defined in src/utils/constants.ts:34
+
+###  Testnet
+
+• **Testnet**: *number* = 4
+
+Defined in src/utils/constants.ts:38
+
+___
+
 ### `Const` n12345C
 
 ### ▪ **n12345C**: *object*
 
-Defined in src/utils/constants.ts:132
+Defined in src/utils/constants.ts:151
 
 ___
 
@@ -234,7 +333,7 @@ ___
 
 ### ▪ **n12345P**: *object*
 
-Defined in src/utils/constants.ts:130
+Defined in src/utils/constants.ts:149
 
 ___
 
@@ -242,7 +341,7 @@ ___
 
 ### ▪ **n12345X**: *object*
 
-Defined in src/utils/constants.ts:128
+Defined in src/utils/constants.ts:147
 
 ___
 
@@ -250,31 +349,31 @@ ___
 
 ### ▪ **n1C**: *object*
 
-Defined in src/utils/constants.ts:53
+Defined in src/utils/constants.ts:72
 
 ###  alias
 
 • **alias**: *string* = CChainAlias
 
-Defined in src/utils/constants.ts:55
+Defined in src/utils/constants.ts:74
 
 ###  blockchainID
 
 • **blockchainID**: *string* = "2mUYSXfLrDtigwbzj1LxKVsHwELghc5sisoXrzJwLqAAQHF4i"
 
-Defined in src/utils/constants.ts:54
+Defined in src/utils/constants.ts:73
 
 ###  fee
 
 • **fee**: *number* = 0
 
-Defined in src/utils/constants.ts:57
+Defined in src/utils/constants.ts:76
 
 ###  vm
 
 • **vm**: *string* = CChainVMName
 
-Defined in src/utils/constants.ts:56
+Defined in src/utils/constants.ts:75
 
 ___
 
@@ -282,31 +381,31 @@ ___
 
 ### ▪ **n1P**: *object*
 
-Defined in src/utils/constants.ts:46
+Defined in src/utils/constants.ts:65
 
 ###  alias
 
 • **alias**: *string* = PChainAlias
 
-Defined in src/utils/constants.ts:48
+Defined in src/utils/constants.ts:67
 
 ###  blockchainID
 
 • **blockchainID**: *string* = PlatformChainID
 
-Defined in src/utils/constants.ts:47
+Defined in src/utils/constants.ts:66
 
 ###  fee
 
 • **fee**: *number* = 0
 
-Defined in src/utils/constants.ts:50
+Defined in src/utils/constants.ts:69
 
 ###  vm
 
 • **vm**: *string* = PChainVMName
 
-Defined in src/utils/constants.ts:49
+Defined in src/utils/constants.ts:68
 
 ___
 
@@ -314,31 +413,31 @@ ___
 
 ### ▪ **n1X**: *object*
 
-Defined in src/utils/constants.ts:39
+Defined in src/utils/constants.ts:58
 
 ###  alias
 
 • **alias**: *string* = XChainAlias
 
-Defined in src/utils/constants.ts:41
+Defined in src/utils/constants.ts:60
 
 ###  blockchainID
 
 • **blockchainID**: *string* = "4ktRjsAKxgMr2aEzv9SWmrU7Xk5FniHUrVCX4P1TZSfTLZWFM"
 
-Defined in src/utils/constants.ts:40
+Defined in src/utils/constants.ts:59
 
 ###  fee
 
 • **fee**: *number* = 0
 
-Defined in src/utils/constants.ts:43
+Defined in src/utils/constants.ts:62
 
 ###  vm
 
 • **vm**: *string* = XChainVMName
 
-Defined in src/utils/constants.ts:42
+Defined in src/utils/constants.ts:61
 
 ___
 
@@ -346,31 +445,31 @@ ___
 
 ### ▪ **n2C**: *object*
 
-Defined in src/utils/constants.ts:76
+Defined in src/utils/constants.ts:95
 
 ###  alias
 
 • **alias**: *string* = CChainAlias
 
-Defined in src/utils/constants.ts:78
+Defined in src/utils/constants.ts:97
 
 ###  blockchainID
 
 • **blockchainID**: *string* = "2mUYSXfLrDtigwbzj1LxKVsHwELghc5sisoXrzJwLqAAQHF4i"
 
-Defined in src/utils/constants.ts:77
+Defined in src/utils/constants.ts:96
 
 ###  fee
 
 • **fee**: *number* = 0
 
-Defined in src/utils/constants.ts:80
+Defined in src/utils/constants.ts:99
 
 ###  vm
 
 • **vm**: *string* = CChainVMName
 
-Defined in src/utils/constants.ts:79
+Defined in src/utils/constants.ts:98
 
 ___
 
@@ -378,31 +477,31 @@ ___
 
 ### ▪ **n2P**: *object*
 
-Defined in src/utils/constants.ts:69
+Defined in src/utils/constants.ts:88
 
 ###  alias
 
 • **alias**: *string* = PChainAlias
 
-Defined in src/utils/constants.ts:71
+Defined in src/utils/constants.ts:90
 
 ###  blockchainID
 
 • **blockchainID**: *string* = PlatformChainID
 
-Defined in src/utils/constants.ts:70
+Defined in src/utils/constants.ts:89
 
 ###  fee
 
 • **fee**: *number* = 0
 
-Defined in src/utils/constants.ts:73
+Defined in src/utils/constants.ts:92
 
 ###  vm
 
 • **vm**: *string* = PChainVMName
 
-Defined in src/utils/constants.ts:72
+Defined in src/utils/constants.ts:91
 
 ___
 
@@ -410,31 +509,31 @@ ___
 
 ### ▪ **n2X**: *object*
 
-Defined in src/utils/constants.ts:62
+Defined in src/utils/constants.ts:81
 
 ###  alias
 
 • **alias**: *string* = XChainAlias
 
-Defined in src/utils/constants.ts:64
+Defined in src/utils/constants.ts:83
 
 ###  blockchainID
 
 • **blockchainID**: *string* = "4ktRjsAKxgMr2aEzv9SWmrU7Xk5FniHUrVCX4P1TZSfTLZWFM"
 
-Defined in src/utils/constants.ts:63
+Defined in src/utils/constants.ts:82
 
 ###  fee
 
 • **fee**: *number* = 0
 
-Defined in src/utils/constants.ts:66
+Defined in src/utils/constants.ts:85
 
 ###  vm
 
 • **vm**: *string* = XChainVMName
 
-Defined in src/utils/constants.ts:65
+Defined in src/utils/constants.ts:84
 
 ___
 
@@ -442,31 +541,31 @@ ___
 
 ### ▪ **n3C**: *object*
 
-Defined in src/utils/constants.ts:97
+Defined in src/utils/constants.ts:116
 
 ###  alias
 
 • **alias**: *string* = CChainAlias
 
-Defined in src/utils/constants.ts:99
+Defined in src/utils/constants.ts:118
 
 ###  blockchainID
 
 • **blockchainID**: *string* = "zJytnh96Pc8rM337bBrtMvJDbEdDNjcXG3WkTNCiLp18ergm9"
 
-Defined in src/utils/constants.ts:98
+Defined in src/utils/constants.ts:117
 
 ###  fee
 
 • **fee**: *number* = 0
 
-Defined in src/utils/constants.ts:101
+Defined in src/utils/constants.ts:120
 
 ###  vm
 
 • **vm**: *string* = CChainVMName
 
-Defined in src/utils/constants.ts:100
+Defined in src/utils/constants.ts:119
 
 ___
 
@@ -474,31 +573,31 @@ ___
 
 ### ▪ **n3P**: *object*
 
-Defined in src/utils/constants.ts:90
+Defined in src/utils/constants.ts:109
 
 ###  alias
 
 • **alias**: *string* = PChainAlias
 
-Defined in src/utils/constants.ts:92
+Defined in src/utils/constants.ts:111
 
 ###  blockchainID
 
 • **blockchainID**: *string* = ""
 
-Defined in src/utils/constants.ts:91
+Defined in src/utils/constants.ts:110
 
 ###  fee
 
 • **fee**: *number* = 0
 
-Defined in src/utils/constants.ts:94
+Defined in src/utils/constants.ts:113
 
 ###  vm
 
 • **vm**: *string* = PChainVMName
 
-Defined in src/utils/constants.ts:93
+Defined in src/utils/constants.ts:112
 
 ___
 
@@ -506,31 +605,31 @@ ___
 
 ### ▪ **n3X**: *object*
 
-Defined in src/utils/constants.ts:83
+Defined in src/utils/constants.ts:102
 
 ###  alias
 
 • **alias**: *string* = XChainAlias
 
-Defined in src/utils/constants.ts:85
+Defined in src/utils/constants.ts:104
 
 ###  blockchainID
 
 • **blockchainID**: *string* = "rrEWX7gc7D9mwcdrdBxBTdqh1a7WDVsMuadhTZgyXfFcRz45L"
 
-Defined in src/utils/constants.ts:84
+Defined in src/utils/constants.ts:103
 
 ###  fee
 
 • **fee**: *number* = 0
 
-Defined in src/utils/constants.ts:87
+Defined in src/utils/constants.ts:106
 
 ###  vm
 
 • **vm**: *string* = XChainVMName
 
-Defined in src/utils/constants.ts:86
+Defined in src/utils/constants.ts:105
 
 ___
 
@@ -538,31 +637,31 @@ ___
 
 ### ▪ **n4C**: *object*
 
-Defined in src/utils/constants.ts:119
+Defined in src/utils/constants.ts:138
 
 ###  alias
 
 • **alias**: *string* = CChainAlias
 
-Defined in src/utils/constants.ts:121
+Defined in src/utils/constants.ts:140
 
 ###  blockchainID
 
 • **blockchainID**: *string* = "saMG5YgNsFxzjz4NMkEkt3bAH6hVxWdZkWcEnGB3Z15pcAmsK"
 
-Defined in src/utils/constants.ts:120
+Defined in src/utils/constants.ts:139
 
 ###  fee
 
 • **fee**: *number* = 1000000
 
-Defined in src/utils/constants.ts:123
+Defined in src/utils/constants.ts:142
 
 ###  vm
 
 • **vm**: *string* = CChainVMName
 
-Defined in src/utils/constants.ts:122
+Defined in src/utils/constants.ts:141
 
 ___
 
@@ -570,31 +669,31 @@ ___
 
 ### ▪ **n4P**: *object*
 
-Defined in src/utils/constants.ts:112
+Defined in src/utils/constants.ts:131
 
 ###  alias
 
 • **alias**: *string* = PChainAlias
 
-Defined in src/utils/constants.ts:114
+Defined in src/utils/constants.ts:133
 
 ###  blockchainID
 
 • **blockchainID**: *string* = PlatformChainID
 
-Defined in src/utils/constants.ts:113
+Defined in src/utils/constants.ts:132
 
 ###  fee
 
 • **fee**: *number* = 1000000
 
-Defined in src/utils/constants.ts:116
+Defined in src/utils/constants.ts:135
 
 ###  vm
 
 • **vm**: *string* = PChainVMName
 
-Defined in src/utils/constants.ts:115
+Defined in src/utils/constants.ts:134
 
 ___
 
@@ -602,28 +701,28 @@ ___
 
 ### ▪ **n4X**: *object*
 
-Defined in src/utils/constants.ts:105
+Defined in src/utils/constants.ts:124
 
 ###  alias
 
 • **alias**: *string* = XChainAlias
 
-Defined in src/utils/constants.ts:107
+Defined in src/utils/constants.ts:126
 
 ###  blockchainID
 
 • **blockchainID**: *string* = "jnUjZSRt16TcRnZzmh5aMhavwVHz3zBrSN8GfFMTQkzUnoBxC"
 
-Defined in src/utils/constants.ts:106
+Defined in src/utils/constants.ts:125
 
 ###  fee
 
 • **fee**: *number* = 1000000
 
-Defined in src/utils/constants.ts:109
+Defined in src/utils/constants.ts:128
 
 ###  vm
 
 • **vm**: *string* = XChainVMName
 
-Defined in src/utils/constants.ts:108
+Defined in src/utils/constants.ts:127

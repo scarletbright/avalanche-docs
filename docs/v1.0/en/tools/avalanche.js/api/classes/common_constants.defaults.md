@@ -18,11 +18,11 @@
 
 ### ▪ **network**: *object*
 
-Defined in src/utils/constants.ts:136
+Defined in src/utils/constants.ts:155
 
 ▪ **1**: *object*
 
-Defined in src/utils/constants.ts:137
+Defined in src/utils/constants.ts:156
 
 * **11111111111111111111111111111111LpoYY**: *object* = n1P
 
@@ -40,7 +40,7 @@ Defined in src/utils/constants.ts:137
 
 ▪ **12345**: *object*
 
-Defined in src/utils/constants.ts:173
+Defined in src/utils/constants.ts:192
 
 * **11111111111111111111111111111111LpoYY**: *any* = n12345P
 
@@ -58,7 +58,7 @@ Defined in src/utils/constants.ts:173
 
 ▪ **2**: *object*
 
-Defined in src/utils/constants.ts:146
+Defined in src/utils/constants.ts:165
 
 * **11111111111111111111111111111111LpoYY**: *object* = n2P
 
@@ -76,7 +76,7 @@ Defined in src/utils/constants.ts:146
 
 ▪ **3**: *object*
 
-Defined in src/utils/constants.ts:155
+Defined in src/utils/constants.ts:174
 
 * **11111111111111111111111111111111LpoYY**: *object* = n3P
 
@@ -94,7 +94,7 @@ Defined in src/utils/constants.ts:155
 
 ▪ **4**: *object*
 
-Defined in src/utils/constants.ts:164
+Defined in src/utils/constants.ts:183
 
 * **11111111111111111111111111111111LpoYY**: *object* = n4P
 
