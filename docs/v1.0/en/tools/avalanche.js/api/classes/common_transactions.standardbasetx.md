@@ -52,7 +52,7 @@ Class representing a base for all transactions.
 
 \+ **new StandardBaseTx**(`networkid`: number, `blockchainid`: Buffer, `outs`: Array‹[StandardTransferableOutput](common_output.standardtransferableoutput.md)›, `ins`: Array‹[StandardTransferableInput](common_inputs.standardtransferableinput.md)›, `memo`: Buffer): *[StandardBaseTx](common_transactions.standardbasetx.md)*
 
-Defined in src/common/tx.ts:107
+Defined in src/common/tx.ts:108
 
 Class representing a StandardBaseTx which is the foundation for all transactions.
 
@@ -60,7 +60,7 @@ Class representing a StandardBaseTx which is the foundation for all transactions
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
-`networkid` | number | 3 | Optional networkid, default 3 |
+`networkid` | number | DefaultNetworkID | Optional networkid, [DefaultNetworkID](../modules/common_constants.md#const-defaultnetworkid) |
 `blockchainid` | Buffer | Buffer.alloc(32, 16) | Optional blockchainid, default Buffer.alloc(32, 16) |
 `outs` | Array‹[StandardTransferableOutput](common_output.standardtransferableoutput.md)› | undefined | Optional array of the [TransferableOutput](api_avm_outputs.transferableoutput.md)s |
 `ins` | Array‹[StandardTransferableInput](common_inputs.standardtransferableinput.md)› | undefined | Optional array of the [TransferableInput](api_avm_inputs.transferableinput.md)s |
@@ -74,7 +74,7 @@ Name | Type | Default | Description |
 
 • **blockchainid**: *Buffer* = Buffer.alloc(32)
 
-Defined in src/common/tx.ts:23
+Defined in src/common/tx.ts:24
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 • **getTxType**: *function*
 
-Defined in src/common/tx.ts:33
+Defined in src/common/tx.ts:34
 
 Returns the id of the [StandardBaseTx](common_transactions.standardbasetx.md)
 
@@ -96,7 +96,7 @@ ___
 
 • **ins**: *Array‹[StandardTransferableInput](common_inputs.standardtransferableinput.md)›*
 
-Defined in src/common/tx.ts:27
+Defined in src/common/tx.ts:28
 
 ___
 
@@ -104,7 +104,7 @@ ___
 
 • **memo**: *Buffer* = Buffer.alloc(4)
 
-Defined in src/common/tx.ts:28
+Defined in src/common/tx.ts:29
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 • **networkid**: *Buffer* = Buffer.alloc(4)
 
-Defined in src/common/tx.ts:22
+Defined in src/common/tx.ts:23
 
 ___
 
@@ -120,7 +120,7 @@ ___
 
 • **numins**: *Buffer* = Buffer.alloc(4)
 
-Defined in src/common/tx.ts:26
+Defined in src/common/tx.ts:27
 
 ___
 
@@ -128,7 +128,7 @@ ___
 
 • **numouts**: *Buffer* = Buffer.alloc(4)
 
-Defined in src/common/tx.ts:24
+Defined in src/common/tx.ts:25
 
 ___
 
@@ -136,7 +136,7 @@ ___
 
 • **outs**: *Array‹[StandardTransferableOutput](common_output.standardtransferableoutput.md)›*
 
-Defined in src/common/tx.ts:25
+Defined in src/common/tx.ts:26
 
 ## Methods
 
@@ -144,7 +144,7 @@ Defined in src/common/tx.ts:25
 
 ▸ **getBlockchainID**(): *Buffer*
 
-Defined in src/common/tx.ts:43
+Defined in src/common/tx.ts:44
 
 Returns the Buffer representation of the BlockchainID
 
@@ -156,7 +156,7 @@ ___
 
 ▸ **getIns**(): *Array‹[StandardTransferableInput](common_inputs.standardtransferableinput.md)›*
 
-Defined in src/common/tx.ts:48
+Defined in src/common/tx.ts:49
 
 Returns the array of [TransferableInput](api_avm_inputs.transferableinput.md)s
 
@@ -168,7 +168,7 @@ ___
 
 ▸ **getMemo**(): *Buffer*
 
-Defined in src/common/tx.ts:58
+Defined in src/common/tx.ts:59
 
 Returns the [Buffer](https://github.com/feross/buffer) representation of the memo
 
@@ -180,7 +180,7 @@ ___
 
 ▸ **getNetworkID**(): *number*
 
-Defined in src/common/tx.ts:38
+Defined in src/common/tx.ts:39
 
 Returns the NetworkID as a number
 
@@ -192,7 +192,7 @@ ___
 
 ▸ **getOuts**(): *Array‹[StandardTransferableOutput](common_output.standardtransferableoutput.md)›*
 
-Defined in src/common/tx.ts:53
+Defined in src/common/tx.ts:54
 
 Returns the array of [TransferableOutput](api_avm_outputs.transferableoutput.md)s
 
@@ -204,7 +204,7 @@ ___
 
 ▸ **sign**(`msg`: Buffer, `kc`: [KeyChain](common_keychain.keychain.md)‹KPClass›): *Array‹[Credential](common_signature.credential.md)›*
 
-Defined in src/common/tx.ts:107
+Defined in src/common/tx.ts:108
 
 Takes the bytes of an [UnsignedTx](api_avm_transactions.unsignedtx.md) and returns an array of [Credential](common_signature.credential.md)s
 
@@ -225,7 +225,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-Defined in src/common/tx.ts:63
+Defined in src/common/tx.ts:64
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [StandardBaseTx](common_transactions.standardbasetx.md).
 
@@ -237,7 +237,7 @@ ___
 
 ▸ **toString**(): *string*
 
-Defined in src/common/tx.ts:95
+Defined in src/common/tx.ts:96
 
 Returns a base-58 representation of the [StandardBaseTx](common_transactions.standardbasetx.md).
 

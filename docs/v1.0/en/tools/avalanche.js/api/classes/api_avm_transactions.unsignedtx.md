@@ -39,7 +39,7 @@
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[constructor](common_transactions.standardunsignedtx.md#constructor)*
 
-Defined in src/common/tx.ts:237
+Defined in src/common/tx.ts:238
 
 **Parameters:**
 
@@ -58,7 +58,7 @@ Name | Type | Default |
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[codecid](common_transactions.standardunsignedtx.md#protected-codecid)*
 
-Defined in src/common/tx.ts:148
+Defined in src/common/tx.ts:149
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[transaction](common_transactions.standardunsignedtx.md#protected-transaction)*
 
-Defined in src/common/tx.ts:149
+Defined in src/common/tx.ts:150
 
 ## Methods
 
@@ -97,7 +97,7 @@ ___
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[getBurn](common_transactions.standardunsignedtx.md#getburn)*
 
-Defined in src/common/tx.ts:207
+Defined in src/common/tx.ts:208
 
 Returns the number of burned tokens as a BN
 
@@ -117,7 +117,7 @@ ___
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[getCodecID](common_transactions.standardunsignedtx.md#getcodecid)*
 
-Defined in src/common/tx.ts:154
+Defined in src/common/tx.ts:155
 
 Returns the CodecID as a number
 
@@ -131,7 +131,7 @@ ___
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[getCodecIDBuffer](common_transactions.standardunsignedtx.md#getcodecidbuffer)*
 
-Defined in src/common/tx.ts:159
+Defined in src/common/tx.ts:160
 
 Returns the [Buffer](https://github.com/feross/buffer) representation of the CodecID
 
@@ -145,7 +145,7 @@ ___
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[getInputTotal](common_transactions.standardunsignedtx.md#getinputtotal)*
 
-Defined in src/common/tx.ts:168
+Defined in src/common/tx.ts:169
 
 Returns the inputTotal as a BN
 
@@ -165,7 +165,7 @@ ___
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[getOutputTotal](common_transactions.standardunsignedtx.md#getoutputtotal)*
 
-Defined in src/common/tx.ts:188
+Defined in src/common/tx.ts:189
 
 Returns the outputTotal as a BN
 
@@ -185,7 +185,7 @@ ___
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[getTransaction](common_transactions.standardunsignedtx.md#gettransaction)*
 
-Defined in src/common/tx.ts:214
+Defined in src/common/tx.ts:215
 
 Returns the Transaction
 
@@ -221,6 +221,6 @@ ___
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[toBuffer](common_transactions.standardunsignedtx.md#tobuffer)*
 
-Defined in src/common/tx.ts:218
+Defined in src/common/tx.ts:219
 
 **Returns:** *Buffer*

@@ -54,7 +54,7 @@
 
 *Overrides [BaseTx](api_avm_basetx.basetx.md).[constructor](api_avm_basetx.basetx.md#constructor)*
 
-Defined in src/apis/avm/createassettx.ts:110
+Defined in src/apis/avm/createassettx.ts:111
 
 Class representing an unsigned Create Asset transaction.
 
@@ -62,7 +62,7 @@ Class representing an unsigned Create Asset transaction.
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
-`networkid` | number | 3 | Optional networkid, default 3 |
+`networkid` | number | DefaultNetworkID | Optional networkid, [DefaultNetworkID](../modules/common_constants.md#const-defaultnetworkid) |
 `blockchainid` | Buffer | Buffer.alloc(32, 16) | Optional blockchainid, default Buffer.alloc(32, 16) |
 `outs` | Array‹[TransferableOutput](api_avm_outputs.transferableoutput.md)› | undefined | Optional array of the [TransferableOutput](api_avm_outputs.transferableoutput.md)s |
 `ins` | Array‹[TransferableInput](api_avm_inputs.transferableinput.md)› | undefined | Optional array of the [TransferableInput](api_avm_inputs.transferableinput.md)s |
@@ -82,7 +82,7 @@ Name | Type | Default | Description |
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[blockchainid](common_transactions.standardbasetx.md#protected-blockchainid)*
 
-Defined in src/common/tx.ts:23
+Defined in src/common/tx.ts:24
 
 ___
 
@@ -90,7 +90,7 @@ ___
 
 • **denomination**: *Buffer* = Buffer.alloc(1)
 
-Defined in src/apis/avm/createassettx.ts:21
+Defined in src/apis/avm/createassettx.ts:22
 
 ___
 
@@ -98,7 +98,7 @@ ___
 
 • **initialstate**: *[InitialStates](api_avm_initialstates.initialstates.md)* = new InitialStates()
 
-Defined in src/apis/avm/createassettx.ts:22
+Defined in src/apis/avm/createassettx.ts:23
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[ins](common_transactions.standardbasetx.md#protected-ins)*
 
-Defined in src/common/tx.ts:27
+Defined in src/common/tx.ts:28
 
 ___
 
@@ -118,7 +118,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[memo](common_transactions.standardbasetx.md#protected-memo)*
 
-Defined in src/common/tx.ts:28
+Defined in src/common/tx.ts:29
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 • **name**: *string* = ""
 
-Defined in src/apis/avm/createassettx.ts:19
+Defined in src/apis/avm/createassettx.ts:20
 
 ___
 
@@ -136,7 +136,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[networkid](common_transactions.standardbasetx.md#protected-networkid)*
 
-Defined in src/common/tx.ts:22
+Defined in src/common/tx.ts:23
 
 ___
 
@@ -146,7 +146,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[numins](common_transactions.standardbasetx.md#protected-numins)*
 
-Defined in src/common/tx.ts:26
+Defined in src/common/tx.ts:27
 
 ___
 
@@ -156,7 +156,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[numouts](common_transactions.standardbasetx.md#protected-numouts)*
 
-Defined in src/common/tx.ts:24
+Defined in src/common/tx.ts:25
 
 ___
 
@@ -166,7 +166,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[outs](common_transactions.standardbasetx.md#protected-outs)*
 
-Defined in src/common/tx.ts:25
+Defined in src/common/tx.ts:26
 
 ___
 
@@ -174,7 +174,7 @@ ___
 
 • **symbol**: *string* = ""
 
-Defined in src/apis/avm/createassettx.ts:20
+Defined in src/apis/avm/createassettx.ts:21
 
 ## Methods
 
@@ -184,7 +184,7 @@ Defined in src/apis/avm/createassettx.ts:20
 
 *Overrides [BaseTx](api_avm_basetx.basetx.md).[fromBuffer](api_avm_basetx.basetx.md#frombuffer)*
 
-Defined in src/apis/avm/createassettx.ts:67
+Defined in src/apis/avm/createassettx.ts:68
 
 Takes a [Buffer](https://github.com/feross/buffer) containing an [CreateAssetTx](api_avm_createassettx.createassettx.md), parses it, populates the class, and returns the length of the [CreateAssetTx](api_avm_createassettx.createassettx.md) in bytes.
 
@@ -209,7 +209,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getBlockchainID](common_transactions.standardbasetx.md#getblockchainid)*
 
-Defined in src/common/tx.ts:43
+Defined in src/common/tx.ts:44
 
 Returns the Buffer representation of the BlockchainID
 
@@ -221,7 +221,7 @@ ___
 
 ▸ **getDenomination**(): *number*
 
-Defined in src/apis/avm/createassettx.ts:49
+Defined in src/apis/avm/createassettx.ts:50
 
 Returns the numeric representation of the denomination
 
@@ -233,7 +233,7 @@ ___
 
 ▸ **getDenominationBuffer**(): *Buffer*
 
-Defined in src/apis/avm/createassettx.ts:54
+Defined in src/apis/avm/createassettx.ts:55
 
 Returns the [Buffer](https://github.com/feross/buffer) representation of the denomination
 
@@ -245,7 +245,7 @@ ___
 
 ▸ **getInitialStates**(): *[InitialStates](api_avm_initialstates.initialstates.md)*
 
-Defined in src/apis/avm/createassettx.ts:34
+Defined in src/apis/avm/createassettx.ts:35
 
 Returns the array of array of [Output](common_output.output.md)s for the initial state
 
@@ -259,7 +259,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getIns](common_transactions.standardbasetx.md#getins)*
 
-Defined in src/common/tx.ts:48
+Defined in src/common/tx.ts:49
 
 Returns the array of [TransferableInput](api_avm_inputs.transferableinput.md)s
 
@@ -273,7 +273,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getMemo](common_transactions.standardbasetx.md#getmemo)*
 
-Defined in src/common/tx.ts:58
+Defined in src/common/tx.ts:59
 
 Returns the [Buffer](https://github.com/feross/buffer) representation of the memo
 
@@ -285,7 +285,7 @@ ___
 
 ▸ **getName**(): *string*
 
-Defined in src/apis/avm/createassettx.ts:39
+Defined in src/apis/avm/createassettx.ts:40
 
 Returns the string representation of the name
 
@@ -299,7 +299,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getNetworkID](common_transactions.standardbasetx.md#getnetworkid)*
 
-Defined in src/common/tx.ts:38
+Defined in src/common/tx.ts:39
 
 Returns the NetworkID as a number
 
@@ -313,7 +313,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getOuts](common_transactions.standardbasetx.md#getouts)*
 
-Defined in src/common/tx.ts:53
+Defined in src/common/tx.ts:54
 
 Returns the array of [TransferableOutput](api_avm_outputs.transferableoutput.md)s
 
@@ -325,7 +325,7 @@ ___
 
 ▸ **getSymbol**(): *string*
 
-Defined in src/apis/avm/createassettx.ts:44
+Defined in src/apis/avm/createassettx.ts:45
 
 Returns the string representation of the symbol
 
@@ -339,7 +339,7 @@ ___
 
 *Overrides [BaseTx](api_avm_basetx.basetx.md).[getTxType](api_avm_basetx.basetx.md#gettxtype)*
 
-Defined in src/apis/avm/createassettx.ts:27
+Defined in src/apis/avm/createassettx.ts:28
 
 Returns the id of the [CreateAssetTx](api_avm_createassettx.createassettx.md)
 
@@ -355,7 +355,7 @@ ___
 
 *Overrides [StandardBaseTx](common_transactions.standardbasetx.md).[sign](common_transactions.standardbasetx.md#abstract-sign)*
 
-Defined in src/apis/avm/basetx.ts:79
+Defined in src/apis/avm/basetx.ts:80
 
 Takes the bytes of an [UnsignedTx](api_avm_transactions.unsignedtx.md) and returns an array of [Credential](common_signature.credential.md)s
 
@@ -378,7 +378,7 @@ ___
 
 *Overrides [StandardBaseTx](common_transactions.standardbasetx.md).[toBuffer](common_transactions.standardbasetx.md#tobuffer)*
 
-Defined in src/apis/avm/createassettx.ts:93
+Defined in src/apis/avm/createassettx.ts:94
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [CreateAssetTx](api_avm_createassettx.createassettx.md).
 
@@ -392,7 +392,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[toString](common_transactions.standardbasetx.md#tostring)*
 
-Defined in src/common/tx.ts:95
+Defined in src/common/tx.ts:96
 
 Returns a base-58 representation of the [StandardBaseTx](common_transactions.standardbasetx.md).
 

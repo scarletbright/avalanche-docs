@@ -106,6 +106,6 @@ Defined in src/utils/constants.ts:164
 
 * **hrp**: *any* = NetworkIDToHRP[4]
 
-* **rrEWX7gc7D9mwcdrdBxBTdqh1a7WDVsMuadhTZgyXfFcRz45L**: *object* = n4X
+* **jnUjZSRt16TcRnZzmh5aMhavwVHz3zBrSN8GfFMTQkzUnoBxC**: *object* = n4X
 
-* **zJytnh96Pc8rM337bBrtMvJDbEdDNjcXG3WkTNCiLp18ergm9**: *object* = n4C
+* **saMG5YgNsFxzjz4NMkEkt3bAH6hVxWdZkWcEnGB3Z15pcAmsK**: *object* = n4C

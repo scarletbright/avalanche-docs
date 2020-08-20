@@ -35,7 +35,7 @@
 
 *Inherited from [StandardTx](common_transactions.standardtx.md).[constructor](common_transactions.standardtx.md#constructor)*
 
-Defined in src/common/tx.ts:312
+Defined in src/common/tx.ts:313
 
 Class representing a signed transaction.
 
@@ -56,7 +56,7 @@ Name | Type | Default | Description |
 
 *Inherited from [StandardTx](common_transactions.standardtx.md).[credentials](common_transactions.standardtx.md#protected-credentials)*
 
-Defined in src/common/tx.ts:256
+Defined in src/common/tx.ts:257
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 *Inherited from [StandardTx](common_transactions.standardtx.md).[unsignedTx](common_transactions.standardtx.md#protected-unsignedtx)*
 
-Defined in src/common/tx.ts:255
+Defined in src/common/tx.ts:256
 
 ## Methods
 
@@ -99,7 +99,7 @@ ___
 
 *Inherited from [StandardTx](common_transactions.standardtx.md).[fromString](common_transactions.standardtx.md#fromstring)*
 
-Defined in src/common/tx.ts:300
+Defined in src/common/tx.ts:301
 
 Takes a base-58 string containing an [StandardTx](common_transactions.standardtx.md), parses it, populates the class, and returns the length of the Tx in bytes.
 
@@ -124,7 +124,7 @@ ___
 
 *Inherited from [StandardTx](common_transactions.standardtx.md).[getUnsignedTx](common_transactions.standardtx.md#getunsignedtx)*
 
-Defined in src/common/tx.ts:261
+Defined in src/common/tx.ts:262
 
 Returns the [StandardUnsignedTx](common_transactions.standardunsignedtx.md)
 
@@ -138,7 +138,7 @@ ___
 
 *Inherited from [StandardTx](common_transactions.standardtx.md).[toBuffer](common_transactions.standardtx.md#tobuffer)*
 
-Defined in src/common/tx.ts:270
+Defined in src/common/tx.ts:271
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [StandardTx](common_transactions.standardtx.md).
 
@@ -152,7 +152,7 @@ ___
 
 *Inherited from [StandardTx](common_transactions.standardtx.md).[toString](common_transactions.standardtx.md#tostring)*
 
-Defined in src/common/tx.ts:310
+Defined in src/common/tx.ts:311
 
 Returns a cb58 representation of the [StandardTx](common_transactions.standardtx.md).
 

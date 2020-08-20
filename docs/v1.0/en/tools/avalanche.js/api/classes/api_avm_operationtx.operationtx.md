@@ -50,7 +50,7 @@ Class representing an unsigned Operation transaction.
 
 *Overrides [BaseTx](api_avm_basetx.basetx.md).[constructor](api_avm_basetx.basetx.md#constructor)*
 
-Defined in src/apis/avm/operationtx.ts:99
+Defined in src/apis/avm/operationtx.ts:100
 
 Class representing an unsigned Operation transaction.
 
@@ -58,7 +58,7 @@ Class representing an unsigned Operation transaction.
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
-`networkid` | number | 3 | Optional networkid, default 3 |
+`networkid` | number | DefaultNetworkID | Optional networkid, [DefaultNetworkID](../modules/common_constants.md#const-defaultnetworkid) |
 `blockchainid` | Buffer | Buffer.alloc(32, 16) | Optional blockchainid, default Buffer.alloc(32, 16) |
 `outs` | Array‹[TransferableOutput](api_avm_outputs.transferableoutput.md)› | undefined | Optional array of the [TransferableOutput](api_avm_outputs.transferableoutput.md)s |
 `ins` | Array‹[TransferableInput](api_avm_inputs.transferableinput.md)› | undefined | Optional array of the [TransferableInput](api_avm_inputs.transferableinput.md)s |
@@ -75,7 +75,7 @@ Name | Type | Default | Description |
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[blockchainid](common_transactions.standardbasetx.md#protected-blockchainid)*
 
-Defined in src/common/tx.ts:23
+Defined in src/common/tx.ts:24
 
 ___
 
@@ -85,7 +85,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[ins](common_transactions.standardbasetx.md#protected-ins)*
 
-Defined in src/common/tx.ts:27
+Defined in src/common/tx.ts:28
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[memo](common_transactions.standardbasetx.md#protected-memo)*
 
-Defined in src/common/tx.ts:28
+Defined in src/common/tx.ts:29
 
 ___
 
@@ -105,7 +105,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[networkid](common_transactions.standardbasetx.md#protected-networkid)*
 
-Defined in src/common/tx.ts:22
+Defined in src/common/tx.ts:23
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 • **numOps**: *Buffer* = Buffer.alloc(4)
 
-Defined in src/apis/avm/operationtx.ts:25
+Defined in src/apis/avm/operationtx.ts:26
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[numins](common_transactions.standardbasetx.md#protected-numins)*
 
-Defined in src/common/tx.ts:26
+Defined in src/common/tx.ts:27
 
 ___
 
@@ -133,7 +133,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[numouts](common_transactions.standardbasetx.md#protected-numouts)*
 
-Defined in src/common/tx.ts:24
+Defined in src/common/tx.ts:25
 
 ___
 
@@ -141,7 +141,7 @@ ___
 
 • **ops**: *Array‹[TransferableOperation](api_avm_operations.transferableoperation.md)›* = []
 
-Defined in src/apis/avm/operationtx.ts:26
+Defined in src/apis/avm/operationtx.ts:27
 
 ___
 
@@ -151,7 +151,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[outs](common_transactions.standardbasetx.md#protected-outs)*
 
-Defined in src/common/tx.ts:25
+Defined in src/common/tx.ts:26
 
 ## Methods
 
@@ -161,7 +161,7 @@ Defined in src/common/tx.ts:25
 
 *Overrides [BaseTx](api_avm_basetx.basetx.md).[fromBuffer](api_avm_basetx.basetx.md#frombuffer)*
 
-Defined in src/apis/avm/operationtx.ts:44
+Defined in src/apis/avm/operationtx.ts:45
 
 Takes a [Buffer](https://github.com/feross/buffer) containing an [OperationTx](api_avm_operationtx.operationtx.md), parses it, populates the class, and returns the length of the [OperationTx](api_avm_operationtx.operationtx.md) in bytes.
 
@@ -187,7 +187,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getBlockchainID](common_transactions.standardbasetx.md#getblockchainid)*
 
-Defined in src/common/tx.ts:43
+Defined in src/common/tx.ts:44
 
 Returns the Buffer representation of the BlockchainID
 
@@ -201,7 +201,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getIns](common_transactions.standardbasetx.md#getins)*
 
-Defined in src/common/tx.ts:48
+Defined in src/common/tx.ts:49
 
 Returns the array of [TransferableInput](api_avm_inputs.transferableinput.md)s
 
@@ -215,7 +215,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getMemo](common_transactions.standardbasetx.md#getmemo)*
 
-Defined in src/common/tx.ts:58
+Defined in src/common/tx.ts:59
 
 Returns the [Buffer](https://github.com/feross/buffer) representation of the memo
 
@@ -229,7 +229,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getNetworkID](common_transactions.standardbasetx.md#getnetworkid)*
 
-Defined in src/common/tx.ts:38
+Defined in src/common/tx.ts:39
 
 Returns the NetworkID as a number
 
@@ -241,7 +241,7 @@ ___
 
 ▸ **getOperations**(): *Array‹[TransferableOperation](api_avm_operations.transferableoperation.md)›*
 
-Defined in src/apis/avm/operationtx.ts:72
+Defined in src/apis/avm/operationtx.ts:73
 
 Returns an array of [TransferableOperation](api_avm_operations.transferableoperation.md)s in this transaction.
 
@@ -255,7 +255,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getOuts](common_transactions.standardbasetx.md#getouts)*
 
-Defined in src/common/tx.ts:53
+Defined in src/common/tx.ts:54
 
 Returns the array of [TransferableOutput](api_avm_outputs.transferableoutput.md)s
 
@@ -269,7 +269,7 @@ ___
 
 *Overrides [BaseTx](api_avm_basetx.basetx.md).[getTxType](api_avm_basetx.basetx.md#gettxtype)*
 
-Defined in src/apis/avm/operationtx.ts:31
+Defined in src/apis/avm/operationtx.ts:32
 
 Returns the id of the [OperationTx](api_avm_operationtx.operationtx.md)
 
@@ -283,7 +283,7 @@ ___
 
 *Overrides [BaseTx](api_avm_basetx.basetx.md).[sign](api_avm_basetx.basetx.md#sign)*
 
-Defined in src/apis/avm/operationtx.ts:84
+Defined in src/apis/avm/operationtx.ts:85
 
 Takes the bytes of an [UnsignedTx](api_avm_transactions.unsignedtx.md) and returns an array of [Credential](common_signature.credential.md)s
 
@@ -306,7 +306,7 @@ ___
 
 *Overrides [StandardBaseTx](common_transactions.standardbasetx.md).[toBuffer](common_transactions.standardbasetx.md#tobuffer)*
 
-Defined in src/apis/avm/operationtx.ts:60
+Defined in src/apis/avm/operationtx.ts:61
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [OperationTx](api_avm_operationtx.operationtx.md).
 
@@ -320,7 +320,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[toString](common_transactions.standardbasetx.md#tostring)*
 
-Defined in src/common/tx.ts:95
+Defined in src/common/tx.ts:96
 
 Returns a base-58 representation of the [StandardBaseTx](common_transactions.standardbasetx.md).
 

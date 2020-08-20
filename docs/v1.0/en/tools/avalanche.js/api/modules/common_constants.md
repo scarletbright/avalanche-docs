@@ -76,7 +76,7 @@ ___
 
 ### `Const` DefaultNetworkID
 
-• **DefaultNetworkID**: *number* = 3
+• **DefaultNetworkID**: *number* = 4
 
 Defined in src/utils/constants.ts:26
 
@@ -548,13 +548,13 @@ Defined in src/utils/constants.ts:121
 
 ###  blockchainID
 
-• **blockchainID**: *string* = "zJytnh96Pc8rM337bBrtMvJDbEdDNjcXG3WkTNCiLp18ergm9"
+• **blockchainID**: *string* = "saMG5YgNsFxzjz4NMkEkt3bAH6hVxWdZkWcEnGB3Z15pcAmsK"
 
 Defined in src/utils/constants.ts:120
 
 ###  fee
 
-• **fee**: *number* = 0
+• **fee**: *number* = 1000000
 
 Defined in src/utils/constants.ts:123
 
@@ -586,7 +586,7 @@ Defined in src/utils/constants.ts:113
 
 ###  fee
 
-• **fee**: *number* = 0
+• **fee**: *number* = 1000000
 
 Defined in src/utils/constants.ts:116
 
@@ -612,13 +612,13 @@ Defined in src/utils/constants.ts:107
 
 ###  blockchainID
 
-• **blockchainID**: *string* = "rrEWX7gc7D9mwcdrdBxBTdqh1a7WDVsMuadhTZgyXfFcRz45L"
+• **blockchainID**: *string* = "jnUjZSRt16TcRnZzmh5aMhavwVHz3zBrSN8GfFMTQkzUnoBxC"
 
 Defined in src/utils/constants.ts:106
 
 ###  fee
 
-• **fee**: *number* = 0
+• **fee**: *number* = 1000000
 
 Defined in src/utils/constants.ts:109
 
