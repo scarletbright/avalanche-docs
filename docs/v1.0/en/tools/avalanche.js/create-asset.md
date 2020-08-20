@@ -1,6 +1,6 @@
 # Tutorial &mdash; Creating An Asset
 
-This example creates an asset in the AVM and publishes it to the Avalanche Platform. The first step in this process is to create an instance of Avalanche.js connected to our Avalanche Platform endpoint of choice.
+This example creates an asset in the X-Chain and publishes it to the Avalanche Platform. The first step in this process is to create an instance of Avalanche.js connected to our Avalanche Platform endpoint of choice.
 
 ```js
 
@@ -73,7 +73,7 @@ let signed = xchain.keyChain().signTx(unsigned); //returns a Tx class
 
 Now that we have a signed transaction ready to send to the network, let's issue it! 
 
-Using the Avalanche.js AVM API, we going to call the issueTx function. This function can take either the Tx class returned in the previous step, a base-58 string Avalanche serialized representation of the transaction, or a raw Buffer class with the data for the transaction. Examples of each are below:
+Using the Avalanche.js AVM API, we going to call the issueTx function. This function can take either the Tx class returned in the previous step, a CB58 representation of the transaction, or a raw Buffer class with the data for the transaction. Examples of each are below:
 
 ```js
 // using the Tx class
@@ -94,7 +94,7 @@ We assume ONE of those methods are used to issue the transaction.
 
 ## Get the status of the transaction
 
-Now that we sent the transaction to the network, it takes a few seconds to determine if the transaction has gone through. We can get an updated status on the transaction using the TxID through the AVM API.
+Now that we sent the transaction to the network, it takes a few seconds to determine if the transaction has gone through. We can get an updated status on the transaction using the TxID through the AVMAPI.
 
 ```js
 // returns one of: "Accepted", "Processing", "Unknown", and "Rejected"
@@ -110,4 +110,4 @@ The statuses can be one of "Accepted", "Processing", "Unknown", and "Rejected":
 
 ## Identifying the newly created asset
 
-The AVM uses the TxID of the transaction which created the asset as the unique identifier for the asset. This unique identifier is henceforth known as the "AssetID" of the asset. When assets are traded around the AVM, they always reference the AssetID that they represent.
+The X-Chain uses the TxID of the transaction which created the asset as the unique identifier for the asset. This unique identifier is henceforth known as the "AssetID" of the asset. When assets are traded around the X-Chain, they always reference the AssetID that they represent.
