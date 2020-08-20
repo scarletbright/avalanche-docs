@@ -25,13 +25,17 @@ thus creating a self-sovereign identity layer. No third parties are ever involve
 
 To avoid posting the full TLS certificate to the Platform chain, the certificate is first hashed.
 For consistency, Avalanche employs the same hashing mechanism for the TLS certificates as is used in Bitcoin.
-Namely, the DER representation of the certificate is hashed with sha256, and the result is then hashed with ripemd160 to yield a 20-byte identifier for stakers.
+Namely, the DER representation of the certificate is hashed with sha256, and the result is then hashed with ripemd160 to yield a 20-byte identifier for stakers. 
+
+This 20-byte identifier is represented by "NodeID-" followed by the data's [CB58](../glossary/#cb5) encoded string. 
 
 ***
 
 ## Cryptography in the Avalanche Virtual Machine
 
 The Avalanche virtual machine uses elliptic curve cryptography, specifically `secp256k1`, for its signatures on the blockchain.
+
+This 32-byte identifier is represented by "PrivateKey-" followed by the data's [CB58](../glossary/#cb5) encoded string.
 
 ### Secp256k1 Addresses
 
@@ -46,7 +50,9 @@ Avalanche uses the convention `chainID-address` to specify which chain an addres
 `chainID` may be replaced with an alias of the chain.
 When transmitting information through external applications, the CB58 convention is required.
 
-Read more about the [addressing scheme](../glossary/#address) and [CB58](../glossary/#cb58) in the [Glossary](../glossary/). 
+Read more about the [addressing scheme](../glossary/#address) and [Bech32](../glossary/#bech32) in the [Glossary](../glossary/). 
+
+
 
 ### Secp256k1 Recoverable Signatures
 
