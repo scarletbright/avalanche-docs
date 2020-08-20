@@ -57,7 +57,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.addDefaultSubnetDelegator",
     "params": {
-        "id":"MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ",
+        "nodeID":"NodeID-MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ",
         "rewardAddress":"P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy",
         "startTime":1594102400,
         "endTime":1604102400,
@@ -1047,6 +1047,7 @@ Before this method is called, you must call the X-Chain's [`exportAVAX`](./avm.m
 platform.importAVAX(
     {
         to: string,
+        sourceChain: string,
         username: string,
         password: string
     }
@@ -1057,6 +1058,8 @@ platform.importAVAX(
 * `password` is `username`'s password.
 * `to` is the ID of the address the AVAX is imported to.
   This must be the same as the `to` argument in the corresponding call to the X-Chain's `exportAVAX`.
+* `sourceChain` is the ID or alias of the chain the AVAX is being imported from.
+  To import funds from the X-Chain, use `"X"`.
 
 #### Example Call
 
@@ -1065,9 +1068,10 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.importAVAX",
     "params": {
-        "username":"bob",
-        "password":"loblaw",
         "to":"P-avax1apzq2zt0uaaatum3wdz83u4z7dv4st7l5m5n2a",
+        "sourceChain":"X",
+        "username":"bob",
+        "password":"loblaw"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
