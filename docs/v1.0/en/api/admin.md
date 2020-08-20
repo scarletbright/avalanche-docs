@@ -186,9 +186,7 @@ curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
     "method" :"admin.startCPUProfiler",
-    "params" :{
-        "fileName":"cpu.profile"
-    }
+    "params" :{}
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
 ```
 
