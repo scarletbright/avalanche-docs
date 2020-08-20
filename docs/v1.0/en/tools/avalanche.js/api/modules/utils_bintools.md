@@ -6,5 +6,4 @@
 
 ### Classes
 
-* [Base58](../classes/utils_bintools.base58.md)
 * [BinTools](../classes/utils_bintools.bintools.md)
