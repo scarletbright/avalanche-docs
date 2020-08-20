@@ -1,6 +1,6 @@
 # Tutorial &mdash; Sending An Asset
 
-This example sends an asset in the XChain to a single recipient. The first step in this process is to create an instance of Avalanche connected to our Avalanche Platform endpoint of choice.
+This example sends an asset in the X-Chain to a single recipient. The first step in this process is to create an instance of Avalanche connected to our Avalanche Platform endpoint of choice.
 
 ```js
 import {
@@ -20,7 +20,7 @@ We're also assuming that the keystore contains a list of addresses used in this 
 
 ## Getting the UTXO Set
 
-The AVM stores all available balances in a datastore called Unspent Transaction Outputs (UTXOs). A UTXO Set is the unique list of outputs produced by transactions, addresses that can spend those outputs, and other variables such as lockout times (a timestamp after which the output can be spent) and thresholds (how many signers are required to spend the output). 
+The X-Chain stores all available balances in a datastore called Unspent Transaction Outputs (UTXOs). A UTXO Set is the unique list of outputs produced by transactions, addresses that can spend those outputs, and other variables such as lockout times (a timestamp after which the output can be spent) and thresholds (how many signers are required to spend the output). 
 
 For the case of this example, we're going to create a simple transaction that spends an amount of available coins and sends it to a single address without any restrictions. The management of the UTXOs will mostly be abstracted away. 
 
@@ -63,7 +63,7 @@ And the transaction is sent!
 
 ## Get the status of the transaction
 
-Now that we sent the transaction to the network, it takes a few seconds to determine if the transaction has gone through. We can get an updated status on the transaction using the TxID through the XChain.
+Now that we sent the transaction to the network, it takes a few seconds to determine if the transaction has gone through. We can get an updated status on the transaction using the TxID through the X-Chain.
 
 ```js
 // returns one of: "Accepted", "Processing", "Unknown", and "Rejected"

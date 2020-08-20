@@ -1,4 +1,4 @@
-# Tutorial &mdash; Managing AVM Keys
+# Tutorial &mdash; Managing X-Chain Keys
 
 Avalanche.js comes with its own AVM Keychain. This keychain is used in the functions of the API, enabling them to sign using keys it's registered. The first step in this process is to create an instance of Avalanche.js connected to our Avalanche Platform endpoint of choice.
 
@@ -28,7 +28,7 @@ let myKeychain = xchain.keyChain();
 
 This exposes the instance of the class AVMKeyChain which is created when the XChain API is created. At present, this supports secp256k1 curve for ECDSA key pairs.
 
-## Creating AVM key pairs
+## Creating X-Chain key pairs
 
 The keychain has the ability to create new keypairs for you and return the address assocated with the key pair.
 
