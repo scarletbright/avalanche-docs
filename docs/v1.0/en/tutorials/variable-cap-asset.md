@@ -49,10 +49,7 @@ avm.createVariableCapAsset({
 * `symbol` is a shorthand symbol for this asset. Between 0 and 4 characters. Not necessarily unique. May be omitted.
 * `minterSets` is a list where each element specifies that `threshold` of the addresses
   in `minters` may together mint more of the asset by signing a minting transaction.
-* In the future, performing a transaction on an AVM instance will require a transaction fee (paid in AVAX tokens).
-  `username` and `password` denote the user paying the transaction fee.
-  That user will need to hold enough AVAX to pay the fee.
-  Since there are no transaction fees right now, you can leave `username` and `password` blank.
+* Performing a transaction on the X-Chain require a transaction fee paid in AVAX. `username` and `password` denote the user paying the fee.
 * `assetID` is the ID of the new asset that we'll have created.
 
 
@@ -70,21 +67,21 @@ curl -X POST --data '{
         "minterSets":[
             {
                 "minters": [
-                    "X-No525ybWCY8jNwkPE8tcwwfFnQTWsL3aH"
+                    "X-avax1ghstjukrtw8935lryqtnh643xe9a94u3tc75c7"
                 ],
                 "threshold": 1
             },
             {
                 "minters": [
-                    "X-EMFBcgAKyToN7PSAaFkyTFhVmgXqK3BRG",
-                    "X-BuHCPN7JmzKJZnHrLgEvSo6pQeL1kivzM",
-                    "X-AomEKCh7bDsh2rPMS8aq6jzG1Q3g3GMNh"
+                    "X-avax1k4nr26c80jaquzm9369j5a4shmwcjn0vmemcjz",
+                    "X-avax1yell3e4nln0m39cfpdhgqprsd87jkh4qnakklx",
+                    "X-avax1ztkzsrjnkn0cek5ryvhqswdtcg23nhge3nnr5e"
                 ],
                 "threshold": 2
             }
         ],
-        "username":"yourUsername",
-        "password":"yourPassword"
+        "username":"USERNAME GOES HERE",
+        "password":"PASSWORD GOES HERE"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -105,154 +102,72 @@ The response should look like this:
 
 Right now 0 shares exist. Let's mint 10M shares.
 
-First, we'll need to create an unsigned mint transaction.
-Then, we'll need to sign it so that others can verify that the transaction
-came from the minters specified when the asset was initialized.
-
 ### Create the Unsigned Transaction
 
-We'll use `avm.createMintTx` to create the unsigned mint transaction.
+We'll use `avm.mint` to mint the shares.
 
-* `to` is the address that will receive the newly minted shares.
-  Replace `to` with an address your user controls so that later you'll be able to send
-  some of the newly minted shares.
-* `minters` are the addresses that will sign this transaction, thereby making it valid.
-  Replace the address in `minters` with 2 addresses from the second minter set above.
+* `amount` is the number of shares that will be created.
+* `assetID` is the ID of the asset we're creating more of.
+* `to` is the address that will receive the newly minted shares. Replace `to` with an address your user controls so that later you'll be able to send some of the newly minted shares.
+* `username` must be a user that holds keys giving it permission to mint more of this asset. That is, it controls at least *threshold* keys for one of the minter sets we specified above.
 
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     : 1,
-    "method" :"avm.createMintTx",
+    "method" :"avm.mint",
     "params" :{
         "amount":10000000,
         "assetID":"i1EqsthjiFTxunrj8WD2xFSrQ5p2siEKQacmCCB5qBFVqfSL2",
-        "to":"X-3dj8tFUAv8zCF8nktYFvonJcRMv8H8ARJ",
-        "minters":[
-            "X-EMFBcgAKyToN7PSAaFkyTFhVmgXqK3BRG",
-            "X-BuHCPN7JmzKJZnHrLgEvSo6pQeL1kivzM"
-        ]
+        "to":"X-avax1a202a8pu5w4vnerwzp84j68yknm6lf47drfsdv",
+        "username":"USERNAME GOES HERE",
+        "password":"PASSWORD GOES HERE"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-The response should look like this:
+The response contains the transaction's ID:
 
 ```json
 {
     "jsonrpc":"2.0",
     "id"     :1,
     "result" :{
-        "tx":"1112yKaDdxEJYZEdDc3gkmjksVUPSw1uE5iEBXgBJ8mtG5Hcdys1wfqbMewcGQiwrX4oARgu9RSouv7BfJwAimBHCPnELJ4s8mNrv7UCfShuVE6c7BzdRSKXZr1eLiBdpjZRfGBT5fV4CUxd31zuvpozJSYyGD8ugzejmz2s2peTb4pzCyCa9GL8hajP9wMcokH1hLW2KK9FCkMZ8fUHgABPvSQFHwFvEroYPqVNwetFdz39enBVcZF7xTajCU718NCeqYtMMApNmwJzXXejCTPAN1Uo4hKoeuRaAwQXJRvoVHK9iDq4DumFx84FYVCuKPF1C78Khd3qB2kNUoVm6fwt4aDd1A8pyBhNUkSweP4Bcdo4U3"
+        "txID":"E1gqPbkziu8AutqccRa9ioPWyEF3Vd7eMjDJ3UshjQPpLoREZ"
     }
 }
 ```
 
-### Sign the Transaction
-
-The `minterSets` argument above specifies that the transaction can be made valid by signing it
-with `X-No525ybWCY8jNwkPE8tcwwfFnQTWsL3aH`, or with 2 of `X-EMFBcgAKyToN7PSAaFkyTFhVmgXqK3BRG`,
-`X-BuHCPN7JmzKJZnHrLgEvSo6pQeL1kivzM` and `X-AomEKCh7bDsh2rPMS8aq6jzG1Q3g3GMNh`.
-
-To sign the transaction, we use `avm.signMintTx`. 
-We specify that this signature is being provided by `X-EMFBcgAKyToN7PSAaFkyTFhVmgXqK3BRG`.
+We can check the status of the transaction we've just sent to the network using `avm.getTxStatus`: 
 
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     : 1,
-    "method" :"avm.signMintTx",
+    "method" :"avm.getTxStatus",
     "params" :{
-        "tx":"1112yKaDdxEJYZEdDc3gkmjksVUPSw1uE5iEBXgBJ8mtG5Hcdys1wfqbMewcGQiwrX4oARgu9RSouv7BfJwAimBHCPnELJ4s8mNrv7UCfShuVE6c7BzdRSKXZr1eLiBdpjZRfGBT5fV4CUxd31zuvpozJSYyGD8ugzejmz2s2peTb4pzCyCa9GL8hajP9wMcokH1hLW2KK9FCkMZ8fUHgABPvSQFHwFvEroYPqVNwetFdz39enBVcZF7xTajCU718NCeqYtMMApNmwJzXXejCTPAN1Uo4hKoeuRaAwQXJRvoVHK9iDq4DumFx84FYVCuKPF1C78Khd3qB2kNUoVm6fwt4aDd1A8pyBhNUkSweP4Bcdo4U3",
-        "minter":"X-EMFBcgAKyToN7PSAaFkyTFhVmgXqK3BRG",
-        "username":"yourUsername",
-        "password":"yourPassword"
+        "txID":"E1gqPbkziu8AutqccRa9ioPWyEF3Vd7eMjDJ3UshjQPpLoREZ"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-The result should look like this:
+This should give:
 
 ```json
 {
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "result" :{
-        "tx":"111DodqUkFYB5DCHpPtzwmfEur9TnNRK8G7AvJixtMXhvKybf3FY4FZimmwxvA2RkqpQGBi7Dad161ZX3DZ6pohH7fUM1G9N57b43k29rWRyqcZw3r2Gj24KhC8FTbWJGAVAdVRg1biufVgD5apRq7tuz5uCMCFpCifqjkYdeAj7R15nENQiknTqHaTMWzY7UGxwMgbo1HfQmraDnUELnHWpJ9sCi5tnFVY97MtCGg15tyPyeXQRVPvdFtB3FCrFhPct3KEGiwxukhHSgb9xs66oTgcnJJLgSxmwgS6tFNvMVFJJqA7gtMyXnDU3do7gSJzKhrvofgPFMVw62J8AhqLCSWWkqnFrV4eDTTEWyoUUomEkXhsioy839UmdcE1u7fnc8kHCJ2hMfDMcKgLihyYVJDmBD87phm1hSFuWGHSNZruBBRktCSFWHFZCBEZxLHu221PLiDL3RmsKXHA5PJxk9gzw7eQm9qRFJ5AEPzDzN2f6P1mXZRC8co8MeqkBDApKXftrqGgw5szYifwsr7KSZXFmEhyxqjsEVKFDncR6he"
-    }
+    "jsonrpc": "2.0",
+    "result": {
+        "status": "Accepted"
+    },
+    "id": 1
 }
 ```
-
-Let's sign the partially signed transaction with the signature of
-`X-BuHCPN7JmzKJZnHrLgEvSo6pQeL1kivzM`.
-
-```json
-curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     : 1,
-    "method" :"avm.signMintTx",
-    "params" :{
-        "tx":"111DodqUkFYB5DCHpPtzwmfEur9TnNRK8G7AvJixtMXhvKybf3FY4FZimmwxvA2RkqpQGBi7Dad161ZX3DZ6pohH7fUM1G9N57b43k29rWRyqcZw3r2Gj24KhC8FTbWJGAVAdVRg1biufVgD5apRq7tuz5uCMCFpCifqjkYdeAj7R15nENQiknTqHaTMWzY7UGxwMgbo1HfQmraDnUELnHWpJ9sCi5tnFVY97MtCGg15tyPyeXQRVPvdFtB3FCrFhPct3KEGiwxukhHSgb9xs66oTgcnJJLgSxmwgS6tFNvMVFJJqA7gtMyXnDU3do7gSJzKhrvofgPFMVw62J8AhqLCSWWkqnFrV4eDTTEWyoUUomEkXhsioy839UmdcE1u7fnc8kHCJ2hMfDMcKgLihyYVJDmBD87phm1hSFuWGHSNZruBBRktCSFWHFZCBEZxLHu221PLiDL3RmsKXHA5PJxk9gzw7eQm9qRFJ5AEPzDzN2f6P1mXZRC8co8MeqkBDApKXftrqGgw5szYifwsr7KSZXFmEhyxqjsEVKFDncR6he",
-        "minter":"X-BuHCPN7JmzKJZnHrLgEvSo6pQeL1kivzM",
-        "username":"yourUsername",
-        "password":"yourPassword"
-    }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
-```
-
-The result should look like this:
-
-```json
-{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "result" :{
-        "tx":"111DodqUkFYB5DCHpPtzwmfEur9TnNRK8G7AvJixtMXhvKybf3FY4FZimmwxvA2RkqpQGBi7Dad161ZX3DZ6pohH7fUM1G9N57b43k29rWRyqcZw3r2Gj24KhC8FTbWJGAVAdVRg1biufVgD5apRq7tuz5uCMCFpCifqjkYdeAj7R15nENQiknTqHaTMWzY7UGxwMgbo1HfQmraDnUELnHWpJ9sCi5tnFVY97MtCGg15tyPyeXQRVPvdFtB3FCrFhPct3KEGiwxukhHSgb9xs66oTgcnJJLgSxmwgS6tFNvMVFJJqA7gtMyXnDU3do7gSJzKhrvofgPFMVw62J8AhqLCSWWkqnFrV4eDTTEWyoUUomEkXhsioy839UmdcE1u7fnc8kHCJ2hMfDMcKgLihyYVJDmBD87phm1hSFuWGHSNZruBBRktCSFWHFZCBEZxLHu221PLiDL3RmsKckXp87ywsGT9SDfXjjRuHFq3fmpaDXSYZrGuW3XpFScs8r4Ho1aHmiGdsLUVH1BbWaGkPDTCxMMhDaVDfMMLeLT2ULQyjA"
-    }
-}
-```
-
-### Issue the Signed Transaction
-
-When we created this asset, we specified that more of it could be minted with
-the signatures of 2 of: `X-EMFBcgAKyToN7PSAaFkyTFhVmgXqK3BRG`, `X-BuHCPN7JmzKJZnHrLgEvSo6pQeL1kivzM`,
-and `X-AomEKCh7bDsh2rPMS8aq6jzG1Q3g3GMNh`.
-We've now signed the transaction with the signatures of the first two addresses,
-so this transaction is ready to be sent to the network.
-
-To send the signed transaction to the network, thereby minting more shares, we use `avm.issueTx`:
-
-```json
-curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     : 1,
-    "method" :"avm.issueTx",
-    "params" :{
-        "tx":"111DodqUkFYB5DCHpPtzwmfEur9TnNRK8G7AvJixtMXhvKybf3FY4FZimmwxvA2RkqpQGBi7Dad161ZX3DZ6pohH7fUM1G9N57b43k29rWRyqcZw3r2Gj24KhC8FTbWJGAVAdVRg1biufVgD5apRq7tuz5uCMCFpCifqjkYdeAj7R15nENQiknTqHaTMWzY7UGxwMgbo1HfQmraDnUELnHWpJ9sCi5tnFVY97MtCGg15tyPyeXQRVPvdFtB3FCrFhPct3KEGiwxukhHSgb9xs66oTgcnJJLgSxmwgS6tFNvMVFJJqA7gtMyXnDU3do7gSJzKhrvofgPFMVw62J8AhqLCSWWkqnFrV4eDTTEWyoUUomEkXhsioy839UmdcE1u7fnc8kHCJ2hMfDMcKgLihyYVJDmBD87phm1hSFuWGHSNZruBBRktCSFWHFZCBEZxLHu221PLiDL3RmsKckXp87ywsGT9SDfXjjRuHFq3fmpaDXSYZrGuW3XpFScs8r4Ho1aHmiGdsLUVH1BbWaGkPDTCxMMhDaVDfMMLeLT2ULQyjA"
-    }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
-```
-
-The result should look like this:
-
-```json
-{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "result" :{
-        "txID":"2W5AZ3w94dteqXHvsAkw8FfDcZHSf8F93Qsn3pBsqLTM3RBGRG"
-    }
-}
-```
-
-We can check the status of the transaction we've just sent to the network using
-`avm.getTxStatus.` We omit this step here.
 
 ## Trade the Asset
 
 ### Check a Balance
 
-All 10M shares are controlled by the `to` address we specified `createMintTx`. 
+All 10M shares are controlled by the `to` address we specified in `mint`. 
 To verify this we'll use `avm.getBalance`:
 
 ```json
@@ -261,7 +176,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.getBalance",
     "params" :{
-        "address":"X-3dj8tFUAv8zCF8nktYFvonJcRMv8H8ARJ",
+        "address":"X-avax1a202a8pu5w4vnerwzp84j68yknm6lf47drfsdv",
         "assetID":"i1EqsthjiFTxunrj8WD2xFSrQ5p2siEKQacmCCB5qBFVqfSL2"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
@@ -281,12 +196,7 @@ The response confirms that our asset creation was successful, and that the expec
 
 ### Send the Asset
 
-Let's send 100 shares to another address by using `avm.send`.
-
-To send the shares, we need to prove that we control the address the shares are being sent from (`X-3dj8tFUAv8zCF8nktYFvonJcRMv8H8ARJ`).
-Therefore, this time we'll need to fill in `username` and `password`.
-
-To send the 100 shares:
+Let's send 100 shares to another address by using `avm.send`. To do so:
 
 ```json
 curl -X POST --data '{
@@ -294,11 +204,11 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.send",
     "params" :{
-        "username":"yourUsername",
-        "password":"yourPassword",
+        "username":"USERNAME GOES HERE",
+        "password":"PASSWORD GOES HERE",
         "assetID" :"i1EqsthjiFTxunrj8WD2xFSrQ5p2siEKQacmCCB5qBFVqfSL2",
         "amount"  :100,
-        "to"      :"X-LzAcZRDqv3GFsvszqFo22SNKLvFKwKknk"
+        "to"      :"X-avax1qwnlpknmdkkl22rhmad0dcn80wfasp2y3yg3x0"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -311,7 +221,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.getBalance",
     "params" :{
-        "address":"X-LzAcZRDqv3GFsvszqFo22SNKLvFKwKknk",
+        "address":"X-avax1qwnlpknmdkkl22rhmad0dcn80wfasp2y3yg3x0",
         "assetID":"i1EqsthjiFTxunrj8WD2xFSrQ5p2siEKQacmCCB5qBFVqfSL2"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
@@ -334,13 +244,6 @@ The response should be:
 In this tutorial, we:
 
 * Used  `createVariableCapAsset` to create a variable-cap asset that represents shares.
+* Used  `mint` to mint more units of an asset.
 * Used  `getBalance` to check address balances.
 * Used  `send` to transfer shares.
-* Used  `createMintTx` to create an unsigned transaction to mint more shares.
-* Used `signMintTx` twice to sign the unsigned transaction with `threshold` minter signatures.
-* Used `issueTx` to send the signed transaction to the network, thus minting more shares.
-
-It's important to note that even though in this tutorial all of the minter addresses were controlled
-by one user, this is not necessarily the case.
-In practice, it makes more sense for each minter address to be controlled by a *different* user because this is more secure.
-A variable-cap asset that can be minted with only one user's signatures has a single point of failure.

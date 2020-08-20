@@ -33,13 +33,14 @@ nav:
   - FAQ and Known Issues : ./v1.0/en/faq/faq.md
   - System Overview: v1.0/en/core-concepts/overview.md
   - Tutorials:
+    - Deploy a Smart Contract          : ./v1.0/en/tutorials/deploy-a-smart-contract.md
     - Create a Fixed-Cap Asset         : ./v1.0/en/tutorials/fixed-cap-asset.md
     - Create a Variable-Cap Asset      : ./v1.0/en/tutorials/variable-cap-asset.md
     - Create a Subnet                  : ./v1.0/en/tutorials/create-a-subnet.md
     - Add Validators to a Subnet       : ./v1.0/en/tutorials/adding-validators.md
     - Create a Blockchain              : ./v1.0/en/tutorials/create-a-blockchain.md
     - Create a Virtual Machine         : ./v1.0/en/tutorials/creating-a-virtual-machine.md
-    - Transfer AVAX between Chains      : ./v1.0/en/tutorials/atomic-swap.md
+    - Transfer AVAX between Chains     : ./v1.0/en/tutorials/atomic-swap.md
     - Create a Local Test Network      : ./v1.0/en/tutorials/creating-a-local-testnet.md
   - APIs:
               - Introduction           : ./v1.0/en/api/intro-apis.md
@@ -67,7 +68,8 @@ nav:
               - Command Line Interface      : v1.0/en/references/command-line-interface.md
               - Cryptographic Primitives    : v1.0/en/references/cryptographic-primitives.md
               - Serialization Primitives    : v1.0/en/references/serialization-primitives.md
-              - Transaction Format          : v1.0/en/references/avm-transaction-serialization.md
+              - AVM Transaction Format      : v1.0/en/references/avm-transaction-serialization.md
+              - Platform Transaction Format : v1.0/en/references/platform-transaction-serialization.md
               - Network Protocol            : v1.0/en/references/network-protocol.md
               - Glossary                    : v1.0/en/references/glossary.md
   - Papers                                  : v1.0/en/papers/index.md

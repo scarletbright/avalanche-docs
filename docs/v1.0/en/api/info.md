@@ -139,7 +139,7 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "nodeID": "5mb46qkSBj81k9g9e4VFjGGSbaaSLFRzD"
+        "nodeID": "NodeID-5mb46qkSBj81k9g9e4VFjGGSbaaSLFRzD"
     },
     "id": 1
 }
@@ -177,7 +177,6 @@ curl -X POST --data '{
 }
 ```
 
-<!-- TODO put this back once isBootstrapped is in an official release
 ### info.isBootstrapped
 
 Check whether a given chain is done bootstrapping
@@ -188,7 +187,7 @@ Check whether a given chain is done bootstrapping
 info.isBootstrapped(chain: string) -> {isBootstrapped: bool}
 ```
 
-* `chain` is the ID or alias of a chain
+* `chain` is the ID or alias of a chain.
 
 #### Example Call
 
@@ -214,7 +213,6 @@ curl -X POST --data '{
     "id": 1
 }
 ```
--->
 
 ### info.peers
 
@@ -226,7 +224,7 @@ Get description of peer connections.
 info.peers() -> {peers:[]{
     ip: string,
     publicIP: string,
-    id: string,
+    nodeID: string,
     version: string,
     lastSent: string,
     lastRecevied: string
@@ -254,7 +252,7 @@ curl -X POST --data '{
           {
              "ip":"206.189.137.87:9651",
              "publicIP":"206.189.137.87:9651",
-             "id":"8PYXX47kqLDe2wD4oPbvRRchcnSzMA4J4",
+             "nodeID":"NodeID-8PYXX47kqLDe2wD4oPbvRRchcnSzMA4J4",
              "version":"avalanche/0.5.0",
              "lastSent":"2020-06-01T15:23:02Z",
              "lastReceived":"2020-06-01T15:22:57Z"
@@ -262,7 +260,7 @@ curl -X POST --data '{
           {
              "ip":"158.255.67.151:9651",
              "publicIP":"158.255.67.151:9651",
-             "id":"C14fr1n8EYNKyDfYixJ3rxSAVqTY3a8BP",
+             "nodeID":"NodeID-C14fr1n8EYNKyDfYixJ3rxSAVqTY3a8BP",
              "version":"avalanche/0.5.0",
              "lastSent":"2020-06-01T15:23:02Z",
              "lastReceived":"2020-06-01T15:22:34Z"
@@ -270,7 +268,7 @@ curl -X POST --data '{
           {
              "ip":"83.42.13.44:9651",
              "publicIP":"83.42.13.44:9651",
-             "id":"LPbcSMGJ4yocxYxvS2kBJ6umWeeFbctYZ",
+             "nodeID":"NodeID-LPbcSMGJ4yocxYxvS2kBJ6umWeeFbctYZ",
              "version":"avalanche/0.5.0",
              "lastSent":"2020-06-01T15:23:02Z",
              "lastReceived":"2020-06-01T15:22:55Z"

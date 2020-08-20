@@ -17,19 +17,19 @@ There are conventions in the Avalanche platform for distributing readable addres
 
 ```
 /* P-Chain address */
-P-Q4MzFZZDPHRPAHFeDs3NiyyaZDvxHKivf
+P-avax1am4w6hfrvmh3akduzkjthrtgtqafalce6an8cr
 
 /* C-Chain address */
 C-0x820891f8b95daf5ea7d7ce7667e6bba2dd5c5594
 
 /* X-Chain address */
-X-EKpEPX56YA1dsaHBsW8X5nGqNSwJ7JrWH
+X-avax1kj06lhgx84h39snsljcey3tpc046ze68mek3g5
 
 /* Same address on a different chain */
-P-EKpEPX56YA1dsaHBsW8X5nGqNSwJ7JrWH
+P-avax1kj06lhgx84h39snsljcey3tpc046ze68mek3g5
 
 /* Same address, using the chainID instead of the chain alias */
-11111111111111111111111111111111LpoYY-EKpEPX56YA1dsaHBsW8X5nGqNSwJ7JrWH
+11111111111111111111111111111111LpoYY-avax1kj06lhgx84h39snsljcey3tpc046ze68mek3g5
 ```
 
 ## AVAX
