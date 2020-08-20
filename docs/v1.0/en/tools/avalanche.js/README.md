@@ -94,8 +94,8 @@ Avalanche.js comes with its own AVM Keychain. This keychain is used in the funct
 ```js
 let myNetworkID = 12345; //default is 3, we want to override that for our local network
 let myBlockchainID = "GJABrZ9A6UQFpwjPU8MDxDd8vuyRoDVeDAXc694wJ5t3zEkhU"; // The AVM blockchainID on this network
-let ava = new avalanche.Avalanche("localhost", 9650, "http", myNetworkID, myBlockchainID);
-let avm = ava.AVM(); //returns a reference to the AVM API used by Avalanche.js
+let avax = new avalanche.Avalanche("localhost", 9650, "http", myNetworkID, myBlockchainID);
+let avm = avax.AVM(); //returns a reference to the AVM API used by Avalanche.js
 ```
 
 ### Accessing the keychain
@@ -172,8 +172,8 @@ This example creates an asset in the AVM and publishes it to the Avalanche Platf
 
 ```js
 let mynetworkID = 12345; //default is 3, we want to override that for our local network
-let ava = new avalanche.Avalanche("localhost", 9650, "https", mynetworkID);
-let avm = ava.AVM(); //returns a reference to the AVM API used by Avalanche.js
+let avax = new avalanche.Avalanche("localhost", 9650, "https", mynetworkID);
+let avm = avax.AVM(); //returns a reference to the AVM API used by Avalanche.js
 ```
 
 ### Describe the new asset
@@ -280,8 +280,8 @@ This example sends an asset in the AVM to a single recipient. The first step in 
 
 ```js
 let mynetworkID = 12345; //default is 3, we want to override that for our local network
-let ava = new avalanche.Avalanche("localhost", 9650, "https", mynetworkID);
-let avm = ava.AVM(); //returns a reference to the AVM API used by Avalanche.js
+let avax = new avalanche.Avalanche("localhost", 9650, "https", mynetworkID);
+let avm = avax.AVM(); //returns a reference to the AVM API used by Avalanche.js
 ```
 
 We're also assuming that the keystore contains a list of addresses used in this transaction.

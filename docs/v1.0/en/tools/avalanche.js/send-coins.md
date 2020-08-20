@@ -12,8 +12,8 @@ import {
 
 let myNetworkID = 1; //default is 3, we want to override that for our local network
 let myBlockchainID = "GJABrZ9A6UQFpwjPU8MDxDd8vuyRoDVeDAXc694wJ5t3zEkhU"; // The XChain blockchainID on this network
-let ava = new avalanche.Avalanche("localhost", 9650, "http", myNetworkID, myBlockchainID);
-let xchain = ava.XChain(); //returns a reference to the XChain used by Avalanche.js
+let avax = new avalanche.Avalanche("localhost", 9650, "http", myNetworkID, myBlockchainID);
+let xchain = avax.XChain(); //returns a reference to the XChain used by Avalanche.js
 ```
 
 We're also assuming that the keystore contains a list of addresses used in this transaction.

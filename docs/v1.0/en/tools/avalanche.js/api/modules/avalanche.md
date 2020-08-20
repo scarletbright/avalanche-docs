@@ -6,60 +6,14 @@
 
 ### References
 
-* [APIBase](avalanche.md#apibase)
-* [AVM](avalanche.md#avm)
-* [AVMConstants](avalanche.md#avmconstants)
-* [AVMKeyChain](avalanche.md#avmkeychain)
-* [AVMKeyPair](avalanche.md#avmkeypair)
-* [Address](avalanche.md#address)
-* [Admin](avalanche.md#admin)
-* [AmountInput](avalanche.md#amountinput)
-* [AmountOutput](avalanche.md#amountoutput)
-* [Base58](avalanche.md#base58)
-* [BaseTx](avalanche.md#basetx)
-* [CreateAssetTx](avalanche.md#createassettx)
-* [Credential](avalanche.md#credential)
-* [Defaults](avalanche.md#defaults)
-* [Health](avalanche.md#health)
-* [Info](avalanche.md#info)
-* [InitialStates](avalanche.md#initialstates)
-* [Input](avalanche.md#input)
-* [JRPCAPI](avalanche.md#jrpcapi)
-* [KeyChain](avalanche.md#keychain)
-* [KeyPair](avalanche.md#keypair)
-* [Keystore](avalanche.md#keystore)
-* [MergeRule](avalanche.md#mergerule)
-* [Metrics](avalanche.md#metrics)
-* [NBytes](avalanche.md#nbytes)
-* [NFTCredential](avalanche.md#nftcredential)
-* [NFTOutBase](avalanche.md#nftoutbase)
-* [NFTTransferOperation](avalanche.md#nfttransferoperation)
-* [NFTTransferOutput](avalanche.md#nfttransferoutput)
-* [Operation](avalanche.md#operation)
-* [OperationTx](avalanche.md#operationtx)
-* [Output](avalanche.md#output)
-* [PersistanceOptions](avalanche.md#persistanceoptions)
-* [Platform](avalanche.md#platform)
-* [RESTAPI](avalanche.md#restapi)
-* [RequestResponseData](avalanche.md#requestresponsedata)
-* [SecpCredential](avalanche.md#secpcredential)
-* [SecpInput](avalanche.md#secpinput)
-* [SecpOutput](avalanche.md#secpoutput)
-* [SelectCredentialClass](avalanche.md#selectcredentialclass)
-* [SelectInputClass](avalanche.md#selectinputclass)
-* [SelectOperationClass](avalanche.md#selectoperationclass)
-* [SelectOutputClass](avalanche.md#selectoutputclass)
-* [SigIdx](avalanche.md#sigidx)
-* [Signature](avalanche.md#signature)
-* [TransferableInput](avalanche.md#transferableinput)
-* [TransferableOperation](avalanche.md#transferableoperation)
-* [TransferableOutput](avalanche.md#transferableoutput)
-* [Tx](avalanche.md#tx)
-* [UTXO](avalanche.md#utxo)
-* [UTXOID](avalanche.md#utxoid)
-* [UTXOSet](avalanche.md#utxoset)
-* [UnixNow](avalanche.md#unixnow)
-* [UnsignedTx](avalanche.md#unsignedtx)
+* [admin](avalanche.md#admin)
+* [avm](avalanche.md#avm)
+* [common](avalanche.md#common)
+* [health](avalanche.md#health)
+* [info](avalanche.md#info)
+* [keystore](avalanche.md#keystore)
+* [metrics](avalanche.md#metrics)
+* [platformvm](avalanche.md#platformvm)
 
 ### Classes
 
@@ -67,324 +21,48 @@
 
 ## References
 
-###  APIBase
+###  admin
 
-• **APIBase**:
-
-___
-
-###  AVM
-
-• **AVM**:
+• **admin**:
 
 ___
 
-###  AVMConstants
+###  avm
 
-• **AVMConstants**:
-
-___
-
-###  AVMKeyChain
-
-• **AVMKeyChain**:
+• **avm**:
 
 ___
 
-###  AVMKeyPair
+###  common
 
-• **AVMKeyPair**:
-
-___
-
-###  Address
-
-• **Address**:
+• **common**:
 
 ___
 
-###  Admin
+###  health
 
-• **Admin**:
-
-___
-
-###  AmountInput
-
-• **AmountInput**:
+• **health**:
 
 ___
 
-###  AmountOutput
+###  info
 
-• **AmountOutput**:
-
-___
-
-###  Base58
-
-• **Base58**:
+• **info**:
 
 ___
 
-###  BaseTx
+###  keystore
 
-• **BaseTx**:
-
-___
-
-###  CreateAssetTx
-
-• **CreateAssetTx**:
+• **keystore**:
 
 ___
 
-###  Credential
+###  metrics
 
-• **Credential**:
-
-___
-
-###  Defaults
-
-• **Defaults**:
+• **metrics**:
 
 ___
 
-###  Health
+###  platformvm
 
-• **Health**:
-
-___
-
-###  Info
-
-• **Info**:
-
-___
-
-###  InitialStates
-
-• **InitialStates**:
-
-___
-
-###  Input
-
-• **Input**:
-
-___
-
-###  JRPCAPI
-
-• **JRPCAPI**:
-
-___
-
-###  KeyChain
-
-• **KeyChain**:
-
-___
-
-###  KeyPair
-
-• **KeyPair**:
-
-___
-
-###  Keystore
-
-• **Keystore**:
-
-___
-
-###  MergeRule
-
-• **MergeRule**:
-
-___
-
-###  Metrics
-
-• **Metrics**:
-
-___
-
-###  NBytes
-
-• **NBytes**:
-
-___
-
-###  NFTCredential
-
-• **NFTCredential**:
-
-___
-
-###  NFTOutBase
-
-• **NFTOutBase**:
-
-___
-
-###  NFTTransferOperation
-
-• **NFTTransferOperation**:
-
-___
-
-###  NFTTransferOutput
-
-• **NFTTransferOutput**:
-
-___
-
-###  Operation
-
-• **Operation**:
-
-___
-
-###  OperationTx
-
-• **OperationTx**:
-
-___
-
-###  Output
-
-• **Output**:
-
-___
-
-###  PersistanceOptions
-
-• **PersistanceOptions**:
-
-___
-
-###  Platform
-
-• **Platform**:
-
-___
-
-###  RESTAPI
-
-• **RESTAPI**:
-
-___
-
-###  RequestResponseData
-
-• **RequestResponseData**:
-
-___
-
-###  SecpCredential
-
-• **SecpCredential**:
-
-___
-
-###  SecpInput
-
-• **SecpInput**:
-
-___
-
-###  SecpOutput
-
-• **SecpOutput**:
-
-___
-
-###  SelectCredentialClass
-
-• **SelectCredentialClass**:
-
-___
-
-###  SelectInputClass
-
-• **SelectInputClass**:
-
-___
-
-###  SelectOperationClass
-
-• **SelectOperationClass**:
-
-___
-
-###  SelectOutputClass
-
-• **SelectOutputClass**:
-
-___
-
-###  SigIdx
-
-• **SigIdx**:
-
-___
-
-###  Signature
-
-• **Signature**:
-
-___
-
-###  TransferableInput
-
-• **TransferableInput**:
-
-___
-
-###  TransferableOperation
-
-• **TransferableOperation**:
-
-___
-
-###  TransferableOutput
-
-• **TransferableOutput**:
-
-___
-
-###  Tx
-
-• **Tx**:
-
-___
-
-###  UTXO
-
-• **UTXO**:
-
-___
-
-###  UTXOID
-
-• **UTXOID**:
-
-___
-
-###  UTXOSet
-
-• **UTXOSet**:
-
-___
-
-###  UnixNow
-
-• **UnixNow**:
-
-___
-
-###  UnsignedTx
-
-• **UnsignedTx**:
+• **platformvm**:
