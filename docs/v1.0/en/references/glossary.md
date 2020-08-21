@@ -16,6 +16,7 @@ The Avalanche platform is not prescriptive about addressing schemes. Each VM may
 The Avlanche C-Chain follows the EVM addressing system. It has a secp256k1 public/private keypair. Using the 64 byte address, a hashing function called [keccak256](https://eth-hash.readthedocs.io/en/latest/) is applied to the byte array. The resulting hash is truncated to the first 20 bytes. The address string is represented as a hexidecimal value, always prefixed with "0x".   
 
 The Avalanche X-Chain and P-Chain use a binary 20 byte array for the raw address. It is created as follows:
+
 * Obtain the 33-byte public key of the Secp256k1 keypair
 * This public key is hashed once using SHA256.
 * The resultant hash is then hashed again using RIPEMD160, producing a byte array of length 20. 
@@ -80,11 +81,13 @@ Addresses on the X-Chain and P-Chain follow the Bech32 standard outlined in [BIP
 
 This produces an address such as this:
 
+```
 /* X-Chain address */
 X-avax1kj06lhgx84h39snsljcey3tpc046ze68mek3g5
 
 /* P-Chain address */
 P-avax1kj06lhgx84h39snsljcey3tpc046ze68mek3g5
+```
 
 In this case, the Bech32 breakdown is as follows:
 
