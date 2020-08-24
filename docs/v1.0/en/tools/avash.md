@@ -28,7 +28,7 @@ While Avash can be started without a premade configuration file, it's available 
 Below is the format of an Avash configuration file:
 
 ```yaml
-avalocation: <filepath>
+avalancheLocation: <filepath>
 datadir: <directory>
 log:
   terminal: <log-level>
@@ -44,7 +44,7 @@ The field arguments are described as follows:
 
 ### Fields
 
-#### `avalocation`
+#### `avalancheLocation`
 
 ```
 File path to Avalanche binary.

@@ -1,25 +1,34 @@
-# Tutorial &mdash; Managing AVM Keys
+# Tutorial &mdash; Managing X-Chain Keys
 
 Avalanche.js comes with its own AVM Keychain. This keychain is used in the functions of the API, enabling them to sign using keys it's registered. The first step in this process is to create an instance of Avalanche.js connected to our Avalanche Platform endpoint of choice.
 
 ```js
+import {
+    Avalanche,
+    BinTools,
+    Buffer,
+    BN
+  } from "avalanche" 
+
+let bintools = BinTools.getInstance();
+
 let myNetworkID = 12345; //default is 3, we want to override that for our local network
-let myBlockchainID = "GJABrZ9A6UQFpwjPU8MDxDd8vuyRoDVeDAXc694wJ5t3zEkhU"; // The AVM blockchainID on this network
+let myBlockchainID = "GJABrZ9A6UQFpwjPU8MDxDd8vuyRoDVeDAXc694wJ5t3zEkhU"; // The XChain blockchainID on this network
 let ava = new avalanche.Avalanche("localhost", 9650, "http", myNetworkID, myBlockchainID);
-let avm = ava.AVM(); //returns a reference to the AVM API used by Avalanche.js
+let xchain = ava.XChain(); //returns a reference to the XChain used by Avalanche.js
 ```
 
 ## Accessing the keychain
 
-The keychain is accessed through the AVM API and can be referenced directly or through a reference variable.
+The keychain is accessed through the XChain and can be referenced directly or through a reference variable.
 
 ```js
-let myKeychain = avm.keyChain();
+let myKeychain = xchain.keyChain();
 ```
 
-This exposes the instance of the class AVM Keychain which is created when the AVM API is created. At present, this supports secp256k1 curve for ECDSA key pairs.
+This exposes the instance of the class AVMKeyChain which is created when the XChain API is created. At present, this supports secp256k1 curve for ECDSA key pairs.
 
-## Creating AVM key pairs
+## Creating X-Chain key pairs
 
 The keychain has the ability to create new keypairs for you and return the address assocated with the key pair.
 
@@ -61,10 +70,10 @@ let address = keypair.getAddress(); //returns Buffer
 let addressString = keypair.getAddressString(); //returns string
 
 let pubk = keypair.getPublicKey(); //returns Buffer
-let pubkstr = keypair.getPublicKeyString(); //returns an Avalanche serialized string
+let pubkstr = keypair.getPublicKeyString(); //returns a cb58 encoded string
 
 let privk = keypair.getPrivateKey(); //returns Buffer
-let privkstr = keypair.getPrivateKeyString(); //returns an Avalanche serialized string
+let privkstr = keypair.getPrivateKeyString(); //returns a cb58 encoded string
 
 keypair.generateKey(); //creates a new random keypair
 
@@ -73,6 +82,7 @@ let successul = keypair.importKey(mypk); //returns boolean if private key import
 
 let message = Buffer.from("Wubalubadubdub");
 let signature = keypair.sign(message); //returns a Buffer with the signature
+
 let signerPubk = keypair.recover(message, signature);
 let isValid = keypair.verify(message, signature); //returns a boolean
 ```

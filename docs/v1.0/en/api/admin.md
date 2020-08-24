@@ -108,15 +108,13 @@ Now, instead of interacting with the blockchain whose ID is `sV6o671RtkGBcno1Fia
 
 ### admin.lockProfile
 
-Dump the mutex statistics of the node to the specified file.
+Writes a profile of mutex statistics to `lock.profile`.
 
 #### Signature
 
 ```go
-admin.lockProfile({fileName:string}) -> {success:bool}
+admin.lockProfile() -> {success:bool}
 ```
-
-where `fileName` is the name of the file to dump the information into.
 
 #### Example Call
 
@@ -125,9 +123,34 @@ curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
     "method" :"admin.lockProfile",
-    "params" :{
-        "fileName":"lock.profile"
+    "params" :{}
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "success":true
     }
+}
+```
+
+### admin.memoryProfile
+
+Writes a memory profile of the to `mem.profile`.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"admin.memoryProfile",
+    "params" :{}
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
 ```
 
@@ -145,15 +168,16 @@ curl -X POST --data '{
 
 ### admin.startCPUProfiler
 
-Start profiling the CPU utilization of the node. Will write the profile to the specified file on stop.
+Start profiling the CPU utilization of the node.
+To stop, call `stopCPUProfiler`.
+On stop, writes the profile to `cpu.profile`.
 
 #### Signature
 
 ```go
-admin.startCPUProfiler({fileName:string}) -> {success:bool}
+admin.startCPUProfiler() -> {success:bool}
 ```
 
-where `fileName` is the name of the file to write the profile to.
 
 #### Example Call
 
@@ -162,9 +186,7 @@ curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
     "method" :"admin.startCPUProfiler",
-    "params" :{
-        "fileName":"cpu.profile"
-    }
+    "params" :{}
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
 ```
 

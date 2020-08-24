@@ -2,18 +2,28 @@
 
 ## Address
 
-An address is a notion that exists in certain blockchain-based applications for transferring value. 
-Addresses hold value and value is transferred between addresses. Real-life entities control addresses 
-and the value held in them by holding a private key, a secret piece of information that allows them 
-to transfer value from them.
+An address is used to identify private key holders when transferring value. Most addressing systems follow this pattern;
 
-The Avalanche platform is not prescriptive about addressing schemes. Each VM may select its own addressing scheme. 
+* Users control private keys.
+* Addresses are used to identify private key owners without exposing the private key itself. 
+* Addresses are derived from public keys.
+* Using a signature signed from the private key and the message the private key signed, the public key can be recovered. 
+* The public key is then used to generate the address.
+* The address generation function changes from VM to VM.
 
-The Avlanche C-Chain follows the EVM addressing system. 
+The Avalanche platform is not prescriptive about addressing schemes. Each VM may select its own addressing scheme. Default chains on the Avalanche platfrom use the following addressing schemes: 
 
-The Avalanche X-Chain and P-Chain use their own addressing system. The 33-byte public key of the Secp256k1 keypair is hashed once using SHA256 and then hashed again using RIPEMD160, producing a byte array of length 20. This byte array is the address. Additional information about the raw-binary implementation of addressing on the default subnet can be found in [cryptographic primitives](../cryptographic-primitives/#secp256k1-addresses). 
+The Avlanche C-Chain follows the EVM addressing system. It has a secp256k1 public/private keypair. Using the 64 byte address, a hashing function called [keccak256](https://eth-hash.readthedocs.io/en/latest/) is applied to the byte array. The resulting hash is truncated to the first 20 bytes. The address string is represented as a hexidecimal value, always prefixed with "0x".   
 
-There are conventions in the Avalanche platform for distributing readable addresses. All addresses are [CB58 encoded](#cb58). By convention the blockchainID for the address is prepended to the address in the format `chainID-address`. Aliases for chainID may be used as well. Example:
+The Avalanche X-Chain and P-Chain use a binary 20 byte array for the raw address. It is created as follows:
+
+* Obtain the 33-byte public key of the Secp256k1 keypair
+* This public key is hashed once using SHA256.
+* The resultant hash is then hashed again using RIPEMD160, producing a byte array of length 20. 
+
+This byte array is the address. Additional information about the raw-binary implementation of addressing on the default subnet can be found in [cryptographic primitives](../cryptographic-primitives/#secp256k1-addresses). 
+
+There are conventions in the Avalanche platform for distributing readable addresses. All addresses are [Bech32](#bech32) encoded. By convention the blockchainID for the address is prepended to the address in the format `chainID-address`. Aliases for chainID may be used as well. Example:
 
 ```
 /* P-Chain address */
@@ -31,6 +41,15 @@ P-avax1kj06lhgx84h39snsljcey3tpc046ze68mek3g5
 /* Same address, using the chainID instead of the chain alias */
 11111111111111111111111111111111LpoYY-avax1kj06lhgx84h39snsljcey3tpc046ze68mek3g5
 ```
+
+In our Bech32 standard, there are pre-defined HRPs for our addresses:
+
+* NetworkID 1: avax
+* NetworkID 2: cascade
+* NetworkID 3: denali
+* NetworkID 4: everest
+* NetworkID 12345: local
+* Other NetworkIDs: custom
 
 ## AVAX
 
@@ -50,6 +69,36 @@ The Avalanche Virtual Machine is one of the Avalanche network's built-in virtual
 It defines an application for creating and trading smart assets.
 In a slight abuse of notation, we also call the main instance of the AVM 
 "the AVM" since this is the one people almost always use.
+
+## Bech32
+
+Addresses on the X-Chain and P-Chain follow the Bech32 standard outlined in [BIP 0173](https://en.bitcoin.it/wiki/BIP_0173). There are four parts to this addressing scheme, in order of appearance:
+
+1. A Human-Readable Part (HRP).
+2. The number "1" as a separator (the last digit 1 seen is considered the separator).
+3. Base-32 encoded string for the data-part of the address (the 20 byte address itself).
+4. A 6-character base-32 encoded error correction code using the BCH algorithm.
+
+This produces an address such as this:
+
+```
+/* X-Chain address */
+X-avax1kj06lhgx84h39snsljcey3tpc046ze68mek3g5
+
+/* P-Chain address */
+P-avax1kj06lhgx84h39snsljcey3tpc046ze68mek3g5
+```
+
+In this case, the Bech32 breakdown is as follows:
+
+1. An HRP of "avax".
+2. The separator "1".
+3. The base32 address part of "kj06lhgx84h39snsljcey3tpc046ze68".
+4. A correction code of "mek3g5".
+
+**Note:** the chainid is not considered part of the HRP of the Bech32 address. Both of these addresses represent the same private key, but on different chains.
+
+The error correction code can be used to detect up to 4 errors with certainty in the entire address. While it can automatically correct these errors, because it's is uncertain how many errors may exist in the address when typed, it is inadvisable to correct them simply make suggestions where the errors MAY occur to the users. Automatic correct can result in assets being sent to the wrong place.
 
 ## Blockchain
 

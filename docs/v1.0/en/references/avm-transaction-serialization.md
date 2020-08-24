@@ -1920,6 +1920,7 @@ message Utxo {
 
 Let's make a UTXO from the signed transaction created above:
 
+- **`CodecID`**: `0`
 - **`TxID`**: `0xf966750f438867c3c9828ddcdbe660e21ccdbb36a9276958f011ba472f75d4e7`
 - **`UTXOIndex`**: 0 = 0x00000000
 - **`AssetID`**: `0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`

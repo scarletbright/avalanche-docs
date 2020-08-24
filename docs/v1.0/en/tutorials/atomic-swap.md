@@ -107,6 +107,7 @@ curl -X POST --data '{
     "method": "platform.importAVAX",
     "params": {
         "to":"P-avax1wkmfja9ve3lt3n9ye4qp3l3gj9k2mz7ep45j7q",
+        "sourceChain":"X",
         "username":"myUsername",
         "password":"myPassword",
     },
@@ -211,8 +212,9 @@ curl -X POST --data '{
     "method" :"avm.importAVAX",
     "params" :{
         "to":"X-avax1fjn5rffqvny7uk3tjegjs6snwjs3hhgcpcxfax",
+        "sourceChain":"P",
         "username":"myUsername",
-        "password":"myPassword",
+        "password":"myPassword"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
