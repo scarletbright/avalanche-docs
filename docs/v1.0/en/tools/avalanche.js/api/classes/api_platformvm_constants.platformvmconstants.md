@@ -10,9 +10,9 @@
 
 ### Properties
 
-* [ADDDEFAULTSUBNETDELEGATORTX](api_platformvm_constants.platformvmconstants.md#static-adddefaultsubnetdelegatortx)
-* [ADDDEFAULTSUBNETVALIDATORTX](api_platformvm_constants.platformvmconstants.md#static-adddefaultsubnetvalidatortx)
-* [ADDNONDEFAULTSUBNETVALIDATORTX](api_platformvm_constants.platformvmconstants.md#static-addnondefaultsubnetvalidatortx)
+* [ADDPRIMARYDELEGATORTX](api_platformvm_constants.platformvmconstants.md#static-addprimarydelegatortx)
+* [ADDPRIMARYVALIDATORTX](api_platformvm_constants.platformvmconstants.md#static-addprimaryvalidatortx)
+* [ADDSUBNETVALIDATORTX](api_platformvm_constants.platformvmconstants.md#static-addsubnetvalidatortx)
 * [ADDRESSLENGTH](api_platformvm_constants.platformvmconstants.md#static-addresslength)
 * [ADVANCETIMETX](api_platformvm_constants.platformvmconstants.md#static-advancetimetx)
 * [ASSETIDLEN](api_platformvm_constants.platformvmconstants.md#static-assetidlen)
@@ -38,25 +38,25 @@
 
 ## Properties
 
-### `Static` ADDDEFAULTSUBNETDELEGATORTX
+### `Static` ADDPRIMARYDELEGATORTX
 
-▪ **ADDDEFAULTSUBNETDELEGATORTX**: *number* = 14
+▪ **ADDPRIMARYDELEGATORTX**: *number* = 14
 
 Defined in src/apis/platformvm/constants.ts:34
 
 ___
 
-### `Static` ADDDEFAULTSUBNETVALIDATORTX
+### `Static` ADDPRIMARYVALIDATORTX
 
-▪ **ADDDEFAULTSUBNETVALIDATORTX**: *number* = 12
+▪ **ADDPRIMARYVALIDATORTX**: *number* = 12
 
 Defined in src/apis/platformvm/constants.ts:30
 
 ___
 
-### `Static` ADDNONDEFAULTSUBNETVALIDATORTX
+### `Static` ADDSUBNETVALIDATORTX
 
-▪ **ADDNONDEFAULTSUBNETVALIDATORTX**: *number* = 13
+▪ **ADDSUBNETVALIDATORTX**: *number* = 13
 
 Defined in src/apis/platformvm/constants.ts:32
 

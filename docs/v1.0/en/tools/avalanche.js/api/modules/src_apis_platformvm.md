@@ -6,7 +6,7 @@
 
 ### References
 
-* [AddDefaultSubnetDelegatorTx](src_apis_platformvm.md#adddefaultsubnetdelegatortx)
+* [AddPrimaryDelegatorTx](src_apis_platformvm.md#addprimarydelegatortx)
 * [AmountInput](src_apis_platformvm.md#amountinput)
 * [AmountOutput](src_apis_platformvm.md#amountoutput)
 * [AssetAmount](src_apis_platformvm.md#assetamount)
@@ -35,9 +35,9 @@
 
 ## References
 
-###  AddDefaultSubnetDelegatorTx
+###  AddPrimaryDelegatorTx
 
-• **AddDefaultSubnetDelegatorTx**:
+• **AddPrimaryDelegatorTx**:
 
 ___
 

@@ -20,7 +20,7 @@
 * [CSVPayload](src_utils.md#csvpayload)
 * [ChainAddressPayload](src_utils.md#chainaddresspayload)
 * [DefaultNetworkID](src_utils.md#defaultnetworkid)
-* [DefaultSubnetID](src_utils.md#defaultsubnetid)
+* [PrimaryNetworkID](src_utils.md#primarynetworkid)
 * [Defaults](src_utils.md#defaults)
 * [EMAILPayload](src_utils.md#emailpayload)
 * [FallbackHRP](src_utils.md#fallbackhrp)
@@ -154,9 +154,9 @@ ___
 
 ___
 
-###  DefaultSubnetID
+###  PrimaryNetworkID
 
-• **DefaultSubnetID**:
+• **PrimaryNetworkID**:
 
 ___
 

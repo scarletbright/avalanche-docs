@@ -2,7 +2,7 @@
 
 ## Introduction
 
-AVAX tokens exist on both the X-Chain, where they can be traded, and the P-Chain, where they can be provided as a stake when validating the Default Subnet.
+AVAX tokens exist on both the X-Chain, where they can be traded, and the P-Chain, where they can be provided as a stake when validating the Primary Network.
 
 Avalanche supports **atomic swaps** of AVAX between the X-Chain and P-chain.
 (In the future Avalanche will support more generic atomic swaps between chains.)
@@ -175,7 +175,7 @@ The response should look like this:
 ```
 
 Woo! We successfully moved AVAX from the X-Chain to the P-Chain.
-Now we can use the AVAX held by this P-Chain address to provide a stake in order to validate the Default Subnet.
+Now we can use the AVAX held by this P-Chain address to provide a stake in order to validate the Primary Network.
 
 ## Export AVAX from the P-Chain to the X-Chain
 

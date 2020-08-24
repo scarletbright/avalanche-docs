@@ -6,5 +6,5 @@
 
 ### Classes
 
-* [AddDefaultSubnetDelegatorTx](../classes/api_platformvm_validationtx.adddefaultsubnetdelegatortx.md)
+* [AddPrimaryDelegatorTx](../classes/api_platformvm_validationtx.addprimarydelegatortx.md)
 * [ValidatorTx](../classes/api_platformvm_validationtx.validatortx.md)

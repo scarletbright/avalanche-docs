@@ -345,15 +345,15 @@ The response should be:
 
 In the same fashion, we could check `X-avax1xeaj0h9uy7c5jn6fxjp0rg4g39jeh0hl27vf75` to see that AVAX we sent was deducted from its balance.
 
-## Validate the Default Subnet (Stake)
+## Validate the Primary Network (Stake)
 
 [Subnets](../core-concepts/overview.md#what-are-subnets) are a powerful feature of the Avalanche network.
 A Subnet is a set of validators that work to achieve consensus on a set of blockchains.
 
-The Default Subnet is inherent to the Avalanche network, and it validates Avalanche's [built-in blockchains](../core-concepts/overview.md#built-in-blockchains).
+The Primary Network is inherent to the Avalanche network, and it validates Avalanche's [built-in blockchains](../core-concepts/overview.md#built-in-blockchains).
 Avalanche uses Proof-of-Stake, so to become a validator one needs to provide a stake, or bond, in AVAX tokens.
 
-Let's add your node to the Default Subnet.
+Let's add your node to the Primary Network.
 
 ### Create a P-Chain Address
 
@@ -388,7 +388,7 @@ The response contains the new address your user controls:
 
 ### Fund Your P-Chain Address
 
-As mentioned before, in order validate the Default Subnet, you need to stake some AVAX tokens.
+As mentioned before, in order validate the Primary Network, you need to stake some AVAX tokens.
 Right now, your P-Chain address has no AVAX.
 AVAX tokens are transferrable between the X-Chain (where you sent funds with the faucet) and the P-Chain.
 Let's send some AVAX to your P-Chain address from the X-Chain.
@@ -486,12 +486,12 @@ Great! Now your P-Chain address has enough AVAX tokens to provide a stake.
 
 ### Issue the Transaction
 
-To add a node the Default Subnet, we'll call [`platform.addDefaultSubnetValidator`](../api/platform.md#platformadddefaultsubnetvalidator).
+To add a node the Primary Network, we'll call [`platform.addPrimaryValidator`](../api/platform.md#platformaddprimaryvalidator).
 
 This method's signature is:
 
 ```go
-platform.addDefaultSubnetValidator(
+platform.addPrimaryValidator(
     {
         nodeID: string,
         startTime: int,
@@ -534,19 +534,19 @@ The response has your node's ID:
 
 ### `startTime` and `endTime`
 
-When one issues a transaction to join the Default Subnet they specify the time they will enter (start validating) and leave (stop validating.)
-The minimum duration that one can validate the Default Subnet is 24 hours, and the maximum duration is one year.
-One can re-enter the Default Subnet after leaving, it's just that the maximum *continuous* duration is one year.
-`startTime` and `endTime` are the Unix times when your validator will start and stop validating the Default Subnet, respectively. `startTime` must be in the future relative to the time the transaction is issued.
+When one issues a transaction to join the Primary Network they specify the time they will enter (start validating) and leave (stop validating.)
+The minimum duration that one can validate the Primary Network is 24 hours, and the maximum duration is one year.
+One can re-enter the Primary Network after leaving, it's just that the maximum *continuous* duration is one year.
+`startTime` and `endTime` are the Unix times when your validator will start and stop validating the Primary Network, respectively. `startTime` must be in the future relative to the time the transaction is issued.
 
 ### `stakeAmount`
 
-In order to validate the Default Subnet one must stake AVAX tokens.
+In order to validate the Primary Network one must stake AVAX tokens.
 This parameter defines the amount of AVAX staked.
 
 ### `rewardAddress`
 
-When a validator stops validating the Default Subnet, they will receive a reward if they are sufficiently responsive and correct while they validated the Default Subnet. These tokens are sent to `rewardAddress`. The original stake will be sent back to an address controlled by `username`.
+When a validator stops validating the Primary Network, they will receive a reward if they are sufficiently responsive and correct while they validated the Primary Network. These tokens are sent to `rewardAddress`. The original stake will be sent back to an address controlled by `username`.
 
 A validator's stake is never slashed, regardless of their behavior; they will always receive their stake back when they're done validating.
 
@@ -567,7 +567,7 @@ Now let's issue the transaction. We use the shell command `date` to compute the 
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.addDefaultSubnetValidator",
+    "method": "platform.addPrimaryValidator",
     "params": {
         "nodeID":"NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
         "startTime":'$(date --date="10 minutes" +%s)',
@@ -608,7 +608,7 @@ curl -X POST --data '{
 ```
 
 The status should be `Committed`, meaning the transaction was successful.
-We can call [`platform.getPendingValidators`](../api/platform.md#platformgetpendingvalidators) and see that the node is now in the pending validator set for the Default Subnet:
+We can call [`platform.getPendingValidators`](../api/platform.md#platformgetpendingvalidators) and see that the node is now in the pending validator set for the Primary Network:
 
 ```json
 curl -X POST --data '{
@@ -638,10 +638,10 @@ The response should include the node we just added:
 }
 ```
 
-When the time reaches `startTime`, this node will start validating the Default Subnet.
-When it reaches `endTime`, this node will stop validating the Default Subnet.
+When the time reaches `startTime`, this node will start validating the Primary Network.
+When it reaches `endTime`, this node will stop validating the Primary Network.
 The staked AVAX will be returned to an address controlled by `username`, and the rewards, if any, will be given to `rewardAddress`.
-Then, if you want, you can rejoin the Default Subnet.
+Then, if you want, you can rejoin the Primary Network.
 
 ## Next Steps
 

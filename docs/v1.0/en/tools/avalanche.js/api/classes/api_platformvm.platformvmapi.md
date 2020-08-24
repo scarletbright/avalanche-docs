@@ -31,9 +31,9 @@ Class for interacting with a node's PlatformVMAPI
 
 ### Methods
 
-* [addDefaultSubnetDelegator](api_platformvm.platformvmapi.md#adddefaultsubnetdelegator)
-* [addDefaultSubnetValidator](api_platformvm.platformvmapi.md#adddefaultsubnetvalidator)
-* [addNonDefaultSubnetValidator](api_platformvm.platformvmapi.md#addnondefaultsubnetvalidator)
+* [addPrimaryDelegator](api_platformvm.platformvmapi.md#addprimarydelegator)
+* [addPrimaryValidator](api_platformvm.platformvmapi.md#addprimaryvalidator)
+* [addSubnetValidator](api_platformvm.platformvmapi.md#addsubnetvalidator)
 * [addressFromBuffer](api_platformvm.platformvmapi.md#addressfrombuffer)
 * [buildExportTx](api_platformvm.platformvmapi.md#buildexporttx)
 * [buildImportTx](api_platformvm.platformvmapi.md#buildimporttx)
@@ -173,13 +173,13 @@ Defined in src/common/jrpcapi.ts:19
 
 ## Methods
 
-###  addDefaultSubnetDelegator
+###  addPrimaryDelegator
 
-▸ **addDefaultSubnetDelegator**(`username`: string, `password`: string, `nodeID`: string, `startTime`: Date, `endTime`: Date, `stakeAmount`: BN, `rewardAddress`: string): *Promise‹string›*
+▸ **addPrimaryDelegator**(`username`: string, `password`: string, `nodeID`: string, `startTime`: Date, `endTime`: Date, `stakeAmount`: BN, `rewardAddress`: string): *Promise‹string›*
 
 Defined in src/apis/platformvm/api.ts:478
 
-Add a delegator to the Default Subnet.
+Add a delegator to the Primary Network.
 
 **Parameters:**
 
@@ -199,13 +199,13 @@ Promise for an array of validator's stakingIDs.
 
 ___
 
-###  addDefaultSubnetValidator
+###  addPrimaryValidator
 
-▸ **addDefaultSubnetValidator**(`username`: string, `password`: string, `nodeID`: string, `startTime`: Date, `endTime`: Date, `stakeAmount`: BN, `rewardAddress`: string, `delegationFeeRate`: BN): *Promise‹string›*
+▸ **addPrimaryValidator**(`username`: string, `password`: string, `nodeID`: string, `startTime`: Date, `endTime`: Date, `stakeAmount`: BN, `rewardAddress`: string, `delegationFeeRate`: BN): *Promise‹string›*
 
 Defined in src/apis/platformvm/api.ts:396
 
-Add a validator to the Default Subnet.
+Add a validator to the Primary Network.
 
 **Parameters:**
 
@@ -226,13 +226,13 @@ Promise for a base58 string of the unsigned transaction.
 
 ___
 
-###  addNonDefaultSubnetValidator
+###  addSubnetValidator
 
-▸ **addNonDefaultSubnetValidator**(`username`: string, `password`: string, `nodeID`: string, `subnetID`: Buffer | string, `startTime`: Date, `endTime`: Date, `weight`: number): *Promise‹string›*
+▸ **addSubnetValidator**(`username`: string, `password`: string, `nodeID`: string, `subnetID`: Buffer | string, `startTime`: Date, `endTime`: Date, `weight`: number): *Promise‹string›*
 
 Defined in src/apis/platformvm/api.ts:436
 
-Add a validator to a Subnet other than the Default Subnet. The validator must validate the Default Subnet for the entire duration they validate this Subnet.
+Add a validator to a Subnet other than the Primary Network. The validator must validate the Primary Network for the entire duration they validate this Subnet.
 
 **Parameters:**
 

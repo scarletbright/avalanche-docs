@@ -17,7 +17,7 @@
 * [CChainAlias](common_constants.md#const-cchainalias)
 * [CChainVMName](common_constants.md#const-cchainvmname)
 * [DefaultNetworkID](common_constants.md#const-defaultnetworkid)
-* [DefaultSubnetID](common_constants.md#const-defaultsubnetid)
+* [PrimaryNetworkID](common_constants.md#const-primarynetworkid)
 * [FallbackHRP](common_constants.md#const-fallbackhrp)
 * [FallbackNetworkName](common_constants.md#const-fallbacknetworkname)
 * [PChainAlias](common_constants.md#const-pchainalias)
@@ -85,9 +85,9 @@ Defined in src/utils/constants.ts:45
 
 ___
 
-### `Const` DefaultSubnetID
+### `Const` PrimaryNetworkID
 
-• **DefaultSubnetID**: *string* = "11111111111111111111111111111111LpoYY"
+• **PrimaryNetworkID**: *string* = "11111111111111111111111111111111LpoYY"
 
 Defined in src/utils/constants.ts:48
 
