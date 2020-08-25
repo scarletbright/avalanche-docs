@@ -292,7 +292,7 @@ To stake is to lock up some AVAX tokens, making them temporarily unspendable.
 
 ### How Can I Validate the Primary Network (Stake AVAX)
 
-See [this tutorial.](../tutorials/adding-validators.md#add-a-validator-to-the-default-subnet)
+See [this tutorial.](../tutorials/adding-validators.md#add-a-validator-to-the-primary-network)
 
 ### Validation Rewards
 

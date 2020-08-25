@@ -103,7 +103,7 @@ Now let's issue the transaction. We use the shell command `date` to compute the 
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.addDefaultSubnetValidator",
+    "method": "platform.addValidator",
     "params": {
         "nodeID":"NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
         "startTime":'$(date --date="10 minutes" +%s)',
