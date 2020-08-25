@@ -992,6 +992,7 @@ avm.Send({
     amount: int,
     assetID: string,
     to: string,
+    memo: string,
     username: string,
     password: string
 }) -> {txID: string}
@@ -1002,6 +1003,7 @@ avm.Send({
   For AVAX this is 1 nAVAX (one billionth of 1 AVAX.)
 * The asset is sent from addresses controlled by user `username`.
   (Of course, that user will need to hold at least the balance of the asset being sent.)
+* You can attach a `memo`, whose length can be up to 256 bytes.
 
 #### Example Call
 
