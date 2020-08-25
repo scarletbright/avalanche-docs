@@ -124,7 +124,7 @@ Let's make an unsigned base tx that uses the inputs and outputs from the previou
 
 ***
 
-## Platform `AddPrimaryDelegatorTx` Specification
+## Platform `AddDelegatorTx` Specification
 
 ### Unsigned Add Primary Network Delegator Tx Identifier
 

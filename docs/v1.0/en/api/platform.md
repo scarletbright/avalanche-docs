@@ -14,7 +14,7 @@ This API uses the `json 2.0` RPC format.
 
 ## Methods
 
-### platform.addPrimaryDelegator
+### platform.addDelegator
 
 Add a delegator to the Primary Network.
 
@@ -28,7 +28,7 @@ The delegation period must be a subset of the perdiod that the delegatee validat
 #### Signature
 
 ```go
-platform.addPrimaryDelegator(
+platform.addDelegator(
     {
         nodeID: string,
         startTime: int,
@@ -55,7 +55,7 @@ platform.addPrimaryDelegator(
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.addPrimaryDelegator",
+    "method": "platform.addDelegator",
     "params": {
         "nodeID":"NodeID-MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ",
         "rewardAddress":"P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy",
@@ -81,14 +81,14 @@ curl -X POST --data '{
 }
 ```
 
-### platform.addPrimaryValidator
+### platform.addValidator
 
 Add a validator to the Primary Network.
 
 #### Signature
 
 ```go
-platform.addPrimaryValidator(
+platform.addValidator(
     {
         nodeID: string,
         startTime: int,
@@ -122,7 +122,7 @@ In this example we use shell command `date` to compute Unix times 10 minutes and
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.addPrimaryValidator",
+    "method": "platform.addValidator",
     "params": {
         "nodeID":"NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
         "rewardAddress":"P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy",

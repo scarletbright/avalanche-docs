@@ -486,12 +486,12 @@ Great! Now your P-Chain address has enough AVAX tokens to provide a stake.
 
 ### Issue the Transaction
 
-To add a node the Primary Network, we'll call [`platform.addPrimaryValidator`](../api/platform.md#platformaddprimaryvalidator).
+To add a node the Primary Network, we'll call [`platform.addValidator`](../api/platform.md#platformaddvalidator).
 
 This method's signature is:
 
 ```go
-platform.addPrimaryValidator(
+platform.addValidator(
     {
         nodeID: string,
         startTime: int,
@@ -567,7 +567,7 @@ Now let's issue the transaction. We use the shell command `date` to compute the 
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.addPrimaryValidator",
+    "method": "platform.addValidator",
     "params": {
         "nodeID":"NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
         "startTime":'$(date --date="10 minutes" +%s)',

@@ -31,8 +31,8 @@ Class for interacting with a node's PlatformVMAPI
 
 ### Methods
 
-* [addPrimaryDelegator](api_platformvm.platformvmapi.md#addprimarydelegator)
-* [addPrimaryValidator](api_platformvm.platformvmapi.md#addprimaryvalidator)
+* [addDelegator](api_platformvm.platformvmapi.md#adddelegator)
+* [addValidator](api_platformvm.platformvmapi.md#addvalidator)
 * [addSubnetValidator](api_platformvm.platformvmapi.md#addsubnetvalidator)
 * [addressFromBuffer](api_platformvm.platformvmapi.md#addressfrombuffer)
 * [buildExportTx](api_platformvm.platformvmapi.md#buildexporttx)
@@ -173,9 +173,9 @@ Defined in src/common/jrpcapi.ts:19
 
 ## Methods
 
-###  addPrimaryDelegator
+###  addDelegator
 
-▸ **addPrimaryDelegator**(`username`: string, `password`: string, `nodeID`: string, `startTime`: Date, `endTime`: Date, `stakeAmount`: BN, `rewardAddress`: string): *Promise‹string›*
+▸ **addDelegator**(`username`: string, `password`: string, `nodeID`: string, `startTime`: Date, `endTime`: Date, `stakeAmount`: BN, `rewardAddress`: string): *Promise‹string›*
 
 Defined in src/apis/platformvm/api.ts:478
 
@@ -199,9 +199,9 @@ Promise for an array of validator's stakingIDs.
 
 ___
 
-###  addPrimaryValidator
+###  addValidator
 
-▸ **addPrimaryValidator**(`username`: string, `password`: string, `nodeID`: string, `startTime`: Date, `endTime`: Date, `stakeAmount`: BN, `rewardAddress`: string, `delegationFeeRate`: BN): *Promise‹string›*
+▸ **addValidator**(`username`: string, `password`: string, `nodeID`: string, `startTime`: Date, `endTime`: Date, `stakeAmount`: BN, `rewardAddress`: string, `delegationFeeRate`: BN): *Promise‹string›*
 
 Defined in src/apis/platformvm/api.ts:396
 

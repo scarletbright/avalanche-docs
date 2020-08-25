@@ -22,12 +22,12 @@ To start your node and connect to the Avalanche Public Testnet, follow the quick
 
 ## Add a Validator to the Primary Network
 
-To add a node the Primary Network, we'll call [`platform.addPrimaryValidator`](../api/platform.md#platformaddprimaryvalidator).
+To add a node the Primary Network, we'll call [`platform.addValidator`](../api/platform.md#platformaddvalidator).
 
 This method's signature is:
 
 ```go
-platform.addPrimaryValidator(
+platform.addValidator(
     {
         nodeID: string,
         startTime: int,

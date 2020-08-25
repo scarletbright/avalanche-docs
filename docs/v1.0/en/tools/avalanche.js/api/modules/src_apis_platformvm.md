@@ -6,7 +6,7 @@
 
 ### References
 
-* [AddPrimaryDelegatorTx](src_apis_platformvm.md#addprimarydelegatortx)
+* [AddDelegatorTx](src_apis_platformvm.md#adddelegatortx)
 * [AmountInput](src_apis_platformvm.md#amountinput)
 * [AmountOutput](src_apis_platformvm.md#amountoutput)
 * [AssetAmount](src_apis_platformvm.md#assetamount)
@@ -35,9 +35,9 @@
 
 ## References
 
-###  AddPrimaryDelegatorTx
+###  AddDelegatorTx
 
-• **AddPrimaryDelegatorTx**:
+• **AddDelegatorTx**:
 
 ___
 

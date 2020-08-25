@@ -10,7 +10,7 @@ Abstract class representing an transactions with validation information.
 
   ↳ **ValidatorTx**
 
-  ↳ [AddPrimaryDelegatorTx](api_platformvm_validationtx.addprimarydelegatortx.md)
+  ↳ [AddDelegatorTx](api_platformvm_validationtx.adddelegatortx.md)
 
 ## Index
 

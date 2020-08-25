@@ -1,59 +1,59 @@
-[avalanche](../README.md) › [API-PlatformVM-ValidationTx](../modules/api_platformvm_validationtx.md) › [AddPrimaryDelegatorTx](api_platformvm_validationtx.addprimarydelegatortx.md)
+[avalanche](../README.md) › [API-PlatformVM-ValidationTx](../modules/api_platformvm_validationtx.md) › [AddDelegatorTx](api_platformvm_validationtx.adddelegatortx.md)
 
-# Class: AddPrimaryDelegatorTx
+# Class: AddDelegatorTx
 
-Class representing an unsigned AddPrimaryDelegatorTx transaction.
+Class representing an unsigned AddDelegatorTx transaction.
 
 ## Hierarchy
 
   ↳ [ValidatorTx](api_platformvm_validationtx.validatortx.md)
 
-  ↳ **AddPrimaryDelegatorTx**
+  ↳ **AddDelegatorTx**
 
 ## Index
 
 ### Constructors
 
-* [constructor](api_platformvm_validationtx.addprimarydelegatortx.md#constructor)
+* [constructor](api_platformvm_validationtx.adddelegatortx.md#constructor)
 
 ### Properties
 
-* [blockchainid](api_platformvm_validationtx.addprimarydelegatortx.md#protected-blockchainid)
-* [endTime](api_platformvm_validationtx.addprimarydelegatortx.md#protected-endtime)
-* [ins](api_platformvm_validationtx.addprimarydelegatortx.md#protected-ins)
-* [memo](api_platformvm_validationtx.addprimarydelegatortx.md#protected-memo)
-* [networkid](api_platformvm_validationtx.addprimarydelegatortx.md#protected-networkid)
-* [nodeID](api_platformvm_validationtx.addprimarydelegatortx.md#protected-nodeid)
-* [numins](api_platformvm_validationtx.addprimarydelegatortx.md#protected-numins)
-* [numouts](api_platformvm_validationtx.addprimarydelegatortx.md#protected-numouts)
-* [outs](api_platformvm_validationtx.addprimarydelegatortx.md#protected-outs)
-* [rewardAddress](api_platformvm_validationtx.addprimarydelegatortx.md#protected-rewardaddress)
-* [stakeAmount](api_platformvm_validationtx.addprimarydelegatortx.md#protected-stakeamount)
-* [stakeOuts](api_platformvm_validationtx.addprimarydelegatortx.md#protected-stakeouts)
-* [startTime](api_platformvm_validationtx.addprimarydelegatortx.md#protected-starttime)
+* [blockchainid](api_platformvm_validationtx.adddelegatortx.md#protected-blockchainid)
+* [endTime](api_platformvm_validationtx.adddelegatortx.md#protected-endtime)
+* [ins](api_platformvm_validationtx.adddelegatortx.md#protected-ins)
+* [memo](api_platformvm_validationtx.adddelegatortx.md#protected-memo)
+* [networkid](api_platformvm_validationtx.adddelegatortx.md#protected-networkid)
+* [nodeID](api_platformvm_validationtx.adddelegatortx.md#protected-nodeid)
+* [numins](api_platformvm_validationtx.adddelegatortx.md#protected-numins)
+* [numouts](api_platformvm_validationtx.adddelegatortx.md#protected-numouts)
+* [outs](api_platformvm_validationtx.adddelegatortx.md#protected-outs)
+* [rewardAddress](api_platformvm_validationtx.adddelegatortx.md#protected-rewardaddress)
+* [stakeAmount](api_platformvm_validationtx.adddelegatortx.md#protected-stakeamount)
+* [stakeOuts](api_platformvm_validationtx.adddelegatortx.md#protected-stakeouts)
+* [startTime](api_platformvm_validationtx.adddelegatortx.md#protected-starttime)
 
 ### Methods
 
-* [fromBuffer](api_platformvm_validationtx.addprimarydelegatortx.md#frombuffer)
-* [getBlockchainID](api_platformvm_validationtx.addprimarydelegatortx.md#getblockchainid)
-* [getEndTime](api_platformvm_validationtx.addprimarydelegatortx.md#getendtime)
-* [getIns](api_platformvm_validationtx.addprimarydelegatortx.md#getins)
-* [getMemo](api_platformvm_validationtx.addprimarydelegatortx.md#getmemo)
-* [getNetworkID](api_platformvm_validationtx.addprimarydelegatortx.md#getnetworkid)
-* [getNodeID](api_platformvm_validationtx.addprimarydelegatortx.md#getnodeid)
-* [getNodeIDString](api_platformvm_validationtx.addprimarydelegatortx.md#getnodeidstring)
-* [getOuts](api_platformvm_validationtx.addprimarydelegatortx.md#getouts)
-* [getStartTime](api_platformvm_validationtx.addprimarydelegatortx.md#getstarttime)
-* [getTxType](api_platformvm_validationtx.addprimarydelegatortx.md#gettxtype)
-* [sign](api_platformvm_validationtx.addprimarydelegatortx.md#sign)
-* [toBuffer](api_platformvm_validationtx.addprimarydelegatortx.md#tobuffer)
-* [toString](api_platformvm_validationtx.addprimarydelegatortx.md#tostring)
+* [fromBuffer](api_platformvm_validationtx.adddelegatortx.md#frombuffer)
+* [getBlockchainID](api_platformvm_validationtx.adddelegatortx.md#getblockchainid)
+* [getEndTime](api_platformvm_validationtx.adddelegatortx.md#getendtime)
+* [getIns](api_platformvm_validationtx.adddelegatortx.md#getins)
+* [getMemo](api_platformvm_validationtx.adddelegatortx.md#getmemo)
+* [getNetworkID](api_platformvm_validationtx.adddelegatortx.md#getnetworkid)
+* [getNodeID](api_platformvm_validationtx.adddelegatortx.md#getnodeid)
+* [getNodeIDString](api_platformvm_validationtx.adddelegatortx.md#getnodeidstring)
+* [getOuts](api_platformvm_validationtx.adddelegatortx.md#getouts)
+* [getStartTime](api_platformvm_validationtx.adddelegatortx.md#getstarttime)
+* [getTxType](api_platformvm_validationtx.adddelegatortx.md#gettxtype)
+* [sign](api_platformvm_validationtx.adddelegatortx.md#sign)
+* [toBuffer](api_platformvm_validationtx.adddelegatortx.md#tobuffer)
+* [toString](api_platformvm_validationtx.adddelegatortx.md#tostring)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new AddPrimaryDelegatorTx**(`networkid`: number, `blockchainid`: Buffer, `outs`: Array‹[TransferableOutput](api_platformvm_outputs.transferableoutput.md)›, `ins`: Array‹[TransferableInput](api_platformvm_inputs.transferableinput.md)›, `memo`: Buffer, `nodeID`: Buffer, `startTime`: BN, `endTime`: BN, `stakeAmount`: BN, `stakeOuts`: Array‹[TransferableOutput](api_platformvm_outputs.transferableoutput.md)›, `rewardAddress`: Buffer): *[AddPrimaryDelegatorTx](api_platformvm_validationtx.addprimarydelegatortx.md)*
+\+ **new AddDelegatorTx**(`networkid`: number, `blockchainid`: Buffer, `outs`: Array‹[TransferableOutput](api_platformvm_outputs.transferableoutput.md)›, `ins`: Array‹[TransferableInput](api_platformvm_inputs.transferableinput.md)›, `memo`: Buffer, `nodeID`: Buffer, `startTime`: BN, `endTime`: BN, `stakeAmount`: BN, `stakeOuts`: Array‹[TransferableOutput](api_platformvm_outputs.transferableoutput.md)›, `rewardAddress`: Buffer): *[AddDelegatorTx](api_platformvm_validationtx.adddelegatortx.md)*
 
 *Overrides [ValidatorTx](api_platformvm_validationtx.validatortx.md).[constructor](api_platformvm_validationtx.validatortx.md#constructor)*
 
@@ -77,7 +77,7 @@ Name | Type | Default | Description |
 `stakeOuts` | Array‹[TransferableOutput](api_platformvm_outputs.transferableoutput.md)› | undefined | - |
 `rewardAddress` | Buffer | undefined | - |
 
-**Returns:** *[AddPrimaryDelegatorTx](api_platformvm_validationtx.addprimarydelegatortx.md)*
+**Returns:** *[AddDelegatorTx](api_platformvm_validationtx.adddelegatortx.md)*
 
 ## Properties
 
@@ -350,7 +350,7 @@ ___
 
 Defined in src/apis/platformvm/validationtx.ts:98
 
-Returns the id of the [AddPrimaryDelegatorTx](api_platformvm_validationtx.addprimarydelegatortx.md)
+Returns the id of the [AddDelegatorTx](api_platformvm_validationtx.adddelegatortx.md)
 
 **Returns:** *number*
 

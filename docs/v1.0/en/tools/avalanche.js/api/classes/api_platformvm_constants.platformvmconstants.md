@@ -10,8 +10,8 @@
 
 ### Properties
 
-* [ADDPRIMARYDELEGATORTX](api_platformvm_constants.platformvmconstants.md#static-addprimarydelegatortx)
-* [ADDPRIMARYVALIDATORTX](api_platformvm_constants.platformvmconstants.md#static-addprimaryvalidatortx)
+* [ADDPRIMARYDELEGATORTX](api_platformvm_constants.platformvmconstants.md#static-adddelegatortx)
+* [ADDPRIMARYVALIDATORTX](api_platformvm_constants.platformvmconstants.md#static-addvalidatortx)
 * [ADDSUBNETVALIDATORTX](api_platformvm_constants.platformvmconstants.md#static-addsubnetvalidatortx)
 * [ADDRESSLENGTH](api_platformvm_constants.platformvmconstants.md#static-addresslength)
 * [ADVANCETIMETX](api_platformvm_constants.platformvmconstants.md#static-advancetimetx)
