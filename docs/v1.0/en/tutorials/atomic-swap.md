@@ -31,7 +31,7 @@ curl -X POST --data '{
     "method" :"avm.exportAVAX",
     "params" :{
         "to":"P-avax1wkmfja9ve3lt3n9ye4qp3l3gj9k2mz7ep45j7q",
-        "amount": 500,
+        "amount": 5000000,
         "username":"myUsername",
         "password":"myPassword"
     }
@@ -40,6 +40,13 @@ curl -X POST --data '{
 
 where `to` is the address of a P-Chain address you hold.
 (See [here](../api/platform.md#platformcreateaddress) for instructions on creating a new P-Chain address.)
+
+
+Note that you will pay a transaction fee for both the export and import operations.
+In this example, let's assume the transaction fee is `1,000,000` nAVAX.
+Then the above export actually consumes `6,000,000` nAVAX; `5,000,000` goes to the P-Chain and `1,000,000` is burned as a transaction fee.
+Make sure that the amount that you're sending exceeds the transaction fee. 
+Otherwise, when you import the AVAX on the P-Chain it will consume the transaction fee and you'll end up with _less_ AVAX on the P-Chain.
 
 The response should look like this:
 
@@ -92,7 +99,8 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-(If your user controls multiple X-Chain addresses, the AVAX may have been sent from any combination of them.)
+The amount deducted is the exported amount (`5,000,000` in this example) plus the transaction fee.
+If your user controls multiple X-Chain addresses, the AVAX may have been sent from any combination of them.
 
 ## Import AVAX to the P-Chain from the X-Chain
 
@@ -162,7 +170,7 @@ The response should look like this:
 {
     "jsonrpc": "2.0",
     "result": {
-        "balance": "20000",
+        "balance": "4000000",
         "utxoIDs": [
             {
                 "txID": "2sxo3ySETZ4xzXqAtgsUvZ5pdkqG4SML4c7Z7NoKLZcp77YNXC",
@@ -170,11 +178,11 @@ The response should look like this:
             }
         ]
     },
-    "id": 84
+    "id": 1
 }
 ```
 
-Woo! We successfully moved AVAX from the X-Chain to the P-Chain.
+Note that the balance we see is the amount exported from the X-Chain (`5,000,000`) less the transaction fee (`1,000,000` in this example.)
 Now we can use the AVAX held by this P-Chain address to provide a stake in order to validate the Default Subnet.
 
 ## Export AVAX from the P-Chain to the X-Chain
@@ -189,7 +197,7 @@ curl -X POST --data '{
     "method": "platform.exportAVAX",
     "params": {
         "to":"X-avax1fjn5rffqvny7uk3tjegjs6snwjs3hhgcpcxfax",
-        "amount":250,
+        "amount":3000000,
         "username":"myUsername",
         "password":"myPassword"
     },
@@ -199,7 +207,8 @@ curl -X POST --data '{
 
 where `to` is the X-Chain address the AVAX is being sent to.
 
-Just as before, this returns the transaction ID, and we can check that the transaction was committed with another call to `platform.getTxStatus`.
+This returns the transaction ID, and we can check that the transaction was committed with another call to `platform.getTxStatus`.
+Again, make sure that the amount you're sending exceeds the transaction fee.
 
 ## Import AVAX to the X-Chain from the P-Chain
 
@@ -222,6 +231,7 @@ curl -X POST --data '{
 Note that `to` is the same address specified in our call to `platform.exportAVAX`.
 
 Just as before, we can call `avm.getBalance` to verify the funds were received.
+The balance should have increased by `3,000,000`, less the transaction fee.
 
 ## Wrapping Up
 
