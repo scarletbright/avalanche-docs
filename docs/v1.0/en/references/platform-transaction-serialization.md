@@ -106,6 +106,157 @@ Let's make a secp256k1 transfer output with:
 
 ***
 
+## Inputs
+
+Inputs have one possible type: `SECP256K1TransferInput`.
+
+***
+
+### SECP256K1 Transfer Input
+
+A [secp256k1](../cryptographic-primitives/#cryptography-in-the-avalanche-virtual-machine) transfer input allows for spending an unspent secp256k1 transfer output.
+
+#### What SECP256K1 Transfer Input Contains
+
+A secp256k1 transfer input contains an `Amount` and `AddressIndices`.
+
+- **`TypeID`** is the ID for this output type. It is `0x00000005`.
+- **`Amount`** is a long that specifies the quantity that this input should be consuming from the UTXO. Must be positive. Must be equal to the amount specified in the UTXO.
+- **`AddressIndices`** is a list of unique ints that define the private keys are being used to spend the UTXO. Each UTXO has an array of addresses that can spend the UTXO. Each int represents the index in this address array that will sign this transaction. The array must be sorted low to high.
+
+#### Gantt SECP256K1 Transfer Input Specification
+
+```boo
++-------------------------+-------------------------------------+
+| type ID         : int   |                             4 bytes |
++-----------------+-------+-------------------------------------+
+| amount          : long  |                             8 bytes |
++-----------------+-------+-------------------------------------+
+| address_indices : []int |  4 + 4 * len(address_indices) bytes |
++-----------------+-------+-------------------------------------+
+                          | 16 + 4 * len(address_indices) bytes |
+                          +-------------------------------------+
+```
+
+#### Proto SECP256K1 Transfer Input Specification
+
+```protobuf
+message SECP256K1TransferInput {
+    uint32 typeID = 1;                   // 04 bytes
+    uint64 amount = 2;                   // 08 bytes
+    repeated uint32 address_indices = 3; // 04 bytes + 4 bytes * len(address_indices)
+}
+```
+
+#### SECP256K1 Transfer Input Example
+
+Let's make a payment input with:
+
+- **`Amount`**: 123456789
+- **`AddressIndices`**: [7,3]
+
+```splus
+[
+    TypeID         <- 0x00000005
+    Amount         <- 123456789 = 0x00000000075bcd15,
+    AddressIndices <- [0x00000007, 0x00000003]
+]
+=
+[
+    // type id:
+    0x00, 0x00, 0x00, 0x05,
+    // amount:
+    0x00, 0x00, 0x00, 0x00, 0x07, 0x5b, 0xcd, 0x15,
+    // length:
+    0x00, 0x00, 0x00, 0x02,
+    // sig[0]
+    0x00, 0x00, 0x00, 0x03,
+    // sig[1]
+    0x00, 0x00, 0x00, 0x07,
+]
+```
+
+***
+
+## Transferable Input
+
+Transferable inputs describe a specific UTXO with a provided transfer input.
+
+### What Transferable Input Contains
+
+A transferable input contains a `TxID`, `UTXOIndex` `AssetID` and an `Input`.
+
+- **`TxID`** is a 32-byte array that defines which transaction this input is consuming an output from.
+- **`UTXOIndex`** is an int that defines which utxo this input is consuming the specified transaction.
+- **`AssetID`** is a 32-byte array that defines which asset this input references.
+- **`Input`** is a transferable input object.
+
+### Gantt Transferable Input Specification
+
+```boo
++------------+----------+------------------------+
+| tx_id      : [32]byte |               32 bytes |
++------------+----------+------------------------+
+| utxo_index : int      |               04 bytes |
++------------+----------+------------------------+
+| asset_id   : [32]byte |               32 bytes |
++------------+----------+------------------------+
+| input      : Input    |      size(input) bytes |
++------------+----------+------------------------+
+                        | 68 + size(input) bytes |
+                        +------------------------+
+```
+
+### Proto Transferable Input Specification
+
+```protobuf
+message TransferableInput {
+    bytes tx_id = 1;       // 32 bytes
+    uint32 utxo_index = 3; // 04 bytes
+    bytes asset_id = 3;    // 32 bytes
+    Input input = 4;       // size(input)
+}
+```
+
+### Transferable Input Example
+
+Let's make a transferable input:
+
+- `TxID: 0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a090807060504030201000`
+- `UTXOIndex: 5`
+- `AssetID: 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`
+- `Input: "Example SECP256K1 Transfer Input from above"`
+
+```splus
+[
+    TxID      <- 0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a090807060504030201000
+    UTXOIndex <- 5 = 0x00000005
+    AssetID   <- 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+    Input     <- 0x0000000500000000075bcd15000000020000000300000007
+]
+=
+[
+    // txID:
+    0xf1, 0xe1, 0xd1, 0xc1, 0xb1, 0xa1, 0x91, 0x81,
+    0x71, 0x61, 0x51, 0x41, 0x31, 0x21, 0x11, 0x01,
+    0xf0, 0xe0, 0xd0, 0xc0, 0xb0, 0xa0, 0x90, 0x80,
+    0x70, 0x60, 0x50, 0x40, 0x30, 0x20, 0x10, 0x00,
+    // utxoIndex:
+    0x00, 0x00, 0x00, 0x05,
+    // assetID:
+    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+    0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
+    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
+    0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
+    // input:
+    0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00,
+    0x07, 0x5b, 0xcd, 0x15, 0x00, 0x00, 0x00, 0x02,
+    0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x07
+]
+```
+
+***
+
 ## Unsigned Transactions
 
 Unsigned transactions contain the full content of a transaction with only the signatures missing. Unsigned transactions have one possible type: `AddValidatorTx`. They embed `BaseTx`, which contains common fields and operations.
@@ -218,14 +369,14 @@ Let's make a base tx that uses the inputs and outputs from the previous examples
 
 ### What Unsigned Add Delegator Tx Contains
 
-An unsigned add delegator tx contains a `TypeID`, `BaseTx`, `NodeID`, `StartTime`, `EndTime`, and `Destination`.
+An unsigned add delegator tx contains a `TypeID`, `BaseTx`, `NodeID`, `StartTime`, `EndTime`, `Weight`, `LockedOuts`, `Locktime`, `Threshold` and `Destination`.
 
 - **`TypeID`** is the ID for this type. It is `0x0000000c`.
 - **`BaseTx`**
 - **`NodeID`** is 20 bytes which is the node ID of the delegatee.
 - **`StartTime`** is a long which is the Unix time when the delegator starts delegating.
 - **`EndTime`** is a long which is the Unix time when the delegator stops delegating (and staked AVAX is returned).
-- **`Weight`**
+- **`Weight`** Amount the delegator stakes
 - **`LockedOuts`**
 - **`Locktime`**
 - **`Threshold`**
