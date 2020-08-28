@@ -377,9 +377,9 @@ An unsigned add delegator tx contains a `TypeID`, `BaseTx`, `NodeID`, `StartTime
 - **`StartTime`** is a long which is the Unix time when the delegator starts delegating.
 - **`EndTime`** is a long which is the Unix time when the delegator stops delegating (and staked AVAX is returned).
 - **`Weight`** Amount the delegator stakes
-- **`LockedOuts`**
-- **`Locktime`**
-- **`Threshold`**
+- **`LockedOuts`** An array of Transferable Outputs
+- **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
+- **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
 - **`Destination`** is 20 bytes which is the address of the account the staked AVAX and validation reward (if applicable) are sent to at `EndTime`.
 
 ### Gantt Unsigned Base Tx Specification
@@ -392,28 +392,38 @@ An unsigned add delegator tx contains a `TypeID`, `BaseTx`, `NodeID`, `StartTime
 +---------------+----------------------+-----------------------------------------+
 | node_id       : [20]byte             |                                20 bytes |
 +---------------+----------------------+-----------------------------------------+
-| weight        : long                 |                                 8 bytes |
-+---------------+----------------------+-----------------------------------------+
 | start_time    : long                 |                                 8 bytes |
 +---------------+----------------------+-----------------------------------------+
 | end_time      : long                 |                                 8 bytes |
 +---------------+----------------------+-----------------------------------------+
+| weight        : long                 |                                 8 bytes |
++---------------+----------------------+-----------------------------------------+
+| locked_outs   : []Output             |                 4 + size(outputs) bytes |
++---------------+----------------------+-----------------------------------------+
+| locktime      : long                 |                                 8 bytes |
++---------------+----------------------+-----------------------------------------+
+| threshold     : int                  |                                 4 bytes |
++---------------+----------------------+-----------------------------------------+
 | destination   : [20]byte             |                                20 bytes |
 +---------------+----------------------+-----------------------------------------+
-                                                      | 64 + size(base_tx) bytes |
-                                                      +--------------------------+
+                                      | 84 + size(outputs) + size(base_tx) bytes |
+                                      +------------------------------------------+
 ```
 
 ### Proto Unsigned Base Tx Specification
 
 ```protobuf
-message BaseTx {
-    BaseTx base_tx = 1;          // size(base_tx)
-    bytes node_id = 2;           // 20 bytes
-    uint64 weight = 3;           // 08 bytes
-    uint64 start_time = 4;       // 08 bytes
-    uint64 end_time = 5;         // 08 bytes
-    bytes destination = 6;       // 20 bytes
+message AddDelegatorTx {
+    uint32 type-id = 1;              // 04 bytes
+    BaseTx base_tx = 2;              // size(base_tx)
+    bytes node_id = 3;               // 20 bytes
+    uint64 start_time = 4;           // 08 bytes
+    uint64 end_time = 5;             // 08 bytes
+    uint64 weight = 6;               // 08 bytes
+    repeated Output locked_outs = 7; // 4 + size(outputs) bytes
+    uint64 lock_time = 8;            // 08 bytes
+    uint32 threshold = 9;            // 04 bytes
+    bytes destination = 10;          // 20 bytes
 }
 ```
 
@@ -480,3 +490,159 @@ Let's make an unsigned base tx that uses the inputs and outputs from the previou
     0xb2, 0x9c,
 ]
 ```
+
+***
+
+### What Unsigned Import Tx Contains
+
+An unsigned import tx contains a `TypeID`, `BaseTx`, `SourceChain`, and `Ins`.
+* **`TypeID`** is the ID for this type. It is `0x00000003`.
+* **`BaseTx`**
+- **`SourceChain`** is a 32-byte source blockchain ID.
+* **`Ins`** is a variable length array of Transferable Inputs.
+
+### Gantt Unsigned Import Tx Specification
+
+```boo
++-----------------+--------------|---------------------------------+
+| type ID         : int          |                         4 bytes |
++-----------------+--------------+---------------------------------+
+| base_tx         : BaseTx       |             size(base_tx) bytes |
++-----------------+--------------+---------------------------------+
+| source_chain    : [32]byte     |                        32 bytes |
++-----------------+--------------+---------------------------------+
+| ins             : []TransferIn |             4 + size(ins) bytes |
++-----------------+--------------+---------------------------------+
+                            | 40 + size(ins) + size(base_tx) bytes |
+                            +--------------------------------------+
+```
+
+### Proto Unsigned Import Tx Specification
+
+```protobuf
+message ImportTx {
+    uint32 TypeID = 1;           // 4 bytes
+    BaseTx base_tx = 2;          // size(base_tx)
+    bytes source_chain = 2;      // 32 bytes
+    repeated TransferIn ins = 3; // 4 bytes + size(ins)
+}
+```
+
+### Unsigned Import Tx Example
+
+Let’s make an unsigned import tx that uses the inputs from the previous examples:
+
+* **`TypeID`**: `0x00000011`
+* **`BaseTx`**: "Example BaseTx as defined above"
+* **`SourceChain`**: 
+* **`Ins`**: "Example SECP256K1 Transfer Input as defined above"
+
+```splus
+[
+    TypeID        <- 0x00000011
+    BaseTx        <- 0x00000003ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000003000000070000000400010203
+    SourceChain   <- 0x787cd3243c002e9bf5bbbaea8a42a16c1a19cc105047c66996807cbf16acee10
+    Ins <- [
+        f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd15000000020000000300000007,
+    ]
+]
+=
+[
+    // Type ID
+    0x00, 0x00, 0x00, 0x11,
+    // base tx:
+    0x00, 0x00, 0x00, 0x03, 0xff, 0xff, 0xff, 0xff,
+    0xee, 0xee, 0xee, 0xee, 0xdd, 0xdd, 0xdd, 0xdd,
+    0xcc, 0xcc, 0xcc, 0xcc, 0xbb, 0xbb, 0xbb, 0xbb,
+    0xaa, 0xaa, 0xaa, 0xaa, 0x99, 0x99, 0x99, 0x99,
+    0x88, 0x88, 0x88, 0x88, 0x00, 0x00, 0x00, 0x01,
+    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+    0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
+    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
+    0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
+    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x30, 0x39, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0xd4, 0x31, 0x00, 0x00, 0x00, 0x01,
+    0x00, 0x00, 0x00, 0x02, 0x51, 0x02, 0x5c, 0x61,
+    0xfb, 0xcf, 0xc0, 0x78, 0xf6, 0x93, 0x34, 0xf8,
+    0x34, 0xbe, 0x6d, 0xd2, 0x6d, 0x55, 0xa9, 0x55,
+    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
+    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
+    0x43, 0xab, 0x08, 0x59, 0x00, 0x00, 0x00, 0x01,
+    0xf1, 0xe1, 0xd1, 0xc1, 0xb1, 0xa1, 0x91, 0x81,
+    0x71, 0x61, 0x51, 0x41, 0x31, 0x21, 0x11, 0x01,
+    0xf0, 0xe0, 0xd0, 0xc0, 0xb0, 0xa0, 0x90, 0x80,
+    0x70, 0x60, 0x50, 0x40, 0x30, 0x20, 0x10, 0x00,
+    0x00, 0x00, 0x00, 0x05, 0x00, 0x01, 0x02, 0x03,
+    0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b,
+    0x0c, 0x0d, 0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13,
+    0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b,
+    0x1c, 0x1d, 0x1e, 0x1f, 0x00, 0x00, 0x00, 0x05,
+    0x00, 0x00, 0x00, 0x00, 0x07, 0x5b, 0xcd, 0x15,
+    0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03,
+    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x04,
+    0x00, 0x01, 0x02, 0x03
+    // sourceChain
+    0x78, 0x7c, 0xd3, 0x24, 0x3c, 0x00, 0x2e, 0x9b,
+    0xf5, 0xbb, 0xba, 0xea, 0x8a, 0x42, 0xa1, 0x6c,
+    0x1a, 0x19, 0xcc, 0x10, 0x50, 0x47, 0xc6, 0x69,
+    0x96, 0x80, 0x7c, 0xbf, 0x16, 0xac, 0xee, 0x10,
+    // input count:
+    0x00, 0x00, 0x00, 0x01,
+    // txID:
+    0xf1, 0xe1, 0xd1, 0xc1, 0xb1, 0xa1, 0x91, 0x81,
+    0x71, 0x61, 0x51, 0x41, 0x31, 0x21, 0x11, 0x01,
+    0xf0, 0xe0, 0xd0, 0xc0, 0xb0, 0xa0, 0x90, 0x80,
+    0x70, 0x60, 0x50, 0x40, 0x30, 0x20, 0x10, 0x00,
+    // utxoIndex:
+    0x00, 0x00, 0x00, 0x05,
+    // assetID:
+    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+    0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
+    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
+    0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
+    // input:
+    0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00,
+    0x07, 0x5b, 0xcd, 0x15, 0x00, 0x00, 0x00, 0x02,
+    0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x07,
+]
+```
+
+
+00 00 
+00 00 00 11 
+00 00 30 39 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+
+00 00 00 01 
+39 c3 3a 49 9c e4 c3 3a 3b 09 cd d2 cf a0 1a e7 0d bf 2d 18 b2 d7 d1 68 52 44 40 e5 5d 55 00 88 
+00 00 00 07 
+00 00 00 00 00 89 54 40 
+00 00 00 00 00 00 00 00 
+00 00 00 01 
+00 00 00 01 
+3c b7 d3 84 2e 8c ee 6a 0e bd 09 f1 fe 88 4f 68 61 e1 b2 9c 
+
+xfer_ins: 00 00 00 00 
+
+memoc: 00 00 00 00 
+
+source_chain: 78 7c d3 24 3c 00 2e 9b f5 bb ba ea 8a 42 a1 6c 1a 19 cc 10 50 47 c6 69 96 80 7c bf 16 ac ee 10 
+
+imported_ins[]
+num_imported_ins: 00 00 00 01 
+
+imported_ins[0]
+12 bb 4b 73 cc a9 4a 00 13 6f 10 50 3a 04 12 89 ab 67 1b 58 68 6e 0c 55 16 b7 31 51 f0 26 ab ce 
+00 00 00 01 
+39 c3 3a 49 9c e4 c3 3a 3b 09 cd d2 cf a0 1a e7 0d bf 2d 18 b2 d7 d1 68 52 44 40 e5 5d 55 00 88 
+00 00 00 05 
+00 00 00 00 00 98 96 80 
+00 00 00 01 
+00 00 00 00 
+
+00 00 00 01 
+00 00 00 09 
+00 00 00 01 
+61 61 1f f2 8c f3 d4 e3 ad dd 7a e8 19 3f f7 3b 56 3c b4 10 d1 30 14 32 1f f9 d5 6b 15 86 ab 14 1a 71 80 af 15 84 e3 f4 6b ed b2 4b 37 68 e3 40 e9 30 c9 22 8e 82 89 10 67 76 3a dd 4f 74 9d eb 01
+
