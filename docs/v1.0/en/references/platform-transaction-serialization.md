@@ -222,10 +222,10 @@ message TransferableInput {
 
 Let's make a transferable input:
 
-- `TxID: 0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a090807060504030201000`
-- `UTXOIndex: 5`
-- `AssetID: 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`
-- `Input: "Example SECP256K1 Transfer Input from above"`
+- **`TxID`**: `0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a090807060504030201000`
+- **`UTXOIndex`**: `5`
+- **`AssetID`**: `0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`
+- **`Input`**: "Example SECP256K1 Transfer Input from above"
 
 ```splus
 [
@@ -309,11 +309,11 @@ message BaseTx {
 
 Let's make a base tx that uses the inputs and outputs from the previous examples:
 
-- `TypeID`: `0`
-- `NetworkID`: `12345`
-- `BlockchainID`: `0x000000000000000000000000000000000000000000000000000000000000000`
-- `Outputs`: `00000007000012309cd7078b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
-- `Inputs`: `136923582736d444a971693dded0aa059053b36a85e98e39447cc92deb9cc4d700000000345aa98e8a990f4101e2268fab4c4e1f731c8dfbcffa3a77978686e6390d624f00000005000012309cd7ddb00000000100000000`
+- **`TypeID`**: `0`
+- **`NetworkID`**: `12345`
+- **`BlockchainID`**: `0x000000000000000000000000000000000000000000000000000000000000000`
+- **`Outputs`**: `00000007000012309cd7078b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
+- **`Inputs`**: `136923582736d444a971693dded0aa059053b36a85e98e39447cc92deb9cc4d700000000345aa98e8a990f4101e2268fab4c4e1f731c8dfbcffa3a77978686e6390d624f00000005000012309cd7ddb00000000100000000`
 
 ```splus
 [
@@ -431,12 +431,12 @@ message AddDelegatorTx {
 
 Let's make an unsigned base tx that uses the inputs and outputs from the previous examples:
 
-- `BaseTx`: `"Example BaseTx as defined above with ID set to 10"`
-- `NodeID`: `0xe9094f73698002fd52c90819b457b9fbc866ab80`
-- `weight`: `0x000000000000d431`
-- `StarTime`: `0x000000005f21f31d`
-- `EndTime`: `0x000000005f497dc6`
-- `Destination`: `0x3cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
+- **`BaseTx`**: `"Example BaseTx as defined above with ID set to 10"`
+- **`NodeID`**: `0xe9094f73698002fd52c90819b457b9fbc866ab80`
+- **`weight`**: `0x000000000000d431`
+- **`StarTime`**: `0x000000005f21f31d`
+- **`EndTime`**: `0x000000005f497dc6`
+- **`Destination`**: `0x3cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
 
 ```splus
 [
@@ -496,6 +496,7 @@ Let's make an unsigned base tx that uses the inputs and outputs from the previou
 ### What Unsigned Import Tx Contains
 
 An unsigned import tx contains a `TypeID`, `BaseTx`, `SourceChain`, and `Ins`.
+
 * **`TypeID`** is the ID for this type. It is `0x00000003`.
 * **`BaseTx`**
 - **`SourceChain`** is a 32-byte source blockchain ID.
@@ -534,7 +535,7 @@ Let’s make an unsigned import tx that uses the inputs from the previous exampl
 
 * **`TypeID`**: `0x00000011`
 * **`BaseTx`**: "Example BaseTx as defined above"
-* **`SourceChain`**: 
+* **`SourceChain`**:
 * **`Ins`**: "Example SECP256K1 Transfer Input as defined above"
 
 ```splus
