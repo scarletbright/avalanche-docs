@@ -114,7 +114,7 @@ Unsigned transactions contain the full content of a transaction with only the si
 
 A base tx contains a `TypeID`, `NetworkID`, `BlockchainID`, `Outputs`, `Inputs`, and `Memo`.
 
-- **`TypeID`** is an id for this type. It is `0x0000000a`.
+- **`TypeID`** is the ID for this type. It is `0x0000000a`.
 - **`NetworkID`** is an int that defines which network this transaction is meant to be issued to. This value is meant to support transaction routing and is not designed for replay attack prevention.
 - **`BlockchainID`** is a 32-byte array that defines which blockchain this transaction was issued to. This is used for replay attack prevention for transactions that could potentially be valid across network or blockchain.
 - **`Outputs`** is an array of transferable output objects. Outputs must be sorted lexicographically by their serialized representation. The total quantity of the assets created in these outputs must be less than or equal to the total quantity of each asset consumed in the inputs minus the transaction fee.
@@ -216,25 +216,26 @@ Let's make a base tx that uses the inputs and outputs from the previous examples
 
 ***
 
-## Platform `AddDefaultSubnetDelegatorTx` Specification
+### What Unsigned Add Delegator Tx Contains
 
-### Unsigned Add Default Subnet Delegator Tx Identifier
+An unsigned add delegator tx contains a `TypeID`, `BaseTx`, `NodeID`, `StartTime`, `EndTime`, and `Destination`.
 
-The transaction identifier for a add default subnet delegator tx is `0x00000010`.
-
-### What Unsigned Add Default Subnet Delegator Tx Contains
-
-An unsigned base tx contains a `BaseTx`, `NodeID`, `StartTime`, `EndTime`, and `Destination`.
-
-- **`ID`** is defined in `BaseTx`. For a default subnet delegator tx the ID is `0x00000010`.
+- **`TypeID`** is the ID for this type. It is `0x0000000c`.
+- **`BaseTx`**
 - **`NodeID`** is 20 bytes which is the node ID of the delegatee.
 - **`StartTime`** is a long which is the Unix time when the delegator starts delegating.
 - **`EndTime`** is a long which is the Unix time when the delegator stops delegating (and staked AVAX is returned).
+- **`Weight`**
+- **`LockedOuts`**
+- **`Locktime`**
+- **`Threshold`**
 - **`Destination`** is 20 bytes which is the address of the account the staked AVAX and validation reward (if applicable) are sent to at `EndTime`.
 
 ### Gantt Unsigned Base Tx Specification
 
 ```boo
++---------------+----------------------+-----------------------------------------+
+| type_id       : int                  |                                 4 bytes |
 +---------------+----------------------+-----------------------------------------+
 | base_tx       : BaseTx               |                     size(base_tx) bytes |
 +---------------+----------------------+-----------------------------------------+
