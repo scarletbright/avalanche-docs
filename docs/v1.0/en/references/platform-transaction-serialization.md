@@ -9,6 +9,101 @@ This file is meant to be the single source of truth for how we serialize transac
 Some data is prepended with a codec ID (unt16) that denotes how the data should be deserialized.
 Right now, the only valid codec ID is 0 (`0x00 0x00`).
 
+## Outputs
+
+Outputs have one possible type: `SECP256K1TransferOutput`.
+
+***
+
+### SECP256K1 Transfer Output
+
+A [secp256k1](./cryptographic-primitives.md#cryptography-in-the-avalanche-virtual-machine) transfer output allows for sending a quantity of an asset to a collection of addresses after a specified unix time.
+
+#### What SECP256K1 Transfer Output Contains
+
+A secp256k1 transfer output contains a `TypeID`, `Amount`, `Locktime`, `Threshold`, and `Addresses`.
+
+- **`TypeID`** is the ID for this output type. It is `0x00000007`.
+- **`Amount`** is a long that specifies the quantity of the asset that this output owns. Must be positive.
+- **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
+- **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
+- **`Addresses`** is a list of unique addresses that correspond to the private keys that can be used to spend this output. Addresses must be sorted lexicographically.
+
+#### Gantt SECP256K1 Transfer Output Specification
+
+```boo
++-----------+------------+--------------------------------+
+| type  ID  : int        |                        4 bytes |
++-----------+------------+--------------------------------+
+| amount    : long       |                        8 bytes |
++-----------+------------+--------------------------------+
+| locktime  : long       |                        8 bytes |
++-----------+------------+--------------------------------+
+| threshold : int        |                        4 bytes |
++-----------+------------+--------------------------------+
+| addresses : [][20]byte |  4 + 20 * len(addresses) bytes |
++-----------+------------+--------------------------------+
+                         | 28 + 20 * len(addresses) bytes |
+                         +--------------------------------+
+```
+
+#### Proto SECP256K1 Transfer Output Specification
+
+```protobuf
+message SECP256K1TransferOutput {
+    uint32 typeID = 1;            // 04 bytes
+    uint64 amount = 2;            // 08 bytes
+    uint64 locktime = 3;          // 08 bytes
+    uint32 threshold = 4;         // 04 bytes
+    repeated bytes addresses = 5; // 04 bytes + 20 bytes * len(addresses)
+}
+```
+
+#### SECP256K1 Transfer Output Example
+
+Let's make a secp256k1 transfer output with:
+
+- **`Amount`**: 12345
+- **`Locktime`**: 54321
+- **`Threshold`**: 1
+- **`Addresses`**:
+  - 0xc3344128e060128ede3523a24a461c8943ab0859
+  - 0x51025c61fbcfc078f69334f834be6dd26d55a955
+
+```splus
+[
+    TypeID    <- 0x00000007
+    Amount    <- 12345 = 0x0000000000003039
+    Locktime  <- 54321 = 0x000000000000d431
+    Threshold <- 1     = 0x00000001
+    Addresses <- [
+        0xc3344128e060128ede3523a24a461c8943ab0859,
+        0x51025c61fbcfc078f69334f834be6dd26d55a955,
+    ]
+]
+=
+[
+    // type ID:
+    0x00, 0x00, 0x00, 0x07,
+    // amount:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x39,
+    // locktime:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
+    // threshold:
+    0x00, 0x00, 0x00, 0x01,
+    // number of addresses:
+    0x00, 0x00, 0x00, 0x02,
+    // addrs[0]:
+    0x51, 0x02, 0x5c, 0x61, 0xfb, 0xcf, 0xc0, 0x78,
+    0xf6, 0x93, 0x34, 0xf8, 0x34, 0xbe, 0x6d, 0xd2,
+    0x6d, 0x55, 0xa9, 0x55,
+    // addrs[1]:
+    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
+    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
+    0x43, 0xab, 0x08, 0x59,
+]
+```
+
 ***
 
 ## Unsigned Transactions
