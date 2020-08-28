@@ -382,7 +382,7 @@ An unsigned add delegator tx contains a `TypeID`, `BaseTx`, `NodeID`, `StartTime
 - **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
 - **`Destination`** is 20 bytes which is the address of the account the staked AVAX and validation reward (if applicable) are sent to at `EndTime`.
 
-### Gantt Unsigned Base Tx Specification
+### Gantt Unsigned Add Delegator Tx Specification
 
 ```boo
 +---------------+----------------------+-----------------------------------------+
@@ -410,7 +410,7 @@ An unsigned add delegator tx contains a `TypeID`, `BaseTx`, `NodeID`, `StartTime
                                       +------------------------------------------+
 ```
 
-### Proto Unsigned Base Tx Specification
+### Proto Unsigned Add Delegator Tx Specification
 
 ```protobuf
 message AddDelegatorTx {
@@ -427,9 +427,9 @@ message AddDelegatorTx {
 }
 ```
 
-### Unsigned Base Tx Example
+### Unsigned Add Delegator Tx Example
 
-Let's make an unsigned base tx that uses the inputs and outputs from the previous examples:
+Let's make an unsigned add delegator tx that uses the inputs and outputs from the previous examples:
 
 - **`BaseTx`**: `"Example BaseTx as defined above with ID set to 10"`
 - **`NodeID`**: `0xe9094f73698002fd52c90819b457b9fbc866ab80`
@@ -497,10 +497,10 @@ Let's make an unsigned base tx that uses the inputs and outputs from the previou
 
 An unsigned import tx contains a `TypeID`, `BaseTx`, `SourceChain`, and `Ins`.
 
-* **`TypeID`** is the ID for this type. It is `0x00000003`.
-* **`BaseTx`**
+- **`TypeID`** is the ID for this type. It is `0x00000003`.
+- **`BaseTx`**
 - **`SourceChain`** is a 32-byte source blockchain ID.
-* **`Ins`** is a variable length array of Transferable Inputs.
+- **`Ins`** is a variable length array of Transferable Inputs.
 
 ### Gantt Unsigned Import Tx Specification
 
@@ -533,10 +533,10 @@ message ImportTx {
 
 Let’s make an unsigned import tx that uses the inputs from the previous examples:
 
-* **`TypeID`**: `0x00000011`
-* **`BaseTx`**: "Example BaseTx as defined above"
-* **`SourceChain`**:
-* **`Ins`**: "Example SECP256K1 Transfer Input as defined above"
+- **`TypeID`**: `0x00000011`
+- **`BaseTx`**: "Example BaseTx as defined above"
+- **`SourceChain`**:
+- **`Ins`**: "Example SECP256K1 Transfer Input as defined above"
 
 ```splus
 [
