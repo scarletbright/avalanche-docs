@@ -4,25 +4,29 @@ This file is meant to be the single source of truth for how we serialize transac
 
 ***
 
-### Platform `BaseTx` Specification
+## Codec ID
 
-### Unsigned Base Tx Identifier
+Some data is prepended with a codec ID (unt16) that denotes how the data should be deserialized.
+Right now, the only valid codec ID is 0 (`0x00 0x00`).
 
-The transaction identifier for a base tx is `0x0000000a`.
+***
 
-### What Unsigned Base Tx Contains
+## Unsigned Transactions
 
-An unsigned base tx contains a `CodecID`, `ID`, `NetworkID`, `BlockchainID`, `Outputs`, `Inputs`, and `Memo`.
+Unsigned transactions contain the full content of a transaction with only the signatures missing. Unsigned transactions have one possible type: `AddValidatorTx`. They embed `BaseTx`, which contains common fields and operations.
 
-- **`CodecID`** is a short that defines which codec version. Default is `0x0000`.
-- **`TypeID`** is an int that defines which transaction type this is. Default is `0x0000000a`.
+### What Base Tx Contains
+
+A base tx contains a `TypeID`, `NetworkID`, `BlockchainID`, `Outputs`, `Inputs`, and `Memo`.
+
+- **`TypeID`** is an id for this type. It is `0x0000000a`.
 - **`NetworkID`** is an int that defines which network this transaction is meant to be issued to. This value is meant to support transaction routing and is not designed for replay attack prevention.
 - **`BlockchainID`** is a 32-byte array that defines which blockchain this transaction was issued to. This is used for replay attack prevention for transactions that could potentially be valid across network or blockchain. In practice this is always the empty ID.
 - **`Outputs`** is an array of transferable output objects. Outputs must be sorted lexicographically by their serialized representation. The total quantity of the assets created in these outputs must be less than or equal to the total quantity of each asset consumed in the inputs minus the transaction fee.
 - **`Inputs`** is an array of transferable input objects. Inputs must be sorted and unique. Inputs are sorted first lexicographically by their **`TxID`** and then by the **`UTXOIndex`** from low to high. If there are inputs that have the same **`TxID`** and **`UTXOIndex`**, then the transaction is invalid as this would result in a double spend.
 - **`Memo`** Memo field contains arbitrary bytes, up to 256 bytes.
 
-### Gantt Unsigned Base Tx Specification
+### Gantt Base Tx Specification
 
 ```boo
 +---------------+----------------------+-----------------------------------------+
@@ -44,7 +48,7 @@ An unsigned base tx contains a `CodecID`, `ID`, `NetworkID`, `BlockchainID`, `Ou
                           +------------------------------------------------------+
 ```
 
-### Proto Unsigned Base Tx Specification
+### Proto Base Tx Specification
 
 ```protobuf
 message BaseTx {
@@ -58,9 +62,9 @@ message BaseTx {
 }
 ```
 
-### Unsigned Base Tx Example
+### Base Tx Example
 
-Let's make an unsigned base tx that uses the inputs and outputs from the previous examples:
+Let's make a base tx that uses the inputs and outputs from the previous examples:
 
 - `CodecID`: `0`
 - `TypeID`: `10`
