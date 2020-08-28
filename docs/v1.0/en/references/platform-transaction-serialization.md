@@ -497,7 +497,7 @@ Let's make an unsigned add delegator tx that uses the inputs and outputs from th
 
 An unsigned import tx contains a `TypeID`, `BaseTx`, `SourceChain`, and `Ins`.
 
-- **`TypeID`** is the ID for this type. It is `0x00000003`.
+- **`TypeID`** is the ID for this type. It is `0x00000011`.
 - **`BaseTx`**
 - **`SourceChain`** is a 32-byte source blockchain ID.
 - **`Ins`** is a variable length array of Transferable Inputs.
