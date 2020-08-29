@@ -159,7 +159,7 @@ Let's make a payment input with:
 [
     TypeID         <- 0x00000005
     Amount         <- 123456789 = 0x00000000075bcd15,
-    AddressIndices <- [0x00000007, 0x00000003]
+    AddressIndices <- [0x00000000]
 ]
 =
 [
@@ -168,10 +168,8 @@ Let's make a payment input with:
     // amount:
     0x00, 0x00, 0x00, 0x00, 0x07, 0x5b, 0xcd, 0x15,
     // length:
-    0x00, 0x00, 0x00, 0x02,
-    // sig[0]
-    0x00, 0x00, 0x00, 0x03,
-    // sig[1]
+    0x00, 0x00, 0x00, 0x01,
+    // address_indices[0]
     0x00, 0x00, 0x00, 0x07,
 ]
 ```
@@ -790,7 +788,7 @@ Let’s make an unsigned import tx that uses the inputs from the previous exampl
     BaseTx        <- 0x0000303900000000000000000000000000000000000000000000000000000000000000000000000139c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d55008800000007000012309cd5fdc0000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c0000000000000000
     SourceChain   <- 0x787cd3243c002e9bf5bbbaea8a42a16c1a19cc105047c66996807cbf16acee10
     Ins <- [
-        f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000000000001,
+        f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000100000000,
     ]
 ]
 =
@@ -835,7 +833,7 @@ Let’s make an unsigned import tx that uses the inputs from the previous exampl
     0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
     // input:
     0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00,
-    0x07, 0x5b, 0xcd, 0x15, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x01,
+    0x07, 0x5b, 0xcd, 0x15, 0x00, 0x00, 0x00, 0x01,
+    0x00, 0x00, 0x00, 0x00,
 ]
 ```
