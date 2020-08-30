@@ -1192,7 +1192,7 @@ The type ID for an NFT credential is `0x0000000e`.
 ## Unsigned Transactions
 
 Unsigned transactions contain the full content of a transaction with only the signatures missing. Unsigned transactions have two possible types: `CreateAssetTx`, and `OperationTx`.
-They both embed `BaseTx`, which contains common fields an operations.
+They both embed `BaseTx`, which contains common fields and operations.
 
 ### What Base Tx Contains
 

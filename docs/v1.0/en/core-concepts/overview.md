@@ -4,10 +4,10 @@
 
 This document describes the core concepts and architecture of the Avalanche network.
 
-## What is a Blockchain?
+## What is Blockchain?
 
 A blockchain is a decentralized digital ledger. It's decentralized because there is no single
-entity in charge of maintaining the ledger. Many parties, called **validators**, maintain their own
+entity in charge of maintaining the ledger. Many parties, called **validators**, maintain their
 copy of the ledger. The validators use a **consensus protocol** to ensure they always agree on the
 contents of the ledger.
 
@@ -19,7 +19,7 @@ the consensus protocol.
 
 An application stores some information, or **state**. You can interact with the application by performing a **transaction**.
 Transactions change the state of the application or, in other words, cause a **state transition**.
-Applications also allows users to retrieve information about the state (query it) without modifying it.
+Applications also allow users to retrieve information about the state (query it) without modifying it.
 
 A **decentralized application** (dApp) is one where there is no single authority that maintains the state and processes transactions.
 This might all seem very abstract, so let's look at Bitcoin through the lens of decentralized applications.
@@ -32,14 +32,14 @@ Bitcoin is decentralized because many independent validators maintain the blockc
 
 ## A Brief History of Blockchains
 
-In order to understand the value Avalanche provides, it's necessary to look at legacy blockchain technologies.
+To understand the value Avalanche provides, it's necessary to look at legacy blockchain technologies.
 
 ### Blockchain 1.0
 
 Bitcoin demonstrated the value of blockchains and decentralization by creating a robust, decentralized payments system.
 However, the Bitcoin network supports a small number of transactions per second, and Bitcoin's architecture makes 
 it difficult to adapt its codebase for any use other than digital payments.
-A number of other blockchain platforms duplicated the Bitcoin code base, with some small modifications, to issue their own coins.
+Several other blockchain platforms duplicated the Bitcoin code base, with some small modifications, to issue their own coins.
 Most of these copycat efforts provided zero additional value from both a technical and business perspective.
 Bitcoin's main value proposition today is as a store of value and hedge against inflation.
 
@@ -57,7 +57,7 @@ Like Bitcoin and Ethereum, Avalanche introduces new paradigms to the blockchain 
 
 Unlike legacy blockchain networks, which have only one blockchain and one validator set, **Avalanche is a heterogeneous network of many blockchains and validator sets.**
 
-Just as Ethereum allows one to launch a decentralized application defined by a smart contract, Avalanche allows one to launch a decentralized applications defined by a **Virtual Machine.**
+Just as Ethereum allows one to launch a decentralized application defined by a smart contract, Avalanche allows one to launch a decentralized application defined by a **Virtual Machine.**
 Unlike Ethereum, each dApp runs on its own independent blockchain.
 Each blockchain is validated by a **Subnet,** a dynamic, custom set of validators.
 This allows for the creation of private blockchains.
@@ -88,7 +88,7 @@ with lower-level logic like networking, consensus and the structure of the block
 Avalanche does all of that behind the scenes so that developers can focus on the thing they'd like to build.
 
 Think of a Virtual Machine as a blueprint for a blockchain; one can use the same Virtual Machine to
-create arbitrarily many blockchains, each of which follows the same ruleset but is logically independent from other blockchains.
+create arbitrarily many blockchains, each of which follows the same ruleset but is logically independent of other blockchains.
 
 ### Why Virtual Machines
 
@@ -109,14 +109,14 @@ Rather than lightly-used, poorly-understood languages like Solidity, developers 
 
 Virtual machines can contain almost any arbitrary logic and Avalanche imposes few restrictions on a VM's functionality.
 
-### Creating Your Own Blockchain and Virtual Machine
+### Creating Your Blockchain and Virtual Machine
 
 Avalanche is a network of custom, independent blockchains, so naturally blockchain creation is a core feature of Avalanche.
 
-Avalanche does not yet support creation of new Virtual Machines.
-This means that presently, Avalanche only supports creation of new instances of the [AVM](../api/avm.md) or the [Timestamp VM.](../api/timestamp.md) That is, one can only create a new blockchain that runs the AVM or Timestamp VM. See [this tutorial](../tutorials/create-a-blockchain.md) to learn how to do so.
+Avalanche does not yet support the creation of new Virtual Machines.
+This means that presently, Avalanche only supports the creation of new instances of the [AVM](../api/avm.md) or the [Timestamp VM.](../api/timestamp.md) That is, one can only create a new blockchain that runs the AVM or Timestamp VM. See [this tutorial](../tutorials/create-a-blockchain.md) to learn how to do so.
 
-In the future Avalanche will allow users to define and launch custom blockchains, and we'll release SDKs to help developers do so. 
+In the future, Avalanche will allow users to define and launch custom blockchains, and we'll release SDKs to help developers do so. 
 
 To get an idea of what a Virtual Machine implementation looks like, check out [this tutorial](../tutorials/creating-a-virtual-machine.md), which shows and explains all of the code in a simple Virtual Machine, the Timestamp VM.
 
@@ -133,7 +133,7 @@ This is very useful and we explore its ramifications in more depth below.
 There is a special Subnet called the **Primary Network,** which validates Avalanche's [built-in blockchains.](#built-in-blockchains) 
 All members of all Subnets must also be a member of the **Primary Network.**
 In order to become a member of the Primary Network, one must [stake](#what-is-staking) some [AVAX tokens.](#the-x-chain)
-The upshot of the preceding two points is that all validators of all blockchains must also validate Avalanche's built-in blockchains and must have staked AVAX tokens.
+The upshot is that all validators of all blockchains must also validate Avalanche's built-in blockchains and must have staked AVAX tokens.
 
 There are tutorials on [creating a subnet](../tutorials/create-a-subnet.md) and [adding validators to a subnet.](../tutorials/adding-validators.md)
 
@@ -208,7 +208,7 @@ In 2018 distributed systems researchers created Avalanche, a novel consensus pro
 
 ### Classical and Nakamoto Consensus Protocols
 
-In order to illustrate what differentiates Avalance, it's worth reviewing legacy consensus protocols.
+To illustrate what differentiates Avalance, it's worth reviewing legacy consensus protocols.
 
 Classical protocols, including PBFT, Libra's HotStuff, Hedera Hashgraph, HyperLedger and Tendermint/Cosmos, are based on all-to-all voting.
 They typically have a designated leader who initiates the decision process and a series of rounds of all-to-all communication. This process is inherently expensive; all-to-all communication
@@ -238,7 +238,7 @@ It is guaranteed (with arbitrarily high probability based on system parameters) 
 
 Protocols in the Avalanche family are very fast.
 They can achieve irreversible finality in 1-2 seconds, quicker than a typical credit card transaction.
-They support many thousands of transactions per second, in excess of Visa's typical throughput.
+They support many thousands of transactions per second, over Visa's typical throughput.
 
 In a given round a validator queries only a small sub-sample of validators, allowing Avalanche to scale to up to millions of participants.
 No other proof-of-stake protocol can support nearly as many validators without compromising the decentralization of the network.
@@ -249,7 +249,7 @@ Unlike Nakamoto protocols, they use very little energy, and when there is no wor
 Finally, Avalanche protocols are highly secure.
 Because they operate without a leader, they are immune to a large class of attacks that
 other consensus protocol families face.
-The large number of validators ensures immutability and censorship resistance that proof-of-work protocols, backed by small numbers of mining pools, cannot achieve.
+A large number of validators ensures immutability and censorship resistance that proof-of-work protocols, backed by small numbers of mining pools, cannot achieve.
 Most projects that use proof-of-stake attempt to scale by delegating validation to a subcommittee.
 The cost of violating safety in such a system is only as low as the cost of corrupting any subcommittee, which may be very low. 
 In Avalanche protocols, such delegation is not necessary because the protocol allows every validator to have a first-hand say in consensus. 
@@ -299,8 +299,7 @@ See [this tutorial.](../tutorials/adding-validators.md#add-a-validator-to-the-pr
 When a validator is done validating the Primary Network it receives back the AVAX tokens it staked. 
 Additionally, it may receive a reward for helping to secure the network by validating.
 
-Right now, a reward is always paid out to validators.
-In the future, a validator will only receive the validation reward if it is sufficiently responsive and correct during the time it validates.
+A validator only receives a validation reward if it is sufficiently responsive and correct during the time it validates.
 
 See the [Avalanche token paper](https://files.avalabs.org/papers/avax-token.pdf) to learn more about AVAX and the mechanics of staking.
 
