@@ -33,7 +33,7 @@ A secp256k1 transfer output contains a `TypeID`, `Amount`, `Locktime`, `Threshol
 
 ```boo
 +-----------+------------+--------------------------------+
-| type  ID  : int        |                        4 bytes |
+| type_id   : int        |                        4 bytes |
 +-----------+------------+--------------------------------+
 | amount    : long       |                        8 bytes |
 +-----------+------------+--------------------------------+
@@ -123,7 +123,7 @@ An SECP256K1 Mint output contains a `TypeID`, `Locktime`, `Threshold`, and `Addr
 
 ```boo
 +-----------+------------+--------------------------------+
-| type  ID  : int        |                       4 bytes  |
+| type_id   : int        |                       4 bytes  |
 +-----------+------------+--------------------------------+
 | locktime  : long       |                       8 bytes  |
 +-----------+------------+--------------------------------+
@@ -1659,23 +1659,26 @@ Let’s make an unsigned import tx that uses the inputs from the previous exampl
 
 ### What Unsigned Export Tx Contains
 
-An unsigned export tx contains a `TypeID`, `BaseTx`, and `Outs`.
+An unsigned export tx contains a `TypeID`, `BaseTx`, `DestinationChain`, and `Outs`.
 
 * **`TypeID`** is the ID for this type. It is `0x00000004`.
+* **`DestinationChain`** is the 32 byte ID of the chain where the funds are being exported to.
 * **`Outs`** is a variable length array of Transferable Outputs.
 
 ### Gantt Unsigned Export Tx Specification
 
 ```boo
-+---------------------- --+--------------------------------------+
-| type ID : int           |                              4 bytes |
-+---------+---------------+--------------------------------------+
-| base_tx : BaseTx        |                  size(base_tx) bytes |
-+---------+---------------+--------------------------------------+
-| outs    : []TransferOut |                 4 + size(outs) bytes |
-+---------+---------------+--------------------------------------+
-                          | 4 + size(outs) + size(base_tx) bytes |
-                          +--------------------------------------+
++-------------------+---------------+--------------------------------------+
+| type ID           : int           |                              4 bytes |
++-------------------+---------------+--------------------------------------+
+| base_tx           : BaseTx        |                  size(base_tx) bytes |
++-------------------+---------------+--------------------------------------+
+| destination_chain : [32]byte      |                             32 bytes |
++-------------------+---------------+--------------------------------------+
+| outs              : []TransferOut |                 4 + size(outs) bytes |
++-------------------+---------------+--------------------------------------+
+                          | 26 + size(outs) + size(base_tx) bytes |
+                          +---------------------------------------+
 ```
 
 ### Proto Unsigned Export Tx Specification
@@ -1684,7 +1687,8 @@ An unsigned export tx contains a `TypeID`, `BaseTx`, and `Outs`.
 message ExportTx {
     uint32 TypeID = 1;             // 4 bytes
     BaseTx base_tx = 2;            // size(base_tx)
-    repeated TransferOut outs = 3; // 4 bytes + size(outs)
+    bytes destination_chain= 3;    // 32 bytes
+    repeated TransferOut outs = 4; // 4 bytes + size(outs)
 }
 ```
 
@@ -1693,12 +1697,14 @@ message ExportTx {
 Let’s make an unsigned export tx that uses the outputs from the previous examples:
 
 * `BaseTx`: "Example BaseTx as defined above"
+- `DestinationChain`: `0x0000000000000000000000000000000000000000000000000000000000000000`
 * `Outs`: "Example SECP256K1 Transfer Output as defined above"
 
 ```splus
 [
-    TypeID        <- 0x00000004
-    BaseTx        <- 0x00000000000400000003ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000003000000070000000400010203
+    TypeID           <- 0x00000004
+    DestiantionChain <- 0x0000000000000000000000000000000000000000000000000000000000000000
+    BaseTx           <- 0x00000000000400000003ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000003000000070000000400010203
     Outs <- [
         000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859,
     ]
@@ -1739,6 +1745,11 @@ Let’s make an unsigned export tx that uses the outputs from the previous examp
     0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03,
     0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x04,
     0x00, 0x01, 0x02, 0x03
+    // txID:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     // outs[] count:
     0x00, 0x00, 0x00, 0x01,
     // assetID:
