@@ -14,21 +14,21 @@ This API uses the `json 2.0` RPC format.
 
 ## Methods
 
-### platform.addDefaultSubnetDelegator
+### platform.addDelegator
 
-Add a delegator to the Default Subnet.
+Add a delegator to the Primary Network.
 
 A delegator stakes AVAX and specifies a validator (the delegatee) to validate on their behalf.
 The delegatee has an increased probability of being sampled by other validators (weight) in proportion to the stake delegated to them.
 
 The delegatee charges a fee to the delegator; the former receives a percentage of the delegator's validation reward (if any.)
 
-The delegation period must be a subset of the perdiod that the delegatee validates the Default Subnet.
+The delegation period must be a subset of the perdiod that the delegatee validates the Primary Network.
 
 #### Signature
 
 ```go
-platform.addDefaultSubnetDelegator(
+platform.addDelegator(
     {
         nodeID: string,
         startTime: int,
@@ -55,7 +55,7 @@ platform.addDefaultSubnetDelegator(
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.addDefaultSubnetDelegator",
+    "method": "platform.addDelegator",
     "params": {
         "nodeID":"NodeID-MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ",
         "rewardAddress":"P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy",
@@ -81,14 +81,14 @@ curl -X POST --data '{
 }
 ```
 
-### platform.addDefaultSubnetValidator
+### platform.addValidator
 
-Add a validator to the Default Subnet.
+Add a validator to the Primary Network.
 
 #### Signature
 
 ```go
-platform.addDefaultSubnetValidator(
+platform.addValidator(
     {
         nodeID: string,
         startTime: int,
@@ -103,8 +103,8 @@ platform.addDefaultSubnetValidator(
 ```
 
 * `nodeID` is the node ID of the validator being added.
-* `startTime` is the Unix time when the validator starts validating the Default Subnet.
-* `endTime` is the Unix time when the validator stops validating the Default Subnet (and staked AVAX is returned).
+* `startTime` is the Unix time when the validator starts validating the Primary Network.
+* `endTime` is the Unix time when the validator stops validating the Primary Network (and staked AVAX is returned).
 * `stakeAmount` is the amount of nAVAX the validator is staking.
 * `rewardAddress` is the address the validator reward will go to, if there is one.
 * `delegationFeeRate` is the percent fee this validator charges when others delegate stake to them.
@@ -122,7 +122,7 @@ In this example we use shell command `date` to compute Unix times 10 minutes and
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.addDefaultSubnetValidator",
+    "method": "platform.addValidator",
     "params": {
         "nodeID":"NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
         "rewardAddress":"P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy",
@@ -149,15 +149,15 @@ curl -X POST --data '{
 }
 ```
 
-### platform.addNonDefaultSubnetValidator
+### platform.addSubnetValidator
 
-Add a validator to a Subnet other than the Default Subnet.
-The Validator must validate the Default Subnet for the entire duration they validate this Subnet.
+Add a validator to a Subnet other than the Primary Network.
+The Validator must validate the Primary Network for the entire duration they validate this Subnet.
 
 #### Signature
 
 ```go
-platform.addNonDefaultSubnetValidator(
+platform.addSubnetValidator(
     {
         id: string,
         subnetID: string,
@@ -184,7 +184,7 @@ platform.addNonDefaultSubnetValidator(
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.addnondefaultsubnetvalidator",
+    "method": "platform.addSubnetvalidator",
     "params": {
         "nodeID":"NodeID-7xhw2mdxuds44j42tcb6u5579esbst3lg",
         "subnetID":"zbfoww1ffkpvrfywpj1cvqrfnyesepdfc61hmu2n9jnghduel",
@@ -270,7 +270,7 @@ platform.createBlockchain(
 ```
 
 * `subnetID` is the ID of the Subnet that validates the new blockchain.
-  The Subnet must exist and can't be the Default Subnet.
+  The Subnet must exist and can't be the Primary Network.
 * `vmID` is the ID of the Virtual Machine the blockchain runs.
   Can also be an alias of the Virtual Machine.
 * `name` is a human-readable name for the new blockchain. Not necessarily unique.
@@ -577,13 +577,13 @@ platform.getCurrentValidators({subnetID: string}) ->
 }
 ```
 
-* `subnetID` is the subnet whose current validators are returned. If omitted, returns the current validators of the Default Subnet.
+* `subnetID` is the subnet whose current validators are returned. If omitted, returns the current validators of the Primary Network.
 * `startTime` is the Unix time when the validator starts validating the Subnet.
 * `endTime` is the Unix time when the validator stops validating the Subnet.
 * `weight` is the validator's weight when sampling validators.
-  Omitted if `subnetID` is the default subnet.
+  Omitted if `subnetID` is the Primary Network.
 * `stakeAmount` is the amount of nAVAX this validator staked.
-  Omitted if `subnetID` is not the default subnet.
+  Omitted if `subnetID` is not the Primary Network.
 * `nodeID` is the validator's node ID.
 
 #### Example Call
@@ -684,13 +684,13 @@ platform.getPendingValidators({subnetID: string}) ->
 }
 ```
 
-* `subnetID` is the subnet whose current validators are returned. If omitted, returns the current validators of the Default Subnet.
+* `subnetID` is the subnet whose current validators are returned. If omitted, returns the current validators of the Primary Network.
 * `startTime` is the Unix time when the validator starts validating the Subnet.
 * `endTime` is the Unix time when the validator stops validating the Subnet.
 * `weight` is the validator's weight when sampling validators.
-  Omitted if `subnetID` is the default subnet.
+  Omitted if `subnetID` is the Primary Network.
 * `stakeAmount` is the amount of nAVAX this validator staked.
-  Omitted if `subnetID` is not the default subnet.
+  Omitted if `subnetID` is not the Primary Network.
 * `nodeID` is the validator's node ID.
 
 #### Example Call
@@ -744,7 +744,7 @@ platform.getSubnets(
 `ids` are the IDs of the subnets to get information about. If omitted, gets information about all subnets.
 `id` is the Subnet's ID.  
 `threshold` signatures from addresses in `controlKeys` are needed to add a validator to the subnet.  
-See [here](../tutorials/adding-validators.md#add-a-validator-to-a-non-default-subnet) for information on adding a validator to a Subnet.
+See [here](../tutorials/adding-validators.md#add-a-validator-to-a-subnet) for information on adding a validator to a Subnet.
 
 #### Example Call
 
@@ -1232,7 +1232,7 @@ platform.sampleValidators(
 
 * `size` is the number of validators to sample.
 * `subnetID` is the Subnet to sampled from.
-  If omitted, defaults to the Default Subnet.
+  If omitted, defaults to the Primary Network.
 * Each element of `validators` is the ID of a validator.
 
 #### Example Call

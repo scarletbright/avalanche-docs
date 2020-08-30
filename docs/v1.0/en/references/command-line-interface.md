@@ -64,6 +64,14 @@ If set to true, this flag will attempt to upgrade the server to use HTTPS. Defau
 
 This argument specifies the location of the TLS private key used by the node for the HTTPS server. This must be specified when `--http-tls-enabled=true`. There is no default value.
 
+`--ipcs-chain-ids` string
+
+Comma separated list of chain ids to connect to. There is no default value.
+
+`--ipcs-path` string
+
+The directory (Unix) or named pipe prefix (Windows) for IPC sockets. Defaults to /tmp.
+
 `--log-level` (string, `{Off, Fatal, Error, Warn, Info, Debug, Verbo}`):
 
 The log level determines which events to log. There are 7 different levels, in order from highest priority to lowest.

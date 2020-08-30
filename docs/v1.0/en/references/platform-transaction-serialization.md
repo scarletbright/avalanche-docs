@@ -365,6 +365,7 @@ Let's make a base tx that uses the inputs and outputs from the previous examples
 
 ***
 
+<<<<<<< HEAD
 ### What Unsigned Add Validator Tx Contains
 
 An unsigned add validator tx contains a `TypeID`, `BaseTx`, `NodeID`, `StartTime`, `EndTime`, `Weight`, `LockedOuts`, `Locktime`, `Threshold`, `RewardAddress` and `Shares`.

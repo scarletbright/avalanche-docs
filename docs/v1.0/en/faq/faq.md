@@ -111,7 +111,7 @@ If a problem persists, contact us on [Discord.](https://chat.avalabs.org)
 By default, the node's database is at `$HOME/.gecko/db`
 **If you delete this directory, it will erase the state of your node, including private keys and keystore users.**
 
-If there is a new major release (e.g. Cascade --> Denali), your node's state will be reset.
+If there is a new major release (e.g. Denali --> Everest), your node's state will be reset.
 Otherwise, upgrading Gecko will not overwrite or destroy your node's state.
 
 The only data not in this folder is your node's staking key/certificate.
@@ -382,13 +382,13 @@ The expected output is:
 {
     "jsonrpc": "2.0",
     "result": {
-        "networkID": "denali"
+        "networkID": "everest"
     },
     "id": 1
 }
 ```
 
-If the response is not `denali`, or the API call fails with a 404, you are not on the Denali network.
+If the response is not `everest`, or the API call fails with a 404, you are not on the Everest network.
 
 ### API response says `invalid character 'â' looking for beginning of value`
 

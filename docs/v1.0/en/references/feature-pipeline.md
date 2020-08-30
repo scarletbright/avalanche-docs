@@ -2,7 +2,7 @@
 
 ## Subnet Creation
 
-Currently there is only one subnet (the default subnet.) We want to allow users to create their own subnets, which may impose requirements upon those that validate the subnet.
+Currently there is only one subnet (the Primary Network.) We want to allow users to create their own subnets, which may impose requirements upon those that validate the subnet.
 
 ## Governable Transaction Fees
 
