@@ -1,7 +1,7 @@
 # IPC API
 
-The IPC API allows users to create a UNIX domain socket for a blockchain to publish to.
-When the blockchain accepts a vertex/block it will publish the vertex to the socket.
+The IPC API allows users to create UNIX domain sockets for blockchains to publish to.
+When the blockchain accepts a vertex/block it will publish it to a socket and the decisions contained inside will be published to another. Sockets use the [nanomsg](https://nanomsg.org/) BUS protocol.
 
 A node will only expose this API if it is started with [command-line argument](../references/command-line-interface.md) `api-ipcs-enabled=true`. 
 
@@ -22,11 +22,12 @@ Register a blockchain so it publishes accepted vertices to a Unix domain socket.
 #### Signature
 
 ```go
-ipcs.publishBlockchain({blockchainID: string}) -> {url: string}
+ipcs.publishBlockchain({blockchainID: string}) -> {consensusURL: string, decisionsURL: string}
 ```
 
 * `blockchainID` is the blockchain that will publish accepted vertices.
-* `url` is the path of the Unix domain socket the vertices are published to.
+* `consensusURL` is the path of the Unix domain socket the vertices are published to.
+* `decisionsURL` is the path of the Unix domain socket the transactions are published to.
   
 #### Example Call
 
