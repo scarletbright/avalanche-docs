@@ -21,7 +21,7 @@ The Avalanche X-Chain and P-Chain use a binary 20 byte array for the raw address
 * This public key is hashed once using SHA256.
 * The resultant hash is then hashed again using RIPEMD160, producing a byte array of length 20. 
 
-This byte array is the address. Additional information about the raw-binary implementation of addressing on the default subnet can be found in [cryptographic primitives](../cryptographic-primitives/#secp256k1-addresses). 
+This byte array is the address. Additional information about the raw-binary implementation of addressing on the Primary Network can be found in [cryptographic primitives](../cryptographic-primitives/#secp256k1-addresses). 
 
 There are conventions in the Avalanche platform for distributing readable addresses. All addresses are [Bech32](#bech32) encoded. By convention the blockchainID for the address is prepended to the address in the format `chainID-address`. Aliases for chainID may be used as well. Example:
 

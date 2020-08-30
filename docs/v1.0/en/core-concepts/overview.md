@@ -130,10 +130,10 @@ A node may be a member of arbitrarily many Subnets.
 A Subnet manages its own membership and it may require that its constituent validators have certain properties.
 This is very useful and we explore its ramifications in more depth below.
 
-There is a special Subnet called the **Default Subnet,** which validates Avalanche's [built-in blockchains.](#built-in-blockchains) 
-All members of all Subnets must also be a member of the **Default Subnet.**
-To become a member of the Default Subnet, one must [stake](#what-is-staking) some [AVAX tokens.](#the-x-chain)
-The upshot of the preceding two points is that all validators of all blockchains must also validate Avalanche's built-in blockchains and must have staked AVAX tokens.
+There is a special Subnet called the **Primary Network,** which validates Avalanche's [built-in blockchains.](#built-in-blockchains) 
+All members of all Subnets must also be a member of the **Primary Network.**
+In order to become a member of the Primary Network, one must [stake](#what-is-staking) some [AVAX tokens.](#the-x-chain)
+The upshot is that all validators of all blockchains must also validate Avalanche's built-in blockchains and must have staked AVAX tokens.
 
 There are tutorials on [creating a subnet](../tutorials/create-a-subnet.md) and [adding validators to a subnet.](../tutorials/adding-validators.md)
 
@@ -166,7 +166,7 @@ Different blockchain-based applications may require validators to have certain p
 
 As mentioned before, Avalanche is a network of blockchains.
 There are 3 blockchains that are inherent to the Avalanche network.
-They are validated by the [Default Subnet.](#what-are-subnets)
+They are validated by the [Primary Network.](#what-are-subnets)
 
 ### The X-Chain
 
@@ -290,17 +290,16 @@ To resist sybil attacks, a decentralized network must require that influence ove
 If a node wishes to validate for any blockchain it must *stake* AVAX.
 To stake is to lock up some AVAX tokens, making them temporarily unspendable. 
 
-### How Can I Validate the Default Subnet (Stake AVAX)
+### How Can I Validate the Primary Network (Stake AVAX)
 
-See [this tutorial.](../tutorials/adding-validators.md#add-a-validator-to-the-default-subnet)
+See [this tutorial.](../tutorials/adding-validators.md#add-a-validator-to-the-primary-network)
 
 ### Validation Rewards
 
-When a validator is done validating the Default Subnet it receives back the AVAX tokens it staked. 
-Additionally, it may receive a reward for helping to secure the network by validating it.
+When a validator is done validating the Primary Network it receives back the AVAX tokens it staked. 
+Additionally, it may receive a reward for helping to secure the network by validating.
 
-Right now, a reward is always paid out to validators.
-In the future, a validator will only receive the validation reward if it is sufficiently responsive and correct during the time it validates.
+A validator only receives a validation reward if it is sufficiently responsive and correct during the time it validates.
 
 See the [Avalanche token paper](https://files.avalabs.org/papers/avax-token.pdf) to learn more about AVAX and the mechanics of staking.
 

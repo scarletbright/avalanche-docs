@@ -124,17 +124,17 @@ Let's make an unsigned base tx that uses the inputs and outputs from the previou
 
 ***
 
-## Platform `AddDefaultSubnetDelegatorTx` Specification
+## Platform `AddDelegatorTx` Specification
 
-### Unsigned Add Default Subnet Delegator Tx Identifier
+### Unsigned Add Primary Network Delegator Tx Identifier
 
-The transaction identifier for a add default subnet delegator tx is `0x00000010`.
+The transaction identifier for a add Primary Network delegator tx is `0x00000010`.
 
-### What Unsigned Add Default Subnet Delegator Tx Contains
+### What Unsigned Add Primary Network Delegator Tx Contains
 
 An unsigned base tx contains a `BaseTx`, `NodeID`, `StartTime`, `EndTime`, and `Destination`.
 
-- **`ID`** is defined in `BaseTx`. For a default subnet delegator tx the ID is `0x00000010`.
+- **`ID`** is defined in `BaseTx`. For a Primary Network delegator tx the ID is `0x00000010`.
 - **`NodeID`** is 20 bytes which is the node ID of the delegatee.
 - **`StartTime`** is a long which is the Unix time when the delegator starts delegating.
 - **`EndTime`** is a long which is the Unix time when the delegator stops delegating (and staked AVAX is returned).
