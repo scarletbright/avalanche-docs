@@ -1242,6 +1242,7 @@ message BaseTx {
 
 Let's make an base tx that uses the inputs and outputs from the previous examples:
 
+- **`TypeID`**: `0`
 - **`NetworkID`**: `3`
 - **`BlockchainID`**: `0xffffffffeeeeeeeeddddddddcccccccbbbbbbbbaaaaaaaa9999999988888888`
 - **`Outputs`**:
@@ -1252,7 +1253,7 @@ Let's make an base tx that uses the inputs and outputs from the previous example
 
 ```splus
 [
-    TypeID       <- 0x00000000
+    TypeID       <- 0 = 0x00000000
     NetworkID    <- 3 = 0x00000003
     BlockchainID <- 0xffffffffeeeeeeeeddddddddcccccccbbbbbbbbaaaaaaaa9999999988888888
     Outputs      <- [
@@ -1265,7 +1266,7 @@ Let's make an base tx that uses the inputs and outputs from the previous example
 ]
 =
 [
-    // Type ID
+    // typeID
     0x00, 0x00, 0x00, 0x00,
     // networkID:
     0x00, 0x00, 0x00, 0x03,
