@@ -433,9 +433,9 @@ Let's make an unsigned add validator tx that uses the inputs and outputs from th
 
 - **`BaseTx`**: `"Example BaseTx as defined above with ID set to 10"`
 - **`NodeID`**: `0xe9094f73698002fd52c90819b457b9fbc866ab80`
-- **`weight`**: `0x000000000000d431`
 - **`StarTime`**: `0x000000005f21f31d`
 - **`EndTime`**: `0x000000005f497dc6`
+- **`Weight`**: `0x000000000000d431`
 - **`Destination`**: `0x3cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
 
 ```splus
@@ -445,6 +445,7 @@ Let's make an unsigned add validator tx that uses the inputs and outputs from th
     Amount       <- 0x000000000000d431
     StarTime     <- 0x000000005f21f31d
     EndTime      <- 0x000000005f497dc6
+    Weight       <- 0x000000000000d431
     Destination  <- 0x3cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c
 ]
 =
@@ -484,6 +485,8 @@ Let's make an unsigned add validator tx that uses the inputs and outputs from th
     0x00, 0x00, 0x00, 0x00, 0x5f, 0x21, 0xf3, 0x1d,
     // EndTime
     0x00, 0x00, 0x00, 0x00, 0x5f, 0x49, 0x7d, 0xc6,
+    // Weight
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
     // Destination
     0x3c, 0xb7, 0xd3, 0x84, 0x2e, 0x8c, 0xee, 0x6a, 0x0e,
     0xbd, 0x09, 0xf1, 0xfe, 0x88, 0x4f, 0x68, 0x61, 0xe1,
