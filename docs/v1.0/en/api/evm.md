@@ -41,7 +41,7 @@ where `blockchainID` is the ID of the blockchain running the EVM.
 To interact with the `avax` specific RPC calls
 
 ```http
-/ext/bc/C/avax
+/ext/bc/C/ava
 ```
 
 ## WebSocket-RPC Endpoints
@@ -751,7 +751,7 @@ curl -X POST --data '{
         "password":"myPassword",
         "address": "0xc876DF0F099b3eb32cBB78820d39F5813f73E18C"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/avax
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava
 ```
 
 #### Example Response
@@ -794,7 +794,7 @@ curl -X POST --data '{
         "password":"myPassword",
         "privateKey":"PrivateKey-2o2uPgTSf3aR5nW6yLHjBEAiatAFKEhApvYzsjvAJKRXVWCYkE"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/avax
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava
 ```
 
 #### Example Response
