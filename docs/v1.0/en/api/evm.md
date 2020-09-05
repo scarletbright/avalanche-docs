@@ -721,15 +721,15 @@ curl -X POST --data '{
 
 ### AVAX RPC endpoints
 
-### avax.exportKey
+### ava.exportKey
 
 Get the private key that controls a given address.  
-The returned private key can be added to a user with `avax.importKey`.
+The returned private key can be added to a user with `ava.importKey`.
 
 #### Signature
 
 ```go
-avax.exportKey({
+ava.exportKey({
     username: string,
     password:string,
     address:string
@@ -745,7 +745,7 @@ avax.exportKey({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"avax.exportKey",
+    "method" :"ava.exportKey",
     "params" :{
         "username" :"myUsername",
         "password":"myPassword",
@@ -766,14 +766,14 @@ curl -X POST --data '{
 }}
 ```
 
-### avax.importKey
+### ava.importKey
 
 Give a user control over an address by providing the private key that controls the address.
 
 #### Signature
 
 ```go
-avax.importKey({
+ava.importKey({
     username: string,
     password:string,
     privateKey:string
@@ -788,7 +788,7 @@ avax.importKey({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"avax.importKey",
+    "method" :"ava.importKey",
     "params" :{
         "username" :"myUsername",
         "password":"myPassword",
