@@ -41,7 +41,7 @@ where `blockchainID` is the ID of the blockchain running the EVM.
 To interact with the `avax` specific RPC calls
 
 ```http
-/ext/bc/C/avax
+/ext/bc/C/ava
 ```
 
 ## WebSocket-RPC Endpoints
@@ -721,15 +721,15 @@ curl -X POST --data '{
 
 ### AVAX RPC endpoints
 
-### avax.exportKey
+### ava.exportKey
 
 Get the private key that controls a given address.  
-The returned private key can be added to a user with `avax.importKey`.
+The returned private key can be added to a user with `ava.importKey`.
 
 #### Signature
 
 ```go
-avax.exportKey({
+ava.exportKey({
     username: string,
     password:string,
     address:string
@@ -745,13 +745,13 @@ avax.exportKey({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"avax.exportKey",
+    "method" :"ava.exportKey",
     "params" :{
         "username" :"myUsername",
         "password":"myPassword",
         "address": "0xc876DF0F099b3eb32cBB78820d39F5813f73E18C"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/avax
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava
 ```
 
 #### Example Response
@@ -766,14 +766,14 @@ curl -X POST --data '{
 }}
 ```
 
-### avax.importKey
+### ava.importKey
 
 Give a user control over an address by providing the private key that controls the address.
 
 #### Signature
 
 ```go
-avax.importKey({
+ava.importKey({
     username: string,
     password:string,
     privateKey:string
@@ -788,13 +788,13 @@ avax.importKey({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"avax.importKey",
+    "method" :"ava.importKey",
     "params" :{
         "username" :"myUsername",
         "password":"myPassword",
         "privateKey":"PrivateKey-2o2uPgTSf3aR5nW6yLHjBEAiatAFKEhApvYzsjvAJKRXVWCYkE"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/avax
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava
 ```
 
 #### Example Response
