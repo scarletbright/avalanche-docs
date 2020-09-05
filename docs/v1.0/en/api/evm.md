@@ -38,6 +38,12 @@ To interact with other instances of the EVM:
 
 where `blockchainID` is the ID of the blockchain running the EVM.
 
+To interact with the `avax` specific RPC calls
+
+```http
+/ext/bc/C/avax
+```
+
 ## WebSocket-RPC Endpoints
 
 To interact with C-Chain (the main EVM instance on Avalanche):
@@ -710,5 +716,95 @@ curl -X POST --data '{
         "pending": "0x2f",
         "queued": "0x0"
     }
+}
+```
+
+### AVAX RPC endpoints
+
+### avax.exportKey
+
+Get the private key that controls a given address.  
+The returned private key can be added to a user with `avax.importKey`.
+
+#### Signature
+
+```go
+avax.exportKey({
+    username: string,
+    password:string,
+    address:string
+}) -> {privateKey: string}
+```
+
+* `username` must control `address`.
+* `privateKey` is the string representation of the private key that controls `address`.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"avax.exportKey",
+    "params" :{
+        "username" :"myUsername",
+        "password":"myPassword",
+        "address": "0xc876DF0F099b3eb32cBB78820d39F5813f73E18C"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/avax
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "privateKey": "PrivateKey-2o2uPgTSf3aR5nW6yLHjBEAiatAFKEhApvYzsjvAJKRXVWCYkE"
+    },
+    "id": 1
+}}
+```
+
+### avax.importKey
+
+Give a user control over an address by providing the private key that controls the address.
+
+#### Signature
+
+```go
+avax.importKey({
+    username: string,
+    password:string,
+    privateKey:string
+}) -> {address: string}
+```
+
+* Add `privateKey` to `username`'s set of private keys. `address` is the address `username` now controls with the private key.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"avax.importKey",
+    "params" :{
+        "username" :"myUsername",
+        "password":"myPassword",
+        "privateKey":"PrivateKey-2o2uPgTSf3aR5nW6yLHjBEAiatAFKEhApvYzsjvAJKRXVWCYkE"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/avax
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "address": "0xc876DF0F099b3eb32cBB78820d39F5813f73E18C"
+    },
+    "id": 1
 }
 ```
