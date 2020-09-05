@@ -76,16 +76,16 @@ Go to our [releases page](https://github.com/ava-labs/gecko/releases) and select
 Under `Assets`, select the appropriate file.
 
 For MacOS:  
-Download the file named `gecko-osx-<VERSION>.zip`  
-Unzip the file with `unzip gecko-osx-<VERSION>.zip`  
-The resulting folder, `gecko-<VERSION>`, contains the binaries.  
-You can run the node with `./gecko-<VERSION>/avalanche`
+Download the file named `avalanche-osx-<VERSION>.zip`  
+Unzip the file with `unzip avalanche-osx-<VERSION>.zip`  
+The resulting folder, `avalanche-<VERSION>`, contains the binaries.  
+You can run the node with `./avalanche-<VERSION>/avalanche`
 
 For Linux x86:  
-Download the file named `gecko-linux-<VERSION>.tar.gz`  
-Unzip the file with `tar -xvf gecko-linux-<VERSION>.tar.gz`  
-The resulting folder, `gecko-<VERSION>`, contains the binaries.  
-You can run the node with `./gecko-<VERSION>/avalanche`
+Download the file named `avalanche-linux-<VERSION>.tar.gz`  
+Unzip the file with `tar -xvf avalanche-linux-<VERSION>.tar.gz`  
+The resulting folder, `avalanche-<VERSION>`, contains the binaries.  
+You can run the node with `./avalanche-<VERSION>/avalanche`
 
 Note: The Linux binaries are compiled for AMD64 (x86-64) architectures. For ARM platforms, like the Raspberry Pi, please [build from source](#from-source).
 
@@ -398,7 +398,7 @@ Replace each character that looks like a quotation mark " with a quotation mark 
 ### Starting node fails with: `cannot execute binary file: Exec format error`
 
 You are probably using one of the [official releases](https://github.com/ava-labs/gecko/releases) on an architecture it was not build for.  
-The `gecko-linux-<release>.tar.gz` is build for AMD64 (x86-64) architectures. Platforms based on ARM chips, like the Raspberry Pi, are **not** working with it.  
+The `avalanche-linux-<release>.tar.gz` is build for AMD64 (x86-64) architectures. Platforms based on ARM chips, like the Raspberry Pi, are **not** working with it.  
 Instead you need to [build gecko from source](../quickstart/ava-getting-started.md#download-gecko-source-code). Keep in mind you need to use a 64-bit operating system.
 
 ## Known Issues/Bugs

@@ -159,7 +159,7 @@ The Validator must validate the Primary Network for the entire duration they val
 ```go
 platform.addSubnetValidator(
     {
-        id: string,
+        nodeID: string,
         subnetID: string,
         startTime: int,
         endTime: int,
@@ -572,7 +572,7 @@ platform.getCurrentValidators({subnetID: string}) ->
         weight: int, (optional)
         stakeAmount: int, (optional)
         address: string
-        id: string
+        nodeID: string
     }
 }
 ```
@@ -608,19 +608,19 @@ curl -X POST --data '{
                 "startTime": "1591878109",
                 "endtime": "1594469809",
                 "stakeAmount": "319902",
-                "id": "NDmcZNsWoPrkN9KSt2A9js639hEQWUmUf"
+                "nodeID": "NodeID-NDmcZNsWoPrkN9KSt2A9js639hEQWUmUf"
             },
             {
                 "startTime": "1591473391",
                 "endtime": "1592855191",
                 "stakeAmount": "10000",
-                "id": "62T5AAwKdFMNi7Gm193A6zyJhVscRfuhP"
+                "nodeID": "NodeID-62T5AAwKdFMNi7Gm193A6zyJhVscRfuhP"
             },
             {
                 "startTime": "1591387125",
                 "endtime": "1622923025",
                 "stakeAmount": "20000000000000",
-                "id": "HGZ8ae74J3odT8ESreAdCtdnvWG1J4X5n"
+                "nodeID": "NodeID-HGZ8ae74J3odT8ESreAdCtdnvWG1J4X5n"
             }
         ]
     },
@@ -679,7 +679,7 @@ platform.getPendingValidators({subnetID: string}) ->
         endTime: int,
         weight: int, (optional)
         stakeAmount: int, (optional)
-        id: string
+        nodeID: string
     }
 }
 ```
@@ -715,7 +715,7 @@ curl -X POST --data '{
                 "startTime": "1592400591",
                 "endtime": "1622923025",
                 "stakeAmount": "10000",
-                "id": "NodeID-DpL8PTsrjtLzv5J8LL3D2A6YcnCTqrNH9"
+                "nodeID": "NodeID-DpL8PTsrjtLzv5J8LL3D2A6YcnCTqrNH9"
             },
         ]
     },
@@ -777,47 +777,6 @@ curl -X POST --data '{
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
-
-
-### platform.getUTXOs
-
-Get the UTXOs that reference a given address.
-
-#### Signature
-
-```go
-platform.getUTXOs({addresses: string}) -> {utxos: []string}
-```
-
-* `UTXOs` is a list of UTXOs such that each UTXO references at least one address in `addresses`
-
-#### Example Call
-
-```json
-curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "method" :"platform.getUTXOs",
-    "params" :{
-        "addresses":["P-avax1s994jad0rtwvlfpkpyg2yau9nxt60qqfv023qx"]
-    }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
-```
-
-#### Example Response
-
-```go
-{
-    "jsonrpc": "2.0",
-    "result": {
-        "utxos": [
-            "117xBYKW2hg64MpJr6zpm4s5ocAVN4bG8UnfcmhJCHdoLJjjhkxtNTyCgC48LydTwJdao6mSii7JHxg57Z1KavZFtY5V78v173FU2vjJBudEfLbVb2pgkZXrFUULvW5cZLeTRFq5GN63C13xmLAibj1mz39KUySj7PEX8A"
-        ]
-    },
-    "id": 1
-}
-```
-
 ### platform.exportAVAX
 
 Send AVAX from an address on the P-Chain to an address on the X-Chain. 
@@ -1115,7 +1074,7 @@ curl -X POST --data '{
     "params" :{
         "username" :"bob",
         "password":"loblaw",
-        "privateKey":"2w4XiXxPfQK4TypYqnohRL8DRNTz9cGiGmwQ1zmgEqD9c9KWLq"
+        "privateKey":"PrivateKey-2w4XiXxPfQK4TypYqnohRL8DRNTz9cGiGmwQ1zmgEqD9c9KWLq"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
@@ -1256,8 +1215,8 @@ curl -X POST --data '{
     "id"     :1,
     "result" :{
         "validators":[
-            "MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ",
-            "NFBbbJ4qCmNaCzeW7sxErhvWqvEQMnYcN"
+            "NodeID-MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ",
+            "NodeID-NFBbbJ4qCmNaCzeW7sxErhvWqvEQMnYcN"
         ]
     }
 }

@@ -70,16 +70,16 @@ Go to our [releases page](https://github.com/ava-labs/gecko/releases) and select
 Under `Assets`, select the appropriate file.
 
 For MacOS:  
-Download the file named `gecko-osx-<VERSION>.zip`  
-Unzip the file with `unzip gecko-osx-<VERSION>.zip`  
-The resulting folder, `gecko-<VERSION>`, contains the binaries.  
-You can run the node with `./gecko-<VERSION>/avalanche`
+Download the file named `avalanche-osx-<VERSION>.zip`  
+Unzip the file with `unzip avalanche-osx-<VERSION>.zip`  
+The resulting folder, `avalanche-<VERSION>`, contains the binaries.  
+You can run the node with `./avalanche-<VERSION>/avalanche`
 
 For Linux:  
-Download the file named `gecko-linux-<VERSION>.tar.gz`.  
-Unzip the file with `tar -xvf gecko-linux-<VERSION>.tar.gz`  
-The resulting folder, `gecko-<VERSION>`, contains the binaries.  
-You can run the node with `./gecko-<VERSION>/avalanche`
+Download the file named `avalanche-linux-<VERSION>.tar.gz`.  
+Unzip the file with `tar -xvf avalanche-linux-<VERSION>.tar.gz`  
+The resulting folder, `avalanche-<VERSION>`, contains the binaries.  
+You can run the node with `./avalanche-<VERSION>/avalanche`
 
 ### Start a Node and Connect to Test Network
 
@@ -88,8 +88,14 @@ You can use it to play around in a low-stakes environment.
 
 To start a node and connect it to the Avalanche test net:
 
+If you built from source:
 ```sh
 ./build/avalanche
+```
+
+If you are using the released binaries:
+```sh
+./avalanche-<VERSION>/avalanche
 ```
 
 You can use `Ctrl + C` to kill the node.
@@ -206,11 +212,11 @@ Hence, this address begins `X-`, denoting that it exists on the X-Chain.
 ## Use the Avalanche Faucet
 
 Now let's use the Avalanche test net faucet to send some free AVAX to this address.
-The faucet dispenses 20,000 nanoAVAX (nAVAX) each drop.
+The faucet dispenses 100 000 000 nanoAVAX (nAVAX) each drop.
 
 **This is only a test network, and AVAX on this network has no value.**
 
-Go to the [test net faucet](https://faucet.avax.network/) and paste the address you just created to receive 20,000 nAVAX.
+Go to the [test net faucet](https://faucet.avax.network/) and paste the address you just created to receive 100 000 000 nAVAX.
 
 We can check an address's balance of a given asset by calling `avm.getBalance`, another method of the X-Chain's API.
 Let's check that the faucet drip went through.
@@ -237,7 +243,7 @@ The response should look like this:
     "jsonrpc":"2.0",
     "id"     :3,
     "result" :{
-        "balance":20000,
+        "balance":100000000,
         "utxoIDs": [
             {
                 "txID": "x6vR85YPNRf5phpLAEC7Sd6Tq2PXWRt3AAHAK4BpjxyjRyhtu",
