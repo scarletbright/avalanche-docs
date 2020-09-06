@@ -396,24 +396,24 @@ An unsigned add validator tx contains a `TypeID`, `BaseTx`, `Validator`, `Stake`
 +---------------+----------------------+-----------------------------------------+
 | stake         : Stake                |                  size(LockedOuts) bytes |
 +---------------+----------------------+-----------------------------------------+
-| reward_owner  : RewardOwner          |                size(reward_owner) bytes |
+| rewards_owner : RewardsOwner         |               size(rewards_owner) bytes |
 +---------------+----------------------+-----------------------------------------+
 | shares        : Shares               |                                 4 bytes |
 +---------------+----------------------+-----------------------------------------+
-                   | 52 + size(stake) + size(reward_owner) + size(base_tx) bytes |
-                   +-------------------------------------------------------------+
+                  | 52 + size(stake) + size(rewards_owner) + size(base_tx) bytes |
+                  +--------------------------------------------------------------+
 ```
 
 ### Proto Unsigned Add Validator Tx Specification
 
 ```protobuf
 message AddValidatorTx {
-    uint32 type_id = 1;           // 04 bytes
-    BaseTx base_tx = 2;           // size(base_tx)
-    Validator validator = 3;      // size(validator)
-    Stake stake = 4;              // size(LockedOuts)
-    RewardOwner reward_owner = 5; // size(reward_owner)
-    uint32 shares = 6;            // 04 bytes
+    uint32 type_id = 1;             // 04 bytes
+    BaseTx base_tx = 2;             // size(base_tx)
+    Validator validator = 3;        // size(validator)
+    Stake stake = 4;                // size(LockedOuts)
+    RewardsOwner rewards_owner = 5; // size(rewards_owner)
+    uint32 shares = 6;              // 04 bytes
 }
 ```
 
@@ -427,7 +427,7 @@ Let's make an unsigned add validator tx that uses the inputs and outputs from th
 - **`EndTime`**: `0x000000005f497dc6`
 - **`Weight`**: `0x000000000000d431`
 - **`Stake`**: `0x0000000139c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d55008800000007000001d1a94a2000000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
-- **`RewardOwner`**: `0x0000000b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
+- **`RewardsOwner`**: `0x0000000b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
 - **`Shares`**: `0x00000064`
 
 ```splus
@@ -438,7 +438,7 @@ Let's make an unsigned add validator tx that uses the inputs and outputs from th
     EndTime      <- 0x000000005f497dc6
     Weight       <- 0x000000000000d431
     Stake       <---0x0000000139c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d55008800000007000001d1a94a2000000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c
-    RewardOwner  <- 0x0000000b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c
+    RewardsOwner  <- 0x0000000b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c
     Shares       <- 0x00000064
 ]
 =
@@ -490,7 +490,7 @@ Let's make an unsigned add validator tx that uses the inputs and outputs from th
     0x3c, 0xb7, 0xd3, 0x84, 0x2e, 0x8c, 0xee, 0x6a,
     0x0e, 0xbd, 0x09, 0xf1, 0xfe, 0x88, 0x4f, 0x68,
     0x61, 0xe1, 0xb2, 0x9c,
-    // RewardOwner
+    // RewardsOwner
     0x00, 0x00, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01,
     0x00, 0x00, 0x00, 0x01, 0x3c, 0xb7, 0xd3, 0x84,
@@ -651,10 +651,10 @@ An unsigned add delegator tx contains a `TypeID`, `BaseTx`, `Validator`, `Stake`
 +---------------+----------------------+-----------------------------------------+
 | stake         : Stake                |                  size(LockedOuts) bytes |
 +---------------+----------------------+-----------------------------------------+
-| reward_owner  : RewardOwner          |                size(reward_owner) bytes |
+| rewards_owner : RewardsOwner         |               size(rewards_owner) bytes |
 +---------------+----------------------+-----------------------------------------+
-                   | 48 + size(stake) + size(reward_owner) + size(base_tx) bytes |
-                   +-------------------------------------------------------------+
+                  | 48 + size(stake) + size(rewards_owner) + size(base_tx) bytes |
+                  +--------------------------------------------------------------+
 ```
 
 ### Proto Unsigned Add Delegator Tx Specification
@@ -665,7 +665,7 @@ message AddDelegatorTx {
     BaseTx base_tx = 2;           // size(base_tx)
     Validator validator = 3;      // size(validator)
     Stake stake = 4;              // size(LockedOuts)
-    RewardOwner reward_owner = 5; // size(reward_owner)
+    RewardsOwner rewards_owner = 5; // size(rewards_owner)
 }
 ```
 
@@ -679,7 +679,7 @@ Let's make an unsigned add delegator tx that uses the inputs and outputs from th
 - **`EndTime`**: `0x000000005f497dc6`
 - **`Weight`**: `0x000000000000d431`
 - **`Stake`**: `0x0000000139c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d55008800000007000001d1a94a2000000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
-- **`RewardOwner`**: `0x0000000b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
+- **`RewardsOwner`**: `0x0000000b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
 
 ```splus
 [
@@ -689,7 +689,7 @@ Let's make an unsigned add delegator tx that uses the inputs and outputs from th
     EndTime      <- 0x000000005f497dc6
     Weight       <- 0x000000000000d431
     Stake       <---0x0000000139c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d55008800000007000001d1a94a2000000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c
-    RewardOwner  <- 0x0000000b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c
+    RewardsOwner  <- 0x0000000b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c
 ]
 =
 [
@@ -740,7 +740,7 @@ Let's make an unsigned add delegator tx that uses the inputs and outputs from th
     0x3c, 0xb7, 0xd3, 0x84, 0x2e, 0x8c, 0xee, 0x6a,
     0x0e, 0xbd, 0x09, 0xf1, 0xfe, 0x88, 0x4f, 0x68,
     0x61, 0xe1, 0xb2, 0x9c,
-    // RewardOwner
+    // RewardsOwner
     0x00, 0x00, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01,
     0x00, 0x00, 0x00, 0x01, 0x3c, 0xb7, 0xd3, 0x84,
