@@ -1,5 +1,11 @@
 # Create a New Virtual Machine
 
+## Note
+
+The code below is slightly out of date.
+Some methods, interfaces and implementations are slightly different than in this tutorial.
+We're going to leave this up because the current code is very similar and this tutorial is still useful in demonstrating how Avalanche's VM model works.
+
 ## Introduction
 
 One of the core features of the Avalanche network is the creation of new, custom blockchains, which
