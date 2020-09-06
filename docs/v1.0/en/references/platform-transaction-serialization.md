@@ -367,7 +367,7 @@ Let's make a base tx that uses the inputs and outputs from the previous examples
 
 ### What Unsigned Add Validator Tx Contains
 
-An unsigned add validator tx contains a `TypeID`, `BaseTx`, `Validator`, `Stake`, `RewardsOwner`, `Shares`.
+An unsigned add validator tx contains a `TypeID`, `BaseTx`, `Validator`, `Stake`, `RewardsOwner`, and `Shares`.
 
 - **`TypeID`** is the ID for this type. It is `0x0000000c`.
 - **`BaseTx`**
