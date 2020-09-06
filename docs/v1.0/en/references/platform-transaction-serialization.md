@@ -371,14 +371,14 @@ An unsigned add validator tx contains a `TypeID`, `BaseTx`, `NodeID`, `StartTime
 
 - **`TypeID`** is the ID for this type. It is `0x0000000c`.
 - **`BaseTx`**
-- **`NodeID`** is 20 bytes which is the node ID of the delegatee.
-- **`StartTime`** is a long which is the Unix time when the delegator starts delegating.
-- **`EndTime`** is a long which is the Unix time when the delegator stops delegating (and staked AVAX is returned).
-- **`Weight`** Amount the delegator stakes
-- **`LockedOuts`** An array of Transferable Outputs
-- **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
-- **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
-- **`RewardAddress`** Address to send reward to, if applicable
+- **`Validator`** Validator has a `NodeID`, `StartTime`, `EndTime`, and `Weight`
+    - **`NodeID`** is 20 bytes which is the node ID of the delegatee.
+    - **`StartTime`** is a long which is the Unix time when the delegator starts delegating.
+    - **`EndTime`** is a long which is the Unix time when the delegator stops delegating (and staked AVAX is returned).
+    - **`Weight`** is a long which is the amount the delegator stakes
+- **`Stake`** Stake has `LockedOuts`
+    - **`LockedOuts`** An array of Transferable Outputs
+- **`RewardsOwner`** A `Locktime`, `Threshold` and array of `Addresses`
 - **`Shares`** 10,000 times percentage of reward taken from delegators
 
 ### Gantt Unsigned Add Validator Tx Specification
@@ -389,41 +389,28 @@ An unsigned add validator tx contains a `TypeID`, `BaseTx`, `NodeID`, `StartTime
 +---------------+----------------------+-----------------------------------------+
 | base_tx       : BaseTx               |                     size(base_tx) bytes |
 +---------------+----------------------+-----------------------------------------+
-| node_id       : [20]byte             |                                20 bytes |
+| validator     : Validator            |                                44 bytes |
 +---------------+----------------------+-----------------------------------------+
-| start_time    : long                 |                                 8 bytes |
+| stake         : Stake                |                  size(LockedOuts) bytes |
 +---------------+----------------------+-----------------------------------------+
-| end_time      : long                 |                                 8 bytes |
+| reward_owner  : RewardOwner          |                size(reward_owner) bytes |
 +---------------+----------------------+-----------------------------------------+
-| weight        : long                 |                                 8 bytes |
+| shares        : Shares               |                                 4 bytes |
 +---------------+----------------------+-----------------------------------------+
-| locked_outs   : []Output             |                 4 + size(outputs) bytes |
-+---------------+----------------------+-----------------------------------------+
-| locktime      : long                 |                                 8 bytes |
-+---------------+----------------------+-----------------------------------------+
-| threshold     : int                  |                                 4 bytes |
-+---------------+----------------------+-----------------------------------------+
-| reward_address: [20]byte             |                                20 bytes |
-+---------------+----------------------+-----------------------------------------+
-                                      | 84 + size(outputs) + size(base_tx) bytes |
-                                      +------------------------------------------+
+                     | 52 + size(stake) + size(reward_owner) size(base_tx) bytes |
+                     +-----------------------------------------------------------+
 ```
 
 ### Proto Unsigned Add Validator Tx Specification
 
 ```protobuf
 message AddValidatorTx {
-    uint32 type_id = 1;              // 04 bytes
-    BaseTx base_tx = 2;              // size(base_tx)
-    bytes node_id = 3;               // 20 bytes
-    uint64 start_time = 4;           // 08 bytes
-    uint64 end_time = 5;             // 08 bytes
-    uint64 weight = 6;               // 08 bytes
-    repeated Output locked_outs = 7; // 4 + size(outputs) bytes
-    uint64 lock_time = 8;            // 08 bytes
-    uint32 threshold = 9;            // 04 bytes
-    bytes reward_address = 10;       // 20 bytes
-    uint32 shares = 11;              // 04 bytes
+    uint32 type_id = 1;           // 04 bytes
+    BaseTx base_tx = 2;           // size(base_tx)
+    Validator validator = 3;      // size(validator)
+    Stake stake = 4;              // size(LockedOuts)
+    RewardOwner reward_owner = 5; // size(reward_owner)
+    uint32 shares = 6;            // 04 bytes
 }
 ```
 
@@ -431,22 +418,46 @@ message AddValidatorTx {
 
 Let's make an unsigned add validator tx that uses the inputs and outputs from the previous examples:
 
-- **`BaseTx`**: `"Example BaseTx as defined above with ID set to 10"`
+- **`BaseTx`**: `"Example BaseTx as defined above with ID set to 12"`
 - **`NodeID`**: `0xe9094f73698002fd52c90819b457b9fbc866ab80`
 - **`StarTime`**: `0x000000005f21f31d`
 - **`EndTime`**: `0x000000005f497dc6`
 - **`Weight`**: `0x000000000000d431`
-- **`Destination`**: `0x3cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
+- **`Stake`**: `0x0000000139c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d55008800000007000001d1a94a2000000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
+- **`RewardOwner`**: `0x0000000b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
+- **`Shares`**: `0x00000064`
+
+
+node id
+e1 56 96 93 46 70 8c 0c 02 4a 55 ea d4 61 a8 8d 64 96 ec 71 
+
+start
+00 00 00 00 5f 55 18 84 
+end
+00 00 00 00 5f 67 8d 84 
+weidg
+00 00 01 d1 a9 4a 20 00 
+
+Stake
+LockedOuts
+00 00 00 01 39 c3 3a 49 9c e4 c3 3a 3b 09 cd d2 cf a0 1a e7 0d bf 2d 18 b2 d7 d1 68 52 44 40 e5 5d 55 00 88 00 00 00 07 00 00 01 d1 a9 4a 20 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 01 3c b7 d3 84 2e 8c ee 6a 0e bd 09 f1 fe 88 4f 68 61 e1 b2 9c 
+
+RewardOwner
+00 00 00 0b 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 01 3c b7 d3 84 2e 8c ee 6a 0e bd 09 f1 fe 88 4f 68 61 e1 b2 9c 
+
+Shares
+00 00 00 64 
 
 ```splus
 [
     BaseTx       <- 0x0000000000100000303900000000000000000000000000000000000000000000000000000000000000000000007000012309cd7078b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c136923582736d444a971693dded0aa059053b36a85e98e39447cc92deb9cc4d700000000345aa98e8a990f4101e2268fab4c4e1f731c8dfbcffa3a77978686e6390d624f00000005000012309cd7ddb00000000100000000
     NodeID       <- 0xe9094f73698002fd52c90819b457b9fbc866ab80
-    Amount       <- 0x000000000000d431
     StarTime     <- 0x000000005f21f31d
     EndTime      <- 0x000000005f497dc6
     Weight       <- 0x000000000000d431
-    Destination  <- 0x3cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c
+    Stake       <---0x0000000139c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d55008800000007000001d1a94a2000000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c
+    RewardOwner  <- 0x0000000b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c
+    Shares       <- 0x00000064
 ]
 =
 [
@@ -476,21 +487,35 @@ Let's make an unsigned add validator tx that uses the inputs and outputs from th
     0xdd, 0xb0, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     // Node ID
-    0xe9, 0x09, 0x4f, 0x73, 0x69, 0x80, 0x02, 0xfd, 0x52,
-    0xc9, 0x08, 0x19, 0xb4, 0x57, 0xb9, 0xfb, 0xc8, 0x66,
-    0xab, 0x80,
-    // Amount
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
+    0xe9, 0x09, 0x4f, 0x73, 0x69, 0x80, 0x02, 0xfd,
+    0x52, 0xc9, 0x08, 0x19, 0xb4, 0x57, 0xb9, 0xfb,
+    0xc8, 0x66, 0xab, 0x80,
     // StartTime
     0x00, 0x00, 0x00, 0x00, 0x5f, 0x21, 0xf3, 0x1d,
     // EndTime
     0x00, 0x00, 0x00, 0x00, 0x5f, 0x49, 0x7d, 0xc6,
     // Weight
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
-    // Destination
-    0x3c, 0xb7, 0xd3, 0x84, 0x2e, 0x8c, 0xee, 0x6a, 0x0e,
-    0xbd, 0x09, 0xf1, 0xfe, 0x88, 0x4f, 0x68, 0x61, 0xe1,
-    0xb2, 0x9c,
+    // Stake
+    0x00, 0x00, 0x00, 0x01, 0x39, 0xc3, 0x3a, 0x49,
+    0x9c, 0xe4, 0xc3, 0x3a, 0x3b, 0x09, 0xcd, 0xd2,
+    0xcf, 0xa0, 0x1a, 0xe7, 0x0d, 0xbf, 0x2d, 0x18,
+    0xb2, 0xd7, 0xd1, 0x68, 0x52, 0x44, 0x40, 0xe5,
+    0x5d, 0x55, 0x00, 0x88, 0x00, 0x00, 0x00, 0x07,
+    0x00, 0x00, 0x01, 0xd1, 0xa9, 0x4a, 0x20, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01,
+    0x3c, 0xb7, 0xd3, 0x84, 0x2e, 0x8c, 0xee, 0x6a,
+    0x0e, 0xbd, 0x09, 0xf1, 0xfe, 0x88, 0x4f, 0x68,
+    0x61, 0xe1, 0xb2, 0x9c,
+    // RewardOwner
+    0x00, 0x00, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01,
+    0x00, 0x00, 0x00, 0x01, 0x3c, 0xb7, 0xd3, 0x84,
+    0x2e, 0x8c, 0xee, 0x6a, 0x0e, 0xbd, 0x09, 0xf1,
+    0xfe, 0x88, 0x4f, 0x68, 0x61, 0xe1, 0xb2, 0x9c,
+    // Shares
+    0x00, 0x00, 0x00, 0x64,
 ]
 ```
 
