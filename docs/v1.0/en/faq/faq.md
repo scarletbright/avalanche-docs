@@ -16,6 +16,10 @@ If your question is still unanswered, ask about it on our [Discord](https://chat
 
 ##  Questions
 
+### Can I buy AVAX?
+
+Not until after our main network launches.
+
 ### Where can I go for help?
 
 [Discord](https://chat.avalabs.org), but please search the documentation and Discord for your issue before asking about it.
