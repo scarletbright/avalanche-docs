@@ -719,7 +719,55 @@ curl -X POST --data '{
 }
 ```
 
-### AVAX RPC endpoints
+## AVAX RPC endpoints
+
+### ava.exportAVAX
+
+Send AVAX from the C-Chain to the X Chain.  
+After calling this method, you must call `importAVAX` on the X Chain to complete the transfer.
+
+#### Signature
+
+```go
+ava.exportAVAX({
+    to: string,
+    amount: int,
+    username: string,
+    password:string,
+}) -> {txID: string}
+```
+
+* `to` is the X-Chain address the AVAX is sent to.
+* `amount` is the amount of nAVAX to send.
+* The AVAX is sent from addresses controlled by `username`
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"ava.exportAVAX",
+    "params" :{
+        "to":"X-avax1q9c6ltuxpsqz7ul8j0h0d0ha439qt70sr3x2m0",
+        "amount": 500,
+        "username":"myUsername",
+        "password":"myPassword"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "txID": "2ffcxdkiKXXA4JdyRoS38dd7zoThkapNPeZuGPmmLBbiuBBHDa"
+    },
+    "id": 1
+}
+```
 
 ### ava.exportKey
 
@@ -766,6 +814,56 @@ curl -X POST --data '{
 }}
 ```
 
+### ava.importAVAX
+
+Finalize a transfer of AVAX from the X-Chain to the C-Chain.
+Before this method is called, you must call the X-Chain's [`exportAVAX`](./avm.md#avmexportavax) method to initiate the transfer.
+
+#### Signature
+
+```go
+ava.importAVAX({
+    to: string,
+    sourceChain: string,
+    username: string,
+    password:string,
+}) -> {txID: string}
+```
+
+* `to` is the address the AVAX is sent to.
+  This must be the same as the `to` argument in the corresponding call to the C-Chain's `exportAVAX`.
+* `sourceChain` is the ID or alias of the chain the AVAX is being imported from.
+  To import funds from the C-Chain, use `"C"`.
+* `username` is the user that controls `to`.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"ava.importAVAX",
+    "params" :{
+        "to":"0x4b879aff6b3d24352Ac1985c1F45BA4c3493A398",
+        "sourceChain":"X",
+    	"username":"myUsername",
+    	"password":"myPassword"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "txID": "LWTRsiKnEUJC58y8ezAk6hhzmSMUCtemLvm3LZFw8fxDQpns3"
+    },
+    "id": 1
+}
+```
+
 ### ava.importKey
 
 Give a user control over an address by providing the private key that controls the address.
@@ -808,3 +906,4 @@ curl -X POST --data '{
     "id": 1
 }
 ```
+
