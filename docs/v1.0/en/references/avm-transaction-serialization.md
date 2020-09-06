@@ -83,7 +83,7 @@ Let's make a secp256k1 transfer output with:
 ]
 =
 [
-    // type ID:
+    // type_id:
     0x00, 0x00, 0x00, 0x07,
     // amount:
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x39,
@@ -169,7 +169,7 @@ Let's make an SECP256K1 mint output with:
 ]
 =
 [
-    // type ID:
+    // type_id:
     0x00, 0x00, 0x00, 0x06,
     // locktime:
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
@@ -209,9 +209,9 @@ An NFT transfer output contains a `TypeID`, `GroupID`, `Payload`, `Locktime`, `T
 
 ```boo
 +-----------+------------+-------------------------------+
-| type ID   : int        |                       4 bytes |
+| type_id   : int        |                       4 bytes |
 +-----------+------------+-------------------------------+
-| group ID  : int        |                       4 bytes |
+| group_id  : int        |                       4 bytes |
 +-----------+------------+-------------------------------+
 | payload   : []byte     |        4 + len(payload) bytes |
 +-----------+------------+-------------------------------+
@@ -311,7 +311,7 @@ An NFT Mint output contains a `TypeID`, `GroupID`, `Locktime`, `Threshold`, and 
 
 ```boo
 +-----------+------------+--------------------------------+
-| type ID   : int        |                        4 bytes |
+| type_id   : int        |                        4 bytes |
 +-----------+------------+--------------------------------+
 | group_id  : int        |                        4 bytes |
 +-----------+------------+--------------------------------+
@@ -541,7 +541,7 @@ A secp256k1 transfer input contains an `Amount` and `AddressIndices`.
 
 ```boo
 +-------------------------+-------------------------------------+
-| type ID         : int   |                             4 bytes |
+| type_id         : int   |                             4 bytes |
 +-----------------+-------+-------------------------------------+
 | amount          : long  |                             8 bytes |
 +-----------------+-------+-------------------------------------+
@@ -797,7 +797,7 @@ An NFT mint operation contains a `TypeID`, `AddressIndices`, `GroupID`, `Payload
 
 ```boo
 +------------------------------+------------------------------------+
-| type ID         : int        |                            4 bytes |
+| type_id         : int        |                            4 bytes |
 +-----------------+------------+------------------------------------+
 | address_indices : []int      |    4 + size(address_indices) bytes |
 +-----------------+------------+------------------------------------+
@@ -905,7 +905,7 @@ An NFT transfer operation contains a `TypeID`, `AddressIndices` and an untyped `
 
 ```boo
 +------------------------------+------------------------------------+
-| type ID         : int        |                            4 bytes |
+| type_id         : int        |                            4 bytes |
 +-----------------+------------+------------------------------------+
 | address_indices : []int      | 4 + 4 * len(address_indices) bytes |
 +-----------------+------------+------------------------------------+
@@ -1119,7 +1119,7 @@ A [secp256k1](../cryptographic-primitives/#cryptography-in-the-avalanche-virtual
 
 ```boo
 +------------------------------+---------------------------------+
-| type ID         : int        |                         4 bytes |
+| type_id         : int        |                         4 bytes |
 +-----------------+------------+---------------------------------+
 | signatures      : [][65]byte |  4 + 65 * len(signatures) bytes |
 +-----------------+------------+---------------------------------+
@@ -1184,8 +1184,8 @@ Let's make a payment input with:
 
 ### NFT Credential
 
-An NFT credential is the same as an secp256k1 credential with a different type ID.
-The type ID for an NFT credential is `0x0000000e`.
+An NFT credential is the same as an secp256k1 credential with a different TypeID.
+The TypeID for an NFT credential is `0x0000000e`.
 
 ***
 
@@ -1209,7 +1209,7 @@ A base tx contains a `TypeID`, `NetworkID`, `BlockchainID`, `Outputs`, `Inputs`,
 
 ```boo
 +--------------------------------------+-----------------------------------------+
-| type ID       : int                  |                                 4 bytes |
+| type_id       : int                  |                                 4 bytes |
 +---------------+----------------------+-----------------------------------------+
 | network_id    : int                  |                                 4 bytes |
 +---------------+----------------------+-----------------------------------------+
@@ -1330,7 +1330,7 @@ An unsigned create asset tx contains a `TypeID`, `BaseTx`, `Name`, `Symbol`, `De
 
 ```boo
 +---------------------------------+--------------------------------------+
-| type ID        : int            |                              4 bytes |
+| type_id        : int            |                              4 bytes |
 +----------------+----------------+--------------------------------------+
 | base_tx        : BaseTx         |                  size(base_tx) bytes |
 +----------------+----------------+--------------------------------------+
@@ -1456,7 +1456,7 @@ An unsigned operation tx contains a `TypeID`, `BaseTx`, and `Ops`.
 
 ```boo
 +------------------------+-------------------------------------+
-| type ID : int          |                             4 bytes |
+| type_id : int          |                             4 bytes |
 +---------+--------------+-------------------------------------+
 | base_tx : BaseTx       |                 size(base_tx) bytes |
 +---------+--------------+-------------------------------------+
@@ -1564,7 +1564,7 @@ An unsigned import tx contains a `TypeID`, `BaseTx` and `Ins`.
 
 ```boo
 +------------------------+-------------------------------------+
-| type ID : int          |                             4 bytes |
+| type_id : int          |                             4 bytes |
 +---------+--------------+-------------------------------------+
 | base_tx : BaseTx       |                 size(base_tx) bytes |
 +---------+--------------+-------------------------------------+
@@ -1670,7 +1670,7 @@ An unsigned export tx contains a `TypeID`, `BaseTx`, `DestinationChain`, and `Ou
 
 ```boo
 +-------------------+---------------+--------------------------------------+
-| type ID           : int           |                              4 bytes |
+| type_id           : int           |                              4 bytes |
 +-------------------+---------------+--------------------------------------+
 | base_tx           : BaseTx        |                  size(base_tx) bytes |
 +-------------------+---------------+--------------------------------------+
@@ -1678,8 +1678,8 @@ An unsigned export tx contains a `TypeID`, `BaseTx`, `DestinationChain`, and `Ou
 +-------------------+---------------+--------------------------------------+
 | outs              : []TransferOut |                 4 + size(outs) bytes |
 +-------------------+---------------+--------------------------------------+
-                          | 26 + size(outs) + size(base_tx) bytes |
-                          +---------------------------------------+
+                                   | 26 + size(outs) + size(base_tx) bytes |
+                                   +---------------------------------------+
 ```
 
 ### Proto Unsigned Export Tx Specification
@@ -1890,7 +1890,7 @@ A UTXO is a standalone representation of a transaction output.
 
 ### What UTXO Contains
 
-A UTXO contains signed transaction contains a `CodecID`, `TxID`, `UTXOIndex`, and `Output`.
+A UTXO contains a `CodecID`, `TxID`, `UTXOIndex`, and `Output`.
 
 - **`CodecID`**
 - **`TxID`** is a 32-byte transaction ID. Transaction IDs are calculated by taking sha256 of the bytes of the signed transaction.
