@@ -11,8 +11,8 @@ extra:
   avalabs_website: https://www.avalabs.org
 
 # Repository
-repo_name: github.com/ava-labs
-repo_url: https://github.com/ava-labs/
+repo_name: Avalanche Docs
+repo_url: https://github.com/ava-labs/avalanche-docs
 
 theme:
     name: 'material'
