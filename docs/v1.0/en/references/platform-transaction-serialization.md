@@ -83,7 +83,7 @@ Let's make a secp256k1 transfer output with:
 ]
 =
 [
-    // type ID:
+    // type_id:
     0x00, 0x00, 0x00, 0x07,
     // amount:
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x39,
@@ -194,7 +194,7 @@ A secp256k1 transfer input contains an `Amount` and `AddressIndices`.
 
 ```boo
 +-------------------------+-------------------------------------+
-| type ID         : int   |                             4 bytes |
+| type_id         : int   |                             4 bytes |
 +-----------------+-------+-------------------------------------+
 | amount          : long  |                             8 bytes |
 +-----------------+-------+-------------------------------------+
@@ -712,7 +712,7 @@ An unsigned import tx contains a `TypeID`, `BaseTx`, `SourceChain`, and `Ins`.
 
 ```boo
 +-----------------+--------------|---------------------------------+
-| type ID         : int          |                         4 bytes |
+| type_id         : int          |                         4 bytes |
 +-----------------+--------------+---------------------------------+
 | base_tx         : BaseTx       |             size(base_tx) bytes |
 +-----------------+--------------+---------------------------------+
@@ -821,7 +821,7 @@ A [secp256k1](../cryptographic-primitives/#cryptography-in-the-avalanche-virtual
 
 ```boo
 +------------------------------+---------------------------------+
-| type ID         : int        |                         4 bytes |
+| type_id         : int        |                         4 bytes |
 +-----------------+------------+---------------------------------+
 | signatures      : [][65]byte |  4 + 65 * len(signatures) bytes |
 +-----------------+------------+---------------------------------+
