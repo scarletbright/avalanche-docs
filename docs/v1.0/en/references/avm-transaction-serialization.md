@@ -382,7 +382,7 @@ An SECP256K1 Mint output contains a `TypeID`, `Locktime`, `Threshold`, and `Addr
 
 ```protobuf
 message SECP256K1MintOutput {
-    uint32 TypeID = 1;            // 04 bytes
+    uint32 typeID = 1;            // 04 bytes
     uint64 locktime = 2;          // 08 bytes
     uint32 threshold = 3;         // 04 bytes
     repeated bytes addresses = 4; // 04 bytes + 20 bytes * len(addresses)
@@ -741,7 +741,7 @@ An SECP256K1 Mint operation contains a `TypeID`, `AddressIndices`, `MintOutput`,
 
 ```protobuf
 message SECP256K1MintOperation {
-    uint32 TypeID = 1;                   // 4 bytes
+    uint32 typeID = 1;                   // 4 bytes
     repeated uint32 address_indices = 2; // 04 bytes + 04 bytes * len(address_indices)
     MintOutput mint_output = 3;          // size(mint_output
     TransferOutput transfer_output = 4;  // size(transfer_output)
@@ -949,7 +949,7 @@ An NFT transfer operation contains a `TypeID`, `AddressIndices` and an untyped `
 
 ```protobuf
 message NFTTransferOp {
-    uint32 TypeID = 1;                   // 04 bytes
+    uint32 typeID = 1;                   // 04 bytes
     repeated uint32 address_indices = 2; // 04 bytes + 04 bytes * len(address_indices)
     uint32 group_id = 3;                 // 04 bytes
     bytes payload = 4;                   // 04 bytes + len(payload)
@@ -963,6 +963,7 @@ message NFTTransferOp {
 
 Let's make an NFT transfer operation with:
 
+- **`Type`**: 13
 - **`AddressIndices`**:
   - 0x00000007
   - 0x00000003
@@ -981,13 +982,13 @@ Let's make an NFT transfer operation with:
         0x00000007,
         0x00000003,
     ]
-    GroupID        <- 12345 = 0x00003039
+    GroupID        <- 0x00003039
     Payload        <- 0x431100
-    Locktime       <- 54321 = 0x000000000000d431
-    Threshold      <- 1     = 0x00000001
+    Locktime       <- 0x000000000000d431
+    Threshold      <- 00000001
     Addresses      <- [
-        0xc3344128e060128ede3523a24a461c8943ab0859,
         0x51025c61fbcfc078f69334f834be6dd26d55a955,
+        0xc3344128e060128ede3523a24a461c8943ab0859,
     ]
 ]
 =
@@ -997,9 +998,9 @@ Let's make an NFT transfer operation with:
     // number of address indices:
     0x00, 0x00, 0x00, 0x02,
     // address index 0:
-    0x00, 0x00, 0x00, 0x03,
-    // address index 1:
     0x00, 0x00, 0x00, 0x07,
+    // address index 1:
+    0x00, 0x00, 0x00, 0x03,
     // groupID:
     0x00, 0x00, 0x30, 0x39,
     // length of payload:
@@ -1054,8 +1055,8 @@ For NFT assets, this is `0x00000001`.
 
 ```protobuf
 message InitialState {
-    uint32 fx_id = 1;                  // 4 bytes
-    repeated Output outputs = 2;       // 4 + size(outputs) bytes
+    uint32 fx_id = 1;                  // 04 bytes
+    repeated Output outputs = 2;       // 04 + size(outputs) bytes
 }
 ```
 
@@ -1125,7 +1126,7 @@ A [secp256k1](../cryptographic-primitives/#cryptography-in-the-avalanche-virtual
 
 ```protobuf
 message SECP256K1Credential {
-    uint32 TypeID = 1;             // 4 bytes
+    uint32 typeID = 1;             // 4 bytes
     repeated bytes signatures = 2; // 4 bytes + 65 bytes * len(signatures)
 }
 ```
@@ -1134,12 +1135,14 @@ message SECP256K1Credential {
 
 Let's make a payment input with:
 
+- **`Type`**: 9
 - **`signatures`**:
   - `0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1e1d1f202122232425262728292a2b2c2e2d2f303132333435363738393a3b3c3d3e3f00`
   - `0x404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5e5d5f606162636465666768696a6b6c6e6d6f707172737475767778797a7b7c7d7e7f00`
 
 ```splus
 [
+    TypeID         <- 0x00000009
     Signatures <- [
         0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1e1d1f202122232425262728292a2b2c2e2d2f303132333435363738393a3b3c3d3e3f00,
         0x404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5e5d5f606162636465666768696a6b6c6e6d6f707172737475767778797a7b7c7d7e7f00,
@@ -1223,7 +1226,7 @@ A base tx contains a `TypeID`, `NetworkID`, `BlockchainID`, `Outputs`, `Inputs`,
 
 ```protobuf
 message BaseTx {
-    uint32 TypeID = 1;           // 04 bytes
+    uint32 typeID = 1;           // 04 bytes
     uint32 network_id = 2;       // 04 bytes
     bytes blockchain_id = 3;     // 32 bytes
     repeated Output outputs = 4; // 04 bytes + size(outs)
@@ -1237,24 +1240,24 @@ message BaseTx {
 Let's make an base tx that uses the inputs and outputs from the previous examples:
 
 - **`TypeID`**: `0`
-- **`NetworkID`**: `3`
+- **`NetworkID`**: `4`
 - **`BlockchainID`**: `0xffffffffeeeeeeeeddddddddcccccccbbbbbbbbaaaaaaaa9999999988888888`
 - **`Outputs`**:
-  - `"Example Transferable Output as defined above"`
+    - `"Example Transferable Output as defined above"`
 - **`Inputs`**:
-  - `"Example Transferable Input as defined above"`
+    - `"Example Transferable Input as defined above"`
 - **`Memo`**: `0x00010203`
 
 ```splus
 [
-    TypeID       <- 0 = 0x00000000
-    NetworkID    <- 3 = 0x00000003
+    TypeID       <- 0x00000000
+    NetworkID    <- 0x00000004
     BlockchainID <- 0xffffffffeeeeeeeeddddddddcccccccbbbbbbbbaaaaaaaa9999999988888888
     Outputs      <- [
         0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859
     ]
     Inputs       <- [
-        0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd15000000020000000300000007
+        0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd15000000020000000700000003
     ]
     Memo <- 0x00010203
 ]
@@ -1263,7 +1266,7 @@ Let's make an base tx that uses the inputs and outputs from the previous example
     // typeID
     0x00, 0x00, 0x00, 0x00,
     // networkID:
-    0x00, 0x00, 0x00, 0x03,
+    0x00, 0x00, 0x00, 0x04,
     // blockchainID:
     0xff, 0xff, 0xff, 0xff, 0xee, 0xee, 0xee, 0xee,
     0xdd, 0xdd, 0xdd, 0xdd, 0xcc, 0xcc, 0xcc, 0xcc,
@@ -1298,8 +1301,8 @@ Let's make an base tx that uses the inputs and outputs from the previous example
     0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b,
     0x1c, 0x1d, 0x1e, 0x1f, 0x00, 0x00, 0x00, 0x05,
     0x00, 0x00, 0x00, 0x00, 0x07, 0x5b, 0xcd, 0x15,
-    0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03,
-    0x00, 0x00, 0x00, 0x07,
+    0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x07,
+    0x00, 0x00, 0x00, 0x03,
     // Memo length:
     0x00, 0x00, 0x00, 0x04,
     // Memo:
@@ -1311,9 +1314,8 @@ Let's make an base tx that uses the inputs and outputs from the previous example
 
 ### What Unsigned Create Asset Tx Contains
 
-An unsigned create asset tx contains a `TypeID`, `BaseTx`, `Name`, `Symbol`, `Denomination`, and `InitialStates`.
+An unsigned create asset tx contains a `BaseTx`, `Name`, `Symbol`, `Denomination`, and `InitialStates`. The `TypeID` is `0x00000001`.
 
-- **`TypeID`** is the ID for this type. It is `0x00000001`.
 - **`BaseTx`**
 - **`Name`** is a human readable string that defines the name of the asset this transaction will create. The name is not guaranteed to be unique. The name must consist of only printable ASCII characters and must be no longer than 128 characters.
 - **`Symbol`** is a human readable string that defines the symbol of the asset this transaction will create. The symbol is not guaranteed to be unique. The symbol must consist of only printable ASCII characters and must be no longer than 4 characters.
@@ -1323,8 +1325,6 @@ An unsigned create asset tx contains a `TypeID`, `BaseTx`, `Name`, `Symbol`, `De
 ### Gantt Unsigned Create Asset Tx Specification
 
 ```boo
-+---------------------------------+--------------------------------------+
-| type_id        : int            |                              4 bytes |
 +----------------+----------------+--------------------------------------+
 | base_tx        : BaseTx         |                  size(base_tx) bytes |
 +----------------+----------------+--------------------------------------+
@@ -1337,7 +1337,7 @@ An unsigned create asset tx contains a `TypeID`, `BaseTx`, `Name`, `Symbol`, `De
 | initial_states : []InitialState |       4 + size(initial_states) bytes |
 +----------------+----------------+--------------------------------------+
                                   | size(base_tx) + size(initial_states) |
-                                  |  + 9 + len(name) + len(symbol) bytes |
+                                  |  + 5 + len(name) + len(symbol) bytes |
                                   +--------------------------------------+
 ```
 
@@ -1345,12 +1345,11 @@ An unsigned create asset tx contains a `TypeID`, `BaseTx`, `Name`, `Symbol`, `De
 
 ```protobuf
 message CreateAssetTx {
-    uint32 TypeID = 1;                        // 4 bytes
-    BaseTx base_tx = 2;                       // size(base_tx)
-    string name = 3;                          // 2 bytes + len(name)
-    name symbol = 4;                          // 2 bytes + len(symbol)
-    uint8 denomination = 5;                   // 1 bytes
-    repeated InitialState initial_states = 6; // 4 bytes + size(initial_states)
+    BaseTx base_tx = 1;                       // size(base_tx)
+    string name = 2;                          // 2 bytes + len(name)
+    name symbol = 3;                          // 2 bytes + len(symbol)
+    uint8 denomination = 4;                   // 1 bytes
+    repeated InitialState initial_states = 5; // 4 bytes + size(initial_states)
 }
 ```
 
@@ -1367,22 +1366,20 @@ Let's make an unsigned base tx that uses the inputs and outputs from the previou
 
 ```splus
 [
-    TypeID        <- 0x00000001
-    BaseTx        <- 0x00000003ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000003000000070000000400010203
-    Name          <- "Volatility Index" = 0x0010566f6c6174696c69747920496e646578
-    Symbol        <- "VIX" = 0x0003564958
-    Denomination  <- 2 = 0x02
+    BaseTx        <- 0x0000000100000004ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000007000000030000000400010203
+    Name          <- 0x0010566f6c6174696c69747920496e646578
+    Symbol        <- 0x0003564958
+    Denomination  <- 0x02
     InitialStates <- [
         0x0000000000000001000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859,
     ]
 ]
 =
 [
-    // Type ID
-    0x00, 0x00, 0x00, 0x01,
     // base tx:
-    0x00, 0x00, 0x00, 0x03, 0xff, 0xff, 0xff, 0xff, 
-    0xee, 0xee, 0xee, 0xee, 0xdd, 0xdd, 0xdd, 0xdd, 
+    0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 
+    0xff, 0xff, 0xff, 0xff, 0xee, 0xee, 0xee, 0xee, 
+    0xdd, 0xdd, 0xdd, 0xdd, 
     0xcc, 0xcc, 0xcc, 0xcc, 0xbb, 0xbb, 0xbb, 0xbb, 
     0xaa, 0xaa, 0xaa, 0xaa, 0x99, 0x99, 0x99, 0x99, 
     0x88, 0x88, 0x88, 0x88, 0x00, 0x00, 0x00, 0x01, 
@@ -1409,15 +1406,17 @@ Let's make an unsigned base tx that uses the inputs and outputs from the previou
     0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b,
     0x1c, 0x1d, 0x1e, 0x1f, 0x00, 0x00, 0x00, 0x05,
     0x00, 0x00, 0x00, 0x00, 0x07, 0x5b, 0xcd, 0x15,
-    0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03,
-    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x04,
+    0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x07,
+    0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x04,
     0x00, 0x01, 0x02, 0x03
     // name:
     0x00, 0x10, 0x56, 0x6f, 0x6c, 0x61, 0x74, 0x69,
     0x6c, 0x69, 0x74, 0x79, 0x20, 0x49, 0x6e, 0x64,
     0x65, 0x78,
+    // symbol length:
+    0x00, 0x03,
     // symbol:
-    0x00, 0x03, 0x56, 0x49, 0x58,
+    0x56, 0x49, 0x58,
     // denomination:
     0x02,
     // number of InitialStates:
@@ -1440,23 +1439,20 @@ Let's make an unsigned base tx that uses the inputs and outputs from the previou
 
 ### What Unsigned Operation Tx Contains
 
-An unsigned operation tx contains a `TypeID`, `BaseTx`, and `Ops`.
+An unsigned operation tx contains a `BaseTx`, and `Ops`. The `TypeID` for this type is `0x00000002`.
 
-- **`TypeID`** is the ID for this type. It is `0x00000002`.
 - **`BaseTx`**
 - **`Ops`** is a variable length array of Transferable Ops.
 
 ### Gantt Unsigned Operation Tx Specification
 
 ```boo
-+------------------------+-------------------------------------+
-| type_id : int          |                             4 bytes |
 +---------+--------------+-------------------------------------+
 | base_tx : BaseTx       |                 size(base_tx) bytes |
 +---------+--------------+-------------------------------------+
 | ops     : []TransferOp |                 4 + size(ops) bytes |
 +---------+--------------+-------------------------------------+
-                         | 8 + size(ops) + size(base_tx) bytes |
+                         | 4 + size(ops) + size(base_tx) bytes |
                          +-------------------------------------+
 ```
 
@@ -1464,9 +1460,8 @@ An unsigned operation tx contains a `TypeID`, `BaseTx`, and `Ops`.
 
 ```protobuf
 message OperationTx {
-    uint32 TypeID = 1;           // 4 bytes
-    BaseTx base_tx = 2;          // size(base_tx)
-    repeated TransferOp ops = 3; // 4 bytes + size(ops)
+    BaseTx base_tx = 1;          // size(base_tx)
+    repeated TransferOp ops = 2; // 4 bytes + size(ops)
 }
 ```
 
@@ -1474,23 +1469,21 @@ message OperationTx {
 
 Let's make an unsigned operation tx that uses the inputs and outputs from the previous examples:
 
-- `BaseTx`: `"Example BaseTx above"`
+- `BaseTx`: `"Example BaseTx above" with TypeID set to 2`
 - **`Ops`**: [`"Example Transfer Op as defined above"`]
 
 ```splus
 [
-    TypeID <- 0x00000002
-    BaseTx <- 0x00000003ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000003000000070000000400010203
+    BaseTx <- 0x0000000200000004ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000007000000030000000400010203
     Ops <- [
         0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f00000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a090807060504030201000000000050000000d0000000200000003000000070000303900000003431100000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859,
     ]
 ]
 =
 [
-    // Type ID
-    0x00, 0x00, 0x00, 0x02,
     // base tx:
-    0x00, 0x00, 0x00, 0x03, 0xff, 0xff, 0xff, 0xff,
+    0x00, 0x00, 0x00, 0x02,
+    0x00, 0x00, 0x00, 0x04, 0xff, 0xff, 0xff, 0xff,
     0xee, 0xee, 0xee, 0xee, 0xdd, 0xdd, 0xdd, 0xdd,
     0xcc, 0xcc, 0xcc, 0xcc, 0xbb, 0xbb, 0xbb, 0xbb,
     0xaa, 0xaa, 0xaa, 0xaa, 0x99, 0x99, 0x99, 0x99,
@@ -1518,8 +1511,8 @@ Let's make an unsigned operation tx that uses the inputs and outputs from the pr
     0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b,
     0x1c, 0x1d, 0x1e, 0x1f, 0x00, 0x00, 0x00, 0x05,
     0x00, 0x00, 0x00, 0x00, 0x07, 0x5b, 0xcd, 0x15,
-    0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03,
-    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x04,
+    0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x07,
+    0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x04,
     0x00, 0x01, 0x02, 0x03
     // number of operations:
     0x00, 0x00, 0x00, 0x01,
@@ -1545,20 +1538,19 @@ Let's make an unsigned operation tx that uses the inputs and outputs from the pr
     0xab, 0x08, 0x59,
 ]
 ```
+
 ***
 
 ### What Unsigned Import Tx Contains
 
-An unsigned import tx contains a `TypeID`, `BaseTx` and `Ins`.
-* **`TypeID`** is the ID for this type. It is `0x00000003`.
+An unsigned import tx contains a `BaseTx` and `Ins`. * The `TypeID`for this type is `0x00000003`.
+
 * **`BaseTx`**
 * **`Ins`** is a variable length array of Transferable Inputs.
 
 ### Gantt Unsigned Import Tx Specification
 
 ```boo
-+------------------------+-------------------------------------+
-| type_id : int          |                             4 bytes |
 +---------+--------------+-------------------------------------+
 | base_tx : BaseTx       |                 size(base_tx) bytes |
 +---------+--------------+-------------------------------------+
@@ -1572,9 +1564,8 @@ An unsigned import tx contains a `TypeID`, `BaseTx` and `Ins`.
 
 ```protobuf
 message ImportTx {
-    uint32 TypeID = 1;           // 4 bytes
-    BaseTx base_tx = 2;          // size(base_tx)
-    repeated TransferIn ins = 3; // 4 bytes + size(ins)
+    BaseTx base_tx = 1;          // size(base_tx)
+    repeated TransferIn ins = 2; // 4 bytes + size(ins)
 }
 ```
 
@@ -1582,23 +1573,21 @@ message ImportTx {
 
 Let’s make an unsigned import tx that uses the inputs from the previous examples:
 
-* `BaseTx`: "Example BaseTx as defined above"
+* `BaseTx`: "Example BaseTx as defined above" but with `TypeID` set to `3`
 * `Ins`: "Example SECP256K1 Transfer Input as defined above"
 
 ```splus
 [
-    TypeID        <- 0x00000003
-    BaseTx        <- 0x00000003ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000003000000070000000400010203
+    BaseTx        <- 0x0000000300000004ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000007000000030000000400010203
     Ins <- [
         f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd15000000020000000300000007,
     ]
 ]
 =
 [
-    // Type ID
-    0x00, 0x00, 0x00, 0x03,
     // base tx:
-    0x00, 0x00, 0x00, 0x03, 0xff, 0xff, 0xff, 0xff,
+    0x00, 0x00, 0x00, 0x03,
+    0x00, 0x00, 0x00, 0x04, 0xff, 0xff, 0xff, 0xff,
     0xee, 0xee, 0xee, 0xee, 0xdd, 0xdd, 0xdd, 0xdd,
     0xcc, 0xcc, 0xcc, 0xcc, 0xbb, 0xbb, 0xbb, 0xbb,
     0xaa, 0xaa, 0xaa, 0xaa, 0x99, 0x99, 0x99, 0x99,
@@ -1626,8 +1615,8 @@ Let’s make an unsigned import tx that uses the inputs from the previous exampl
     0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b,
     0x1c, 0x1d, 0x1e, 0x1f, 0x00, 0x00, 0x00, 0x05,
     0x00, 0x00, 0x00, 0x00, 0x07, 0x5b, 0xcd, 0x15,
-    0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03,
-    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x04,
+    0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x07,
+    0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x04,
     0x00, 0x01, 0x02, 0x03
     // input count:
     0x00, 0x00, 0x00, 0x01,
@@ -1654,9 +1643,8 @@ Let’s make an unsigned import tx that uses the inputs from the previous exampl
 
 ### What Unsigned Export Tx Contains
 
-An unsigned export tx contains a `TypeID`, `BaseTx`, `DestinationChain`, and `Outs`.
+An unsigned export tx contains a `BaseTx`, `DestinationChain`, and `Outs`. * The `TypeID` for this type is `0x00000004`.
 
-* **`TypeID`** is the ID for this type. It is `0x00000004`.
 * **`DestinationChain`** is the 32 byte ID of the chain where the funds are being exported to.
 * **`Outs`** is a variable length array of Transferable Outputs.
 
@@ -1664,15 +1652,13 @@ An unsigned export tx contains a `TypeID`, `BaseTx`, `DestinationChain`, and `Ou
 
 ```boo
 +-------------------+---------------+--------------------------------------+
-| type_id           : int           |                              4 bytes |
-+-------------------+---------------+--------------------------------------+
 | base_tx           : BaseTx        |                  size(base_tx) bytes |
 +-------------------+---------------+--------------------------------------+
 | destination_chain : [32]byte      |                             32 bytes |
 +-------------------+---------------+--------------------------------------+
 | outs              : []TransferOut |                 4 + size(outs) bytes |
 +-------------------+---------------+--------------------------------------+
-                          | 26 + size(outs) + size(base_tx) bytes |
+                          | 36 + size(outs) + size(base_tx) bytes |
                           +---------------------------------------+
 ```
 
@@ -1680,10 +1666,9 @@ An unsigned export tx contains a `TypeID`, `BaseTx`, `DestinationChain`, and `Ou
 
 ```protobuf
 message ExportTx {
-    uint32 TypeID = 1;             // 4 bytes
-    BaseTx base_tx = 2;            // size(base_tx)
-    bytes destination_chain= 3;    // 32 bytes
-    repeated TransferOut outs = 4; // 4 bytes + size(outs)
+    BaseTx base_tx = 1;            // size(base_tx)
+    bytes destination_chain= 2;    // 32 bytes
+    repeated TransferOut outs = 3; // 4 bytes + size(outs)
 }
 ```
 
@@ -1691,25 +1676,23 @@ message ExportTx {
 
 Let’s make an unsigned export tx that uses the outputs from the previous examples:
 
-* `BaseTx`: "Example BaseTx as defined above"
+- `BaseTx`: "Example BaseTx as defined above" with `TypeID` set to `4`
 - `DestinationChain`: `0x0000000000000000000000000000000000000000000000000000000000000000`
-* `Outs`: "Example SECP256K1 Transfer Output as defined above"
+- `Outs`: "Example SECP256K1 Transfer Output as defined above"
 
 ```splus
 [
-    TypeID           <- 0x00000004
-    DestiantionChain <- 0x0000000000000000000000000000000000000000000000000000000000000000
-    BaseTx           <- 0x00000000000400000003ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000003000000070000000400010203
+    BaseTx           <- 0x0000000400000004ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000007000000030000000400010203
+    DestinationChain <- 0x0000000000000000000000000000000000000000000000000000000000000000
     Outs <- [
         000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859,
     ]
 ]
 =
 [
-    // Type ID:
-    0x00, 0x00, 0x00, 0x04
     // base tx:
-    0x00, 0x00, 0x00, 0x03, 0xff, 0xff, 0xff, 0xff,
+    0x00, 0x00, 0x00, 0x04
+    0x00, 0x00, 0x00, 0x04, 0xff, 0xff, 0xff, 0xff,
     0xee, 0xee, 0xee, 0xee, 0xdd, 0xdd, 0xdd, 0xdd,
     0xcc, 0xcc, 0xcc, 0xcc, 0xbb, 0xbb, 0xbb, 0xbb,
     0xaa, 0xaa, 0xaa, 0xaa, 0x99, 0x99, 0x99, 0x99,
@@ -1737,10 +1720,10 @@ Let’s make an unsigned export tx that uses the outputs from the previous examp
     0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b,
     0x1c, 0x1d, 0x1e, 0x1f, 0x00, 0x00, 0x00, 0x05,
     0x00, 0x00, 0x00, 0x00, 0x07, 0x5b, 0xcd, 0x15,
-    0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03,
-    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x04,
+    0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x07,
+    0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x04,
     0x00, 0x01, 0x02, 0x03
-    // txID:
+    // destination_chain:
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -1753,6 +1736,7 @@ Let’s make an unsigned export tx that uses the outputs from the previous examp
     0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
     0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
     // output:
+    0x00, 0x00, 0x00, 0x07,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x39,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
     0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02,
@@ -1774,6 +1758,7 @@ A signed transaction is an unsigned transaction with the addition of an array of
 
 A signed transaction contains a `CodecID`, `UnsignedTx`, and `Credentials`.
 
+- **`CodecID`** The only current valid codec id is `00 00`.
 - **`UnsignedTx`** is an unsigned transaction, as described above.
 - **`Credentials`** is an array of credentials. Each credential will be paired with the input in the same index at this credential.
 
@@ -1795,7 +1780,7 @@ A signed transaction contains a `CodecID`, `UnsignedTx`, and `Credentials`.
 
 ```protobuf
 message Tx {
-    uint32 codec_id = 1;                 // 2 bytes
+    uint16 codec_id = 1;                 // 2 bytes
     UnsignedTx unsigned_tx = 2;          // size(unsigned_tx)
     repeated Credential credentials = 3; // 4 bytes + size(credentials)
 }
@@ -1805,14 +1790,14 @@ message Tx {
 
 Let's make a signed transaction that uses the unsigned transaction and credential from the previous examples.
 
-- **`UnsignedTx`**: `0x0000000100000003ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000003000000070000000400010203`
+- **`UnsignedTx`**: `0x0000000100000004ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000007000000030000000400010203`
 - **`Credentials`**
   `0x0000000900000002000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1e1d1f202122232425262728292a2b2c2e2d2f303132333435363738393a3b3c3d3e3f00404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5e5d5f606162636465666768696a6b6c6e6d6f707172737475767778797a7b7c7d7e7f00`
 
 ```splus
 [
     CodecID     <- 0x00000000
-    UnsignedTx  <- 0x0000000100000003ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000003000000070000000400010203
+    UnsignedTx  <- 0x0000000100000004ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000007000000030000000400010203
     Credentials <- [
         0x0000000900000002000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1e1d1f202122232425262728292a2b2c2e2d2f303132333435363738393a3b3c3d3e3f00404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5e5d5f606162636465666768696a6b6c6e6d6f707172737475767778797a7b7c7d7e7f00,
     ]
@@ -1822,7 +1807,7 @@ Let's make a signed transaction that uses the unsigned transaction and credentia
     // Codec ID
     0x00, 0x00, 0x00, 0x00,
     // unsigned transaction:
-    0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x03, 
+    0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 
     0xff, 0xff, 0xff, 0xff, 0xee, 0xee, 0xee, 0xee,
     0xdd, 0xdd, 0xdd, 0xdd, 0xcc, 0xcc, 0xcc, 0xcc,
     0xbb, 0xbb, 0xbb, 0xbb, 0xaa, 0xaa, 0xaa, 0xaa, 
@@ -1851,7 +1836,7 @@ Let's make a signed transaction that uses the unsigned transaction and credentia
     0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
     0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00,
     0x07, 0x5b, 0xcd, 0x15, 0x00, 0x00, 0x00, 0x02,
-    0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x07,
+    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x03,
     0x00, 0x00, 0x00, 0x04, 0x00, 0x01, 0x02, 0x03
     // number of credentials:
     0x00, 0x00, 0x00, 0x01,
@@ -1886,7 +1871,7 @@ A UTXO is a standalone representation of a transaction output.
 
 A UTXO contains signed transaction contains a `CodecID`, `TxID`, `UTXOIndex`, and `Output`.
 
-- **`CodecID`**
+- **`CodecID`** The only valid `CodecID` is `00 00`
 - **`TxID`** is a 32-byte transaction ID. Transaction IDs are calculated by taking sha256 of the bytes of the signed transaction.
 - **`UTXOIndex`** is an int that specifies which output in the transaction specified by **`TxID`** that this utxo was created by.
 - **`AssetID`** is a 32-byte array that defines which asset this utxo references.
@@ -1914,7 +1899,7 @@ A UTXO contains signed transaction contains a `CodecID`, `TxID`, `UTXOIndex`, an
 
 ```protobuf
 message Utxo {
-    uint32 codec_id = 1;
+    uint16 codec_id = 1;     // 02 bytes
     bytes tx_id = 2;         // 32 bytes
     uint32 output_index = 3; // 04 bytes
     bytes asset_id = 4;      // 32 bytes
