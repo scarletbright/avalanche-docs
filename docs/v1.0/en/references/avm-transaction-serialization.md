@@ -1543,21 +1543,24 @@ Let's make an unsigned operation tx that uses the inputs and outputs from the pr
 
 ### What Unsigned Import Tx Contains
 
-An unsigned import tx contains a `BaseTx` and `Ins`. * The `TypeID`for this type is `0x00000003`.
+An unsigned import tx contains a `BaseTx`, `SourceChain` and `Ins`. * The `TypeID`for this type is `0x00000003`.
 
 * **`BaseTx`**
+- **`SourceChain`** is a 32-byte source blockchain ID.
 * **`Ins`** is a variable length array of Transferable Inputs.
 
 ### Gantt Unsigned Import Tx Specification
 
 ```boo
-+---------+--------------+-------------------------------------+
-| base_tx : BaseTx       |                 size(base_tx) bytes |
-+---------+--------------+-------------------------------------+
-| ins     : []TransferIn |                 4 + size(ins) bytes |
-+---------+--------------+-------------------------------------+
-                         | 4 + size(ins) + size(base_tx) bytes |
-                         +-------------------------------------+
++---------+----------------------+-----------------------------+
+| base_tx : BaseTx               |         size(base_tx) bytes |
++-----------------+--------------+-----------------------------+
+| source_chain    : [32]byte     |                    32 bytes |
++---------+----------------------+-----------------------------+
+| ins     : []TransferIn         |         4 + size(ins) bytes |
++---------+----------------------+-----------------------------+
+                        | 36 + size(ins) + size(base_tx) bytes |
+                        +--------------------------------------+
 ```
 
 ### Proto Unsigned Import Tx Specification
@@ -1565,7 +1568,8 @@ An unsigned import tx contains a `BaseTx` and `Ins`. * The `TypeID`for this type
 ```protobuf
 message ImportTx {
     BaseTx base_tx = 1;          // size(base_tx)
-    repeated TransferIn ins = 2; // 4 bytes + size(ins)
+    bytes source_chain = 2;      // 32 bytes
+    repeated TransferIn ins = 3; // 4 bytes + size(ins)
 }
 ```
 
@@ -1573,12 +1577,14 @@ message ImportTx {
 
 Let’s make an unsigned import tx that uses the inputs from the previous examples:
 
-* `BaseTx`: "Example BaseTx as defined above" but with `TypeID` set to `3`
-* `Ins`: "Example SECP256K1 Transfer Input as defined above"
+- `BaseTx`: "Example BaseTx as defined above" but with `TypeID` set to `3`
+- `SourceChain`: `0x0000000000000000000000000000000000000000000000000000000000000000`
+- `Ins`: "Example SECP256K1 Transfer Input as defined above"
 
 ```splus
 [
     BaseTx        <- 0x0000000300000004ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000007000000030000000400010203
+    SourceChain <- 0x0000000000000000000000000000000000000000000000000000000000000000
     Ins <- [
         f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd15000000020000000300000007,
     ]
@@ -1618,6 +1624,11 @@ Let’s make an unsigned import tx that uses the inputs from the previous exampl
     0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x07,
     0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x04,
     0x00, 0x01, 0x02, 0x03
+    // source chain:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     // input count:
     0x00, 0x00, 0x00, 0x01,
     // txID:
