@@ -537,7 +537,6 @@ Let's make an NFT transfer output with:
 
 ***
 
-
 ### NFT Mint Output
 
 An NFT mint output is an NFT that is owned by a collection of addresses.
@@ -778,38 +777,21 @@ Let's make an SECP256K1 mint operation with:
     // address_indices[1]:
     0x00, 0x00, 0x00, 0x03,
     // mint output
-    // output type:
-    0x00, 0x00, 0x00, 0x06,
-    // locktime:
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
-    // threshold:
-    0x00, 0x00, 0x00, 0x01,
-    // number of addresses:
-    0x00, 0x00, 0x00, 0x02,
-    // addrs[0]:
-    0x51, 0x02, 0x5c, 0x61, 0xfb, 0xcf, 0xc0, 0x78,
-    0xf6, 0x93, 0x34, 0xf8, 0x34, 0xbe, 0x6d, 0xd2,
-    0x6d, 0x55, 0xa9, 0x55,
-    // addrs[1]:
+    0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0xd4, 0x31, 0x00, 0x00, 0x00, 0x01,
+    0x00, 0x00, 0x00, 0x02, 0x51, 0x02, 0x5c, 0x61,
+    0xfb, 0xcf, 0xc0, 0x78, 0xf6, 0x93, 0x34, 0xf8,
+    0x34, 0xbe, 0x6d, 0xd2, 0x6d, 0x55, 0xa9, 0x55,
     0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
     0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
     0x43, 0xab, 0x08, 0x59,
     // transfer output
-    // output type:
-    0x00, 0x00, 0x00, 0x07,
-    // amount:
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x39,
-    // locktime:
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
-    // threshold:
-    0x00, 0x00, 0x00, 0x01,
-    // number of addresses:
-    0x00, 0x00, 0x00, 0x02,
-    // addrs[0]:
-    0x51, 0x02, 0x5c, 0x61, 0xfb, 0xcf, 0xc0, 0x78,
-    0xf6, 0x93, 0x34, 0xf8, 0x34, 0xbe, 0x6d, 0xd2,
-    0x6d, 0x55, 0xa9, 0x55,
-    // addrs[1]:
+    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x30, 0x39, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0xd4, 0x31, 0x00, 0x00, 0x00, 0x01,
+    0x00, 0x00, 0x00, 0x02, 0x51, 0x02, 0x5c, 0x61,
+    0xfb, 0xcf, 0xc0, 0x78, 0xf6, 0x93, 0x34, 0xf8,
+    0x34, 0xbe, 0x6d, 0xd2, 0x6d, 0x55, 0xa9, 0x55,
     0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
     0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
     0x43, 0xab, 0x08, 0x59,
@@ -824,7 +806,7 @@ An NFT mint operation consumes an NFT mint output and sends an unspent output to
 
 An NFT mint operation contains a `TypeID`, `AddressIndices`, `GroupID`, `Payload`, and `Output` of addresses.
 
-- **`TypeID`** is the ID for this output type. It is `0x0000000c`.
+- **`TypeID`** is the ID for this operation type. It is `0x0000000c`.
 - **`AddressIndices`** is a list of unique ints that define the private keys that are being used to spend the UTXO. Each UTXO has an array of addresses that can spend the UTXO. Each int represents the index in this address array that will sign this transaction. The array must be sorted low to high.
 - **`GroupID`** is an int that specifies the group this NFT is issued to.
 - **`Payload`** is an arbitrary string of bytes no longer than 1024 bytes.
@@ -836,7 +818,7 @@ An NFT mint operation contains a `TypeID`, `AddressIndices`, `GroupID`, `Payload
 +------------------------------+------------------------------------+
 | type_id         : int        |                            4 bytes |
 +-----------------+------------+------------------------------------+
-| address_indices : []int      |    4 + size(address_indices) bytes |
+| address_indices : []int      | 4 + 4 * len(address_indices) bytes |
 +-----------------+------------+------------------------------------+
 | group_id        : int        |                            4 bytes |
 +-----------------+------------+------------------------------------+
@@ -845,7 +827,7 @@ An NFT mint operation contains a `TypeID`, `AddressIndices`, `GroupID`, `Payload
 | outputs         : []Output   |            4 + size(outputs) bytes |
 +-----------------+------------+------------------------------------+
                                |                               20 + |
-                               |        4 * size(address_indices) + |
+                               |         4 * len(address_indices) + |
                                |                     len(payload) + |
                                |                size(outputs) bytes |
                                +------------------------------------+
@@ -855,7 +837,7 @@ An NFT mint operation contains a `TypeID`, `AddressIndices`, `GroupID`, `Payload
 
 ```protobuf
 message NFTMintOp {
-    uint32 TypeID = 1;                   // 04 bytes
+    uint32 typeID = 1;                   // 04 bytes
     repeated uint32 address_indices = 2; // 04 bytes + 04 bytes * len(address_indices)
     uint32 group_id = 3;                 // 04 bytes
     bytes payload = 4;                   // 04 bytes + len(payload)
@@ -867,9 +849,10 @@ message NFTMintOp {
 
 Let's make an NFT mint operation with:
 
+- **`TypeId`**: 12
 - **`AddressIndices`**:
-  - 0x00000007
-  - 0x00000003
+    - 0x00000007
+    - 0x00000003
 - **`GroupID`**: 12345
 - **`Payload`**: 0x431100
 - **`Locktime`**: 54321
@@ -884,10 +867,10 @@ Let's make an NFT mint operation with:
         0x00000007,
         0x00000003,
     ]
-    GroupID        <- 12345 = 0x00003039
+    GroupID        <- 0x00003039
     Payload        <- 0x431100
-    Locktime       <- 54321 = 0x000000000000d431
-    Threshold      <- 1     = 0x00000001
+    Locktime       <- 0x000000000000d431
+    Threshold      <- 0x00000001
     Addresses      <- [
         0xc3344128e060128ede3523a24a461c8943ab0859
     ]
@@ -899,9 +882,9 @@ Let's make an NFT mint operation with:
     // number of address indices:
     0x00, 0x00, 0x00, 0x02,
     // address index 0:
-    0x00, 0x00, 0x00, 0x03,
-    // address index 1:
     0x00, 0x00, 0x00, 0x07,
+    // address index 1:
+    0x00, 0x00, 0x00, 0x03,
     // groupID:
     0x00, 0x00, 0x30, 0x39,
     // length of payload:
@@ -918,9 +901,9 @@ Let's make an NFT mint operation with:
     // number of addresses:
     0x00, 0x00, 0x00, 0x01,
     // addrs[0]:
-    0x51, 0x02, 0x5c, 0x61, 0xfb, 0xcf, 0xc0, 0x78,
-    0xf6, 0x93, 0x34, 0xf8, 0x34, 0xbe, 0x6d, 0xd2,
-    0x6d, 0x55, 0xa9, 0x55,
+    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
+    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
+    0x43, 0xab, 0x08, 0x59,
 ]
 ```
 
@@ -928,7 +911,7 @@ Let's make an NFT mint operation with:
 
 ### NFT Transfer Op
 
-An NFT transfer operation sending an unspent NFT transfer output to a new set of owners.
+An NFT transfer operation sends an unspent NFT transfer output to a new set of owners.
 
 #### What NFT Transfer Op Contains
 
