@@ -1678,7 +1678,7 @@ An unsigned export tx contains a `BaseTx`, `DestinationChain`, and `Outs`. * The
 ```protobuf
 message ExportTx {
     BaseTx base_tx = 1;            // size(base_tx)
-    bytes destination_chain= 2;    // 32 bytes
+    bytes destination_chain = 2;   // 32 bytes
     repeated TransferOut outs = 3; // 4 bytes + size(outs)
 }
 ```
