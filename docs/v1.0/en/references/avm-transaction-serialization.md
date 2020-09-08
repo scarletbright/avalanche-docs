@@ -9,6 +9,248 @@ This file is meant to be the single source of truth for how we serialize transac
 Some data is prepended with a codec ID (unt16) that denotes how the data should be deserialized.
 Right now, the only valid codec ID is 0 (`0x00 0x00`).
 
+***
+
+## Transferable Output
+
+Transferable outputs wrap an output with an asset ID.
+
+### What Transferable Output Contains
+
+A transferable output contains an `AssetID` and an `Output`.
+
+- **`AssetID`** is a 32-byte array that defines which asset this output references.
+- **`Output`** is an output, as defined below. For example, this can be a SECP256K1 transfer output.
+
+### Gantt Transferable Output Specification
+
+```boo
++----------+----------+-------------------------+
+| asset_id : [32]byte |                32 bytes |
++----------+----------+-------------------------+
+| output   : Output   |      size(output) bytes |
++----------+----------+-------------------------+
+                      | 32 + size(output) bytes |
+                      +-------------------------+
+```
+
+### Proto Transferable Output Specification
+
+```protobuf
+message TransferableOutput {
+    bytes asset_id = 1; // 32 bytes
+    Output output = 2;  // size(output)
+}
+```
+
+### Transferable Output Example
+
+Let's make a transferable output:
+
+- `AssetID: 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`
+- `Output: "Example SECP256K1 Transfer Output from below"`
+
+```splus
+[
+    AssetID <- 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+    Output  <- 0x000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859,
+]
+=
+[
+    // assetID:
+    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+    0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
+    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
+    0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
+    // output:
+    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x30, 0x39, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0xd4, 0x31, 0x00, 0x00, 0x00, 0x01,
+    0x00, 0x00, 0x00, 0x02, 0x51, 0x02, 0x5c, 0x61,
+    0xfb, 0xcf, 0xc0, 0x78, 0xf6, 0x93, 0x34, 0xf8,
+    0x34, 0xbe, 0x6d, 0xd2, 0x6d, 0x55, 0xa9, 0x55,
+    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
+    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
+    0x43, 0xab, 0x08, 0x59,
+]
+```
+
+***
+
+## Transferable Input
+
+Transferable inputs describe a specific UTXO with a provided transfer input.
+
+### What Transferable Input Contains
+
+A transferable input contains a `TxID`, `UTXOIndex` `AssetID` and an `Input`.
+
+- **`TxID`** is a 32-byte array that defines which transaction this input is consuming an output from.
+- **`UTXOIndex`** is an int that defines which utxo this input is consuming in the specified transaction.
+- **`AssetID`** is a 32-byte array that defines which asset this input references.
+- **`Input`** is a transferable input object.
+
+### Gantt Transferable Input Specification
+
+```boo
++------------+----------+------------------------+
+| tx_id      : [32]byte |               32 bytes |
++------------+----------+------------------------+
+| utxo_index : int      |               04 bytes |
++------------+----------+------------------------+
+| asset_id   : [32]byte |               32 bytes |
++------------+----------+------------------------+
+| input      : Input    |      size(input) bytes |
++------------+----------+------------------------+
+                        | 68 + size(input) bytes |
+                        +------------------------+
+```
+
+### Proto Transferable Input Specification
+
+```protobuf
+message TransferableInput {
+    bytes tx_id = 1;       // 32 bytes
+    uint32 utxo_index = 3; // 04 bytes
+    bytes asset_id = 3;    // 32 bytes
+    Input input = 4;       // size(input)
+}
+```
+
+### Transferable Input Example
+
+Let's make a transferable input:
+
+- `TxID: 0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a090807060504030201000`
+- `UTXOIndex: 5`
+- `AssetID: 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`
+- `Input: "Example SECP256K1 Transfer Input from below"`
+
+```splus
+[
+    TxID      <- 0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a090807060504030201000
+    UTXOIndex <- 0x00000005
+    AssetID   <- 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+    Input     <- 0x0000000500000000075bcd15000000020000000300000007
+]
+=
+[
+    // txID:
+    0xf1, 0xe1, 0xd1, 0xc1, 0xb1, 0xa1, 0x91, 0x81,
+    0x71, 0x61, 0x51, 0x41, 0x31, 0x21, 0x11, 0x01,
+    0xf0, 0xe0, 0xd0, 0xc0, 0xb0, 0xa0, 0x90, 0x80,
+    0x70, 0x60, 0x50, 0x40, 0x30, 0x20, 0x10, 0x00,
+    // utxoIndex:
+    0x00, 0x00, 0x00, 0x05,
+    // assetID:
+    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+    0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
+    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
+    0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
+    // input:
+    0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 
+    0x07, 0x5b, 0xcd, 0x15, 0x00, 0x00, 0x00, 0x02,
+    0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x07
+]
+```
+
+***
+
+## Transferable Op
+
+Transferable operations describe a set of UTXOs with a provided transfer operation. Only one Asset ID is able to be referenced per operation.
+
+### What Transferable Op Contains
+
+A transferable operation contains an `AssetID`, `UTXOIDs`, and `TransferOp`.
+
+- **`AssetID`** is a 32-byte array that defines which asset this operation changes.
+- **`UTXOIDs`** is an array of TxID-OutputIndex tuples. This array must be sorted in lexicographical order.
+- **`TransferOp`** is a transferable operation object.
+
+### Gantt Transferable Op Specification
+
+```boo
++-------------+------------+------------------------------+
+| asset_id    : [32]byte   |                     32 bytes |
++-------------+------------+------------------------------+
+| utxo_ids    : []UTXOID   | 4 + 36 * len(utxo_ids) bytes |
++-------------+------------+------------------------------+
+| transfer_op : TransferOp |      size(transfer_op) bytes |
++------------+-------------+------------------------------+
+                           |   36 + 36 * len(utxo_ids)    |
+                           |    + size(transfer_op) bytes |
+                           +------------------------------+
+```
+
+### Proto Transferable Op Specification
+
+```protobuf
+message UTXOID {
+    bytes tx_id = 1;       // 32 bytes
+    uint32 utxo_index = 2; // 04 bytes
+}
+message TransferableOp {
+    bytes asset_id = 1;           // 32 bytes
+    repeated UTXOID utxo_ids = 2; // 4 + 36 * len(utxo_ids) bytes
+    TransferOp transfer_op = 3;   // size(transfer_op)
+}
+```
+
+### Transferable Op Example
+
+Let's make a transferable input:
+
+- `AssetID: 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`
+- `UTXOIDs:`
+  - `UTXOID:`
+    - `TxID: 0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a090807060504030201000`
+    - `UTXOIndex: 5`
+- `Op: "Example Transfer Op from below"`
+
+```splus
+[
+    AssetID   <- 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+    UTXOIDs   <- [
+        {
+            TxID:0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a090807060504030201000
+            UTXOIndex:5
+        }
+    ]
+    Op     <- 0x0000000d0000000200000003000000070000303900000003431100000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859
+]
+=
+[
+    // assetID:
+    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+    0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
+    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
+    0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
+    // number of utxoIDs:
+    0x00, 0x00, 0x00, 0x01,
+    // txID:
+    0xf1, 0xe1, 0xd1, 0xc1, 0xb1, 0xa1, 0x91, 0x81,
+    0x71, 0x61, 0x51, 0x41, 0x31, 0x21, 0x11, 0x01,
+    0xf0, 0xe0, 0xd0, 0xc0, 0xb0, 0xa0, 0x90, 0x80,
+    0x70, 0x60, 0x50, 0x40, 0x30, 0x20, 0x10, 0x00,
+    // utxoIndex:
+    0x00, 0x00, 0x00, 0x05,
+    // op:
+    0x00, 0x00, 0x00, 0x0d, 0x00, 0x00, 0x00, 0x02,
+    0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x07,
+    0x00, 0x00, 0x30, 0x39, 0x00, 0x00, 0x00, 0x03,
+    0x43, 0x11, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00,
+    0x00, 0x00, 0x02, 0x51, 0x02, 0x5c, 0x61, 0xfb,
+    0xcf, 0xc0, 0x78, 0xf6, 0x93, 0x34, 0xf8, 0x34,
+    0xbe, 0x6d, 0xd2, 0x6d, 0x55, 0xa9, 0x55, 0xc3,
+    0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e, 0xde,
+    0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89, 0x43,
+    0xab, 0x08, 0x59,
+]
+```
+
+***
+
 ## Outputs
 
 Outputs have four possible types: `SECP256K1TransferOutput`, `SECP256K1MintOutput`, `NFTTransferOutput` and `NFTMintOutput`.
@@ -383,140 +625,7 @@ Let's make an NFT mint output with:
 ]
 ```
 
-***
 
-## Transferable Output
-
-Transferable outputs wrap an output with an asset ID.
-
-### What Transferable Output Contains
-
-A transferable output contains an `AssetID` and an `Output`.
-
-- **`AssetID`** is a 32-byte array that defines which asset this output references.
-- **`Output`** is an output, as defined above. For example, this can be a SECP256K1 transfer output.
-
-### Gantt Transferable Output Specification
-
-```boo
-+----------+----------+-------------------------+
-| asset_id : [32]byte |                32 bytes |
-+----------+----------+-------------------------+
-| output   : Output   |      size(output) bytes |
-+----------+----------+-------------------------+
-                      | 32 + size(output) bytes |
-                      +-------------------------+
-```
-
-### Proto Transferable Output Specification
-
-```protobuf
-message TransferableOutput {
-    bytes asset_id = 1; // 32 bytes
-    Output output = 2;  // size(output)
-}
-```
-
-### Transferable Output Example
-
-Let's make a transferable output:
-
-- `AssetID: 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`
-- `Output: "Example SECP256K1 Transfer Output from above"`
-
-```splus
-[
-    AssetID <- 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
-    Output  <- 0x000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859,
-]
-=
-[
-    // assetID:
-    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
-    0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
-    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
-    0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
-    // output:
-    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x30, 0x39, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0xd4, 0x31, 0x00, 0x00, 0x00, 0x01,
-    0x00, 0x00, 0x00, 0x02, 0x51, 0x02, 0x5c, 0x61,
-    0xfb, 0xcf, 0xc0, 0x78, 0xf6, 0x93, 0x34, 0xf8,
-    0x34, 0xbe, 0x6d, 0xd2, 0x6d, 0x55, 0xa9, 0x55,
-    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
-    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
-    0x43, 0xab, 0x08, 0x59,
-]
-```
-
-***
-
-## Initial State
-
-Initial state describes the initial state of an asset when it is created.
-It contains the ID of the feature extension that the asset uses, and a variable length array of outputs that denote the genesis UTXO set of the asset.
-
-### What Initial State Contains
-
-Initial state contains a `FxID` and an array of `Output`.
-
-- **`FxID`** is an int that defines which feature extension this state is part of. For SECP256K1 assets, this is `0x00000000`.
-For NFT assets, this is `0x00000001`.
-- **`Outputs`** is a variable length array of outputs, as defined above.
-
-### Gantt Initial State Specification
-
-```boo
-+---------------+----------+-------------------------------+
-| fx_id         : int      |                       4 bytes |
-+---------------+----------+-------------------------------+
-| outputs       : []Output |       4 + size(outputs) bytes |
-+---------------+----------+-------------------------------+
-                           |       8 + size(outputs) bytes |
-                           +-------------------------------+
-```
-
-### Proto Initial State Specification
-
-```protobuf
-message InitialState {
-    uint32 fx_id = 1;                  // 4 bytes
-    repeated Output outputs = 2;       // 4 + size(outputs) bytes
-}
-```
-
-### Initial State Example
-
-Let's make an initial state:
-
-- `FxID: 0x00000000`
-- `InitialState: ["Example SECP256K1 Transfer Output from above"]`
-
-```splus
-[
-    FxID <- 0x00000000
-    InitialState  <- [
-        0x000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859,
-    ]
-]
-=
-[
-    // fxID:
-    0x00, 0x00, 0x00, 0x00,
-    // num outputs:
-    0x00, 0x00, 0x00, 0x01,
-    // output:
-    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x30, 0x39, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0xd4, 0x31, 0x00, 0x00, 0x00, 0x01,
-    0x00, 0x00, 0x00, 0x02, 0x51, 0x02, 0x5c, 0x61,
-    0xfb, 0xcf, 0xc0, 0x78, 0xf6, 0x93, 0x34, 0xf8,
-    0x34, 0xbe, 0x6d, 0xd2, 0x6d, 0x55, 0xa9, 0x55,
-    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
-    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
-    0x43, 0xab, 0x08, 0x59,
-]
-```
 
 ***
 
@@ -592,85 +701,6 @@ Let's make a payment input with:
 
 ***
 
-## Transferable Input
-
-Transferable inputs describe a specific UTXO with a provided transfer input.
-
-### What Transferable Input Contains
-
-A transferable input contains a `TxID`, `UTXOIndex` `AssetID` and an `Input`.
-
-- **`TxID`** is a 32-byte array that defines which transaction this input is consuming an output from.
-- **`UTXOIndex`** is an int that defines which utxo this input is consuming the specified transaction.
-- **`AssetID`** is a 32-byte array that defines which asset this input references.
-- **`Input`** is a transferable input object.
-
-### Gantt Transferable Input Specification
-
-```boo
-+------------+----------+------------------------+
-| tx_id      : [32]byte |               32 bytes |
-+------------+----------+------------------------+
-| utxo_index : int      |               04 bytes |
-+------------+----------+------------------------+
-| asset_id   : [32]byte |               32 bytes |
-+------------+----------+------------------------+
-| input      : Input    |      size(input) bytes |
-+------------+----------+------------------------+
-                        | 68 + size(input) bytes |
-                        +------------------------+
-```
-
-### Proto Transferable Input Specification
-
-```protobuf
-message TransferableInput {
-    bytes tx_id = 1;       // 32 bytes
-    uint32 utxo_index = 3; // 04 bytes
-    bytes asset_id = 3;    // 32 bytes
-    Input input = 4;       // size(input)
-}
-```
-
-### Transferable Input Example
-
-Let's make a transferable input:
-
-- `TxID: 0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a090807060504030201000`
-- `UTXOIndex: 5`
-- `AssetID: 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`
-- `Input: "Example SECP256K1 Transfer Input from above"`
-
-```splus
-[
-    TxID      <- 0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a090807060504030201000
-    UTXOIndex <- 5 = 0x00000005
-    AssetID   <- 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
-    Input     <- 0x0000000500000000075bcd15000000020000000300000007
-]
-=
-[
-    // txID:
-    0xf1, 0xe1, 0xd1, 0xc1, 0xb1, 0xa1, 0x91, 0x81,
-    0x71, 0x61, 0x51, 0x41, 0x31, 0x21, 0x11, 0x01,
-    0xf0, 0xe0, 0xd0, 0xc0, 0xb0, 0xa0, 0x90, 0x80,
-    0x70, 0x60, 0x50, 0x40, 0x30, 0x20, 0x10, 0x00,
-    // utxoIndex:
-    0x00, 0x00, 0x00, 0x05,
-    // assetID:
-    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
-    0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
-    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
-    0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
-    // input:
-    0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 
-    0x07, 0x5b, 0xcd, 0x15, 0x00, 0x00, 0x00, 0x02,
-    0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x07
-]
-```
-
-***
-
 ## Operations
 
 Operations have three possible types: `SECP256K1MintOperation`, `NFTMintOp`, and `NFTTransferOp`.
@@ -726,7 +756,6 @@ Let's make an SECP256K1 mint operation with:
   - 0x00000003
 - **`MintOutput`**: "Example SECP256K1 Mint Output from above"
 - **`TransferOutput`**: "Example SECP256K1 Transfer Output from above"
-
 
 ```splus
 [
@@ -1006,96 +1035,70 @@ Let's make an NFT transfer operation with:
 
 ***
 
-## Transferable Op
+## Initial State
 
-Transferable operations describe a set of UTXOs with a provided transfer operation. Only one Asset ID is able to be referenced per operation.
+Initial state describes the initial state of an asset when it is created.
+It contains the ID of the feature extension that the asset uses, and a variable length array of outputs that denote the genesis UTXO set of the asset.
 
-### What Transferable Op Contains
+### What Initial State Contains
 
-A transferable input contains an `AssetID`, `UTXOIDs`, and `TransferOp`.
+Initial state contains a `FxID` and an array of `Output`.
 
-- **`AssetID`** is a 32-byte array that defines which asset this operation changes.
-- **`UTXOIDs`** is an array of TxID-OutputIndex tuples. This array must be sorted in lexicographical order.
-- **`TransferOp`** is a transferable operation object.
+- **`FxID`** is an int that defines which feature extension this state is part of. For SECP256K1 assets, this is `0x00000000`.
+For NFT assets, this is `0x00000001`.
+- **`Outputs`** is a variable length array of outputs, as defined above.
 
-### Gantt Transferable Op Specification
+### Gantt Initial State Specification
 
 ```boo
-+-------------+------------+------------------------------+
-| asset_id    : [32]byte   |                     32 bytes |
-+-------------+------------+------------------------------+
-| utxo_ids    : []UTXOID   | 4 + 36 * len(utxo_ids) bytes |
-+-------------+------------+------------------------------+
-| transfer_op : TransferOp |      size(transfer_op) bytes |
-+------------+-------------+------------------------------+
-                           |   36 + 36 * len(utxo_ids)    |
-                           |    + size(transfer_op) bytes |
-                           +------------------------------+
++---------------+----------+-------------------------------+
+| fx_id         : int      |                       4 bytes |
++---------------+----------+-------------------------------+
+| outputs       : []Output |       4 + size(outputs) bytes |
++---------------+----------+-------------------------------+
+                           |       8 + size(outputs) bytes |
+                           +-------------------------------+
 ```
 
-### Proto Transferable Op Specification
+### Proto Initial State Specification
 
 ```protobuf
-message UTXOID {
-    bytes tx_id = 1;       // 32 bytes
-    uint32 utxo_index = 2; // 04 bytes
-}
-message TransferableOp {
-    bytes asset_id = 1;           // 32 bytes
-    repeated UTXOID utxo_ids = 2; // 4 + 36 * len(utxo_ids) bytes
-    TransferOp transfer_op = 3;   // size(transfer_op)
+message InitialState {
+    uint32 fx_id = 1;                  // 4 bytes
+    repeated Output outputs = 2;       // 4 + size(outputs) bytes
 }
 ```
 
-### Transferable Op Example
+### Initial State Example
 
-Let's make a transferable input:
+Let's make an initial state:
 
-- `AssetID: 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`
-- `UTXOIDs:`
-  - `UTXOID:`
-    - `TxID: 0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a090807060504030201000`
-    - `UTXOIndex: 5`
-- `Op: "Example Transfer Op from above"`
+- `FxID: 0x00000000`
+- `InitialState: ["Example SECP256K1 Transfer Output from above"]`
 
 ```splus
 [
-    AssetID   <- 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
-    UTXOIDs   <- [
-        {
-            TxID:0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a090807060504030201000
-            UTXOIndex:5
-        }
+    FxID <- 0x00000000
+    InitialState  <- [
+        0x000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859,
     ]
-    Op     <- 0x0000000d0000000200000003000000070000303900000003431100000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859
 ]
 =
 [
-    // assetID:
-    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
-    0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
-    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
-    0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
-    // number of utxoIDs:
+    // fxID:
+    0x00, 0x00, 0x00, 0x00,
+    // num outputs:
     0x00, 0x00, 0x00, 0x01,
-    // txID:
-    0xf1, 0xe1, 0xd1, 0xc1, 0xb1, 0xa1, 0x91, 0x81,
-    0x71, 0x61, 0x51, 0x41, 0x31, 0x21, 0x11, 0x01,
-    0xf0, 0xe0, 0xd0, 0xc0, 0xb0, 0xa0, 0x90, 0x80,
-    0x70, 0x60, 0x50, 0x40, 0x30, 0x20, 0x10, 0x00,
-    // utxoIndex:
-    0x00, 0x00, 0x00, 0x05,
-    // op:
-    0x00, 0x00, 0x00, 0x0d, 0x00, 0x00, 0x00, 0x02,
-    0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x07,
-    0x00, 0x00, 0x30, 0x39, 0x00, 0x00, 0x00, 0x03,
-    0x43, 0x11, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00,
-    0x00, 0x00, 0x02, 0x51, 0x02, 0x5c, 0x61, 0xfb,
-    0xcf, 0xc0, 0x78, 0xf6, 0x93, 0x34, 0xf8, 0x34,
-    0xbe, 0x6d, 0xd2, 0x6d, 0x55, 0xa9, 0x55, 0xc3,
-    0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e, 0xde,
-    0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89, 0x43,
-    0xab, 0x08, 0x59,
+    // output:
+    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x30, 0x39, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0xd4, 0x31, 0x00, 0x00, 0x00, 0x01,
+    0x00, 0x00, 0x00, 0x02, 0x51, 0x02, 0x5c, 0x61,
+    0xfb, 0xcf, 0xc0, 0x78, 0xf6, 0x93, 0x34, 0xf8,
+    0x34, 0xbe, 0x6d, 0xd2, 0x6d, 0x55, 0xa9, 0x55,
+    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
+    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
+    0x43, 0xab, 0x08, 0x59,
 ]
 ```
 
