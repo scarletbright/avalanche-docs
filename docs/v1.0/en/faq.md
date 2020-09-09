@@ -242,7 +242,7 @@ It should have:
 
 ### What software do I need?
 
-Your operating system should be 64-bit Ubuntu >= 18.04 or Mac >= Catalina.
+Your operating system should be 64-bit Ubuntu >= 18.04 or Mac OS >= Catalina.
 Other operating systems may work but are not well tested.
 
 You need to have Go 1.14+ installed.
