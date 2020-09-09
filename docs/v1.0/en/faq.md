@@ -146,12 +146,11 @@ Place this directory at the same location on the new machine.
 Advanced users may place the staking key and database at different locations and point to them at runtime
 using [command-line arguments.](../../references/command-line-interface/)
 
-<!-- TODO put this back once isBootstrapped is in an official release
 ### Is my node done bootstrapping?
 
 Each chain bootstraps separately and finishes bootstrapping at different times.
 
-To check whether a given chain is done bootstrapping, call API method [`info.isBootstrapped`.](../api/info.md#infoisbootstrapped)
+To check whether a given chain is done bootstrapping, call API method [`info.isBootstrapped`.](api/info.md#infoisbootstrapped)
 For example, to see if the X-Chain is done bootstrapping:
 
 ```sh
@@ -164,7 +163,6 @@ curl -X POST --data '{
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
--->
 
 ### Is my node in the validator set?
 
@@ -193,9 +191,7 @@ The response contains your node's ID:
 
 Then look on the [explorer's validator page](https://explorer.avax.network/validators) and verify your node is present.
 
-If the explorer isn't working, you can check this way:
-
-Get the current list of validators:
+You can check with this API call, which gets the list of validators:
 
 ```json
 curl -X POST --data '{
@@ -206,7 +202,7 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
-and check that your node is in that list.
+Check if your node is in that list.
 
 If it's not there, check the pending validator list:
 
@@ -219,14 +215,10 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
-If your node is not in either list, it is not a validator and is not a pending validator.
+If your node is not in either list, it is not a validator.
 
 Please note that even if your node is off, it will appear in the validator list.
-In order to complete certain incentivized testnet challenges, your node must also be running and connected to other nodes.
-
-### My node is in the validator set. How can I tell that it's actually validating?
-
-There is no good way to tell right now. If your node is connected to peers, it should be validating.
+In order to receive staking rewards, your node must also be running and connected to other nodes.
 
 ### How can I get involved with Avalanche?
 
@@ -251,17 +243,20 @@ It should have:
 
 ### What software do I need?
 
-Your operating system should be 64-bit Ubuntu >= 18.04 or MacOS >= Catalina.
+Your operating system should be 64-bit Ubuntu >= 18.04 or Mac >= Catalina.
 Other operating systems may work but are not well tested.
-We recommend using Ubuntu 18.04 because that's what we use.
 
-You need to have Go 1.13 or 1.14 installed.
-To check, do: `go version`. It should say 1.13.X or 1.14.X where X is some number.
+You need to have Go 1.14+ installed.
+To check, do: `go version`.
 If Go is not installed, follow one of the many online guides for doing so.
 
 You also need to have your GOPATH set.
 To check that it's set, do `echo $GOPATH`. It should print something.
-If it doesn't see [here](https://www.digitalocean.com/community/tutorials/how-to-install-go-on-ubuntu-18-04) or many of the guides online about setting your GOPATH.
+If it doesn't see [here](https://www.digitalocean.com/community/tutorials/how-to-install-go-on-ubuntu-18-04) or one of the many of the guides about setting your GOPATH.
+
+### Is there a test net faucet?
+
+[Yes.]({{https://faucet.avax.network/}})
 
 ### Is there a browser-based wallet?
 
@@ -403,7 +398,7 @@ Replace each character that looks like a quotation mark " with a quotation mark 
 
 You are probably using one of the [official releases](https://github.com/ava-labs/gecko/releases) on an architecture it was not build for.  
 The `avalanche-linux-<release>.tar.gz` is build for AMD64 (x86-64) architectures. Platforms based on ARM chips, like the Raspberry Pi, are **not** working with it.  
-Instead you need to [build gecko from source](../quickstart/ava-getting-started.md#download-gecko-source-code). Keep in mind you need to use a 64-bit operating system.
+Instead you need to [build gecko from source](quickstart/ava-getting-started.md#download-gecko-source-code). Keep in mind you need to use a 64-bit operating system.
 
 ## Known Issues/Bugs
 

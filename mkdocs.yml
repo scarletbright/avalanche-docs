@@ -6,13 +6,12 @@ copyright: 2020 AVA Labs
 
 #extra project info and template customisation
 extra:
-  support:
-  discord: https://chat.avalabs.org 
-  avalabs_website: https://www.avalabs.org
-
+  support: https://chat.avalabs.org 
+  
 # Repository
 repo_name: Avalanche Docs
 repo_url: https://github.com/ava-labs/avalanche-docs
+edit_uri: blob/master/docs
 
 theme:
     name: 'material'
@@ -30,7 +29,7 @@ nav:
 - Avalanche Documentation :
   - Home : index.md
   - Quickstart : ./v1.0/en/quickstart/ava-getting-started.md
-  - FAQ and Known Issues : ./v1.0/en/faq/faq.md
+  - FAQ and Known Issues : ./v1.0/en/faq.md
   - System Overview: v1.0/en/core-concepts/overview.md
   - Tutorials:
     - Deploy a Smart Contract          : ./v1.0/en/tutorials/deploy-a-smart-contract.md
