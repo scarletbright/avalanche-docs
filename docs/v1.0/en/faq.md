@@ -122,7 +122,7 @@ These are in `$HOME/.avalanche-go/staking` by default.
 **If you delete this directory, it will erase your node ID. This will jeopardize your validator reward.**
 If your node is a validator and you delete its staking key, it will no longer be a validator when it restarts.
 
-Upgrading avalanche-go will never erase or change your staking key/certificate.
+Upgrading avalanche.go will never erase or change your staking key/certificate.
 
 ### Where are my node's logs?
 
@@ -130,7 +130,7 @@ By default, they're in `$HOME/.avalanche-go/logs/node`.
 
 Logs specific to a chain are in subdirectory `chain/[CHAIN ID]` where `[CHAIN ID]` is the chain's ID.
 
-### Can I run avalanche-go on a different machine but keep the node ID / state?
+### Can I run avalanche.go on a different machine but keep the node ID / state?
 
 Yes.
 
@@ -306,7 +306,7 @@ You don't have to. However, if you open the staking port (`9651` by default) you
 
 ### What is the `id` field in every API call? Do I need to change it?
 
-avalanche-go uses the [JSON RPC 2.0 standard](https://www.jsonrpc.org/specificatio) for API calls.  
+avalanche.go uses the [JSON RPC 2.0 standard](https://www.jsonrpc.org/specificatio) for API calls.  
 As part of this standard, each call and response has a field `id`.
 This is useful in tracking which response corresponds to which request.
 
@@ -397,7 +397,7 @@ Replace each character that looks like a quotation mark " with a quotation mark 
 
 You are probably using one of the [official releases](https://github.com/ava-labs/avalanche-go/releases) on an architecture it was not build for.  
 The `avalanche-linux-<release>.tar.gz` is build for AMD64 (x86-64) architectures. Platforms based on ARM chips, like the Raspberry Pi, are **not** working with it.  
-Instead you need to [build avalanche-go from source](quickstart.md#download-avalanche-go-source-code). Keep in mind you need to use a 64-bit operating system.
+Instead you need to [build avalanche.go from source](quickstart.md#download-avalanche-go-source-code). Keep in mind you need to use a 64-bit operating system.
 
 ## Known Issues/Bugs
 

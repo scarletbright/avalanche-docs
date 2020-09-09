@@ -10,7 +10,7 @@ The 5 nodes will have HTTP ports (where API calls should be sent) `9650`, `9652`
 
 ## Create a Local Test Network
 
-The below commands assume you have avalanche-go installed at `$GOPATH/src/github.com/ava-labs/avalanche-go`.
+The below commands assume you have avalanche.go installed at `$GOPATH/src/github.com/ava-labs/avalanche-go`.
 Each of the five nodes created is a validator.
 The staking keys for these nodes are in `$GOPATH/src/github.com/ava-labs/avalanche-go/staking/local/staker1.crt`, etc.
 
