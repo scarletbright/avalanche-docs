@@ -873,7 +873,47 @@ curl -X POST --data '{
         ]
     },
     "id": 1
+}'
+```
+
+### platform.getStake
+
+Get the amount of nAVAX staked by a set of addresses.
+The amount returned does not include staking rewards.
+
+#### Signature
+
+```go
+platform.getStake({addresses: []string}) -> {stake: int}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "platform.getStake",
+    "params": {
+    	"addresses": [
+            "P-everest1g3ea9z5kmkzwnxp8vr8rpjh6lqw4r0ufec460d",
+            "P-everest12un03rm579fewele99c4v53qnmymwu46dv3s5v"
+        ]
+    },
+    "id": 1
+}
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "staked": "5000000"
+    },
+    "id": 1
+}
 ```
 
 ### platform.getTx
