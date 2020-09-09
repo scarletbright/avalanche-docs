@@ -32,40 +32,40 @@ Run `echo $GOPATH`. **It should not be empty.**
 
 ## Run an Avalanche Node
 
-Let's install Gecko, the Go implementation of an Avalanche node, and connect to the Avalanche Public Testnet.
+Let's install avalanche-go-goko, the Go implementation of an Avalanche node, and connect to the Avalanche Public Testnet.
 
-### Download Gecko
+### Download avalanche-go
 
 The node is a binary program. You can either download the source code and then build the binary program, or you can download the pre-built binary.
 You can do either of the below. You don't need to do both.
 
-#### Download Gecko Source Code
+#### Download avalanche-go Source Code
 
-Download the Gecko repository:
-
-```sh
-go get -v -d github.com/ava-labs/gecko/...
-```
-
-(Note to advanced users: Gecko uses Go modules, so you can actually clone the [Gecko repository](https://github.com/ava-labs/gecko) to locations other than your GOPATH.)
-
-Change to the `gecko` directory:
+Download the avalanche-go repository:
 
 ```sh
-cd $GOPATH/src/github.com/ava-labs/gecko
+go get -v -d github.com/ava-labs/avalanche-go/...
 ```
 
-Build Gecko:
+(Note to advanced users: avalanche-go uses Go modules, so you can actually clone the [avalanche-go repository](https://github.com/ava-labs/avalanche-go) to locations other than your GOPATH.)
+
+Change to the `avalanche-go` directory:
+
+```sh
+cd $GOPATH/src/github.com/ava-labs/avalanche-go
+```
+
+Build avalanche-go:
 
 ```sh
 ./scripts/build.sh
 ```
 
-The binary, named `avalanche`, is in `gecko/build`. 
+The binary, named `avalanche`, is in `avalanche-go/build`. 
 
-#### Download Gecko Binary
+#### Download avalanche-go Binary
 
-Go to our [releases page](https://github.com/ava-labs/gecko/releases) and select the release you want (probably the latest one.)
+Go to our [releases page](https://github.com/ava-labs/avalanche-go/releases) and select the release you want (probably the latest one.)
 
 Under `Assets`, select the appropriate file.
 

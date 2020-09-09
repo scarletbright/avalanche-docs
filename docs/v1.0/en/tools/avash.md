@@ -53,7 +53,7 @@ Type:
   optional, <filepath>
 
 Default:
-  $GOPATH/src/github.com/ava-labs/gecko/build/avalanche
+  $GOPATH/src/github.com/ava-labs/avalanche-go/build/avalanche
 ```
 
 #### `datadir`

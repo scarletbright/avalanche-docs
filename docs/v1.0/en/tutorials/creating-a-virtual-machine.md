@@ -31,14 +31,14 @@ must implement to be compatible with the platform's Avalanche consensus engine.
 We'll show and explain all the code that constitutes this Virtual Machine in snippets.
 In-line comments explain what's going on in the code.
 At the bottom of some snippets, we expound further on some portions of the code.
-If you want to see the code in one place, rather than in snippets, you can see it in our [Github repository.](https://github.com/ava-labs/gecko/tree/master/vms/timestampvm)
+If you want to see the code in one place, rather than in snippets, you can see it in our [Github repository.](https://github.com/ava-labs/avalanche-go/tree/master/vms/timestampvm)
 
 ## The `snowman.VM` Interface
 
 To reach consensus on linear blockchains (as opposed to DAG blockchains), Avalanche uses the Avalanche-powered **Snowman** consensus engine.
 The blockchain we're defining is linear, so it will use Snowman. 
 In order to be compatible with Snowman, the Virtual Machine that defines the blockchain must implement the `snowman.VM` interface, which
-we include below from its declaration in [`github.com/ava-labs/gecko/snow/engine/snowman/vm.go`.](https://github.com/ava-labs/gecko/blob/master/snow/engine/snowman/vm.go)
+we include below from its declaration in [`github.com/ava-labs/avalanche-go/snow/engine/snowman/vm.go`.](https://github.com/ava-labs/avalanche-go/blob/master/snow/engine/snowman/vm.go)
 
 The interface is big, but don't worry. We'll explain each method and see an implementation example, and it's not necessary you understand every nuance.
 
@@ -128,7 +128,7 @@ type ChainVM interface {
 You may have noticed the `snowman.Block` type referenced in the `snowman.VM` interface.
 It describes the methods that a block must implement to be a block in a linear (Snowman) chain.
 
-Let's look at this interface and its methods, which we copy from [`github.com/ava-labs/gecko/snow/consensus/snowman/block.go`.](https://github.com/ava-labs/gecko/blob/master/snow/consensus/snowman/block.go)
+Let's look at this interface and its methods, which we copy from [`github.com/ava-labs/avalanche-go/snow/consensus/snowman/block.go`.](https://github.com/ava-labs/avalanche-go/blob/master/snow/consensus/snowman/block.go)
 Again, it's OK if you don't understand every detail.
 We'll see an example soon.
 
@@ -539,7 +539,7 @@ func (vm *VM) CreateHandlers() map[string]*common.HTTPHandler {
 
 ### Service
 
-Gecko uses [Gorilla's RPC library.](https://www.gorillatoolkit.org/pkg/rpc) to implement APIs.
+avalanche-go uses [Gorilla's RPC library.](https://www.gorillatoolkit.org/pkg/rpc) to implement APIs.
 
 Using Gorilla, there is a struct for each API service. 
 In the case of this blockchain, there's only one API service.
