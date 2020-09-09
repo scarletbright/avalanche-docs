@@ -633,6 +633,97 @@ Let's make an unsigned add delegator tx that uses the inputs and outputs from th
 
 ***
 
+### What Unsigned Create Subnet Tx Contains
+
+An unsigned create subnet tx contains a `BaseTx`, and `OutputOwners`. The `TypeID` for this type is `0x00000010`.
+
+- **`BaseTx`**
+- **`OutputOwners`** contains a `Locktime`, `Threshold`, and `Addresses`
+    - **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
+    - **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
+    - **`Addresses`** is a list of unique addresses that correspond to the private keys that can be used to spend this output. Addresses must be sorted lexicographically.
+
+### Gantt Unsigned Create Subnet Tx Specification
+
+```boo
++-----------------+--------------|---------------------------------+
+| base_tx         : BaseTx       |             size(base_tx) bytes |
++-----------------+--------------+---------------------------------+
+| output_owner    : OutputOwner  |        size(output_owner) bytes |
++-----------------+--------------+---------------------------------+
+                        | size(output_owner) + size(base_tx) bytes |
+                        +------------------------------------------+
+```
+
+### Proto Unsigned Create Subnet Tx Specification
+
+```protobuf
+message ImportTx {
+    BaseTx base_tx = 1;           // size(base_tx)
+    OutputOwner output_owner = 2; // size(output_owner)
+}
+```
+
+### Unsigned Create Subnet Tx Example
+
+Let’s make an unsigned create subnet tx that uses the inputs from the previous examples:
+
+- **`BaseTx`**: "Example BaseTx as defined above but with TypeID set to 10"
+- **`OutputOwner`**:
+    - **`Locktime`**: 54321
+    - **`Threshold`**: 1
+    - **`Addresses`**: [ 0x51025c61fbcfc078f69334f834be6dd26d55a955, 0xc3344128e060128ede3523a24a461c8943ab0859 ]
+
+```splus
+[
+    BaseTx        <- 0x000000100000303900000000000000000000000000000000000000000000000000000000000000000000000139c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d55008800000007000012309cd5fdc0000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c0000000000000000
+    OutputOwner <-
+        Locktime  <- 0x000000000000d431
+        Threshold <- 0x00000001
+        Addresses <- [
+            0x51025c61fbcfc078f69334f834be6dd26d55a955,
+            0xc3344128e060128ede3523a24a461c8943ab0859,
+        ]
+]
+=
+[
+    // base tx:
+    0x00, 0x00, 0x00, 0x10,
+    0x00, 0x00, 0x30, 0x39, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01,
+    0x39, 0xc3, 0x3a, 0x49, 0x9c, 0xe4, 0xc3, 0x3a,
+    0x3b, 0x09, 0xcd, 0xd2, 0xcf, 0xa0, 0x1a, 0xe7,
+    0x0d, 0xbf, 0x2d, 0x18, 0xb2, 0xd7, 0xd1, 0x68,
+    0x52, 0x44, 0x40, 0xe5, 0x5d, 0x55, 0x00, 0x88,
+    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x12, 0x30,
+    0x9c, 0xd5, 0xfd, 0xc0, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01,
+    0x00, 0x00, 0x00, 0x01, 0x3c, 0xb7, 0xd3, 0x84,
+    0x2e, 0x8c, 0xee, 0x6a, 0x0e, 0xbd, 0x09, 0xf1,
+    0xfe, 0x88, 0x4f, 0x68, 0x61, 0xe1, 0xb2, 0x9c,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    // locktime:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
+    // threshold:
+    0x00, 0x00, 0x00, 0x01,
+    // number of addresses:
+    0x00, 0x00, 0x00, 0x02,
+    // addrs[0]:
+    0x51, 0x02, 0x5c, 0x61, 0xfb, 0xcf, 0xc0, 0x78,
+    0xf6, 0x93, 0x34, 0xf8, 0x34, 0xbe, 0x6d, 0xd2,
+    0x6d, 0x55, 0xa9, 0x55,
+    // addrs[1]:
+    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
+    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
+    0x43, 0xab, 0x08, 0x59,
+]
+```
+
+***
+
 ### What Unsigned Import Tx Contains
 
 An unsigned import tx contains a `TypeID`, `BaseTx`, `SourceChain`, and `Ins`.
