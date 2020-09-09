@@ -5,9 +5,8 @@ site_author: Avalanche Community
 copyright: 2020 AVA Labs
 
 #extra project info and template customisation
-extra:
-  support: https://chat.avalabs.org 
-  
+# extra:   # currently unused
+
 # Repository
 repo_name: Avalanche Docs
 repo_url: https://github.com/ava-labs/avalanche-docs
