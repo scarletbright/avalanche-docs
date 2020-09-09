@@ -963,7 +963,7 @@ message NFTTransferOp {
 
 Let's make an NFT transfer operation with:
 
-- **`Type`**: 13
+- **`TypeID`**: 13
 - **`AddressIndices`**:
   - 0x00000007
   - 0x00000003
@@ -1135,7 +1135,7 @@ message SECP256K1Credential {
 
 Let's make a payment input with:
 
-- **`Type`**: 9
+- **`TypeID`**: 9
 - **`signatures`**:
   - `0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1e1d1f202122232425262728292a2b2c2e2d2f303132333435363738393a3b3c3d3e3f00`
   - `0x404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5e5d5f606162636465666768696a6b6c6e6d6f707172737475767778797a7b7c7d7e7f00`
