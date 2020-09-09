@@ -15,7 +15,7 @@ In this tutorial, which should take less than 10 minutes, we will:
 * Start validating
 
 
-If you run into any issues at all, **please check the [FAQ](../faq/faq.md)**
+If you run into any issues at all, **please check the [FAQ](../faq.md)**
 If your issue isn't addressed there, come ask for help on our [Discord Server!](https://chat.avalabs.org/)
 We will work to get you through any problems.
 
