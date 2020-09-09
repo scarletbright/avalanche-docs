@@ -658,7 +658,7 @@ An unsigned create subnet tx contains a `BaseTx`, and `OutputOwners`. The `TypeI
 ### Proto Unsigned Create Subnet Tx Specification
 
 ```protobuf
-message ImportTx {
+message CreateSubnetTx {
     BaseTx base_tx = 1;           // size(base_tx)
     OutputOwner output_owner = 2; // size(output_owner)
 }
