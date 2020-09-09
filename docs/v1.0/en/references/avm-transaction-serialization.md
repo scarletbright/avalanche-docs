@@ -88,7 +88,7 @@ A transferable input contains a `TxID`, `UTXOIndex` `AssetID` and an `Input`.
 - **`TxID`** is a 32-byte array that defines which transaction this input is consuming an output from.
 - **`UTXOIndex`** is an int that defines which utxo this input is consuming in the specified transaction.
 - **`AssetID`** is a 32-byte array that defines which asset this input references.
-- **`Input`** is a transferable input object.
+- **`Input`** is an input, as defined below. This will be a SECP256K1 transfer input
 
 ### Gantt Transferable Input Specification
 
