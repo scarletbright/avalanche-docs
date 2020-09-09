@@ -376,7 +376,7 @@ Get the balance of AVAX controlled by a given address.
 ```go
 platform.getBalance({
     address:string
-}) -> {{
+}) -> {
     balance: int,
     utxoIDs: []{
         txID: string,

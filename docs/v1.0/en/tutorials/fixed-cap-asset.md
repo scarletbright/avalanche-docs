@@ -10,7 +10,7 @@ Let's create an asset where one unit of the asset represents one share of the IS
 
 ## Assumptions
 
-We assume the reader has already completed the [quickstart guide.](../quickstart/ava-getting-started.md)
+We assume the reader has already completed the [quickstart guide.](../quickstart.md)
 
 ## Create the Asset
 

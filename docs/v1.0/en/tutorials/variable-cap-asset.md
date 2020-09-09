@@ -24,7 +24,7 @@ Let's create such an asset.
 
 ## Assumptions
 
-We assume the reader has already completed the [quickstart guide.](../quickstart/ava-getting-started.md)
+We assume the reader has already completed the [quickstart guide.](../quickstart.md)
 
 ## Create the Asset
 
