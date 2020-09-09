@@ -329,7 +329,7 @@ Users can create Subnets, allowing for private blockchains.
 
 ## Next steps
 
-- [Get started with the quickstart tutorial](../quickstart/ava-getting-started.md)
+- [Get started with the quickstart tutorial](../quickstart.md)
 - [Follow the Quickstart guide](../tutorials/fixed-cap-asset.md)
 - [Explore Avalanche's APIs](../api/intro-apis.md)
 - [Explore reference materials](../references/cryptographic-primitives.md)

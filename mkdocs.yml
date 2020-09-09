@@ -27,7 +27,7 @@ theme:
 nav:
 - Avalanche Documentation :
   - Home : index.md
-  - Quickstart : ./v1.0/en/quickstart/ava-getting-started.md
+  - Quickstart : ./v1.0/en/quickstart.md
   - FAQ and Known Issues : ./v1.0/en/faq.md
   - System Overview: v1.0/en/core-concepts/overview.md
   - Tutorials:

@@ -15,7 +15,7 @@ In this tutorial, which should take less than 10 minutes, we will:
 * Start validating
 
 
-If you run into any issues at all, **please check the [FAQ](../faq.md)**
+If you run into any issues at all, **please check the [FAQ](faq.md)**
 If your issue isn't addressed there, come ask for help on our [Discord Server!](https://chat.avalabs.org/)
 We will work to get you through any problems.
 
@@ -107,7 +107,7 @@ When a given chain is done bootstrapping, it will print a log like this:
 
 `INFO [06-07|19:54:06] <X Chain> /snow/engine/avalanche/transitive.go#80: bootstrapping finished with 1 vertices in the accepted frontier`
 
-To check if a given chain is done bootstrapping, call [info.isBootstrapped](../api/info.md#infoisbootstrapped) like so:
+To check if a given chain is done bootstrapping, call [info.isBootstrapped](api/info.md#infoisbootstrapped) like so:
 
 ```json
 curl -X POST --data '{
@@ -160,7 +160,7 @@ Now you have a user on this node.
 Keystore data exists at the node level.
 Users you create on one node's Keystore do not exist on
 other nodes but you can import/export users to/from the Keystore.
-See the [Keystore API](../api/keystore.md) to see how.
+See the [Keystore API](api/keystore.md) to see how.
 
 ## Create an Address
 
@@ -168,13 +168,13 @@ Avalanche is a network of heterogeneous blockchains.
 One of these blockchains is the X-Chain, which acts as a decentralized platform for creating and trading digital assets.
 (Think X for eXchanging assets.)
 
-There's a special asset on the X-Chain called the [AVAX token](../core-concepts/overview.md#the-x-chain). 
+There's a special asset on the X-Chain called the [AVAX token](core-concepts/overview.md#the-x-chain). 
 This is the native token of the Avalanche network, and transaction fees on the Avalanche network are paid in AVAX.
 
 Let's acquire some AVAX tokens.
 First, we'll need to create an address to hold them.
 
-To create a new address on the X-Chain, call `avm.createAddress`, a method of the [X-Chain's API](../api/avm.md):
+To create a new address on the X-Chain, call `avm.createAddress`, a method of the [X-Chain's API](api/avm.md):
 
 ```sh
 curl -X POST --data '{
@@ -353,10 +353,10 @@ In the same fashion, we could check `X-avax1xeaj0h9uy7c5jn6fxjp0rg4g39jeh0hl27vf
 
 ## Validate the Primary Network (Stake)
 
-[Subnets](../core-concepts/overview.md#what-are-subnets) are a powerful feature of the Avalanche network.
+[Subnets](core-concepts/overview.md#what-are-subnets) are a powerful feature of the Avalanche network.
 A Subnet is a set of validators that work to achieve consensus on a set of blockchains.
 
-The Primary Network is inherent to the Avalanche network, and it validates Avalanche's [built-in blockchains](../core-concepts/overview.md#built-in-blockchains).
+The Primary Network is inherent to the Avalanche network, and it validates Avalanche's [built-in blockchains](core-concepts/overview.md#built-in-blockchains).
 Avalanche uses Proof-of-Stake, so to become a validator one needs to provide a stake, or bond, in AVAX tokens.
 
 Let's add your node to the Primary Network.
@@ -364,7 +364,7 @@ Let's add your node to the Primary Network.
 ### Create a P-Chain Address
 
 The P-Chain (Platform Chain) manages metadata about the Avalanche network, including which nodes belong to which Subnets.
-We create an address on the P-Chain by calling [`platform.createAddress`](../api/platform.md#platformcreateaddress):
+We create an address on the P-Chain by calling [`platform.createAddress`](api/platform.md#platformcreateaddress):
 
 ```sh
 curl -X POST --data '{
@@ -492,7 +492,7 @@ Great! Now your P-Chain address has enough AVAX tokens to provide a stake.
 
 ### Issue the Transaction
 
-To add a node the Primary Network, we'll call [`platform.addValidator`](../api/platform.md#platformaddvalidator).
+To add a node the Primary Network, we'll call [`platform.addValidator`](api/platform.md#platformaddvalidator).
 
 This method's signature is:
 
@@ -515,7 +515,7 @@ Let's go through and examine these arguments.
 
 ### `nodeID`
 
-This is the node ID of the validator being added. To get your node's ID, call [`info.getNodeID`:](../api/info.md#infogetnodeid)
+This is the node ID of the validator being added. To get your node's ID, call [`info.getNodeID`:](api/info.md#infogetnodeid)
 
 ```json
 curl -X POST --data '{
@@ -614,7 +614,7 @@ curl -X POST --data '{
 ```
 
 The status should be `Committed`, meaning the transaction was successful.
-We can call [`platform.getPendingValidators`](../api/platform.md#platformgetpendingvalidators) and see that the node is now in the pending validator set for the Primary Network:
+We can call [`platform.getPendingValidators`](api/platform.md#platformgetpendingvalidators) and see that the node is now in the pending validator set for the Primary Network:
 
 ```json
 curl -X POST --data '{
@@ -651,10 +651,10 @@ Then, if you want, you can rejoin the Primary Network.
 
 ## Next Steps
 
-- [Learn more about Avalanche](../core-concepts/overview.md)
-- [Create and trade a new asset](../tutorials/fixed-cap-asset.md)
-- [Create a new blockchain](../tutorials/create-a-blockchain.md)
-- [Create a new, custom validator set (Subnet)](../tutorials/create-a-subnet.md)
-- [Explore our APIs](../api/intro-apis.md)
-- [Explore reference materials](../references/cryptographic-primitives.md)
-- [Read the whitepaper and other papers](../papers/index.md)
+- [Learn more about Avalanche](core-concepts/overview.md)
+- [Create and trade a new asset](tutorials/fixed-cap-asset.md)
+- [Create a new blockchain](tutorials/create-a-blockchain.md)
+- [Create a new, custom validator set (Subnet)](tutorials/create-a-subnet.md)
+- [Explore our APIs](api/intro-apis.md)
+- [Explore reference materials](references/cryptographic-primitives.md)
+- [Read the whitepaper and other papers](papers/index.md)
