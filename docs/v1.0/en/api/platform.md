@@ -367,6 +367,104 @@ curl -X POST --data '{
 }
 ```
 
+### platform.exportAVAX
+
+Send AVAX from an address on the P-Chain to an address on the X-Chain. 
+After issuing this transaction, you must call the X-Chain's [`importAVAX`](./avm.md#avmimportavax) method to complete the transfer.
+
+#### Signature
+
+```go
+platform.exportAVAX(
+    {
+        amount: int,
+        to: string,
+        username: string,
+        password:string
+    }
+) -> {txID: string}
+```
+
+* `amount` is the amount of nAVAX to send.
+* `to` is the address on the X-Chain to send the AVAX to.
+* `username` is the user sending the AVAX and paying the transaction fee.
+* `password` is `username`'s password.
+* `txID` is the ID of this transaction.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "platform.exportAVAX",
+    "params": {
+        "to":"X-avax1yv8cwj9kq3527feemtmh5gkvezna5xys08mxet",
+        "amount":1,
+        "username":"username",
+        "password":"password"
+    },
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "txID": "2Kz69TNBSeABuaVjKa6ZJCTLobbe5xo9c5eU8QwdUSvPo2dBk3"
+    },
+    "id": 1
+}
+```
+
+### platform.exportKey
+
+Get the private key that controls a given address.  
+The returned private key can be added to a user with `platform.importKey`.
+
+#### Signature
+
+```go
+platform.exportKey({
+    username: string,
+    password:string,
+    address:string
+}) -> {privateKey: string}
+```
+
+* `username` is the user that controls `address`.
+* `password` is `username`'s password.
+* `privateKey` is the string representation of the private key that controls `address`.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"platform.exportKey",
+    "params" :{
+        "username" :"username",
+        "password":"password",
+        "address": "P-avax1zwp96clwehpwm57r9ftzdm7rnuslrunj68ua3r"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "privateKey":"PrivateKey-Lf49kAJw3CbaL783vmbeAJvhscJqC7vi5yBYLxw2XfbzNS5RS"
+    }
+}
+```
+
 ### platform.getBalance
 
 Get the balance of AVAX controlled by a given address.
@@ -776,103 +874,6 @@ curl -X POST --data '{
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
-```
-### platform.exportAVAX
-
-Send AVAX from an address on the P-Chain to an address on the X-Chain. 
-After issuing this transaction, you must call the X-Chain's [`importAVAX`](./avm.md#avmimportavax) method to complete the transfer.
-
-#### Signature
-
-```go
-platform.exportAVAX(
-    {
-        amount: int,
-        to: string,
-        username: string,
-        password:string
-    }
-) -> {txID: string}
-```
-
-* `amount` is the amount of nAVAX to send.
-* `to` is the address on the X-Chain to send the AVAX to.
-* `username` is the user sending the AVAX and paying the transaction fee.
-* `password` is `username`'s password.
-* `txID` is the ID of this transaction.
-
-#### Example Call
-
-```json
-curl -X POST --data '{
-    "jsonrpc": "2.0",
-    "method": "platform.exportAVAX",
-    "params": {
-        "to":"X-avax1yv8cwj9kq3527feemtmh5gkvezna5xys08mxet",
-        "amount":1,
-        "username":"username",
-        "password":"password"
-    },
-    "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
-```
-
-#### Example Response
-
-```json
-{
-    "jsonrpc": "2.0",
-    "result": {
-        "txID": "2Kz69TNBSeABuaVjKa6ZJCTLobbe5xo9c5eU8QwdUSvPo2dBk3"
-    },
-    "id": 1
-}
-```
-
-### platform.exportKey
-
-Get the private key that controls a given address.  
-The returned private key can be added to a user with `platform.importKey`.
-
-#### Signature
-
-```go
-platform.exportKey({
-    username: string,
-    password:string,
-    address:string
-}) -> {privateKey: string}
-```
-
-* `username` is the user that controls `address`.
-* `password` is `username`'s password.
-* `privateKey` is the string representation of the private key that controls `address`.
-
-#### Example Call
-
-```json
-curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "method" :"platform.exportKey",
-    "params" :{
-        "username" :"username",
-        "password":"password",
-        "address": "P-avax1zwp96clwehpwm57r9ftzdm7rnuslrunj68ua3r"
-    }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
-```
-
-#### Example Response
-
-```json
-{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "result" :{
-        "privateKey":"PrivateKey-Lf49kAJw3CbaL783vmbeAJvhscJqC7vi5yBYLxw2XfbzNS5RS"
-    }
-}
 ```
 
 ### platform.getUTXOs
