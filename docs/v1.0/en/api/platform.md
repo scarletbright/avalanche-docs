@@ -876,6 +876,74 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
+### platform.getTx
+
+Gets a transaction by its ID.
+
+#### Signature
+
+```go
+platform.getTx({txID: string} -> {tx: string})
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "platform.getTx",
+    "params": {
+    	"txID":"TAG9Ns1sa723mZy1GSoGqWipK6Mvpaj7CAswVJGM6MkVJDF9Q"
+    },
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "tx": "111117XV7Rm5EoKbwXFJp5WWWouAENJcF1zXGxPDPCfTbpiLfwkUXcoHKnfzdXz7sRgGYeaVtJkcD9MNgGuKGXsyWEWpTK2zAToEf64ezp7r7SyvyL7RqC5oqvNbRDShn5hm9pDV4JTCjZR5RzAxjBEJZ2V8eqtU6jvpsJMHxNBtCwL6Atc1t2Dt7s5nqf7wdbFUBvwKXppBb2Yps8wUvtTKQifssMUAPygc2Rv4rGd9LRANk4JTiT15qzUjXX7zSzz16pxdBXc4jp2Z2UJRWbdxZdaybL3mYCFj197bBnYieRYzRohaUEpEjGcohrmkSfHB8S2eD74o2r66sVGdpXYo95vkZeayQkrMRit6unwWBx8FJR7Sd7GysxS9A3CiMc8cL4oRmr7XyvcFCrnPbUZK7rnN1Gtq3MN8k4JVvX6DuiFAS7xe61jY3VKJAZM9Lg3BgU6TAU3gZ"
+    },
+    "id": 1
+}
+```
+
+### platform.getTxStatus
+
+Gets a transaction's status by its ID.
+
+#### Signature
+
+```go
+platform.getTxStatus({txID: string} -> {status: string})
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "platform.getTxStatus",
+    "params": {
+    	"txID":"TAG9Ns1sa723mZy1GSoGqWipK6Mvpaj7CAswVJGM6MkVJDF9Q"
+    },
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": "Committed",
+    "id": 1
+}
+```
+
 ### platform.getUTXOs
 
 Gets the UTXOs that reference a given set address.
