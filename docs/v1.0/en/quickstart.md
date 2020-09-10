@@ -32,30 +32,30 @@ Run `echo $GOPATH`. **It should not be empty.**
 
 ## Run an Avalanche Node
 
-Let's install avalanche.go, the Go implementation of an Avalanche node, and connect to the Avalanche Public Testnet.
+Let's install AvalancheGo, the Go implementation of an Avalanche node, and connect to the Avalanche Public Testnet.
 
-### Download avalanche.go
+### Download AvalancheGo
 
 The node is a binary program. You can either download the source code and then build the binary program, or you can download the pre-built binary.
 You can do either of the below. You don't need to do both.
 
-#### Download avalanche.go Source Code
+#### Download AvalancheGo Source Code
 
-Download the avalanche.go repository:
+Download the AvalancheGo repository:
 
 ```sh
 go get -v -d github.com/ava-labs/avalanchego/...
 ```
 
-(Note to advanced users: avalanche.go uses Go modules, so you can actually clone the [avalanche.go repository](https://github.com/ava-labs/avalanchego) to locations other than your GOPATH.)
+(Note to advanced users: AvalancheGo uses Go modules, so you can actually clone the [AvalancheGo repository](https://github.com/ava-labs/avalanchego) to locations other than your GOPATH.)
 
-Change to the `avalanche.go` directory:
+Change to the `avalanchego` directory:
 
 ```sh
 cd $GOPATH/src/github.com/ava-labs/avalanchego
 ```
 
-Build avalanche.go:
+Build AvalancheGo:
 
 ```sh
 ./scripts/build.sh

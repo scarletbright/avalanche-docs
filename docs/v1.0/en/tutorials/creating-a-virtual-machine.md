@@ -539,7 +539,7 @@ func (vm *VM) CreateHandlers() map[string]*common.HTTPHandler {
 
 ### Service
 
-avalanche.go uses [Gorilla's RPC library.](https://www.gorillatoolkit.org/pkg/rpc) to implement APIs.
+AvalancheGo uses [Gorilla's RPC library.](https://www.gorillatoolkit.org/pkg/rpc) to implement APIs.
 
 Using Gorilla, there is a struct for each API service. 
 In the case of this blockchain, there's only one API service.
