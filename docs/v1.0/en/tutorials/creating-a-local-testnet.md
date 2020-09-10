@@ -10,16 +10,16 @@ The 5 nodes will have HTTP ports (where API calls should be sent) `9650`, `9652`
 
 ## Create a Local Test Network
 
-The below commands assume you have avalanche.go installed at `$GOPATH/src/github.com/ava-labs/avalanche-go`.
+The below commands assume you have avalanche.go installed at `$GOPATH/src/github.com/ava-labs/avalanchego`.
 Each of the five nodes created is a validator.
-The staking keys for these nodes are in `$GOPATH/src/github.com/ava-labs/avalanche-go/staking/local/staker1.crt`, etc.
+The staking keys for these nodes are in `$GOPATH/src/github.com/ava-labs/avalanchego/staking/local/staker1.crt`, etc.
 
 ### Manually
 
  To start the network:
 
 ```sh
-cd $GOPATH/src/github.com/ava-labs/avalanche-go
+cd $GOPATH/src/github.com/ava-labs/avalanchego
 ./scripts/build.sh
 ./build/avalanche --public-ip=127.0.0.1 --snow-sample-size=2 --snow-quorum-size=2 --http-port=9650 --staking-port=9651 --db-dir=db/node1 --staking-enabled=true --network-id=local --bootstrap-ips= --staking-tls-cert-file=$(pwd)/staking/local/staker1.crt --staking-tls-key-file=$(pwd)/staking/local/staker1.key
 ./build/avalanche --public-ip=127.0.0.1 --snow-sample-size=2 --snow-quorum-size=2 --http-port=9652 --staking-port=9653 --db-dir=db/node2 --staking-enabled=true --network-id=local --bootstrap-ips=127.0.0.1:9651 --bootstrap-ids=7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg --staking-tls-cert-file=$(pwd)/staking/local/staker2.crt --staking-tls-key-file=$(pwd)/staking/local/staker2.key

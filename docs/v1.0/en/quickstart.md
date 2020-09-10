@@ -44,15 +44,15 @@ You can do either of the below. You don't need to do both.
 Download the avalanche.go repository:
 
 ```sh
-go get -v -d github.com/ava-labs/avalanche-go/...
+go get -v -d github.com/ava-labs/avalanchego/...
 ```
 
-(Note to advanced users: avalanche.go uses Go modules, so you can actually clone the [avalanche.go repository](https://github.com/ava-labs/avalanche-go) to locations other than your GOPATH.)
+(Note to advanced users: avalanche.go uses Go modules, so you can actually clone the [avalanche.go repository](https://github.com/ava-labs/avalanchego) to locations other than your GOPATH.)
 
 Change to the `avalanche.go` directory:
 
 ```sh
-cd $GOPATH/src/github.com/ava-labs/avalanche-go
+cd $GOPATH/src/github.com/ava-labs/avalanchego
 ```
 
 Build avalanche.go:
@@ -61,11 +61,11 @@ Build avalanche.go:
 ./scripts/build.sh
 ```
 
-The binary, named `avalanche`, is in `avalanche-go/build`. 
+The binary, named `avalanche`, is in `avalanchego/build`. 
 
-#### Download avalanche-go Binary
+#### Download AvalancheGo Binary
 
-Go to our [releases page](https://github.com/ava-labs/avalanche-go/releases) and select the release you want (probably the latest one.)
+Go to our [releases page](https://github.com/ava-labs/avalanchego/releases) and select the release you want (probably the latest one.)
 
 Under `Assets`, select the appropriate file.
 

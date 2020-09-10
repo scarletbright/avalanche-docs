@@ -31,7 +31,7 @@ Then, re-read them again ;)
 See [known issues](#known-issues) and the #testnet-status channel of our [Discord](https://chat.avalabs.org).
 If your issue is not addressed anywhere, post in the appropriate Discord channel (probably #troubleshooting.)
 
-If, after doing the above, you think there is a bug, please make an issue on our [Github.](https://github.com/ava-labs/avalanche-go/issues) 
+If, after doing the above, you think there is a bug, please make an issue on our [Github.](https://github.com/ava-labs/avalanchego/issues) 
 Please give as much information and context as possible when describing an issue.
 If someone already reported the same issue, comment with your details.
 
@@ -46,11 +46,11 @@ You can do either of the below. You don't need to do both.
 
 First clone our Github repo (you can skip this step if you've done this before):
 
-`git clone https://github.com/ava-labs/avalanche-go.git`
+`git clone https://github.com/ava-labs/avalanchego.git`
 
-Then move to the `avalanche-go` directory:
+Then move to the `avalanchego` directory:
 
-`cd avalanche-go`
+`cd avalanchego`
 
 Pull the latest code:
 
@@ -60,7 +60,7 @@ Check that your local code is up to date. Do:
 
 `git rev-parse HEAD`
 
-and check that the first 7 characters printed match the `Latest commit` field on our [Github.](https://github.com/ava-labs/avalanche-go)
+and check that the first 7 characters printed match the `Latest commit` field on our [Github.](https://github.com/ava-labs/avalanchego)
 
 Now build the binary:
 
@@ -74,7 +74,7 @@ You can run your node with `./build/avalanche`
 
 #### Download Binary
 
-Go to our [releases page](https://github.com/ava-labs/avalanche-go/releases) and select the release you want (probably the latest one.)
+Go to our [releases page](https://github.com/ava-labs/avalanchego/releases) and select the release you want (probably the latest one.)
 
 Under `Assets`, select the appropriate file.
 
@@ -100,7 +100,7 @@ No.
 
 Run `./avalanche --version`.
 It will print the version of Avalanche you're running.
-To see what the latest release is, see our [releases page.](https://github.com/ava-labs/avalanche-go/releases/)
+To see what the latest release is, see our [releases page.](https://github.com/ava-labs/avalanchego/releases/)
 
 ### Why am I getting a 404 when I make an API call?
 
@@ -111,14 +111,14 @@ If a problem persists, contact us on [Discord.](https://chat.avalabs.org)
 
 ### Where is my node's data?
 
-By default, the node's database is at `$HOME/.avalanche-go/db`
+By default, the node's database is at `$HOME/.avalanchego/db`
 **If you delete this directory, it will erase the state of your node, including private keys and keystore users.**
 
 If there is a new major release (e.g. Denali --> Everest), your node's state will be reset.
-Otherwise, upgrading avalanche-go will not overwrite or destroy your node's state.
+Otherwise, upgrading AvalancheGo will not overwrite or destroy your node's state.
 
 The only data not in this folder is your node's staking key/certificate.
-These are in `$HOME/.avalanche-go/staking` by default.
+These are in `$HOME/.avalanchego/staking` by default.
 **If you delete this directory, it will erase your node ID. This will jeopardize your validator reward.**
 If your node is a validator and you delete its staking key, it will no longer be a validator when it restarts.
 
@@ -126,7 +126,7 @@ Upgrading avalanche.go will never erase or change your staking key/certificate.
 
 ### Where are my node's logs?
 
-By default, they're in `$HOME/.avalanche-go/logs/node`.
+By default, they're in `$HOME/.avalanchego/logs/node`.
 
 Logs specific to a chain are in subdirectory `chain/[CHAIN ID]` where `[CHAIN ID]` is the chain's ID.
 
@@ -135,11 +135,11 @@ Logs specific to a chain are in subdirectory `chain/[CHAIN ID]` where `[CHAIN ID
 Yes.
 
 To keep your node ID, you'll have to copy your staking key and certificate to the new machine.
-By default, these are at `$HOME/.avalanche-go/staking` and are named `staker.key` and `staker.crt`.
-Place the staking key and certificate on the new machine at `$HOME/.avalanche-go/staking`.
+By default, these are at `$HOME/.avalanchego/staking` and are named `staker.key` and `staker.crt`.
+Place the staking key and certificate on the new machine at `$HOME/.avalanchego/staking`.
 
 To keep your node's state (keystore users, etc.), you'll have to copy your database directory to the new machine.
-By default, this is at `$HOME/.avalanche-go/db`.
+By default, this is at `$HOME/.avalanchego/db`.
 Place this directory at the same location on the new machine.
 
 Advanced users may place the staking key and database at different locations and point to them at runtime
@@ -229,7 +229,7 @@ You can:
 * [Get a grant](https://www.avalabs.org/avalanche-x) for working on a project that adds to the Avalanche ecosystem
 * [Participate in our bug bounty](https://www.avalabs.org/avalanche-x/explore-open-grants/bug-bounty)
 * Check out the #dev-chat channel on our [Discord.](https://chat.avalabs.org)
-* Make an issue or pull request on our [Github.](https://github.com/ava-labs/avalanche-go)
+* Make an issue or pull request on our [Github.](https://github.com/ava-labs/avalanchego)
 
 ### What hardware do I need?
 
@@ -295,7 +295,7 @@ Do `CTRL + Z` in the terminal window where you're running the node.
 This should print something like:
 
 ```sh
-[1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/avalanche-go/build/avalanche
+[1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/avalanchego/build/avalanche
 ```
 
 Do `kill -9 %1` (or `kill -9 %2` if it printed `[2]+ Stopped`, etc.)
@@ -395,14 +395,14 @@ Replace each character that looks like a quotation mark " with a quotation mark 
 
 ### Starting node fails with: `cannot execute binary file: Exec format error`
 
-You are probably using one of the [official releases](https://github.com/ava-labs/avalanche-go/releases) on an architecture it was not build for.  
+You are probably using one of the [official releases](https://github.com/ava-labs/avalanchego/releases) on an architecture it was not build for.  
 The `avalanche-linux-<release>.tar.gz` is build for AMD64 (x86-64) architectures. Platforms based on ARM chips, like the Raspberry Pi, are **not** working with it.  
-Instead you need to [build avalanche.go from source](quickstart.md#download-avalanche-go-source-code). Keep in mind you need to use a 64-bit operating system.
+Instead you need to [build avalanche.go from source](quickstart.md#download-avalanchego-source-code). Keep in mind you need to use a 64-bit operating system.
 
 ## Known Issues/Bugs
 
 This section contains bugs and issues that we're aware of.
-Please also see our [Github issues.](https://github.com/ava-labs/avalanche-go/issues)
+Please also see our [Github issues.](https://github.com/ava-labs/avalanchego/issues)
 
 ### Node won't start with `failed to listen on consensus server at 0.0.0.0:9651: unable to listen`
 
@@ -418,7 +418,7 @@ Do `CTRL + Z` in the terminal window where you're running the node.
 This should print something like:
 
 ```sh
-[1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/avalanche-go/build/avalanche
+[1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/avalanchego/build/avalanche
 ```
 
 Do `kill -9 %1` (or `kill -9 %2` if it printed `[2]+ Stopped`, etc.)
