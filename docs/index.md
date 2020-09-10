@@ -46,7 +46,7 @@ fractionalized real estate, or anything else.
 Here are some useful starting points:
 
 - [Learn more about Avalanche](v1.0/en/core-concepts/overview.md)
-- [Follow the Quickstart guide](v1.0/en/quickstart/ava-getting-started/)
+- [Follow the Quickstart guide](v1.0/en/quickstart.md)
 - [Follow tutorials](./v1.0/en/tutorials/fixed-cap-asset.md)
 - [Explore Avalanche's APIs](./v1.0/en/api/intro-apis.md)
 - [Explore reference materials](v1.0/en/references/cryptographic-primitives.md)

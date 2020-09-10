@@ -12,7 +12,7 @@ To add a validator we'll issue transactions to the P-Chain.
 
 ## Requirements
 
-We assume that you've already done the [quickstart guide](../quickstart/ava-getting-started.md) and [subnet creation tutorial](../tutorials/create-a-subnet.md), and are familiar with the [Avalanche Network's architecture.](../core-concepts/overview.md)
+We assume that you've already done the [quickstart guide](../quickstart.md) and [subnet creation tutorial](create-a-subnet.md), and are familiar with the [Avalanche Network's architecture.](../core-concepts/overview.md)
 
 ## Connect to the Network
 

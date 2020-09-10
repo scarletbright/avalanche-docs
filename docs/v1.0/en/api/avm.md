@@ -27,6 +27,8 @@ This call is made to the AVM's static API endpoint:
 
 `/ext/vm/avm`
 
+Note: addresses should not include a chain prefix (ie. X-) in calls to the static API endpoint because these prefixes refer to a specific chain.
+
 #### Signature
 
 ```go

@@ -11,7 +11,7 @@ In this tutorial we'll send AVAX tokens from the X-Chain to the P-chain and back
 
 ## Requirements
 
-We assume that you've already done the [quickstart guide](../quickstart/ava-getting-started.md) and are familiar with the [Avalanche Network's architecture.](../core-concepts/overview.md)
+We assume that you've already done the [quickstart guide](../quickstart.md) and are familiar with the [Avalanche Network's architecture.](../core-concepts/overview.md)
 
 We assume your node is connected to the Public Testnet.
 
