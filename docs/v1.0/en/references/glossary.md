@@ -124,9 +124,9 @@ CB58 is similar to [Base58Check], but uses a different checksum algorithm.
 A consensus protocol is an algorithm, or series of steps, that a set of computers follow in order to reach agreement on some piece of information.
 In a payments system, for example, the computers follow a protocol to agree on who has how much money.
 
-## Gecko
+## AvalancheGo
 
-Gecko is the Go implementation of an Avalanche node.
+AvalancheGo is the Go implementation of an Avalanche node.
 
 ## Node
 
