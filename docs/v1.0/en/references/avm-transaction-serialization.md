@@ -1181,8 +1181,8 @@ Let's make a payment input with:
 
 ### NFT Credential
 
-An NFT credential is the same as an secp256k1 credential with a different type ID.
-The type ID for an NFT credential is `0x0000000e`.
+An NFT credential is the same as an secp256k1 credential with a different TypeID.
+The TypeID for an NFT credential is `0x0000000e`.
 
 ***
 
@@ -1337,7 +1337,7 @@ An unsigned create asset tx contains a `BaseTx`, `Name`, `Symbol`, `Denomination
 | initial_states : []InitialState |       4 + size(initial_states) bytes |
 +----------------+----------------+--------------------------------------+
                                   | size(base_tx) + size(initial_states) |
-                                  |  + 5 + len(name) + len(symbol) bytes |
+                                  |  + 9 + len(name) + len(symbol) bytes |
                                   +--------------------------------------+
 ```
 
@@ -1880,7 +1880,7 @@ A UTXO is a standalone representation of a transaction output.
 
 ### What UTXO Contains
 
-A UTXO contains signed transaction contains a `CodecID`, `TxID`, `UTXOIndex`, and `Output`.
+A UTXO contains a `CodecID`, `TxID`, `UTXOIndex`, and `Output`.
 
 - **`CodecID`** The only valid `CodecID` is `00 00`
 - **`TxID`** is a 32-byte transaction ID. Transaction IDs are calculated by taking sha256 of the bytes of the signed transaction.
