@@ -367,6 +367,104 @@ curl -X POST --data '{
 }
 ```
 
+### platform.exportAVAX
+
+Send AVAX from an address on the P-Chain to an address on the X-Chain. 
+After issuing this transaction, you must call the X-Chain's [`importAVAX`](./avm.md#avmimportavax) method to complete the transfer.
+
+#### Signature
+
+```go
+platform.exportAVAX(
+    {
+        amount: int,
+        to: string,
+        username: string,
+        password:string
+    }
+) -> {txID: string}
+```
+
+* `amount` is the amount of nAVAX to send.
+* `to` is the address on the X-Chain to send the AVAX to.
+* `username` is the user sending the AVAX and paying the transaction fee.
+* `password` is `username`'s password.
+* `txID` is the ID of this transaction.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "platform.exportAVAX",
+    "params": {
+        "to":"X-avax1yv8cwj9kq3527feemtmh5gkvezna5xys08mxet",
+        "amount":1,
+        "username":"username",
+        "password":"password"
+    },
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "txID": "2Kz69TNBSeABuaVjKa6ZJCTLobbe5xo9c5eU8QwdUSvPo2dBk3"
+    },
+    "id": 1
+}
+```
+
+### platform.exportKey
+
+Get the private key that controls a given address.  
+The returned private key can be added to a user with `platform.importKey`.
+
+#### Signature
+
+```go
+platform.exportKey({
+    username: string,
+    password:string,
+    address:string
+}) -> {privateKey: string}
+```
+
+* `username` is the user that controls `address`.
+* `password` is `username`'s password.
+* `privateKey` is the string representation of the private key that controls `address`.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"platform.exportKey",
+    "params" :{
+        "username" :"username",
+        "password":"password",
+        "address": "P-avax1zwp96clwehpwm57r9ftzdm7rnuslrunj68ua3r"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "privateKey":"PrivateKey-Lf49kAJw3CbaL783vmbeAJvhscJqC7vi5yBYLxw2XfbzNS5RS"
+    }
+}
+```
+
 ### platform.getBalance
 
 Get the balance of AVAX controlled by a given address.
@@ -775,43 +873,67 @@ curl -X POST --data '{
         ]
     },
     "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+}'
 ```
-### platform.exportAVAX
 
-Send AVAX from an address on the P-Chain to an address on the X-Chain. 
-After issuing this transaction, you must call the X-Chain's [`importAVAX`](./avm.md#avmimportavax) method to complete the transfer.
+### platform.getStake
+
+Get the amount of nAVAX staked by a set of addresses.
+The amount returned does not include staking rewards.
 
 #### Signature
 
 ```go
-platform.exportAVAX(
-    {
-        amount: int,
-        to: string,
-        username: string,
-        password:string
-    }
-) -> {txID: string}
+platform.getStake({addresses: []string}) -> {stake: int}
 ```
-
-* `amount` is the amount of nAVAX to send.
-* `to` is the address on the X-Chain to send the AVAX to.
-* `username` is the user sending the AVAX and paying the transaction fee.
-* `password` is `username`'s password.
-* `txID` is the ID of this transaction.
 
 #### Example Call
 
 ```json
 curl -X POST --data '{
     "jsonrpc": "2.0",
-    "method": "platform.exportAVAX",
+    "method": "platform.getStake",
     "params": {
-        "to":"X-avax1yv8cwj9kq3527feemtmh5gkvezna5xys08mxet",
-        "amount":1,
-        "username":"username",
-        "password":"password"
+    	"addresses": [
+            "P-everest1g3ea9z5kmkzwnxp8vr8rpjh6lqw4r0ufec460d",
+            "P-everest12un03rm579fewele99c4v53qnmymwu46dv3s5v"
+        ]
+    },
+    "id": 1
+}
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "staked": "5000000"
+    },
+    "id": 1
+}
+```
+
+### platform.getTx
+
+Gets a transaction by its ID.
+
+#### Signature
+
+```go
+platform.getTx({txID: string} -> {tx: string})
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "platform.getTx",
+    "params": {
+    	"txID":"TAG9Ns1sa723mZy1GSoGqWipK6Mvpaj7CAswVJGM6MkVJDF9Q"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
@@ -823,43 +945,32 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "2Kz69TNBSeABuaVjKa6ZJCTLobbe5xo9c5eU8QwdUSvPo2dBk3"
+        "tx": "111117XV7Rm5EoKbwXFJp5WWWouAENJcF1zXGxPDPCfTbpiLfwkUXcoHKnfzdXz7sRgGYeaVtJkcD9MNgGuKGXsyWEWpTK2zAToEf64ezp7r7SyvyL7RqC5oqvNbRDShn5hm9pDV4JTCjZR5RzAxjBEJZ2V8eqtU6jvpsJMHxNBtCwL6Atc1t2Dt7s5nqf7wdbFUBvwKXppBb2Yps8wUvtTKQifssMUAPygc2Rv4rGd9LRANk4JTiT15qzUjXX7zSzz16pxdBXc4jp2Z2UJRWbdxZdaybL3mYCFj197bBnYieRYzRohaUEpEjGcohrmkSfHB8S2eD74o2r66sVGdpXYo95vkZeayQkrMRit6unwWBx8FJR7Sd7GysxS9A3CiMc8cL4oRmr7XyvcFCrnPbUZK7rnN1Gtq3MN8k4JVvX6DuiFAS7xe61jY3VKJAZM9Lg3BgU6TAU3gZ"
     },
     "id": 1
 }
 ```
 
-### platform.exportKey
+### platform.getTxStatus
 
-Get the private key that controls a given address.  
-The returned private key can be added to a user with `platform.importKey`.
+Gets a transaction's status by its ID.
 
 #### Signature
 
 ```go
-platform.exportKey({
-    username: string,
-    password:string,
-    address:string
-}) -> {privateKey: string}
+platform.getTxStatus({txID: string} -> {status: string})
 ```
-
-* `username` is the user that controls `address`.
-* `password` is `username`'s password.
-* `privateKey` is the string representation of the private key that controls `address`.
 
 #### Example Call
 
 ```json
 curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "method" :"platform.exportKey",
-    "params" :{
-        "username" :"username",
-        "password":"password",
-        "address": "P-avax1zwp96clwehpwm57r9ftzdm7rnuslrunj68ua3r"
-    }
+    "jsonrpc": "2.0",
+    "method": "platform.getTxStatus",
+    "params": {
+    	"txID":"TAG9Ns1sa723mZy1GSoGqWipK6Mvpaj7CAswVJGM6MkVJDF9Q"
+    },
+    "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
@@ -867,11 +978,9 @@ curl -X POST --data '{
 
 ```json
 {
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "result" :{
-        "privateKey":"PrivateKey-Lf49kAJw3CbaL783vmbeAJvhscJqC7vi5yBYLxw2XfbzNS5RS"
-    }
+    "jsonrpc": "2.0",
+    "result": "Committed",
+    "id": 1
 }
 ```
 
