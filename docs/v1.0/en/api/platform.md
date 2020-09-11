@@ -1417,3 +1417,35 @@ curl -X POST --data '{
     "id": 1
 }
 ```
+
+### platform.getMinStake
+
+Get the minimum staking amount of the network.
+
+#### Signature 
+
+```go
+platform.getMinStake() -> {minStake:uint64}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"platform.getMinStake"
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "minStake": "5000000"
+    }
+}
+```

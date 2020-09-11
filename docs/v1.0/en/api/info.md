@@ -277,3 +277,35 @@ curl -X POST --data '{
     }
 }
 ```
+
+### info.getTxFee
+
+Get the transaction fee of the network.
+
+#### Signature 
+
+```go
+info.getTxFee() -> {txFee:uint64}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"info.getTxFee"
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "txFee": "1000000"
+    }
+}
+```
