@@ -113,7 +113,7 @@ This concatenated output is then mapped to a base-58 string. It uses 58 lowercas
 
 `123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz`
 
-A full implementation of the base-58 format [can be found in Avalanche.js](https://github.com/ava-labs/avalanche.js/blob/eabcc2f23091be98d3db9d6bc0655c6faa7a3c3e/src/utils/bintools.ts#L19)
+A full implementation of the base-58 format [can be found in AvalancheJS](https://github.com/ava-labs/avalanchejs/blob/master/src/utils/base58.ts)
 
 CB58 is similar to [Base58Check], but uses a different checksum algorithm.
 
