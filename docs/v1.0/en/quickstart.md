@@ -61,7 +61,7 @@ Build AvalancheGo:
 ./scripts/build.sh
 ```
 
-The binary, named `avalanche`, is in `avalanchego/build`. 
+The binary, named `avalanchego`, is in `avalanchego/build`. 
 
 #### Download AvalancheGo Binary
 
@@ -73,13 +73,13 @@ For MacOS:
 Download the file named `avalanche-osx-<VERSION>.zip`  
 Unzip the file with `unzip avalanche-osx-<VERSION>.zip`  
 The resulting folder, `avalanche-<VERSION>`, contains the binaries.  
-You can run the node with `./avalanche-<VERSION>/avalanche`
+You can run the node with `./avalanche-<VERSION>/avalanchego`
 
 For Linux:  
 Download the file named `avalanche-linux-<VERSION>.tar.gz`.  
 Unzip the file with `tar -xvf avalanche-linux-<VERSION>.tar.gz`  
 The resulting folder, `avalanche-<VERSION>`, contains the binaries.  
-You can run the node with `./avalanche-<VERSION>/avalanche`
+You can run the node with `./avalanche-<VERSION>/avalanchego`
 
 ### Start a Node and Connect to Test Network
 
@@ -90,12 +90,12 @@ To start a node and connect it to the Avalanche test net:
 
 If you built from source:
 ```sh
-./build/avalanche
+./build/avalanchego
 ```
 
 If you are using the released binaries:
 ```sh
-./avalanche-<VERSION>/avalanche
+./avalanche-<VERSION>/avalanchego
 ```
 
 You can use `Ctrl + C` to kill the node.
