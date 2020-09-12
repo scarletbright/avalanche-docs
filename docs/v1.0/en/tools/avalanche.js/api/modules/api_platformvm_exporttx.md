@@ -7,4 +7,3 @@
 ### Classes
 
 * [ExportTx](../classes/api_platformvm_exporttx.exporttx.md)
-* [ImportTx](../classes/api_platformvm_exporttx.importtx.md)

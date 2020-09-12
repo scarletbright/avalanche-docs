@@ -7,4 +7,6 @@
 ### Classes
 
 * [AddDelegatorTx](../classes/api_platformvm_validationtx.adddelegatortx.md)
+* [AddValidatorTx](../classes/api_platformvm_validationtx.addvalidatortx.md)
 * [ValidatorTx](../classes/api_platformvm_validationtx.validatortx.md)
+* [WeightedValidatorTx](../classes/api_platformvm_validationtx.weightedvalidatortx.md)

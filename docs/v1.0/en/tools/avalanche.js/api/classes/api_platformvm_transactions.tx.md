@@ -4,7 +4,7 @@
 
 ## Hierarchy
 
-* [StandardTx](common_transactions.standardtx.md)‹[PlatformVMKeyPair](api_platformvm_keychain.platformvmkeypair.md), [PlatformVMKeyChain](api_platformvm_keychain.platformvmkeychain.md), [UnsignedTx](api_platformvm_transactions.unsignedtx.md)›
+* [StandardTx](common_transactions.standardtx.md)‹[KeyPair](api_platformvm_keychain.keypair.md), [KeyChain](api_platformvm_keychain.keychain.md), [UnsignedTx](api_platformvm_transactions.unsignedtx.md)›
 
   ↳ **Tx**
 
@@ -35,7 +35,7 @@
 
 *Inherited from [StandardTx](common_transactions.standardtx.md).[constructor](common_transactions.standardtx.md#constructor)*
 
-Defined in src/common/tx.ts:313
+*Defined in [src/common/tx.ts:322](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L322)*
 
 Class representing a signed transaction.
 
@@ -56,7 +56,7 @@ Name | Type | Default | Description |
 
 *Inherited from [StandardTx](common_transactions.standardtx.md).[credentials](common_transactions.standardtx.md#protected-credentials)*
 
-Defined in src/common/tx.ts:257
+*Defined in [src/common/tx.ts:266](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L266)*
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 *Inherited from [StandardTx](common_transactions.standardtx.md).[unsignedTx](common_transactions.standardtx.md#protected-unsignedtx)*
 
-Defined in src/common/tx.ts:256
+*Defined in [src/common/tx.ts:265](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L265)*
 
 ## Methods
 
@@ -76,7 +76,7 @@ Defined in src/common/tx.ts:256
 
 *Overrides [StandardTx](common_transactions.standardtx.md).[fromBuffer](common_transactions.standardtx.md#abstract-frombuffer)*
 
-Defined in src/apis/platformvm/tx.ts:58
+*Defined in [src/apis/platformvm/tx.ts:59](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/platformvm/tx.ts#L59)*
 
 Takes a [Buffer](https://github.com/feross/buffer) containing an [Tx](api_platformvm_transactions.tx.md), parses it, populates the class, and returns the length of the Tx in bytes.
 
@@ -99,7 +99,7 @@ ___
 
 *Inherited from [StandardTx](common_transactions.standardtx.md).[fromString](common_transactions.standardtx.md#fromstring)*
 
-Defined in src/common/tx.ts:301
+*Defined in [src/common/tx.ts:310](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L310)*
 
 Takes a base-58 string containing an [StandardTx](common_transactions.standardtx.md), parses it, populates the class, and returns the length of the Tx in bytes.
 
@@ -124,7 +124,7 @@ ___
 
 *Inherited from [StandardTx](common_transactions.standardtx.md).[getUnsignedTx](common_transactions.standardtx.md#getunsignedtx)*
 
-Defined in src/common/tx.ts:262
+*Defined in [src/common/tx.ts:271](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L271)*
 
 Returns the [StandardUnsignedTx](common_transactions.standardunsignedtx.md)
 
@@ -138,7 +138,7 @@ ___
 
 *Inherited from [StandardTx](common_transactions.standardtx.md).[toBuffer](common_transactions.standardtx.md#tobuffer)*
 
-Defined in src/common/tx.ts:271
+*Defined in [src/common/tx.ts:280](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L280)*
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [StandardTx](common_transactions.standardtx.md).
 
@@ -152,7 +152,7 @@ ___
 
 *Inherited from [StandardTx](common_transactions.standardtx.md).[toString](common_transactions.standardtx.md#tostring)*
 
-Defined in src/common/tx.ts:311
+*Defined in [src/common/tx.ts:320](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L320)*
 
 Returns a cb58 representation of the [StandardTx](common_transactions.standardtx.md).
 

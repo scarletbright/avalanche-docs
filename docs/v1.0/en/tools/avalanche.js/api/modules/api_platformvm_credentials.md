@@ -6,7 +6,7 @@
 
 ### Classes
 
-* [SecpCredential](../classes/api_platformvm_credentials.secpcredential.md)
+* [SECPCredential](../classes/api_platformvm_credentials.secpcredential.md)
 
 ### Functions
 
@@ -18,7 +18,7 @@
 
 ▸ **SelectCredentialClass**(`credid`: number, ...`args`: Array‹any›): *[Credential](../classes/common_signature.credential.md)*
 
-Defined in src/apis/platformvm/credentials.ts:23
+*Defined in [src/apis/platformvm/credentials.ts:23](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/platformvm/credentials.ts#L23)*
 
 Takes a buffer representing the credential and returns the proper [Credential](../classes/common_signature.credential.md) instance.
 

@@ -30,7 +30,7 @@ Class for creating initial output states used in asset creation
 
 \+ **new InitialStates**(): *[InitialStates](api_avm_initialstates.initialstates.md)*
 
-Defined in src/apis/avm/initialstates.ts:83
+*Defined in [src/apis/avm/initialstates.ts:83](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/initialstates.ts#L83)*
 
 **Returns:** *[InitialStates](api_avm_initialstates.initialstates.md)*
 
@@ -40,7 +40,7 @@ Defined in src/apis/avm/initialstates.ts:83
 
 • **fxs**: *object*
 
-Defined in src/apis/avm/initialstates.ts:21
+*Defined in [src/apis/avm/initialstates.ts:21](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/initialstates.ts#L21)*
 
 #### Type declaration:
 
@@ -52,7 +52,7 @@ Defined in src/apis/avm/initialstates.ts:21
 
 ▸ **addOutput**(`out`: [Output](common_output.output.md), `fxid`: number): *void*
 
-Defined in src/apis/avm/initialstates.ts:28
+*Defined in [src/apis/avm/initialstates.ts:28](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/initialstates.ts#L28)*
 
 **Parameters:**
 
@@ -69,7 +69,7 @@ ___
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-Defined in src/apis/avm/initialstates.ts:35
+*Defined in [src/apis/avm/initialstates.ts:35](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/initialstates.ts#L35)*
 
 **Parameters:**
 
@@ -86,6 +86,6 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-Defined in src/apis/avm/initialstates.ts:60
+*Defined in [src/apis/avm/initialstates.ts:60](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/initialstates.ts#L60)*
 
 **Returns:** *Buffer*

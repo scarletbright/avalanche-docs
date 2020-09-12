@@ -4,7 +4,7 @@
 
 ## Hierarchy
 
-* [StandardTransferableOutput](common_output.standardtransferableoutput.md)
+  ↳ [StandardTransferableOutput](common_output.standardtransferableoutput.md)
 
   ↳ **TransferableOutput**
 
@@ -35,7 +35,9 @@
 
 *Inherited from [StandardTransferableOutput](common_output.standardtransferableoutput.md).[constructor](common_output.standardtransferableoutput.md#constructor)*
 
-Defined in src/common/output.ts:303
+*Overrides [StandardParseableOutput](common_output.standardparseableoutput.md).[constructor](common_output.standardparseableoutput.md#constructor)*
+
+*Defined in [src/common/output.ts:346](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L346)*
 
 Class representing an [StandardTransferableOutput](common_output.standardtransferableoutput.md) for a transaction.
 
@@ -56,7 +58,7 @@ Name | Type | Default | Description |
 
 *Inherited from [StandardTransferableOutput](common_output.standardtransferableoutput.md).[assetID](common_output.standardtransferableoutput.md#protected-assetid)*
 
-Defined in src/common/output.ts:277
+*Defined in [src/common/output.ts:333](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L333)*
 
 ___
 
@@ -66,7 +68,9 @@ ___
 
 *Inherited from [StandardTransferableOutput](common_output.standardtransferableoutput.md).[output](common_output.standardtransferableoutput.md#protected-output)*
 
-Defined in src/common/output.ts:279
+*Overrides [StandardParseableOutput](common_output.standardparseableoutput.md).[output](common_output.standardparseableoutput.md#protected-output)*
+
+*Defined in [src/common/output.ts:335](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L335)*
 
 ## Methods
 
@@ -76,7 +80,7 @@ Defined in src/common/output.ts:279
 
 *Overrides [StandardTransferableOutput](common_output.standardtransferableoutput.md).[fromBuffer](common_output.standardtransferableoutput.md#abstract-frombuffer)*
 
-Defined in src/apis/avm/outputs.ts:35
+*Defined in [src/apis/avm/outputs.ts:38](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/outputs.ts#L38)*
 
 **Parameters:**
 
@@ -95,7 +99,7 @@ ___
 
 *Inherited from [StandardTransferableOutput](common_output.standardtransferableoutput.md).[getAssetID](common_output.standardtransferableoutput.md#getassetid)*
 
-Defined in src/common/output.ts:290
+*Defined in [src/common/output.ts:337](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L337)*
 
 **Returns:** *Buffer*
 
@@ -105,9 +109,9 @@ ___
 
 ▸ **getOutput**(): *[Output](common_output.output.md)*
 
-*Inherited from [StandardTransferableOutput](common_output.standardtransferableoutput.md).[getOutput](common_output.standardtransferableoutput.md#getoutput)*
+*Inherited from [StandardParseableOutput](common_output.standardparseableoutput.md).[getOutput](common_output.standardparseableoutput.md#getoutput)*
 
-Defined in src/common/output.ts:292
+*Defined in [src/common/output.ts:307](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L307)*
 
 **Returns:** *[Output](common_output.output.md)*
 
@@ -119,7 +123,9 @@ ___
 
 *Inherited from [StandardTransferableOutput](common_output.standardtransferableoutput.md).[toBuffer](common_output.standardtransferableoutput.md#tobuffer)*
 
-Defined in src/common/output.ts:297
+*Overrides [StandardParseableOutput](common_output.standardparseableoutput.md).[toBuffer](common_output.standardparseableoutput.md#tobuffer)*
+
+*Defined in [src/common/output.ts:342](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L342)*
 
 **Returns:** *Buffer*
 
@@ -129,19 +135,19 @@ ___
 
 ▸ **comparator**(): *function*
 
-*Inherited from [StandardTransferableOutput](common_output.standardtransferableoutput.md).[comparator](common_output.standardtransferableoutput.md#static-comparator)*
+*Inherited from [StandardParseableOutput](common_output.standardparseableoutput.md).[comparator](common_output.standardparseableoutput.md#static-comparator)*
 
-Defined in src/common/output.ts:284
+*Defined in [src/common/output.ts:301](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L301)*
 
-Returns a function used to sort an array of [StandardTransferableOutput](common_output.standardtransferableoutput.md)s
+Returns a function used to sort an array of [ParseableOutput](api_platformvm_outputs.parseableoutput.md)s
 
 **Returns:** *function*
 
-▸ (`a`: [StandardTransferableOutput](common_output.standardtransferableoutput.md), `b`: [StandardTransferableOutput](common_output.standardtransferableoutput.md)): *0 | 1 | -1*
+▸ (`a`: [StandardParseableOutput](common_output.standardparseableoutput.md), `b`: [StandardParseableOutput](common_output.standardparseableoutput.md)): *0 | 1 | -1*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`a` | [StandardTransferableOutput](common_output.standardtransferableoutput.md) |
-`b` | [StandardTransferableOutput](common_output.standardtransferableoutput.md) |
+`a` | [StandardParseableOutput](common_output.standardparseableoutput.md) |
+`b` | [StandardParseableOutput](common_output.standardparseableoutput.md) |

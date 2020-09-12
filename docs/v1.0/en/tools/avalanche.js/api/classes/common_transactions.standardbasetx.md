@@ -6,9 +6,9 @@ Class representing a base for all transactions.
 
 ## Type parameters
 
-▪ **KPClass**: *[KeyPair](common_keychain.keypair.md)*
+▪ **KPClass**: *[StandardKeyPair](common_keychain.standardkeypair.md)*
 
-▪ **KCClass**: *[KeyChain](common_keychain.keychain.md)‹KPClass›*
+▪ **KCClass**: *[StandardKeyChain](common_keychain.standardkeychain.md)‹KPClass›*
 
 ## Hierarchy
 
@@ -37,11 +37,15 @@ Class representing a base for all transactions.
 
 ### Methods
 
+* [clone](common_transactions.standardbasetx.md#abstract-clone)
+* [create](common_transactions.standardbasetx.md#abstract-create)
 * [getBlockchainID](common_transactions.standardbasetx.md#getblockchainid)
 * [getIns](common_transactions.standardbasetx.md#getins)
 * [getMemo](common_transactions.standardbasetx.md#getmemo)
 * [getNetworkID](common_transactions.standardbasetx.md#getnetworkid)
 * [getOuts](common_transactions.standardbasetx.md#getouts)
+* [getTotalOuts](common_transactions.standardbasetx.md#abstract-gettotalouts)
+* [select](common_transactions.standardbasetx.md#abstract-select)
 * [sign](common_transactions.standardbasetx.md#abstract-sign)
 * [toBuffer](common_transactions.standardbasetx.md#tobuffer)
 * [toString](common_transactions.standardbasetx.md#tostring)
@@ -52,7 +56,7 @@ Class representing a base for all transactions.
 
 \+ **new StandardBaseTx**(`networkid`: number, `blockchainid`: Buffer, `outs`: Array‹[StandardTransferableOutput](common_output.standardtransferableoutput.md)›, `ins`: Array‹[StandardTransferableInput](common_inputs.standardtransferableinput.md)›, `memo`: Buffer): *[StandardBaseTx](common_transactions.standardbasetx.md)*
 
-Defined in src/common/tx.ts:108
+*Defined in [src/common/tx.ts:119](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L119)*
 
 Class representing a StandardBaseTx which is the foundation for all transactions.
 
@@ -60,7 +64,7 @@ Class representing a StandardBaseTx which is the foundation for all transactions
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
-`networkid` | number | DefaultNetworkID | Optional networkid, [DefaultNetworkID](../modules/common_constants.md#const-defaultnetworkid) |
+`networkid` | number | DefaultNetworkID | Optional networkid, [DefaultNetworkID](../modules/utils_constants.md#const-defaultnetworkid) |
 `blockchainid` | Buffer | Buffer.alloc(32, 16) | Optional blockchainid, default Buffer.alloc(32, 16) |
 `outs` | Array‹[StandardTransferableOutput](common_output.standardtransferableoutput.md)› | undefined | Optional array of the [TransferableOutput](api_avm_outputs.transferableoutput.md)s |
 `ins` | Array‹[StandardTransferableInput](common_inputs.standardtransferableinput.md)› | undefined | Optional array of the [TransferableInput](api_avm_inputs.transferableinput.md)s |
@@ -74,7 +78,7 @@ Name | Type | Default | Description |
 
 • **blockchainid**: *Buffer* = Buffer.alloc(32)
 
-Defined in src/common/tx.ts:24
+*Defined in [src/common/tx.ts:24](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L24)*
 
 ___
 
@@ -82,7 +86,7 @@ ___
 
 • **getTxType**: *function*
 
-Defined in src/common/tx.ts:34
+*Defined in [src/common/tx.ts:34](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L34)*
 
 Returns the id of the [StandardBaseTx](common_transactions.standardbasetx.md)
 
@@ -96,7 +100,7 @@ ___
 
 • **ins**: *Array‹[StandardTransferableInput](common_inputs.standardtransferableinput.md)›*
 
-Defined in src/common/tx.ts:28
+*Defined in [src/common/tx.ts:28](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L28)*
 
 ___
 
@@ -104,7 +108,7 @@ ___
 
 • **memo**: *Buffer* = Buffer.alloc(4)
 
-Defined in src/common/tx.ts:29
+*Defined in [src/common/tx.ts:29](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L29)*
 
 ___
 
@@ -112,7 +116,7 @@ ___
 
 • **networkid**: *Buffer* = Buffer.alloc(4)
 
-Defined in src/common/tx.ts:23
+*Defined in [src/common/tx.ts:23](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L23)*
 
 ___
 
@@ -120,7 +124,7 @@ ___
 
 • **numins**: *Buffer* = Buffer.alloc(4)
 
-Defined in src/common/tx.ts:27
+*Defined in [src/common/tx.ts:27](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L27)*
 
 ___
 
@@ -128,7 +132,7 @@ ___
 
 • **numouts**: *Buffer* = Buffer.alloc(4)
 
-Defined in src/common/tx.ts:25
+*Defined in [src/common/tx.ts:25](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L25)*
 
 ___
 
@@ -136,15 +140,41 @@ ___
 
 • **outs**: *Array‹[StandardTransferableOutput](common_output.standardtransferableoutput.md)›*
 
-Defined in src/common/tx.ts:26
+*Defined in [src/common/tx.ts:26](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L26)*
 
 ## Methods
+
+### `Abstract` clone
+
+▸ **clone**(): *this*
+
+*Defined in [src/common/tx.ts:115](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L115)*
+
+**Returns:** *this*
+
+___
+
+### `Abstract` create
+
+▸ **create**(...`args`: any[]): *this*
+
+*Defined in [src/common/tx.ts:117](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L117)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
+
+___
 
 ###  getBlockchainID
 
 ▸ **getBlockchainID**(): *Buffer*
 
-Defined in src/common/tx.ts:44
+*Defined in [src/common/tx.ts:44](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L44)*
 
 Returns the Buffer representation of the BlockchainID
 
@@ -156,9 +186,9 @@ ___
 
 ▸ **getIns**(): *Array‹[StandardTransferableInput](common_inputs.standardtransferableinput.md)›*
 
-Defined in src/common/tx.ts:49
+*Defined in [src/common/tx.ts:49](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L49)*
 
-Returns the array of [TransferableInput](api_avm_inputs.transferableinput.md)s
+Returns the array of [StandardTransferableInput](common_inputs.standardtransferableinput.md)s
 
 **Returns:** *Array‹[StandardTransferableInput](common_inputs.standardtransferableinput.md)›*
 
@@ -168,7 +198,7 @@ ___
 
 ▸ **getMemo**(): *Buffer*
 
-Defined in src/common/tx.ts:59
+*Defined in [src/common/tx.ts:64](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L64)*
 
 Returns the [Buffer](https://github.com/feross/buffer) representation of the memo
 
@@ -180,7 +210,7 @@ ___
 
 ▸ **getNetworkID**(): *number*
 
-Defined in src/common/tx.ts:39
+*Defined in [src/common/tx.ts:39](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L39)*
 
 Returns the NetworkID as a number
 
@@ -192,19 +222,48 @@ ___
 
 ▸ **getOuts**(): *Array‹[StandardTransferableOutput](common_output.standardtransferableoutput.md)›*
 
-Defined in src/common/tx.ts:54
+*Defined in [src/common/tx.ts:54](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L54)*
 
-Returns the array of [TransferableOutput](api_avm_outputs.transferableoutput.md)s
+Returns the array of [StandardTransferableOutput](common_output.standardtransferableoutput.md)s
 
 **Returns:** *Array‹[StandardTransferableOutput](common_output.standardtransferableoutput.md)›*
 
 ___
 
+### `Abstract` getTotalOuts
+
+▸ **getTotalOuts**(): *Array‹[StandardTransferableOutput](common_output.standardtransferableoutput.md)›*
+
+*Defined in [src/common/tx.ts:59](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L59)*
+
+Returns the array of combined total [StandardTransferableOutput](common_output.standardtransferableoutput.md)s
+
+**Returns:** *Array‹[StandardTransferableOutput](common_output.standardtransferableoutput.md)›*
+
+___
+
+### `Abstract` select
+
+▸ **select**(`id`: number, ...`args`: any[]): *this*
+
+*Defined in [src/common/tx.ts:119](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L119)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`id` | number |
+`...args` | any[] |
+
+**Returns:** *this*
+
+___
+
 ### `Abstract` sign
 
-▸ **sign**(`msg`: Buffer, `kc`: [KeyChain](common_keychain.keychain.md)‹KPClass›): *Array‹[Credential](common_signature.credential.md)›*
+▸ **sign**(`msg`: Buffer, `kc`: [StandardKeyChain](common_keychain.standardkeychain.md)‹KPClass›): *Array‹[Credential](common_signature.credential.md)›*
 
-Defined in src/common/tx.ts:108
+*Defined in [src/common/tx.ts:113](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L113)*
 
 Takes the bytes of an [UnsignedTx](api_avm_transactions.unsignedtx.md) and returns an array of [Credential](common_signature.credential.md)s
 
@@ -213,7 +272,7 @@ Takes the bytes of an [UnsignedTx](api_avm_transactions.unsignedtx.md) and retur
 Name | Type | Description |
 ------ | ------ | ------ |
 `msg` | Buffer | A Buffer for the [UnsignedTx](api_avm_transactions.unsignedtx.md) |
-`kc` | [KeyChain](common_keychain.keychain.md)‹KPClass› | An [KeyChain](common_keychain.keychain.md) used in signing  |
+`kc` | [StandardKeyChain](common_keychain.standardkeychain.md)‹KPClass› | An [KeyChain](api_avm_keychain.keychain.md) used in signing  |
 
 **Returns:** *Array‹[Credential](common_signature.credential.md)›*
 
@@ -225,7 +284,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-Defined in src/common/tx.ts:64
+*Defined in [src/common/tx.ts:69](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L69)*
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [StandardBaseTx](common_transactions.standardbasetx.md).
 
@@ -237,7 +296,7 @@ ___
 
 ▸ **toString**(): *string*
 
-Defined in src/common/tx.ts:96
+*Defined in [src/common/tx.ts:101](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L101)*
 
 Returns a base-58 representation of the [StandardBaseTx](common_transactions.standardbasetx.md).
 

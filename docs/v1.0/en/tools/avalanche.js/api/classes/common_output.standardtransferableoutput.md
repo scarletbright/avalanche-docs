@@ -4,7 +4,9 @@
 
 ## Hierarchy
 
-* **StandardTransferableOutput**
+* [StandardParseableOutput](common_output.standardparseableoutput.md)
+
+  ↳ **StandardTransferableOutput**
 
   ↳ [TransferableOutput](api_avm_outputs.transferableoutput.md)
 
@@ -35,7 +37,9 @@
 
 \+ **new StandardTransferableOutput**(`assetID`: Buffer, `output`: [Output](common_output.output.md)): *[StandardTransferableOutput](common_output.standardtransferableoutput.md)*
 
-Defined in src/common/output.ts:303
+*Overrides [StandardParseableOutput](common_output.standardparseableoutput.md).[constructor](common_output.standardparseableoutput.md#constructor)*
+
+*Defined in [src/common/output.ts:346](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L346)*
 
 Class representing an [StandardTransferableOutput](common_output.standardtransferableoutput.md) for a transaction.
 
@@ -54,7 +58,7 @@ Name | Type | Default | Description |
 
 • **assetID**: *Buffer* = undefined
 
-Defined in src/common/output.ts:277
+*Defined in [src/common/output.ts:333](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L333)*
 
 ___
 
@@ -62,7 +66,9 @@ ___
 
 • **output**: *[Output](common_output.output.md)*
 
-Defined in src/common/output.ts:279
+*Overrides [StandardParseableOutput](common_output.standardparseableoutput.md).[output](common_output.standardparseableoutput.md#protected-output)*
+
+*Defined in [src/common/output.ts:335](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L335)*
 
 ## Methods
 
@@ -70,7 +76,9 @@ Defined in src/common/output.ts:279
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset?`: number): *number*
 
-Defined in src/common/output.ts:295
+*Overrides [StandardParseableOutput](common_output.standardparseableoutput.md).[fromBuffer](common_output.standardparseableoutput.md#abstract-frombuffer)*
+
+*Defined in [src/common/output.ts:340](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L340)*
 
 **Parameters:**
 
@@ -87,7 +95,7 @@ ___
 
 ▸ **getAssetID**(): *Buffer*
 
-Defined in src/common/output.ts:290
+*Defined in [src/common/output.ts:337](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L337)*
 
 **Returns:** *Buffer*
 
@@ -97,7 +105,9 @@ ___
 
 ▸ **getOutput**(): *[Output](common_output.output.md)*
 
-Defined in src/common/output.ts:292
+*Inherited from [StandardParseableOutput](common_output.standardparseableoutput.md).[getOutput](common_output.standardparseableoutput.md#getoutput)*
+
+*Defined in [src/common/output.ts:307](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L307)*
 
 **Returns:** *[Output](common_output.output.md)*
 
@@ -107,7 +117,9 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-Defined in src/common/output.ts:297
+*Overrides [StandardParseableOutput](common_output.standardparseableoutput.md).[toBuffer](common_output.standardparseableoutput.md#tobuffer)*
+
+*Defined in [src/common/output.ts:342](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L342)*
 
 **Returns:** *Buffer*
 
@@ -117,17 +129,19 @@ ___
 
 ▸ **comparator**(): *function*
 
-Defined in src/common/output.ts:284
+*Inherited from [StandardParseableOutput](common_output.standardparseableoutput.md).[comparator](common_output.standardparseableoutput.md#static-comparator)*
 
-Returns a function used to sort an array of [StandardTransferableOutput](common_output.standardtransferableoutput.md)s
+*Defined in [src/common/output.ts:301](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L301)*
+
+Returns a function used to sort an array of [ParseableOutput](api_platformvm_outputs.parseableoutput.md)s
 
 **Returns:** *function*
 
-▸ (`a`: [StandardTransferableOutput](common_output.standardtransferableoutput.md), `b`: [StandardTransferableOutput](common_output.standardtransferableoutput.md)): *0 | 1 | -1*
+▸ (`a`: [StandardParseableOutput](common_output.standardparseableoutput.md), `b`: [StandardParseableOutput](common_output.standardparseableoutput.md)): *0 | 1 | -1*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`a` | [StandardTransferableOutput](common_output.standardtransferableoutput.md) |
-`b` | [StandardTransferableOutput](common_output.standardtransferableoutput.md) |
+`a` | [StandardParseableOutput](common_output.standardparseableoutput.md) |
+`b` | [StandardParseableOutput](common_output.standardparseableoutput.md) |

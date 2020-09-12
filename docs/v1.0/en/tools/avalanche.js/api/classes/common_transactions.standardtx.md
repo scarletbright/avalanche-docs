@@ -6,9 +6,9 @@ Class representing a signed transaction.
 
 ## Type parameters
 
-▪ **KPClass**: *[KeyPair](common_keychain.keypair.md)*
+▪ **KPClass**: *[StandardKeyPair](common_keychain.standardkeypair.md)*
 
-▪ **KCClass**: *[KeyChain](common_keychain.keychain.md)‹KPClass›*
+▪ **KCClass**: *[StandardKeyChain](common_keychain.standardkeychain.md)‹KPClass›*
 
 ▪ **SUBTx**: *[StandardUnsignedTx](common_transactions.standardunsignedtx.md)‹KPClass, KCClass, [StandardBaseTx](common_transactions.standardbasetx.md)‹KPClass, KCClass››*
 
@@ -45,7 +45,7 @@ Class representing a signed transaction.
 
 \+ **new StandardTx**(`unsignedTx`: SUBTx, `credentials`: Array‹[Credential](common_signature.credential.md)›): *[StandardTx](common_transactions.standardtx.md)*
 
-Defined in src/common/tx.ts:313
+*Defined in [src/common/tx.ts:322](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L322)*
 
 Class representing a signed transaction.
 
@@ -64,7 +64,7 @@ Name | Type | Default | Description |
 
 • **credentials**: *Array‹[Credential](common_signature.credential.md)›* = []
 
-Defined in src/common/tx.ts:257
+*Defined in [src/common/tx.ts:266](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L266)*
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 • **unsignedTx**: *SUBTx* = undefined
 
-Defined in src/common/tx.ts:256
+*Defined in [src/common/tx.ts:265](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L265)*
 
 ## Methods
 
@@ -80,7 +80,7 @@ Defined in src/common/tx.ts:256
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset?`: number): *number*
 
-Defined in src/common/tx.ts:266
+*Defined in [src/common/tx.ts:275](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L275)*
 
 **Parameters:**
 
@@ -97,7 +97,7 @@ ___
 
 ▸ **fromString**(`serialized`: string): *number*
 
-Defined in src/common/tx.ts:301
+*Defined in [src/common/tx.ts:310](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L310)*
 
 Takes a base-58 string containing an [StandardTx](common_transactions.standardtx.md), parses it, populates the class, and returns the length of the Tx in bytes.
 
@@ -120,7 +120,7 @@ ___
 
 ▸ **getUnsignedTx**(): *SUBTx*
 
-Defined in src/common/tx.ts:262
+*Defined in [src/common/tx.ts:271](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L271)*
 
 Returns the [StandardUnsignedTx](common_transactions.standardunsignedtx.md)
 
@@ -132,7 +132,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-Defined in src/common/tx.ts:271
+*Defined in [src/common/tx.ts:280](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L280)*
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [StandardTx](common_transactions.standardtx.md).
 
@@ -144,7 +144,7 @@ ___
 
 ▸ **toString**(): *string*
 
-Defined in src/common/tx.ts:311
+*Defined in [src/common/tx.ts:320](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L320)*
 
 Returns a cb58 representation of the [StandardTx](common_transactions.standardtx.md).
 

@@ -2,6 +2,8 @@
 
 # Class: OutputOwners
 
+Defines the most basic values for output ownership. Mostly inherited from, but can be used in population of NFT Owner data.
+
 ## Hierarchy
 
 * **OutputOwners**
@@ -41,7 +43,7 @@
 
 \+ **new OutputOwners**(`addresses`: Array‹Buffer›, `locktime`: BN, `threshold`: number): *[OutputOwners](common_output.outputowners.md)*
 
-Defined in src/common/output.ts:232
+*Defined in [src/common/output.ts:245](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L245)*
 
 An [Output](common_output.output.md) class which contains addresses, locktimes, and thresholds.
 
@@ -61,7 +63,7 @@ Name | Type | Default | Description |
 
 • **addresses**: *Array‹[Address](common_output.address.md)›* = []
 
-Defined in src/common/output.ts:75
+*Defined in [src/common/output.ts:88](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L88)*
 
 ___
 
@@ -69,7 +71,7 @@ ___
 
 • **locktime**: *Buffer* = Buffer.alloc(8)
 
-Defined in src/common/output.ts:72
+*Defined in [src/common/output.ts:85](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L85)*
 
 ___
 
@@ -77,7 +79,7 @@ ___
 
 • **numaddrs**: *Buffer* = Buffer.alloc(4)
 
-Defined in src/common/output.ts:74
+*Defined in [src/common/output.ts:87](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L87)*
 
 ___
 
@@ -85,7 +87,7 @@ ___
 
 • **threshold**: *Buffer* = Buffer.alloc(4)
 
-Defined in src/common/output.ts:73
+*Defined in [src/common/output.ts:86](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L86)*
 
 ## Methods
 
@@ -93,7 +95,7 @@ Defined in src/common/output.ts:73
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-Defined in src/common/output.ts:179
+*Defined in [src/common/output.ts:192](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L192)*
 
 Returns a base-58 string representing the [Output](common_output.output.md).
 
@@ -112,7 +114,7 @@ ___
 
 ▸ **getAddress**(`idx`: number): *Buffer*
 
-Defined in src/common/output.ts:122
+*Defined in [src/common/output.ts:135](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L135)*
 
 Returns the address from the index provided.
 
@@ -132,7 +134,7 @@ ___
 
 ▸ **getAddressIdx**(`address`: Buffer): *number*
 
-Defined in src/common/output.ts:105
+*Defined in [src/common/output.ts:118](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L118)*
 
 Returns the index of the address.
 
@@ -152,7 +154,7 @@ ___
 
 ▸ **getAddresses**(): *Array‹Buffer›*
 
-Defined in src/common/output.ts:90
+*Defined in [src/common/output.ts:103](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L103)*
 
 Returns an array of [Buffer](https://github.com/feross/buffer)s for the addresses.
 
@@ -164,7 +166,7 @@ ___
 
 ▸ **getLocktime**(): *BN*
 
-Defined in src/common/output.ts:85
+*Defined in [src/common/output.ts:98](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L98)*
 
 Returns the a [BN](https://github.com/indutny/bn.js/) repersenting the UNIX Timestamp when the lock is made available.
 
@@ -176,7 +178,7 @@ ___
 
 ▸ **getSpenders**(`addresses`: Array‹Buffer›, `asOf`: BN): *Array‹Buffer›*
 
-Defined in src/common/output.ts:151
+*Defined in [src/common/output.ts:164](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L164)*
 
 Given an array of addresses and an optional timestamp, select an array of address [Buffer](https://github.com/feross/buffer)s of qualified spenders for the output.
 
@@ -195,7 +197,7 @@ ___
 
 ▸ **getThreshold**(): *number*
 
-Defined in src/common/output.ts:80
+*Defined in [src/common/output.ts:93](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L93)*
 
 Returns the threshold of signers required to spend this output.
 
@@ -207,7 +209,7 @@ ___
 
 ▸ **meetsThreshold**(`addresses`: Array‹Buffer›, `asOf`: BN): *boolean*
 
-Defined in src/common/output.ts:132
+*Defined in [src/common/output.ts:145](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L145)*
 
 Given an array of address [Buffer](https://github.com/feross/buffer)s and an optional timestamp, returns true if the addresses meet the threshold required to spend the output.
 
@@ -226,7 +228,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-Defined in src/common/output.ts:200
+*Defined in [src/common/output.ts:213](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L213)*
 
 Returns the buffer representing the [Output](common_output.output.md) instance.
 
@@ -238,7 +240,7 @@ ___
 
 ▸ **toString**(): *string*
 
-Defined in src/common/output.ts:216
+*Defined in [src/common/output.ts:229](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L229)*
 
 Returns a base-58 string representing the [Output](common_output.output.md).
 
@@ -250,7 +252,7 @@ ___
 
 ▸ **comparator**(): *function*
 
-Defined in src/common/output.ts:220
+*Defined in [src/common/output.ts:233](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/output.ts#L233)*
 
 **Returns:** *function*
 

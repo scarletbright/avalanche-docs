@@ -2,7 +2,7 @@
 
 # Class: NFTMintOperation
 
-A [Operation](api_avm_operations.operation.md) class which specifies a NFT Mint Op.
+An [Operation](api_avm_operations.operation.md) class which specifies a NFT Mint Op.
 
 ## Hierarchy
 
@@ -32,6 +32,7 @@ A [Operation](api_avm_operations.operation.md) class which specifies a NFT Mint 
 * [getOperationID](api_avm_operations.nftmintoperation.md#getoperationid)
 * [getOutputOwners](api_avm_operations.nftmintoperation.md#getoutputowners)
 * [getPayload](api_avm_operations.nftmintoperation.md#getpayload)
+* [getPayloadBuffer](api_avm_operations.nftmintoperation.md#getpayloadbuffer)
 * [getSigIdxs](api_avm_operations.nftmintoperation.md#getsigidxs)
 * [toBuffer](api_avm_operations.nftmintoperation.md#tobuffer)
 * [toString](api_avm_operations.nftmintoperation.md#tostring)
@@ -45,7 +46,7 @@ A [Operation](api_avm_operations.operation.md) class which specifies a NFT Mint 
 
 *Overrides [Operation](api_avm_operations.operation.md).[constructor](api_avm_operations.operation.md#constructor)*
 
-Defined in src/apis/avm/ops.ts:310
+*Defined in [src/apis/avm/ops.ts:419](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L419)*
 
 An [Operation](api_avm_operations.operation.md) class which contains an NFT on an assetID.
 
@@ -65,7 +66,7 @@ Name | Type | Default | Description |
 
 • **groupID**: *Buffer* = Buffer.alloc(4)
 
-Defined in src/apis/avm/ops.ts:212
+*Defined in [src/apis/avm/ops.ts:316](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L316)*
 
 ___
 
@@ -73,7 +74,7 @@ ___
 
 • **outputOwners**: *Array‹[OutputOwners](common_output.outputowners.md)›* = []
 
-Defined in src/apis/avm/ops.ts:214
+*Defined in [src/apis/avm/ops.ts:318](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L318)*
 
 ___
 
@@ -81,7 +82,7 @@ ___
 
 • **payload**: *Buffer*
 
-Defined in src/apis/avm/ops.ts:213
+*Defined in [src/apis/avm/ops.ts:317](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L317)*
 
 ___
 
@@ -91,7 +92,7 @@ ___
 
 *Inherited from [Operation](api_avm_operations.operation.md).[sigCount](api_avm_operations.operation.md#protected-sigcount)*
 
-Defined in src/apis/avm/ops.ts:39
+*Defined in [src/apis/avm/ops.ts:38](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L38)*
 
 ___
 
@@ -101,7 +102,7 @@ ___
 
 *Inherited from [Operation](api_avm_operations.operation.md).[sigIdxs](api_avm_operations.operation.md#protected-sigidxs)*
 
-Defined in src/apis/avm/ops.ts:41
+*Defined in [src/apis/avm/ops.ts:40](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L40)*
 
 ## Methods
 
@@ -111,7 +112,7 @@ Defined in src/apis/avm/ops.ts:41
 
 *Inherited from [Operation](api_avm_operations.operation.md).[addSignatureIdx](api_avm_operations.operation.md#addsignatureidx)*
 
-Defined in src/apis/avm/ops.ts:58
+*Defined in [src/apis/avm/ops.ts:60](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L60)*
 
 Creates and adds a [SigIdx](common_signature.sigidx.md) to the [Operation](api_avm_operations.operation.md).
 
@@ -132,9 +133,9 @@ ___
 
 *Overrides [Operation](api_avm_operations.operation.md).[fromBuffer](api_avm_operations.operation.md#frombuffer)*
 
-Defined in src/apis/avm/ops.ts:240
+*Defined in [src/apis/avm/ops.ts:360](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L360)*
 
-Popuates the instance from a [Buffer](https://github.com/feross/buffer) representing the [NFTMintOperation](api_avm_operations.nftmintoperation.md) and returns the size of the output.
+Popuates the instance from a [Buffer](https://github.com/feross/buffer) representing the [NFTMintOperation](api_avm_operations.nftmintoperation.md) and returns the updated offset.
 
 **Parameters:**
 
@@ -151,9 +152,11 @@ ___
 
 ▸ **getCredentialID**(): *number*
 
-*Inherited from [Operation](api_avm_operations.operation.md).[getCredentialID](api_avm_operations.operation.md#getcredentialid)*
+*Overrides [Operation](api_avm_operations.operation.md).[getCredentialID](api_avm_operations.operation.md#abstract-getcredentialid)*
 
-Defined in src/apis/avm/ops.ts:50
+*Defined in [src/apis/avm/ops.ts:330](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L330)*
+
+Returns the credential ID.
 
 **Returns:** *number*
 
@@ -165,7 +168,7 @@ ___
 
 *Overrides [Operation](api_avm_operations.operation.md).[getOperationID](api_avm_operations.operation.md#abstract-getoperationid)*
 
-Defined in src/apis/avm/ops.ts:219
+*Defined in [src/apis/avm/ops.ts:323](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L323)*
 
 Returns the operation ID.
 
@@ -177,7 +180,7 @@ ___
 
 ▸ **getOutputOwners**(): *Array‹[OutputOwners](common_output.outputowners.md)›*
 
-Defined in src/apis/avm/ops.ts:233
+*Defined in [src/apis/avm/ops.ts:353](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L353)*
 
 Returns the outputOwners.
 
@@ -189,9 +192,21 @@ ___
 
 ▸ **getPayload**(): *Buffer*
 
-Defined in src/apis/avm/ops.ts:226
+*Defined in [src/apis/avm/ops.ts:337](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L337)*
 
 Returns the payload.
+
+**Returns:** *Buffer*
+
+___
+
+###  getPayloadBuffer
+
+▸ **getPayloadBuffer**(): *Buffer*
+
+*Defined in [src/apis/avm/ops.ts:344](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L344)*
+
+Returns the payload's raw [Buffer](https://github.com/feross/buffer) with length prepended, for use with [PayloadBase](utils_payload.payloadbase.md)'s fromBuffer
 
 **Returns:** *Buffer*
 
@@ -203,7 +218,7 @@ ___
 
 *Inherited from [Operation](api_avm_operations.operation.md).[getSigIdxs](api_avm_operations.operation.md#getsigidxs)*
 
-Defined in src/apis/avm/ops.ts:48
+*Defined in [src/apis/avm/ops.ts:47](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L47)*
 
 Returns the array of [SigIdx](common_signature.sigidx.md) for this [Operation](api_avm_operations.operation.md)
 
@@ -217,7 +232,7 @@ ___
 
 *Overrides [Operation](api_avm_operations.operation.md).[toBuffer](api_avm_operations.operation.md#tobuffer)*
 
-Defined in src/apis/avm/ops.ts:273
+*Defined in [src/apis/avm/ops.ts:382](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L382)*
 
 Returns the buffer representing the [NFTMintOperation](api_avm_operations.nftmintoperation.md) instance.
 
@@ -229,7 +244,9 @@ ___
 
 ▸ **toString**(): *string*
 
-Defined in src/apis/avm/ops.ts:308
+*Overrides [Operation](api_avm_operations.operation.md).[toString](api_avm_operations.operation.md#tostring)*
+
+*Defined in [src/apis/avm/ops.ts:417](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L417)*
 
 Returns a base-58 string representing the [NFTMintOperation](api_avm_operations.nftmintoperation.md).
 
@@ -243,7 +260,7 @@ ___
 
 *Inherited from [Operation](api_avm_operations.operation.md).[comparator](api_avm_operations.operation.md#static-comparator)*
 
-Defined in src/apis/avm/ops.ts:95
+*Defined in [src/apis/avm/ops.ts:104](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L104)*
 
 **Returns:** *function*
 

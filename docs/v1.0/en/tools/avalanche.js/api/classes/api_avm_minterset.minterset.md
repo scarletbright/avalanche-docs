@@ -33,7 +33,7 @@ Class for representing a threshold and set of minting addresses in Avalanche.
 
 \+ **new MinterSet**(`threshold`: number, `minters`: Array‹string | Buffer›): *[MinterSet](api_avm_minterset.minterset.md)*
 
-Defined in src/apis/avm/minterset.ts:48
+*Defined in [src/apis/avm/minterset.ts:48](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/minterset.ts#L48)*
 
 **Parameters:**
 
@@ -50,7 +50,7 @@ Name | Type | Description |
 
 • **minters**: *Array‹Buffer›* = []
 
-Defined in src/apis/avm/minterset.ts:22
+*Defined in [src/apis/avm/minterset.ts:22](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/minterset.ts#L22)*
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 • **threshold**: *number*
 
-Defined in src/apis/avm/minterset.ts:21
+*Defined in [src/apis/avm/minterset.ts:21](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/minterset.ts#L21)*
 
 ## Methods
 
@@ -66,7 +66,7 @@ Defined in src/apis/avm/minterset.ts:21
 
 ▸ **_cleanAddresses**(`addresses`: Array‹string | Buffer›): *Array‹Buffer›*
 
-Defined in src/apis/avm/minterset.ts:38
+*Defined in [src/apis/avm/minterset.ts:38](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/minterset.ts#L38)*
 
 **Parameters:**
 
@@ -82,7 +82,7 @@ ___
 
 ▸ **getMinters**(): *Array‹Buffer›*
 
-Defined in src/apis/avm/minterset.ts:34
+*Defined in [src/apis/avm/minterset.ts:34](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/minterset.ts#L34)*
 
 Returns the minters.
 
@@ -94,7 +94,7 @@ ___
 
 ▸ **getThreshold**(): *number*
 
-Defined in src/apis/avm/minterset.ts:27
+*Defined in [src/apis/avm/minterset.ts:27](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/minterset.ts#L27)*
 
 Returns the threshold.
 

@@ -8,17 +8,16 @@
 
 * [AVMAPI](src_apis_avm.md#avmapi)
 * [AVMConstants](src_apis_avm.md#avmconstants)
-* [AVMKeyChain](src_apis_avm.md#avmkeychain)
-* [AVMKeyPair](src_apis_avm.md#avmkeypair)
 * [AmountInput](src_apis_avm.md#amountinput)
 * [AmountOutput](src_apis_avm.md#amountoutput)
-* [AssetAmount](src_apis_avm.md#assetamount)
 * [AssetAmountDestination](src_apis_avm.md#assetamountdestination)
 * [BaseTx](src_apis_avm.md#basetx)
 * [CreateAssetTx](src_apis_avm.md#createassettx)
 * [ExportTx](src_apis_avm.md#exporttx)
 * [ImportTx](src_apis_avm.md#importtx)
 * [InitialStates](src_apis_avm.md#initialstates)
+* [KeyChain](src_apis_avm.md#keychain)
+* [KeyPair](src_apis_avm.md#keypair)
 * [MinterSet](src_apis_avm.md#minterset)
 * [NFTCredential](src_apis_avm.md#nftcredential)
 * [NFTMintOperation](src_apis_avm.md#nftmintoperation)
@@ -28,9 +27,11 @@
 * [NFTTransferOutput](src_apis_avm.md#nfttransferoutput)
 * [Operation](src_apis_avm.md#operation)
 * [OperationTx](src_apis_avm.md#operationtx)
-* [SecpCredential](src_apis_avm.md#secpcredential)
-* [SecpInput](src_apis_avm.md#secpinput)
-* [SecpOutput](src_apis_avm.md#secpoutput)
+* [SECPCredential](src_apis_avm.md#secpcredential)
+* [SECPMintOperation](src_apis_avm.md#secpmintoperation)
+* [SECPMintOutput](src_apis_avm.md#secpmintoutput)
+* [SECPTransferInput](src_apis_avm.md#secptransferinput)
+* [SECPTransferOutput](src_apis_avm.md#secptransferoutput)
 * [SelectCredentialClass](src_apis_avm.md#selectcredentialclass)
 * [SelectInputClass](src_apis_avm.md#selectinputclass)
 * [SelectOperationClass](src_apis_avm.md#selectoperationclass)
@@ -59,18 +60,6 @@ ___
 
 ___
 
-###  AVMKeyChain
-
-• **AVMKeyChain**:
-
-___
-
-###  AVMKeyPair
-
-• **AVMKeyPair**:
-
-___
-
 ###  AmountInput
 
 • **AmountInput**:
@@ -80,12 +69,6 @@ ___
 ###  AmountOutput
 
 • **AmountOutput**:
-
-___
-
-###  AssetAmount
-
-• **AssetAmount**:
 
 ___
 
@@ -122,6 +105,18 @@ ___
 ###  InitialStates
 
 • **InitialStates**:
+
+___
+
+###  KeyChain
+
+• **KeyChain**:
+
+___
+
+###  KeyPair
+
+• **KeyPair**:
 
 ___
 
@@ -179,21 +174,33 @@ ___
 
 ___
 
-###  SecpCredential
+###  SECPCredential
 
-• **SecpCredential**:
-
-___
-
-###  SecpInput
-
-• **SecpInput**:
+• **SECPCredential**:
 
 ___
 
-###  SecpOutput
+###  SECPMintOperation
 
-• **SecpOutput**:
+• **SECPMintOperation**:
+
+___
+
+###  SECPMintOutput
+
+• **SECPMintOutput**:
+
+___
+
+###  SECPTransferInput
+
+• **SECPTransferInput**:
+
+___
+
+###  SECPTransferOutput
+
+• **SECPTransferOutput**:
 
 ___
 

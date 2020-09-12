@@ -8,6 +8,8 @@ A class representing an operation. All operation types must extend on this class
 
 * **Operation**
 
+  ↳ [SECPMintOperation](api_avm_operations.secpmintoperation.md)
+
   ↳ [NFTMintOperation](api_avm_operations.nftmintoperation.md)
 
   ↳ [NFTTransferOperation](api_avm_operations.nfttransferoperation.md)
@@ -27,10 +29,11 @@ A class representing an operation. All operation types must extend on this class
 
 * [addSignatureIdx](api_avm_operations.operation.md#addsignatureidx)
 * [fromBuffer](api_avm_operations.operation.md#frombuffer)
-* [getCredentialID](api_avm_operations.operation.md#getcredentialid)
+* [getCredentialID](api_avm_operations.operation.md#abstract-getcredentialid)
 * [getOperationID](api_avm_operations.operation.md#abstract-getoperationid)
 * [getSigIdxs](api_avm_operations.operation.md#getsigidxs)
 * [toBuffer](api_avm_operations.operation.md#tobuffer)
+* [toString](api_avm_operations.operation.md#tostring)
 * [comparator](api_avm_operations.operation.md#static-comparator)
 
 ## Constructors
@@ -39,7 +42,7 @@ A class representing an operation. All operation types must extend on this class
 
 \+ **new Operation**(): *[Operation](api_avm_operations.operation.md)*
 
-Defined in src/apis/avm/ops.ts:107
+*Defined in [src/apis/avm/ops.ts:116](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L116)*
 
 **Returns:** *[Operation](api_avm_operations.operation.md)*
 
@@ -49,7 +52,7 @@ Defined in src/apis/avm/ops.ts:107
 
 • **sigCount**: *Buffer* = Buffer.alloc(4)
 
-Defined in src/apis/avm/ops.ts:39
+*Defined in [src/apis/avm/ops.ts:38](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L38)*
 
 ___
 
@@ -57,7 +60,7 @@ ___
 
 • **sigIdxs**: *Array‹[SigIdx](common_signature.sigidx.md)›* = []
 
-Defined in src/apis/avm/ops.ts:41
+*Defined in [src/apis/avm/ops.ts:40](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L40)*
 
 ## Methods
 
@@ -65,7 +68,7 @@ Defined in src/apis/avm/ops.ts:41
 
 ▸ **addSignatureIdx**(`addressIdx`: number, `address`: Buffer): *void*
 
-Defined in src/apis/avm/ops.ts:58
+*Defined in [src/apis/avm/ops.ts:60](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L60)*
 
 Creates and adds a [SigIdx](common_signature.sigidx.md) to the [Operation](api_avm_operations.operation.md).
 
@@ -84,7 +87,7 @@ ___
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-Defined in src/apis/avm/ops.ts:68
+*Defined in [src/apis/avm/ops.ts:70](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L70)*
 
 **Parameters:**
 
@@ -97,11 +100,13 @@ Name | Type | Default |
 
 ___
 
-###  getCredentialID
+### `Abstract` getCredentialID
 
 ▸ **getCredentialID**(): *number*
 
-Defined in src/apis/avm/ops.ts:50
+*Defined in [src/apis/avm/ops.ts:52](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L52)*
+
+Returns the credential ID.
 
 **Returns:** *number*
 
@@ -111,7 +116,7 @@ ___
 
 ▸ **getOperationID**(): *number*
 
-Defined in src/apis/avm/ops.ts:43
+*Defined in [src/apis/avm/ops.ts:42](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L42)*
 
 **Returns:** *number*
 
@@ -121,7 +126,7 @@ ___
 
 ▸ **getSigIdxs**(): *Array‹[SigIdx](common_signature.sigidx.md)›*
 
-Defined in src/apis/avm/ops.ts:48
+*Defined in [src/apis/avm/ops.ts:47](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L47)*
 
 Returns the array of [SigIdx](common_signature.sigidx.md) for this [Operation](api_avm_operations.operation.md)
 
@@ -133,9 +138,21 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-Defined in src/apis/avm/ops.ts:83
+*Defined in [src/apis/avm/ops.ts:85](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L85)*
 
 **Returns:** *Buffer*
+
+___
+
+###  toString
+
+▸ **toString**(): *string*
+
+*Defined in [src/apis/avm/ops.ts:100](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L100)*
+
+Returns a base-58 string representing the [NFTMintOperation](api_avm_operations.nftmintoperation.md).
+
+**Returns:** *string*
 
 ___
 
@@ -143,7 +160,7 @@ ___
 
 ▸ **comparator**(): *function*
 
-Defined in src/apis/avm/ops.ts:95
+*Defined in [src/apis/avm/ops.ts:104](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L104)*
 
 **Returns:** *function*
 

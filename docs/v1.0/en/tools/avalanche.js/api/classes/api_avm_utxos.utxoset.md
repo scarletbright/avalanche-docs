@@ -29,9 +29,11 @@ Class representing a set of [UTXO](api_avm_utxos.utxo.md)s.
 * [buildExportTx](api_avm_utxos.utxoset.md#buildexporttx)
 * [buildImportTx](api_avm_utxos.utxoset.md#buildimporttx)
 * [buildNFTTransferTx](api_avm_utxos.utxoset.md#buildnfttransfertx)
+* [buildSECPMintTx](api_avm_utxos.utxoset.md#buildsecpminttx)
 * [clone](api_avm_utxos.utxoset.md#clone)
 * [create](api_avm_utxos.utxoset.md#create)
 * [difference](api_avm_utxos.utxoset.md#difference)
+* [filter](api_avm_utxos.utxoset.md#filter)
 * [getAddresses](api_avm_utxos.utxoset.md#getaddresses)
 * [getAllUTXOStrings](api_avm_utxos.utxoset.md#getallutxostrings)
 * [getAllUTXOs](api_avm_utxos.utxoset.md#getallutxos)
@@ -58,7 +60,7 @@ Class representing a set of [UTXO](api_avm_utxos.utxo.md)s.
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[addressUTXOs](common_utxos.standardutxoset.md#protected-addressutxos)*
 
-Defined in src/common/utxos.ts:147
+*Defined in [src/common/utxos.ts:147](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L147)*
 
 #### Type declaration:
 
@@ -74,7 +76,7 @@ ___
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[utxos](common_utxos.standardutxoset.md#protected-utxos)*
 
-Defined in src/common/utxos.ts:145
+*Defined in [src/common/utxos.ts:145](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L145)*
 
 #### Type declaration:
 
@@ -86,7 +88,7 @@ Defined in src/common/utxos.ts:145
 
 ▸ **_feeCheck**(`fee`: BN, `feeAssetID`: Buffer): *boolean*
 
-Defined in src/apis/avm/utxos.ts:270
+*Defined in [src/apis/avm/utxos.ts:127](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/utxos.ts#L127)*
 
 **Parameters:**
 
@@ -105,7 +107,7 @@ ___
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[add](common_utxos.standardutxoset.md#add)*
 
-Defined in src/common/utxos.ts:170
+*Defined in [src/common/utxos.ts:181](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L181)*
 
 Adds a [StandardUTXO](common_utxos.standardutxo.md) to the StandardUTXOSet.
 
@@ -128,7 +130,7 @@ ___
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[addArray](common_utxos.standardutxoset.md#addarray)*
 
-Defined in src/common/utxos.ts:198
+*Defined in [src/common/utxos.ts:219](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L219)*
 
 Adds an array of [StandardUTXO](common_utxos.standardutxo.md)s to the [StandardUTXOSet](common_utxos.standardutxoset.md).
 
@@ -149,7 +151,7 @@ ___
 
 ▸ **buildBaseTx**(`networkid`: number, `blockchainid`: Buffer, `amount`: BN, `assetID`: Buffer, `toAddresses`: Array‹Buffer›, `fromAddresses`: Array‹Buffer›, `changeAddresses`: Array‹Buffer›, `fee`: BN, `feeAssetID`: Buffer, `memo`: Buffer, `asOf`: BN, `locktime`: BN, `threshold`: number): *[UnsignedTx](api_avm_transactions.unsignedtx.md)*
 
-Defined in src/apis/avm/utxos.ts:366
+*Defined in [src/apis/avm/utxos.ts:223](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/utxos.ts#L223)*
 
 Creates an [UnsignedTx](api_avm_transactions.unsignedtx.md) wrapping a [BaseTx](api_avm_basetx.basetx.md). For more granular control, you may create your own
 [UnsignedTx](api_avm_transactions.unsignedtx.md) wrapping a [BaseTx](api_avm_basetx.basetx.md) manually (with their corresponding [TransferableInput](api_avm_inputs.transferableinput.md)s and [TransferableOutput](api_avm_outputs.transferableoutput.md)s).
@@ -180,11 +182,11 @@ ___
 
 ###  buildCreateAssetTx
 
-▸ **buildCreateAssetTx**(`networkid`: number, `blockchainid`: Buffer, `fromAddresses`: Array‹Buffer›, `initialState`: [InitialStates](api_avm_initialstates.initialstates.md), `name`: string, `symbol`: string, `denomination`: number, `fee`: BN, `feeAssetID`: Buffer, `memo`: Buffer, `asOf`: BN): *[UnsignedTx](api_avm_transactions.unsignedtx.md)*
+▸ **buildCreateAssetTx**(`networkid`: number, `blockchainid`: Buffer, `fromAddresses`: Array‹Buffer›, `changeAddresses`: Array‹Buffer›, `initialState`: [InitialStates](api_avm_initialstates.initialstates.md), `name`: string, `symbol`: string, `denomination`: number, `mintOutputs`: Array‹[SECPMintOutput](api_avm_outputs.secpmintoutput.md)›, `fee`: BN, `feeAssetID`: Buffer, `memo`: Buffer, `asOf`: BN): *[UnsignedTx](api_avm_transactions.unsignedtx.md)*
 
-Defined in src/apis/avm/utxos.ts:446
+*Defined in [src/apis/avm/utxos.ts:305](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/utxos.ts#L305)*
 
-Creates an unsigned transaction. For more granular control, you may create your own
+Creates an unsigned Create Asset transaction. For more granular control, you may create your own
 [[CreateAssetTX]] manually (with their corresponding [TransferableInput](api_avm_inputs.transferableinput.md)s, [TransferableOutput](api_avm_outputs.transferableoutput.md)s).
 
 **Parameters:**
@@ -194,10 +196,12 @@ Name | Type | Default | Description |
 `networkid` | number | - | The number representing NetworkID of the node |
 `blockchainid` | Buffer | - | The [Buffer](https://github.com/feross/buffer) representing the BlockchainID for the transaction |
 `fromAddresses` | Array‹Buffer› | - | The addresses being used to send the funds from the UTXOs [Buffer](https://github.com/feross/buffer) |
+`changeAddresses` | Array‹Buffer› | - | Optional. The addresses that can spend the change remaining from the spent UTXOs |
 `initialState` | [InitialStates](api_avm_initialstates.initialstates.md) | - | The [InitialStates](api_avm_initialstates.initialstates.md) that represent the intial state of a created asset |
 `name` | string | - | String for the descriptive name of the asset |
 `symbol` | string | - | String for the ticker symbol of the asset |
 `denomination` | number | - | Optional number for the denomination which is 10^D. D must be >= 0 and <= 32. Ex: $1 AVAX = 10^9 $nAVAX |
+`mintOutputs` | Array‹[SECPMintOutput](api_avm_outputs.secpmintoutput.md)› | undefined | Optional. Array of [SECPMintOutput](api_avm_outputs.secpmintoutput.md)s to be included in the transaction. These outputs can be spent to mint more tokens. |
 `fee` | BN | undefined | Optional. The amount of fees to burn in its smallest denomination, represented as [BN](https://github.com/indutny/bn.js/) |
 `feeAssetID` | Buffer | undefined | Optional. The assetID of the fees being burned. |
 `memo` | Buffer | undefined | Optional contains arbitrary bytes, up to 256 bytes |
@@ -211,11 +215,11 @@ ___
 
 ###  buildCreateNFTAssetTx
 
-▸ **buildCreateNFTAssetTx**(`networkid`: number, `blockchainid`: Buffer, `fromAddresses`: Array‹Buffer›, `minterSets`: Array‹[MinterSet](api_avm_minterset.minterset.md)›, `name`: string, `symbol`: string, `fee`: BN, `feeAssetID`: Buffer, `memo`: Buffer, `asOf`: BN, `locktime`: BN): *[UnsignedTx](api_avm_transactions.unsignedtx.md)*
+▸ **buildCreateNFTAssetTx**(`networkid`: number, `blockchainid`: Buffer, `fromAddresses`: Array‹Buffer›, `changeAddresses`: Array‹Buffer›, `minterSets`: Array‹[MinterSet](api_avm_minterset.minterset.md)›, `name`: string, `symbol`: string, `fee`: BN, `feeAssetID`: Buffer, `memo`: Buffer, `asOf`: BN, `locktime`: BN): *[UnsignedTx](api_avm_transactions.unsignedtx.md)*
 
-Defined in src/apis/avm/utxos.ts:497
+*Defined in [src/apis/avm/utxos.ts:443](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/utxos.ts#L443)*
 
-Creates an unsigned transaction. For more granular control, you may create your own
+Creates an unsigned Create Asset transaction. For more granular control, you may create your own
 [[CreateAssetTX]] manually (with their corresponding [TransferableInput](api_avm_inputs.transferableinput.md)s, [TransferableOutput](api_avm_outputs.transferableoutput.md)s).
 
 **Parameters:**
@@ -225,6 +229,7 @@ Name | Type | Default | Description |
 `networkid` | number | - | The number representing NetworkID of the node |
 `blockchainid` | Buffer | - | The [Buffer](https://github.com/feross/buffer) representing the BlockchainID for the transaction |
 `fromAddresses` | Array‹Buffer› | - | The addresses being used to send the funds from the UTXOs [Buffer](https://github.com/feross/buffer) |
+`changeAddresses` | Array‹Buffer› | - | Optional. The addresses that can spend the change remaining from the spent UTXOs. |
 `minterSets` | Array‹[MinterSet](api_avm_minterset.minterset.md)› | - | The minters and thresholds required to mint this nft asset |
 `name` | string | - | String for the descriptive name of the nft asset |
 `symbol` | string | - | String for the ticker symbol of the nft asset |
@@ -242,12 +247,12 @@ ___
 
 ###  buildCreateNFTMintTx
 
-▸ **buildCreateNFTMintTx**(`networkid`: number, `blockchainid`: Buffer, `toAddresses`: Array‹Buffer›, `fromAddresses`: Array‹Buffer›, `utxoids`: Array‹string›, `groupID`: number, `payload`: Buffer, `fee`: BN, `feeAssetID`: Buffer, `memo`: Buffer, `asOf`: BN, `locktime`: BN, `threshold`: number): *[UnsignedTx](api_avm_transactions.unsignedtx.md)*
+▸ **buildCreateNFTMintTx**(`networkid`: number, `blockchainid`: Buffer, `owners`: Array‹[OutputOwners](common_output.outputowners.md)›, `fromAddresses`: Array‹Buffer›, `changeAddresses`: Array‹Buffer›, `utxoids`: Array‹string›, `groupID`: number, `payload`: Buffer, `fee`: BN, `feeAssetID`: Buffer, `memo`: Buffer, `asOf`: BN): *[UnsignedTx](api_avm_transactions.unsignedtx.md)*
 
-Defined in src/apis/avm/utxos.ts:561
+*Defined in [src/apis/avm/utxos.ts:507](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/utxos.ts#L507)*
 
 Creates an unsigned NFT mint transaction. For more granular control, you may create your own
-[[NFTMintTx]] manually (with their corresponding [TransferableInput](api_avm_inputs.transferableinput.md)s, [TransferableOutput](api_avm_outputs.transferableoutput.md)s, and [[TransferOperation]]s).
+[OperationTx](api_avm_operationtx.operationtx.md) manually (with their corresponding [TransferableInput](api_avm_inputs.transferableinput.md)s, [TransferableOutput](api_avm_outputs.transferableoutput.md)s, and [[TransferOperation]]s).
 
 **Parameters:**
 
@@ -255,17 +260,16 @@ Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `networkid` | number | - | The number representing NetworkID of the node |
 `blockchainid` | Buffer | - | The [Buffer](https://github.com/feross/buffer) representing the BlockchainID for the transaction |
-`toAddresses` | Array‹Buffer› | - | The addresses to send the funds |
+`owners` | Array‹[OutputOwners](common_output.outputowners.md)› | - | An array of [OutputOwners](common_output.outputowners.md) who will be given the NFTs. |
 `fromAddresses` | Array‹Buffer› | - | The addresses being used to send the funds from the UTXOs |
+`changeAddresses` | Array‹Buffer› | - | Optional. The addresses that can spend the change remaining from the spent UTXOs. |
 `utxoids` | Array‹string› | - | An array of strings for the NFTs being transferred |
 `groupID` | number | 0 | Optional. The group this NFT is issued to. |
 `payload` | Buffer | undefined | Optional. Data for NFT Payload. |
 `fee` | BN | undefined | Optional. The amount of fees to burn in its smallest denomination, represented as [BN](https://github.com/indutny/bn.js/) |
 `feeAssetID` | Buffer | undefined | Optional. The assetID of the fees being burned. |
 `memo` | Buffer | undefined | Optional contains arbitrary bytes, up to 256 bytes |
-`asOf` | BN | UnixNow() | Optional. The timestamp to verify the transaction against as a [BN](https://github.com/indutny/bn.js/) |
-`locktime` | BN | - | Optional. The locktime field created in the resulting mint output |
-`threshold` | number | 1 | Optional. The number of signatures required to spend the funds in the resultant UTXO  |
+`asOf` | BN | UnixNow() | Optional. The timestamp to verify the transaction against as a [BN](https://github.com/indutny/bn.js/)  |
 
 **Returns:** *[UnsignedTx](api_avm_transactions.unsignedtx.md)*
 
@@ -277,7 +281,7 @@ ___
 
 ▸ **buildExportTx**(`networkid`: number, `blockchainid`: Buffer, `amount`: BN, `avaxAssetID`: Buffer, `toAddresses`: Array‹Buffer›, `fromAddresses`: Array‹Buffer›, `changeAddresses`: Array‹Buffer›, `destinationChain`: Buffer, `fee`: BN, `feeAssetID`: Buffer, `memo`: Buffer, `asOf`: BN, `locktime`: BN, `threshold`: number): *[UnsignedTx](api_avm_transactions.unsignedtx.md)*
 
-Defined in src/apis/avm/utxos.ts:771
+*Defined in [src/apis/avm/utxos.ts:776](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/utxos.ts#L776)*
 
 Creates an unsigned ExportTx transaction.
 
@@ -291,7 +295,7 @@ Name | Type | Default | Description |
 `avaxAssetID` | Buffer | - | [Buffer](https://github.com/feross/buffer) of the asset ID for AVAX |
 `toAddresses` | Array‹Buffer› | - | An array of addresses as [Buffer](https://github.com/feross/buffer) who recieves the AVAX |
 `fromAddresses` | Array‹Buffer› | - | An array of addresses as [Buffer](https://github.com/feross/buffer) who owns the AVAX |
-`changeAddresses` | Array‹Buffer› | undefined | An array of addresses as [Buffer](https://github.com/feross/buffer) who gets the change leftover of the AVAX |
+`changeAddresses` | Array‹Buffer› | undefined | Optional. The addresses that can spend the change remaining from the spent UTXOs. |
 `destinationChain` | Buffer | undefined | Optional. A [Buffer](https://github.com/feross/buffer) for the chainid where to send the asset. |
 `fee` | BN | undefined | Optional. The amount of fees to burn in its smallest denomination, represented as [BN](https://github.com/indutny/bn.js/) |
 `feeAssetID` | Buffer | undefined | Optional. The assetID of the fees being burned. |
@@ -308,9 +312,9 @@ ___
 
 ###  buildImportTx
 
-▸ **buildImportTx**(`networkid`: number, `blockchainid`: Buffer, `fromAddresses`: Array‹Buffer›, `importIns`: Array‹[TransferableInput](api_avm_inputs.transferableinput.md)›, `destinationChain`: Buffer, `fee`: BN, `feeAssetID`: Buffer, `memo`: Buffer, `asOf`: BN): *[UnsignedTx](api_avm_transactions.unsignedtx.md)*
+▸ **buildImportTx**(`networkid`: number, `blockchainid`: Buffer, `toAddresses`: Array‹Buffer›, `fromAddresses`: Array‹Buffer›, `changeAddresses`: Array‹Buffer›, `atomics`: Array‹[UTXO](api_avm_utxos.utxo.md)›, `sourceChain`: Buffer, `fee`: BN, `feeAssetID`: Buffer, `memo`: Buffer, `asOf`: BN, `locktime`: BN, `threshold`: number): *[UnsignedTx](api_avm_transactions.unsignedtx.md)*
 
-Defined in src/apis/avm/utxos.ts:715
+*Defined in [src/apis/avm/utxos.ts:663](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/utxos.ts#L663)*
 
 Creates an unsigned ImportTx transaction.
 
@@ -320,39 +324,12 @@ Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `networkid` | number | - | The number representing NetworkID of the node |
 `blockchainid` | Buffer | - | The [Buffer](https://github.com/feross/buffer) representing the BlockchainID for the transaction |
-`fromAddresses` | Array‹Buffer› | - | An array for [Buffer](https://github.com/feross/buffer) who owns the AVAX |
-`importIns` | Array‹[TransferableInput](api_avm_inputs.transferableinput.md)› | - | An array of [TransferableInput](api_avm_inputs.transferableinput.md)s being imported |
-`destinationChain` | Buffer | undefined | - |
-`fee` | BN | undefined | Optional. The amount of fees to burn in its smallest denomination, represented as [BN](https://github.com/indutny/bn.js/) |
-`feeAssetID` | Buffer | undefined | Optional. The assetID of the fees being burned. |
-`memo` | Buffer | undefined | Optional contains arbitrary bytes, up to 256 bytes |
-`asOf` | BN | UnixNow() | Optional. The timestamp to verify the transaction against as a [BN](https://github.com/indutny/bn.js/) |
-
-**Returns:** *[UnsignedTx](api_avm_transactions.unsignedtx.md)*
-
-An unsigned transaction created from the passed in parameters.
-
-___
-
-###  buildNFTTransferTx
-
-▸ **buildNFTTransferTx**(`networkid`: number, `blockchainid`: Buffer, `toAddresses`: Array‹Buffer›, `fromAddresses`: Array‹Buffer›, `utxoids`: Array‹string›, `fee`: BN, `feeAssetID`: Buffer, `memo`: Buffer, `asOf`: BN, `locktime`: BN, `threshold`: number): *[UnsignedTx](api_avm_transactions.unsignedtx.md)*
-
-Defined in src/apis/avm/utxos.ts:641
-
-Creates an unsigned NFT transfer transaction. For more granular control, you may create your own
-[NFTTransferOperation](api_avm_operations.nfttransferoperation.md) manually (with their corresponding [TransferableInput](api_avm_inputs.transferableinput.md)s, [TransferableOutput](api_avm_outputs.transferableoutput.md)s, and [[TransferOperation]]s).
-
-**Parameters:**
-
-Name | Type | Default | Description |
------- | ------ | ------ | ------ |
-`networkid` | number | - | The number representing NetworkID of the node |
-`blockchainid` | Buffer | - | The [Buffer](https://github.com/feross/buffer) representing the BlockchainID for the transaction |
-`toAddresses` | Array‹Buffer› | - | An array of [Buffer](https://github.com/feross/buffer)s which indicate who recieves the NFT |
-`fromAddresses` | Array‹Buffer› | - | An array for [Buffer](https://github.com/feross/buffer) who owns the NFT |
-`utxoids` | Array‹string› | - | An array of strings for the NFTs being transferred |
-`fee` | BN | undefined | Optional. The amount of fees to burn in its smallest denomination, represented as [BN](https://github.com/indutny/bn.js/) |
+`toAddresses` | Array‹Buffer› | - | The addresses to send the funds |
+`fromAddresses` | Array‹Buffer› | - | The addresses being used to send the funds from the UTXOs [Buffer](https://github.com/feross/buffer) |
+`changeAddresses` | Array‹Buffer› | - | Optional. The addresses that can spend the change remaining from the spent UTXOs. |
+`atomics` | Array‹[UTXO](api_avm_utxos.utxo.md)› | - | - |
+`sourceChain` | Buffer | undefined | A [Buffer](https://github.com/feross/buffer) for the chainid where the imports are coming from. |
+`fee` | BN | undefined | Optional. The amount of fees to burn in its smallest denomination, represented as [BN](https://github.com/indutny/bn.js/). Fee will come from the inputs first, if they can. |
 `feeAssetID` | Buffer | undefined | Optional. The assetID of the fees being burned. |
 `memo` | Buffer | undefined | Optional contains arbitrary bytes, up to 256 bytes |
 `asOf` | BN | UnixNow() | Optional. The timestamp to verify the transaction against as a [BN](https://github.com/indutny/bn.js/) |
@@ -365,13 +342,74 @@ An unsigned transaction created from the passed in parameters.
 
 ___
 
+###  buildNFTTransferTx
+
+▸ **buildNFTTransferTx**(`networkid`: number, `blockchainid`: Buffer, `toAddresses`: Array‹Buffer›, `fromAddresses`: Array‹Buffer›, `changeAddresses`: Array‹Buffer›, `utxoids`: Array‹string›, `fee`: BN, `feeAssetID`: Buffer, `memo`: Buffer, `asOf`: BN, `locktime`: BN, `threshold`: number): *[UnsignedTx](api_avm_transactions.unsignedtx.md)*
+
+*Defined in [src/apis/avm/utxos.ts:584](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/utxos.ts#L584)*
+
+Creates an unsigned NFT transfer transaction. For more granular control, you may create your own
+[OperationTx](api_avm_operationtx.operationtx.md) manually (with their corresponding [TransferableInput](api_avm_inputs.transferableinput.md)s, [TransferableOutput](api_avm_outputs.transferableoutput.md)s, and [[TransferOperation]]s).
+
+**Parameters:**
+
+Name | Type | Default | Description |
+------ | ------ | ------ | ------ |
+`networkid` | number | - | The number representing NetworkID of the node |
+`blockchainid` | Buffer | - | The [Buffer](https://github.com/feross/buffer) representing the BlockchainID for the transaction |
+`toAddresses` | Array‹Buffer› | - | An array of [Buffer](https://github.com/feross/buffer)s which indicate who recieves the NFT |
+`fromAddresses` | Array‹Buffer› | - | An array for [Buffer](https://github.com/feross/buffer) who owns the NFT |
+`changeAddresses` | Array‹Buffer› | - | Optional. The addresses that can spend the change remaining from the spent UTXOs. |
+`utxoids` | Array‹string› | - | An array of strings for the NFTs being transferred |
+`fee` | BN | undefined | Optional. The amount of fees to burn in its smallest denomination, represented as [BN](https://github.com/indutny/bn.js/) |
+`feeAssetID` | Buffer | undefined | Optional. The assetID of the fees being burned. |
+`memo` | Buffer | undefined | Optional contains arbitrary bytes, up to 256 bytes |
+`asOf` | BN | UnixNow() | Optional. The timestamp to verify the transaction against as a [BN](https://github.com/indutny/bn.js/) |
+`locktime` | BN | new BN(0) | Optional. The locktime field created in the resulting outputs |
+`threshold` | number | 1 | Optional. The number of signatures required to spend the funds in the resultant UTXO  |
+
+**Returns:** *[UnsignedTx](api_avm_transactions.unsignedtx.md)*
+
+An unsigned transaction created from the passed in parameters.
+
+___
+
+###  buildSECPMintTx
+
+▸ **buildSECPMintTx**(`networkid`: number, `blockchainid`: Buffer, `mintOwner`: [SECPMintOutput](api_avm_outputs.secpmintoutput.md), `transferOwners`: Array‹[SECPTransferOutput](api_avm_outputs.secptransferoutput.md)›, `fromAddresses`: Array‹Buffer›, `changeAddresses`: Array‹Buffer›, `mintUTXOID`: string, `fee`: BN, `feeAssetID`: Buffer, `memo`: Buffer, `asOf`: BN): *[UnsignedTx](api_avm_transactions.unsignedtx.md)*
+
+*Defined in [src/apis/avm/utxos.ts:365](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/utxos.ts#L365)*
+
+Creates an unsigned Secp mint transaction. For more granular control, you may create your own
+[OperationTx](api_avm_operationtx.operationtx.md) manually (with their corresponding [TransferableInput](api_avm_inputs.transferableinput.md)s, [TransferableOutput](api_avm_outputs.transferableoutput.md)s, and [[TransferOperation]]s).
+
+**Parameters:**
+
+Name | Type | Default | Description |
+------ | ------ | ------ | ------ |
+`networkid` | number | - | The number representing NetworkID of the node |
+`blockchainid` | Buffer | - | The [Buffer](https://github.com/feross/buffer) representing the BlockchainID for the transaction |
+`mintOwner` | [SECPMintOutput](api_avm_outputs.secpmintoutput.md) | - | A [SECPMintOutput](api_avm_outputs.secpmintoutput.md) which specifies the new set of minters |
+`transferOwners` | Array‹[SECPTransferOutput](api_avm_outputs.secptransferoutput.md)› | - | An array of [SECPTransferOutput](api_avm_outputs.secptransferoutput.md)s which specifies where the minted tokens will go |
+`fromAddresses` | Array‹Buffer› | - | The addresses being used to send the funds from the UTXOs [Buffer](https://github.com/feross/buffer) |
+`changeAddresses` | Array‹Buffer› | - | The addresses that can spend the change remaining from the spent UTXOs |
+`mintUTXOID` | string | - | The UTXOID for the [[SCPMintOutput]] being spent to produce more tokens |
+`fee` | BN | undefined | Optional. The amount of fees to burn in its smallest denomination, represented as [BN](https://github.com/indutny/bn.js/) |
+`feeAssetID` | Buffer | undefined | Optional. The assetID of the fees being burned. |
+`memo` | Buffer | undefined | Optional contains arbitrary bytes, up to 256 bytes |
+`asOf` | BN | UnixNow() | Optional. The timestamp to verify the transaction against as a [BN](https://github.com/indutny/bn.js/)  |
+
+**Returns:** *[UnsignedTx](api_avm_transactions.unsignedtx.md)*
+
+___
+
 ###  clone
 
 ▸ **clone**(): *this*
 
 *Overrides [StandardUTXOSet](common_utxos.standardutxoset.md).[clone](common_utxos.standardutxoset.md#abstract-clone)*
 
-Defined in src/apis/avm/utxos.ts:263
+*Defined in [src/apis/avm/utxos.ts:120](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/utxos.ts#L120)*
 
 **Returns:** *this*
 
@@ -379,11 +417,17 @@ ___
 
 ###  create
 
-▸ **create**(): *this*
+▸ **create**(...`args`: any[]): *this*
 
 *Overrides [StandardUTXOSet](common_utxos.standardutxoset.md).[create](common_utxos.standardutxoset.md#abstract-create)*
 
-Defined in src/apis/avm/utxos.ts:259
+*Defined in [src/apis/avm/utxos.ts:116](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/utxos.ts#L116)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
 
 **Returns:** *this*
 
@@ -395,7 +439,7 @@ ___
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[difference](common_utxos.standardutxoset.md#difference)*
 
-Defined in src/common/utxos.ts:440
+*Defined in [src/common/utxos.ts:482](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L482)*
 
 Set difference between this set and a parameter.
 
@@ -411,13 +455,40 @@ A new StandardUTXOSet containing the difference
 
 ___
 
+###  filter
+
+▸ **filter**(`args`: any[], `lambda`: function): *this*
+
+*Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[filter](common_utxos.standardutxoset.md#filter)*
+
+*Defined in [src/common/utxos.ts:430](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L430)*
+
+**Parameters:**
+
+▪ **args**: *any[]*
+
+▪ **lambda**: *function*
+
+▸ (`utxo`: [UTXO](api_avm_utxos.utxo.md), ...`largs`: any[]): *boolean*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`utxo` | [UTXO](api_avm_utxos.utxo.md) |
+`...largs` | any[] |
+
+**Returns:** *this*
+
+___
+
 ###  getAddresses
 
 ▸ **getAddresses**(): *Array‹Buffer›*
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[getAddresses](common_utxos.standardutxoset.md#getaddresses)*
 
-Defined in src/common/utxos.ts:338
+*Defined in [src/common/utxos.ts:369](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L369)*
 
 Gets the addresses in the [StandardUTXOSet](common_utxos.standardutxoset.md) and returns an array of [Buffer](https://github.com/feross/buffer).
 
@@ -431,7 +502,7 @@ ___
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[getAllUTXOStrings](common_utxos.standardutxoset.md#getallutxostrings)*
 
-Defined in src/common/utxos.ts:289
+*Defined in [src/common/utxos.ts:320](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L320)*
 
 Gets all the [StandardUTXO](common_utxos.standardutxo.md)s as strings, optionally that match with UTXOIDs in an array.
 
@@ -453,7 +524,7 @@ ___
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[getAllUTXOs](common_utxos.standardutxoset.md#getallutxos)*
 
-Defined in src/common/utxos.ts:268
+*Defined in [src/common/utxos.ts:299](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L299)*
 
 Gets all the [StandardUTXO](common_utxos.standardutxo.md)s, optionally that match with UTXOIDs in an array
 
@@ -475,7 +546,7 @@ ___
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[getAssetIDs](common_utxos.standardutxoset.md#getassetids)*
 
-Defined in src/common/utxos.ts:377
+*Defined in [src/common/utxos.ts:408](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L408)*
 
 Gets all the Asset IDs, optionally that match with Asset IDs in an array
 
@@ -497,7 +568,7 @@ ___
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[getBalance](common_utxos.standardutxoset.md#getbalance)*
 
-Defined in src/common/utxos.ts:350
+*Defined in [src/common/utxos.ts:381](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L381)*
 
 Returns the balance of a set of addresses in the StandardUTXOSet.
 
@@ -519,7 +590,7 @@ ___
 
 ▸ **getMinimumSpendable**(`aad`: [AssetAmountDestination](api_avm_utxos.assetamountdestination.md), `asOf`: BN, `locktime`: BN, `threshold`: number): *Error*
 
-Defined in src/apis/avm/utxos.ts:276
+*Defined in [src/apis/avm/utxos.ts:133](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/utxos.ts#L133)*
 
 **Parameters:**
 
@@ -540,7 +611,7 @@ ___
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[getUTXO](common_utxos.standardutxoset.md#getutxo)*
 
-Defined in src/common/utxos.ts:259
+*Defined in [src/common/utxos.ts:290](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L290)*
 
 Gets a [StandardUTXO](common_utxos.standardutxo.md) from the [StandardUTXOSet](common_utxos.standardutxoset.md) by its UTXOID.
 
@@ -562,7 +633,7 @@ ___
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[getUTXOIDs](common_utxos.standardutxoset.md#getutxoids)*
 
-Defined in src/common/utxos.ts:314
+*Defined in [src/common/utxos.ts:345](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L345)*
 
 Given an address or array of addresses, returns all the UTXOIDs for those addresses
 
@@ -585,7 +656,7 @@ ___
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[includes](common_utxos.standardutxoset.md#includes)*
 
-Defined in src/common/utxos.ts:156
+*Defined in [src/common/utxos.ts:156](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L156)*
 
 Returns true if the [StandardUTXO](common_utxos.standardutxo.md) is in the StandardUTXOSet.
 
@@ -605,7 +676,7 @@ ___
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[intersection](common_utxos.standardutxoset.md#intersection)*
 
-Defined in src/common/utxos.ts:426
+*Defined in [src/common/utxos.ts:468](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L468)*
 
 Set intersetion between this set and a parameter.
 
@@ -627,7 +698,7 @@ ___
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[merge](common_utxos.standardutxoset.md#merge)*
 
-Defined in src/common/utxos.ts:407
+*Defined in [src/common/utxos.ts:449](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L449)*
 
 Returns a new set with copy of UTXOs in this and set parameter.
 
@@ -646,11 +717,11 @@ ___
 
 ###  mergeByRule
 
-▸ **mergeByRule**(`utxoset`: this, `mergeRule`: [MergeRule](../modules/common_constants.md#mergerule)): *this*
+▸ **mergeByRule**(`utxoset`: this, `mergeRule`: [MergeRule](../modules/utils_constants.md#mergerule)): *this*
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[mergeByRule](common_utxos.standardutxoset.md#mergebyrule)*
 
-Defined in src/common/utxos.ts:489
+*Defined in [src/common/utxos.ts:531](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L531)*
 
 Merges a set by the rule provided.
 
@@ -669,7 +740,7 @@ The merge rules are as follows:
 Name | Type | Description |
 ------ | ------ | ------ |
 `utxoset` | this | The set to merge by the MergeRule |
-`mergeRule` | [MergeRule](../modules/common_constants.md#mergerule) | The [MergeRule](../modules/common_constants.md#mergerule) to apply  |
+`mergeRule` | [MergeRule](../modules/utils_constants.md#mergerule) | The [MergeRule](../modules/utils_constants.md#mergerule) to apply  |
 
 **Returns:** *this*
 
@@ -683,7 +754,7 @@ ___
 
 *Overrides [StandardUTXOSet](common_utxos.standardutxoset.md).[parseUTXO](common_utxos.standardutxoset.md#abstract-parseutxo)*
 
-Defined in src/apis/avm/utxos.ts:245
+*Defined in [src/apis/avm/utxos.ts:102](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/utxos.ts#L102)*
 
 **Parameters:**
 
@@ -701,7 +772,7 @@ ___
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[remove](common_utxos.standardutxoset.md#remove)*
 
-Defined in src/common/utxos.ts:216
+*Defined in [src/common/utxos.ts:237](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L237)*
 
 Removes a [StandardUTXO](common_utxos.standardutxo.md) from the [StandardUTXOSet](common_utxos.standardutxoset.md) if it exists.
 
@@ -723,7 +794,7 @@ ___
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[removeArray](common_utxos.standardutxoset.md#removearray)*
 
-Defined in src/common/utxos.ts:241
+*Defined in [src/common/utxos.ts:272](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L272)*
 
 Removes an array of [StandardUTXO](common_utxos.standardutxo.md)s to the [StandardUTXOSet](common_utxos.standardutxoset.md).
 
@@ -745,7 +816,7 @@ ___
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[symDifference](common_utxos.standardutxoset.md#symdifference)*
 
-Defined in src/common/utxos.ts:454
+*Defined in [src/common/utxos.ts:496](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L496)*
 
 Set symmetrical difference between this set and a parameter.
 
@@ -767,7 +838,7 @@ ___
 
 *Inherited from [StandardUTXOSet](common_utxos.standardutxoset.md).[union](common_utxos.standardutxoset.md#union)*
 
-Defined in src/common/utxos.ts:469
+*Defined in [src/common/utxos.ts:511](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L511)*
 
 Set union between this set and a parameter.
 

@@ -4,7 +4,7 @@
 
 ## Hierarchy
 
-* [StandardUnsignedTx](common_transactions.standardunsignedtx.md)‹[PlatformVMKeyPair](api_platformvm_keychain.platformvmkeypair.md), [PlatformVMKeyChain](api_platformvm_keychain.platformvmkeychain.md), [BaseTx](api_platformvm_basetx.basetx.md)›
+* [StandardUnsignedTx](common_transactions.standardunsignedtx.md)‹[KeyPair](api_platformvm_keychain.keypair.md), [KeyChain](api_platformvm_keychain.keychain.md), [BaseTx](api_platformvm_basetx.basetx.md)›
 
   ↳ **UnsignedTx**
 
@@ -39,7 +39,7 @@
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[constructor](common_transactions.standardunsignedtx.md#constructor)*
 
-Defined in src/common/tx.ts:238
+*Defined in [src/common/tx.ts:247](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L247)*
 
 **Parameters:**
 
@@ -58,7 +58,7 @@ Name | Type | Default |
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[codecid](common_transactions.standardunsignedtx.md#protected-codecid)*
 
-Defined in src/common/tx.ts:149
+*Defined in [src/common/tx.ts:158](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L158)*
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[transaction](common_transactions.standardunsignedtx.md#protected-transaction)*
 
-Defined in src/common/tx.ts:150
+*Defined in [src/common/tx.ts:159](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L159)*
 
 ## Methods
 
@@ -78,7 +78,7 @@ Defined in src/common/tx.ts:150
 
 *Overrides [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[fromBuffer](common_transactions.standardunsignedtx.md#abstract-frombuffer)*
 
-Defined in src/apis/platformvm/tx.ts:25
+*Defined in [src/apis/platformvm/tx.ts:26](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/platformvm/tx.ts#L26)*
 
 **Parameters:**
 
@@ -97,7 +97,7 @@ ___
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[getBurn](common_transactions.standardunsignedtx.md#getburn)*
 
-Defined in src/common/tx.ts:208
+*Defined in [src/common/tx.ts:217](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L217)*
 
 Returns the number of burned tokens as a BN
 
@@ -117,7 +117,7 @@ ___
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[getCodecID](common_transactions.standardunsignedtx.md#getcodecid)*
 
-Defined in src/common/tx.ts:155
+*Defined in [src/common/tx.ts:164](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L164)*
 
 Returns the CodecID as a number
 
@@ -131,7 +131,7 @@ ___
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[getCodecIDBuffer](common_transactions.standardunsignedtx.md#getcodecidbuffer)*
 
-Defined in src/common/tx.ts:160
+*Defined in [src/common/tx.ts:169](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L169)*
 
 Returns the [Buffer](https://github.com/feross/buffer) representation of the CodecID
 
@@ -145,7 +145,7 @@ ___
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[getInputTotal](common_transactions.standardunsignedtx.md#getinputtotal)*
 
-Defined in src/common/tx.ts:169
+*Defined in [src/common/tx.ts:178](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L178)*
 
 Returns the inputTotal as a BN
 
@@ -165,7 +165,7 @@ ___
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[getOutputTotal](common_transactions.standardunsignedtx.md#getoutputtotal)*
 
-Defined in src/common/tx.ts:189
+*Defined in [src/common/tx.ts:198](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L198)*
 
 Returns the outputTotal as a BN
 
@@ -185,7 +185,7 @@ ___
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[getTransaction](common_transactions.standardunsignedtx.md#gettransaction)*
 
-Defined in src/common/tx.ts:215
+*Defined in [src/common/tx.ts:224](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L224)*
 
 Returns the Transaction
 
@@ -195,11 +195,11 @@ ___
 
 ###  sign
 
-▸ **sign**(`kc`: [PlatformVMKeyChain](api_platformvm_keychain.platformvmkeychain.md)): *[StandardTx](common_transactions.standardtx.md)‹[PlatformVMKeyPair](api_platformvm_keychain.platformvmkeypair.md), [PlatformVMKeyChain](api_platformvm_keychain.platformvmkeychain.md), [UnsignedTx](api_platformvm_transactions.unsignedtx.md)›*
+▸ **sign**(`kc`: [KeyChain](api_platformvm_keychain.keychain.md)): *[StandardTx](common_transactions.standardtx.md)‹[KeyPair](api_platformvm_keychain.keypair.md), [KeyChain](api_platformvm_keychain.keychain.md), [UnsignedTx](api_platformvm_transactions.unsignedtx.md)›*
 
 *Overrides [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[sign](common_transactions.standardunsignedtx.md#abstract-sign)*
 
-Defined in src/apis/platformvm/tx.ts:41
+*Defined in [src/apis/platformvm/tx.ts:42](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/platformvm/tx.ts#L42)*
 
 Signs this [UnsignedTx](api_platformvm_transactions.unsignedtx.md) and returns signed [StandardTx](common_transactions.standardtx.md)
 
@@ -207,9 +207,9 @@ Signs this [UnsignedTx](api_platformvm_transactions.unsignedtx.md) and returns s
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`kc` | [PlatformVMKeyChain](api_platformvm_keychain.platformvmkeychain.md) | An [KeyChain](common_keychain.keychain.md) used in signing  |
+`kc` | [KeyChain](api_platformvm_keychain.keychain.md) | An [KeyChain](api_avm_keychain.keychain.md) used in signing  |
 
-**Returns:** *[StandardTx](common_transactions.standardtx.md)‹[PlatformVMKeyPair](api_platformvm_keychain.platformvmkeypair.md), [PlatformVMKeyChain](api_platformvm_keychain.platformvmkeychain.md), [UnsignedTx](api_platformvm_transactions.unsignedtx.md)›*
+**Returns:** *[StandardTx](common_transactions.standardtx.md)‹[KeyPair](api_platformvm_keychain.keypair.md), [KeyChain](api_platformvm_keychain.keychain.md), [UnsignedTx](api_platformvm_transactions.unsignedtx.md)›*
 
 A signed [StandardTx](common_transactions.standardtx.md)
 
@@ -221,6 +221,6 @@ ___
 
 *Inherited from [StandardUnsignedTx](common_transactions.standardunsignedtx.md).[toBuffer](common_transactions.standardunsignedtx.md#tobuffer)*
 
-Defined in src/common/tx.ts:219
+*Defined in [src/common/tx.ts:228](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L228)*
 
 **Returns:** *Buffer*

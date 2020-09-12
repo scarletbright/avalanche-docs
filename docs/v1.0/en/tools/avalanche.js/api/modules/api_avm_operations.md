@@ -9,6 +9,7 @@
 * [NFTMintOperation](../classes/api_avm_operations.nftmintoperation.md)
 * [NFTTransferOperation](../classes/api_avm_operations.nfttransferoperation.md)
 * [Operation](../classes/api_avm_operations.operation.md)
+* [SECPMintOperation](../classes/api_avm_operations.secpmintoperation.md)
 * [TransferableOperation](../classes/api_avm_operations.transferableoperation.md)
 * [UTXOID](../classes/api_avm_operations.utxoid.md)
 
@@ -26,7 +27,7 @@
 
 • **bintools**: *[BinTools](../classes/utils_bintools.bintools.md)‹›* = BinTools.getInstance()
 
-Defined in src/apis/avm/ops.ts:14
+*Defined in [src/apis/avm/ops.ts:13](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L13)*
 
 ## Functions
 
@@ -34,7 +35,7 @@ Defined in src/apis/avm/ops.ts:14
 
 ▸ **SelectOperationClass**(`opid`: number, ...`args`: Array‹any›): *[Operation](../classes/api_avm_operations.operation.md)*
 
-Defined in src/apis/avm/ops.ts:23
+*Defined in [src/apis/avm/ops.ts:22](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L22)*
 
 Takes a buffer representing the output and returns the proper [Operation](../classes/api_avm_operations.operation.md) instance.
 

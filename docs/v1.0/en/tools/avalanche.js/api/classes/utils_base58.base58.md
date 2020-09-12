@@ -36,7 +36,7 @@ let buff:Buffer = b58.decode(somestring);
 
 • **alphabetIdx0**: *string* = "1"
 
-Defined in src/utils/base58.ts:21
+*Defined in [src/utils/base58.ts:21](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/utils/base58.ts#L21)*
 
 ___
 
@@ -77,7 +77,7 @@ ___
     255, 255, 255, 255, 255, 255, 255, 255,
   ]
 
-Defined in src/utils/base58.ts:23
+*Defined in [src/utils/base58.ts:23](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/utils/base58.ts#L23)*
 
 ___
 
@@ -85,7 +85,7 @@ ___
 
 • **b58alphabet**: *string* = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 
-Defined in src/utils/base58.ts:19
+*Defined in [src/utils/base58.ts:19](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/utils/base58.ts#L19)*
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 • **big58Radix**: *BN* = new BN(58)
 
-Defined in src/utils/base58.ts:58
+*Defined in [src/utils/base58.ts:58](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/utils/base58.ts#L58)*
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 • **bigZero**: *BN* = new BN(0)
 
-Defined in src/utils/base58.ts:60
+*Defined in [src/utils/base58.ts:60](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/utils/base58.ts#L60)*
 
 ## Methods
 
@@ -109,7 +109,7 @@ Defined in src/utils/base58.ts:60
 
 ▸ **decode**(`b`: string): *Buffer*
 
-Defined in src/utils/base58.ts:94
+*Defined in [src/utils/base58.ts:94](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/utils/base58.ts#L94)*
 
 Decodes a base-58 into a [Buffer](https://github.com/feross/buffer)
 
@@ -129,7 +129,7 @@ ___
 
 ▸ **encode**(`buff`: Buffer): *string*
 
-Defined in src/utils/base58.ts:69
+*Defined in [src/utils/base58.ts:69](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/utils/base58.ts#L69)*
 
 Encodes a [Buffer](https://github.com/feross/buffer) as a base-58 string
 

@@ -8,12 +8,11 @@
 
 * [APIBase](src_common.md#apibase)
 * [Address](src_common.md#address)
+* [AssetAmount](src_common.md#assetamount)
 * [BaseNFTOutput](src_common.md#basenftoutput)
 * [Credential](src_common.md#credential)
 * [Input](src_common.md#input)
 * [JRPCAPI](src_common.md#jrpcapi)
-* [KeyChain](src_common.md#keychain)
-* [KeyPair](src_common.md#keypair)
 * [NBytes](src_common.md#nbytes)
 * [Output](src_common.md#output)
 * [OutputOwners](src_common.md#outputowners)
@@ -25,7 +24,11 @@
 * [Signature](src_common.md#signature)
 * [StandardAmountInput](src_common.md#standardamountinput)
 * [StandardAmountOutput](src_common.md#standardamountoutput)
+* [StandardAssetAmountDestination](src_common.md#standardassetamountdestination)
 * [StandardBaseTx](src_common.md#standardbasetx)
+* [StandardKeyChain](src_common.md#standardkeychain)
+* [StandardKeyPair](src_common.md#standardkeypair)
+* [StandardParseableOutput](src_common.md#standardparseableoutput)
 * [StandardTransferableInput](src_common.md#standardtransferableinput)
 * [StandardTransferableOutput](src_common.md#standardtransferableoutput)
 * [StandardTx](src_common.md#standardtx)
@@ -44,6 +47,12 @@ ___
 ###  Address
 
 • **Address**:
+
+___
+
+###  AssetAmount
+
+• **AssetAmount**:
 
 ___
 
@@ -68,18 +77,6 @@ ___
 ###  JRPCAPI
 
 • **JRPCAPI**:
-
-___
-
-###  KeyChain
-
-• **KeyChain**:
-
-___
-
-###  KeyPair
-
-• **KeyPair**:
 
 ___
 
@@ -149,9 +146,33 @@ ___
 
 ___
 
+###  StandardAssetAmountDestination
+
+• **StandardAssetAmountDestination**:
+
+___
+
 ###  StandardBaseTx
 
 • **StandardBaseTx**:
+
+___
+
+###  StandardKeyChain
+
+• **StandardKeyChain**:
+
+___
+
+###  StandardKeyPair
+
+• **StandardKeyPair**:
+
+___
+
+###  StandardParseableOutput
+
+• **StandardParseableOutput**:
 
 ___
 

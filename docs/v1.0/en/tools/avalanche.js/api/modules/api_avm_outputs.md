@@ -10,7 +10,8 @@
 * [NFTMintOutput](../classes/api_avm_outputs.nftmintoutput.md)
 * [NFTOutput](../classes/api_avm_outputs.nftoutput.md)
 * [NFTTransferOutput](../classes/api_avm_outputs.nfttransferoutput.md)
-* [SecpOutput](../classes/api_avm_outputs.secpoutput.md)
+* [SECPMintOutput](../classes/api_avm_outputs.secpmintoutput.md)
+* [SECPTransferOutput](../classes/api_avm_outputs.secptransferoutput.md)
 * [TransferableOutput](../classes/api_avm_outputs.transferableoutput.md)
 
 ### Variables
@@ -27,7 +28,7 @@
 
 • **bintools**: *[BinTools](../classes/utils_bintools.bintools.md)‹›* = BinTools.getInstance()
 
-Defined in src/apis/avm/outputs.ts:11
+*Defined in [src/apis/avm/outputs.ts:11](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/outputs.ts#L11)*
 
 ## Functions
 
@@ -35,7 +36,7 @@ Defined in src/apis/avm/outputs.ts:11
 
 ▸ **SelectOutputClass**(`outputid`: number, ...`args`: Array‹any›): *[Output](../classes/common_output.output.md)*
 
-Defined in src/apis/avm/outputs.ts:20
+*Defined in [src/apis/avm/outputs.ts:20](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/outputs.ts#L20)*
 
 Takes a buffer representing the output and returns the proper Output instance.
 

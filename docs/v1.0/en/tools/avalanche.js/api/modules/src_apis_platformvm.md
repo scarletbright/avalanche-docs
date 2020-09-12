@@ -7,20 +7,23 @@
 ### References
 
 * [AddDelegatorTx](src_apis_platformvm.md#adddelegatortx)
+* [AddValidatorTx](src_apis_platformvm.md#addvalidatortx)
 * [AmountInput](src_apis_platformvm.md#amountinput)
 * [AmountOutput](src_apis_platformvm.md#amountoutput)
-* [AssetAmount](src_apis_platformvm.md#assetamount)
 * [AssetAmountDestination](src_apis_platformvm.md#assetamountdestination)
 * [BaseTx](src_apis_platformvm.md#basetx)
+* [CreateSubnetTx](src_apis_platformvm.md#createsubnettx)
 * [ExportTx](src_apis_platformvm.md#exporttx)
 * [ImportTx](src_apis_platformvm.md#importtx)
+* [KeyChain](src_apis_platformvm.md#keychain)
+* [KeyPair](src_apis_platformvm.md#keypair)
+* [ParseableOutput](src_apis_platformvm.md#parseableoutput)
 * [PlatformVMAPI](src_apis_platformvm.md#platformvmapi)
 * [PlatformVMConstants](src_apis_platformvm.md#platformvmconstants)
-* [PlatformVMKeyChain](src_apis_platformvm.md#platformvmkeychain)
-* [PlatformVMKeyPair](src_apis_platformvm.md#platformvmkeypair)
-* [SecpCredential](src_apis_platformvm.md#secpcredential)
-* [SecpInput](src_apis_platformvm.md#secpinput)
-* [SecpOutput](src_apis_platformvm.md#secpoutput)
+* [SECPCredential](src_apis_platformvm.md#secpcredential)
+* [SECPOwnerOutput](src_apis_platformvm.md#secpowneroutput)
+* [SECPTransferInput](src_apis_platformvm.md#secptransferinput)
+* [SECPTransferOutput](src_apis_platformvm.md#secptransferoutput)
 * [SelectCredentialClass](src_apis_platformvm.md#selectcredentialclass)
 * [SelectInputClass](src_apis_platformvm.md#selectinputclass)
 * [SelectOutputClass](src_apis_platformvm.md#selectoutputclass)
@@ -32,12 +35,19 @@
 * [UTXOSet](src_apis_platformvm.md#utxoset)
 * [UnsignedTx](src_apis_platformvm.md#unsignedtx)
 * [ValidatorTx](src_apis_platformvm.md#validatortx)
+* [WeightedValidatorTx](src_apis_platformvm.md#weightedvalidatortx)
 
 ## References
 
 ###  AddDelegatorTx
 
 • **AddDelegatorTx**:
+
+___
+
+###  AddValidatorTx
+
+• **AddValidatorTx**:
 
 ___
 
@@ -53,12 +63,6 @@ ___
 
 ___
 
-###  AssetAmount
-
-• **AssetAmount**:
-
-___
-
 ###  AssetAmountDestination
 
 • **AssetAmountDestination**:
@@ -68,6 +72,12 @@ ___
 ###  BaseTx
 
 • **BaseTx**:
+
+___
+
+###  CreateSubnetTx
+
+• **CreateSubnetTx**:
 
 ___
 
@@ -83,6 +93,24 @@ ___
 
 ___
 
+###  KeyChain
+
+• **KeyChain**:
+
+___
+
+###  KeyPair
+
+• **KeyPair**:
+
+___
+
+###  ParseableOutput
+
+• **ParseableOutput**:
+
+___
+
 ###  PlatformVMAPI
 
 • **PlatformVMAPI**:
@@ -95,33 +123,27 @@ ___
 
 ___
 
-###  PlatformVMKeyChain
+###  SECPCredential
 
-• **PlatformVMKeyChain**:
-
-___
-
-###  PlatformVMKeyPair
-
-• **PlatformVMKeyPair**:
+• **SECPCredential**:
 
 ___
 
-###  SecpCredential
+###  SECPOwnerOutput
 
-• **SecpCredential**:
-
-___
-
-###  SecpInput
-
-• **SecpInput**:
+• **SECPOwnerOutput**:
 
 ___
 
-###  SecpOutput
+###  SECPTransferInput
 
-• **SecpOutput**:
+• **SECPTransferInput**:
+
+___
+
+###  SECPTransferOutput
+
+• **SECPTransferOutput**:
 
 ___
 
@@ -188,3 +210,9 @@ ___
 ###  ValidatorTx
 
 • **ValidatorTx**:
+
+___
+
+###  WeightedValidatorTx
+
+• **WeightedValidatorTx**:

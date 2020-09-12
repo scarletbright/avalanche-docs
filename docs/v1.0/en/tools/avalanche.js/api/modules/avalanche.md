@@ -7,6 +7,7 @@
 ### References
 
 * [admin](avalanche.md#admin)
+* [auth](avalanche.md#auth)
 * [avm](avalanche.md#avm)
 * [common](avalanche.md#common)
 * [health](avalanche.md#health)
@@ -14,6 +15,7 @@
 * [keystore](avalanche.md#keystore)
 * [metrics](avalanche.md#metrics)
 * [platformvm](avalanche.md#platformvm)
+* [utils](avalanche.md#utils)
 
 ### Classes
 
@@ -24,6 +26,12 @@
 ###  admin
 
 • **admin**:
+
+___
+
+###  auth
+
+• **auth**:
 
 ___
 
@@ -66,3 +74,9 @@ ___
 ###  platformvm
 
 • **platformvm**:
+
+___
+
+###  utils
+
+• **utils**:

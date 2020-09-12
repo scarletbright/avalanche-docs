@@ -6,5 +6,5 @@
 
 ### Classes
 
-* [PlatformVMKeyChain](../classes/api_platformvm_keychain.platformvmkeychain.md)
-* [PlatformVMKeyPair](../classes/api_platformvm_keychain.platformvmkeypair.md)
+* [KeyChain](../classes/api_platformvm_keychain.keychain.md)
+* [KeyPair](../classes/api_platformvm_keychain.keypair.md)

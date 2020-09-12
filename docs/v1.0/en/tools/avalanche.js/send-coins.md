@@ -11,9 +11,9 @@ import {
   } from "avalanche" 
 
 let myNetworkID = 1; //default is 3, we want to override that for our local network
-let myBlockchainID = "GJABrZ9A6UQFpwjPU8MDxDd8vuyRoDVeDAXc694wJ5t3zEkhU"; // The XChain blockchainID on this network
+let myBlockchainID = "GJABrZ9A6UQFpwjPU8MDxDd8vuyRoDVeDAXc694wJ5t3zEkhU"; // The X-Chain blockchainID on this network
 let avax = new avalanche.Avalanche("localhost", 9650, "http", myNetworkID, myBlockchainID);
-let xchain = avax.XChain(); //returns a reference to the XChain used by Avalanche.js
+let xchain = avax.XChain(); //returns a reference to the X-Chain used by AvalancheJS
 ```
 
 We're also assuming that the keystore contains a list of addresses used in this transaction.
@@ -27,8 +27,8 @@ For the case of this example, we're going to create a simple transaction that sp
 However, we do need to get the UTXO Set for the addresses we're managing. 
 
 ```js
-let myAddresses = xchain.keyChain().getAddresses(); //returns an array of addresses the keychain manages
-let addressStrings = xchain.keyChain().getAddressStrings(); //returns an array of addresses the keychain manages as strings
+let myAddresses = xchain.keyChain().getAddresses(); //returns an array of addresses the KeyChain manages
+let addressStrings = xchain.keyChain().getAddressStrings(); //returns an array of addresses the KeyChain manages as strings
 let utxos = await xchain.getUTXOs(myAddresses);
 ```
 

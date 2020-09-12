@@ -30,6 +30,7 @@ Class representing a set of [StandardUTXO](common_utxos.standardutxo.md)s.
 * [clone](common_utxos.standardutxoset.md#abstract-clone)
 * [create](common_utxos.standardutxoset.md#abstract-create)
 * [difference](common_utxos.standardutxoset.md#difference)
+* [filter](common_utxos.standardutxoset.md#filter)
 * [getAddresses](common_utxos.standardutxoset.md#getaddresses)
 * [getAllUTXOStrings](common_utxos.standardutxoset.md#getallutxostrings)
 * [getAllUTXOs](common_utxos.standardutxoset.md#getallutxos)
@@ -53,7 +54,7 @@ Class representing a set of [StandardUTXO](common_utxos.standardutxo.md)s.
 
 • **addressUTXOs**: *object*
 
-Defined in src/common/utxos.ts:147
+*Defined in [src/common/utxos.ts:147](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L147)*
 
 #### Type declaration:
 
@@ -67,7 +68,7 @@ ___
 
 • **utxos**: *object*
 
-Defined in src/common/utxos.ts:145
+*Defined in [src/common/utxos.ts:145](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L145)*
 
 #### Type declaration:
 
@@ -79,7 +80,7 @@ Defined in src/common/utxos.ts:145
 
 ▸ **add**(`utxo`: UTXOClass | string, `overwrite`: boolean): *UTXOClass*
 
-Defined in src/common/utxos.ts:170
+*Defined in [src/common/utxos.ts:181](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L181)*
 
 Adds a [StandardUTXO](common_utxos.standardutxo.md) to the StandardUTXOSet.
 
@@ -100,7 +101,7 @@ ___
 
 ▸ **addArray**(`utxos`: Array‹string | UTXOClass›, `overwrite`: boolean): *Array‹[StandardUTXO](common_utxos.standardutxo.md)›*
 
-Defined in src/common/utxos.ts:198
+*Defined in [src/common/utxos.ts:219](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L219)*
 
 Adds an array of [StandardUTXO](common_utxos.standardutxo.md)s to the [StandardUTXOSet](common_utxos.standardutxoset.md).
 
@@ -121,7 +122,7 @@ ___
 
 ▸ **clone**(): *this*
 
-Defined in src/common/utxos.ts:395
+*Defined in [src/common/utxos.ts:426](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L426)*
 
 **Returns:** *this*
 
@@ -129,9 +130,15 @@ ___
 
 ### `Abstract` create
 
-▸ **create**(): *this*
+▸ **create**(...`args`: any[]): *this*
 
-Defined in src/common/utxos.ts:397
+*Defined in [src/common/utxos.ts:428](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L428)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
 
 **Returns:** *this*
 
@@ -141,7 +148,7 @@ ___
 
 ▸ **difference**(`utxoset`: this): *this*
 
-Defined in src/common/utxos.ts:440
+*Defined in [src/common/utxos.ts:482](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L482)*
 
 Set difference between this set and a parameter.
 
@@ -157,11 +164,36 @@ A new StandardUTXOSet containing the difference
 
 ___
 
+###  filter
+
+▸ **filter**(`args`: any[], `lambda`: function): *this*
+
+*Defined in [src/common/utxos.ts:430](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L430)*
+
+**Parameters:**
+
+▪ **args**: *any[]*
+
+▪ **lambda**: *function*
+
+▸ (`utxo`: UTXOClass, ...`largs`: any[]): *boolean*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`utxo` | UTXOClass |
+`...largs` | any[] |
+
+**Returns:** *this*
+
+___
+
 ###  getAddresses
 
 ▸ **getAddresses**(): *Array‹Buffer›*
 
-Defined in src/common/utxos.ts:338
+*Defined in [src/common/utxos.ts:369](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L369)*
 
 Gets the addresses in the [StandardUTXOSet](common_utxos.standardutxoset.md) and returns an array of [Buffer](https://github.com/feross/buffer).
 
@@ -173,7 +205,7 @@ ___
 
 ▸ **getAllUTXOStrings**(`utxoids`: Array‹string›): *Array‹string›*
 
-Defined in src/common/utxos.ts:289
+*Defined in [src/common/utxos.ts:320](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L320)*
 
 Gets all the [StandardUTXO](common_utxos.standardutxo.md)s as strings, optionally that match with UTXOIDs in an array.
 
@@ -193,7 +225,7 @@ ___
 
 ▸ **getAllUTXOs**(`utxoids`: Array‹string›): *Array‹UTXOClass›*
 
-Defined in src/common/utxos.ts:268
+*Defined in [src/common/utxos.ts:299](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L299)*
 
 Gets all the [StandardUTXO](common_utxos.standardutxo.md)s, optionally that match with UTXOIDs in an array
 
@@ -213,7 +245,7 @@ ___
 
 ▸ **getAssetIDs**(`addresses`: Array‹Buffer›): *Array‹Buffer›*
 
-Defined in src/common/utxos.ts:377
+*Defined in [src/common/utxos.ts:408](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L408)*
 
 Gets all the Asset IDs, optionally that match with Asset IDs in an array
 
@@ -233,7 +265,7 @@ ___
 
 ▸ **getBalance**(`addresses`: Array‹Buffer›, `assetID`: Buffer | string, `asOf`: BN): *BN*
 
-Defined in src/common/utxos.ts:350
+*Defined in [src/common/utxos.ts:381](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L381)*
 
 Returns the balance of a set of addresses in the StandardUTXOSet.
 
@@ -255,7 +287,7 @@ ___
 
 ▸ **getUTXO**(`utxoid`: string): *UTXOClass*
 
-Defined in src/common/utxos.ts:259
+*Defined in [src/common/utxos.ts:290](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L290)*
 
 Gets a [StandardUTXO](common_utxos.standardutxo.md) from the [StandardUTXOSet](common_utxos.standardutxoset.md) by its UTXOID.
 
@@ -275,7 +307,7 @@ ___
 
 ▸ **getUTXOIDs**(`addresses`: Array‹Buffer›, `spendable`: boolean): *Array‹string›*
 
-Defined in src/common/utxos.ts:314
+*Defined in [src/common/utxos.ts:345](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L345)*
 
 Given an address or array of addresses, returns all the UTXOIDs for those addresses
 
@@ -296,7 +328,7 @@ ___
 
 ▸ **includes**(`utxo`: UTXOClass | string): *boolean*
 
-Defined in src/common/utxos.ts:156
+*Defined in [src/common/utxos.ts:156](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L156)*
 
 Returns true if the [StandardUTXO](common_utxos.standardutxo.md) is in the StandardUTXOSet.
 
@@ -314,7 +346,7 @@ ___
 
 ▸ **intersection**(`utxoset`: this): *this*
 
-Defined in src/common/utxos.ts:426
+*Defined in [src/common/utxos.ts:468](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L468)*
 
 Set intersetion between this set and a parameter.
 
@@ -334,7 +366,7 @@ ___
 
 ▸ **merge**(`utxoset`: this, `hasUTXOIDs`: Array‹string›): *this*
 
-Defined in src/common/utxos.ts:407
+*Defined in [src/common/utxos.ts:449](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L449)*
 
 Returns a new set with copy of UTXOs in this and set parameter.
 
@@ -353,9 +385,9 @@ ___
 
 ###  mergeByRule
 
-▸ **mergeByRule**(`utxoset`: this, `mergeRule`: [MergeRule](../modules/common_constants.md#mergerule)): *this*
+▸ **mergeByRule**(`utxoset`: this, `mergeRule`: [MergeRule](../modules/utils_constants.md#mergerule)): *this*
 
-Defined in src/common/utxos.ts:489
+*Defined in [src/common/utxos.ts:531](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L531)*
 
 Merges a set by the rule provided.
 
@@ -374,7 +406,7 @@ The merge rules are as follows:
 Name | Type | Description |
 ------ | ------ | ------ |
 `utxoset` | this | The set to merge by the MergeRule |
-`mergeRule` | [MergeRule](../modules/common_constants.md#mergerule) | The [MergeRule](../modules/common_constants.md#mergerule) to apply  |
+`mergeRule` | [MergeRule](../modules/utils_constants.md#mergerule) | The [MergeRule](../modules/utils_constants.md#mergerule) to apply  |
 
 **Returns:** *this*
 
@@ -386,7 +418,7 @@ ___
 
 ▸ **parseUTXO**(`utxo`: UTXOClass | string): *UTXOClass*
 
-Defined in src/common/utxos.ts:149
+*Defined in [src/common/utxos.ts:149](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L149)*
 
 **Parameters:**
 
@@ -402,7 +434,7 @@ ___
 
 ▸ **remove**(`utxo`: UTXOClass | string): *UTXOClass*
 
-Defined in src/common/utxos.ts:216
+*Defined in [src/common/utxos.ts:237](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L237)*
 
 Removes a [StandardUTXO](common_utxos.standardutxo.md) from the [StandardUTXOSet](common_utxos.standardutxoset.md) if it exists.
 
@@ -422,7 +454,7 @@ ___
 
 ▸ **removeArray**(`utxos`: Array‹string | UTXOClass›): *Array‹UTXOClass›*
 
-Defined in src/common/utxos.ts:241
+*Defined in [src/common/utxos.ts:272](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L272)*
 
 Removes an array of [StandardUTXO](common_utxos.standardutxo.md)s to the [StandardUTXOSet](common_utxos.standardutxoset.md).
 
@@ -442,7 +474,7 @@ ___
 
 ▸ **symDifference**(`utxoset`: this): *this*
 
-Defined in src/common/utxos.ts:454
+*Defined in [src/common/utxos.ts:496](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L496)*
 
 Set symmetrical difference between this set and a parameter.
 
@@ -462,7 +494,7 @@ ___
 
 ▸ **union**(`utxoset`: this): *this*
 
-Defined in src/common/utxos.ts:469
+*Defined in [src/common/utxos.ts:511](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/utxos.ts#L511)*
 
 Set union between this set and a parameter.
 

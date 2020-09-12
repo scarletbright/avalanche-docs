@@ -23,6 +23,8 @@ Class for representing a UTXOID used in [[TransferableOp]] types
 
 ### Methods
 
+* [clone](api_avm_operations.utxoid.md#clone)
+* [create](api_avm_operations.utxoid.md#create)
 * [fromBuffer](api_avm_operations.utxoid.md#frombuffer)
 * [fromString](api_avm_operations.utxoid.md#fromstring)
 * [getSize](api_avm_operations.utxoid.md#getsize)
@@ -38,7 +40,7 @@ Class for representing a UTXOID used in [[TransferableOp]] types
 
 *Overrides [NBytes](common_nbytes.nbytes.md).[constructor](common_nbytes.nbytes.md#constructor)*
 
-Defined in src/apis/avm/ops.ts:428
+*Defined in [src/apis/avm/ops.ts:555](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L555)*
 
 Class for representing a UTXOID used in [[TransferableOp]] types
 
@@ -52,7 +54,7 @@ Class for representing a UTXOID used in [[TransferableOp]] types
 
 *Inherited from [NBytes](common_nbytes.nbytes.md).[bsize](common_nbytes.nbytes.md#protected-bsize)*
 
-Defined in src/common/nbytes.ts:25
+*Defined in [src/common/nbytes.ts:25](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/nbytes.ts#L25)*
 
 ___
 
@@ -62,9 +64,39 @@ ___
 
 *Inherited from [NBytes](common_nbytes.nbytes.md).[bytes](common_nbytes.nbytes.md#protected-bytes)*
 
-Defined in src/common/nbytes.ts:23
+*Defined in [src/common/nbytes.ts:23](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/nbytes.ts#L23)*
 
 ## Methods
+
+###  clone
+
+▸ **clone**(): *this*
+
+*Overrides [NBytes](common_nbytes.nbytes.md).[clone](common_nbytes.nbytes.md#abstract-clone)*
+
+*Defined in [src/apis/avm/ops.ts:547](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L547)*
+
+**Returns:** *this*
+
+___
+
+###  create
+
+▸ **create**(...`args`: any[]): *this*
+
+*Overrides [NBytes](common_nbytes.nbytes.md).[create](common_nbytes.nbytes.md#abstract-create)*
+
+*Defined in [src/apis/avm/ops.ts:553](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L553)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
+
+___
 
 ###  fromBuffer
 
@@ -72,7 +104,7 @@ Defined in src/common/nbytes.ts:23
 
 *Inherited from [NBytes](common_nbytes.nbytes.md).[fromBuffer](common_nbytes.nbytes.md#frombuffer)*
 
-Defined in src/common/nbytes.ts:56
+*Defined in [src/common/nbytes.ts:56](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/nbytes.ts#L56)*
 
 Takes a [[Buffer]], verifies its length, and stores it.
 
@@ -95,7 +127,7 @@ ___
 
 *Overrides [NBytes](common_nbytes.nbytes.md).[fromString](common_nbytes.nbytes.md#fromstring)*
 
-Defined in src/apis/avm/ops.ts:412
+*Defined in [src/apis/avm/ops.ts:528](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L528)*
 
 Takes a base-58 string containing an [UTXOID](api_avm_operations.utxoid.md), parses it, populates the class, and returns the length of the UTXOID in bytes.
 
@@ -117,7 +149,7 @@ ___
 
 *Inherited from [NBytes](common_nbytes.nbytes.md).[getSize](common_nbytes.nbytes.md#getsize)*
 
-Defined in src/common/nbytes.ts:32
+*Defined in [src/common/nbytes.ts:32](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/nbytes.ts#L32)*
 
 Returns the length of the [Buffer](https://github.com/feross/buffer).
 
@@ -133,7 +165,7 @@ ___
 
 *Inherited from [NBytes](common_nbytes.nbytes.md).[toBuffer](common_nbytes.nbytes.md#tobuffer)*
 
-Defined in src/common/nbytes.ts:76
+*Defined in [src/common/nbytes.ts:76](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/nbytes.ts#L76)*
 
 **Returns:** *Buffer*
 
@@ -147,7 +179,7 @@ ___
 
 *Overrides [NBytes](common_nbytes.nbytes.md).[toString](common_nbytes.nbytes.md#tostring)*
 
-Defined in src/apis/avm/ops.ts:401
+*Defined in [src/apis/avm/ops.ts:517](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L517)*
 
 Returns a base-58 representation of the [UTXOID](api_avm_operations.utxoid.md).
 
@@ -159,7 +191,7 @@ ___
 
 ▸ **comparator**(): *function*
 
-Defined in src/apis/avm/ops.ts:395
+*Defined in [src/apis/avm/ops.ts:511](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L511)*
 
 Returns a function used to sort an array of [UTXOID](api_avm_operations.utxoid.md)s
 

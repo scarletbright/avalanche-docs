@@ -7,7 +7,9 @@
 ### Classes
 
 * [AmountOutput](../classes/api_platformvm_outputs.amountoutput.md)
-* [SecpOutput](../classes/api_platformvm_outputs.secpoutput.md)
+* [ParseableOutput](../classes/api_platformvm_outputs.parseableoutput.md)
+* [SECPOwnerOutput](../classes/api_platformvm_outputs.secpowneroutput.md)
+* [SECPTransferOutput](../classes/api_platformvm_outputs.secptransferoutput.md)
 * [TransferableOutput](../classes/api_platformvm_outputs.transferableoutput.md)
 
 ### Variables
@@ -24,7 +26,7 @@
 
 • **bintools**: *[BinTools](../classes/utils_bintools.bintools.md)‹›* = BinTools.getInstance()
 
-Defined in src/apis/platformvm/outputs.ts:10
+*Defined in [src/apis/platformvm/outputs.ts:10](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/platformvm/outputs.ts#L10)*
 
 ## Functions
 
@@ -32,7 +34,7 @@ Defined in src/apis/platformvm/outputs.ts:10
 
 ▸ **SelectOutputClass**(`outputid`: number, ...`args`: Array‹any›): *[Output](../classes/common_output.output.md)*
 
-Defined in src/apis/platformvm/outputs.ts:19
+*Defined in [src/apis/platformvm/outputs.ts:19](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/platformvm/outputs.ts#L19)*
 
 Takes a buffer representing the output and returns the proper Output instance.
 

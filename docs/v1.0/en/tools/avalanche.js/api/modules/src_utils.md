@@ -7,6 +7,7 @@
 ### References
 
 * [ASSETIDPayload](src_utils.md#assetidpayload)
+* [AVAXGWEI](src_utils.md#avaxgwei)
 * [B58STRPayload](src_utils.md#b58strpayload)
 * [B64STRPayload](src_utils.md#b64strpayload)
 * [BIGNUMPayload](src_utils.md#bignumpayload)
@@ -16,15 +17,17 @@
 * [CCHAINADDRPayload](src_utils.md#cchainaddrpayload)
 * [CChainAlias](src_utils.md#cchainalias)
 * [CChainVMName](src_utils.md#cchainvmname)
+* [CENTIAVAX](src_utils.md#centiavax)
 * [CHAINIDPayload](src_utils.md#chainidpayload)
 * [CSVPayload](src_utils.md#csvpayload)
 * [ChainAddressPayload](src_utils.md#chainaddresspayload)
+* [DECIAVAX](src_utils.md#deciavax)
 * [DefaultNetworkID](src_utils.md#defaultnetworkid)
-* [PrimaryNetworkID](src_utils.md#primarynetworkid)
 * [Defaults](src_utils.md#defaults)
 * [EMAILPayload](src_utils.md#emailpayload)
 * [FallbackHRP](src_utils.md#fallbackhrp)
 * [FallbackNetworkName](src_utils.md#fallbacknetworkname)
+* [GWEI](src_utils.md#gwei)
 * [HEXSTRPayload](src_utils.md#hexstrpayload)
 * [HRPToNetworkID](src_utils.md#hrptonetworkid)
 * [ICOPayload](src_utils.md#icopayload)
@@ -32,12 +35,18 @@
 * [JPEGPayload](src_utils.md#jpegpayload)
 * [JSONPayload](src_utils.md#jsonpayload)
 * [MAGNETPayload](src_utils.md#magnetpayload)
+* [MICROAVAX](src_utils.md#microavax)
+* [MILLIAVAX](src_utils.md#milliavax)
 * [MergeRule](src_utils.md#mergerule)
+* [NANOAVAX](src_utils.md#nanoavax)
 * [NFTIDPayload](src_utils.md#nftidpayload)
 * [NODEIDPayload](src_utils.md#nodeidpayload)
 * [NetworkIDToHRP](src_utils.md#networkidtohrp)
 * [NetworkIDToNetworkNames](src_utils.md#networkidtonetworknames)
 * [NetworkNameToNetworkID](src_utils.md#networknametonetworkid)
+* [NodeIDPrefix](src_utils.md#nodeidprefix)
+* [NodeIDStringToBuffer](src_utils.md#nodeidstringtobuffer)
+* [ONEAVAX](src_utils.md#oneavax)
 * [ONIONPayload](src_utils.md#onionpayload)
 * [PCHAINADDRPayload](src_utils.md#pchainaddrpayload)
 * [PChainAlias](src_utils.md#pchainalias)
@@ -48,6 +57,8 @@
 * [PersistanceOptions](src_utils.md#persistanceoptions)
 * [PlatformChainID](src_utils.md#platformchainid)
 * [PrimaryAssetAlias](src_utils.md#primaryassetalias)
+* [PrimaryNetworkID](src_utils.md#primarynetworkid)
+* [PrivateKeyPrefix](src_utils.md#privatekeyprefix)
 * [SECPENCPayload](src_utils.md#secpencpayload)
 * [SECPSIGPayload](src_utils.md#secpsigpayload)
 * [SUBNETIDPayload](src_utils.md#subnetidpayload)
@@ -57,22 +68,28 @@
 * [UTF8Payload](src_utils.md#utf8payload)
 * [UTXOIDPayload](src_utils.md#utxoidpayload)
 * [UnixNow](src_utils.md#unixnow)
+* [WEI](src_utils.md#wei)
 * [XCHAINADDRPayload](src_utils.md#xchainaddrpayload)
 * [XChainAlias](src_utils.md#xchainalias)
 * [XChainVMName](src_utils.md#xchainvmname)
 * [YAMLPayload](src_utils.md#yamlpayload)
+* [bufferToNodeIDString](src_utils.md#buffertonodeidstring)
+* [bufferToPrivateKeyString](src_utils.md#buffertoprivatekeystring)
 * [cb58EncodedPayload](src_utils.md#cb58encodedpayload)
 * [getPreferredHRP](src_utils.md#getpreferredhrp)
-
-### Classes
-
-* [PersistanceOptions](../classes/src_utils.persistanceoptions.md)
+* [privateKeyStringToBuffer](src_utils.md#privatekeystringtobuffer)
 
 ## References
 
 ###  ASSETIDPayload
 
 • **ASSETIDPayload**:
+
+___
+
+###  AVAXGWEI
+
+• **AVAXGWEI**:
 
 ___
 
@@ -130,6 +147,12 @@ ___
 
 ___
 
+###  CENTIAVAX
+
+• **CENTIAVAX**:
+
+___
+
 ###  CHAINIDPayload
 
 • **CHAINIDPayload**:
@@ -148,15 +171,15 @@ ___
 
 ___
 
-###  DefaultNetworkID
+###  DECIAVAX
 
-• **DefaultNetworkID**:
+• **DECIAVAX**:
 
 ___
 
-###  PrimaryNetworkID
+###  DefaultNetworkID
 
-• **PrimaryNetworkID**:
+• **DefaultNetworkID**:
 
 ___
 
@@ -181,6 +204,12 @@ ___
 ###  FallbackNetworkName
 
 • **FallbackNetworkName**:
+
+___
+
+###  GWEI
+
+• **GWEI**:
 
 ___
 
@@ -226,9 +255,27 @@ ___
 
 ___
 
+###  MICROAVAX
+
+• **MICROAVAX**:
+
+___
+
+###  MILLIAVAX
+
+• **MILLIAVAX**:
+
+___
+
 ###  MergeRule
 
 • **MergeRule**:
+
+___
+
+###  NANOAVAX
+
+• **NANOAVAX**:
 
 ___
 
@@ -259,6 +306,24 @@ ___
 ###  NetworkNameToNetworkID
 
 • **NetworkNameToNetworkID**:
+
+___
+
+###  NodeIDPrefix
+
+• **NodeIDPrefix**:
+
+___
+
+###  NodeIDStringToBuffer
+
+• **NodeIDStringToBuffer**:
+
+___
+
+###  ONEAVAX
+
+• **ONEAVAX**:
 
 ___
 
@@ -322,6 +387,18 @@ ___
 
 ___
 
+###  PrimaryNetworkID
+
+• **PrimaryNetworkID**:
+
+___
+
+###  PrivateKeyPrefix
+
+• **PrivateKeyPrefix**:
+
+___
+
 ###  SECPENCPayload
 
 • **SECPENCPayload**:
@@ -376,6 +453,12 @@ ___
 
 ___
 
+###  WEI
+
+• **WEI**:
+
+___
+
 ###  XCHAINADDRPayload
 
 • **XCHAINADDRPayload**:
@@ -400,6 +483,18 @@ ___
 
 ___
 
+###  bufferToNodeIDString
+
+• **bufferToNodeIDString**:
+
+___
+
+###  bufferToPrivateKeyString
+
+• **bufferToPrivateKeyString**:
+
+___
+
 ###  cb58EncodedPayload
 
 • **cb58EncodedPayload**:
@@ -409,3 +504,9 @@ ___
 ###  getPreferredHRP
 
 • **getPreferredHRP**:
+
+___
+
+###  privateKeyStringToBuffer
+
+• **privateKeyStringToBuffer**:

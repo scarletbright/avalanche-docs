@@ -6,5 +6,5 @@
 
 ### Classes
 
-* [KeyChain](../classes/common_keychain.keychain.md)
-* [KeyPair](../classes/common_keychain.keypair.md)
+* [StandardKeyChain](../classes/common_keychain.standardkeychain.md)
+* [StandardKeyPair](../classes/common_keychain.standardkeypair.md)

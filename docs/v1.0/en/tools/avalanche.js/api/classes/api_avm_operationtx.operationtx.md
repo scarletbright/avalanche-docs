@@ -30,6 +30,8 @@ Class representing an unsigned Operation transaction.
 
 ### Methods
 
+* [clone](api_avm_operationtx.operationtx.md#clone)
+* [create](api_avm_operationtx.operationtx.md#create)
 * [fromBuffer](api_avm_operationtx.operationtx.md#frombuffer)
 * [getBlockchainID](api_avm_operationtx.operationtx.md#getblockchainid)
 * [getIns](api_avm_operationtx.operationtx.md#getins)
@@ -37,7 +39,9 @@ Class representing an unsigned Operation transaction.
 * [getNetworkID](api_avm_operationtx.operationtx.md#getnetworkid)
 * [getOperations](api_avm_operationtx.operationtx.md#getoperations)
 * [getOuts](api_avm_operationtx.operationtx.md#getouts)
+* [getTotalOuts](api_avm_operationtx.operationtx.md#gettotalouts)
 * [getTxType](api_avm_operationtx.operationtx.md#gettxtype)
+* [select](api_avm_operationtx.operationtx.md#select)
 * [sign](api_avm_operationtx.operationtx.md#sign)
 * [toBuffer](api_avm_operationtx.operationtx.md#tobuffer)
 * [toString](api_avm_operationtx.operationtx.md#tostring)
@@ -50,7 +54,7 @@ Class representing an unsigned Operation transaction.
 
 *Overrides [BaseTx](api_avm_basetx.basetx.md).[constructor](api_avm_basetx.basetx.md#constructor)*
 
-Defined in src/apis/avm/operationtx.ts:100
+*Defined in [src/apis/avm/operationtx.ts:110](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/operationtx.ts#L110)*
 
 Class representing an unsigned Operation transaction.
 
@@ -58,7 +62,7 @@ Class representing an unsigned Operation transaction.
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
-`networkid` | number | DefaultNetworkID | Optional networkid, [DefaultNetworkID](../modules/common_constants.md#const-defaultnetworkid) |
+`networkid` | number | DefaultNetworkID | Optional networkid, [DefaultNetworkID](../modules/utils_constants.md#const-defaultnetworkid) |
 `blockchainid` | Buffer | Buffer.alloc(32, 16) | Optional blockchainid, default Buffer.alloc(32, 16) |
 `outs` | Array‹[TransferableOutput](api_avm_outputs.transferableoutput.md)› | undefined | Optional array of the [TransferableOutput](api_avm_outputs.transferableoutput.md)s |
 `ins` | Array‹[TransferableInput](api_avm_inputs.transferableinput.md)› | undefined | Optional array of the [TransferableInput](api_avm_inputs.transferableinput.md)s |
@@ -75,7 +79,7 @@ Name | Type | Default | Description |
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[blockchainid](common_transactions.standardbasetx.md#protected-blockchainid)*
 
-Defined in src/common/tx.ts:24
+*Defined in [src/common/tx.ts:24](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L24)*
 
 ___
 
@@ -85,7 +89,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[ins](common_transactions.standardbasetx.md#protected-ins)*
 
-Defined in src/common/tx.ts:28
+*Defined in [src/common/tx.ts:28](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L28)*
 
 ___
 
@@ -95,7 +99,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[memo](common_transactions.standardbasetx.md#protected-memo)*
 
-Defined in src/common/tx.ts:29
+*Defined in [src/common/tx.ts:29](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L29)*
 
 ___
 
@@ -105,7 +109,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[networkid](common_transactions.standardbasetx.md#protected-networkid)*
 
-Defined in src/common/tx.ts:23
+*Defined in [src/common/tx.ts:23](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L23)*
 
 ___
 
@@ -113,7 +117,7 @@ ___
 
 • **numOps**: *Buffer* = Buffer.alloc(4)
 
-Defined in src/apis/avm/operationtx.ts:26
+*Defined in [src/apis/avm/operationtx.ts:26](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/operationtx.ts#L26)*
 
 ___
 
@@ -123,7 +127,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[numins](common_transactions.standardbasetx.md#protected-numins)*
 
-Defined in src/common/tx.ts:27
+*Defined in [src/common/tx.ts:27](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L27)*
 
 ___
 
@@ -133,7 +137,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[numouts](common_transactions.standardbasetx.md#protected-numouts)*
 
-Defined in src/common/tx.ts:25
+*Defined in [src/common/tx.ts:25](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L25)*
 
 ___
 
@@ -141,7 +145,7 @@ ___
 
 • **ops**: *Array‹[TransferableOperation](api_avm_operations.transferableoperation.md)›* = []
 
-Defined in src/apis/avm/operationtx.ts:27
+*Defined in [src/apis/avm/operationtx.ts:27](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/operationtx.ts#L27)*
 
 ___
 
@@ -151,9 +155,39 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[outs](common_transactions.standardbasetx.md#protected-outs)*
 
-Defined in src/common/tx.ts:26
+*Defined in [src/common/tx.ts:26](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L26)*
 
 ## Methods
+
+###  clone
+
+▸ **clone**(): *this*
+
+*Overrides [BaseTx](api_avm_basetx.basetx.md).[clone](api_avm_basetx.basetx.md#clone)*
+
+*Defined in [src/apis/avm/operationtx.ts:102](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/operationtx.ts#L102)*
+
+**Returns:** *this*
+
+___
+
+###  create
+
+▸ **create**(...`args`: any[]): *this*
+
+*Overrides [BaseTx](api_avm_basetx.basetx.md).[create](api_avm_basetx.basetx.md#create)*
+
+*Defined in [src/apis/avm/operationtx.ts:108](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/operationtx.ts#L108)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
+
+___
 
 ###  fromBuffer
 
@@ -161,7 +195,7 @@ Defined in src/common/tx.ts:26
 
 *Overrides [BaseTx](api_avm_basetx.basetx.md).[fromBuffer](api_avm_basetx.basetx.md#frombuffer)*
 
-Defined in src/apis/avm/operationtx.ts:45
+*Defined in [src/apis/avm/operationtx.ts:45](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/operationtx.ts#L45)*
 
 Takes a [Buffer](https://github.com/feross/buffer) containing an [OperationTx](api_avm_operationtx.operationtx.md), parses it, populates the class, and returns the length of the [OperationTx](api_avm_operationtx.operationtx.md) in bytes.
 
@@ -187,7 +221,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getBlockchainID](common_transactions.standardbasetx.md#getblockchainid)*
 
-Defined in src/common/tx.ts:44
+*Defined in [src/common/tx.ts:44](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L44)*
 
 Returns the Buffer representation of the BlockchainID
 
@@ -201,9 +235,9 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getIns](common_transactions.standardbasetx.md#getins)*
 
-Defined in src/common/tx.ts:49
+*Defined in [src/common/tx.ts:49](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L49)*
 
-Returns the array of [TransferableInput](api_avm_inputs.transferableinput.md)s
+Returns the array of [StandardTransferableInput](common_inputs.standardtransferableinput.md)s
 
 **Returns:** *Array‹[StandardTransferableInput](common_inputs.standardtransferableinput.md)›*
 
@@ -215,7 +249,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getMemo](common_transactions.standardbasetx.md#getmemo)*
 
-Defined in src/common/tx.ts:59
+*Defined in [src/common/tx.ts:64](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L64)*
 
 Returns the [Buffer](https://github.com/feross/buffer) representation of the memo
 
@@ -229,7 +263,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getNetworkID](common_transactions.standardbasetx.md#getnetworkid)*
 
-Defined in src/common/tx.ts:39
+*Defined in [src/common/tx.ts:39](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L39)*
 
 Returns the NetworkID as a number
 
@@ -241,7 +275,7 @@ ___
 
 ▸ **getOperations**(): *Array‹[TransferableOperation](api_avm_operations.transferableoperation.md)›*
 
-Defined in src/apis/avm/operationtx.ts:73
+*Defined in [src/apis/avm/operationtx.ts:73](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/operationtx.ts#L73)*
 
 Returns an array of [TransferableOperation](api_avm_operations.transferableoperation.md)s in this transaction.
 
@@ -255,11 +289,25 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[getOuts](common_transactions.standardbasetx.md#getouts)*
 
-Defined in src/common/tx.ts:54
+*Defined in [src/common/tx.ts:54](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L54)*
 
-Returns the array of [TransferableOutput](api_avm_outputs.transferableoutput.md)s
+Returns the array of [StandardTransferableOutput](common_output.standardtransferableoutput.md)s
 
 **Returns:** *Array‹[StandardTransferableOutput](common_output.standardtransferableoutput.md)›*
+
+___
+
+###  getTotalOuts
+
+▸ **getTotalOuts**(): *Array‹[TransferableOutput](api_avm_outputs.transferableoutput.md)›*
+
+*Inherited from [BaseTx](api_avm_basetx.basetx.md).[getTotalOuts](api_avm_basetx.basetx.md#gettotalouts)*
+
+*Overrides [StandardBaseTx](common_transactions.standardbasetx.md).[getTotalOuts](common_transactions.standardbasetx.md#abstract-gettotalouts)*
+
+*Defined in [src/apis/avm/basetx.ts:73](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/basetx.ts#L73)*
+
+**Returns:** *Array‹[TransferableOutput](api_avm_outputs.transferableoutput.md)›*
 
 ___
 
@@ -269,7 +317,7 @@ ___
 
 *Overrides [BaseTx](api_avm_basetx.basetx.md).[getTxType](api_avm_basetx.basetx.md#gettxtype)*
 
-Defined in src/apis/avm/operationtx.ts:32
+*Defined in [src/apis/avm/operationtx.ts:32](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/operationtx.ts#L32)*
 
 Returns the id of the [OperationTx](api_avm_operationtx.operationtx.md)
 
@@ -277,13 +325,34 @@ Returns the id of the [OperationTx](api_avm_operationtx.operationtx.md)
 
 ___
 
+###  select
+
+▸ **select**(`id`: number, ...`args`: any[]): *this*
+
+*Inherited from [BaseTx](api_avm_basetx.basetx.md).[select](api_avm_basetx.basetx.md#select)*
+
+*Overrides [StandardBaseTx](common_transactions.standardbasetx.md).[select](common_transactions.standardbasetx.md#abstract-select)*
+
+*Defined in [src/apis/avm/basetx.ts:112](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/basetx.ts#L112)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`id` | number |
+`...args` | any[] |
+
+**Returns:** *this*
+
+___
+
 ###  sign
 
-▸ **sign**(`msg`: Buffer, `kc`: [AVMKeyChain](api_avm_keychain.avmkeychain.md)): *Array‹[Credential](common_signature.credential.md)›*
+▸ **sign**(`msg`: Buffer, `kc`: [KeyChain](api_avm_keychain.keychain.md)): *Array‹[Credential](common_signature.credential.md)›*
 
 *Overrides [BaseTx](api_avm_basetx.basetx.md).[sign](api_avm_basetx.basetx.md#sign)*
 
-Defined in src/apis/avm/operationtx.ts:85
+*Defined in [src/apis/avm/operationtx.ts:85](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/operationtx.ts#L85)*
 
 Takes the bytes of an [UnsignedTx](api_avm_transactions.unsignedtx.md) and returns an array of [Credential](common_signature.credential.md)s
 
@@ -292,7 +361,7 @@ Takes the bytes of an [UnsignedTx](api_avm_transactions.unsignedtx.md) and retur
 Name | Type | Description |
 ------ | ------ | ------ |
 `msg` | Buffer | A Buffer for the [UnsignedTx](api_avm_transactions.unsignedtx.md) |
-`kc` | [AVMKeyChain](api_avm_keychain.avmkeychain.md) | An [AVMKeyChain](api_avm_keychain.avmkeychain.md) used in signing  |
+`kc` | [KeyChain](api_avm_keychain.keychain.md) | An [KeyChain](api_avm_keychain.keychain.md) used in signing  |
 
 **Returns:** *Array‹[Credential](common_signature.credential.md)›*
 
@@ -306,7 +375,7 @@ ___
 
 *Overrides [StandardBaseTx](common_transactions.standardbasetx.md).[toBuffer](common_transactions.standardbasetx.md#tobuffer)*
 
-Defined in src/apis/avm/operationtx.ts:61
+*Defined in [src/apis/avm/operationtx.ts:61](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/operationtx.ts#L61)*
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [OperationTx](api_avm_operationtx.operationtx.md).
 
@@ -320,7 +389,7 @@ ___
 
 *Inherited from [StandardBaseTx](common_transactions.standardbasetx.md).[toString](common_transactions.standardbasetx.md#tostring)*
 
-Defined in src/common/tx.ts:96
+*Defined in [src/common/tx.ts:101](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/tx.ts#L101)*
 
 Returns a base-58 representation of the [StandardBaseTx](common_transactions.standardbasetx.md).
 

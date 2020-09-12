@@ -41,7 +41,7 @@
 
 \+ **new StandardTransferableInput**(`txid`: Buffer, `outputidx`: Buffer, `assetID`: Buffer, `input`: [Input](common_inputs.input.md)): *[StandardTransferableInput](common_inputs.standardtransferableinput.md)*
 
-Defined in src/common/input.ts:166
+*Defined in [src/common/input.ts:172](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/input.ts#L172)*
 
 Class representing an [StandardTransferableInput](common_inputs.standardtransferableinput.md) for a transaction.
 
@@ -62,7 +62,7 @@ Name | Type | Default | Description |
 
 • **assetid**: *Buffer* = Buffer.alloc(32)
 
-Defined in src/common/input.ts:102
+*Defined in [src/common/input.ts:108](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/input.ts#L108)*
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 • **input**: *[Input](common_inputs.input.md)*
 
-Defined in src/common/input.ts:104
+*Defined in [src/common/input.ts:110](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/input.ts#L110)*
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 • **outputidx**: *Buffer* = Buffer.alloc(4)
 
-Defined in src/common/input.ts:100
+*Defined in [src/common/input.ts:106](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/input.ts#L106)*
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 • **txid**: *Buffer* = Buffer.alloc(32)
 
-Defined in src/common/input.ts:98
+*Defined in [src/common/input.ts:104](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/input.ts#L104)*
 
 ## Methods
 
@@ -94,7 +94,7 @@ Defined in src/common/input.ts:98
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset?`: number): *number*
 
-Defined in src/common/input.ts:145
+*Defined in [src/common/input.ts:151](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/input.ts#L151)*
 
 **Parameters:**
 
@@ -111,7 +111,7 @@ ___
 
 ▸ **getAssetID**(): *Buffer*
 
-Defined in src/common/input.ts:142
+*Defined in [src/common/input.ts:148](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/input.ts#L148)*
 
 Returns the assetID of the input.
 
@@ -123,7 +123,7 @@ ___
 
 ▸ **getInput**(): *[Input](common_inputs.input.md)*
 
-Defined in src/common/input.ts:137
+*Defined in [src/common/input.ts:143](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/input.ts#L143)*
 
 Returns the input.
 
@@ -135,7 +135,7 @@ ___
 
 ▸ **getOutputIdx**(): *Buffer*
 
-Defined in src/common/input.ts:125
+*Defined in [src/common/input.ts:131](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/input.ts#L131)*
 
 Returns a [Buffer](https://github.com/feross/buffer)  of the OutputIdx.
 
@@ -147,7 +147,7 @@ ___
 
 ▸ **getTxID**(): *Buffer*
 
-Defined in src/common/input.ts:118
+*Defined in [src/common/input.ts:124](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/input.ts#L124)*
 
 Returns a [Buffer](https://github.com/feross/buffer) of the TxID.
 
@@ -159,7 +159,7 @@ ___
 
 ▸ **getUTXOID**(): *string*
 
-Defined in src/common/input.ts:132
+*Defined in [src/common/input.ts:138](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/input.ts#L138)*
 
 Returns a base-58 string representation of the UTXOID this [StandardTransferableInput](common_inputs.standardtransferableinput.md) references.
 
@@ -171,7 +171,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-Defined in src/common/input.ts:150
+*Defined in [src/common/input.ts:156](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/input.ts#L156)*
 
 Returns a [Buffer](https://github.com/feross/buffer) representation of the [StandardTransferableInput](common_inputs.standardtransferableinput.md).
 
@@ -183,7 +183,7 @@ ___
 
 ▸ **toString**(): *string*
 
-Defined in src/common/input.ts:163
+*Defined in [src/common/input.ts:169](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/input.ts#L169)*
 
 Returns a base-58 representation of the [StandardTransferableInput](common_inputs.standardtransferableinput.md).
 
@@ -195,7 +195,7 @@ ___
 
 ▸ **comparator**(): *function*
 
-Defined in src/common/input.ts:109
+*Defined in [src/common/input.ts:115](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/input.ts#L115)*
 
 Returns a function used to sort an array of [StandardTransferableInput](common_inputs.standardtransferableinput.md)s
 

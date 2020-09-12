@@ -7,7 +7,7 @@
 ### Classes
 
 * [AmountInput](../classes/api_platformvm_inputs.amountinput.md)
-* [SecpInput](../classes/api_platformvm_inputs.secpinput.md)
+* [SECPTransferInput](../classes/api_platformvm_inputs.secptransferinput.md)
 * [TransferableInput](../classes/api_platformvm_inputs.transferableinput.md)
 
 ### Functions
@@ -20,7 +20,7 @@
 
 ▸ **SelectInputClass**(`inputid`: number, ...`args`: Array‹any›): *[Input](../classes/common_inputs.input.md)*
 
-Defined in src/apis/platformvm/inputs.ts:23
+*Defined in [src/apis/platformvm/inputs.ts:23](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/platformvm/inputs.ts#L23)*
 
 Takes a buffer representing the output and returns the proper [Input](../classes/common_inputs.input.md) instance.
 

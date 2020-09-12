@@ -33,6 +33,8 @@ the correct length.
 
 ### Methods
 
+* [clone](common_nbytes.nbytes.md#abstract-clone)
+* [create](common_nbytes.nbytes.md#abstract-create)
 * [fromBuffer](common_nbytes.nbytes.md#frombuffer)
 * [fromString](common_nbytes.nbytes.md#fromstring)
 * [getSize](common_nbytes.nbytes.md#getsize)
@@ -45,7 +47,7 @@ the correct length.
 
 \+ **new NBytes**(): *[NBytes](common_nbytes.nbytes.md)*
 
-Defined in src/common/nbytes.ts:85
+*Defined in [src/common/nbytes.ts:89](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/nbytes.ts#L89)*
 
 Returns instance of [NBytes](common_nbytes.nbytes.md).
 
@@ -57,7 +59,7 @@ Returns instance of [NBytes](common_nbytes.nbytes.md).
 
 • **bsize**: *number*
 
-Defined in src/common/nbytes.ts:25
+*Defined in [src/common/nbytes.ts:25](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/nbytes.ts#L25)*
 
 ___
 
@@ -65,15 +67,41 @@ ___
 
 • **bytes**: *Buffer*
 
-Defined in src/common/nbytes.ts:23
+*Defined in [src/common/nbytes.ts:23](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/nbytes.ts#L23)*
 
 ## Methods
+
+### `Abstract` clone
+
+▸ **clone**(): *this*
+
+*Defined in [src/common/nbytes.ts:87](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/nbytes.ts#L87)*
+
+**Returns:** *this*
+
+___
+
+### `Abstract` create
+
+▸ **create**(...`args`: any[]): *this*
+
+*Defined in [src/common/nbytes.ts:89](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/nbytes.ts#L89)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
+
+___
 
 ###  fromBuffer
 
 ▸ **fromBuffer**(`buff`: Buffer, `offset`: number): *number*
 
-Defined in src/common/nbytes.ts:56
+*Defined in [src/common/nbytes.ts:56](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/nbytes.ts#L56)*
 
 Takes a [[Buffer]], verifies its length, and stores it.
 
@@ -94,7 +122,7 @@ ___
 
 ▸ **fromString**(`b58str`: string): *number*
 
-Defined in src/common/nbytes.ts:39
+*Defined in [src/common/nbytes.ts:39](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/nbytes.ts#L39)*
 
 Takes a base-58 encoded string, verifies its length, and stores it.
 
@@ -114,7 +142,7 @@ ___
 
 ▸ **getSize**(): *number*
 
-Defined in src/common/nbytes.ts:32
+*Defined in [src/common/nbytes.ts:32](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/nbytes.ts#L32)*
 
 Returns the length of the [Buffer](https://github.com/feross/buffer).
 
@@ -128,7 +156,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-Defined in src/common/nbytes.ts:76
+*Defined in [src/common/nbytes.ts:76](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/nbytes.ts#L76)*
 
 **Returns:** *Buffer*
 
@@ -140,7 +168,7 @@ ___
 
 ▸ **toString**(): *string*
 
-Defined in src/common/nbytes.ts:83
+*Defined in [src/common/nbytes.ts:83](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/common/nbytes.ts#L83)*
 
 **Returns:** *string*
 

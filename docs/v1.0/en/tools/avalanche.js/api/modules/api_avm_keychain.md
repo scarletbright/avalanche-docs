@@ -6,5 +6,5 @@
 
 ### Classes
 
-* [AVMKeyChain](../classes/api_avm_keychain.avmkeychain.md)
-* [AVMKeyPair](../classes/api_avm_keychain.avmkeypair.md)
+* [KeyChain](../classes/api_avm_keychain.keychain.md)
+* [KeyPair](../classes/api_avm_keychain.keypair.md)

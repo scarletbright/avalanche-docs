@@ -35,7 +35,7 @@ A class which contains an [Operation](api_avm_operations.operation.md) for trans
 
 \+ **new TransferableOperation**(`assetid`: Buffer, `utxoids`: Array‹[UTXOID](api_avm_operations.utxoid.md) | string | Buffer›, `operation`: [Operation](api_avm_operations.operation.md)): *[TransferableOperation](api_avm_operations.transferableoperation.md)*
 
-Defined in src/apis/avm/ops.ts:183
+*Defined in [src/apis/avm/ops.ts:192](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L192)*
 
 **Parameters:**
 
@@ -53,7 +53,7 @@ Name | Type | Default |
 
 • **assetid**: *Buffer* = Buffer.alloc(32)
 
-Defined in src/apis/avm/ops.ts:117
+*Defined in [src/apis/avm/ops.ts:126](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L126)*
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 • **operation**: *[Operation](api_avm_operations.operation.md)*
 
-Defined in src/apis/avm/ops.ts:121
+*Defined in [src/apis/avm/ops.ts:130](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L130)*
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 • **utxoIDs**: *Array‹[UTXOID](api_avm_operations.utxoid.md)›* = []
 
-Defined in src/apis/avm/ops.ts:119
+*Defined in [src/apis/avm/ops.ts:128](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L128)*
 
 ## Methods
 
@@ -77,7 +77,7 @@ Defined in src/apis/avm/ops.ts:119
 
 ▸ **fromBuffer**(`bytes`: Buffer, `offset`: number): *number*
 
-Defined in src/apis/avm/ops.ts:132
+*Defined in [src/apis/avm/ops.ts:141](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L141)*
 
 **Parameters:**
 
@@ -94,7 +94,7 @@ ___
 
 ▸ **getAssetID**(): *Buffer*
 
-Defined in src/apis/avm/ops.ts:173
+*Defined in [src/apis/avm/ops.ts:182](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L182)*
 
 Returns the assetID as a [Buffer](https://github.com/feross/buffer).
 
@@ -106,7 +106,7 @@ ___
 
 ▸ **getOperation**(): *[Operation](api_avm_operations.operation.md)*
 
-Defined in src/apis/avm/ops.ts:183
+*Defined in [src/apis/avm/ops.ts:192](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L192)*
 
 Returns the operation
 
@@ -118,7 +118,7 @@ ___
 
 ▸ **getUTXOIDs**(): *Array‹[UTXOID](api_avm_operations.utxoid.md)›*
 
-Defined in src/apis/avm/ops.ts:178
+*Defined in [src/apis/avm/ops.ts:187](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L187)*
 
 Returns an array of UTXOIDs in this operation.
 
@@ -130,7 +130,7 @@ ___
 
 ▸ **toBuffer**(): *Buffer*
 
-Defined in src/apis/avm/ops.ts:149
+*Defined in [src/apis/avm/ops.ts:158](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L158)*
 
 **Returns:** *Buffer*
 
@@ -140,7 +140,7 @@ ___
 
 ▸ **comparator**(): *function*
 
-Defined in src/apis/avm/ops.ts:126
+*Defined in [src/apis/avm/ops.ts:135](https://github.com/ava-labs/avalanche.js/blob/a2feb77/src/apis/avm/ops.ts#L135)*
 
 Returns a function used to sort an array of [TransferableOperation](api_avm_operations.transferableoperation.md)s
 

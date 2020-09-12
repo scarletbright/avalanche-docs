@@ -11,4 +11,5 @@
 * [Output](../classes/common_output.output.md)
 * [OutputOwners](../classes/common_output.outputowners.md)
 * [StandardAmountOutput](../classes/common_output.standardamountoutput.md)
+* [StandardParseableOutput](../classes/common_output.standardparseableoutput.md)
 * [StandardTransferableOutput](../classes/common_output.standardtransferableoutput.md)
