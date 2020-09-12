@@ -56,12 +56,12 @@ nav:
               - Timestamp API          : ./v1.0/en/api/timestamp.md
   - Developer Tools:
               - Overview : ./v1.0/en/tools/index.md
-              - Avalanche.js :
-                  - Overview : ./v1.0/en/tools/avalanche.js/index.md
-                  - API : ./v1.0/en/tools/avalanche.js/api/README.md
-                  - Manage Keys : ./v1.0/en/tools/avalanche.js/managing-keys.md
-                  - Create Asset : ./v1.0/en/tools/avalanche.js/create-asset.md
-                  - Send Asset : ./v1.0/en/tools/avalanche.js/send-coins.md
+              - AvalancheJS :
+                  - Overview : ./v1.0/en/tools/avalanchejs/index.md
+                  - API : ./v1.0/en/tools/avalanchejs/api/README.md
+                  - Manage Keys : ./v1.0/en/tools/avalanchejs/managing-keys.md
+                  - Create Asset : ./v1.0/en/tools/avalanchejs/create-asset.md
+                  - Send Asset : ./v1.0/en/tools/avalanchejs/send-coins.md
               - Avash  : ./v1.0/en/tools/avash.md
   - Reference Materials:
               - Command Line Interface      : v1.0/en/references/command-line-interface.md

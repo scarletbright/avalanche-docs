@@ -267,7 +267,7 @@ If it doesn't see [here](https://www.digitalocean.com/community/tutorials/how-to
 
 ### Is there a Javascript library?
 
-[Yes.](../../tools/avalanche.js/)
+[Yes.](../../tools/avalanchejs/)
 
 ### Is my node connected to peers?
 
