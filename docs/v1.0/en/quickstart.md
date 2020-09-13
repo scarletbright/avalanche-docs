@@ -90,7 +90,7 @@ To start a node and connect it to the Avalanche test net:
 
 If you built from source:
 ```sh
-./build/avalanche
+./build/avalanchego
 ```
 
 If you are using the released binaries:
