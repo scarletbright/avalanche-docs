@@ -323,7 +323,7 @@ Let's make a transferable input:
 
 ## Unsigned Transactions
 
-Unsigned transactions contain the full content of a transaction with only the signatures missing. Unsigned transactions have one possible type: `AddValidatorTx`. They embed `BaseTx`, which contains common fields and operations.
+Unsigned transactions contain the full content of a transaction with only the signatures missing. Unsigned transactions have four possible types: `AddValidatorTx`, `AddDelegatorTx`, `AddSubnetValidatorTx`, and `CreateSubnetTx`. They embed `BaseTx`, which contains common fields and operations.
 
 ### What Base Tx Contains
 
@@ -433,11 +433,9 @@ Let's make a base tx that uses the inputs and outputs from the previous examples
 
 ### What Unsigned Add Validator Tx Contains
 
-An unsigned add validator tx contains a `TypeID`, `BaseTx`, `Validator`, `Stake`, `RewardsOwner`, and `Shares`.
+An unsigned add validator tx contains a `BaseTx`, `Validator`, `Stake`, `RewardsOwner`, and `Shares`. The `TypeID` for this type is `0x0000000c`.
 
-- **`TypeID`** is the ID for this type. It is `0x0000000c`.
 - **`BaseTx`**
-- **`Validator`** Validator has a `NodeID`, `StartTime`, `EndTime`, and `Weight`
     - **`NodeID`** is 20 bytes which is the node ID of the delegatee.
     - **`StartTime`** is a long which is the Unix time when the delegator starts delegating.
     - **`EndTime`** is a long which is the Unix time when the delegator stops delegating (and staked AVAX is returned).
@@ -454,8 +452,6 @@ An unsigned add validator tx contains a `TypeID`, `BaseTx`, `Validator`, `Stake`
 
 ```boo
 +---------------+----------------------+-----------------------------------------+
-| type_id       : int                  |                                 4 bytes |
-+---------------+----------------------+-----------------------------------------+
 | base_tx       : BaseTx               |                     size(base_tx) bytes |
 +---------------+----------------------+-----------------------------------------+
 | validator     : Validator            |                                44 bytes |
@@ -466,7 +462,7 @@ An unsigned add validator tx contains a `TypeID`, `BaseTx`, `Validator`, `Stake`
 +---------------+----------------------+-----------------------------------------+
 | shares        : Shares               |                                 4 bytes |
 +---------------+----------------------+-----------------------------------------+
-                  | 52 + size(stake) + size(rewards_owner) + size(base_tx) bytes |
+                  | 48 + size(stake) + size(rewards_owner) + size(base_tx) bytes |
                   +--------------------------------------------------------------+
 ```
 
@@ -474,12 +470,11 @@ An unsigned add validator tx contains a `TypeID`, `BaseTx`, `Validator`, `Stake`
 
 ```protobuf
 message AddValidatorTx {
-    uint32 type_id = 1;             // 04 bytes
-    BaseTx base_tx = 2;             // size(base_tx)
-    Validator validator = 3;        // size(validator)
-    Stake stake = 4;                // size(LockedOuts)
-    RewardsOwner rewards_owner = 5; // size(rewards_owner)
-    uint32 shares = 6;              // 04 bytes
+    BaseTx base_tx = 1;             // size(base_tx)
+    Validator validator = 2;        // size(validator)
+    Stake stake = 3;                // size(LockedOuts)
+    RewardsOwner rewards_owner = 4; // size(rewards_owner)
+    uint32 shares = 5;              // 04 bytes
 }
 ```
 
@@ -571,9 +566,8 @@ Let's make an unsigned add validator tx that uses the inputs and outputs from th
 
 ### What Unsigned Add Delegator Tx Contains
 
-An unsigned add delegator tx contains a `TypeID`, `BaseTx`, `Validator`, `Stake`, and `RewardsOwner`.
+An unsigned add delegator tx contains a `TypeID`, `BaseTx`, `Validator`, `Stake`, and `RewardsOwner`. The `TypeID` for this type is `0x0000000e`.
 
-- **`TypeID`** is the ID for this type. It is `0x0000000c`.
 - **`BaseTx`**
 - **`Validator`** Validator has a `NodeID`, `StartTime`, `EndTime`, and `Weight`
     - **`NodeID`** is 20 bytes which is the node ID of the delegatee.
@@ -591,8 +585,6 @@ An unsigned add delegator tx contains a `TypeID`, `BaseTx`, `Validator`, `Stake`
 
 ```boo
 +---------------+----------------------+-----------------------------------------+
-| type_id       : int                  |                                 4 bytes |
-+---------------+----------------------+-----------------------------------------+
 | base_tx       : BaseTx               |                     size(base_tx) bytes |
 +---------------+----------------------+-----------------------------------------+
 | validator     : Validator            |                                44 bytes |
@@ -601,7 +593,7 @@ An unsigned add delegator tx contains a `TypeID`, `BaseTx`, `Validator`, `Stake`
 +---------------+----------------------+-----------------------------------------+
 | rewards_owner : RewardsOwner         |               size(rewards_owner) bytes |
 +---------------+----------------------+-----------------------------------------+
-                  | 48 + size(stake) + size(rewards_owner) + size(base_tx) bytes |
+                  | 44 + size(stake) + size(rewards_owner) + size(base_tx) bytes |
                   +--------------------------------------------------------------+
 ```
 
@@ -609,11 +601,10 @@ An unsigned add delegator tx contains a `TypeID`, `BaseTx`, `Validator`, `Stake`
 
 ```protobuf
 message AddDelegatorTx {
-    uint32 type_id = 1;           // 04 bytes
-    BaseTx base_tx = 2;           // size(base_tx)
-    Validator validator = 3;      // size(validator)
-    Stake stake = 4;              // size(LockedOuts)
-    RewardsOwner rewards_owner = 5; // size(rewards_owner)
+    BaseTx base_tx = 1;           // size(base_tx)
+    Validator validator = 2;      // size(validator)
+    Stake stake = 3;              // size(LockedOuts)
+    RewardsOwner rewards_owner = 4; // size(rewards_owner)
 }
 ```
 
@@ -701,7 +692,7 @@ Let's make an unsigned add delegator tx that uses the inputs and outputs from th
 
 ### What Unsigned Add Subnet Validator Tx Contains
 
-An unsigned add subnet validator tx contains a `BaseTx`, `Validator`, `SubnetID`, and `SubnetAuth`. The `TypeID` for this type is `0x0000000c`.
+An unsigned add subnet validator tx contains a `BaseTx`, `Validator`, `SubnetID`, and `SubnetAuth`. The `TypeID` for this type is `0x0000000d`.
 
 - **`BaseTx`**
 - **`Validator`** Validator has a `NodeID`, `StartTime`, `EndTime`, and `Weight`
@@ -743,7 +734,7 @@ message AddSubnetValidatorTx {
 
 Let's make an unsigned add subnet validator tx that uses the inputs and outputs from the previous examples:
 
-- **`BaseTx`**: `"Example BaseTx as defined above with ID set to 0c"`
+- **`BaseTx`**: `"Example BaseTx as defined above with ID set to 0d"`
 - **`NodeID`**: `0xe9094f73698002fd52c90819b457b9fbc866ab80`
 - **`StarTime`**: `0x000000005f21f31d`
 - **`EndTime`**: `0x000000005f497dc6`
@@ -755,7 +746,7 @@ Let's make an unsigned add subnet validator tx that uses the inputs and outputs 
 
 ```splus
 [
-    BaseTx       <- 0x00000000000c0000303900000000000000000000000000000000000000000000000000000000000000000000007000012309cd7078b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c136923582736d444a971693dded0aa059053b36a85e98e39447cc92deb9cc4d700000000345aa98e8a990f4101e2268fab4c4e1f731c8dfbcffa3a77978686e6390d624f00000005000012309cd7ddb00000000100000000
+    BaseTx       <- 0x00000000000d0000303900000000000000000000000000000000000000000000000000000000000000000000007000012309cd7078b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c136923582736d444a971693dded0aa059053b36a85e98e39447cc92deb9cc4d700000000345aa98e8a990f4101e2268fab4c4e1f731c8dfbcffa3a77978686e6390d624f00000005000012309cd7ddb00000000100000000
     NodeID       <- 0xe9094f73698002fd52c90819b457b9fbc866ab80
     StarTime     <- 0x000000005f21f31d
     EndTime      <- 0x000000005f497dc6
@@ -767,7 +758,7 @@ Let's make an unsigned add subnet validator tx that uses the inputs and outputs 
 =
 [
     // base tx:
-    0x00, 0x00, 0x00, 0x0c, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x0d, 0x00, 0x00,
     0x30, 0x39, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -915,9 +906,8 @@ Let’s make an unsigned create subnet tx that uses the inputs from the previous
 
 ### What Unsigned Import Tx Contains
 
-An unsigned import tx contains a `TypeID`, `BaseTx`, `SourceChain`, and `Ins`.
+An unsigned import tx contains a `TypeID`, `BaseTx`, `SourceChain`, and `Ins`. The `TypeID` for this type is `0x00000011`.
 
-- **`TypeID`** is the ID for this type. It is `0x00000011`.
 - **`BaseTx`**
 - **`SourceChain`** is a 32-byte source blockchain ID.
 - **`Ins`** is a variable length array of Transferable Inputs.
@@ -926,15 +916,13 @@ An unsigned import tx contains a `TypeID`, `BaseTx`, `SourceChain`, and `Ins`.
 
 ```boo
 +-----------------+--------------|---------------------------------+
-| type_id         : int          |                         4 bytes |
-+-----------------+--------------+---------------------------------+
 | base_tx         : BaseTx       |             size(base_tx) bytes |
 +-----------------+--------------+---------------------------------+
 | source_chain    : [32]byte     |                        32 bytes |
 +-----------------+--------------+---------------------------------+
 | ins             : []TransferIn |             4 + size(ins) bytes |
 +-----------------+--------------+---------------------------------+
-                            | 40 + size(ins) + size(base_tx) bytes |
+                            | 36 + size(ins) + size(base_tx) bytes |
                             +--------------------------------------+
 ```
 
@@ -942,8 +930,7 @@ An unsigned import tx contains a `TypeID`, `BaseTx`, `SourceChain`, and `Ins`.
 
 ```protobuf
 message ImportTx {
-    uint32 TypeID = 1;           // 4 bytes
-    BaseTx base_tx = 2;          // size(base_tx)
+    BaseTx base_tx = 1;          // size(base_tx)
     bytes source_chain = 2;      // 32 bytes
     repeated TransferIn ins = 3; // 4 bytes + size(ins)
 }
@@ -953,15 +940,13 @@ message ImportTx {
 
 Let’s make an unsigned import tx that uses the inputs from the previous examples:
 
-- **`TypeID`**: `0x00000011`
-- **`BaseTx`**: "Example BaseTx as defined above"
+- **`BaseTx`**: "Example BaseTx as defined above with TypeID set to 11"
 - **`SourceChain`**:
 - **`Ins`**: "Example SECP256K1 Transfer Input as defined above"
 
 ```splus
 [
-    TypeID        <- 0x00000011
-    BaseTx        <- 0x0000303900000000000000000000000000000000000000000000000000000000000000000000000139c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d55008800000007000012309cd5fdc0000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c0000000000000000
+    BaseTx        <- 0x000000110000303900000000000000000000000000000000000000000000000000000000000000000000000139c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d55008800000007000012309cd5fdc0000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c0000000000000000
     SourceChain   <- 0x787cd3243c002e9bf5bbbaea8a42a16c1a19cc105047c66996807cbf16acee10
     Ins <- [
         f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000100000000,
@@ -969,9 +954,8 @@ Let’s make an unsigned import tx that uses the inputs from the previous exampl
 ]
 =
 [
-    // Type ID
-    0x00, 0x00, 0x00, 0x11,
     // base tx:
+    0x00, 0x00, 0x00, 0x11,
     0x00, 0x00, 0x30, 0x39, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -1106,6 +1090,7 @@ A signed transaction is an unsigned transaction with the addition of an array of
 
 A signed transaction contains a `CodecID`, `UnsignedTx`, and `Credentials`.
 
+- **`CodecID`** The only current valid codec id is `00 00`.
 - **`UnsignedTx`** is an unsigned transaction, as described above.
 - **`Credentials`** is an array of credentials. Each credential will be paired with the input in the same index at this credential.
 
@@ -1137,13 +1122,14 @@ message Tx {
 
 Let's make a signed transaction that uses the unsigned transaction and credential from the previous examples.
 
+- **`CodecID`**: `0x0000`
 - **`UnsignedTx`**: `0x0000000100000003ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000003000000070000000400010203`
 - **`Credentials`**
   `0x0000000900000002000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1e1d1f202122232425262728292a2b2c2e2d2f303132333435363738393a3b3c3d3e3f00404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5e5d5f606162636465666768696a6b6c6e6d6f707172737475767778797a7b7c7d7e7f00`
 
 ```splus
 [
-    CodecID     <- 0x00000000
+    CodecID     <- 0x0000
     UnsignedTx  <- 0x0000000100000003ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000003000000070000000400010203
     Credentials <- [
         0x0000000900000002000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1e1d1f202122232425262728292a2b2c2e2d2f303132333435363738393a3b3c3d3e3f00404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5e5d5f606162636465666768696a6b6c6e6d6f707172737475767778797a7b7c7d7e7f00,
@@ -1152,14 +1138,14 @@ Let's make a signed transaction that uses the unsigned transaction and credentia
 =
 [
     // Codec ID
-    0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00,
     // unsigned transaction:
-    0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x03, 
+    0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x03,
     0xff, 0xff, 0xff, 0xff, 0xee, 0xee, 0xee, 0xee,
     0xdd, 0xdd, 0xdd, 0xdd, 0xcc, 0xcc, 0xcc, 0xcc,
-    0xbb, 0xbb, 0xbb, 0xbb, 0xaa, 0xaa, 0xaa, 0xaa, 
+    0xbb, 0xbb, 0xbb, 0xbb, 0xaa, 0xaa, 0xaa, 0xaa,
     0x99, 0x99, 0x99, 0x99, 0x88, 0x88, 0x88, 0x88,
-    0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x02, 0x03, 
+    0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x02, 0x03,
     0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b,
     0x0c, 0x0d, 0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13,
     0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b,
@@ -1167,7 +1153,7 @@ Let's make a signed transaction that uses the unsigned transaction and credentia
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x39,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
     0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02,
-    0x51, 0x02, 0x5c, 0x61, 0xfb, 0xcf, 0xc0, 0x78, 
+    0x51, 0x02, 0x5c, 0x61, 0xfb, 0xcf, 0xc0, 0x78,
     0xf6, 0x93, 0x34, 0xf8, 0x34, 0xbe, 0x6d, 0xd2,
     0x6d, 0x55, 0xa9, 0x55, 0xc3, 0x34, 0x41, 0x28,
     0xe0, 0x60, 0x12, 0x8e, 0xde, 0x35, 0x23, 0xa2,
@@ -1218,7 +1204,7 @@ A UTXO is a standalone representation of a transaction output.
 
 A UTXO contains a `CodecID`, `TxID`, `UTXOIndex`, and `Output`.
 
-- **`CodecID`**
+- **`CodecID`** The only current valid codec id is `00 00`.
 - **`TxID`** is a 32-byte transaction ID. Transaction IDs are calculated by taking sha256 of the bytes of the signed transaction.
 - **`UTXOIndex`** is an int that specifies which output in the transaction specified by **`TxID`** that this utxo was created by.
 - **`AssetID`** is a 32-byte array that defines which asset this utxo references.
@@ -1246,7 +1232,7 @@ A UTXO contains a `CodecID`, `TxID`, `UTXOIndex`, and `Output`.
 
 ```protobuf
 message Utxo {
-    uint32 codec_id = 1;
+    uint32 codec_id = 1;     // 02 bytes
     bytes tx_id = 2;         // 32 bytes
     uint32 output_index = 3; // 04 bytes
     bytes asset_id = 4;      // 32 bytes
