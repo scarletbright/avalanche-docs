@@ -333,7 +333,7 @@ Unsigned transactions contain the full content of a transaction with only the si
 
 A base tx contains a `TypeID`, `NetworkID`, `BlockchainID`, `Outputs`, `Inputs`, and `Memo`.
 
-- **`TypeID`** is the ID for this type. It is `0x0000000a`.
+- **`TypeID`** is the ID for this type. It is `0x00000000`.
 - **`NetworkID`** is an int that defines which network this transaction is meant to be issued to. This value is meant to support transaction routing and is not designed for replay attack prevention.
 - **`BlockchainID`** is a 32-byte array that defines which blockchain this transaction was issued to. This is used for replay attack prevention for transactions that could potentially be valid across network or blockchain.
 - **`Outputs`** is an array of transferable output objects. Outputs must be sorted lexicographically by their serialized representation. The total quantity of the assets created in these outputs must be less than or equal to the total quantity of each asset consumed in the inputs minus the transaction fee.
@@ -398,7 +398,7 @@ Let's make a base tx that uses the inputs and outputs from the previous examples
 =
 [
     // typeID:
-    0x00, 0x00, 0x00, 0x0a,
+    0x00, 0x00, 0x00, 0x00,
     // networkID:
     0x00, 0x00, 0x30, 0x39,
     // blockchainID:
