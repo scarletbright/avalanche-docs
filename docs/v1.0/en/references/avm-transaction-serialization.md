@@ -1654,7 +1654,7 @@ Let’s make an unsigned import tx that uses the inputs from the previous exampl
 
 ### What Unsigned Export Tx Contains
 
-An unsigned export tx contains a `BaseTx`, `DestinationChain`, and `Outs`. * The `TypeID` for this type is `0x00000004`.
+An unsigned export tx contains a `BaseTx`, `DestinationChain`, and `Outs`. The `TypeID` for this type is `0x00000004`.
 
 * **`DestinationChain`** is the 32 byte ID of the chain where the funds are being exported to.
 * **`Outs`** is a variable length array of Transferable Outputs.
