@@ -9,6 +9,153 @@ This file is meant to be the single source of truth for how we serialize transac
 Some data is prepended with a codec ID (unt16) that denotes how the data should be deserialized.
 Right now, the only valid codec ID is 0 (`0x00 0x00`).
 
+***
+
+## Transferable Output
+
+Transferable outputs wrap an output with an asset ID.
+
+### What Transferable Output Contains
+
+A transferable output contains an `AssetID` and an `Output`.
+
+- **`AssetID`** is a 32-byte array that defines which asset this output references.
+- **`Output`** is an output, as defined above. For example, this can be a SECP256K1 transfer output.
+
+### Gantt Transferable Output Specification
+
+```boo
++----------+----------+-------------------------+
+| asset_id : [32]byte |                32 bytes |
++----------+----------+-------------------------+
+| output   : Output   |      size(output) bytes |
++----------+----------+-------------------------+
+                      | 32 + size(output) bytes |
+                      +-------------------------+
+```
+
+### Proto Transferable Output Specification
+
+```protobuf
+message TransferableOutput {
+    bytes asset_id = 1; // 32 bytes
+    Output output = 2;  // size(output)
+}
+```
+
+### Transferable Output Example
+
+Let's make a transferable output:
+
+- `AssetID: 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`
+- `Output: "Example SECP256K1 Transfer Output from above"`
+
+```splus
+[
+    AssetID <- 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+    Output  <- 0x000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859,
+]
+=
+[
+    // assetID:
+    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+    0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
+    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
+    0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
+    // output:
+    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x30, 0x39, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0xd4, 0x31, 0x00, 0x00, 0x00, 0x01,
+    0x00, 0x00, 0x00, 0x02, 0x51, 0x02, 0x5c, 0x61,
+    0xfb, 0xcf, 0xc0, 0x78, 0xf6, 0x93, 0x34, 0xf8,
+    0x34, 0xbe, 0x6d, 0xd2, 0x6d, 0x55, 0xa9, 0x55,
+    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
+    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
+    0x43, 0xab, 0x08, 0x59,
+]
+```
+
+***
+
+## Transferable Input
+
+Transferable inputs describe a specific UTXO with a provided transfer input.
+
+### What Transferable Input Contains
+
+A transferable input contains a `TxID`, `UTXOIndex` `AssetID` and an `Input`.
+
+- **`TxID`** is a 32-byte array that defines which transaction this input is consuming an output from.
+- **`UTXOIndex`** is an int that defines which utxo this input is consuming the specified transaction.
+- **`AssetID`** is a 32-byte array that defines which asset this input references.
+- **`Input`** is a transferable input object.
+
+### Gantt Transferable Input Specification
+
+```boo
++------------+----------+------------------------+
+| tx_id      : [32]byte |               32 bytes |
++------------+----------+------------------------+
+| utxo_index : int      |               04 bytes |
++------------+----------+------------------------+
+| asset_id   : [32]byte |               32 bytes |
++------------+----------+------------------------+
+| input      : Input    |      size(input) bytes |
++------------+----------+------------------------+
+                        | 68 + size(input) bytes |
+                        +------------------------+
+```
+
+### Proto Transferable Input Specification
+
+```protobuf
+message TransferableInput {
+    bytes tx_id = 1;       // 32 bytes
+    uint32 utxo_index = 3; // 04 bytes
+    bytes asset_id = 3;    // 32 bytes
+    Input input = 4;       // size(input)
+}
+```
+
+### Transferable Input Example
+
+Let's make a transferable input:
+
+- **`TxID`**: `0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a090807060504030201000`
+- **`UTXOIndex`**: `5`
+- **`AssetID`**: `0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`
+- **`Input`**: "Example SECP256K1 Transfer Input from above"
+
+```splus
+[
+    TxID      <- 0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a090807060504030201000
+    UTXOIndex <- 5 = 0x00000005
+    AssetID   <- 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+    Input     <- 0x0000000500000000075bcd15000000020000000300000007
+]
+=
+[
+    // txID:
+    0xf1, 0xe1, 0xd1, 0xc1, 0xb1, 0xa1, 0x91, 0x81,
+    0x71, 0x61, 0x51, 0x41, 0x31, 0x21, 0x11, 0x01,
+    0xf0, 0xe0, 0xd0, 0xc0, 0xb0, 0xa0, 0x90, 0x80,
+    0x70, 0x60, 0x50, 0x40, 0x30, 0x20, 0x10, 0x00,
+    // utxoIndex:
+    0x00, 0x00, 0x00, 0x05,
+    // assetID:
+    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+    0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
+    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
+    0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
+    // input:
+    0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00,
+    0x07, 0x5b, 0xcd, 0x15, 0x00, 0x00, 0x00, 0x02,
+    0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x07
+]
+```
+
+***
+
 ## Outputs
 
 Outputs have one possible type: `SECP256K1TransferOutput`.
@@ -106,72 +253,6 @@ Let's make a secp256k1 transfer output with:
 
 ***
 
-## Transferable Output
-
-Transferable outputs wrap an output with an asset ID.
-
-### What Transferable Output Contains
-
-A transferable output contains an `AssetID` and an `Output`.
-
-- **`AssetID`** is a 32-byte array that defines which asset this output references.
-- **`Output`** is an output, as defined above. For example, this can be a SECP256K1 transfer output.
-
-### Gantt Transferable Output Specification
-
-```boo
-+----------+----------+-------------------------+
-| asset_id : [32]byte |                32 bytes |
-+----------+----------+-------------------------+
-| output   : Output   |      size(output) bytes |
-+----------+----------+-------------------------+
-                      | 32 + size(output) bytes |
-                      +-------------------------+
-```
-
-### Proto Transferable Output Specification
-
-```protobuf
-message TransferableOutput {
-    bytes asset_id = 1; // 32 bytes
-    Output output = 2;  // size(output)
-}
-```
-
-### Transferable Output Example
-
-Let's make a transferable output:
-
-- `AssetID: 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`
-- `Output: "Example SECP256K1 Transfer Output from above"`
-
-```splus
-[
-    AssetID <- 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
-    Output  <- 0x000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859,
-]
-=
-[
-    // assetID:
-    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
-    0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
-    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
-    0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
-    // output:
-    0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x30, 0x39, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0xd4, 0x31, 0x00, 0x00, 0x00, 0x01,
-    0x00, 0x00, 0x00, 0x02, 0x51, 0x02, 0x5c, 0x61,
-    0xfb, 0xcf, 0xc0, 0x78, 0xf6, 0x93, 0x34, 0xf8,
-    0x34, 0xbe, 0x6d, 0xd2, 0x6d, 0x55, 0xa9, 0x55,
-    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
-    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
-    0x43, 0xab, 0x08, 0x59,
-]
-```
-
-***
-
 ## Inputs
 
 Inputs have one possible type: `SECP256K1TransferInput`.
@@ -240,84 +321,7 @@ Let's make a payment input with:
 ]
 ```
 
-***
 
-## Transferable Input
-
-Transferable inputs describe a specific UTXO with a provided transfer input.
-
-### What Transferable Input Contains
-
-A transferable input contains a `TxID`, `UTXOIndex` `AssetID` and an `Input`.
-
-- **`TxID`** is a 32-byte array that defines which transaction this input is consuming an output from.
-- **`UTXOIndex`** is an int that defines which utxo this input is consuming the specified transaction.
-- **`AssetID`** is a 32-byte array that defines which asset this input references.
-- **`Input`** is a transferable input object.
-
-### Gantt Transferable Input Specification
-
-```boo
-+------------+----------+------------------------+
-| tx_id      : [32]byte |               32 bytes |
-+------------+----------+------------------------+
-| utxo_index : int      |               04 bytes |
-+------------+----------+------------------------+
-| asset_id   : [32]byte |               32 bytes |
-+------------+----------+------------------------+
-| input      : Input    |      size(input) bytes |
-+------------+----------+------------------------+
-                        | 68 + size(input) bytes |
-                        +------------------------+
-```
-
-### Proto Transferable Input Specification
-
-```protobuf
-message TransferableInput {
-    bytes tx_id = 1;       // 32 bytes
-    uint32 utxo_index = 3; // 04 bytes
-    bytes asset_id = 3;    // 32 bytes
-    Input input = 4;       // size(input)
-}
-```
-
-### Transferable Input Example
-
-Let's make a transferable input:
-
-- **`TxID`**: `0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a090807060504030201000`
-- **`UTXOIndex`**: `5`
-- **`AssetID`**: `0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`
-- **`Input`**: "Example SECP256K1 Transfer Input from above"
-
-```splus
-[
-    TxID      <- 0xf1e1d1c1b1a191817161514131211101f0e0d0c0b0a090807060504030201000
-    UTXOIndex <- 5 = 0x00000005
-    AssetID   <- 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
-    Input     <- 0x0000000500000000075bcd15000000020000000300000007
-]
-=
-[
-    // txID:
-    0xf1, 0xe1, 0xd1, 0xc1, 0xb1, 0xa1, 0x91, 0x81,
-    0x71, 0x61, 0x51, 0x41, 0x31, 0x21, 0x11, 0x01,
-    0xf0, 0xe0, 0xd0, 0xc0, 0xb0, 0xa0, 0x90, 0x80,
-    0x70, 0x60, 0x50, 0x40, 0x30, 0x20, 0x10, 0x00,
-    // utxoIndex:
-    0x00, 0x00, 0x00, 0x05,
-    // assetID:
-    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
-    0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
-    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
-    0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
-    // input:
-    0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00,
-    0x07, 0x5b, 0xcd, 0x15, 0x00, 0x00, 0x00, 0x02,
-    0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x07
-]
-```
 
 ***
 
@@ -1122,7 +1126,7 @@ message Tx {
 
 Let's make a signed transaction that uses the unsigned transaction and credential from the previous examples.
 
-- **`CodecID`**: `0x0000`
+- **`CodecID`**: `0`
 - **`UnsignedTx`**: `0x0000000100000003ffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa999999998888888800000001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab085900000001f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000200000003000000070000000400010203`
 - **`Credentials`**
   `0x0000000900000002000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1e1d1f202122232425262728292a2b2c2e2d2f303132333435363738393a3b3c3d3e3f00404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5e5d5f606162636465666768696a6b6c6e6d6f707172737475767778797a7b7c7d7e7f00`
