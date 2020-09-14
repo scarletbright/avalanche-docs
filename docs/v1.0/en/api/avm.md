@@ -706,8 +706,8 @@ Gets the UTXOs that reference a given address. If sourceChain is specified, then
 avm.getUTXOs(
     {
         addresses: string,
-        limit: int,
-        startIndex: {
+        limit: int, (optional)
+        startIndex: { (optional)
             address: string,
             utxo: string
         },

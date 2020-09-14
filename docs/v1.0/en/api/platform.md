@@ -994,8 +994,8 @@ Gets the UTXOs that reference a given set of addresses. If sourceChain is specif
 platform.getUTXOs(
     {
         addresses: string,
-        limit: int,
-        startIndex: {
+        limit: int, (optional)
+        startIndex: { (optional)
             address: string,
             utxo: string
         },
@@ -1113,11 +1113,6 @@ curl -X POST --data '{
     "method" :"platform.getUTXOs",
     "params" :{
         "addresses":["P-avax1fquvrjkj7ma5srtayfvx7kncu7um3ym73ztydr"],
-        "limit":5,
-        "startIndex": {
-            "address": "P-avax1fquvrjkj7ma5srtayfvx7kncu7um3ym73ztydr",
-            "utxo": "kbUThAUfmBXUmRgTpgD6r3nLj7rJUGho6xyht5nouNNypH45j"
-        },
         "sourceChain": "X"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
