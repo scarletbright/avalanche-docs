@@ -68,9 +68,9 @@ Now build the binary:
 
 This should print `Build Successful`.
 
-You can check what version you're running by doing `./build/avalanche --version`.
+You can check what version you're running by doing `./build/avalanchego --version`.
 
-You can run your node with `./build/avalanche`
+You can run your node with `./build/avalanchego`
 
 #### Download Binary
 
@@ -430,7 +430,7 @@ Do `ps aux | grep ava`
 The output should have a line that looks like this:
 
 ```sh
-youruser 29861  8.7  0.2 1459208 34996 pts/2   Sl+  19:44   0:00 ./build/avalanche
+youruser 29861  8.7  0.2 1459208 34996 pts/2   Sl+  19:44   0:00 ./build/avalanchego
 ```
 
 Do:
