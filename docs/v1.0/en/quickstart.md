@@ -188,8 +188,6 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-If this call returns a 404 or hangs, your node probably isn't finished bootstrapping.
-
 Note that we make this request to `127.0.0.1:9650/ext/bc/X`.
 The `bc/X` portion signifies that the request is being sent to the blockchain whose ID (or alias) is `X` (ie the X-Chain.)
 
@@ -216,7 +214,7 @@ The faucet dispenses 100 000 000 nanoAVAX (nAVAX) each drop.
 
 **This is only a test network, and AVAX on this network has no value.**
 
-Go to the [test net faucet](https://faucet.avax.network/) and paste the address you just created to receive 100 000 000 nAVAX.
+Go to the [test net faucet](https://faucet.avax.network/) and paste the address you just created to receive 1 AVAX.
 
 We can check an address's balance of a given asset by calling `avm.getBalance`, another method of the X-Chain's API.
 Let's check that the faucet drip went through.
@@ -284,7 +282,7 @@ When you send this request, the node will authenticate you using your username a
 Then, it will look through all the private keys controlled by your user until it finds
 enough AVAX to satisfy the request.
 
-The response contains the ID of this transaction:
+The response contains the transaction's ID. It will be different for every invocation of `send`.
 
 ```json
 {
@@ -297,11 +295,9 @@ The response contains the ID of this transaction:
 }
 ```
 
-`txID` is the ID of the send transaction we just sent to the network. It will be different for every invocation of `send`.
-
 ## Checking the Transaction Status
 
-This send transaction will only take a second or two to finalize. We can check its status with `avm.getTxStatus`:
+This transaction will only take a second or two to finalize. We can check its status with `avm.getTxStatus`:
 
 ```sh
 curl -X POST --data '{
@@ -515,7 +511,11 @@ platform.addValidator(
         username: string,
         password: string
     }
-) -> {txID: string}
+) -> 
+{
+    txID: string,
+    changeAddr: string
+}
 ```
 
 Let's go through and examine these arguments.
