@@ -101,7 +101,8 @@ The response gives us the transaction's ID, which is also the ID of the newly cr
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "3fbrm3z38NoDB4yMC3hg5pRvc72XqnAGiu7NgaEp1dwZ8AD9g"
+        "txID": "3fbrm3z38NoDB4yMC3hg5pRvc72XqnAGiu7NgaEp1dwZ8AD9g",
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
     },
     "id": 1
 }

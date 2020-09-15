@@ -219,7 +219,11 @@ avm.createFixedCapAsset({
     changeAddr: string, (optional)
     username: string,  
     password: string
-}) -> {assetID: string}
+}) -> 
+{
+    assetID: string,
+    changeAddr: string
+}
 ```
 
 * `name` is a human-readable name for the asset. Not necessarily unique.
@@ -264,7 +268,8 @@ curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
     "result" :{
-        "assetID":"ZiKfqRXCZgHLgZ4rxGU9Qbycdzuq5DRY4tdSNS9ku8kcNxNLD"
+        "assetID":"ZiKfqRXCZgHLgZ4rxGU9Qbycdzuq5DRY4tdSNS9ku8kcNxNLD",
+        "changeAddr":"X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"
     }
 }
 ```
@@ -283,13 +288,18 @@ avm.createMintTx({
     changeAddr: string, (optional)
     username: string,
     password: string
-}) -> {txID: string}
+}) -> 
+{
+    txID: string,
+    changeAddr: string,
+}
 ```
 
 * `amount` units of `assetID` will be created and controlled by address `to`.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` is the user that pays the transaction fee. `username` must hold keys giving it permission to mint more of this asset. That is, it must control at least *threshold* keys for one of the minter sets.
 * `txID` is this transaction's ID.
+* `changeAddr` in the result is the address where any change was sent.
 
 #### Example Call
 
@@ -316,7 +326,8 @@ curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
     "result" :{
-        "txID":"2oGdPdfw2qcNUHeqjw8sU2hPVrFyNUTgn6A8HenDra7oLCDtja"
+        "txID":"2oGdPdfw2qcNUHeqjw8sU2hPVrFyNUTgn6A8HenDra7oLCDtja",
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"
     }
 }
 ```
@@ -342,7 +353,11 @@ avm.createVariableCapAsset({
     changeAddr: string, (optional)
     username: string,  
     password: string
-}) -> {assetID: string}
+}) ->
+ {
+    assetID: string,
+    changeAddr: string,
+}
 ```
 
 * `name` is a human-readable name for the asset. Not necessarily unique.
@@ -394,7 +409,8 @@ curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
     "result" :{
-        "assetID":"2QbZFE7J4MAny9iXHUwq8Pz8SpFhWk3maCw4SkinVPv6wPmAbK"
+        "assetID":"2QbZFE7J4MAny9iXHUwq8Pz8SpFhWk3maCw4SkinVPv6wPmAbK",
+        "changeAddr":"X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"
     }
 }
 ```
@@ -413,7 +429,11 @@ avm.exportAVAX({
     changeAddr: string, (optional)
     username: string,
     password:string,
-}) -> {txID: string}
+}) ->
+{
+    txID: string,
+    changeAddr: string,
+}
 ```
 
 * `to` is the P-Chain address the AVAX is sent to.
@@ -444,7 +464,8 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "25VzbNzt3gi2vkE3Kr6H9KJeSR2tXkr8FsBCm3vARnB5foLVmx"
+        "txID": "25VzbNzt3gi2vkE3Kr6H9KJeSR2tXkr8FsBCm3vARnB5foLVmx",
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"
     },
     "id": 1
 }
@@ -1047,7 +1068,8 @@ curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
     "result" :{
-        "txID":"2iXSVLPNVdnFqn65rRvLrsu8WneTFqBJRMqkBJx5vZTwAQb8c1"
+        "txID":"2iXSVLPNVdnFqn65rRvLrsu8WneTFqBJRMqkBJx5vZTwAQb8c1",
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"
     }
 }
 ```

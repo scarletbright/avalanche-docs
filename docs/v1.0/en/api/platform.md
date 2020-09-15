@@ -39,7 +39,11 @@ platform.addDelegator(
         username: string,
         password: string
     }
-) -> {txID: string}
+) -> 
+{
+    txID: string,
+    changeAddr: string
+}
 ```
 
 * `nodeID` is the node ID of the delegatee.
@@ -78,7 +82,8 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "6pB3MtHUNogeHapZqMUBmx6N38ii3LzytVDrXuMovwKQFTZLs"
+        "txID": "6pB3MtHUNogeHapZqMUBmx6N38ii3LzytVDrXuMovwKQFTZLs",
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
     },
     "id": 1
 }
@@ -103,7 +108,11 @@ platform.addValidator(
         username: string,
         password: string
     }
-) -> {txID: string}
+) -> 
+{
+    txID: string,
+    changeAddr: string
+}
 ```
 
 * `nodeID` is the node ID of the validator being added.
@@ -149,7 +158,8 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "6pb3mthunogehapzqmubmx6n38ii3lzytvdrxumovwkqftzls"
+        "txID": "6pb3mthunogehapzqmubmx6n38ii3lzytvdrxumovwkqftzls",
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
     },
     "id": 1
 }
@@ -174,7 +184,11 @@ platform.addSubnetValidator(
         username: string,
         password: string
     }
-) -> {txID: string}
+) -> 
+{
+    txID: string,
+    changeAddr: string,
+}
 ```
 
 * `nodeID` is the node ID of the validator.
@@ -214,7 +228,8 @@ curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
     "result" :{
-        "txID": "2exafyvRNSE5ehwjhafBVt6CTntot7DFjsZNcZ54GSxBbVLcCm"
+        "txID": "2exafyvRNSE5ehwjhafBVt6CTntot7DFjsZNcZ54GSxBbVLcCm",
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
     }
 }
 ```
@@ -276,7 +291,11 @@ platform.createBlockchain(
         username: string,
         password:string
     }
-) -> {txID: string}
+) -> 
+{
+    txID: string,
+    changeAddr: string
+}
 ```
 
 * `subnetID` is the ID of the Subnet that validates the new blockchain.
@@ -319,7 +338,8 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "2TBnyFmST7TirNm6Y6z4863zusRVpWi5Cj1sKS9bXTUmu8GfeU"
+        "txID": "2TBnyFmST7TirNm6Y6z4863zusRVpWi5Cj1sKS9bXTUmu8GfeU",
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
     },
     "id": 1
 }
@@ -342,7 +362,11 @@ platform.createSubnet(
         username: string,
         password: string
     }
-) -> {txID: string}
+) -> 
+{
+    txID: string,
+    changeAddr: string
+}
 ```
 
 * In order to create add a validator to this subnet, `threshold` signatures are required from the addresses in `controlKeys`.
@@ -398,7 +422,11 @@ platform.exportAVAX(
         username: string,
         password:string
     }
-) -> {txID: string}
+) -> 
+{
+    txID: string,
+    changeAddr: string
+}
 ```
 
 * `amount` is the amount of nAVAX to send.
@@ -431,7 +459,8 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "2Kz69TNBSeABuaVjKa6ZJCTLobbe5xo9c5eU8QwdUSvPo2dBk3"
+        "txID": "2Kz69TNBSeABuaVjKa6ZJCTLobbe5xo9c5eU8QwdUSvPo2dBk3",
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
     },
     "id": 1
 }
@@ -777,6 +806,38 @@ curl -X POST --data '{
         "height": "56"
     },
     "id": 1
+}
+```
+
+### platform.getMinStake
+
+Get the minimum staking amount of the network.
+
+#### Signature 
+
+```go
+platform.getMinStake() -> {minStake:uint64}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"platform.getMinStake"
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "minStake": "5000000"
+    }
 }
 ```
 
@@ -1138,7 +1199,11 @@ platform.importAVAX(
         username: string,
         password: string
     }
-) -> {tx: string}
+) -> 
+{
+    tx: string,
+    changeAddr: string
+}
 ```
 
 * `to` is the ID of the address the AVAX is imported to.
@@ -1172,7 +1237,8 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "P63NjowXaQJXt5cmspqdoD3VcuQdXUPM5eoZE2Vcg63aVEx8R"
+        "txID": "P63NjowXaQJXt5cmspqdoD3VcuQdXUPM5eoZE2Vcg63aVEx8R",
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
     },
     "id": 1
 }
@@ -1436,37 +1502,5 @@ curl -X POST --data '{
         ]
     },
     "id": 1
-}
-```
-
-### platform.getMinStake
-
-Get the minimum staking amount of the network.
-
-#### Signature 
-
-```go
-platform.getMinStake() -> {minStake:uint64}
-```
-
-#### Example Call
-
-```json
-curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "method" :"platform.getMinStake"
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
-```
-
-#### Example Response
-
-```json
-{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "result" :{
-        "minStake": "5000000"
-    }
 }
 ```
