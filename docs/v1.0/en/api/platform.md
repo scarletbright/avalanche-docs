@@ -794,7 +794,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "result": {
         "minValidatorStake": "2000000000000",
-        "minDelegatorStake": "2000000000000"
+        "minDelegatorStake": "25000000000"
     },
     "id": 1
 }
