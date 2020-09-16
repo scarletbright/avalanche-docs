@@ -10,12 +10,12 @@ Tokens expire after 12 hours.
 An authorization token is provided in the header of an API call.
 Specifically, the header `Authorization` should have value `Bearer TOKEN.GOES.HERE` (where `TOKEN.GOES.HERE` is replaced with the token, of course.)
 
-This API is only reachable if the node is started with [command-line argument](../references/command-line-interface.md) `--api-require-auth`.
+This API is only reachable if the node is started with [command-line argument](../references/command-line-interface.md) `--api-auth-required`.
 If the node is started without this CLI, API calls do not require authorization tokens, so this API is not reachable.
 This API never requires an authorization token to be reached.
 
 Of course, authorization token creation must be permissioned.
-If you run your node with `--api-require-auth`, you must also specify an authorization token password with argument `--api-auth-password`.
+If you run your node with `--api-auth-required`, you must also specify an authorization token password with argument `--api-auth-password`.
 You must provide this password in order to create/revoke authorization tokens.
 
 ## Format
