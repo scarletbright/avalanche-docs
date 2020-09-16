@@ -121,7 +121,7 @@ Let's make a transferable input:
 - **`TxID`**: `0x0dfafbdf5c81f635c9257824ff21c8e3e6f7b632ac306e11446ee540d34711a15`
 - **`UTXOIndex`**: `0`
 - **`AssetID`**: `0x6870b7d66ac32540311379e5b5dbad28ec7eb8ddbfc8f4d67299ebb48475907a`
-- **`Input`**: "Example SECP256K1 Transfer Input from below"
+- **`Input`**: `"Example SECP256K1 Transfer Input from below"`
 
 ```splus
 [
@@ -161,7 +161,7 @@ Outputs have one possible type: `SECP256K1TransferOutput`.
 
 ### SECP256K1 Transfer Output
 
-A [secp256k1](./cryptographic-primitives.md#cryptography-in-the-avalanche-virtual-machine) transfer output allows for sending a quantity of an asset to a collection of addresses after a specified unix time.
+A [secp256k1](./cryptographic-primitives.md#cryptography-in-the-avalanche-virtual-machine) transfer output allows for sending a quantity of an asset to a collection of addresses after a specified unix time. The only valid asset is AVAX.
 
 #### What SECP256K1 Transfer Output Contains
 
@@ -212,7 +212,7 @@ Let's make a secp256k1 transfer output with:
 - **`Locktime`**: 0
 - **`Threshold`**: 1
 - **`Addresses`**:
-  - 0xda2bee01be82ecc00c34f361eda8eb30fb5a715c
+    - 0xda2bee01be82ecc00c34f361eda8eb30fb5a715c
 
 ```splus
 [
