@@ -1420,12 +1420,17 @@ curl -X POST --data '{
 
 ### platform.getMinStake
 
-Get the minimum staking amount of the network.
+Get the minimum amount of AVAX required to validate the Primary Network and 
+the minimum amount of AVAX that can be delegated.
 
 #### Signature 
 
 ```go
-platform.getMinStake() -> {minStake:uint64}
+platform.getMinStake() -> 
+{
+    minValidatorStake : uint64,
+    minDelegatorStake : uint64
+}
 ```
 
 #### Example Call
@@ -1442,10 +1447,11 @@ curl -X POST --data '{
 
 ```json
 {
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "result" :{
-        "minStake": "5000000"
-    }
+    "jsonrpc": "2.0",
+    "result": {
+        "minValidatorStake": "2000000000000",
+        "minDelegatorStake": "2000000000000"
+    },
+    "id": 1
 }
 ```
