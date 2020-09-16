@@ -762,6 +762,44 @@ curl -X POST --data '{
 }
 ```
 
+### platform.getMinStake
+
+Get the minimum amount of AVAX required to validate the Primary Network and 
+the minimum amount of AVAX that can be delegated.
+
+#### Signature 
+
+```go
+platform.getMinStake() -> 
+{
+    minValidatorStake : uint64,
+    minDelegatorStake : uint64
+}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"platform.getMinStake"
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "minValidatorStake": "2000000000000",
+        "minDelegatorStake": "2000000000000"
+    },
+    "id": 1
+}
+```
+
 ### platform.getPendingValidators
 
 List the validators in the pending validator set of the specified Subnet.
@@ -1413,44 +1451,6 @@ curl -X POST --data '{
             "KDYHHKjM4yTJTT8H8qPs5KXzE6gQH5TZrmP1qVr1P6qECj3XN",
             "2TtHFqEAAJ6b33dromYMqfgavGPF3iCpdG3hwNMiart2aB5QHi"
         ]
-    },
-    "id": 1
-}
-```
-
-### platform.getMinStake
-
-Get the minimum amount of AVAX required to validate the Primary Network and 
-the minimum amount of AVAX that can be delegated.
-
-#### Signature 
-
-```go
-platform.getMinStake() -> 
-{
-    minValidatorStake : uint64,
-    minDelegatorStake : uint64
-}
-```
-
-#### Example Call
-
-```json
-curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "method" :"platform.getMinStake"
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
-```
-
-#### Example Response
-
-```json
-{
-    "jsonrpc": "2.0",
-    "result": {
-        "minValidatorStake": "2000000000000",
-        "minDelegatorStake": "2000000000000"
     },
     "id": 1
 }
