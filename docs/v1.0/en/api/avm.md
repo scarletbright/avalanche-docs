@@ -698,7 +698,7 @@ curl -X POST --data '{
 
 ### avm.getUTXOs
 
-Gets the UTXOs that reference a given address.
+Gets the UTXOs that reference a given address. If sourceChain is specified, then it will retrieve the atomic UTXOs exported from that chain to the X Chain.
 
 #### Signature
 
@@ -706,11 +706,12 @@ Gets the UTXOs that reference a given address.
 avm.getUTXOs(
     {
         addresses: string,
-        limit: int,
-        startIndex: {
+        limit: int, (optional)
+        startIndex: { (optional)
             address: string,
             utxo: string
-        }
+        },
+        sourceChain: string (optional)
     },
 ) -> 
 {
@@ -814,6 +815,40 @@ This gives response:
 ```
 
 Since `numFetched` is less than `limit`, we know that we are done fetching UTXOs and don't need to call this method again.
+
+Suppose we want to fetch the UTXOs exported from the P Chain to the X Chain in order to build an ImportTx. Then we need to call GetUTXOs with the sourceChain argument in order to retrieve the atomic UTXOs:
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"avm.getUTXOs",
+    "params" :{
+        "addresses":["X-avax1yzt57wd8me6xmy3t42lz8m5lg6yruy79m6whsf", "X-avax1x459sj0ssujguq723cljfty4jlae28evjzt7xz"],
+        "limit":5,
+        "sourceChain": "P"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+```
+
+This gives response:
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "numFetched": "1",
+        "utxos": [
+            "115P1k9aSVFBfi9siZZz135jkrBCdEMZMbZ82JaLLuML37cgVMuxgu73ukQbPjXtDgyBCE1cgrJjqDPgboUswV5BGAYhnuxunkHS3xncB599V3mxyvWnwVwNPmq3mKQwF5EWhfTaXkhqE5VFr92yQBk9Nh5ekZBDSFGCSC"
+        ],
+        "endIndex": {
+            "address": "X-avax1x459sj0ssujguq723cljfty4jlae28evjzt7xz",
+            "utxo": "2Sz2XwRYqUHwPeiKoRnZ6ht88YqzAF1SQjMYZQQaB5wBFkAqST"
+        }
+    },
+    "id": 1
+}
+```
 
 ### avm.importAVAX
 
