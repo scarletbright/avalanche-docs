@@ -155,7 +155,7 @@ Let's make a transferable input:
 
 ## Outputs
 
-Outputs have two possible type: `SECP256K1TransferOutput`, `OutputOwners`.
+Outputs have two possible type: `SECP256K1TransferOutput`, `SECP256K1OutputOwners`.
 
 ***
 
@@ -245,20 +245,20 @@ Let's make a secp256k1 transfer output with:
 
 ***
 
-### Output Owners Output
+### SECP256K1 Output Owners Output
 
-A `OutputOwners` will recieve the staking rewards when the lock up period ends.
+A [secp256k1](../cryptographic-primitives/#cryptography-in-the-avalanche-virtual-machine) output owners output will recieve the staking rewards when the lock up period ends.
 
-#### What Output Owners Output Contains
+#### What SECP256K1 Output Owners Output Contains
 
-A output owners output contains a `TypeID`, `Locktime`, `Threshold`, and `Addresses`.
+A secp256k1 output owners output contains a `TypeID`, `Locktime`, `Threshold`, and `Addresses`.
 
 - **`TypeID`** is the ID for this output type. It is `0x0000000b`.
 - **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
 - **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
 - **`Addresses`** is a list of unique addresses that correspond to the private keys that can be used to spend this output. Addresses must be sorted lexicographically.
 
-#### Gantt Output Owners Output Specification
+#### Gantt SECP256K1 Output Owners Output Specification
 
 ```boo
 +-----------+------------+--------------------------------+
@@ -274,10 +274,10 @@ A output owners output contains a `TypeID`, `Locktime`, `Threshold`, and `Addres
                          +--------------------------------+
 ```
 
-#### Proto Output Owners Output Specification
+#### Proto SECP256K1 Output Owners Output Specification
 
 ```protobuf
-message OutputOwnersOutput {
+message SECP256K1OutputOwnersOutput {
     uint32 type_id = 1;           // 04 bytes
     uint64 locktime = 2;          // 08 bytes
     uint32 threshold = 3;         // 04 bytes
@@ -285,9 +285,9 @@ message OutputOwnersOutput {
 }
 ```
 
-#### Output Owners Output Example
+#### SECP256K1 Output Owners Output Example
 
-Let's make an output owners output with:
+Let's make a secp256k1 output owners output with:
 
 - **`TypeID`**: 11
 - **`Locktime`**: 0
@@ -523,23 +523,23 @@ An unsigned add validator tx contains a `BaseTx`, `Validator`, `Stake`, `Rewards
     - **`Weight`** is a long which is the amount the delegator stakes
 - **`Stake`** Stake has `LockedOuts`
     - **`LockedOuts`** An array of Transferable Outputs
-- **`RewardsOwner`** An `OutputOwners`
+- **`RewardsOwner`** A `SECP256K1OutputOwners`
 - **`Shares`** 10,000 times percentage of reward taken from delegators
 
 ### Gantt Unsigned Add Validator Tx Specification
 
 ```boo
-+---------------+----------------------+-----------------------------------------+
-| base_tx       : BaseTx               |                     size(base_tx) bytes |
-+---------------+----------------------+-----------------------------------------+
-| validator     : Validator            |                                44 bytes |
-+---------------+----------------------+-----------------------------------------+
-| stake         : Stake                |                  size(LockedOuts) bytes |
-+---------------+----------------------+-----------------------------------------+
-| rewards_owner : OutputOwners         |               size(rewards_owner) bytes |
-+---------------+----------------------+-----------------------------------------+
-| shares        : Shares               |                                 4 bytes |
-+---------------+----------------------+-----------------------------------------+
++---------------+-----------------------+-----------------------------------------+
+| base_tx       : BaseTx                |                     size(base_tx) bytes |
++---------------+-----------------------+-----------------------------------------+
+| validator     : Validator             |                                44 bytes |
++---------------+-----------------------+-----------------------------------------+
+| stake         : Stake                 |                  size(LockedOuts) bytes |
++---------------+-----------------------+-----------------------------------------+
+| rewards_owner : SECP256K1OutputOwners |               size(rewards_owner) bytes |
++---------------+-----------------------+-----------------------------------------+
+| shares        : Shares                |                                 4 bytes |
++---------------+-----------------------+-----------------------------------------+
                   | 48 + size(stake) + size(rewards_owner) + size(base_tx) bytes |
                   +--------------------------------------------------------------+
 ```
@@ -548,11 +548,11 @@ An unsigned add validator tx contains a `BaseTx`, `Validator`, `Stake`, `Rewards
 
 ```protobuf
 message AddValidatorTx {
-    BaseTx base_tx = 1;             // size(base_tx)
-    Validator validator = 2;        // 44 bytes
-    Stake stake = 3;                // size(LockedOuts)
-    OutputOwners rewards_owner = 4; // size(rewards_owner)
-    uint32 shares = 5;              // 04 bytes
+    BaseTx base_tx = 1;                      // size(base_tx)
+    Validator validator = 2;                 // 44 bytes
+    Stake stake = 3;                         // size(LockedOuts)
+    SECP256K1OutputOwners rewards_owner = 4; // size(rewards_owner)
+    uint32 shares = 5;                       // 04 bytes
 }
 ```
 
@@ -789,20 +789,20 @@ An unsigned add delegator tx contains a `BaseTx`, `Validator`, `Stake`, and `Rew
     - **`Weight`** is a long which is the amount the delegator stakes
 - **`Stake`** Stake has `LockedOuts`
     - **`LockedOuts`** An array of Transferable Outputs
-- **`RewardsOwner`** An `OutputOwners`
+- **`RewardsOwner`** An `SECP256K1OutputOwners`
 
 ### Gantt Unsigned Add Delegator Tx Specification
 
 ```boo
-+---------------+----------------------+-----------------------------------------+
-| base_tx       : BaseTx               |                     size(base_tx) bytes |
-+---------------+----------------------+-----------------------------------------+
-| validator     : Validator            |                                44 bytes |
-+---------------+----------------------+-----------------------------------------+
-| stake         : Stake                |                  size(LockedOuts) bytes |
-+---------------+----------------------+-----------------------------------------+
-| rewards_owner : OutputOwners         |               size(rewards_owner) bytes |
-+---------------+----------------------+-----------------------------------------+
++---------------+-----------------------+-----------------------------------------+
+| base_tx       : BaseTx                |                     size(base_tx) bytes |
++---------------+-----------------------+-----------------------------------------+
+| validator     : Validator             |                                44 bytes |
++---------------+-----------------------+-----------------------------------------+
+| stake         : Stake                 |                  size(LockedOuts) bytes |
++---------------+-----------------------+-----------------------------------------+
+| rewards_owner : SECP256K1OutputOwners |               size(rewards_owner) bytes |
++---------------+-----------------------+-----------------------------------------+
                   | 44 + size(stake) + size(rewards_owner) + size(base_tx) bytes |
                   +--------------------------------------------------------------+
 ```
@@ -811,10 +811,10 @@ An unsigned add delegator tx contains a `BaseTx`, `Validator`, `Stake`, and `Rew
 
 ```protobuf
 message AddDelegatorTx {
-    BaseTx base_tx = 1;             // size(base_tx)
-    Validator validator = 2;        // 44 bytes
-    Stake stake = 3;                // size(LockedOuts)
-    OutputOwners rewards_owner = 4; // size(rewards_owner)
+    BaseTx base_tx = 1;                      // size(base_tx)
+    Validator validator = 2;                 // 44 bytes
+    Stake stake = 3;                         // size(LockedOuts)
+    SECP256K1OutputOwners rewards_owner = 4; // size(rewards_owner)
 }
 ```
 
@@ -908,29 +908,29 @@ Let's make an unsigned add delegator tx that uses the inputs and outputs from th
 
 ### What Unsigned Create Subnet Tx Contains
 
-An unsigned create subnet tx contains a `BaseTx`, and `OutputOwners`. The `TypeID` for this type is `0x00000010`.
+An unsigned create subnet tx contains a `BaseTx`, and `RewardsOwner`. The `TypeID` for this type is `0x00000010`.
 
 - **`BaseTx`**
-- **`RewardsOwner`** An `OutputOwners`
+- **`RewardsOwner`** A `SECP256K1OutputOwners`
 
 ### Gantt Unsigned Create Subnet Tx Specification
 
 ```boo
-+-----------------+--------------|---------------------------------+
-| base_tx         : BaseTx       |             size(base_tx) bytes |
-+-----------------+--------------+---------------------------------+
-| rewards_owner   : OutputOwner  |       size(rewards_owner) bytes |
-+-----------------+--------------+---------------------------------+
-                       | size(rewards_owner) + size(base_tx) bytes |
-                       +-------------------------------------------+
++-----------------+-----------------------|---------------------------------+
+| base_tx         : BaseTx                |             size(base_tx) bytes |
++-----------------+-----------------------+--------------------------------+
+| rewards_owner   : SECP256K1OutputOwners |       size(rewards_owner) bytes |
++-----------------+-----------------------+---------------------------------+
+                                | size(rewards_owner) + size(base_tx) bytes |
+                                +-------------------------------------------+
 ```
 
 ### Proto Unsigned Create Subnet Tx Specification
 
 ```protobuf
 message CreateSubnetTx {
-    BaseTx base_tx = 1;            // size(base_tx)
-    OutputOwner rewards_owner = 2; // size(rewards_owner)
+    BaseTx base_tx = 1;                      // size(base_tx)
+    SECP256K1OutputOwners rewards_owner = 2; // size(rewards_owner)
 }
 ```
 
