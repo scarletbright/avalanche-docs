@@ -147,7 +147,7 @@ Let's make a transferable input:
     // input:
     0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00,
     0xee, 0x6b, 0x28, 0x00, 0x00, 0x00, 0x00, 0x01,
-    0x00, 0x00, 0x00, 0x00 
+    0x00, 0x00, 0x00, 0x00
 ]
 ```
 
@@ -155,7 +155,7 @@ Let's make a transferable input:
 
 ## Outputs
 
-Outputs have one possible type: `SECP256K1TransferOutput`.
+Outputs have two possible type: `SECP256K1TransferOutput`, `OutputOwners`.
 
 ***
 
@@ -245,6 +245,84 @@ Let's make a secp256k1 transfer output with:
 
 ***
 
+### Output Owners Output
+
+A `OutputOwners` will recieve the staking rewards when the lock up period ends.
+
+#### What Output Owners Output Contains
+
+A output owners output contains a `TypeID`, `Locktime`, `Threshold`, and `Addresses`.
+
+- **`TypeID`** is the ID for this output type. It is `0x0000000b`.
+- **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
+- **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
+- **`Addresses`** is a list of unique addresses that correspond to the private keys that can be used to spend this output. Addresses must be sorted lexicographically.
+
+#### Gantt Output Owners Output Specification
+
+```boo
++-----------+------------+--------------------------------+
+| type_id   : int        |                        4 bytes |
++-----------+------------+--------------------------------+
+| locktime  : long       |                        8 bytes |
++-----------+------------+--------------------------------+
+| threshold : int        |                        4 bytes |
++-----------+------------+--------------------------------+
+| addresses : [][20]byte |  4 + 20 * len(addresses) bytes |
++-----------+------------+--------------------------------+
+                         | 20 + 20 * len(addresses) bytes |
+                         +--------------------------------+
+```
+
+#### Proto Output Owners Output Specification
+
+```protobuf
+message OutputOwnersOutput {
+    uint32 type_id = 1;           // 04 bytes
+    uint64 locktime = 2;          // 08 bytes
+    uint32 threshold = 3;         // 04 bytes
+    repeated bytes addresses = 4; // 04 bytes + 20 bytes * len(addresses)
+}
+```
+
+#### Output Owners Output Example
+
+Let's make an output owners output with:
+
+- **`TypeID`**: 11
+- **`Locktime`**: 0
+- **`Threshold`**: 1
+- **`Addresses`**:
+    - 0xda2bee01be82ecc00c34f361eda8eb30fb5a715c
+
+```splus
+[
+    TypeID    <- 0x0000000b
+    Locktime  <- 0x0000000000000000
+    Threshold <- 0x00000001
+    Addresses <- [
+        0xda2bee01be82ecc00c34f361eda8eb30fb5a715c,
+    ]
+]
+=
+[
+    // type_id:
+    0x00, 0x00, 0x00, 0x0b,
+    // locktime:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    // threshold:
+    0x00, 0x00, 0x00, 0x01,
+    // number of addresses:
+    0x00, 0x00, 0x00, 0x01,
+    // addrs[0]:
+    0xda, 0x2b, 0xee, 0x01, 0xbe, 0x82, 0xec, 0xc0,
+    0x0c, 0x34, 0xf3, 0x61, 0xed, 0xa8, 0xeb, 0x30,
+    0xfb, 0x5a, 0x71, 0x5c,
+]
+```
+
+***
+
 ## Inputs
 
 Inputs have one possible type: `SECP256K1TransferInput`.
@@ -291,7 +369,7 @@ message SECP256K1TransferInput {
 
 Let's make a payment input with:
 
-- **`TypeID`**: 00000005
+- **`TypeID`**: 5
 - **`Amount`**: 4000000000
 - **`AddressIndices`**: [0]
 
@@ -318,7 +396,7 @@ Let's make a payment input with:
 
 ## Unsigned Transactions
 
-Unsigned transactions contain the full content of a transaction with only the signatures missing. Unsigned transactions have four possible types: `AddValidatorTx`, `AddDelegatorTx`, `AddSubnetValidatorTx`, and `CreateSubnetTx`. They embed `BaseTx`, which contains common fields and operations.
+Unsigned transactions contain the full content of a transaction with only the signatures missing. Unsigned transactions have six possible types: `AddValidatorTx`, `AddSubnetValidatorTx`, `AddDelegatorTx`, `CreateSubnetTx`, `ImportTx`, and `ExportTx`. They embed `BaseTx`, which contains common fields and operations.
 
 ### What Base Tx Contains
 
@@ -445,10 +523,7 @@ An unsigned add validator tx contains a `BaseTx`, `Validator`, `Stake`, `Rewards
     - **`Weight`** is a long which is the amount the delegator stakes
 - **`Stake`** Stake has `LockedOuts`
     - **`LockedOuts`** An array of Transferable Outputs
-- **`RewardsOwner`** A `Locktime`, `Threshold` and array of `Addresses`
-    - **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
-    - **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
-    - **`Addresses`** is a list of unique addresses that correspond to the private keys that can be used to spend this output. Addresses must be sorted lexicographically.
+- **`RewardsOwner`** An `OutputOwners`
 - **`Shares`** 10,000 times percentage of reward taken from delegators
 
 ### Gantt Unsigned Add Validator Tx Specification
@@ -461,7 +536,7 @@ An unsigned add validator tx contains a `BaseTx`, `Validator`, `Stake`, `Rewards
 +---------------+----------------------+-----------------------------------------+
 | stake         : Stake                |                  size(LockedOuts) bytes |
 +---------------+----------------------+-----------------------------------------+
-| rewards_owner : RewardsOwner         |               size(rewards_owner) bytes |
+| rewards_owner : OutputOwners         |               size(rewards_owner) bytes |
 +---------------+----------------------+-----------------------------------------+
 | shares        : Shares               |                                 4 bytes |
 +---------------+----------------------+-----------------------------------------+
@@ -474,9 +549,9 @@ An unsigned add validator tx contains a `BaseTx`, `Validator`, `Stake`, `Rewards
 ```protobuf
 message AddValidatorTx {
     BaseTx base_tx = 1;             // size(base_tx)
-    Validator validator = 2;        // size(validator)
+    Validator validator = 2;        // 44 bytes
     Stake stake = 3;                // size(LockedOuts)
-    RewardsOwner rewards_owner = 4; // size(rewards_owner)
+    OutputOwners rewards_owner = 4; // size(rewards_owner)
     uint32 shares = 5;              // 04 bytes
 }
 ```
@@ -491,8 +566,10 @@ Let's make an unsigned add validator tx that uses the inputs and outputs from th
 - **`EndTime`**: `0x000000005f497dc6`
 - **`Weight`**: `0x000000000000d431`
 - **`Stake`**: `0x0000000139c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d55008800000007000001d1a94a2000000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
-- **`RewardsOwner`**: `0x0000000b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
+- **`RewardsOwner`**: `0x0000000b00000000000000000000000100000001da2bee01be82ecc00c34f361eda8eb30fb5a715c`
 - **`Shares`**: `0x00000064`
+
+    0x0000000b00000000000000000000000100000001da2bee01be82ecc00c34f361eda8eb30fb5a715c
 
 ```splus
 [
@@ -501,8 +578,8 @@ Let's make an unsigned add validator tx that uses the inputs and outputs from th
     StarTime     <- 0x000000005f21f31d
     EndTime      <- 0x000000005f497dc6
     Weight       <- 0x000000000000d431
-    Stake       <---0x0000000139c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d55008800000007000001d1a94a2000000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c
-    RewardsOwner  <- 0x0000000b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c
+    Stake        <- 0x0000000139c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d55008800000007000001d1a94a2000000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c
+    RewardsOwner <- 0x0000000b00000000000000000000000100000001da2bee01be82ecc00c34f361eda8eb30fb5a715c
     Shares       <- 0x00000064
 ]
 =
@@ -563,9 +640,9 @@ Let's make an unsigned add validator tx that uses the inputs and outputs from th
     // RewardsOwner
     0x00, 0x00, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01,
-    0x00, 0x00, 0x00, 0x01, 0x3c, 0xb7, 0xd3, 0x84,
-    0x2e, 0x8c, 0xee, 0x6a, 0x0e, 0xbd, 0x09, 0xf1,
-    0xfe, 0x88, 0x4f, 0x68, 0x61, 0xe1, 0xb2, 0x9c,
+    0x00, 0x00, 0x00, 0x01, 0xda, 0x2b, 0xee, 0x01,
+    0xbe, 0x82, 0xec, 0xc0, 0x0c, 0x34, 0xf3, 0x61,
+    0xed, 0xa8, 0xeb, 0x30, 0xfb, 0x5a, 0x71, 0x5c,
     // Shares
     0x00, 0x00, 0x00, 0x64,
 ]
@@ -712,10 +789,7 @@ An unsigned add delegator tx contains a `BaseTx`, `Validator`, `Stake`, and `Rew
     - **`Weight`** is a long which is the amount the delegator stakes
 - **`Stake`** Stake has `LockedOuts`
     - **`LockedOuts`** An array of Transferable Outputs
-- **`RewardsOwner`** A `Locktime`, `Threshold` and array of `Addresses`
-    - **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
-    - **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
-    - **`Addresses`** is a list of unique addresses that correspond to the private keys that can be used to spend this output. Addresses must be sorted lexicographically.
+- **`RewardsOwner`** An `OutputOwners`
 
 ### Gantt Unsigned Add Delegator Tx Specification
 
@@ -727,7 +801,7 @@ An unsigned add delegator tx contains a `BaseTx`, `Validator`, `Stake`, and `Rew
 +---------------+----------------------+-----------------------------------------+
 | stake         : Stake                |                  size(LockedOuts) bytes |
 +---------------+----------------------+-----------------------------------------+
-| rewards_owner : RewardsOwner         |               size(rewards_owner) bytes |
+| rewards_owner : OutputOwners         |               size(rewards_owner) bytes |
 +---------------+----------------------+-----------------------------------------+
                   | 44 + size(stake) + size(rewards_owner) + size(base_tx) bytes |
                   +--------------------------------------------------------------+
@@ -738,9 +812,9 @@ An unsigned add delegator tx contains a `BaseTx`, `Validator`, `Stake`, and `Rew
 ```protobuf
 message AddDelegatorTx {
     BaseTx base_tx = 1;             // size(base_tx)
-    Validator validator = 2;        // size(validator)
+    Validator validator = 2;        // 44 bytes
     Stake stake = 3;                // size(LockedOuts)
-    RewardsOwner rewards_owner = 4; // size(rewards_owner)
+    OutputOwners rewards_owner = 4; // size(rewards_owner)
 }
 ```
 
@@ -754,7 +828,7 @@ Let's make an unsigned add delegator tx that uses the inputs and outputs from th
 - **`EndTime`**: `0x000000005f497dc6`
 - **`Weight`**: `0x000000000000d431`
 - **`Stake`**: `0x0000000139c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d55008800000007000001d1a94a2000000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
-- **`RewardsOwner`**: `0x0000000b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c`
+- **`RewardsOwner`**: `0x0000000b00000000000000000000000100000001da2bee01be82ecc00c34f361eda8eb30fb5a715c`
 
 ```splus
 [
@@ -763,8 +837,8 @@ Let's make an unsigned add delegator tx that uses the inputs and outputs from th
     StarTime     <- 0x000000005f21f31d
     EndTime      <- 0x000000005f497dc6
     Weight       <- 0x000000000000d431
-    Stake       <---0x0000000139c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d55008800000007000001d1a94a2000000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c
-    RewardsOwner  <- 0x0000000b000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c
+    Stake        <- 0x0000000139c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d55008800000007000001d1a94a2000000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c
+    RewardsOwner <- 0x0000000b00000000000000000000000100000001da2bee01be82ecc00c34f361eda8eb30fb5a715c
 ]
 =
 [
@@ -824,9 +898,9 @@ Let's make an unsigned add delegator tx that uses the inputs and outputs from th
     // RewardsOwner
     0x00, 0x00, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01,
-    0x00, 0x00, 0x00, 0x01, 0x3c, 0xb7, 0xd3, 0x84,
-    0x2e, 0x8c, 0xee, 0x6a, 0x0e, 0xbd, 0x09, 0xf1,
-    0xfe, 0x88, 0x4f, 0x68, 0x61, 0xe1, 0xb2, 0x9c,
+    0x00, 0x00, 0x00, 0x01, 0xda, 0x2b, 0xee, 0x01,
+    0xbe, 0x82, 0xec, 0xc0, 0x0c, 0x34, 0xf3, 0x61,
+    0xed, 0xa8, 0xeb, 0x30, 0xfb, 0x5a, 0x71, 0x5c,
 ]
 ```
 
@@ -837,10 +911,7 @@ Let's make an unsigned add delegator tx that uses the inputs and outputs from th
 An unsigned create subnet tx contains a `BaseTx`, and `OutputOwners`. The `TypeID` for this type is `0x00000010`.
 
 - **`BaseTx`**
-- **`OutputOwners`** contains a `Locktime`, `Threshold`, and `Addresses` and has a type id of `0x0000000b`
-    - **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
-    - **`Threshold`** is an int that names the number of unique signatures required to spend the output. Must be less than or equal to the length of **`Addresses`**. If **`Addresses`** is empty, must be 0.
-    - **`Addresses`** is a list of unique addresses that correspond to the private keys that can be used to spend this output. Addresses must be sorted lexicographically.
+- **`RewardsOwner`** An `OutputOwners`
 
 ### Gantt Unsigned Create Subnet Tx Specification
 
@@ -848,18 +919,18 @@ An unsigned create subnet tx contains a `BaseTx`, and `OutputOwners`. The `TypeI
 +-----------------+--------------|---------------------------------+
 | base_tx         : BaseTx       |             size(base_tx) bytes |
 +-----------------+--------------+---------------------------------+
-| output_owner    : OutputOwner  |        size(output_owner) bytes |
+| rewards_owner   : OutputOwner  |       size(rewards_owner) bytes |
 +-----------------+--------------+---------------------------------+
-                        | size(output_owner) + size(base_tx) bytes |
-                        +------------------------------------------+
+                       | size(rewards_owner) + size(base_tx) bytes |
+                       +-------------------------------------------+
 ```
 
 ### Proto Unsigned Create Subnet Tx Specification
 
 ```protobuf
 message CreateSubnetTx {
-    BaseTx base_tx = 1;           // size(base_tx)
-    OutputOwner output_owner = 2; // size(output_owner)
+    BaseTx base_tx = 1;            // size(base_tx)
+    OutputOwner rewards_owner = 2; // size(rewards_owner)
 }
 ```
 
@@ -868,22 +939,21 @@ message CreateSubnetTx {
 Let’s make an unsigned create subnet tx that uses the inputs from the previous examples:
 
 - **`BaseTx`**: "Example BaseTx as defined above but with TypeID set to 16"
-- **`OutputOwner`**:
-    - **`TypeId`**: 16
-    - **`Locktime`**: 54321
+- **`RewardsOwner`**:
+    - **`TypeId`**: 11
+    - **`Locktime`**: 0
     - **`Threshold`**: 1
-    - **`Addresses`**: [ 0x51025c61fbcfc078f69334f834be6dd26d55a955, 0xc3344128e060128ede3523a24a461c8943ab0859 ]
+    - **`Addresses`**: [ 0xda2bee01be82ecc00c34f361eda8eb30fb5a715c ]
 
 ```splus
 [
     BaseTx        <- 0x00000010000030390000000000000000000000000000000000000000000000000000000000000006870b7d66ac32540311379e5b5dbad28ec7eb8ddbfc8f4d67299ebb48475907a0000000700000000ee5be5c000000000000000000000000100000001da2bee01be82ecc00c34f361eda8eb30fb5a715cdfafbdf5c81f635c9257824ff21c8e3e6f7b632ac306e11446ee540d34711a15000000016870b7d66ac32540311379e5b5dbad28ec7eb8ddbfc8f4d67299ebb48475907a0000000500000000ee6b28000000000100000000
-    OutputOwner <-
+    RewardsOwner <-
         TypeID    <- 0x0000000b
-        Locktime  <- 0x000000000000d431
+        Locktime  <- 0x0000000000000000
         Threshold <- 0x00000001
         Addresses <- [
-            0x51025c61fbcfc078f69334f834be6dd26d55a955,
-            0xc3344128e060128ede3523a24a461c8943ab0859,
+            0xda2bee01be82ecc00c34f361eda8eb30fb5a715c,
         ]
 ]
 =
@@ -906,22 +976,18 @@ Let’s make an unsigned create subnet tx that uses the inputs from the previous
     0x2e, 0x8c, 0xee, 0x6a, 0x0e, 0xbd, 0x09, 0xf1,
     0xfe, 0x88, 0x4f, 0x68, 0x61, 0xe1, 0xb2, 0x9c,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    // OutputOwner type id
+    // RewardsOwner type id
     0x00, 0x00, 0x00, 0x0b,
     // locktime:
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     // threshold:
     0x00, 0x00, 0x00, 0x01,
     // number of addresses:
-    0x00, 0x00, 0x00, 0x02,
+    0x00, 0x00, 0x00, 0x01,
     // addrs[0]:
-    0x51, 0x02, 0x5c, 0x61, 0xfb, 0xcf, 0xc0, 0x78,
-    0xf6, 0x93, 0x34, 0xf8, 0x34, 0xbe, 0x6d, 0xd2,
-    0x6d, 0x55, 0xa9, 0x55,
-    // addrs[1]:
-    0xc3, 0x34, 0x41, 0x28, 0xe0, 0x60, 0x12, 0x8e,
-    0xde, 0x35, 0x23, 0xa2, 0x4a, 0x46, 0x1c, 0x89,
-    0x43, 0xab, 0x08, 0x59,
+    0xda, 0x2b, 0xee, 0x01,
+    0xbe, 0x82, 0xec, 0xc0, 0x0c, 0x34, 0xf3, 0x61,
+    0xed, 0xa8, 0xeb, 0x30, 0xfb, 0x5a, 0x71, 0x5c
 ]
 ```
 
@@ -972,7 +1038,7 @@ Let’s make an unsigned import tx that uses the inputs from the previous exampl
     BaseTx        <- 0x00000011000030390000000000000000000000000000000000000000000000000000000000000006870b7d66ac32540311379e5b5dbad28ec7eb8ddbfc8f4d67299ebb48475907a0000000700000000ee5be5c000000000000000000000000100000001da2bee01be82ecc00c34f361eda8eb30fb5a715cdfafbdf5c81f635c9257824ff21c8e3e6f7b632ac306e11446ee540d34711a15000000016870b7d66ac32540311379e5b5dbad28ec7eb8ddbfc8f4d67299ebb48475907a0000000500000000ee6b28000000000100000000
     SourceChain   <- 0x787cd3243c002e9bf5bbbaea8a42a16c1a19cc105047c66996807cbf16acee10
     Ins <- [
-        f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000100000000,
+            // input:
     ]
 ]
 =
@@ -1016,7 +1082,7 @@ Let’s make an unsigned import tx that uses the inputs from the previous exampl
     0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
     // input:
     0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00,
-    0x07, 0x5b, 0xcd, 0x15, 0x00, 0x00, 0x00, 0x01,
+    0xee, 0x6b, 0x28, 0x00, 0x00, 0x00, 0x00, 0x01,
     0x00, 0x00, 0x00, 0x00,
 ]
 ```
