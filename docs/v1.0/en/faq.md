@@ -27,7 +27,6 @@ Not until after our main network launches.
 ### I think something went wrong or there's a bug. What do I do?
 
 First, re-read any instructions that you were following and make sure that you followed them correctly.
-Then, re-read them again ;)  
 See [known issues](#known-issues) and the #testnet-status channel of our [Discord](https://chat.avalabs.org).
 If your issue is not addressed anywhere, post in the appropriate Discord channel (probably #troubleshooting.)
 
@@ -35,7 +34,13 @@ If, after doing the above, you think there is a bug, please make an issue on our
 Please give as much information and context as possible when describing an issue.
 If someone already reported the same issue, comment with your details.
 
-Many times, restarting your node will fix an issue.
+### What is the minimum amount I need to stake in order to validate the Primary Network?
+
+2,000 AVAX.
+
+### What is the minimum amount I can delegate on the Primary Network?
+
+25 AVAX.
 
 ### How do I upgrade my node?
 
