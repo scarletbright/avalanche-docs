@@ -1300,3 +1300,131 @@ Let's make a UTXO from the signed transaction created above:
     0x24, 0x25, 0x26, 0x27,
 ]
 ```
+
+## StakeableLockIn
+
+A StakeableLockIn is a staked and locked input.
+
+#### What StakeableLockIn Contains
+
+A StakeableLockIn contains a `TypeID`, `Locktime` and `TransferableIn`.
+
+- **`TypeID`** is the ID for this output type. It is `0x00000016`.
+- **`Locktime`** is a long that contains the unix timestamp that this input can be spent after. The unix timestamp is specific to the second.
+- **`TransferableIn`** contains a long `Amount`
+
+#### Gantt StakeableLockIn Specification
+
+```boo
++-----------------+----------------+--------------------------------+
+| type_id         : int            |                        4 bytes |
++-----------------+----------------+--------------------------------+
+| locktime        : long           |                        8 bytes |
++-----------------+----------------+--------------------------------+
+| transferable_in : TransferableIn |                        8 bytes |
++-----------------+----------------+--------------------------------+
+                                                         | 20 bytes |
+                                                         +----------+
+```
+
+#### Proto StakeableLockIn Specification
+
+```protobuf
+message StakeableLockIn {
+    uint32 type_id = 1;                 // 04 bytes
+    uint64 locktime = 2;                // 08 bytes
+    TransferableIn transferable_in = 3; // 08 bytes
+}
+```
+
+#### StakeableLockIn Example
+
+Let's make a stakeablelockin with:
+
+- **`TypeID`**: 22
+- **`Locktime`**: 54321
+- **`TransferableIn`**:
+    - **`Amount`**: 12345
+
+```splus
+[
+    TypeID    <- 0x00000016
+    Locktime  <- 0x000000000000d431
+    TransferableIn <- {
+        Amount<- 0x0000000000003039
+    }
+]
+=
+[
+    // type_id:
+    0x00, 0x00, 0x00, 0x16,
+    // locktime:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
+    // amount:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+]
+```
+
+## StakeableLockOut
+
+A StakeableLockOut is a staked and locked output.
+
+#### What StakeableLockOut Contains
+
+A StakeableLockOut contains a `TypeID`, `Locktime` and `TransferableOut`.
+
+- **`TypeID`** is the ID for this output type. It is `0x00000017`.
+- **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
+- **`TransferableOut`** contains a long `Amount`
+
+#### Gantt StakeableLockOut Specification
+
+```boo
++------------------+-----------------+--------------------------------+
+| type_id          : int             |                        4 bytes |
++------------------+-----------------+--------------------------------+
+| locktime         : long            |                        8 bytes |
++------------------+-----------------+--------------------------------+
+| transferable_out : TransferableOut |                        8 bytes |
++------------------+-----------------+--------------------------------+
+                                                           | 20 bytes |
+                                                           +----------+
+```
+
+#### Proto StakeableLockOut Specification
+
+```protobuf
+message StakeableLockOut {
+    uint32 type_id = 1;                   // 04 bytes
+    uint64 locktime = 2;                  // 08 bytes
+    TransferableOut transferable_out = 3; // 08 bytes
+}
+```
+
+#### StakeableLockOut Example
+
+Let's make a stakeablelockout with:
+
+- **`TypeID`**: 23
+- **`Locktime`**: 54321
+- **`TransferableIn`**:
+    - **`Amount`**: 12345
+
+```splus
+[
+    TypeID    <- 0x00000017
+    Locktime  <- 0x000000000000d431
+    TransferableIn <- {
+        Amount<- 0x0000000000003039
+    }
+]
+=
+[
+    // type_id:
+    0x00, 0x00, 0x00, 0x17,
+    // locktime:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
+    // amount:
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+]
+```
