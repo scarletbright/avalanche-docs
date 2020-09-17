@@ -665,24 +665,55 @@ List the current validators of the given Subnet.
 platform.getCurrentValidators({subnetID: string}) ->
 {
     validators: []{
-        startTime: int,
-        endTime: int,
-        weight: int, (optional)
-        stakeAmount: int, (optional)
-        address: string
-        nodeID: string
+        startTime: string,
+        endTime: string,
+        stakeAmount: string, (optional)
+        nodeID: string,
+        weight: string, (optional)
+        rewardOwner: {
+            locktime: string,
+            threshold: string,
+            addresses: string[]
+        },
+        potentialReward: string,
+        delegationFee: string,
+        uptime: string,
+        connected: boolean
+    },
+    delegators: []{
+        startTime: string,
+        endTime: string,
+        stakeAmount: string, (optional)
+        nodeID: string,
+        rewardOwner: {
+            locktime: string,
+            threshold: string,
+            addresses: string[]
+        },
+        potentialReward: string,
     }
 }
 ```
 
 * `subnetID` is the subnet whose current validators are returned. If omitted, returns the current validators of the Primary Network.
-* `startTime` is the Unix time when the validator starts validating the Subnet.
-* `endTime` is the Unix time when the validator stops validating the Subnet.
-* `weight` is the validator's weight when sampling validators.
-  Omitted if `subnetID` is the Primary Network.
-* `stakeAmount` is the amount of nAVAX this validator staked.
-  Omitted if `subnetID` is not the Primary Network.
-* `nodeID` is the validator's node ID.
+* `validators`:
+    * `startTime` is the Unix time when the validator starts validating the Subnet.
+    * `endTime` is the Unix time when the validator stops validating the Subnet.
+    * `stakeAmount` is the amount of nAVAX this validator staked. Omitted if `subnetID` is not the Primary Network.
+    * `nodeID` is the validator's node ID.
+    * `weight` is the validator's weight when sampling validators. Omitted if `subnetID` is the Primary Network.
+    * `rewardOwner` is an `OutputOwners` output which includes `locktime`, `threshold` and array of `addresses`.
+    * `potentialReward` is the potential reward earned from staking
+    * `delegationFeeRate` is the percent fee this validator charges when others delegate stake to them.
+    * `uptime` is the % of time the queried node has reported the peer as online.
+    * `connected` is if the node is connected to the network
+* `delegators`: 
+    * `startTime` is the Unix time when the delegator started.
+    * `endTime` is the Unix time when the delegator stops.
+    * `stakeAmount` is the amount of nAVAX this delegator staked. Omitted if `subnetID` is not the Primary Network.
+    * `nodeID` is the validating node's node ID.
+    * `rewardOwner` is an `OutputOwners` output which includes `locktime`, `threshold` and array of `addresses`.
+    * `potentialReward` is the potential reward earned from staking
 
 #### Example Call
 
@@ -703,22 +734,37 @@ curl -X POST --data '{
     "result": {
         "validators": [
             {
-                "startTime": "1591878109",
-                "endtime": "1594469809",
-                "stakeAmount": "319902",
-                "nodeID": "NodeID-NDmcZNsWoPrkN9KSt2A9js639hEQWUmUf"
-            },
+                "startTime": "1600368632",
+                "endTime": "1602960455",
+                "stakeAmount": "200000000000",
+                "nodeID": "NodeID-5mb46qkSBj81k9g9e4VFjGGSbaaSLFRzD",
+                "rewardOwner": {
+                    "locktime": "0",
+                    "threshold": "1",
+                    "addresses": [
+                        "P-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u"
+                    ]
+                },
+                "potentialReward": "117431493426",
+                "delegationFee": "10.0000",
+                "uptime": "0.0000",
+                "connected": false
+            }
+        ],
+        "delegators": [
             {
-                "startTime": "1591473391",
-                "endtime": "1592855191",
-                "stakeAmount": "10000",
-                "nodeID": "NodeID-62T5AAwKdFMNi7Gm193A6zyJhVscRfuhP"
-            },
-            {
-                "startTime": "1591387125",
-                "endtime": "1622923025",
-                "stakeAmount": "20000000000000",
-                "nodeID": "NodeID-HGZ8ae74J3odT8ESreAdCtdnvWG1J4X5n"
+                "startTime": "1600368523",
+                "endTime": "1602960342",
+                "stakeAmount": "20000000000",
+                "nodeID": "NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg",
+                "rewardOwner": {
+                    "locktime": "0",
+                    "threshold": "1",
+                    "addresses": [
+                        "P-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u"
+                    ]
+                },
+                "potentialReward": "11743144774"
             }
         ]
     },
@@ -773,23 +819,35 @@ Each validator is not currently validating the Subnet but will in the future.
 platform.getPendingValidators({subnetID: string}) ->
 {
     validators: []{
-        startTime: int,
-        endTime: int,
-        weight: int, (optional)
-        stakeAmount: int, (optional)
+        startTime: string,
+        endTime: string,
+        stakeAmount: string, (optional)
+        nodeID: string
+        delegationFee: string,
+        connected: bool,
+        weight: string, (optional)
+    },
+    delegators: []{
+        startTime: string,
+        endTime: string,
+        stakeAmount: string,
         nodeID: string
     }
 }
 ```
-
 * `subnetID` is the subnet whose current validators are returned. If omitted, returns the current validators of the Primary Network.
-* `startTime` is the Unix time when the validator starts validating the Subnet.
-* `endTime` is the Unix time when the validator stops validating the Subnet.
-* `weight` is the validator's weight when sampling validators.
-  Omitted if `subnetID` is the Primary Network.
-* `stakeAmount` is the amount of nAVAX this validator staked.
-  Omitted if `subnetID` is not the Primary Network.
-* `nodeID` is the validator's node ID.
+* `validators`:
+    * `startTime` is the Unix time when the validator starts validating the Subnet.
+    * `endTime` is the Unix time when the validator stops validating the Subnet.
+    * `stakeAmount` is the amount of nAVAX this validator staked. Omitted if `subnetID` is not the Primary Network.
+    * `nodeID` is the validator's node ID.
+    * `connected` if the node is connected.
+    * `weight` is the validator's weight when sampling validators. Omitted if `subnetID` is the Primary Network.
+* `delegators`:
+    * `startTime` is the Unix time when the delegator starts.
+    * `endTime` is the Unix time when the delegator stops.
+    * `stakeAmount` is the amount of nAVAX this delegator staked. Omitted if `subnetID` is not the Primary Network.
+    * `nodeID` is the validating node's node ID.
 
 #### Example Call
 
@@ -810,11 +868,21 @@ curl -X POST --data '{
     "result": {
         "validators": [
             {
-                "startTime": "1592400591",
-                "endtime": "1622923025",
-                "stakeAmount": "10000",
-                "nodeID": "NodeID-DpL8PTsrjtLzv5J8LL3D2A6YcnCTqrNH9"
-            },
+                "startTime": "1600368632",
+                "endTime": "1602960455",
+                "stakeAmount": "200000000000",
+                "nodeID": "NodeID-5mb46qkSBj81k9g9e4VFjGGSbaaSLFRzD",
+                "delegationFee": "10.0000",
+                "connected": false
+            }
+        ],
+        "delegators": [
+            {
+                "startTime": "1600368523",
+                "endTime": "1602960342",
+                "stakeAmount": "20000000000",
+                "nodeID": "NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg"
+            }
         ]
     },
     "id": 1
