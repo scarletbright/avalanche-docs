@@ -216,6 +216,7 @@ avm.createFixedCapAsset({
         address: string,
         amount: int
     },
+    from: []string, (optional)
     changeAddr: string, (optional)
     username: string,  
     password: string
@@ -229,6 +230,7 @@ avm.createFixedCapAsset({
 * `name` is a human-readable name for the asset. Not necessarily unique.
 * `symbol` is a shorthand symbol for the asset. Between 0 and 4 characters. Not necessarily unique. May be omitted.
 * `denomination` determines how balances of this asset are displayed by user interfaces. If `denomination` is 0, 100 units of this asset are displayed as 100. If `denomination` is 1, 100 units of this asset are displayed as 10.0. If `denomination` is 2, 100 units of this asset are displays as .100, etc. Defaults to 0.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` and `password` denote the user paying the transaction fee.
 * Each element in `initialHolders` specifies that `address` holds `amount` units of the asset at genesis.
@@ -254,6 +256,7 @@ curl -X POST --data '{
                 "amount":50000
             }
         ],
+        "from":["X-avax1s65kep4smpr9cnf6uh9cuuud4ndm2z4jguj3gp"],
         "changeAddr":"X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
         "username":"myUsername",
         "password":"myPassword"
@@ -285,6 +288,7 @@ avm.createMintTx({
     amount: int,
     assetID: string,
     to: string,
+    from: []string, (optional)
     changeAddr: string, (optional)
     username: string,
     password: string
@@ -296,6 +300,7 @@ avm.createMintTx({
 ```
 
 * `amount` units of `assetID` will be created and controlled by address `to`.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` is the user that pays the transaction fee. `username` must hold keys giving it permission to mint more of this asset. That is, it must control at least *threshold* keys for one of the minter sets.
 * `txID` is this transaction's ID.
@@ -312,6 +317,7 @@ curl -X POST --data '{
         "amount":10000000,
         "assetID":"i1EqsthjiFTxunrj8WD2xFSrQ5p2siEKQacmCCB5qBFVqfSL2",
         "to":"X-avax1ap39w4a7fk0au083rrmnhc2pqk20yjt6s3gzkx",
+        "from":["X-avax1s65kep4smpr9cnf6uh9cuuud4ndm2z4jguj3gp"],
         "changeAddr":"X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
         "username":"USERNAME GOES HERE",
         "password":"PASSWORD GOES HERE"
@@ -350,6 +356,7 @@ avm.createVariableCapAsset({
         minters: []string,
         threshold: int
     },
+    from: []string, (optional)
     changeAddr: string, (optional)
     username: string,  
     password: string
@@ -365,6 +372,7 @@ avm.createVariableCapAsset({
 * `denomination` determines how balances of this asset are displayed by user interfaces. If denomination is 0, 100 units of this asset are displayed as 100. If denomination is 1, 100 units of this asset are displayed as 10.0. If denomination is 2, 100 units of this asset are displays as .100, etc.
 * `minterSets` is a list where each element specifies that `threshold` of the addresses
   in `minters` may together mint more of the asset by signing a minting transaction.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` pays the transaction fee.
 * `assetID` is the ID of the new asset.
@@ -395,6 +403,7 @@ curl -X POST --data '{
                 "threshold": 2
             }
         ],
+        "from":["X-avax1s65kep4smpr9cnf6uh9cuuud4ndm2z4jguj3gp"],
         "changeAddr":"X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
         "username":"myUsername",
         "password":"myPassword"
@@ -426,6 +435,7 @@ After calling this method, you must call `importAVAX` on the other chain to comp
 avm.exportAVAX({
     to: string,
     amount: int,
+    from: []string, (optional)
     changeAddr: string, (optional)
     username: string,
     password:string,
@@ -438,6 +448,7 @@ avm.exportAVAX({
 
 * `to` is the P-Chain address the AVAX is sent to.
 * `amount` is the amount of nAVAX to send.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * The AVAX is sent from addresses controlled by `username`
 
@@ -451,6 +462,7 @@ curl -X POST --data '{
     "params" :{
         "to":"P-avax1q9c6ltuxpsqz7ul8j0h0d0ha439qt70sr3x2m0",
         "amount": 500,
+        "from":["X-avax1s65kep4smpr9cnf6uh9cuuud4ndm2z4jguj3gp"],
         "changeAddr":"X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
         "username":"myUsername",
         "password":"myPassword"
@@ -1027,6 +1039,7 @@ avm.Send({
     amount: int,
     assetID: string,
     to: string,
+    from: []string, (optional)
     changeAddr: string, (optional)
     memo: string, (optional)
     username: string,
@@ -1038,6 +1051,7 @@ avm.Send({
   `amount` is denominated in the smallest increment of the asset.
   For AVAX this is 1 nAVAX (one billionth of 1 AVAX.)
 * You can attach a `memo`, whose length can be up to 256 bytes.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * The asset is sent from addresses controlled by user `username`.
   (Of course, that user will need to hold at least the balance of the asset being sent.)
@@ -1053,6 +1067,7 @@ curl -X POST --data '{
         "assetID"   : "AVAX",
         "amount"    : 10000,
         "to"        : "X-avax1yzt57wd8me6xmy3t42lz8m5lg6yruy79m6whsf",
+        "from":["X-avax1s65kep4smpr9cnf6uh9cuuud4ndm2z4jguj3gp"],
         "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
         "memo"      : "hi, mom!",
         "username"  : "userThatControlsAtLeast10000OfThisAsset",

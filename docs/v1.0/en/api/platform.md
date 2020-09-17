@@ -35,6 +35,7 @@ platform.addDelegator(
         endTime: int,
         stakeAmount: int,
         rewardAddress: string,
+        from: []string, (optional)
         changeAddr: string, (optional)
         username: string,
         password: string
@@ -51,6 +52,7 @@ platform.addDelegator(
 * `endTime` is the Unix time when the delegator stops delegating (and staked AVAX is returned).
 * `stakeAmount` is the amount of nAVAX the delegator is staking.
 * `rewardAddress` is the address the validator reward goes to, if there is one.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` is the user that pays the transaction fee.
 * `password` is `username`'s password.
@@ -68,6 +70,7 @@ curl -X POST --data '{
         "startTime":1594102400,
         "endTime":1604102400,
         "stakeAmount":100000,
+        "from": ["P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy"],
         "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "username":"username",
         "password":"password"
@@ -103,6 +106,7 @@ platform.addValidator(
         endTime: int,
         stakeAmount: int,
         rewardAddress: string,
+        from: []string, (optional)
         changeAddr: string, (optional)
         delegationFeeRate: float,
         username: string,
@@ -120,6 +124,7 @@ platform.addValidator(
 * `endTime` is the Unix time when the validator stops validating the Primary Network (and staked AVAX is returned).
 * `stakeAmount` is the amount of nAVAX the validator is staking.
 * `rewardAddress` is the address the validator reward will go to, if there is one.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `delegationFeeRate` is the percent fee this validator charges when others delegate stake to them.
   Up to 4 decimal places allowed; additional decimal places are ignored. Must be between 0 and 100, inclusive.
@@ -140,6 +145,7 @@ curl -X POST --data '{
     "params": {
         "nodeID":"NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
         "rewardAddress":"P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy",
+        "from": ["P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy"],
         "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "startTime":'$(date --date="10 minutes" +%s)',
         "endTime":'$(date --date="2 days" +%s)',
@@ -180,6 +186,7 @@ platform.addSubnetValidator(
         startTime: int,
         endTime: int,
         weight: int,
+        from: []string, (optional)
         changeAddr: string, (optional)
         username: string,
         password: string
@@ -196,6 +203,7 @@ platform.addSubnetValidator(
 * `startTime` is the unix time when the validator starts validating the subnet.
 * `endTime` is the unix time when the validator stops validating the subnet.
 * `weight` is the validator's weight used for sampling.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` is the user that pays the transaction fee.
 * `password` is `username`'s password.
@@ -213,6 +221,7 @@ curl -X POST --data '{
         "startTime":1583524047,
         "endTime":1604102399,
         "weight":1,
+        "from": ["P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy"],
         "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "username":"username",
         "password":"password"
@@ -287,6 +296,7 @@ platform.createBlockchain(
         vmID: string,
         name: string,
         genesisData: string,
+        from: []string, (optional)
         changeAddr: string, (optional)
         username: string,
         password:string
@@ -304,7 +314,8 @@ platform.createBlockchain(
   Can also be an alias of the Virtual Machine.
 * `name` is a human-readable name for the new blockchain. Not necessarily unique.
 * `genesisData` is the base 58 (with checksum) representation of the genesis state of the new blockchain.
-  Virtual Machines should have a static API method named `buildGenesis` that can be used to generate `genesisData`.
+  Virtual Machines should have a static API method named `buildGenesis` that can be used to generate `genesisData`
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` is the user that pays the transaction fee. This user must have a sufficient number of the subnet's control keys.
 * `password` is `username`'s password.
@@ -324,6 +335,7 @@ curl -X POST --data '{
         "SubnetID":"2bRCr6B4MiEfSjidDwxDpdCyviwnfUVqB2HGwhm947w9YYqb7r",
         "name":"My new timestamp",
         "genesisData": "45oj4CqFViNHUtBxJ55TZfqaVAXFwMRMj2XkHVqUYjJYoTaEM",
+        "from": ["P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy"],
         "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "username":"username",
         "password":"password"
@@ -358,6 +370,7 @@ platform.createSubnet(
     {
         controlKeys: []string,
         threshold: int,
+        from: []string, (optional)
         changeAddr: string, (optional)
         username: string,
         password: string
@@ -369,7 +382,8 @@ platform.createSubnet(
 }
 ```
 
-* In order to create add a validator to this subnet, `threshold` signatures are required from the addresses in `controlKeys`.
+* In order to create add a validator to this subnet, `threshold` signatures are required from the addresses in `controlKeys`
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` is the user that pays the transaction fee.
 * `password` is `username`'s password.
@@ -386,6 +400,7 @@ curl -X POST --data '{
             "P-avax165mp4efnel8rkdeqe5ztggspmw4v40j7pfjlhu"
         ],
         "threshold":2,
+        "from": ["P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy"],
         "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "username":"username",
         "password":"password"
@@ -417,6 +432,7 @@ After issuing this transaction, you must call the X-Chain's [`importAVAX`](./avm
 platform.exportAVAX(
     {
         amount: int,
+        from: []string, (optional)
         to: string,
         changeAddr: string, (optional)
         username: string,
@@ -430,7 +446,8 @@ platform.exportAVAX(
 ```
 
 * `amount` is the amount of nAVAX to send.
-* `to` is the address on the X-Chain to send the AVAX to.
+* `to` is the address on the X-Chain to send the AVAX to
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` is the user sending the AVAX and paying the transaction fee.
 * `password` is `username`'s password.
@@ -445,6 +462,7 @@ curl -X POST --data '{
     "params": {
         "to":"X-avax1yv8cwj9kq3527feemtmh5gkvezna5xys08mxet",
         "amount":1,
+        "from": ["P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy"],
         "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "username":"username",
         "password":"password"
@@ -1193,9 +1211,10 @@ Before this method is called, you must call the X-Chain's [`exportAVAX`](./avm.m
 ```go
 platform.importAVAX(
     {
+        from: []string, (optional)
         to: string,
-        sourceChain: string,
         changeAddr: string, (optional)
+        sourceChain: string,
         username: string,
         password: string
     }
@@ -1210,6 +1229,7 @@ platform.importAVAX(
   This must be the same as the `to` argument in the corresponding call to the X-Chain's `exportAVAX`.
 * `sourceChain` is the ID or alias of the chain the AVAX is being imported from.
   To import funds from the X-Chain, use `"X"`.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` is the user that controls the address specified in `to`.
 * `password` is `username`'s password.
@@ -1221,8 +1241,9 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.importAVAX",
     "params": {
-        "to":"P-avax1apzq2zt0uaaatum3wdz83u4z7dv4st7l5m5n2a",
         "sourceChain":"X",
+        "to":"P-avax1apzq2zt0uaaatum3wdz83u4z7dv4st7l5m5n2a",
+        "from": ["P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy"],
         "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "username":"bob",
         "password":"loblaw"
