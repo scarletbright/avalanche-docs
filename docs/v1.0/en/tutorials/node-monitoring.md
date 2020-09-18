@@ -17,10 +17,6 @@ We will use:
 * AvalancheGo's [metrics API](https://docs.avax.network/v1.0/en/api/metrics/) to get information about the node
 * [Grafana](https://grafana.com/) to visualize data on a dashboard.
 
-When we're done, it should look something like this:
-
-![Dashboard](/images/dashoboard.png?raw=true "Dashboard")
-
 Prerequisites:
  * A running AvalancheGo node
  * Shell access to the machine running the node
@@ -244,7 +240,7 @@ We now need to define an appropriate Prometheus jobs. Let's edit Prometheus conf
 Do `sudo nano /etc/prometheus/prometheus.yml` (or open that file in the text editor of your choice) and append to the end:
 
 ```
-   - job_name: 'ava-test-node'
+   - job_name: 'avalanchego'
     metrics_path: '/ext/metrics'
     static_configs:
     - targets: ['<your-host-ip>:9650']
@@ -252,11 +248,11 @@ Do `sudo nano /etc/prometheus/prometheus.yml` (or open that file in the text edi
         network: 'ava'
         group: 'ava'
 
-  - job_name: ubuntu-raspi4
+  - job_name: 'avalanchego-machine'
     static_configs:
       - targets: ['<your-host-ip>:9100']
         labels:
-          alias: raspi4
+          alias: 'machine'
 ```
 
 **Indentation is important**.
@@ -272,9 +268,10 @@ Check Prometheus web interface on http://\<your-host-ip\>:9090/targets. You shou
 ![Targets](/images/targets.png?raw=true "Dashboard")
 
 Open Grafana; you can now create a dashboard using any of those sources.
-You can also use the preconfigured dashboard provided here:
+You can also use these preconfigured dashboards:
 
-[AvalancheGo Dashboard](dashboards/avalanchego-dashboard.json)
+* [General AvalancheGo Dashboard](https://gist.github.com/danlaine/0f8899642cbcc157eded5ee28e6fc620)
+* [Machine Metrics Dashboard](https://gist.github.com/danlaine/542aa896020923c2e20b68ccfc74135f)
 
 To import the preconfigured dashboard:
 
