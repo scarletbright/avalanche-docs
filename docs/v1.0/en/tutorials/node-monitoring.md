@@ -113,7 +113,7 @@ Sep 13 15:00:04 ubuntu prometheus[1767]: level=info ts=2020-09-13T13:00:04.776Z 
 ...
 ```
 
-You can also check Prometheus web interface, available on http://your-node-host-ip:9090/ (you may need to do `sudo ufw allow 9090/tcp` if the firewall is on).
+You can also check Prometheus web interface, available on `http://your-node-host-ip:9090/` (you may need to do `sudo ufw allow 9090/tcp` if the firewall is on).
  
 ## Install Grafana
 To set up Grafana project repositories with Ubuntu:
@@ -145,7 +145,7 @@ To make sure it's running properly:
 sudo systemctl status grafana-server
 ```
 
-which should show grafana as `active`. Grafana should now be available at http://your-node-host-ip:3000/ (again, open the port if needed). 
+which should show grafana as `active`. Grafana should now be available at `http://your-node-host-ip:3000/` (again, open the port if needed). 
 Log in with username/password admin/admin and set up a new, secure password.** Now we need to connect Grafana to our data source, Prometheus.
 
 On Grafana's web interface:
@@ -153,7 +153,7 @@ On Grafana's web interface:
 * Go to Configuration on the left-side menu and select Data Sources.
 * Click Add Data Source
 * Select Prometheus.
-* In the form, enter the name (Prometheus will do), and http://localhost:9090 as the URL. 
+* In the form, enter the name (Prometheus will do), and `http://localhost:9090` as the URL. 
 * Click `Save & Test`
 * Check for "Data source is working" green message.
   
@@ -264,7 +264,7 @@ Save the config file and restart Prometheus:
 
 `sudo systemctl restart prometheus`
 
-Check Prometheus web interface on http://your-node-host-ip:9090/targets. You should see three targets enabled:
+Check Prometheus web interface on `http://your-node-host-ip:9090/targets`. You should see three targets enabled:
 
 * Prometheus
 * avalanchego
