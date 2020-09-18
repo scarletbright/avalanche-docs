@@ -1310,7 +1310,7 @@ A StakeableLockIn is a staked and locked input.
 A StakeableLockIn contains a `TypeID`, `Locktime` and `TransferableIn`.
 
 - **`TypeID`** is the ID for this output type. It is `0x00000016`.
-- **`Locktime`** is a long that contains the unix timestamp that this input can be spent after. The unix timestamp is specific to the second.
+- **`Locktime`** is a long that contains the unix timestamp before which the input can be consumed only to stake. The unix timestamp is specific to the second.
 - **`TransferableIn`** is a transferable input object.
 
 #### Gantt StakeableLockIn Specification
@@ -1384,7 +1384,7 @@ A StakeableLockOut is a staked and locked output.
 A StakeableLockOut contains a `TypeID`, `Locktime` and `TransferableOut`.
 
 - **`TypeID`** is the ID for this output type. It is `0x00000017`.
-- **`Locktime`** is a long that contains the unix timestamp that this output can be spent after. The unix timestamp is specific to the second.
+- **`Locktime`** is a long that contains the unix timestamp before which the output can be consumed only to stake. The unix timestamp is specific to the second.
 - **`transferableout`**: "Example SECP256K1 Transfer Output as defined above"
 
 #### Gantt StakeableLockOut Specification
