@@ -35,11 +35,17 @@ health.getLiveness() -> {
 }
 ```
 
-* `heartbeat` is the unix timestamp of the last time the network handled a message.
-* `timestamp` is the timestamp of the last health check.
-* `duration` is the execution duration of the last health check in milliseconds.
-* `contiguousFailures` is the number of fails that occurred in a row.
-* `timeOfFirstFailure` is the time of the initial transitional failure.
+* `chains.default.bootstrapped`
+     * `timestamp` is the unix timestamp of the when the node was bootstrapped.
+     * `duration` is the duration the node has been up.
+     * `contiguousFailures` is the number of contiguous failures.
+     * `timeOfFirstFailure` is the time of the first failure.
+* `network.validators.heartbeat`
+    * `heartbeat` is the unix timestamp of the last time the network handled a message.
+    * `timestamp` is the timestamp of the last health check.
+    * `duration` is the execution duration of the last health check in milliseconds.
+    * `contiguousFailures` is the number of fails that occurred in a row.
+    * `timeOfFirstFailure` is the time of the initial transitional failure.
 
 More information on these measurements can be found in the documentation for the [go-sundheit](https://github.com/AppsFlyer/go-sundheit) library.
 
@@ -56,21 +62,27 @@ curl -X POST --data '{
 
 ```json
 {
-   "jsonrpc":"2.0",
-   "result":{
-      "checks":{
-         "network.validators.heartbeat":{
-            "message":{
-               "heartbeat":1591041377
+    "jsonrpc": "2.0",
+    "result": {
+        "checks": {
+            "chains.default.bootstrapped": {
+                "timestamp": "2020-09-17T21:27:31.776773-07:00",
+                "duration": 5891,
+                "contiguousFailures": 0,
+                "timeOfFirstFailure": null
             },
-            "timestamp":"2020-06-01T15:56:18.554202-04:00",
-            "duration":23201,
-            "contiguousFailures":0,
-            "timeOfFirstFailure":null
-         }
-      },
-      "healthy":true
-   },
-   "id":1
+            "network.validators.heartbeat": {
+                "message": {
+                    "heartbeat": 1600403244
+                },
+                "timestamp": "2020-09-17T21:27:31.776793-07:00",
+                "duration": 4000,
+                "contiguousFailures": 0,
+                "timeOfFirstFailure": null
+            }
+        },
+        "healthy": true
+    },
+    "id": 1
 }
 ```

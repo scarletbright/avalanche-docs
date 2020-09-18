@@ -5,7 +5,7 @@ This API allows clients to create and trade assets on the X-Chain and other inst
 
 ## Format
 
-This API uses the `json 2.0` API format.
+This API uses the `json 2.0` RPC format. For more information on making JSON RPC calls, see [here.](./issuing-api-calls.md)
 
 ## Endpoints
 
