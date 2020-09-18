@@ -7,26 +7,35 @@ You can reach him on [Avalanche's Discord](https://discordapp.com/invite/Ja3CSs7
 
 ## Introduction
 
-This tutorial will show how to set up infrastructure to monitor an instance of [AvalancheGo](https://github.com/ava-labs/avalanchego), a node of [Avalanche](https://docs.avax.network/) network. We will be using [Prometheus](https://prometheus.io/) to gather and store data, [node_exporter](https://github.com/prometheus/node_exporter) to get information about the machine, AvalancheGo's [metric API](https://docs.avax.network/v1.0/en/api/metrics/) to get information about the node, and [Grafana](https://grafana.com/) to visualize it in a dashboard.
+This tutorial assumes you have Ubuntu 18.04 or 20.04 running on your node. A Mac OS X version of this tutorial will come later.
+
+This tutorial will show how to set up infrastructure to monitor an instance of [AvalancheGo](https://github.com/ava-labs/avalanchego).
+We will use:
+
+* [Prometheus](https://prometheus.io/) to gather and store data
+* [node_exporter](https://github.com/prometheus/node_exporter) to get information about the machine, 
+* AvalancheGo's [metrics API](https://docs.avax.network/v1.0/en/api/metrics/) to get information about the node
+* [Grafana](https://grafana.com/) to visualize data on a dashboard.
 
 When we're done, it should look something like this:
 
 ![Dashboard](/images/dashoboard.png?raw=true "Dashboard")
 
 Prerequisites:
- - a running AvalancheGo node
- - shell access to the machine running the node
- - administrator privileges on the machine
+ * A running AvalancheGo node
+ * Shell access to the machine running the node
+ * Administrator privileges on the machine
  
-Tutorial assumes you have Ubuntu 18.04 or 20.04 running the node. Mac OS X version of the tutorial will come later.
  
 ## Set up Prometheus
 
 First we need to add a system user account and create directories (you will need superuser credentials):
+
 ```
 sudo useradd -M -r -s /bin/false prometheus
 sudo mkdir /etc/prometheus /var/lib/prometheus
 ```
+
 Next, get the link to latest version of Prometheus from the [downloads page](https://prometheus.io/download/) (make sure you select the appropriate processor architecture) and use wget to download it, and tar to unpack the archive:
 
 ```
@@ -35,7 +44,9 @@ wget https://github.com/prometheus/prometheus/releases/download/v2.21.0/promethe
 tar xvf prometheus-2.21.0.linux-amd64.tar.gz
 cd prometheus-2.21.0.linux-amd64
 ```
+
 Next, we need to move the binaries, set ownership and move config files to appropriate locations:
+
 ```
 sudo cp {prometheus,promtool} /usr/local/bin/
 sudo chown prometheus:prometheus /usr/local/bin/{prometheus,promtool}
@@ -45,10 +56,11 @@ sudo cp -r {consoles,console_libraries} /etc/prometheus/
 sudo cp prometheus.yml /etc/prometheus/
 ```
 
-Directory `/etc/prometheus` is used for configuration, and `/var/lib/prometheus` for the data. Prometheus is now ready to run, but we should make it run as a system service so it runs automatically when the machine restarts. First, we create the system service:
+`/etc/prometheus` is used for configuration, and `/var/lib/prometheus` for data.
 
+Let's set up Prometheus to run as a system service.
 Do `sudo nano /etc/systemd/system/prometheus.service` (or open that file in the text editor of your choice)
-and in the editor enter the following configuration:
+and enter the following configuration:
 
 ```
 [Unit]
@@ -75,8 +87,6 @@ WantedBy=multi-user.target
 Save the file. Now we can run Prometheus as a system service:
 
 ```
-for i in rules rules.d files_sd; do sudo chown -R prometheus:prometheus /etc/prometheus/${i}; done
-for i in rules rules.d files_sd; do sudo chmod -R 775 /etc/prometheus/${i}; done
 sudo systemctl daemon-reload
 sudo systemctl start prometheus
 sudo systemctl enable prometheus
@@ -106,10 +116,9 @@ Sep 13 15:00:04 ubuntu prometheus[1767]: level=info ts=2020-09-13T13:00:04.776Z 
 ...
 ```
 
-You can also check Prometheus web interface, available on http://\<your-node-host-ip\>:9090/ (you may need to do `sudo ufw allow 9090/tcp` if the firewall is on).
+You can also check Prometheus web interface, available on http://<your-node-host-ip>:9090/ (you may need to do `sudo ufw allow 9090/tcp` if the firewall is on).
  
 # Install Grafana
-
 To set up Grafana project repositories with Ubuntu:
 
 ```
@@ -139,10 +148,11 @@ To make sure it's running properly:
 sudo systemctl status grafana-server
 ```
 
-which should show grafana as `active`. Grafana should now be available at http://\<your-node-host-ip\>:3000/ (again, open the port if needed). 
-**Log in as admin/admin, and set up a new, secure password.**
-Now we need to connect Grafana to our data source, Prometheus.
-On Grafana web interface:
+which should show grafana as `active`. Grafana should now be available at http://<your-node-host-ip>:3000/ (again, open the port if needed). 
+Log in with username/password admin/admin and set up a new, secure password.** Now we need to connect Grafana to our data source, Prometheus.
+
+On Grafana's web interface:
+
 * Go to Configuration on the left-side menu and select Data Sources.
 * Click Add Data Source
 * Select Prometheus.
@@ -266,7 +276,8 @@ You can also use the preconfigured dashboard provided here:
 
 [AvalancheGo Dashboard](dashboards/avalanchego-dashboard.json)
 
-To import the preconfigured dashboard
+To import the preconfigured dashboard:
+
 * Open Grafana's web interface
 * Click `+` on the left toolbar
 * Select `Import JSON` and then upload the JSON file
