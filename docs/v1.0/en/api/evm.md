@@ -721,7 +721,7 @@ curl -X POST --data '{
 
 ## AVAX RPC endpoints
 
-### ava.exportAVAX
+### avax.exportAVAX
 
 Send AVAX from the C-Chain to the X Chain.  
 After calling this method, you must call `importAVAX` on the X Chain to complete the transfer.
@@ -729,7 +729,7 @@ After calling this method, you must call `importAVAX` on the X Chain to complete
 #### Signature
 
 ```go
-ava.exportAVAX({
+avax.exportAVAX({
     to: string,
     amount: int,
     username: string,
@@ -747,7 +747,7 @@ ava.exportAVAX({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"ava.exportAVAX",
+    "method" :"avax.exportAVAX",
     "params" :{
         "to":"X-avax1q9c6ltuxpsqz7ul8j0h0d0ha439qt70sr3x2m0",
         "amount": 500,
@@ -769,15 +769,15 @@ curl -X POST --data '{
 }
 ```
 
-### ava.exportKey
+### avax.exportKey
 
 Get the private key that controls a given address.  
-The returned private key can be added to a user with `ava.importKey`.
+The returned private key can be added to a user with `avax.importKey`.
 
 #### Signature
 
 ```go
-ava.exportKey({
+avax.exportKey({
     username: string,
     password:string,
     address:string
@@ -793,7 +793,7 @@ ava.exportKey({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"ava.exportKey",
+    "method" :"avax.exportKey",
     "params" :{
         "username" :"myUsername",
         "password":"myPassword",
@@ -814,7 +814,7 @@ curl -X POST --data '{
 }}
 ```
 
-### ava.importAVAX
+### avax.importAVAX
 
 Finalize a transfer of AVAX from the X-Chain to the C-Chain.
 Before this method is called, you must call the X-Chain's [`exportAVAX`](./avm.md#avmexportavax) method to initiate the transfer.
@@ -822,7 +822,7 @@ Before this method is called, you must call the X-Chain's [`exportAVAX`](./avm.m
 #### Signature
 
 ```go
-ava.importAVAX({
+avax.importAVAX({
     to: string,
     sourceChain: string,
     username: string,
@@ -842,7 +842,7 @@ ava.importAVAX({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"ava.importAVAX",
+    "method" :"avax.importAVAX",
     "params" :{
         "to":"0x4b879aff6b3d24352Ac1985c1F45BA4c3493A398",
         "sourceChain":"X",
@@ -864,14 +864,14 @@ curl -X POST --data '{
 }
 ```
 
-### ava.importKey
+### avax.importKey
 
 Give a user control over an address by providing the private key that controls the address.
 
 #### Signature
 
 ```go
-ava.importKey({
+avax.importKey({
     username: string,
     password:string,
     privateKey:string
@@ -886,7 +886,7 @@ ava.importKey({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"ava.importKey",
+    "method" :"avax.importKey",
     "params" :{
         "username" :"myUsername",
         "password":"myPassword",
