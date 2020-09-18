@@ -18,9 +18,10 @@ We will use:
 * [Grafana](https://grafana.com/) to visualize data on a dashboard.
 
 Prerequisites:
- * A running AvalancheGo node
- * Shell access to the machine running the node
- * Administrator privileges on the machine
+
+* A running AvalancheGo node
+* Shell access to the machine running the node
+* Administrator privileges on the machine
  
  
 ## Set up Prometheus
@@ -112,9 +113,9 @@ Sep 13 15:00:04 ubuntu prometheus[1767]: level=info ts=2020-09-13T13:00:04.776Z 
 ...
 ```
 
-You can also check Prometheus web interface, available on http://<your-node-host-ip>:9090/ (you may need to do `sudo ufw allow 9090/tcp` if the firewall is on).
+You can also check Prometheus web interface, available on http://\<your-node-host-ip\>:9090/ (you may need to do `sudo ufw allow 9090/tcp` if the firewall is on).
  
-# Install Grafana
+## Install Grafana
 To set up Grafana project repositories with Ubuntu:
 
 ```
@@ -144,7 +145,7 @@ To make sure it's running properly:
 sudo systemctl status grafana-server
 ```
 
-which should show grafana as `active`. Grafana should now be available at http://<your-node-host-ip>:3000/ (again, open the port if needed). 
+which should show grafana as `active`. Grafana should now be available at http://\<your-node-host-ip\>:3000/ (again, open the port if needed). 
 Log in with username/password admin/admin and set up a new, secure password.** Now we need to connect Grafana to our data source, Prometheus.
 
 On Grafana's web interface:
@@ -156,7 +157,7 @@ On Grafana's web interface:
 * Click `Save & Test`
 * Check for "Data source is working" green message.
   
-# Setting up node_exporter
+## Set up node_exporter
 
 In addition to metrics from AvalancheGo, let's set up up monitoring of the machine itself, so we can check CPU, memory, network and disk usage and be aware of any anomalies.
 For that, we will use node_exporter, a Prometheus plugin. 
@@ -229,7 +230,7 @@ sudo systemctl status node_exporter
 
 Now we're ready to tie it all together.
 
-# Configure AvalancheGo and node_exporter Prometheus jobs
+## Configure AvalancheGo and node_exporter Prometheus jobs
 
 Make sure that your AvalancheGo node is running with appropriate [command line arguments](https://docs.avax.network/v1.0/en/references/command-line-interface/).
 The metrics API must be enabled (by default, it is).
@@ -263,9 +264,11 @@ Save the config file and restart Prometheus:
 
 `sudo systemctl restart prometheus`
 
-Check Prometheus web interface on http://\<your-host-ip\>:9090/targets. You should see three targets enabled:
+Check Prometheus web interface on http://<\your-node-host-ip\>:9090/targets. You should see three targets enabled:
 
-![Targets](/images/targets.png?raw=true "Dashboard")
+* Prometheus
+* avalanchego
+* avalanchego-machine
 
 Open Grafana; you can now create a dashboard using any of those sources.
 You can also use these preconfigured dashboards:
@@ -281,7 +284,7 @@ To import the preconfigured dashboard:
 
 That's it! You may now marvel at all the things your node does. Woohoo!
 
-# Caveat: Security
+## Caveat: Security
 
 The system as described here **should not** be opened to the public internet.
 Neither Prometheus, nor Grafana as shown here are hardened against unauthorized access. 
@@ -290,8 +293,7 @@ Setting that up is beyond the scope of this tutorial, but exercise caution.
 Bad security practices could lead to attackers gaining control over your node!
 It is your responsibility to make sure proper security practices are followd.
 
-# Contributions
+## Contributions
 
 Basis for the Grafana dashboard was taken from the good guys at [ColmenaLabs](https://blog.colmenalabs.org/index.html), which is apparently not available any more.
-
-If you have ideas and suggestions on how to improve anything, please say so, post an issue, or make a pull request.
+If you have ideas and suggestions on how to improve this tutorial, please say so, post an issue, or make a pull request.
