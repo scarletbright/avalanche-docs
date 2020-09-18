@@ -36,14 +36,14 @@ health.getLiveness() -> {
 ```
 
 * `chains.default.bootstrapped`
-     * `timestamp` is the unix timestamp of the when the node was bootstrapped.
-     * `duration` is the duration the node has been up.
-     * `contiguousFailures` is the number of contiguous failures.
-     * `timeOfFirstFailure` is the time of the first failure.
+     * `timestamp` is the timestamp of the last health check.
+     * `duration` is the execution duration of the last health check in nanoseconds.
+    * `contiguousFailures` is the number of fails that occurred in a row.
+    * `timeOfFirstFailure` is the time of the initial transitional failure.
 * `network.validators.heartbeat`
     * `heartbeat` is the unix timestamp of the last time the network handled a message.
     * `timestamp` is the timestamp of the last health check.
-    * `duration` is the execution duration of the last health check in milliseconds.
+    * `duration` is the execution duration of the last health check in nanoseconds.
     * `contiguousFailures` is the number of fails that occurred in a row.
     * `timeOfFirstFailure` is the time of the initial transitional failure.
 
