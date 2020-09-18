@@ -1527,7 +1527,7 @@ Get the minimum staking amount of the network.
 #### Signature 
 
 ```go
-platform.getMinStake() -> {minStake:uint64}
+platform.getMinStake() -> {minValidatorStake:uint64, minDelegatorStake:uint64}
 ```
 
 #### Example Call
@@ -1547,7 +1547,8 @@ curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
     "result" :{
-        "minStake": "5000000"
+        "minValidatorStake": "2000000000000",
+        "minDelegatorStake": "25000000000"
     }
 }
 ```
