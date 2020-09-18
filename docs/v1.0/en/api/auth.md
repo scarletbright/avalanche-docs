@@ -18,6 +18,9 @@ Of course, authorization token creation must be permissioned.
 If you run your node with `--api-auth-required`, you must also specify an authorization token password with argument `--api-auth-password`.
 You must provide this password in order to create/revoke authorization tokens.
 
+Note that if you run your node with `--api-auth-required` then some tools like Metamask may not be able to make API calls to your node 
+because they don't have an auth token.
+
 ## Format
 
 This API uses the `json 2.0` RPC format. For more information on making JSON RPC calls, see [here.](./issuing-api-calls.md)
