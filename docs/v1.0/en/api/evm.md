@@ -164,7 +164,7 @@ curl -X POST --data '{
 }
 ```
 
-### Getting an account's balance
+### Getting an account's AVAX balance
 
 #### Example Call
 
@@ -179,7 +179,7 @@ curl -X POST --data '{
     "id": 1
 }' -H 'Content-Type: application/json' \
    -H 'cache-control: no-cache' \
-   127.0.0.1:9650/ext/bc/C/rpc 
+   127.0.0.1:9650/ext/bc/C/rpc
 ```
 
 #### Example Response
@@ -189,6 +189,35 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "id": 1,
     "result": "0x0"
+}
+```
+
+### Getting an account's non-AVAX balance
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_getAssetBalance",
+    "params": [
+        "0x820891f8b95daf5ea7d7ce7667e6bba2dd5c5594",
+        "latest",
+        "2nzgmhZLuVq8jc7NNu2eahkKwoJcbFWXWJCxHBVWAJEZkhquoK"
+    ],
+    "id": 1
+}' -H 'Content-Type: application/json' \
+   -H 'cache-control: no-cache' \
+   127.0.0.1:9650/ext/bc/C/rpc
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": "0x12a05f200"
 }
 ```
 
@@ -721,6 +750,57 @@ curl -X POST --data '{
 
 ## AVAX RPC endpoints
 
+### avax.export
+
+Send a non-AVAX asset from the C-Chain to the X Chain.  
+After calling this method, you must call `import` on the X Chain to complete the transfer.
+
+#### Signature
+
+```go
+avax.export({
+    to: string,
+    amount: int,
+    assetID: string,
+    username: string,
+    password:string,
+}) -> {txID: string}
+```
+
+* `to` is the X-Chain address the AVAX is sent to.
+* `amount` is the amount of nAVAX to send.
+* `assetID` is the assetID of the non-AVAX asset.
+* The asset is sent from addresses controlled by `username` and `password`.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"avax.export",
+    "params" :{
+        "to":"X-avax1q9c6ltuxpsqz7ul8j0h0d0ha439qt70sr3x2m0",
+        "amount": 500,
+        "assetID": "2nzgmhZLuVq8jc7NNu2eahkKwoJcbFWXWJCxHBVWAJEZkhquoK",
+        "username":"myUsername",
+        "password":"myPassword"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/avax
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "txID": "2W5JuFENitZKTpJsy9igBpTcEeBKxBHHGAUkgsSUnkjVVGQ9i8"
+    },
+    "id": 1
+}
+```
+
 ### avax.exportAVAX
 
 Send AVAX from the C-Chain to the X Chain.  
@@ -754,7 +834,7 @@ curl -X POST --data '{
         "username":"myUsername",
         "password":"myPassword"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/avax
 ```
 
 #### Example Response
@@ -799,7 +879,7 @@ curl -X POST --data '{
         "password":"myPassword",
         "address": "0xc876DF0F099b3eb32cBB78820d39F5813f73E18C"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/avax
 ```
 
 #### Example Response
@@ -812,6 +892,57 @@ curl -X POST --data '{
     },
     "id": 1
 }}
+```
+
+### avax.import
+
+Finalize the transfer of a non-AVAX from the X-Chain to the C-Chain.
+Before this method is called, you must call the X-Chain's [`export`](./avm.md#avmexport) method to initiate the transfer.
+
+#### Signature
+
+```go
+avax.import({
+    to: string,
+    sourceChain: string,
+    assetID: string,
+    username: string,
+    password:string,
+}) -> {txID: string}
+```
+
+* `to` is the address the AVAX is sent to. This must be the same as the `to` argument in the corresponding call to the C-Chain's `export`.
+* `sourceChain` is the ID or alias of the chain the AVAX is being imported from. To import funds from the X-Chain, use `"X"`.
+* `assetID` is the assetID of the non-AVAX asset.
+* `username` is the user that controls `to`.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"avax.import",
+    "params" :{
+        "to":"0x4b879aff6b3d24352Ac1985c1F45BA4c3493A398",
+        "sourceChain":"X",
+        "assetID": "2nzgmhZLuVq8jc7NNu2eahkKwoJcbFWXWJCxHBVWAJEZkhquoK",
+    	"username":"myUsername",
+    	"password":"myPassword"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/avax
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "txID": "6bJq9dbqhiQvoshT3uSUbg9oB24n7Ei6MLnxvrdmao78oHR9t"
+    },
+    "id": 1
+}
 ```
 
 ### avax.importAVAX
@@ -833,7 +964,7 @@ avax.importAVAX({
 * `to` is the address the AVAX is sent to.
   This must be the same as the `to` argument in the corresponding call to the C-Chain's `exportAVAX`.
 * `sourceChain` is the ID or alias of the chain the AVAX is being imported from.
-  To import funds from the C-Chain, use `"C"`.
+  To import funds from the X-Chain, use `"X"`.
 * `username` is the user that controls `to`.
 
 #### Example Call
@@ -849,7 +980,7 @@ curl -X POST --data '{
     	"username":"myUsername",
     	"password":"myPassword"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/avax
 ```
 
 #### Example Response
@@ -892,7 +1023,7 @@ curl -X POST --data '{
         "password":"myPassword",
         "privateKey":"PrivateKey-2o2uPgTSf3aR5nW6yLHjBEAiatAFKEhApvYzsjvAJKRXVWCYkE"
     }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/avax
 ```
 
 #### Example Response
@@ -907,3 +1038,13 @@ curl -X POST --data '{
 }
 ```
 
+
+* evm chain ids are inconsistent across manhattan, local network and ajs
+* denali funds not showing
+sept 8th at 1016. funds will be on main
+
+create asset on x-Chain. swap to C-Chain. Sent 
+
+document the new rules associated w/ staking. new limits.
+
+* avm export/import, evm export/import/eth_getAssetBalance
