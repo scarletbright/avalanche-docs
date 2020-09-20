@@ -10,7 +10,7 @@ This API allows clients to interact with the P-Chain (Platform Chain), which mai
 
 ## Format
 
-This API uses the `json 2.0` RPC format.  
+This API uses the `json 2.0` RPC format. For more information on making JSON RPC calls, see [here.](./issuing-api-calls.md)
 
 ## Methods
 
@@ -18,12 +18,11 @@ This API uses the `json 2.0` RPC format.
 
 Add a delegator to the Primary Network.
 
-A delegator stakes AVAX and specifies a validator (the delegatee) to validate on their behalf.
-The delegatee has an increased probability of being sampled by other validators (weight) in proportion to the stake delegated to them.
+A delegator stakes AVAX and specifies a validator (the delegatee) to validate on their behalf. The delegatee has an increased probability of being sampled by other validators (weight) in proportion to the stake delegated to them.
 
-The delegatee charges a fee to the delegator; the former receives a percentage of the delegator's validation reward (if any.)
+The delegatee charges a fee to the delegator; the former receives a percentage of the delegator's validation reward (if any.) The minimum delegation fee is 2%. A transaction which delegates stake has no fee.
 
-The delegation period must be a subset of the perdiod that the delegatee validates the Primary Network.
+The delegation period must be a subset of the period that the delegatee validates the Primary Network.
 
 #### Signature
 
@@ -84,6 +83,14 @@ curl -X POST --data '{
 ### platform.addValidator
 
 Add a validator to the Primary Network.
+
+A validator stakes AVAX which enables their node to validate transactions and recieve a reward after their lock up period is over. The validator's probability of being sampled by other validators (weight) is in proportion to the staked nAVAX.
+
+The validator can charge a fee to delegators; the former receives a percentage of the delegator's validation reward (if any.) The minimum delegation fee is 2%. A transaction which adds a validator has no fee.
+
+The validation period must be between 2 weeks and 1 year.
+
+There is a maximum total weight imposed on validators. This means that no validator will ever have more AVAX staked and delegated to it than this value. This value will initially be set to `min(5 * amount staked, 3M AVAX)`. The total value on a validator is 3 million AVAX.
 
 #### Signature
 
