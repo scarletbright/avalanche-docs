@@ -407,7 +407,7 @@ avm.export({
 }) -> {txID: string, changeAddr: string}
 ```
 
-* `to` is the P-Chain address the AVAX is sent to.
+* `to` is the C-Chain address the AVAX is sent to.
 * `amount` is the amount of nAVAX to send.
 * `assetID` is the assetID which is returned from `avm.createFixedCapAsset` and/or `avm.createVariableCapAsset`.
 * The asset is sent from addresses controlled by `username` and `password`.
@@ -458,7 +458,7 @@ avm.exportAVAX({
 }) -> {txID: string}
 ```
 
-* `to` is the P-Chain address the AVAX is sent to.
+* `to` is the P-Chain or C-Chain address the AVAX is sent to.
 * `amount` is the amount of nAVAX to send.
 * The AVAX is sent from addresses controlled by `username`
 
