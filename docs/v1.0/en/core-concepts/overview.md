@@ -301,7 +301,7 @@ Additionally, it may receive a reward for helping to secure the network by valid
 
 A validator only receives a validation reward if it is sufficiently responsive and correct during the time it validates.
 
-See the [Avalanche token paper](https://files.avalabs.org/papers/avax-token.pdf) to learn more about AVAX and the mechanics of staking.
+See the [Avalanche token paper](https://files.avalabs.org/papers/token.pdf) to learn more about AVAX and the mechanics of staking.
 
 ## Summary
 

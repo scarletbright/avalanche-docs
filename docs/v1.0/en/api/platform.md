@@ -10,7 +10,7 @@ This API allows clients to interact with the P-Chain (Platform Chain), which mai
 
 ## Format
 
-This API uses the `json 2.0` RPC format.  
+This API uses the `json 2.0` RPC format. For more information on making JSON RPC calls, see [here.](./issuing-api-calls.md)
 
 ## Methods
 
@@ -18,12 +18,11 @@ This API uses the `json 2.0` RPC format.
 
 Add a delegator to the Primary Network.
 
-A delegator stakes AVAX and specifies a validator (the delegatee) to validate on their behalf.
-The delegatee has an increased probability of being sampled by other validators (weight) in proportion to the stake delegated to them.
+A delegator stakes AVAX and specifies a validator (the delegatee) to validate on their behalf. The delegatee has an increased probability of being sampled by other validators (weight) in proportion to the stake delegated to them.
 
-The delegatee charges a fee to the delegator; the former receives a percentage of the delegator's validation reward (if any.)
+The delegatee charges a fee to the delegator; the former receives a percentage of the delegator's validation reward (if any.) The minimum delegation fee is 2%. A transaction which delegates stake has no fee.
 
-The delegation period must be a subset of the perdiod that the delegatee validates the Primary Network.
+The delegation period must be a subset of the period that the delegatee validates the Primary Network.
 
 #### Signature
 
@@ -84,6 +83,14 @@ curl -X POST --data '{
 ### platform.addValidator
 
 Add a validator to the Primary Network.
+
+A validator stakes AVAX which enables their node to validate transactions and recieve a reward after their lock up period is over. The validator's probability of being sampled by other validators (weight) is in proportion to the staked nAVAX.
+
+The validator can charge a fee to delegators; the former receives a percentage of the delegator's validation reward (if any.) The minimum delegation fee is 2%. A transaction which adds a validator has no fee.
+
+The validation period must be between 2 weeks and 1 year.
+
+There is a maximum total weight imposed on validators. This means that no validator will ever have more AVAX staked and delegated to it than this value. This value will initially be set to `min(5 * amount staked, 3M AVAX)`. The total value on a validator is 3 million AVAX.
 
 #### Signature
 
@@ -665,24 +672,55 @@ List the current validators of the given Subnet.
 platform.getCurrentValidators({subnetID: string}) ->
 {
     validators: []{
-        startTime: int,
-        endTime: int,
-        weight: int, (optional)
-        stakeAmount: int, (optional)
-        address: string
-        nodeID: string
+        startTime: string,
+        endTime: string,
+        stakeAmount: string, (optional)
+        nodeID: string,
+        weight: string, (optional)
+        rewardOwner: {
+            locktime: string,
+            threshold: string,
+            addresses: string[]
+        },
+        potentialReward: string,
+        delegationFee: string,
+        uptime: string,
+        connected: boolean
+    },
+    delegators: []{
+        startTime: string,
+        endTime: string,
+        stakeAmount: string, (optional)
+        nodeID: string,
+        rewardOwner: {
+            locktime: string,
+            threshold: string,
+            addresses: string[]
+        },
+        potentialReward: string,
     }
 }
 ```
 
 * `subnetID` is the subnet whose current validators are returned. If omitted, returns the current validators of the Primary Network.
-* `startTime` is the Unix time when the validator starts validating the Subnet.
-* `endTime` is the Unix time when the validator stops validating the Subnet.
-* `weight` is the validator's weight when sampling validators.
-  Omitted if `subnetID` is the Primary Network.
-* `stakeAmount` is the amount of nAVAX this validator staked.
-  Omitted if `subnetID` is not the Primary Network.
-* `nodeID` is the validator's node ID.
+* `validators`:
+    * `startTime` is the Unix time when the validator starts validating the Subnet.
+    * `endTime` is the Unix time when the validator stops validating the Subnet.
+    * `stakeAmount` is the amount of nAVAX this validator staked. Omitted if `subnetID` is not the Primary Network.
+    * `nodeID` is the validator's node ID.
+    * `weight` is the validator's weight when sampling validators. Omitted if `subnetID` is the Primary Network.
+    * `rewardOwner` is an `OutputOwners` output which includes `locktime`, `threshold` and array of `addresses`.
+    * `potentialReward` is the potential reward earned from staking
+    * `delegationFeeRate` is the percent fee this validator charges when others delegate stake to them.
+    * `uptime` is the % of time the queried node has reported the peer as online.
+    * `connected` is if the node is connected to the network
+* `delegators`: 
+    * `startTime` is the Unix time when the delegator started.
+    * `endTime` is the Unix time when the delegator stops.
+    * `stakeAmount` is the amount of nAVAX this delegator staked. Omitted if `subnetID` is not the Primary Network.
+    * `nodeID` is the validating node's node ID.
+    * `rewardOwner` is an `OutputOwners` output which includes `locktime`, `threshold` and array of `addresses`.
+    * `potentialReward` is the potential reward earned from staking
 
 #### Example Call
 
@@ -703,22 +741,37 @@ curl -X POST --data '{
     "result": {
         "validators": [
             {
-                "startTime": "1591878109",
-                "endtime": "1594469809",
-                "stakeAmount": "319902",
-                "nodeID": "NodeID-NDmcZNsWoPrkN9KSt2A9js639hEQWUmUf"
-            },
+                "startTime": "1600368632",
+                "endTime": "1602960455",
+                "stakeAmount": "200000000000",
+                "nodeID": "NodeID-5mb46qkSBj81k9g9e4VFjGGSbaaSLFRzD",
+                "rewardOwner": {
+                    "locktime": "0",
+                    "threshold": "1",
+                    "addresses": [
+                        "P-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u"
+                    ]
+                },
+                "potentialReward": "117431493426",
+                "delegationFee": "10.0000",
+                "uptime": "0.0000",
+                "connected": false
+            }
+        ],
+        "delegators": [
             {
-                "startTime": "1591473391",
-                "endtime": "1592855191",
-                "stakeAmount": "10000",
-                "nodeID": "NodeID-62T5AAwKdFMNi7Gm193A6zyJhVscRfuhP"
-            },
-            {
-                "startTime": "1591387125",
-                "endtime": "1622923025",
-                "stakeAmount": "20000000000000",
-                "nodeID": "NodeID-HGZ8ae74J3odT8ESreAdCtdnvWG1J4X5n"
+                "startTime": "1600368523",
+                "endTime": "1602960342",
+                "stakeAmount": "20000000000",
+                "nodeID": "NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg",
+                "rewardOwner": {
+                    "locktime": "0",
+                    "threshold": "1",
+                    "addresses": [
+                        "P-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u"
+                    ]
+                },
+                "potentialReward": "11743144774"
             }
         ]
     },
@@ -811,23 +864,35 @@ Each validator is not currently validating the Subnet but will in the future.
 platform.getPendingValidators({subnetID: string}) ->
 {
     validators: []{
-        startTime: int,
-        endTime: int,
-        weight: int, (optional)
-        stakeAmount: int, (optional)
+        startTime: string,
+        endTime: string,
+        stakeAmount: string, (optional)
+        nodeID: string
+        delegationFee: string,
+        connected: bool,
+        weight: string, (optional)
+    },
+    delegators: []{
+        startTime: string,
+        endTime: string,
+        stakeAmount: string,
         nodeID: string
     }
 }
 ```
-
 * `subnetID` is the subnet whose current validators are returned. If omitted, returns the current validators of the Primary Network.
-* `startTime` is the Unix time when the validator starts validating the Subnet.
-* `endTime` is the Unix time when the validator stops validating the Subnet.
-* `weight` is the validator's weight when sampling validators.
-  Omitted if `subnetID` is the Primary Network.
-* `stakeAmount` is the amount of nAVAX this validator staked.
-  Omitted if `subnetID` is not the Primary Network.
-* `nodeID` is the validator's node ID.
+* `validators`:
+    * `startTime` is the Unix time when the validator starts validating the Subnet.
+    * `endTime` is the Unix time when the validator stops validating the Subnet.
+    * `stakeAmount` is the amount of nAVAX this validator staked. Omitted if `subnetID` is not the Primary Network.
+    * `nodeID` is the validator's node ID.
+    * `connected` if the node is connected.
+    * `weight` is the validator's weight when sampling validators. Omitted if `subnetID` is the Primary Network.
+* `delegators`:
+    * `startTime` is the Unix time when the delegator starts.
+    * `endTime` is the Unix time when the delegator stops.
+    * `stakeAmount` is the amount of nAVAX this delegator staked. Omitted if `subnetID` is not the Primary Network.
+    * `nodeID` is the validating node's node ID.
 
 #### Example Call
 
@@ -848,11 +913,21 @@ curl -X POST --data '{
     "result": {
         "validators": [
             {
-                "startTime": "1592400591",
-                "endtime": "1622923025",
-                "stakeAmount": "10000",
-                "nodeID": "NodeID-DpL8PTsrjtLzv5J8LL3D2A6YcnCTqrNH9"
-            },
+                "startTime": "1600368632",
+                "endTime": "1602960455",
+                "stakeAmount": "200000000000",
+                "nodeID": "NodeID-5mb46qkSBj81k9g9e4VFjGGSbaaSLFRzD",
+                "delegationFee": "10.0000",
+                "connected": false
+            }
+        ],
+        "delegators": [
+            {
+                "startTime": "1600368523",
+                "endTime": "1602960342",
+                "stakeAmount": "20000000000",
+                "nodeID": "NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg"
+            }
         ]
     },
     "id": 1
@@ -1024,7 +1099,7 @@ curl -X POST --data '{
 
 ### platform.getUTXOs
 
-Gets the UTXOs that reference a given set address.
+Gets the UTXOs that reference a given set of addresses. If sourceChain is specified, then it will retrieve the atomic UTXOs exported from that chain to the Platform Chain.
 
 #### Signature
 
@@ -1032,11 +1107,12 @@ Gets the UTXOs that reference a given set address.
 platform.getUTXOs(
     {
         addresses: string,
-        limit: int,
-        startIndex: {
+        limit: int, (optional)
+        startIndex: { (optional)
             address: string,
             utxo: string
-        }
+        },
+        sourceChain: string (optional)
     },
 ) -> 
 {
@@ -1140,6 +1216,39 @@ This gives response:
 ```
 
 Since `numFetched` is less than `limit`, we know that we are done fetching UTXOs and don't need to call this method again.
+
+Suppose we want to fetch the UTXOs exported from the X Chain to the P Chain in order to build an ImportTx. Then we need to call GetUTXOs with the sourceChain argument in order to retrieve the atomic UTXOs:
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"platform.getUTXOs",
+    "params" :{
+        "addresses":["P-avax1fquvrjkj7ma5srtayfvx7kncu7um3ym73ztydr"],
+        "sourceChain": "X"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
+```
+
+This gives response:
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "numFetched": "1",
+        "utxos": [
+            "115P1k9aSVFBfi9siZZz135jkrBCdEMZMbZ82JaLLuML37cgVMvGwefFXr2EaH2FML6mZuCehMLDdXSVE5aBwc8ePn8WqtZgDv9W641JZoLQhWY8fmvitiBLrc3Zd1aJPDxPouUVXFmLEbmcUnQxfw1Hyz1jpPbWSioowb"
+        ],
+        "endIndex": {
+            "address": "P-avax1fquvrjkj7ma5srtayfvx7kncu7um3ym73ztydr",
+            "utxo": "S5UKgWoVpoGFyxfisebmmRf8WqC7ZwcmYwS7XaDVZqoaFcCwK"
+        }
+    },
+    "id": 1
+}
+```
 
 ### platform.importAVAX
 
@@ -1454,4 +1563,6 @@ curl -X POST --data '{
     },
     "id": 1
 }
+
 ```
+
