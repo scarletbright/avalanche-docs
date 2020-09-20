@@ -146,11 +146,25 @@ Avalanche uses two-way authenticated TLS connections to securely identify the `s
 
 ## Advanced Options
 
-The following options affect the correctness of the platform. They may need to be changed network-wide, and as a result, an ordinary user should rarely change from the defaults.
+The following options affect the correctness of the platform. They may need to be changed network-wide, and as a result, an ordinary user should not change from the defaults.
 
 `--avax-tx-fee` (int):
 
 The required amount of nAVAX to be burned for a transaction to be valid. This parameter requires network agreement in its current form. Changing this value from the default should only be done on private networks. Defaults to `0` nAVAX per transaction.
+
+`--min-delegator-stake` (int):
+
+The minimum stake that can be delegated to a validator of the Primary Network.
+
+Default on Main Net: `25000000000` (25 AVAX)
+Default on Everest Test Net: `5000000`  (5 x 10^-3 AVAX)
+
+`--min-validator-stake` (int):
+
+The minimum stake, in nAVAX, required to validate the Primary Network.
+
+Default on Main Net: `2000000000000` (2,000 AVAX)
+Default on Everest Test Net: `5000000` (5 x 10^-3 AVAX)
 
 `--snow-avalanche-batch-size` (int):
 
