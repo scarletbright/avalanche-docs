@@ -904,7 +904,7 @@ This gives response:
 
 ### avm.import
 
-Finalize a transfer of a non-AVAX from the C-Chain to the X-Chain.
+Finalize a transfer of a non-AVAX asset from the C-Chain to the X-Chain.
 Before this method is called, you must call the C-Chain's [`export`](./evm.md#evmexport) method to initiate the transfer.
 
 #### Signature
