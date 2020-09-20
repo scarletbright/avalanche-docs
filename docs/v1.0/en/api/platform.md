@@ -20,7 +20,7 @@ Add a delegator to the Primary Network.
 
 A delegator stakes AVAX and specifies a validator (the delegatee) to validate on their behalf. The delegatee has an increased probability of being sampled by other validators (weight) in proportion to the stake delegated to them.
 
-The delegatee charges a fee to the delegator; the former receives a percentage of the delegator's validation reward (if any.) The minimum delegation fee is 2%. Delegation transaction have no fee.
+The delegatee charges a fee to the delegator; the former receives a percentage of the delegator's validation reward (if any.) The minimum delegation fee is 2%. Delegation transactions have no fee.
 
 The delegation period must be a subset of the period that the delegatee validates the Primary Network.
 
