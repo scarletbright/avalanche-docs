@@ -752,8 +752,8 @@ curl -X POST --data '{
 
 ### avax.export
 
-Send a non-AVAX asset from the C-Chain to the X Chain.  
-After calling this method, you must call `import` on the X Chain to complete the transfer.
+Send a non-AVAX asset from the C-Chain to the X-Chain.  
+After calling this method, you must call `import` on the X-Chain to complete the transfer.
 
 #### Signature
 
@@ -803,8 +803,8 @@ curl -X POST --data '{
 
 ### avax.exportAVAX
 
-Send AVAX from the C-Chain to the X Chain.  
-After calling this method, you must call `importAVAX` on the X Chain to complete the transfer.
+Send AVAX from the C-Chain to the X-Chain.  
+After calling this method, you must call `importAVAX` on the X-Chain to complete the transfer.
 
 #### Signature
 
@@ -1037,14 +1037,3 @@ curl -X POST --data '{
     "id": 1
 }
 ```
-
-
-* evm chain ids are inconsistent across manhattan, local network and ajs
-* denali funds not showing
-sept 8th at 1016. funds will be on main
-
-create asset on x-Chain. swap to C-Chain. Sent 
-
-document the new rules associated w/ staking. new limits.
-
-* avm export/import, evm export/import/eth_getAssetBalance

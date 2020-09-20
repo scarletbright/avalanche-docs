@@ -408,7 +408,7 @@ avm.export({
 ```
 
 * `to` is the C-Chain address the non-AVAX asset is sent to.
-* `amount` is the amount of nAVAX to send.
+* `amount` is the amount of non-AVAX asset to send.
 * `assetID` is the assetID which is returned from `avm.createFixedCapAsset` and/or `avm.createVariableCapAsset`.
 * The asset is sent from addresses controlled by `username` and `password`.
 
@@ -750,7 +750,7 @@ curl -X POST --data '{
 
 ### avm.getUTXOs
 
-Gets the UTXOs that reference a given address. If sourceChain is specified, then it will retrieve the atomic UTXOs exported from that chain to the X Chain.
+Gets the UTXOs that reference a given address. If sourceChain is specified, then it will retrieve the atomic UTXOs exported from that chain to the X-Chain.
 
 #### Signature
 
@@ -868,7 +868,7 @@ This gives response:
 
 Since `numFetched` is less than `limit`, we know that we are done fetching UTXOs and don't need to call this method again.
 
-Suppose we want to fetch the UTXOs exported from the P Chain to the X Chain in order to build an ImportTx. Then we need to call GetUTXOs with the sourceChain argument in order to retrieve the atomic UTXOs:
+Suppose we want to fetch the UTXOs exported from the P Chain to the X-Chain in order to build an ImportTx. Then we need to call GetUTXOs with the sourceChain argument in order to retrieve the atomic UTXOs:
 
 ```json
 curl -X POST --data '{
@@ -947,7 +947,7 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "MqEaeWc4rfkw9fhRMuMTN7KUTNpFmh9Fd7KSre1ZqTsTQG73h"
+        "txID": "2uTLow45knsh7UeFqo7tKzPpWsHHvyQvSqE5aYYbsW77HFK1ZK"
     },
     "id": 1
 }
