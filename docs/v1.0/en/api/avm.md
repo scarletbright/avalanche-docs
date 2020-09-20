@@ -910,7 +910,7 @@ Before this method is called, you must call the C-Chain's [`export`](./evm.md#ev
 #### Signature
 
 ```go
-avm.importAVAX({
+avm.import({
     to: string,
     sourceChain: string,
     assetID: string,
@@ -930,10 +930,10 @@ avm.importAVAX({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"avm.importAVAX",
+    "method" :"avm.import",
     "params" :{
         "to":"X-avax1s7aygrkrtxflmrlyadlhqu70a6f4a4n8l2tru8",
-        "sourceChain":"P",
+        "sourceChain":"C",
         "assetID": "2nzgmhZLuVq8jc7NNu2eahkKwoJcbFWXWJCxHBVWAJEZkhquoK",
         "username":"myUsername",
         "password":"myPassword"
