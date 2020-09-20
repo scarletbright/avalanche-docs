@@ -84,7 +84,7 @@ curl -X POST --data '{
 
 Add a validator to the Primary Network.
 
-A validator stakes AVAX which enables their node to validate transactions and recieve a reward after their lock up period is over. The validator's probability of being sampled by other validators (weight) is in proportion to the staked AVAX.
+A validator stakes AVAX which enables their node to validate transactions and recieve a reward after their lock up period is over. The validator's probability of being sampled by other validators (weight) is in proportion to the staked nAVAX.
 
 The validator can charge a fee to delegators; the former receives a percentage of the delegator's validation reward (if any.) The minimum delegation fee is 2%. A transaction which adds a validator has no fee.
 
