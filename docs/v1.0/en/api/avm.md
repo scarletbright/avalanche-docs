@@ -407,7 +407,7 @@ avm.export({
 }) -> {txID: string, changeAddr: string}
 ```
 
-* `to` is the C-Chain address the AVAX is sent to.
+* `to` is the C-Chain address the non-AVAX asset is sent to.
 * `amount` is the amount of nAVAX to send.
 * `assetID` is the assetID which is returned from `avm.createFixedCapAsset` and/or `avm.createVariableCapAsset`.
 * The asset is sent from addresses controlled by `username` and `password`.
@@ -436,7 +436,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "result": {
         "txID": "2cnki2vNk3w7wcjv9uhhWAUpM1suzDuAjKADn7UGWUZhRfFPqp",
-        "changeAddr": "X-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u"
+        "changeAddr": "X-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u"
     },
     "id": 1
 }
