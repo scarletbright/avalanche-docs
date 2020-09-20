@@ -188,7 +188,7 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-If this call returns a 404 or hangs, your node probably isn't finished bootstrapping.
+If your node isn’t finished bootstrapping, this call will return status `503` with message `API call rejected because chain is not done bootstrapping`.
 
 Note that we make this request to `127.0.0.1:9650/ext/bc/X`.
 The `bc/X` portion signifies that the request is being sent to the blockchain whose ID (or alias) is `X` (ie the X-Chain.)
