@@ -103,5 +103,5 @@ If you earned a reward, it is sent to the address you specified when you delegat
 * The minimum amount of time one can stake funds for delegation is 2 weeks
 * The maximum amount of time one can stake funds for delegation is 1 year
 * The minimum delegation fee rate is 2%
-* The maximum weight of a validator (their own stake + stake delegated to them) is the minimum of 3e6 AVAX and 5 times the amount the validator staked
+* The maximum weight of a validator (their own stake + stake delegated to them) is the minimum of 3 x 10<sup>6</sup> AVAX and 5 times the amount the validator staked
 * The minimum percentage of the time a validator must be correct and online in order to receive a reward is 60%.
