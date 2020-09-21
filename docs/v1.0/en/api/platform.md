@@ -24,6 +24,11 @@ The delegatee charges a fee to the delegator; the former receives a percentage o
 
 The delegation period must be a subset of the period that the delegatee validates the Primary Network.
 
+Note that once you issue the transaction to add a node as a delegator, there is no way to change the parameters.
+**You can't unstake early or change the stake amount, node ID or reward address.**
+Please make sure you're using the correct values.
+If you're not sure, ask for help on [Discord.](https://chat.avalabs.org)
+
 #### Signature
 
 ```go
@@ -103,6 +108,11 @@ The validator can charge a fee to delegators; the former receives a percentage o
 The validation period must be between 2 weeks and 1 year.
 
 There is a maximum total weight imposed on validators. This means that no validator will ever have more AVAX staked and delegated to it than this value. This value will initially be set to `min(5 * amount staked, 3M AVAX)`. The total value on a validator is 3 million AVAX.
+
+Note that once you issue the transaction to add a node as a validator, there is no way to change the parameters.
+**You can't unstake early or change the stake amount, node ID or reward address.**
+Please make sure you're using the correct values.
+If you're not sure, ask for help on [Discord.](https://chat.avalabs.org)
 
 #### Signature
 
