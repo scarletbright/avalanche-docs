@@ -36,7 +36,7 @@ nav:
     - Create a Fixed-Cap Asset         : ./v1.0/en/tutorials/fixed-cap-asset.md
     - Create a Variable-Cap Asset      : ./v1.0/en/tutorials/variable-cap-asset.md
     - Create a Subnet                  : ./v1.0/en/tutorials/create-a-subnet.md
-    - Add Validators to a Subnet       : ./v1.0/en/tutorials/adding-validators.md
+    - Add a Validator                  : ./v1.0/en/tutorials/adding-validators.md
     - Create a Blockchain              : ./v1.0/en/tutorials/create-a-blockchain.md
     - Create a Virtual Machine         : ./v1.0/en/tutorials/creating-a-virtual-machine.md
     - Transfer AVAX between Chains     : ./v1.0/en/tutorials/atomic-swap.md

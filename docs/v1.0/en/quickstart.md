@@ -590,8 +590,9 @@ These parameters are the username and password of the user that pays the transac
 
 ### Issue the Transaction
 
-Now let's issue the transaction. We use the shell command `date` to compute the Unix time 10 minutes and 2 days in the future to use as the values of `startTime` and `endTime`, respectively.
+Now let's issue the transaction. We use the shell command `date` to compute the Unix time 10 minutes and 30 days in the future to use as the values of `startTime` and `endTime`, respectively.
 (Note: If you're on a Mac, replace  `$(date` with `$(gdate`. If you don't have `gdate` installed, do `brew install coreutils`.)
+In this example we stake 2,000 AVAX (2 x 10<sup>12</sup> nAVAX).
 
 ```json
 curl -X POST --data '{
@@ -600,8 +601,8 @@ curl -X POST --data '{
     "params": {
         "nodeID":"NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
         "startTime":'$(date --date="10 minutes" +%s)',
-        "endTime":'$(date --date="2 days" +%s)',
-        "stakeAmount":1000000,
+        "endTime":'$(date --date="30 days" +%s)',
+        "stakeAmount":2000000000000,
         "rewardAddress":"P-avax1d4wfwrfgu4dkkyq7dlhx0lt69y2hjkjeejnhca",
         "delegationFeeRate":10,
         "username":"USERNAME",
@@ -660,7 +661,7 @@ The response should include the node we just added:
                 "nodeID": "NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
                 "startTime": "1584021450",
                 "endtime": "1584121156",
-                "stakeAmount": "1000000",
+                "stakeAmount": "2000000000000",
             }
         ] 
     },
