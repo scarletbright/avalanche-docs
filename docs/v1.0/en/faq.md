@@ -20,6 +20,10 @@ If your question is still unanswered, ask about it on our [Discord](https://chat
 
 Not until after our main network launches.
 
+### What is the transaction fee?
+
+[See here.](transaction-fees.md)
+
 ### Where can I go for help?
 
 [Discord](https://chat.avalabs.org), but please search the documentation and Discord for your issue before asking about it.

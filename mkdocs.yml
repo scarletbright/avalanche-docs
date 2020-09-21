@@ -55,6 +55,8 @@ nav:
               - Metrics API            : ./v1.0/en/api/metrics.md
               - Platform (P-Chain) API : ./v1.0/en/api/platform.md
               - Timestamp API          : ./v1.0/en/api/timestamp.md
+  - Staking Explained                  : ./v1.0/en/staking.md
+  - Transaction Fees                   : ./v1.0/en/transaction-fees.md
   - Developer Tools:
               - Overview : ./v1.0/en/tools/index.md
               - AvalancheJS :

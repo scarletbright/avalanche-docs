@@ -276,6 +276,10 @@ curl -X POST --data '{
 `amount` specifies the number of nAVAX to send.
 A nAVAX (nanoAVAX) is the smallest increment of AVAX, and 1,000,000,000 nAVAX == 1 AVAX. 
 
+In order to prevent spam, Avalanche requires the payment of a [transaction fee](transaction-fees.md).
+The transaction fee will be automatically deducted from an address controlled by your user when you issue a transaction.
+Keep that in mind when you're checking balances below.
+
 When you send this request, the node will authenticate you using your username and password.
 Then, it will look through all the private keys controlled by your user until it finds
 enough nAVAX to satisfy the request.
