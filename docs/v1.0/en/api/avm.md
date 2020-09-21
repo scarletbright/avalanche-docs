@@ -762,7 +762,7 @@ avm.getUTXOs(
 {
     numFetched: int
     utxos: []string,
-    stopIndex: {
+    endIndex: {
         address: string,
         utxo: string
     }
@@ -771,8 +771,8 @@ avm.getUTXOs(
 
 * `utxos` is a list of UTXOs such that each UTXO references at least one address in `addresses`.
 * At most `limit` UTXOs are returned. If `limit` is omitted or greater than 1024, it is set to 1024.
-* This method supports pagination. `stopIndex` denotes the last UTXO returned. To get the next set of UTXOs,
-  use the value of `stopIndex` as `startIndex` in the next call.
+* This method supports pagination. `endIndex` denotes the last UTXO returned. To get the next set of UTXOs,
+  use the value of `endIndex` as `startIndex` in the next call.
 * If `startIndex` is omitted, will fetch all UTXOs up to `limit`. 
 * When using pagination (ie when `startIndex` is provided), UTXOs are not guaranteed to be unique across multiple calls. 
   That is, a UTXO may appear in the result of the first call, and then again in the second call.
