@@ -81,7 +81,7 @@ If the validator that you delegate stake to is sufficiently correct and responsi
 Delegators are rewarded according to the same function as validators.
 However, the validator that you delegate to keeps a portion of your reward.
 The percentage of your reward that they keep is specified by the validator's delegation fee rate,
-If it's set to 10%, then they keep 10% of any rewards from stake delegated to them. The minimum delegation fee rate is 2%.
+If it's set to 10%, then they keep 10% of any rewards from stake delegated to them.
 
 ## Timeline of fund movement for delegators
 
