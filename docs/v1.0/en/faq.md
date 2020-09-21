@@ -249,6 +249,11 @@ Do `kill -9 %1` (or `kill -9 %2` if it printed `[2]+ Stopped`, etc.)
 
 [See here.](staking.md)
 
+### Does Avalanche use slashing?
+
+There is no stake slashing on the Avalanche network. 
+If a validator misbehaves, they will not receive a reward, but it will not lose the funds it staked.
+
 ### What is the minimum amount I need to stake in order to validate the Primary Network?
 
 2,000 AVAX.

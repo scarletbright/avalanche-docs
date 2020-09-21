@@ -283,6 +283,7 @@ You can leave this field empty; if you do, any change will go to one of the addr
 In order to prevent spam, Avalanche requires the payment of a [transaction fee](transaction-fees.md).
 The transaction fee will be automatically deducted from an address controlled by your user when you issue a transaction.
 Keep that in mind when you're checking balances below.
+The transaction fee schedule is [here.](transaction-fees.md)
 
 When you send this request, the node will authenticate you using your username and password.
 Then, it will look through all the private keys controlled by your user until it finds
