@@ -20,7 +20,7 @@ Add a delegator to the Primary Network.
 
 A delegator stakes AVAX and specifies a validator (the delegatee) to validate on their behalf. The delegatee has an increased probability of being sampled by other validators (weight) in proportion to the stake delegated to them.
 
-The delegatee charges a fee to the delegator; the former receives a percentage of the delegator's validation reward (if any.) The minimum delegation fee is 2%. A transaction which delegates stake has no fee.
+The delegatee charges a fee to the delegator; the former receives a percentage of the delegator's validation reward (if any.) A transaction which delegates stake has no fee.
 
 The delegation period must be a subset of the period that the delegatee validates the Primary Network.
 
@@ -28,6 +28,8 @@ Note that once you issue the transaction to add a node as a delegator, there is 
 **You can't unstake early or change the stake amount, node ID or reward address.**
 Please make sure you're using the correct values.
 If you're not sure, ask for help on [Discord.](https://chat.avalabs.org)
+
+[See here](../staking.md) for staking parameters like the minimum amount that can be staked.  
 
 #### Signature
 
@@ -113,6 +115,8 @@ Note that once you issue the transaction to add a node as a validator, there is 
 **You can't unstake early or change the stake amount, node ID or reward address.**
 Please make sure you're using the correct values.
 If you're not sure, ask for help on [Discord.](https://chat.avalabs.org)
+
+[See here](../staking.md) for staking parameters like the minimum amount that can be staked.  
 
 #### Signature
 
@@ -558,7 +562,10 @@ Get the balance of AVAX controlled by a given address.
 platform.getBalance({
     address:string
 }) -> {
-    balance: int,
+    balance: string,
+    unlocked: string,
+    lockedStakeable: string,
+    lockedNotStakeable: string,
     utxoIDs: []{
         txID: string,
         outputIndex: int
@@ -568,7 +575,10 @@ platform.getBalance({
 ```
 
 * `address` is the address to get the balance of.
-* `balance` is the balance, in nAVAX.
+* `balance` is the total balance, in nAVAX.
+* `unlocked` is the unlocked balance, in nAVAX.
+* `lockedStakeable` is the locked stackeable balance, in nAVAX.
+* `lockedNotStakeable` is the locked and not stackeable balance, in nAVAX.
 * `utxoIDs` are the IDs of the UTXOs that reference `address`.
 
 #### Example Call
@@ -588,17 +598,24 @@ curl -X POST --data '{
 
 ```json
 {
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "result" :{
-        "balance":"20000000000000",
-        "utxoIDs":[
+    "jsonrpc": "2.0",
+    "result": {
+        "balance": "20000000000000000",
+        "unlocked": "10000000000000000",
+        "lockedStakeable": "10000000000000000",
+        "lockedNotStakeable": "0",
+        "utxoIDs": [
             {
-                "txID":"LUriB3W919F84LwPMMw4sm2fZ4Y76Wgb6msaauEY7i1tFNmtv",
-                "outputIndex":0
+                "txID": "11111111111111111111111111111111LpoYY",
+                "outputIndex": 1
+            },
+            {
+                "txID": "11111111111111111111111111111111LpoYY",
+                "outputIndex": 0
             }
         ]
-    }
+    },
+    "id": 1
 }
 ```
 
