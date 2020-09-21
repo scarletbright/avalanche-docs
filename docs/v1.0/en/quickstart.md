@@ -211,12 +211,12 @@ Hence, this address begins `X-`, denoting that it exists on the X-Chain.
 
 ## Send Funds From the Web Wallet to Your Node
 
-(Note: In the near future Avalanche will support hardware wallets so that you don't need to enter your mnemonic to do this.)
-
-Let's move funds from the web wallet to our node.
+Let's move funds from your web wallet to your node.
 
 Go to [the wallet](https://wallet.avax.network). Click `Access Wallet`, then `Mnemonic Key Phrase`.
-Enter your mnemonic phrase.
+Enter your mnemonic phrase. 
+(Note: In the near future Avalanche will support hardware wallets so that you don't need to enter your mnemonic to do this.)
+
 
 Click the `Send` tab on the left.
 For amount, select, `.002` AVAX.
@@ -362,11 +362,11 @@ The response should be:
 }
 ```
 
-In the same fashion, we could check `X-avax1xeaj0h9uy7c5jn6fxjp0rg4g39jeh0hl27vf75` to see that AVAX we sent was deducted from its balance.
+In the same fashion, we could check `X-avax1xeaj0h9uy7c5jn6fxjp0rg4g39jeh0hl27vf75` to see that AVAX we sent was deducted from its balance, as well as the transaction fee.
 
 ## Validate the Primary Network (Stake)
 
-See [here](tutorials/adding-validators.md) for tutorial on adding a node to the validator set.
+See [here](tutorials/adding-validators.md) for a tutorial on adding a node to the validator set.
 
 ## Next Steps
 
