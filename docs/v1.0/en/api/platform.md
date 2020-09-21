@@ -548,7 +548,10 @@ Get the balance of AVAX controlled by a given address.
 platform.getBalance({
     address:string
 }) -> {
-    balance: int,
+    balance: string,
+    unlocked: string,
+    lockedStakeable: string,
+    lockedNotStakeable: string,
     utxoIDs: []{
         txID: string,
         outputIndex: int
@@ -558,7 +561,10 @@ platform.getBalance({
 ```
 
 * `address` is the address to get the balance of.
-* `balance` is the balance, in nAVAX.
+* `balance` is the total balance, in nAVAX.
+* `unlocked` is the unlocked balance, in nAVAX.
+* `lockedStakeable` is the locked stackeable balance, in nAVAX.
+* `lockedNotStakeable` is the locked and not stackeable balance, in nAVAX.
 * `utxoIDs` are the IDs of the UTXOs that reference `address`.
 
 #### Example Call
@@ -578,17 +584,24 @@ curl -X POST --data '{
 
 ```json
 {
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "result" :{
-        "balance":"20000000000000",
-        "utxoIDs":[
+    "jsonrpc": "2.0",
+    "result": {
+        "balance": "20000000000000000",
+        "unlocked": "10000000000000000",
+        "lockedStakeable": "10000000000000000",
+        "lockedNotStakeable": "0",
+        "utxoIDs": [
             {
-                "txID":"LUriB3W919F84LwPMMw4sm2fZ4Y76Wgb6msaauEY7i1tFNmtv",
-                "outputIndex":0
+                "txID": "11111111111111111111111111111111LpoYY",
+                "outputIndex": 1
+            },
+            {
+                "txID": "11111111111111111111111111111111LpoYY",
+                "outputIndex": 0
             }
         ]
-    }
+    },
+    "id": 1
 }
 ```
 
