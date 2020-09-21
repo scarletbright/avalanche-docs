@@ -20,6 +20,37 @@ When you add a node to the validator set you specify:
 * The address to send any rewards to
 * Your delegation fee rate (see below)
 
+## Running a validator
+
+If you're running a validator, it's important that you follow some best practices to ensure that you receive a reward and keep your funds safe.
+
+### Networking
+
+Your node must be able to receive and send traffic from all addresses on the P2P port (`9651` by default.)
+
+AvalancheGo attempts NAT traversal on startup to ensure that it can send and receive traffic on the P2P port. 
+If your node is behind a router (e.g. in your home) your node can receive and send traffic properly with any action on your part thanks to NAT traversal.
+However, you may want to also set up port forwarding on your router to ensure your node is well-connected in the event that NAT traversal fails.
+If your node is on a cloud service, make sure you've configured the security settings to allow incoming and outgoing traffic on the P2P port.
+
+If you want to make API calls to your node from remote machines, also allow traffic on the API port (`9650` by default.) 
+If you do so, allow access to the smallest set of IP addresses possible.
+
+### Secret Management
+
+The only secret that you need on your validating node is its Staking Key, the TLS key that determines your node's ID.
+The first time you start a node, the Staking Key is created and put in `$HOME/.avalanchego/staking/staker.key`.
+You should back up this file (and `staker.crt`) somewhere secure.
+Losing your Staking Key could jeopardize your validation reward, as your node will have a new ID.
+
+You do not need to have AVAX funds on your validating node.
+In fact, its best practice to **not** have a lot of funds on your node.
+Almost all of your funds should be in "cold" addresses, whose private key is not on any computer.
+
+### Monitoring
+
+See [this tutorial](tutorials/node-monitoring.md) on setting up node monitoring.
+
 ## Validator rewards
 
 Validators receive a reward, in AVAX, to incentivize them to secure the network.
