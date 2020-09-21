@@ -34,7 +34,7 @@ If you earned a reward, it is sent to the address you specified when you added y
 
 ## Delegators
 
-You can stake their own tokens in order to increase the sampling weight of another validator.
+You can stake your own tokens in order to increase the sampling weight of another validator.
 This is called delegation.
 
 When you delegate stake to a validator you specify:
