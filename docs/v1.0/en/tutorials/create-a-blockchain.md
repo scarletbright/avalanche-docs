@@ -165,7 +165,7 @@ Now let's create the new blockchain.
 To do so, we call [`platform.createBlockchain`](../api/platform.md#platformcreateblockchain).
 Your call should look like the one below.
 You have to change `subnetID` to the subnet that will validate your blockchain, and supply a `username` that controls a sufficient number of the Subnet's control keys. 
-(As a reminder, you can find out what a Subnet's threshold and control keys are by calling [`platform.getSubnet`.](../api/platform.md#platformgetsubnet))
+As a reminder, you can find out what a Subnet's threshold and control keys are by calling [`platform.getSubnet`.](../api/platform.md#platformgetsubnet)
 
 ```json
 curl -X POST --data '{
@@ -189,7 +189,8 @@ The response contains the transaction ID:
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "xAd5n5PQFV6RRo8UgH54Gf5tJs8oQdctQS2ygp5F2dKZDckYH"
+        "txID": "xAd5n5PQFV6RRo8UgH54Gf5tJs8oQdctQS2ygp5F2dKZDckYH",
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
     },
     "id": 1
 }

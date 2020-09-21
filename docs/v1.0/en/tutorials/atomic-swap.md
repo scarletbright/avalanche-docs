@@ -32,13 +32,16 @@ curl -X POST --data '{
         "to":"P-avax1wkmfja9ve3lt3n9ye4qp3l3gj9k2mz7ep45j7q",
         "destinationChain": "P",
         "amount": 5000000,
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
         "username":"myUsername",
         "password":"myPassword"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-where `to` is the address of a P-Chain address you hold. (See [here](../api/platform.md#platformcreateaddress) for instructions on creating a new P-Chain address.)
+where `to` is the address of a P-Chain address you hold and `changeAddr` is the address to send any change to.
+You can leave `changeAddr` blank; if you do, change will be returned to an address controlled by your user.
+(See [here](../api/platform.md#platformcreateaddress) for instructions on creating a new P-Chain address.)
 
 Note that you will pay a transaction fee for both the export and import operations. In this example, let's assume the transaction fee is `1,000,000` nAVAX. Then the above export actually consumes `6,000,000` nAVAX; `5,000,000` goes to the P-Chain and `1,000,000` is burned as a transaction fee.
 
@@ -51,7 +54,8 @@ The response should look like this:
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "MqEaeWc4rfkw9fhRMuMTN7KUTNpFmh9Fd7KSre1ZqTsTQG73h"
+        "txID": "MqEaeWc4rfkw9fhRMuMTN7KUTNpFmh9Fd7KSre1ZqTsTQG73h",
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
     },
     "id": 1
 }
@@ -111,6 +115,7 @@ curl -X POST --data '{
     "params": {
         "to":"P-avax1wkmfja9ve3lt3n9ye4qp3l3gj9k2mz7ep45j7q",
         "sourceChain":"X",
+        "changeAddr":"P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "username":"myUsername",
         "password":"myPassword",
     },
@@ -124,7 +129,8 @@ This returns the transaction ID:
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "2sxo3ySETZ4xzXqAtgsUvZ5pdkqG4SML4c7Z7NoKLZcp77YNXC"
+        "txID": "2sxo3ySETZ4xzXqAtgsUvZ5pdkqG4SML4c7Z7NoKLZcp77YNXC",
+        "changeAddr":"P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
     },
     "id": 1
 }
@@ -193,6 +199,7 @@ curl -X POST --data '{
     "params": {
         "to":"X-avax1fjn5rffqvny7uk3tjegjs6snwjs3hhgcpcxfax",
         "amount":3000000,
+        "changeAddr":"P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "username":"myUsername",
         "password":"myPassword"
     },
@@ -216,6 +223,7 @@ curl -X POST --data '{
     "params" :{
         "to":"X-avax1fjn5rffqvny7uk3tjegjs6snwjs3hhgcpcxfax",
         "sourceChain":"P",
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
         "username":"myUsername",
         "password":"myPassword"
     }

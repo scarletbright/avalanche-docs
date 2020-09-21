@@ -70,7 +70,8 @@ The response contains the asset's ID, which is also the ID of this transaction:
     "jsonrpc":"2.0",
     "id"     :1,
     "result" :{
-        "assetID":"keMuoTQSGjqZbNVTCcbrwuNNNv9eEEZWBaRY3TapcgjkoZmQ1"
+        "assetID":"keMuoTQSGjqZbNVTCcbrwuNNNv9eEEZWBaRY3TapcgjkoZmQ1",
+        "changeAddr":"X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"
     }
 }
 ```
@@ -138,7 +139,8 @@ The response from the above call should look like this:
     "jsonrpc":"2.0",
     "id"     :1,
     "result" :{
-        "txID":"2EAgR1YbsaJrwFiU4DpwjUfTLkt97WrjQYYNQny13AheewnxSR"
+        "txID":"2EAgR1YbsaJrwFiU4DpwjUfTLkt97WrjQYYNQny13AheewnxSR",
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"
     }
 }
 ```

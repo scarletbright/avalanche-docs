@@ -216,7 +216,7 @@ The faucet dispenses 100 000 000 nanoAVAX (nAVAX) each drop.
 
 **This is only a test network, and AVAX on this network has no value.**
 
-Go to the [test net faucet](https://faucet.avax.network/) and paste the address you just created to receive 100 000 000 nAVAX.
+Go to the [test net faucet](https://faucet.avax.network/) and paste the address you just created to receive 1 AVAX.
 
 We can check an address's balance of a given asset by calling `avm.getBalance`, another method of the X-Chain's API.
 Let's check that the faucet drip went through.
@@ -264,39 +264,42 @@ curl -X POST --data '{
     "id"     :5,
     "method" :"avm.send",
     "params" :{
-        "username"   :"YOUR USERNAME HERE",
-        "password"   :"YOUR PASSWORD HERE",
         "assetID"    :"AVAX",
         "amount"     :1000,
-        "to"         :"X-avax1w4nt49gyv4e99ldqevy50l2kz55y9efghep0cs"
+        "to"         :"X-avax1w4nt49gyv4e99ldqevy50l2kz55y9efghep0cs",
+        "changeAddr" :"X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
+        "username"   :"YOUR USERNAME HERE",
+        "password"   :"YOUR PASSWORD HERE"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
 `amount` specifies the number of nAVAX to send.
-A nAVAX (nanoAVAX) is the smallest increment of AVAX, and 1,000,000,000 nAVAX == 1 AVAX. 
+A nAVAX (nanoAVAX) is the smallest increment of AVAX, and 1,000,000,000 nAVAX == 1 AVAX.
+
+If you want to specify a particular address where change should go, you can specify it in `changeAddr`.
+You can leave this field empty; if you do, any change will go to one of the addresses your user controls.
 
 When you send this request, the node will authenticate you using your username and password.
 Then, it will look through all the private keys controlled by your user until it finds
-enough nAVAX to satisfy the request.
+enough AVAX to satisfy the request.
 
-The response contains the ID of this transaction:
+The response contains the transaction's ID. It will be different for every invocation of `send`.
 
 ```json
 {
     "jsonrpc":"2.0",
     "id"     :5,
     "result" :{
-        "txID":"2QouvFWUbjuySRxeX5xMbNCuAaKWfbk5FeEa2JmoF85RKLk2dD"
+        "txID":"2QouvFWUbjuySRxeX5xMbNCuAaKWfbk5FeEa2JmoF85RKLk2dD",
+        "changeAddr" :"X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"
     }
 }
 ```
 
-`txID` is the ID of the send transaction we just sent to the network. It will be different for every invocation of `send`.
-
 ## Checking the Transaction Status
 
-This send transaction will only take a second or two to finalize. We can check its status with `avm.getTxStatus`:
+This transaction will only take a second or two to finalize. We can check its status with `avm.getTxStatus`:
 
 ```sh
 curl -X POST --data '{
@@ -442,7 +445,8 @@ The response contains the transaction ID:
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "ow2yyp9ZZVtxTYg6jAZJtnYetEwfu6UxKaw5hY6UAVbGnDwRN"
+        "txID": "ow2yyp9ZZVtxTYg6jAZJtnYetEwfu6UxKaw5hY6UAVbGnDwRN",
+        "changeAddr": "P-avax1u8fe28yeftny3f4ewy6exc4d5832uhclf5mvur"
     },
     "id": 1
 }
@@ -504,11 +508,16 @@ platform.addValidator(
         endTime: int,
         stakeAmount: int,
         rewardAddress: string,
+        changeAddr: string,
         delegationFeeRate: float,
         username: string,
         password: string
     }
-) -> {txID: string}
+) -> 
+{
+    txID: string,
+    changeAddr: string
+}
 ```
 
 Let's go through and examine these arguments.
@@ -556,6 +565,11 @@ When a validator stops validating the Primary Network, they will receive a rewar
 
 A validator's stake is never slashed, regardless of their behavior; they will always receive their stake back when they're done validating.
 
+### `changeAddr`
+
+Any change resulting from this transaction will be sent to this address.
+You can leave this field empty; if you do, change will be sent to one of the addresses your user controls.
+
 ### `delegationFeeRate`
 
 Avalanche allows for delegation of stake. This parameter is the percent fee this validator charges when others delegate stake to them.
@@ -594,7 +608,8 @@ The response has the transaction ID:
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "6pb3mthunogehapzqmubmx6n38ii3lzytvdrxumovwkqftzls"
+        "txID": "6pb3mthunogehapzqmubmx6n38ii3lzytvdrxumovwkqftzls",
+        "changeAddr": "P-avax1u8fe28yeftny3f4ewy6exc4d5832uhclf5mvur"
     },
     "id": 1
 }

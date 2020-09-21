@@ -34,6 +34,7 @@ platform.addValidator(
         endTime: int,
         stakeAmount: int,
         rewardAddress: string,
+        changeAddr: string, (optional)
         delegationFeeRate: float,
         username: string,
         password: string
@@ -86,6 +87,11 @@ When a validator stops validating the Primary Network, they will receive a rewar
 
 A validator's stake is never slashed, regardless of their behavior; they will always receive their stake back when they're done validating.
 
+### `changeAddr`
+
+Any change resulting from this transaction will be sent to this address.
+You can leave this field empty; if you do, change will be sent to one of the addresses your user controls.
+
 ### `delegationFeeRate`
 
 Avalanche allows for delegation of stake. This parameter is the percent fee this validator charges when others delegate stake to them.
@@ -110,6 +116,7 @@ curl -X POST --data '{
         "endTime":'$(date --date="2 days" +%s)',
         "stakeAmount":1000000,
         "rewardAddress":"P-avax1d4wfwrfgu4dkkyq7dlhx0lt69y2hjkjeejnhca",
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "delegationFeeRate":10,
         "username":"USERNAME",
         "password":"PASSWORD"
@@ -118,13 +125,14 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
-The response has the transaction ID:
+The response has the transaction ID, as well as the address the change went to.
 
 ```json
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "6pb3mthunogehapzqmubmx6n38ii3lzytvdrxumovwkqftzls"
+        "txID": "6pb3mthunogehapzqmubmx6n38ii3lzytvdrxumovwkqftzls",
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
     },
     "id": 1
 }
@@ -194,6 +202,7 @@ platform.addSubnetValidator(
         startTime: int,
         endTime: int,
         weight: int,
+        changeAddr: string, (optional)
         username: string,
         password: string
     }
@@ -219,6 +228,11 @@ Similar to above, these are the Unix times that the validator will start and sto
 
 This is the validator's sampling weight for consensus. If the validator's weight is 1 and the cumulative weight of all validators in the subnet is 100, then this validator will be included in about 1 in every 100 samples during consensus.
 
+### `changeAddr`
+
+Any change resulting from this transaction will be sent to this address.
+You can leave this field empty; if you do, change will be sent to one of the addresses your user controls.
+
 ### `username` and `password`
 
 These parameters are the username and password of the user that pays the transaction fee. This user must hold a sufficient number of this Subnet's control keys in order to add a validator to this Subnet.
@@ -238,6 +252,7 @@ curl -X POST --data '{
         "startTime":'$(date --date="10 minutes" +%s)',
         "endTime":'$(date --date="2 days" +%s)',
         "weight":1,
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "username":"USERNAME",
         "password":"PASSWORD"
     },
@@ -245,13 +260,14 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
 ```
 
-The response has the transaction ID:
+The response has the transaction ID, as well as the address the change went to.
 
 ```json
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "2exafyvRNSE5ehwjhafBVt6CTntot7DFjsZNcZ54GSxBbVLcCm"
+        "txID": "2exafyvRNSE5ehwjhafBVt6CTntot7DFjsZNcZ54GSxBbVLcCm",
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
     },
     "id": 1
 }

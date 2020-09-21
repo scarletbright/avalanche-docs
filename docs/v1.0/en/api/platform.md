@@ -10,7 +10,7 @@ This API allows clients to interact with the P-Chain (Platform Chain), which mai
 
 ## Format
 
-This API uses the `json 2.0` RPC format. For more information on making JSON RPC calls, see [here.](./issuing-api-calls.md)
+This API uses the `json 2.0` RPC format.  
 
 ## Methods
 
@@ -34,10 +34,16 @@ platform.addDelegator(
         endTime: int,
         stakeAmount: int,
         rewardAddress: string,
+        from: []string, (optional)
+        changeAddr: string, (optional)
         username: string,
         password: string
     }
-) -> {txID: string}
+) -> 
+{
+    txID: string,
+    changeAddr: string
+}
 ```
 
 * `nodeID` is the node ID of the delegatee.
@@ -45,6 +51,8 @@ platform.addDelegator(
 * `endTime` is the Unix time when the delegator stops delegating (and staked AVAX is returned).
 * `stakeAmount` is the amount of nAVAX the delegator is staking.
 * `rewardAddress` is the address the validator reward goes to, if there is one.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
+* `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` is the user that pays the transaction fee.
 * `password` is `username`'s password.
 * `txID` is the transaction ID
@@ -61,6 +69,8 @@ curl -X POST --data '{
         "startTime":1594102400,
         "endTime":1604102400,
         "stakeAmount":100000,
+        "from": ["P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy"],
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "username":"username",
         "password":"password"
     },
@@ -74,7 +84,8 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "6pB3MtHUNogeHapZqMUBmx6N38ii3LzytVDrXuMovwKQFTZLs"
+        "txID": "6pB3MtHUNogeHapZqMUBmx6N38ii3LzytVDrXuMovwKQFTZLs",
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
     },
     "id": 1
 }
@@ -83,8 +94,9 @@ curl -X POST --data '{
 ### platform.addValidator
 
 Add a validator to the Primary Network.
-
-A validator stakes AVAX which enables their node to validate transactions and recieve a reward after their lock up period is over. The validator's probability of being sampled by other validators (weight) is in proportion to the staked nAVAX.
+You must stake AVAX to do this.
+If the node is sufficiently correct and responsive while validating, you recieve a reward when they are done validating.
+The validator's probability of being sampled during by other validators during consensus is in proportion to the amount of AVAX staked.
 
 The validator can charge a fee to delegators; the former receives a percentage of the delegator's validation reward (if any.) The minimum delegation fee is 2%. A transaction which adds a validator has no fee.
 
@@ -102,11 +114,17 @@ platform.addValidator(
         endTime: int,
         stakeAmount: int,
         rewardAddress: string,
+        from: []string, (optional)
+        changeAddr: string, (optional)
         delegationFeeRate: float,
         username: string,
         password: string
     }
-) -> {txID: string}
+) -> 
+{
+    txID: string,
+    changeAddr: string
+}
 ```
 
 * `nodeID` is the node ID of the validator being added.
@@ -114,6 +132,8 @@ platform.addValidator(
 * `endTime` is the Unix time when the validator stops validating the Primary Network (and staked AVAX is returned).
 * `stakeAmount` is the amount of nAVAX the validator is staking.
 * `rewardAddress` is the address the validator reward will go to, if there is one.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
+* `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `delegationFeeRate` is the percent fee this validator charges when others delegate stake to them.
   Up to 4 decimal places allowed; additional decimal places are ignored. Must be between 0 and 100, inclusive.
   For example, if `delegationFeeRate` is `1.2345` and someone delegates to this validator, then when the delegation period is over, 1.2345% of the reward goes to the validator and the rest goes to the delegator.
@@ -133,6 +153,8 @@ curl -X POST --data '{
     "params": {
         "nodeID":"NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
         "rewardAddress":"P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy",
+        "from": ["P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy"],
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "startTime":'$(date --date="10 minutes" +%s)',
         "endTime":'$(date --date="2 days" +%s)',
         "stakeAmount":1000000,
@@ -150,7 +172,8 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "6pb3mthunogehapzqmubmx6n38ii3lzytvdrxumovwkqftzls"
+        "txID": "6pb3mthunogehapzqmubmx6n38ii3lzytvdrxumovwkqftzls",
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
     },
     "id": 1
 }
@@ -171,10 +194,16 @@ platform.addSubnetValidator(
         startTime: int,
         endTime: int,
         weight: int,
+        from: []string, (optional)
+        changeAddr: string, (optional)
         username: string,
         password: string
     }
-) -> {txID: string}
+) -> 
+{
+    txID: string,
+    changeAddr: string,
+}
 ```
 
 * `nodeID` is the node ID of the validator.
@@ -182,6 +211,8 @@ platform.addSubnetValidator(
 * `startTime` is the unix time when the validator starts validating the subnet.
 * `endTime` is the unix time when the validator stops validating the subnet.
 * `weight` is the validator's weight used for sampling.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
+* `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` is the user that pays the transaction fee.
 * `password` is `username`'s password.
 * `txID` is the transaction ID.
@@ -198,6 +229,8 @@ curl -X POST --data '{
         "startTime":1583524047,
         "endTime":1604102399,
         "weight":1,
+        "from": ["P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy"],
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "username":"username",
         "password":"password"
     },
@@ -212,7 +245,8 @@ curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
     "result" :{
-        "txID": "2exafyvRNSE5ehwjhafBVt6CTntot7DFjsZNcZ54GSxBbVLcCm"
+        "txID": "2exafyvRNSE5ehwjhafBVt6CTntot7DFjsZNcZ54GSxBbVLcCm",
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
     }
 }
 ```
@@ -270,10 +304,16 @@ platform.createBlockchain(
         vmID: string,
         name: string,
         genesisData: string,
+        from: []string, (optional)
+        changeAddr: string, (optional)
         username: string,
         password:string
     }
-) -> {txID: string}
+) -> 
+{
+    txID: string,
+    changeAddr: string
+}
 ```
 
 * `subnetID` is the ID of the Subnet that validates the new blockchain.
@@ -282,7 +322,9 @@ platform.createBlockchain(
   Can also be an alias of the Virtual Machine.
 * `name` is a human-readable name for the new blockchain. Not necessarily unique.
 * `genesisData` is the base 58 (with checksum) representation of the genesis state of the new blockchain.
-  Virtual Machines should have a static API method named `buildGenesis` that can be used to generate `genesisData`.
+  Virtual Machines should have a static API method named `buildGenesis` that can be used to generate `genesisData`
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
+* `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` is the user that pays the transaction fee. This user must have a sufficient number of the subnet's control keys.
 * `password` is `username`'s password.
 * `txID` is the transaction ID.
@@ -301,6 +343,8 @@ curl -X POST --data '{
         "SubnetID":"2bRCr6B4MiEfSjidDwxDpdCyviwnfUVqB2HGwhm947w9YYqb7r",
         "name":"My new timestamp",
         "genesisData": "45oj4CqFViNHUtBxJ55TZfqaVAXFwMRMj2XkHVqUYjJYoTaEM",
+        "from": ["P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy"],
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "username":"username",
         "password":"password"
     },
@@ -314,7 +358,8 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "2TBnyFmST7TirNm6Y6z4863zusRVpWi5Cj1sKS9bXTUmu8GfeU"
+        "txID": "2TBnyFmST7TirNm6Y6z4863zusRVpWi5Cj1sKS9bXTUmu8GfeU",
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
     },
     "id": 1
 }
@@ -333,13 +378,21 @@ platform.createSubnet(
     {
         controlKeys: []string,
         threshold: int,
+        from: []string, (optional)
+        changeAddr: string, (optional)
         username: string,
         password: string
     }
-) -> {txID: string}
+) -> 
+{
+    txID: string,
+    changeAddr: string
+}
 ```
 
-* In order to create add a validator to this subnet, `threshold` signatures are required from the addresses in `controlKeys`.
+* In order to create add a validator to this subnet, `threshold` signatures are required from the addresses in `controlKeys`
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
+* `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` is the user that pays the transaction fee.
 * `password` is `username`'s password.
 
@@ -355,6 +408,8 @@ curl -X POST --data '{
             "P-avax165mp4efnel8rkdeqe5ztggspmw4v40j7pfjlhu"
         ],
         "threshold":2,
+        "from": ["P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy"],
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "username":"username",
         "password":"password"
     },
@@ -385,15 +440,23 @@ After issuing this transaction, you must call the X-Chain's [`importAVAX`](./avm
 platform.exportAVAX(
     {
         amount: int,
+        from: []string, (optional)
         to: string,
+        changeAddr: string, (optional)
         username: string,
         password:string
     }
-) -> {txID: string}
+) -> 
+{
+    txID: string,
+    changeAddr: string
+}
 ```
 
 * `amount` is the amount of nAVAX to send.
-* `to` is the address on the X-Chain to send the AVAX to.
+* `to` is the address on the X-Chain to send the AVAX to
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
+* `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` is the user sending the AVAX and paying the transaction fee.
 * `password` is `username`'s password.
 * `txID` is the ID of this transaction.
@@ -407,6 +470,8 @@ curl -X POST --data '{
     "params": {
         "to":"X-avax1yv8cwj9kq3527feemtmh5gkvezna5xys08mxet",
         "amount":1,
+        "from": ["P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy"],
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "username":"username",
         "password":"password"
     },
@@ -420,7 +485,8 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "2Kz69TNBSeABuaVjKa6ZJCTLobbe5xo9c5eU8QwdUSvPo2dBk3"
+        "txID": "2Kz69TNBSeABuaVjKa6ZJCTLobbe5xo9c5eU8QwdUSvPo2dBk3",
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
     },
     "id": 1
 }
@@ -1099,7 +1165,7 @@ curl -X POST --data '{
 
 ### platform.getUTXOs
 
-Gets the UTXOs that reference a given set of addresses. If sourceChain is specified, then it will retrieve the atomic UTXOs exported from that chain to the Platform Chain.
+Gets the UTXOs that reference a given set address.
 
 #### Signature
 
@@ -1108,7 +1174,7 @@ platform.getUTXOs(
     {
         addresses: string,
         limit: int, (optional)
-        startIndex: { (optional)
+        startIndex: { (optional )
             address: string,
             utxo: string
         },
@@ -1261,20 +1327,28 @@ Before this method is called, you must call the X-Chain's [`exportAVAX`](./avm.m
 ```go
 platform.importAVAX(
     {
+        from: []string, (optional)
         to: string,
+        changeAddr: string, (optional)
         sourceChain: string,
         username: string,
         password: string
     }
-) -> {tx: string}
+) -> 
+{
+    tx: string,
+    changeAddr: string
+}
 ```
 
-* `username` is the user that controls the address specified in `to`.
-* `password` is `username`'s password.
 * `to` is the ID of the address the AVAX is imported to.
   This must be the same as the `to` argument in the corresponding call to the X-Chain's `exportAVAX`.
 * `sourceChain` is the ID or alias of the chain the AVAX is being imported from.
   To import funds from the X-Chain, use `"X"`.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
+* `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
+* `username` is the user that controls the address specified in `to`.
+* `password` is `username`'s password.
 
 #### Example Call
 
@@ -1283,8 +1357,10 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.importAVAX",
     "params": {
-        "to":"P-avax1apzq2zt0uaaatum3wdz83u4z7dv4st7l5m5n2a",
         "sourceChain":"X",
+        "to":"P-avax1apzq2zt0uaaatum3wdz83u4z7dv4st7l5m5n2a",
+        "from": ["P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy"],
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "username":"bob",
         "password":"loblaw"
     },
@@ -1298,7 +1374,8 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "txID": "P63NjowXaQJXt5cmspqdoD3VcuQdXUPM5eoZE2Vcg63aVEx8R"
+        "txID": "P63NjowXaQJXt5cmspqdoD3VcuQdXUPM5eoZE2Vcg63aVEx8R",
+        "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u"
     },
     "id": 1
 }
@@ -1563,6 +1640,4 @@ curl -X POST --data '{
     },
     "id": 1
 }
-
 ```
-
