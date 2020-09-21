@@ -18,7 +18,7 @@ When you add a node to the validator set you specify:
 * When you want to start and stop validating
 * How many AVAX you are staking
 * The address to send any rewards to
-* Your delegation fee rate (see below).
+* Your delegation fee rate (see below)
 
 Note that once you issue the transaction to add a node as a validator, there is no way to change the parameters.
 **You can't unstake early or change the stake amount, node ID or reward address.**
@@ -104,5 +104,5 @@ If you earned a reward, it is sent to the address you specified when you delegat
 * The maximum amount of time one can stake funds for delegation is 1 year
 * The minimum delegation fee rate is 2%
 * The maximum weight of a validator (their own stake + stake delegated to them) is the minimum of 3 x 10<sup>6</sup> AVAX and 5 times the amount the validator staked.
-  For example, if you staked 2,000 AVAX to become a validator, only 8000 AVAX can be delegated to your node total (not per delegator.)
-* The minimum percentage of the time a validator must be correct and online in order to receive a reward is 60%.
+  For example, if you staked 2,000 AVAX to become a validator, only 8000 AVAX can be delegated to your node total (not per delegator)
+* The minimum percentage of the time a validator must be correct and online in order to receive a reward is 60%
