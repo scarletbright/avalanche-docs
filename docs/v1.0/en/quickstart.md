@@ -280,6 +280,10 @@ A nAVAX (nanoAVAX) is the smallest increment of AVAX, and 1,000,000,000 nAVAX ==
 If you want to specify a particular address where change should go, you can specify it in `changeAddr`.
 You can leave this field empty; if you do, any change will go to one of the addresses your user controls.
 
+In order to prevent spam, Avalanche requires the payment of a [transaction fee](transaction-fees.md).
+The transaction fee will be automatically deducted from an address controlled by your user when you issue a transaction.
+Keep that in mind when you're checking balances below.
+
 When you send this request, the node will authenticate you using your username and password.
 Then, it will look through all the private keys controlled by your user until it finds
 enough AVAX to satisfy the request.
