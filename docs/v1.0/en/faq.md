@@ -48,6 +48,9 @@ If someone already reported the same issue, comment with your details.
 
 [See here.](transaction-fees.md)
 
+## Does Avalanche support hardware wallets?
+
+Ledger support is coming in the next few weeks.
 
 ## Running a node
 
@@ -350,10 +353,6 @@ Great thanks to `tbrunain` for this contribution :)
 AVAX is denomination 9, so the smallest unit of AVAX is nanoAVAX (nAVAX) at 10^-9 AVAX
 
 ## Web Wallet
-
-### When hardware wallet integration?
-
-There is an Avalanche-X grant for [ledger support](https://www.avalabs.org/avalanche-x/explore-open-grants/ledger-support).
 
 ### What is the HD Path?
 
