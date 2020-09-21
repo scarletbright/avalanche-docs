@@ -14,21 +14,11 @@ If your question is still unanswered, ask about it on our [Discord](https://chat
 
 **There is a list of known issues at the bottom of this page.**
 
-##  Questions
-
-### Can I buy AVAX?
-
-Not until after our main network launches.
-
-### What is the transaction fee?
-
-[See here.](transaction-fees.md)
-
-### Where can I go for help?
+## Where can I go for help?
 
 [Discord](https://chat.avalabs.org), but please search the documentation and Discord for your issue before asking about it.
 
-### I think something went wrong or there's a bug. What do I do?
+## I think something went wrong or there's a bug. What do I do?
 
 First, re-read any instructions that you were following and make sure that you followed them correctly.
 See [known issues](#known-issues) and the #testnet-status channel of our [Discord](https://chat.avalabs.org).
@@ -38,13 +28,28 @@ If, after doing the above, you think there is a bug, please make an issue on our
 Please give as much information and context as possible when describing an issue.
 If someone already reported the same issue, comment with your details.
 
-### What is the minimum amount I need to stake in order to validate the Primary Network?
+## Is there a test net faucet?
 
-2,000 AVAX.
+[Yes.]({{https://faucet.avax.network/}})
 
-### What is the minimum amount I can delegate on the Primary Network?
+## Is there a browser-based wallet?
 
-25 AVAX.
+[Yes.](https://wallet.avax.network/)
+
+## Is there an explorer?
+
+[Yes.](https://explorer.avax.network/)
+
+## Is there a Javascript library?
+
+[Yes.](../../tools/avalanchejs/)
+
+## How do transaction fees work?
+
+[See here.](transaction-fees.md)
+
+
+## Running a node
 
 ### How do I upgrade my node?
 
@@ -101,13 +106,65 @@ You can run the node with `./avalanche-<VERSION>/avalanche`
 
 Note: The Linux binaries are compiled for AMD64 (x86-64) architectures. For ARM platforms, like the Raspberry Pi, please [build from source](#from-source).
 
+### What hardware do I need?
+
+In general, any fairly modern computer should do.
+It should have:
+
+* CPU >= 2 GHz
+* RAM >= 4 GB
+* Free disk space >= 10 GB
+
+### What software do I need?
+
+Your operating system should be 64-bit Ubuntu 18.04/20.04 or Mac OS >= Catalina.
+Other operating systems may work but are not well tested.
+
+You need to have Go 1.14+ installed.
+To check, do: `go version`.
+If Go is not installed, follow one of the many online guides for doing so.
+
+You also need to have your GOPATH set.
+To check that it's set, do `echo $GOPATH`. It should print something.
+If it doesn't see [here](https://www.digitalocean.com/community/tutorials/how-to-install-go-on-ubuntu-18-04) or one of the many of the guides about setting your GOPATH.
+
+### Is my node connected to peers?
+
+Call `info.peers`:
+
+```sh
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"info.peers"
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
+```
+
+Each entry in the response contains a peer's IP address, public IP address, node ID, version, and the time of the last sent and received messages exchanged with this node.
+If you see none, something is wrong and you are not connected to any peers.
+
+### Do I need to open any ports?
+
+[See here](staking.md#networking)
+
+### How can I set up node monitoring?
+
+See [this tutorial.](tutorials/node-monitoring.md)
+
+### What should I back up?
+
+You should back up your Staking Key, which determines your node's ID.
+By default this is at `$HOME/.avalanchego/staking/staker.key`.
+You should also back up all private keys that hold funds.
+Make sure that all backups are secure and accessible only by you.
+
 ### Will restarting/upgrading my node give me a new node ID?
 
 No.
 
 ### What version am I running?
 
-Run `./avalanche --version`.
+Run `./avalanchego --version`.
 It will print the version of Avalanche you're running.
 To see what the latest release is, see our [releases page.](https://github.com/ava-labs/avalanchego/releases/)
 
@@ -115,7 +172,6 @@ To see what the latest release is, see our [releases page.](https://github.com/a
 
 First, make sure you're sending the API call to the right place/following an instruction correctly.
 Then, [make sure your node is connected to peers.](#is-my-node-connected-to-peers)
-Then, [make sure the chain you're sending the call to is done bootstrapping.](#is-my-node-done-bootstrapping)
 If a problem persists, contact us on [Discord.](https://chat.avalabs.org)
 
 ### Where is my node's data?
@@ -136,7 +192,6 @@ Upgrading AvalancheGo will never erase or change your staking key/certificate.
 ### Where are my node's logs?
 
 By default, they're in `$HOME/.avalanchego/logs/node`.
-
 Logs specific to a chain are in subdirectory `chain/[CHAIN ID]` where `[CHAIN ID]` is the chain's ID.
 
 ### Can I run AvalancheGo on a different machine but keep the node ID / state?
@@ -171,6 +226,36 @@ curl -X POST --data '{
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
+
+### How do I kill my node?
+
+Do `CTRL + C` in the terminal window where you're running the node.
+
+There is a known issue where sometimes this doesn't kill the node.
+In that case:
+
+Do `CTRL + Z` in the terminal window where you're running the node.
+This should print something like:
+
+```sh
+[1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/avalanchego/build/avalanche
+```
+
+Do `kill -9 %1` (or `kill -9 %2` if it printed `[2]+ Stopped`, etc.)
+
+## Staking
+
+### How does staking work?
+
+[See here.](staking.md)
+
+### What is the minimum amount I need to stake in order to validate the Primary Network?
+
+2,000 AVAX.
+
+### What is the minimum amount I can delegate on the Primary Network?
+
+25 AVAX.
 
 ### Is my node in the validator set?
 
@@ -228,7 +313,7 @@ If your node is not in either list, it is not a validator.
 Please note that even if your node is off, it will appear in the validator list.
 In order to receive staking rewards, your node must also be running and connected to other nodes.
 
-### How can I get involved with Avalanche?
+## How can I get involved with Avalanche?
 
 We want you to be a part of the Avalanche community!
 Any contribution, no matter how small, is valued and welcome.
@@ -240,80 +325,8 @@ You can:
 * Check out the #dev-chat channel on our [Discord.](https://chat.avalabs.org)
 * Make an issue or pull request on our [Github.](https://github.com/ava-labs/avalanchego)
 
-### What hardware do I need?
 
-In general, any fairly modern computer should do.
-It should have:
-
-* CPU >= 2 GHz
-* RAM >= 4 GB
-* Free disk space >= 10 GB
-
-### What software do I need?
-
-Your operating system should be 64-bit Ubuntu >= 18.04 or Mac OS >= Catalina.
-Other operating systems may work but are not well tested.
-
-You need to have Go 1.14+ installed.
-To check, do: `go version`.
-If Go is not installed, follow one of the many online guides for doing so.
-
-You also need to have your GOPATH set.
-To check that it's set, do `echo $GOPATH`. It should print something.
-If it doesn't see [here](https://www.digitalocean.com/community/tutorials/how-to-install-go-on-ubuntu-18-04) or one of the many of the guides about setting your GOPATH.
-
-### Is there a test net faucet?
-
-[Yes.]({{https://faucet.avax.network/}})
-
-### Is there a browser-based wallet?
-
-[Yes.](https://wallet.avax.network/)
-
-### Is there an explorer?
-
-[Yes.](https://explorer.avax.network/)
-
-### Is there a Javascript library?
-
-[Yes.](../../tools/avalanchejs/)
-
-### Is my node connected to peers?
-
-Call `info.peers`:
-
-```sh
-curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "method" :"info.peers"
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
-```
-
-Each entry in the response contains a peer's IP address, public IP address, node ID, version, and the time of the last sent and received messages exchanged with this node.
-If you see none, something is wrong and you are not connected to any peers.
-
-### How do I kill my node?
-
-Do `CTRL + C` in the terminal window where you're running the node.
-
-There is a known issue where sometimes this doesn't kill the node.
-In that case:
-
-Do `CTRL + Z` in the terminal window where you're running the node.
-This should print something like:
-
-```sh
-[1]+  Stopped     /home/youruser/go/src/github.com/ava-labs/avalanchego/build/avalanche
-```
-
-Do `kill -9 %1` (or `kill -9 %2` if it printed `[2]+ Stopped`, etc.)
-
-### Do I need to open any ports?
-
-You don't have to. However, if you open the staking port (`9651` by default) your node will be able to connect to more peers.
-
-### What is the `id` field in every API call? Do I need to change it?
+## What is the `id` field in every API call? Do I need to change it?
 
 AvalancheGo uses the [JSON RPC 2.0 standard](https://www.jsonrpc.org/specificatio) for API calls.  
 As part of this standard, each call and response has a field `id`.
@@ -322,24 +335,16 @@ This is useful in tracking which response corresponds to which request.
 You do not need to change this field when making API calls.
 It's OK to make many API calls with the same `id` field.
 
-### Is there a repository of Avalanche related materials I can learn from?
+## Is there a repository of Avalanche related materials I can learn from?
 
 In addition to this documentation, there is a [community-run repository](https://github.com/tbrunain/awesome-ava-chain) of useful links and resoucres.
 Great thanks to `tbrunain` for this contribution :)
-
-### My node prints `peer attempting to connect with newer version avalanche/<VERSION>. You may want to update your client.` Is this OK?
-
-As long as you are [on the right network](#node-is-on-the-wrong-network), yes.
 
 ### What is AVAX's denomination?
 
 AVAX is denomination 9, so the smallest unit of AVAX is nanoAVAX (nAVAX) at 10^-9 AVAX
 
 ## Web Wallet
-
-### What's up with the new wallet?
-
-Avalanche's [Web Wallet](https://wallet.avax.network) is an HD Wallet (hierarchical deterministic) based on the BIP 32, 39 and 44 standards. It follows industry best practices for security, wallet interoperability and hardware wallet integration.
 
 ### When hardware wallet integration?
 

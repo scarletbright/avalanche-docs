@@ -20,6 +20,11 @@ When you add a node to the validator set you specify:
 * The address to send any rewards to
 * Your delegation fee rate (see below).
 
+Note that once you issue the transaction to add a node as a validator, there is no way to change the parameters.
+**You can't unstake early or change the stake amount, node ID or reward address.**
+Please make sure you're using the correct values in the API calls below.
+If you're not sure, ask for help on [Discord.](https://chat.avalabs.org)
+
 ## Running a validator
 
 If you're running a validator, it's important that you follow some best practices to ensure that you receive a reward and keep your funds safe.

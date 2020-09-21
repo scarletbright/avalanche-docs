@@ -10,6 +10,11 @@ The [Platform Chain (P-Chain)](../core-concepts/overview.md#the-p-chain) manages
 This includes tracking which nodes are in which Subnets, which blockchains exist and which Subnets are validating which blockchains.
 To add a validator we'll issue transactions to the P-Chain.
 
+Note that once you issue the transaction to add a node as a validator, there is no way to change the parameters.
+**You can't unstake early or change the stake amount, node ID or reward address.**
+Please make sure you're using the correct values in the API calls below.
+If you're not sure, ask for help on [Discord.](https://chat.avalabs.org)
+
 ## Requirements
 
 We assume that you've already done the [quickstart guide](../quickstart.md) and [subnet creation tutorial](create-a-subnet.md), and are familiar with the [Avalanche Network's architecture.](../core-concepts/overview.md)

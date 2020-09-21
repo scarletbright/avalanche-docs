@@ -368,6 +368,11 @@ Avalanche uses Proof-of-Stake, so to become a validator one needs to provide a s
 
 Let's add your node to the Primary Network.
 
+Note that once you issue the transaction to add a node as a validator, there is no way to change the parameters.
+**You can't unstake early or change the stake amount, node ID or reward address.**
+Please make sure you're using the correct values in the API calls below.
+If you're not sure, ask for help on [Discord.](https://chat.avalabs.org)
+
 ### Create a P-Chain Address
 
 The P-Chain (Platform Chain) manages metadata about the Avalanche network, including which nodes belong to which Subnets.
