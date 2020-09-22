@@ -465,7 +465,7 @@ avm.createNFTAsset({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     : 1,
-    "method" :"avm.createVariableCapAsset",
+    "method" :"avm.createNFTAsset",
     "params" :{
         "name":"Coincert",
         "symbol":"TIXX",
