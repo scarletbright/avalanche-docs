@@ -39,7 +39,7 @@ where `genesisData` has this form:
 
 ```json
 {
-"genesisData" : 
+"genesisData" :
     {
         "assetAlias1": {               // Each object defines an asset
             "name": "human readable name",
@@ -220,7 +220,7 @@ avm.createFixedCapAsset({
     changeAddr: string, (optional)
     username: string,  
     password: string
-}) -> 
+}) ->
 {
     assetID: string,
     changeAddr: string
@@ -284,7 +284,7 @@ Mint units of a variable-cap asset (an asset created with `avm.createVariableCap
 #### Signature
 
 ```go
-avm.createMintTx({
+avm.mint({
     amount: int,
     assetID: string,
     to: string,
@@ -292,7 +292,7 @@ avm.createMintTx({
     changeAddr: string, (optional)
     username: string,
     password: string
-}) -> 
+}) ->
 {
     txID: string,
     changeAddr: string,
@@ -312,7 +312,7 @@ avm.createMintTx({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     : 1,
-    "method" :"avm.createMintTx",
+    "method" :"avm.mint",
     "params" :{
         "amount":10000000,
         "assetID":"i1EqsthjiFTxunrj8WD2xFSrQ5p2siEKQacmCCB5qBFVqfSL2",
@@ -376,6 +376,7 @@ avm.createVariableCapAsset({
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` pays the transaction fee.
 * `assetID` is the ID of the new asset.
+* `changeAddr` in the result is the address where any change was sent.
 
 #### Example Call
 
@@ -424,6 +425,141 @@ curl -X POST --data '{
 }
 ```
 
+### avm.createNFTAsset
+
+Create a new non-fungible asset. No units of the asset exist at initialization. Minters can mint units of this asset using `mintNFT`.
+
+#### Signature
+
+```go
+avm.createNFTAsset({
+    name: string,
+    symbol: string,
+    minterSets []{
+        minters: []string,
+        threshold: int
+    },
+    from: []string, (optional)
+    changeAddr: string, (optional)
+    username: string,  
+    password: string
+}) ->
+ {
+    assetID: string,
+    changeAddr: string,
+}
+```
+
+* `name` is a human-readable name for the asset. Not necessarily unique.
+* `symbol` is a shorthand symbol for the asset. Between 0 and 4 characters. Not necessarily unique. May be omitted.
+* `minterSets` is a list where each element specifies that `threshold` of the addresses in `minters` may together mint more of the asset by signing a minting transaction.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
+* `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
+* `username` pays the transaction fee.
+* `assetID` is the ID of the new asset.
+* `changeAddr` in the result is the address where any change was sent.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     : 1,
+    "method" :"avm.createVariableCapAsset",
+    "params" :{
+        "name":"Coincert",
+        "symbol":"TIXX",
+        "minterSets":[
+            {
+                "minters":[
+                    "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"
+                ],
+                "threshold": 1
+            }
+        ],
+        "from": ["X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"],
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
+        "username":"myUsername",
+        "password":"myPassword"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "assetID": "2KGdt2HpFKpTH5CtGZjYt5XPWs6Pv9DLoRBhiFfntbezdRvZWP",
+        "changeAddr": "X-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u"
+    },
+    "id": 1
+}
+```
+
+### avm.mintNFT
+
+Mint non-fungible tokens which were created with `avm.createNFTAsset`.
+
+#### Signature
+
+```go
+avm.mintNFT({
+    assetID: string,
+    payload: string,
+    to: string,
+    from: []string, (optional)
+    changeAddr: string, (optional)
+    username: string,
+    password: string
+}) ->
+{
+    txID: string,
+    changeAddr: string,
+}
+```
+
+* `assetID` is the assetID of the newly created NFT asset.
+* `payload` is an arbitrary CB58 encoded payload of up to 1024 bytes.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
+* `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
+* `username` is the user that pays the transaction fee. `username` must hold keys giving it permission to mint more of this asset. That is, it must control at least *threshold* keys for one of the minter sets.
+* `txID` is this transaction's ID.
+* `changeAddr` in the result is the address where any change was sent.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     : 1,
+    "method" :"avm.createMintTx",
+    "params" :{
+        "assetID":"2KGdt2HpFKpTH5CtGZjYt5XPWs6Pv9DLoRBhiFfntbezdRvZWP",
+        "payload":"2EWh72jYQvEJF9NLk",
+        "to":"X-avax1ap39w4a7fk0au083rrmnhc2pqk20yjt6s3gzkx",
+        "from":["X-avax1s65kep4smpr9cnf6uh9cuuud4ndm2z4jguj3gp"],
+        "changeAddr":"X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
+        "username":"USERNAME GOES HERE",
+        "password":"PASSWORD GOES HERE"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "txID":"2oGdPdfw2qcNUHeqjw8sU2hPVrFyNUTgn6A8HenDra7oLCDtja",
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"
+    }
+}
+```
+
 ### avm.exportAVAX
 
 Send AVAX from the X-Chain to another chain.  
@@ -451,6 +587,8 @@ avm.exportAVAX({
 * `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * The AVAX is sent from addresses controlled by `username`
+* `txID` is this transaction's ID.
+* `changeAddr` in the result is the address where any change was sent.
 
 #### Example Call
 
@@ -1082,14 +1220,12 @@ avm.Send({
 }) -> {txID: string}
 ```
 
-* Sends `amount` units of asset with ID `assetID` to address `to`.
-  `amount` is denominated in the smallest increment of the asset.
-  For AVAX this is 1 nAVAX (one billionth of 1 AVAX.)
-* You can attach a `memo`, whose length can be up to 256 bytes.
+* Sends `amount` units of asset with ID `assetID` to address `to`. `amount` is denominated in the smallest increment of the asset. For AVAX this is 1 nAVAX (one billionth of 1 AVAX.)
+* `to` is the X-Chain address the asset is sent to.
 * `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
-* The asset is sent from addresses controlled by user `username`.
-  (Of course, that user will need to hold at least the balance of the asset being sent.)
+* You can attach a `memo`, whose length can be up to 256 bytes.
+* The asset is sent from addresses controlled by user `username`. (Of course, that user will need to hold at least the balance of the asset being sent.)
 
 #### Example Call
 
@@ -1121,5 +1257,62 @@ curl -X POST --data '{
         "txID":"2iXSVLPNVdnFqn65rRvLrsu8WneTFqBJRMqkBJx5vZTwAQb8c1",
         "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"
     }
+}
+```
+
+### avm.sendNFT
+
+Send a non-fungible token.
+
+#### Signature
+
+```go
+avm.sendNFT({
+    assetID: string,
+    groupID: number,
+    to: string,
+    from: []string, (optional)
+    changeAddr: string, (optional)
+    username: string,
+    password: string
+}) -> {txID: string}
+```
+
+* `assetID` is the asset ID of the NFT of the NFT being sent.
+* `groupID` is the NFT group from which to send the NFT. NFT creation allows multiple groups under each NFT ID. You can issue multiple NFTs to each group.
+* `to` is the X-Chain address the NFT is sent to.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
+ `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
+* The asset is sent from addresses controlled by user `username`. (Of course, that user will need to hold at least the balance of the NFT being sent.)
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"avm.sendNFT",
+    "params" :{
+        "assetID"   : "2KGdt2HpFKpTH5CtGZjYt5XPWs6Pv9DLoRBhiFfntbezdRvZWP",
+        "groupID"   : 0,
+        "to"        : "X-avax1yzt57wd8me6xmy3t42lz8m5lg6yruy79m6whsf",
+        "from"      :["X-avax1s65kep4smpr9cnf6uh9cuuud4ndm2z4jguj3gp"],
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
+        "username"  : "myUsername",
+        "password"  : "myPassword"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "txID": "DoR2UtG1Trd3Q8gWXVevNxD666Q3DPqSFmBSMPQ9dWTV8Qtuy",
+        "changeAddr": "X-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u"
+    },
+    "id": 1
 }
 ```
