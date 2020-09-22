@@ -26,7 +26,25 @@ First, we show you how to add your node as a validator by using Avalanche's [web
 
 Get your node's ID by calling [`info.getNodeID`](../api/info.md#infogetnodeid):
 
-![Get node's ID](../../../images/tutorials/adding-validators/1.png)
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"info.getNodeID"
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
+```
+
+The response has your node's ID:
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "nodeID": "NodeID-5mb46qkSBj81k9g9e4VFjGGSbaaSLFRzD"
+    },
+    "id": 1
+}
+```
 
 Open [the wallet](https://wallet.avax.network) and go the `Earn` tab. Choose `Add Validator`
 
@@ -82,7 +100,8 @@ Let's go through and examine these arguments.
 
 `nodeID`
 
-This is the node ID of the validator being added. To get your node's ID, call [`info.getNodeID`:](../api/info.md#infogetnodeid)
+This is the node ID of the validator being added.
+To get your node's ID, call [`info.getNodeID`:](../api/info.md#infogetnodeid)
 
 ```json
 curl -X POST --data '{
@@ -99,7 +118,7 @@ The response has your node's ID:
 {
     "jsonrpc": "2.0",
     "result": {
-        "nodeID": "NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK"
+        "nodeID": "NodeID-LMUue2dBBRWdDbPL4Yx47Ps31noeewJji"
     },
     "id": 1
 }
@@ -137,7 +156,7 @@ For example, if `delegationFeeRate` is `1.2345` and someone delegates to this va
 
 These parameters are the username and password of the user that pays the transaction fee, provides the staked AVAX and to whom the staked AVAX will be returned.
 
-Now let's issue the transaction. We use the shell command `date` to compute the Unix time 10 minutes and 2 days in the future to use as the values of `startTime` and `endTime`, respectively.
+Now let's issue the transaction. We use the shell command `date` to compute the Unix time 10 minutes and 30 days in the future to use as the values of `startTime` and `endTime`, respectively.
 (Note: If you're on a Mac, replace  `$(date` with `$(gdate`. If you don't have `gdate` installed, do `brew install coreutils`.)
 In this example we stake 2,000 AVAX (2 x 10<sup>12</sup> nAVAX).
 
@@ -146,9 +165,9 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.addValidator",
     "params": {
-        "nodeID":"NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+        "nodeID":"NodeID-LMUue2dBBRWdDbPL4Yx47Ps31noeewJji",
         "startTime":'$(date --date="10 minutes" +%s)',
-        "endTime":'$(date --date="2 days" +%s)',
+        "endTime":'$(date --date="30 days" +%s)',
         "stakeAmount":2000000000000,
         "rewardAddress":"P-avax1d4wfwrfgu4dkkyq7dlhx0lt69y2hjkjeejnhca",
         "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
@@ -205,7 +224,7 @@ The response should include the node we just added:
     "result": {
         "validators": [
             {
-                "nodeID": "NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+                "nodeID": "NodeID-LMUue2dBBRWdDbPL4Yx47Ps31noeewJji",
                 "startTime": "1584021450",
                 "endtime": "1584121156",
                 "stakeAmount": "2000000000000",
@@ -281,7 +300,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.addSubnetValidator",
     "params": {
-        "nodeID":"NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+        "nodeID":"NodeID-LMUue2dBBRWdDbPL4Yx47Ps31noeewJji",
         "subnetID":"nTd2Q2nTLp8M9qv2VKHMdvYhtNWX7aTPa4SMEK7x7yJHbcWvr",
         "startTime":'$(date --date="10 minutes" +%s)',
         "endTime":'$(date --date="30 days" +%s)',
@@ -339,7 +358,7 @@ The response should include the node we just added:
     "result": {
         "validators": [
             {
-                "nodeID": "NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
+                "nodeID": "NodeID-LMUue2dBBRWdDbPL4Yx47Ps31noeewJji",
                 "startTime":1584042912,
                 "endTime":1584121156,
                 "weight": "1"
