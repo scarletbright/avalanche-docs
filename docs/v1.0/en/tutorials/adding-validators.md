@@ -4,7 +4,7 @@
 
 The [Primary Network](../core-concepts/overview.md#what-are-subnets) is inherent to the Avalanche network and validates Avalanche's [built-in blockchains.](../core-concepts/overview.md#built-in-blockchains)
 
-In this tutorial we'll add a node to the Primary Network and to a subnet on the Avalanche Public Testnet.
+In this tutorial we'll add a node to the Primary Network and to a subnet on the Avalanche Network.
 
 The [Platform Chain (P-Chain)](../core-concepts/overview.md#the-p-chain) manages metadata about the Avalanche network.
 This includes tracking which nodes are in which Subnets, which blockchains exist and which Subnets are validating which blockchains.
