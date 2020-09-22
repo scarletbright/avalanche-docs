@@ -118,6 +118,10 @@ The identity of the network the node should connect to. Can be one of:
 Validators must know their public facing IP addresses so they can let other nodes know how to connect to them.
 If this argument is not provided, the node will attempt to perform NAT traversal to get the node's public IP. Should be set to `127.0.0.1` to create a local network. The default value is `""`.
 
+`--plugin-dir` (string, file path):
+
+Specifies the directory in which the `evm` plugin is kept. Defaults to `"$HOME/.avalanchego/build/plugins"`.
+
 `--signature-verification-enabled` (bool):
 
 Enables signature verification to be disabled for testing. When set to false, signatures won't be checked in VMs that allow signatures to be disabled. Defaults to `true`.
