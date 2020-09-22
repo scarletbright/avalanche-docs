@@ -10,9 +10,9 @@ The quickest way to learn about Avalanche is to run a node and interact with the
 In this tutorial, which should take less than 10 minutes, we will:
 
 * Install and run an Avalanche node
-* Connect to the public test network
-* Acquire and send AVAX, the Avalanche network's native token
-* Start validating
+* Connect to the Avalanche Network
+* Send AVAX, the Avalanche network's native token
+* Add your node to the validator set
 
 
 If you run into any issues at all, **please check the [FAQ](faq.md)**
@@ -23,8 +23,8 @@ We will work to get you through any problems.
 
 Avalanche is an incredibly lightweight protocol, so the minimum computer requirements are quite modest. 
 
-* Hardware: CPU > 2 GHz, RAM > 4 GB, Storage > 10 GB free space.
-* OS: Ubuntu 18.04/20.04 or Mac OS X >= Catalina. (Ubuntu versions other than 18.04 may work but have not been tested.)
+* Hardware: CPU > 2 GHz, RAM > 4 GB, Storage > 10 GB free space
+* OS: Ubuntu 18.04/20.04 or Mac OS X >= Catalina
 * Software: [Go](https://golang.org/doc/install) >= 1.13
 
 Run `go version`. **It should be 1.13 or above.**
@@ -119,9 +119,7 @@ curl -X POST --data '{
 ```
 
 If this returns `true`, the chain is bootstrapped.
-
 If you make an API call to a chain that is not done bootstrapping, it will return `API call rejected because chain is not done bootstrapping`.
-
 If your node never finishes bootstrapping, contact us on [Discord.](https://chat.avalabs.org/)
 
 ## Create a Keystore User
