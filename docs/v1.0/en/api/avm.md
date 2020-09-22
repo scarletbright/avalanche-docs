@@ -277,14 +277,14 @@ curl -X POST --data '{
 }
 ```
 
-### avm.createMintTx
+### avm.mint
 
 Mint units of a variable-cap asset (an asset created with `avm.createVariableCapAsset`.)
 
 #### Signature
 
 ```go
-avm.createMintTx({
+avm.mint({
     amount: int,
     assetID: string,
     to: string,
@@ -312,7 +312,7 @@ avm.createMintTx({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     : 1,
-    "method" :"avm.createMintTx",
+    "method" :"avm.mint",
     "params" :{
         "amount":10000000,
         "assetID":"i1EqsthjiFTxunrj8WD2xFSrQ5p2siEKQacmCCB5qBFVqfSL2",
