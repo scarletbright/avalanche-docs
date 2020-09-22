@@ -34,7 +34,7 @@ If you're running a validator, it's important that you follow some best practice
 Your node must be able to receive and send traffic from all addresses on the P2P port (`9651` by default.)
 
 AvalancheGo attempts NAT traversal on startup to ensure that it can send and receive traffic on the P2P port. 
-If your node is behind a router (e.g. in your home) your node can receive and send traffic properly with any action on your part thanks to NAT traversal.
+If your node is behind a router (e.g. in your home) your node can receive and send traffic properly without any action on your part thanks to NAT traversal.
 However, you may want to also set up port forwarding on your router to ensure your node is well-connected in the event that NAT traversal fails.
 If your node is on a cloud service, make sure you've configured the security settings to allow incoming and outgoing traffic on the P2P port.
 
