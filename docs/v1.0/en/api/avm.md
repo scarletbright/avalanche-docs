@@ -1267,7 +1267,7 @@ Send a non-fungible token.
 #### Signature
 
 ```go
-avm.Send({
+avm.sendNFT({
     assetID: string,
     groupID: number,
     to: string,
@@ -1278,8 +1278,8 @@ avm.Send({
 }) -> {txID: string}
 ```
 
-* `assetID` is the ID NFT.
-* `groupID` is the NFT group from which to send the NFT.
+* `assetID` is the asset ID of the NFT of the NFT being sent.
+* `groupID` is the NFT group from which to send the NFT. NFT creation allows multiple groups under each NFT ID. You can issue multiple NFTs to each group.
 * `to` is the X-Chain address the NFT is sent to.
 * `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
  `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
@@ -1291,9 +1291,9 @@ avm.Send({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"avm.send",
+    "method" :"avm.sendNFT",
     "params" :{
-        "assetID"   : "AVAX",
+        "assetID"   : "2KGdt2HpFKpTH5CtGZjYt5XPWs6Pv9DLoRBhiFfntbezdRvZWP",
         "groupID"   : 0,
         "to"        : "X-avax1yzt57wd8me6xmy3t42lz8m5lg6yruy79m6whsf",
         "from"      :["X-avax1s65kep4smpr9cnf6uh9cuuud4ndm2z4jguj3gp"],
