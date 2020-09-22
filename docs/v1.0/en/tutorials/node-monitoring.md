@@ -245,9 +245,6 @@ Do `sudo nano /etc/prometheus/prometheus.yml` (or open that file in the text edi
     metrics_path: '/ext/metrics'
     static_configs:
     - targets: ['<your-host-ip>:9650']
-      labels:
-        network: 'ava'
-        group: 'ava'
 
   - job_name: 'avalanchego-machine'
     static_configs:
