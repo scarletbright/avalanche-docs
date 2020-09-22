@@ -507,6 +507,7 @@ Mint non-fungible tokens which were created with `avm.createNFTAsset`.
 ```go
 avm.mintNFT({
     assetID: string,
+    payload: string,
     to: string,
     from: []string, (optional)
     changeAddr: string, (optional)
