@@ -52,6 +52,7 @@ Open [the wallet](https://wallet.avax.network) and go the `Earn` tab. Choose `Ad
 
 Fill out the staking parameters. They are explained in more detail below.
 When you've filled in all the staking parameters and double-checked them, click `Confirm`.
+Make sure the staking period is at least 2 weeks, the delegation fee rate is at least 2%, and you're staking at least 2,000 AVAX.
 
 ![Confirm transaction](../../../images/tutorials/adding-validators/3.png)
 
