@@ -443,7 +443,7 @@ Do `kill -9 %1` (or `kill -9 %2` if it printed `[2]+ Stopped`, etc.)
 
 If your node is running in the background:
 
-Do `ps aux | grep ava`
+Do `ps aux | grep avalanchego`
 
 The output should have a line that looks like this:
 
@@ -457,4 +457,11 @@ Do:
 
 ### Node prints `NAT Traversal failed ...`
 
-This is OK. It means your node will be able to connect to less peers, but you should still be able to connect to some peers and participate in the network.
+If your node is not behind a router (i.e. on a cloud service) then this is expected.
+Make sure your cloud instance can send and receive traffic on the P2P port (`9651` by default.)
+
+If your node is behind a router (e.g. in your home) and you see this message, you should set up port forwarding
+to allow incoming TCP traffic on port 9651.
+You may want to set up port forwarding anyway in order to be extra sure ensure that your node is well-connected.
+
+See [here](staking.md#networking) for more on networking.
