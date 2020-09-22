@@ -48,6 +48,9 @@ If someone already reported the same issue, comment with your details.
 
 [See here.](transaction-fees.md)
 
+## Does Avalanche support hardware wallets?
+
+Ledger support is coming in the next few weeks.
 
 ## Running a node
 
@@ -249,6 +252,11 @@ Do `kill -9 %1` (or `kill -9 %2` if it printed `[2]+ Stopped`, etc.)
 
 [See here.](staking.md)
 
+### Does Avalanche use slashing?
+
+There is no stake slashing on the Avalanche network. 
+If a validator misbehaves, they will not receive a reward, but it will not lose the funds it staked.
+
 ### What is the minimum amount I need to stake in order to validate the Primary Network?
 
 2,000 AVAX.
@@ -345,10 +353,6 @@ Great thanks to `tbrunain` for this contribution :)
 AVAX is denomination 9, so the smallest unit of AVAX is nanoAVAX (nAVAX) at 10^-9 AVAX
 
 ## Web Wallet
-
-### When hardware wallet integration?
-
-There is an Avalanche-X grant for [ledger support](https://www.avalabs.org/avalanche-x/explore-open-grants/ledger-support).
 
 ### What is the HD Path?
 

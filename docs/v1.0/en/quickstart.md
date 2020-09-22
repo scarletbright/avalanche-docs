@@ -24,11 +24,13 @@ We will work to get you through any problems.
 Avalanche is an incredibly lightweight protocol, so the minimum computer requirements are quite modest. 
 
 * Hardware: CPU > 2 GHz, RAM > 4 GB, Storage > 10 GB free space.
-* OS: Ubuntu == 18.04 or Mac OS X >= Catalina. (Ubuntu versions other than 18.04 may work but have not been tested.)
+* OS: Ubuntu 18.04/20.04 or Mac OS X >= Catalina. (Ubuntu versions other than 18.04 may work but have not been tested.)
 * Software: [Go](https://golang.org/doc/install) >= 1.13
 
 Run `go version`. **It should be 1.13 or above.**
 Run `echo $GOPATH`. **It should not be empty.**
+
+This tutorial assumes you have enough AVAX to add a validator held under a mnemonic key phrase.
 
 ## Run an Avalanche Node
 
@@ -81,12 +83,9 @@ Unzip the file with `tar -xvf avalanche-linux-<VERSION>.tar.gz`
 The resulting folder, `avalanche-<VERSION>`, contains the binaries.  
 You can run the node with `./avalanche-<VERSION>/avalanchego`
 
-### Start a Node and Connect to Test Network
+### Start a Node and Connect to the Avalanche Network
 
-The Avalanche test network is a sandbox Avalanche network where AVAX tokens are free.
-You can use it to play around in a low-stakes environment.
-
-To start a node and connect it to the Avalanche test net:
+To start a node and connect it to the Avalanche Network:
 
 If you built from source:
 ```sh
@@ -101,7 +100,6 @@ If you are using the released binaries:
 You can use `Ctrl + C` to kill the node.
 
 When the node starts, it has to bootstrap (catch up with the rest of the network.)
-This should take a few hours.
 You will see logs about bootstrapping.
 When a given chain is done bootstrapping, it will print a log like this:
 
@@ -162,6 +160,9 @@ Users you create on one node's Keystore do not exist on
 other nodes but you can import/export users to/from the Keystore.
 See the [Keystore API](api/keystore.md) to see how.
 
+**You should only keep a small amount of your funds on your node.**
+Most of your funds should be secured by a mnemonic that is not saved to any computer.
+
 ## Create an Address
 
 Avalanche is a network of heterogeneous blockchains.
@@ -171,8 +172,7 @@ One of these blockchains is the X-Chain, which acts as a decentralized platform 
 There's a special asset on the X-Chain called the [AVAX token](core-concepts/overview.md#the-x-chain). 
 This is the native token of the Avalanche network, and transaction fees on the Avalanche network are paid in AVAX.
 
-Let's acquire some AVAX tokens.
-First, we'll need to create an address to hold them.
+Let's create an address to hold AVAX tokens on our node.
 
 To create a new address on the X-Chain, call `avm.createAddress`, a method of the [X-Chain's API](api/avm.md):
 
@@ -209,17 +209,23 @@ Your user now controls the address `X-avax1xeaj0h9uy7c5jn6fxjp0rg4g39jeh0hl27vf7
 To tell apart addresses on different chains, the Avalanche convention is for an address to include the ID or alias of the chain it exists on.
 Hence, this address begins `X-`, denoting that it exists on the X-Chain.
 
-## Use the Avalanche Faucet
+## Send Funds From the Web Wallet to Your Node
 
-Now let's use the Avalanche test net faucet to send some free AVAX to this address.
-The faucet dispenses 100 000 000 nanoAVAX (nAVAX) each drop.
+Let's move funds from your web wallet to your node.
 
-**This is only a test network, and AVAX on this network has no value.**
+Go to [the wallet](https://wallet.avax.network). Click `Access Wallet`, then `Mnemonic Key Phrase`.
+Enter your mnemonic phrase. 
+(Note: In the near future Avalanche will support hardware wallets so that you don't need to enter your mnemonic to do this.)
 
-Go to the [test net faucet](https://faucet.avax.network/) and paste the address you just created to receive 1 AVAX.
+
+Click the `Send` tab on the left.
+For amount, select, `.002` AVAX.
+Enter the address of your node, then click `Confirm`.
+
+![Send fund to node](../../images/tutorials/quickstart/1.png)
 
 We can check an address's balance of a given asset by calling `avm.getBalance`, another method of the X-Chain's API.
-Let's check that the faucet drip went through.
+Let's check that the transfer went through:
 
 ```sh
 curl -X POST --data '{
@@ -236,14 +242,14 @@ curl -X POST --data '{
 Note that AVAX has the special ID `AVAX`. 
 Usually an asset ID is an alphanumeric string.
 
-The response should look like this:
+The response should indicate that we have `2,000,000` nAVAX, or .002 AVAX.
 
 ```json
 {
     "jsonrpc":"2.0",
     "id"     :3,
     "result" :{
-        "balance":100000000,
+        "balance":2000000,
         "utxoIDs": [
             {
                 "txID": "x6vR85YPNRf5phpLAEC7Sd6Tq2PXWRt3AAHAK4BpjxyjRyhtu",
@@ -256,7 +262,7 @@ The response should look like this:
 
 ## Send AVAX
 
-Now let's send some AVAX:
+Now let's send some AVAX by making an API call to our node:
 
 ```sh
 curl -X POST --data '{
@@ -275,7 +281,6 @@ curl -X POST --data '{
 ```
 
 `amount` specifies the number of nAVAX to send.
-A nAVAX (nanoAVAX) is the smallest increment of AVAX, and 1,000,000,000 nAVAX == 1 AVAX.
 
 If you want to specify a particular address where change should go, you can specify it in `changeAddr`.
 You can leave this field empty; if you do, any change will go to one of the addresses your user controls.
@@ -283,6 +288,7 @@ You can leave this field empty; if you do, any change will go to one of the addr
 In order to prevent spam, Avalanche requires the payment of a [transaction fee](transaction-fees.md).
 The transaction fee will be automatically deducted from an address controlled by your user when you issue a transaction.
 Keep that in mind when you're checking balances below.
+The transaction fee schedule is [here.](transaction-fees.md)
 
 When you send this request, the node will authenticate you using your username and password.
 Then, it will look through all the private keys controlled by your user until it finds
@@ -356,322 +362,11 @@ The response should be:
 }
 ```
 
-In the same fashion, we could check `X-avax1xeaj0h9uy7c5jn6fxjp0rg4g39jeh0hl27vf75` to see that AVAX we sent was deducted from its balance.
+In the same fashion, we could check `X-avax1xeaj0h9uy7c5jn6fxjp0rg4g39jeh0hl27vf75` to see that AVAX we sent was deducted from its balance, as well as the transaction fee.
 
 ## Validate the Primary Network (Stake)
 
-[Subnets](core-concepts/overview.md#what-are-subnets) are a powerful feature of the Avalanche network.
-A Subnet is a set of validators that work to achieve consensus on a set of blockchains.
-
-The Primary Network is inherent to the Avalanche network, and it validates Avalanche's [built-in blockchains](core-concepts/overview.md#built-in-blockchains).
-Avalanche uses Proof-of-Stake, so to become a validator one needs to provide a stake, or bond, in AVAX tokens.
-
-Let's add your node to the Primary Network.
-
-Note that once you issue the transaction to add a node as a validator, there is no way to change the parameters.
-**You can't unstake early or change the stake amount, node ID or reward address.**
-Please make sure you're using the correct values in the API calls below.
-If you're not sure, ask for help on [Discord.](https://chat.avalabs.org)
-
-### Create a P-Chain Address
-
-The P-Chain (Platform Chain) manages metadata about the Avalanche network, including which nodes belong to which Subnets.
-We create an address on the P-Chain by calling [`platform.createAddress`](api/platform.md#platformcreateaddress):
-
-```sh
-curl -X POST --data '{
-    "jsonrpc": "2.0",
-    "method": "platform.createAddress",
-    "params": {
-    	"username":"YOUR USERNAME HERE",
-    	"password":"YOUR PASSWORD HERE"
-    },
-    "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
-```
-
-Note that this API call is sent to the P-Chain (`127.0.0.1:9650/ext/P`) rather than the X-Chain (`127.0.0.1:9650/ext/X`).
-
-The response contains the new address your user controls:
-
-```json
-{
-    "jsonrpc": "2.0",
-    "result": {
-        "address": "P-avax1u8fe28yeftny3f4ewy6exc4d5832uhclf5mvur"
-    },
-    "id": 1
-}
-```
-
-### Fund Your P-Chain Address
-
-As mentioned before, in order validate the Primary Network, you need to stake some AVAX tokens.
-Right now, your P-Chain address has no AVAX.
-AVAX tokens are transferrable between the X-Chain (where you sent funds with the faucet) and the P-Chain.
-Let's send some AVAX to your P-Chain address from the X-Chain.
-The minimum stake amount on the test network is 10,000 nAVAX, so make sure you have at least this much AVAX in your X-Chain addresses.
-(If you need more, use the faucet again.)
-
-The first step in transferring AVAX from the X-Chain to P-Chain is to call `avm.exportAVAX`:
-
-```sh
-curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "method" :"avm.exportAVAX",
-    "params" :{
-        "to":"P-avax1u8fe28yeftny3f4ewy6exc4d5832uhclf5mvur",
-        "amount": 20000,
-    	"username":"YOUR USERNAME HERE",
-    	"password":"YOUR PASSWORD HERE"
-    }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
-```
-
-The response contains the transaction ID.
-As before, you can check the transaction's status by calling `avm.getTxStatus`.
-
-Once the transaction is completed, call `platform.importAVAX` to complete the transfer:
-
-```sh
-curl -X POST --data '{
-    "jsonrpc": "2.0",
-    "method": "platform.importAVAX",
-    "params": {
-        "to":"P-avax1u8fe28yeftny3f4ewy6exc4d5832uhclf5mvur",
-        "sourceChain":"X",
-    	"username":"YOUR USERNAME HERE",
-    	"password":"YOUR PASSWORD HERE"
-    },
-    "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
-```
-
-The response contains the transaction ID:
-
-```json
-{
-    "jsonrpc": "2.0",
-    "result": {
-        "txID": "ow2yyp9ZZVtxTYg6jAZJtnYetEwfu6UxKaw5hY6UAVbGnDwRN",
-        "changeAddr": "P-avax1u8fe28yeftny3f4ewy6exc4d5832uhclf5mvur"
-    },
-    "id": 1
-}
-```
-
-We can check the transaction's status with `platform.getTxStatus`:
-
-```sh
-curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "method" :"platform.getTxStatus",
-    "params" :{
-        "txID":"ow2yyp9ZZVtxTYg6jAZJtnYetEwfu6UxKaw5hY6UAVbGnDwRN"
-    }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
-```
-
-It should be `Committed`, meaning the transfer is complete.
-
-We can check the balance of the P-Chain address by calling `platform.getBalance`:
-
-```sh
-curl -X POST --data '{
-    "jsonrpc": "2.0",
-    "method": "platform.getBalance",
-    "params":{
-    	"address":"P-avax1u8fe28yeftny3f4ewy6exc4d5832uhclf5mvur"
-    },
-    "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
-```
-
-The response confirms that the funds are there:
-
-```json
-{
-    "jsonrpc": "2.0",
-    "result": {
-        "balance": "20000"
-    },
-    "id": 1
-}
-```
-
-Great! Now your P-Chain address has enough AVAX tokens to provide a stake.
-
-### Issue the Transaction
-
-To add a node the Primary Network, we'll call [`platform.addValidator`](api/platform.md#platformaddvalidator).
-
-This method's signature is:
-
-```go
-platform.addValidator(
-    {
-        nodeID: string,
-        startTime: int,
-        endTime: int,
-        stakeAmount: int,
-        rewardAddress: string,
-        changeAddr: string,
-        delegationFeeRate: float,
-        username: string,
-        password: string
-    }
-) -> 
-{
-    txID: string,
-    changeAddr: string
-}
-```
-
-Let's go through and examine these arguments.
-
-### `nodeID`
-
-This is the node ID of the validator being added. To get your node's ID, call [`info.getNodeID`:](api/info.md#infogetnodeid)
-
-```json
-curl -X POST --data '{
-    "jsonrpc": "2.0",
-    "method": "info.getNodeID",
-    "params":{},
-    "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
-```
-
-The response has your node's ID:
-
-```json
-{
-    "jsonrpc": "2.0",
-    "result": {
-        "nodeID": "NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK"
-    },
-    "id": 1
-}
-```
-
-### `startTime` and `endTime`
-
-When one issues a transaction to join the Primary Network they specify the time they will enter (start validating) and leave (stop validating.)
-The minimum duration that one can validate the Primary Network is 24 hours, and the maximum duration is one year.
-One can re-enter the Primary Network after leaving, it's just that the maximum *continuous* duration is one year.
-`startTime` and `endTime` are the Unix times when your validator will start and stop validating the Primary Network, respectively. `startTime` must be in the future relative to the time the transaction is issued.
-
-### `stakeAmount`
-
-In order to validate the Primary Network one must stake AVAX tokens.
-This parameter defines the amount of AVAX staked.
-
-### `rewardAddress`
-
-When a validator stops validating the Primary Network, they will receive a reward if they are sufficiently responsive and correct while they validated the Primary Network. These tokens are sent to `rewardAddress`. The original stake will be sent back to an address controlled by `username`.
-
-A validator's stake is never slashed, regardless of their behavior; they will always receive their stake back when they're done validating.
-
-### `changeAddr`
-
-Any change resulting from this transaction will be sent to this address.
-You can leave this field empty; if you do, change will be sent to one of the addresses your user controls.
-
-### `delegationFeeRate`
-
-Avalanche allows for delegation of stake. This parameter is the percent fee this validator charges when others delegate stake to them.
-For example, if `delegationFeeRate` is `1.2345` and someone delegates to this validator, then when the delegation period is over, 1.2345% of the reward goes to the validator and the rest goes to the delegator.
-
-### `username` and `password`
-
-These parameters are the username and password of the user that pays the transaction fee, provides the staked AVAX and to whom the staked AVAX will be returned.
-
-### Issue the Transaction
-
-Now let's issue the transaction. We use the shell command `date` to compute the Unix time 10 minutes and 2 days in the future to use as the values of `startTime` and `endTime`, respectively.
-(Note: If you're on a Mac, replace  `$(date` with `$(gdate`. If you don't have `gdate` installed, do `brew install coreutils`.)
-
-```json
-curl -X POST --data '{
-    "jsonrpc": "2.0",
-    "method": "platform.addValidator",
-    "params": {
-        "nodeID":"NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
-        "startTime":'$(date --date="10 minutes" +%s)',
-        "endTime":'$(date --date="2 days" +%s)',
-        "stakeAmount":1000000,
-        "rewardAddress":"P-avax1d4wfwrfgu4dkkyq7dlhx0lt69y2hjkjeejnhca",
-        "delegationFeeRate":10,
-        "username":"USERNAME",
-        "password":"PASSWORD"
-    },
-    "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
-```
-
-The response has the transaction ID:
-
-```json
-{
-    "jsonrpc": "2.0",
-    "result": {
-        "txID": "6pb3mthunogehapzqmubmx6n38ii3lzytvdrxumovwkqftzls",
-        "changeAddr": "P-avax1u8fe28yeftny3f4ewy6exc4d5832uhclf5mvur"
-    },
-    "id": 1
-}
-```
-
-We can check the transaction's status by calling `platform.getTxStatus`:
-
-```json
-curl -X POST --data '{
-    "jsonrpc": "2.0",
-    "method": "platform.getTxStatus",
-    "params": {
-        "txID":"6pb3mthunogehapzqmubmx6n38ii3lzytvdrxumovwkqftzls"
-    },
-    "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
-```
-
-The status should be `Committed`, meaning the transaction was successful.
-We can call [`platform.getPendingValidators`](api/platform.md#platformgetpendingvalidators) and see that the node is now in the pending validator set for the Primary Network:
-
-```json
-curl -X POST --data '{
-    "jsonrpc": "2.0",
-    "method": "platform.getPendingValidators",
-    "params": {},
-    "id": 1
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
-```
-
-The response should include the node we just added:
-
-```json
-{
-    "jsonrpc": "2.0",
-    "result": {
-        "validators": [
-            {
-                "nodeID": "NodeID-ARCLrphAHZ28xZEBfUL7SVAmzkTZNe1LK",
-                "startTime": "1584021450",
-                "endtime": "1584121156",
-                "stakeAmount": "1000000",
-            }
-        ] 
-    },
-    "id": 1
-}
-```
-
-When the time reaches `startTime`, this node will start validating the Primary Network.
-When it reaches `endTime`, this node will stop validating the Primary Network.
-The staked AVAX will be returned to an address controlled by `username`, and the rewards, if any, will be given to `rewardAddress`.
-Then, if you want, you can rejoin the Primary Network.
+See [here](tutorials/adding-validators.md) for a tutorial on adding a node to the validator set.
 
 ## Next Steps
 
