@@ -241,10 +241,10 @@ We now need to define an appropriate Prometheus jobs. Let's edit Prometheus conf
 Do `sudo nano /etc/prometheus/prometheus.yml` (or open that file in the text editor of your choice) and append to the end:
 
 ```
-   - job_name: 'avalanchego'
+  - job_name: 'avalanchego'
     metrics_path: '/ext/metrics'
     static_configs:
-    - targets: ['<your-host-ip>:9650']
+      - targets: ['<your-host-ip>:9650']
 
   - job_name: 'avalanchego-machine'
     static_configs:
@@ -268,10 +268,7 @@ Check Prometheus web interface on `http://your-node-host-ip:9090/targets`. You s
 * avalanchego-machine
 
 Open Grafana; you can now create a dashboard using any of those sources.
-You can also use these preconfigured dashboards:
-
-* [General AvalancheGo Dashboard](https://gist.github.com/danlaine/0f8899642cbcc157eded5ee28e6fc620)
-* [Machine Metrics Dashboard](https://gist.github.com/danlaine/542aa896020923c2e20b68ccfc74135f)
+You can also use the preconfigured dashboards [here].(https://github.com/ava-labs/node-monitoring/tree/master/dashboards)
 
 To import the preconfigured dashboard:
 
