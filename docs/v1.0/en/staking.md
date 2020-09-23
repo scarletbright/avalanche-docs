@@ -38,6 +38,8 @@ If your node is behind a router (e.g. in your home) your node can receive and se
 However, you may want to also set up port forwarding on your router to ensure your node is well-connected in the event that NAT traversal fails.
 If your node is on a cloud service, make sure you've configured the security settings to allow incoming and outgoing traffic on the P2P port.
 
+If your node is a validator, start your node with command line argument `--public-ip=[YOUR NODE'S PUBLIC IP HERE]` to ensure it is well connected.
+
 If you want to make API calls to your node from remote machines, also allow traffic on the API port (`9650` by default.) 
 If you do so, allow access to the smallest set of IP addresses possible.
 
