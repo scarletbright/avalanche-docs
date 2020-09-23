@@ -177,7 +177,6 @@ with a set of rules that govern its behavior, like "can't be traded until tomorr
 
 One of the assets traded on the X-Chain is **AVAX**. AVAX is the Avalanche network's native token.
 When one issues a transaction to a blockchain on the Avalanche network they pay a fee denominated in AVAX.
-Right now there are no transaction fees but there will be in the future.
 
 The X-Chain is an instance of the Avalanche Virtual Machine (AVM).
 (Recall that all blockchains are an instance of a Virtual Machine.)
