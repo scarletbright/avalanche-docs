@@ -48,6 +48,7 @@ In our Bech32 standard, there are pre-defined HRPs for our addresses:
 * NetworkID 2: cascade
 * NetworkID 3: denali
 * NetworkID 4: everest
+* NetworkID 5: fuji
 * NetworkID 12345: local
 * Other NetworkIDs: custom
 

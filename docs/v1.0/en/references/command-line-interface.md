@@ -106,12 +106,12 @@ Specifies the directory in which system logs are kept. Defaults to `"$HOME/.aval
 
 The identity of the network the node should connect to. Can be one of:
 
-* `--network-id=denali` -> Connect to the Denali test-network. This aliases `network-3`.
-* `--network-id=testnet` -> Connect to the current test-network. (Right now, this is Denali.)
+* `--network-id=fuji` -> Connect to the Fuji test-network. This aliases `network-5`.
+* `--network-id=testnet` -> Connect to the current test-network. (Right now, this is Fuji.)
 * `--network-id=local` -> Connect to a local test-network. This aliases `network-12345`.
 * `--network-id=network-{id}` -> Connect to the `id` network. `id` must be in the range `[0, 2^32)`.
 
-`--network-id` defaults to `denali`.
+`--network-id` defaults to `fuji`.
 
 `--public-ip` (string):
 
