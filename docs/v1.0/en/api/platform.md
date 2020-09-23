@@ -1029,7 +1029,7 @@ curl -X POST --data '{
 
 ### platform.getStakingAssetID
 
-Retrieve an assetID for a subnet's staking asset.
+Retrieve an assetID for a subnet's staking asset. Currently this always returns the Primary Network's staking assetID.
 
 #### Signature
 
