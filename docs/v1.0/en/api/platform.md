@@ -1027,6 +1027,44 @@ curl -X POST --data '{
 }
 ```
 
+### platform.getStakingAssetID
+
+Retrieve an assetID for a subnet's staking asset. Currently this always returns the Primary Network's staking assetID.
+
+#### Signature
+
+```go
+platform.getStakingAssetID() ->
+{
+    assetID: string
+}
+```
+
+`assetID` is the assetID for a subnet's staking asset.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "platform.getStakingAssetID",
+    "params": {},
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "assetID": "2fombhL7aGPwj3KH4bfrmJwW6PVnMobf9Y2fn9GwxiAAJyFDbe"
+    },
+    "id": 1
+}
+```
+
 ### platform.getSubnets
 
 Get all the Subnets that exist.
@@ -1045,6 +1083,7 @@ platform.getSubnets(
     }
 }
 ```
+
 `ids` are the IDs of the subnets to get information about. If omitted, gets information about all subnets.
 `id` is the Subnet's ID.  
 `threshold` signatures from addresses in `controlKeys` are needed to add a validator to the subnet.  
