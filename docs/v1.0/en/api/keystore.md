@@ -64,7 +64,7 @@ curl -X POST --data '{
 }
 ```
 
-### kesytore.deleteUser
+### keystore.deleteUser
 
 Delete a user.
 
