@@ -182,7 +182,7 @@ If a problem persists, contact us on [Discord.](https://chat.avalabs.org)
 By default, the node's database is at `$HOME/.avalanchego/db`
 **If you delete this directory, it will erase the state of your node, including private keys and keystore users.**
 
-If there is a new major release (e.g. Denali --> Everest), your node's state will be reset.
+If there is a new major release (e.g. Everest --> Fuji), your node's state will be reset.
 Otherwise, upgrading AvalancheGo will not overwrite or destroy your node's state.
 
 The only data not in this folder is your node's staking key/certificate.
