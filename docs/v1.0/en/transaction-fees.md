@@ -1,6 +1,6 @@
 # Transaction Fees
 
-This document describes the Avalanch Network's fees.
+This document describes the Avalanche Network's fees.
 
 ## Basics
 
