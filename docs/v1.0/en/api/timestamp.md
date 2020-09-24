@@ -31,7 +31,7 @@ timestamp.getBlock({id: string}) ->
 
 * `id` is the ID of the block being retrieved. If omitted from arguments, gets the latest block.
 * `data` is the base 58 (with checksum) representation of the block's 32 byte payload.
-* `timestamp` is the Unix when this block was created.
+* `timestamp` is the Unix timestamp when this block was created.
 * `parentID` is the block's parent.
 
 #### Example Call
