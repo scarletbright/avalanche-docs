@@ -721,3 +721,191 @@ curl -X POST --data '{
     }
 }
 ```
+
+## AVAX RPC endpoints	
+
+### avax.exportAVAX	
+
+Send AVAX from the C-Chain to the X Chain.  	
+After calling this method, you must call `importAVAX` on the X Chain to complete the transfer.	
+
+#### Signature	
+
+```go	
+avax.exportAVAX({	
+    to: string,	
+    amount: int,	
+    username: string,	
+    password:string,	
+}) -> {txID: string}	
+```	
+
+* `to` is the X-Chain address the AVAX is sent to.	
+* `amount` is the amount of nAVAX to send.	
+* The AVAX is sent from addresses controlled by `username`	
+
+#### Example Call	
+
+```json	
+curl -X POST --data '{	
+    "jsonrpc":"2.0",	
+    "id"     :1,	
+    "method" :"avax.exportAVAX",	
+    "params" :{	
+        "to":"X-avax1q9c6ltuxpsqz7ul8j0h0d0ha439qt70sr3x2m0",	
+        "amount": 500,	
+        "username":"myUsername",	
+        "password":"myPassword"	
+    }	
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava	
+```	
+
+#### Example Response	
+
+```json	
+{	
+    "jsonrpc": "2.0",	
+    "result": {	
+        "txID": "2ffcxdkiKXXA4JdyRoS38dd7zoThkapNPeZuGPmmLBbiuBBHDa"	
+    },	
+    "id": 1	
+}	
+```	
+
+### avax.exportKey	
+
+Get the private key that controls a given address.  	
+The returned private key can be added to a user with `avax.importKey`.	
+
+#### Signature	
+
+```go	
+avax.exportKey({	
+    username: string,	
+    password:string,	
+    address:string	
+}) -> {privateKey: string}	
+```	
+
+* `username` must control `address`.	
+* `privateKey` is the string representation of the private key that controls `address`.	
+
+#### Example Call	
+
+```json	
+curl -X POST --data '{	
+    "jsonrpc":"2.0",	
+    "id"     :1,	
+    "method" :"avax.exportKey",	
+    "params" :{	
+        "username" :"myUsername",	
+        "password":"myPassword",	
+        "address": "0xc876DF0F099b3eb32cBB78820d39F5813f73E18C"	
+    }	
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava	
+```	
+
+#### Example Response	
+
+```json	
+{	
+    "jsonrpc": "2.0",	
+    "result": {	
+        "privateKey": "PrivateKey-2o2uPgTSf3aR5nW6yLHjBEAiatAFKEhApvYzsjvAJKRXVWCYkE"	
+    },	
+    "id": 1	
+}}	
+```	
+
+### avax.importAVAX	
+
+Finalize a transfer of AVAX from the X-Chain to the C-Chain.	
+Before this method is called, you must call the X-Chain's [`exportAVAX`](./avm.md#avmexportavax) method to initiate the transfer.	
+
+#### Signature	
+
+```go	
+avax.importAVAX({	
+    to: string,	
+    sourceChain: string,	
+    username: string,	
+    password:string,	
+}) -> {txID: string}	
+```	
+
+* `to` is the address the AVAX is sent to.	
+  This must be the same as the `to` argument in the corresponding call to the C-Chain's `exportAVAX`.	
+* `sourceChain` is the ID or alias of the chain the AVAX is being imported from.	
+  To import funds from the C-Chain, use `"C"`.	
+* `username` is the user that controls `to`.	
+
+#### Example Call	
+
+```json	
+curl -X POST --data '{	
+    "jsonrpc":"2.0",	
+    "id"     :1,	
+    "method" :"avax.importAVAX",	
+    "params" :{	
+        "to":"0x4b879aff6b3d24352Ac1985c1F45BA4c3493A398",	
+        "sourceChain":"X",	
+    	"username":"myUsername",	
+    	"password":"myPassword"	
+    }	
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava	
+```	
+
+#### Example Response	
+
+```json	
+{	
+    "jsonrpc": "2.0",	
+    "result": {	
+        "txID": "LWTRsiKnEUJC58y8ezAk6hhzmSMUCtemLvm3LZFw8fxDQpns3"	
+    },	
+    "id": 1	
+}	
+```	
+
+### avax.importKey	
+
+Give a user control over an address by providing the private key that controls the address.	
+
+#### Signature	
+
+```go	
+avax.importKey({	
+    username: string,	
+    password:string,	
+    privateKey:string	
+}) -> {address: string}	
+```	
+
+* Add `privateKey` to `username`'s set of private keys. `address` is the address `username` now controls with the private key.	
+
+#### Example Call	
+
+```json	
+curl -X POST --data '{	
+    "jsonrpc":"2.0",	
+    "id"     :1,	
+    "method" :"avax.importKey",	
+    "params" :{	
+        "username" :"myUsername",	
+        "password":"myPassword",	
+        "privateKey":"PrivateKey-2o2uPgTSf3aR5nW6yLHjBEAiatAFKEhApvYzsjvAJKRXVWCYkE"	
+    }	
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava	
+```	
+
+#### Example Response	
+
+```json	
+{	
+    "jsonrpc": "2.0",	
+    "result": {	
+        "address": "0xc876DF0F099b3eb32cBB78820d39F5813f73E18C"	
+    },	
+    "id": 1	
+}	
+```	
