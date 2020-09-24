@@ -6,7 +6,7 @@ The Avalanche network's Primary Network has 3 chains, the X-Chain, the P-Chain a
 
 Avalanche supports **atomic swaps** of AVAX between the X-Chain and P-chain as well as the X-Chain and C-Chain. (In the future Avalanche will support more generic atomic swaps between chains.)
 
-In this tutorial we'll first send AVAX tokens from the X-Chain to the P-chain and back. Then we'll send AVAX tokens from the X-CHain to the C-Chain and back.
+In this tutorial we'll first send AVAX tokens from the X-Chain to the P-chain and back. Then we'll send AVAX tokens from the X-Chain to the C-Chain and back.
 
 ## Requirements
 
@@ -237,9 +237,65 @@ The balance should have increased by `3,000,000`, less the transaction fee.
 
 ## Export AVAX from the X-Chain to the C-Chain	
 
-In addition to sending AVAX between the X-Chain and P-Chain, you can also send AVAX between the X-Chain and the C-Chain and back. First, to export AVAX from the X-Chain call the X-Chain's [`exportAVAX`](../api/avm.md#avmexportavax) method.	
+In addition to sending AVAX between the X-Chain and P-Chain, you can also send AVAX between the X-Chain and the C-Chain and back. The X-Chain uses Bech32 addresses and the C Chain uses hex EVM addresses. There is no way to convert the address from one format to the other since they are both derived from a private key using a one way cryptographic function.
 
-Your call should look like this:	
+In order to get around this, you can export a private key from the X-Chain and then import it to the C-Chain. This way you can use the X-Chain address and change the X- prefix to a C- prefix in order to get the correct Bech32 address to use for the C-Chain.
+
+First, export a private key from the X Chain:
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"avm.exportKey",
+    "params" :{
+        "username" :"myUsername",
+        "password":"myPassword",
+        "address": "X-avax1jggdngzc9l87rgurmfu0z0n0v4mxlqta0h3k6e"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+```
+
+Response:
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "privateKey":"PrivateKey-2w4XiXxPfQK4TypYqnohRL8DRNTz9cGiGmwQ1zmgEqD9c9KWLq"
+    }
+}
+```
+
+Now import the same private key to the C Chain:
+
+```json
+curl -X POST --data '{  
+    "jsonrpc":"2.0",    
+    "id"     :1,    
+    "method" :"avax.importKey", 
+    "params" :{ 
+        "username" :"myUsername",   
+        "password":"myPassword",    
+        "privateKey":"PrivateKey-2w4XiXxPfQK4TypYqnohRL8DRNTz9cGiGmwQ1zmgEqD9c9KWLq"    
+    }   
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava
+``` 
+
+The esponse contains a hex encoded EVM address:
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "address": "0x5Bf544EF123FE41B262295dBA41c5a9CFA8efDB4"
+    },
+    "id": 1
+}
+```
+
+Now you can use the address corresponding to the private key you exported and switch to using the C- prefix in the avm.exportAVAX call:
 
 ```json	
 curl -X POST --data '{	
@@ -247,7 +303,7 @@ curl -X POST --data '{
     "id"     :1,	
     "method" :"avm.exportAVAX",	
     "params" :{	
-        "to":"C-avax1wkmfja9ve3lt3n9ye4qp3l3gj9k2mz7ep45j7q",	
+        "to":"C-avax1jggdngzc9l87rgurmfu0z0n0v4mxlqta0h3k6e",	
         "destinationChain": "C",	
         "amount": 5000000,	
         "username":"myUsername",	
@@ -256,55 +312,38 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X	
 ```	
 
-where `to` is the bech32 encoded address of a C-Chain address you hold. (See [here](../api/evm.md#avaximportkey) for instructions importing an existing P-Chain or C-Chain private key.)	
+Since your keystore user owns the corresponding private key on the C-Chain, you can now import the AVAX to the address of your choice. It's not necessary to import it to the same address that it was exported to, so can import it directly to an address that you own in MetaMask or another third party service.
 
-Note that, similar to an X-Chain to P-Chain transfer, you will pay a transaction fee for both the export and import operations. In this example, let's assume the transaction fee is `1,000,000` nAVAX. Then the above export actually consumes `6,000,000` nAVAX; `5,000,000` goes to the C-Chain and `1,000,000` is burned as a transaction fee.	
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,    
+    "method" :"avax.importAVAX",    
+    "params" :{ 
+        "to":"0x4b879aff6b3d24352Ac1985c1F45BA4c3493A398",  
+        "sourceChain":"X",  
+        "username":"myUsername",    
+        "password":"myPassword" 
+    }   
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava
+```
 
-Make sure that the amount that you're sending exceeds the transaction fee. Otherwise, when you import the AVAX on the C-Chain it will consume the transaction fee and you'll end up with _less_ AVAX on the C-Chain.	
+where `to` is a hex encoded EVM address of your choice.
 
-The response should look like this:	
+The response look like this:
 
-```json	
-{	
-    "jsonrpc": "2.0",	
-    "result": {	
-        "txID": "H9VLj5kABGaTJY1vXJb8SbatKbcthNo5HWUnis9NUdDr5ym4X"	
-    },	
-    "id": 1	
-}	
-```	
+```json
+{   
+    "jsonrpc": "2.0",   
+    "result": { 
+        "txID": "LWTRsiKnEUJC58y8ezAk6hhzmSMUCtemLvm3LZFw8fxDQpns3" 
+    },  
+    "id": 1 
+}
+```
 
-## Import AVAX to the C-Chain from the X-Chain	
+Note: there is no transaction fee for import transactions to the C Chain.
 
-Now to finish the cross chain transfer call `avax.importAVAX`. Confirm the path is `ext/bc/C/avax`.	
-
-```json	
-curl -X POST --data '{	
-    "jsonrpc":"2.0",	
-    "id"     :1,	
-    "method": "avax.importAVAX",	
-    "params": {	
-        "username":"myUsername",	
-        "password":"myPassword",	
-        "sourceChain": "X",	
-        "to":"0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC"	
-    }	
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/avax	
-```	
-
-where `to` is a hex encoded evm address.	
-
-The response should look like this:	
-
-```json	
-{	
-    "jsonrpc": "2.0",	
-    "result": {	
-        "txID": "2kxwWpHvZPhMsJcSTmM7a3Da7sExB8pPyF7t4cr2NSwnYqNHni"	
-    },	
-    "id": 1	
-}	
-```	
 
 Once your AVAX have been transferred to the C-Chain you can immediately begin running smart contracts. See the ["Deploy a smart contract"](https://docs.avax.network/v1.0/en/tutorials/deploy-a-smart-contract/) for more info.	
 
@@ -316,7 +355,7 @@ Now you can move AVAX back from the C-Chain to the X-Chain
 curl -X POST --data '{	
     "jsonrpc":"2.0",	
     "id"     :1,	
-    "method" :"avax.exportAVAX",	
+    "method" :"avax.exportAVAX",
     "params" :{	
         "to":"X-avax1wkmfja9ve3lt3n9ye4qp3l3gj9k2mz7ep45j7q",	
         "amount": 5000000,	
@@ -326,7 +365,7 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/avax	
 ```	
 
-where `to` is the bech32 encoded address of an X-Chain address you hold. Again, make sure that the amount you're sending exceeds the transaction fee.	
+where `to` is the bech32 encoded address of an X-Chain address you hold. Make sure that the amount you export exceeds the transaction fee because both the export and import transactions will charge a transaction fee.
 
 The response should look like this:	
 
