@@ -41,7 +41,7 @@ Let's install AvalancheGo, the Go implementation of an Avalanche node, and conne
 The node is a binary program. You can either download the source code and then build the binary program, or you can download the pre-built binary.
 You can do either of the below. You don't need to do both.
 
-#### Download AvalancheGo Source Code
+#### Source Code
 
 Download the AvalancheGo repository:
 
@@ -65,7 +65,7 @@ Build AvalancheGo:
 
 The binary, named `avalanchego`, is in `avalanchego/build`. 
 
-#### Download AvalancheGo Binary
+#### Binary
 
 Go to our [releases page](https://github.com/ava-labs/avalanchego/releases) and select the release you want (probably the latest one.)
 
@@ -98,6 +98,9 @@ If you are using the released binaries:
 ```
 
 You can use `Ctrl + C` to kill the node.
+
+To connect to the Fuji Testnet instead, use argument `--network-id=fuji`.
+You can get funds on the Testnet from the [faucet.](https://faucet.avax-test.network/)
 
 When the node starts, it has to bootstrap (catch up with the rest of the network.)
 You will see logs about bootstrapping.
