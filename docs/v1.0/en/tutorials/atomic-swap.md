@@ -280,7 +280,7 @@ curl -X POST --data '{
         "password":"myPassword",    
         "privateKey":"PrivateKey-2w4XiXxPfQK4TypYqnohRL8DRNTz9cGiGmwQ1zmgEqD9c9KWLq"    
     }   
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/avax
 ``` 
 
 The esponse contains a hex encoded EVM address:
@@ -325,7 +325,7 @@ curl -X POST --data '{
         "username":"myUsername",    
         "password":"myPassword" 
     }   
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/ava
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/avax
 ```
 
 where `to` is a hex encoded EVM address of your choice.
