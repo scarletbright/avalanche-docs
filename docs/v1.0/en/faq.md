@@ -148,11 +148,15 @@ If you see none, something is wrong and you are not connected to any peers.
 
 ### Do I need to open any ports?
 
-[See here](staking.md#networking)
+[See here.](staking.md#networking)
 
 ### How can I set up node monitoring?
 
 See [this tutorial.](tutorials/node-monitoring.md)
+
+### Why does my node not show as connected to another node? Why is my uptime being reported as being low?
+
+See [here.](staking.md#networking)
 
 ### What should I back up?
 

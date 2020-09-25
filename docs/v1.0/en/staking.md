@@ -29,19 +29,42 @@ If you're not sure, ask for help on [Discord.](https://chat.avalabs.org)
 
 If you're running a validator, it's important that you follow some best practices to ensure that you receive a reward and keep your funds safe.
 
-### Networking
+### Networking for validators
 
-Your node must be able to receive and send traffic from all addresses on the P2P port (`9651` by default.)
+TL;DR: 
 
+* Open the P2P port (`9651` by default) to TCP traffic by setting up port forwarding or VPS settings.
+* Run your node with argument `--public-ip=[NODE'S PUBLIC IP]`
+
+#### P2P Port
+
+Nodes communicate with other nodes over their P2P port. It's important to be able to receive/send traffic over this port.
 AvalancheGo attempts NAT traversal on startup to ensure that it can send and receive traffic on the P2P port. 
-If your node is behind a router (e.g. in your home) your node can receive and send traffic properly without any action on your part thanks to NAT traversal.
-However, you may want to also set up port forwarding on your router to ensure your node is well-connected in the event that NAT traversal fails.
+If your node is behind a router (e.g. in your home) your node can probably receive and send traffic properly without any action on your part thanks to NAT traversal.
+If you're running a validator, you should also set up port forwarding on your router to ensure your node is well-connected.
 If your node is on a cloud service, make sure you've configured the security settings to allow incoming and outgoing traffic on the P2P port.
 
-If your node is a validator, start your node with command line argument `--public-ip=[YOUR NODE'S PUBLIC IP HERE]` to ensure it is well connected.
+#### Public IP
 
-If you want to make API calls to your node from remote machines, also allow traffic on the API port (`9650` by default.) 
-If you do so, allow access to the smallest set of IP addresses possible.
+Start your validator with command line argument `--public-ip=[YOUR NODE'S PUBLIC IP HERE]`.
+Failure to do so may cause your node to connect to less peers.
+
+#### HTTP Host
+
+To make API calls to your node from remote machines, allow traffic on the API port (`9650` by default) 
+and run your node with argument `--http-host=`
+
+If you do this, you should disable all APIs you will not use via command-line arguments.
+You should configure your network to only allow access to the API port from trusted machines (e.g. your personal computer.) 
+
+#### Why is my uptime low?
+
+Every validator on the Avalanche network keeps track of the uptime of other validators.
+You can see the connections a node has by calling `info.peers`, as well as the uptime of each connection.
+**This is only one node's point of view**. Other nodes may perceive the uptime of your node differently.
+Just because one node perceives your uptime as being low does not mean that you will not receive a staking reward.
+
+The likely reason that your node is not connected to another node is that NAT traversal failed and you did not start your node with `--public-ip=[NODE'S PUBLIC IP]`.
 
 ### Secret Management
 
