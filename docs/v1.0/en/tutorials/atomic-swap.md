@@ -2,11 +2,11 @@
 
 ## Introduction
 
-The Avalanche network's Primary Network has 3 chains, the X-Chain, the P-Chain and the C-Chain. AVAX tokens exist on all 3 chains -- the X-Chain, where they can be traded, the P-Chain, where they can be provided as a stake when validating the Primary Network, and the C-Chain where they can be used in smart contracts.
+AVAX tokens exist on both the X-Chain, where they can be traded, and the P-Chain, where they can be provided as a stake when validating the Primary Network.
 
-Avalanche supports **atomic swaps** of AVAX between the X-Chain and P-chain as well as the X-Chain and C-Chain. (In the future Avalanche will support more generic atomic swaps between chains.)
+Avalanche supports **atomic swaps** of AVAX between the X-Chain and P-chain. (In the future Avalanche will support more generic atomic swaps between chains.)
 
-In this tutorial we'll first send AVAX tokens from the X-Chain to the P-chain and back. Then we'll send AVAX tokens from the X-Chain to the C-Chain and back.
+In this tutorial we'll send AVAX tokens between the X-Chain, P-Chain and C-Chain.
 
 ## Requirements
 
@@ -413,4 +413,4 @@ The response should look like this:
 
 ## Wrapping Up
 
-That's it! Now you can swap AVAX back and forth between the X-Chain, P-Chain and C-Chain. In the future Avalanche will support more generalized atomic swaps between chains.
+That's it! Now you can swap AVAX back and forth between the X-Chain and P-Chain. In the future Avalanche will support more generalized atomic swaps between chains.
