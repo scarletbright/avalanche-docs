@@ -44,7 +44,7 @@ simple, but powerful mechanism: every node randomly queries a small
 subset of nodes and requests which transaction, amongst the conflicting
 set, they think is the valid one. If the querying node receives a
 supermajority response in favor of one transaction, then the node
-changes its own response to that transaction. Every node in the network
+changes its response to that transaction. Every node in the network
 repeats this simple procedure until the entire network comes to
 consensus on one of the conflicting transactions.
 
@@ -67,13 +67,13 @@ the system, at all times. Another design, typically referred to as state
 sharding, attempts to provide scalability by parallelizing transaction
 serialization to independent networks of validators. Unfortunately, the
 security of the system in such a design becomes only as high as the
-easiest corruptible independent set (or shard). Therefore, neither
-subcommittee election nor sharding are appropriate scaling solutions for
+easiest corruptible independent set (or shard). Therefore, neither the
+subcommittee election nor sharding is appropriate scaling solutions for
 crypto platforms.
 
 Unlike classical protocols, the Snow protocols also enjoy robustness.
 The latest slew of blockchain projects which employ classical consensus
-protocols require full membership knowledge. Knowing the entire set of
+protocols requires full membership knowledge. Knowing the entire set of
 participants is sufficiently simple in closed, permissioned systems, but
 becomes increasingly hard in open, decentralized networks. This
 limitation imposes high security risks to existing incumbents employing
@@ -89,14 +89,14 @@ applications, such as trading or daily retail payments. It is simply
 unworkable to wait minutes, or even hours, for confirmation of
 transactions. New blockchain solutions that perform well trade off
 decentralization and security and opt for more centralized and insecure
-consensus mechanisms in order to achieve higher performance.
+consensus mechanisms to achieve higher performance.
 
 On the flip side, Avalanche's constant-sized subsampling means that the
 platform can support high throughput (5000+ transactions per second) and
 low latency (1-2 second confirmations). These numbers are taken directly
 from a real, fully implemented Avalanche network running on 2000 nodes on AWS,
 geo-distributed across the globe on low-end machines, without employing
-any "numbers tricks" that often times are present in other similar
+any "numbers tricks" that often are present in other similar
 claims. Higher performance results (10,000+) can be achieved through
 assuming higher bandwidth provisioning for each node and dedicated
 hardware for signature verification. Finally, we note that the
@@ -130,7 +130,7 @@ between the three known families of consensus protocols through a set of
 The Platform
 ------------
 
-The first version of the Avalanche platform, aims to be a platform for
+The first version of the Avalanche platform aims to be a platform for
 enabling high performance, ultra-decentralized applications, as well as
 the issuance and trading of any arbitrary digital asset.
 
@@ -178,19 +178,19 @@ private enterprise developers, this means the ability to deploy dapps
 that must comply with strict regulatory and privacy guarantees. We
 believe that such flexibility, for the first time, allows a truly
 interoperable network of nodes under all forms of compliance guarantees,
-whether permissioned or permissionless, and whether public, or private.
+whether permissioned or permissionless, and whether public or private.
 
 ### Case study \#1: Tokenization
 
 Digital asset issuance is simply a matter of choosing an appropriate FSS
 that enables some core set of functionalities, or -- if no such FSS
-exists -- making our own. For example, suppose that a developer team
+exists -- making our own. For example, suppose that a development team
 wants to issue a new token that represents crop insurance in Argentina
 and build a new decentralized exchange for listing, buying, and selling
 insurance contracts. This team can launch their system by simply
 launching an instance of the EVM plugin and then writing a simple smart
 contract that performs the order matching. They can also build on top of
-the existing EVM plugin to implement KYC functionality in order to
+the existing EVM plugin to implement KYC functionality to
 ensure land ownership for a particular contract.
 
 ### Case study \#2: If-This-Then-That Cross-Chain Triggers
@@ -204,7 +204,7 @@ being met on the Orange subnet, as illustrated in the figure below.
 
 ### Case study \#3: Enabling borderless frictionless Asset Transfer and Ownership
 
-In order for a non-US Resident to acquire US based securities they would
+For a non-US Resident to acquire US based securities they would
 usually have to work with a US-based securities broker. Such a broker
 would handle the compliance and custody of assets and would charge fees
 to generate a profit. Asset swaps on the Avalanche platform will be truly
@@ -212,7 +212,7 @@ peer-to-peer. For example, an individual who passes compliance
 requirements and previously without access to financial products in a
 certain jurisdiction will be able to seamlessly purchase assets directly
 from a market. The Avalanche Platform's native support for compliance features
-will cut out the middle men and enable frictionless value transfer
+will cut out the middlemen and enable frictionless value transfer
 between participating parties. The purchaser of assets would need only
 to pass the KYC process, comply with location regulation and own a
 wallet that supports assets on the Avalanche platform.
@@ -232,8 +232,7 @@ fees.
 
 ### Securing the system: staking
 
-On the Avalanche platform, sybil control will be achieved via staking. In
-order to validate, a participant will have to lock up coins (a stake).
+On the Avalanche platform, sybil control will be achieved via staking.To validate, a participant will have to lock up coins (a stake).
 Validators (stakers) will be compensated for their validation services
 based on staking amount and staking duration, amongst other properties.
 The chosen compensation function should minimize variance, ensuring that
@@ -262,7 +261,7 @@ democratically. This will include factors such as the minimum staking
 amount, minting rate, as well as other economic parameters. This enables
 the platform to effectively perform dynamic parameter optimization
 through a crowd oracle. However, unlike more generic governance
-platforms out there, Avalanche does not allow governance of arbitrary aspects
+platforms out there, Avalanche does not allow the governance of arbitrary aspects
 of the system, ensuring a much higher degree of assurance and safety for
 participants in Avalanche. Lastly, all governable parameters are subject to
 limited change within specific time bounds, ensuring that sporadic,
@@ -271,7 +270,7 @@ black swan events to do not affect the system in negative ways.
 ### Monetary Policy
 
 The objective of the Avalanche's monetary policy is to balance the incentives
-of users to stake the coin versus use it to interact with the variety of
+of users to stake the coin versus using it to interact with the variety of
 services available on the Avalanche platform. Participants in the Avalanche network
 collectively act as a decentralized reserve bank. We follow the example
 of the federal reserve bank, which utilizes several tools to accomplish
