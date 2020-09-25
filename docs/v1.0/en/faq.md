@@ -156,9 +156,42 @@ See [this tutorial.](tutorials/node-monitoring.md)
 
 ### What should I back up?
 
-You should back up your Staking Key, which determines your node's ID.
-By default this is at `$HOME/.avalanchego/staking/staker.key`.
-You should also back up all private keys that hold funds.
+You should back up your Staking Key and Certificate, which determines your node's ID.
+By default these are at `$HOME/.avalanchego/staking/staker.key` and ``$HOME/.avalanchego/staking/staker.key`.
+To transfer your node to a new machine, place these files on the new machine at `$HOME/.avalanchego/staking`
+
+You should also periodically back up your keystore user by calling `keystore.exportUser`:
+
+```json
+curl --location --request POST 'http://localhost:9650/ext/keystore' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "keystore.exportUser",
+    "params": {
+        "username": "USERNAME",
+        "password": "PASSWORD"
+    }
+}'
+```
+
+You can import your user to a new machine by calling `keystore.importUser`:
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"keystore.importUser",
+    "params" :{
+        "username": "USERNAME",
+        "password": "PASSWORD",
+        "user"    :"1191JUhdGwFrYiakadtxRxvEo4gwESQkHD2wRZueSpS2FhF3d29FaBTosvRd9iMd1Uk5MbnwEZkp47ukbyqyphKyq9uut7Z4cqrRr6p7KJFscVYgdkhZNjVj72KSCLE7W6zhkFXYu7JbX1tXYFZ5WTKDHLNXLgh7H7vB43sYwWDXUAeVaf8mKsdvhhEBTo3NYxdwUcETs9bKkepmZ84muzisS7LHKC9W3vyX5YE9xMjehzHrGi6MDwpxgu8AUvTeWoM9Lpp2t8stykej8BWAFiVrqWoyjLsPRCnay7W8ksYfWLaHps8acQkuSwCFWsnWT38tiAz3NxvowqF9i21CnJM9hBvbu3TWbE5k2TYmBa28ZTy1paJwRaz78uHgAX5TugujiQqM4kcEDtWr5Xa5Q7z5c4XoRbprWwsbTdXcDGszdV1hjDiApCBMtLexmDLXjFuFv3NY9Y5ULSES4c7kqXvfhwATrVBdJTZSdayLrqCQ1fKEvQ6GvLtcGPWM6bUR7iFtT74zR217376aBi7M8d6s65PVrzXqBVyFWhc1sPwdxJanJewhBqoVycfyNDeJ32WLHwCRKCFDAD4WLB5vNXxsgv1GbjmZ9wRpte2SysHkyDFhK9HwUfzjkCkZGugDbXg3fYkLDSDGfYe2caWGJ8R7JsKytaKnby8yjqsGqvrXwyB3uT1CWfvH4grNaSgtU9aiviVecmvpjEznuNDsp2ztVxvrPsFetZHq8mCfrhiumfPqToo9C8xRcV2diUmCVCTyFczTqgkGe7d5tp3miATDS2ALof73K2fJcDKwNVenfDudQQULxSrMxFFXnUfq2SpcE6MDiS9PY4PYqv9umbWJq4s4DbBBV7ZY7ed"
+    }
+}
+```
+
+
 Make sure that all backups are secure and accessible only by you.
 
 ### Will restarting/upgrading my node give me a new node ID?
@@ -185,12 +218,12 @@ By default, the node's database is at `$HOME/.avalanchego/db`
 If there is a new major release (e.g. Everest --> Fuji), your node's state will be reset.
 Otherwise, upgrading AvalancheGo will not overwrite or destroy your node's state.
 
-The only data not in this folder is your node's staking key/certificate.
+The only data not in this folder is your node's Staking Key/Certificate.
 These are in `$HOME/.avalanchego/staking` by default.
 **If you delete this directory, it will erase your node ID. This will jeopardize your validator reward.**
 If your node is a validator and you delete its staking key, it will no longer be a validator when it restarts.
 
-Upgrading AvalancheGo will never erase or change your staking key/certificate.
+Upgrading AvalancheGo will never erase or change your Staking Key/Certificate.
 
 ### Where are my node's logs?
 
@@ -199,18 +232,7 @@ Logs specific to a chain are in subdirectory `chain/[CHAIN ID]` where `[CHAIN ID
 
 ### Can I run AvalancheGo on a different machine but keep the node ID / state?
 
-Yes.
-
-To keep your node ID, you'll have to copy your staking key and certificate to the new machine.
-By default, these are at `$HOME/.avalanchego/staking` and are named `staker.key` and `staker.crt`.
-Place the staking key and certificate on the new machine at `$HOME/.avalanchego/staking`.
-
-To keep your node's state (keystore users, etc.), you'll have to copy your database directory to the new machine.
-By default, this is at `$HOME/.avalanchego/db`.
-Place this directory at the same location on the new machine.
-
-Advanced users may place the staking key and database at different locations and point to them at runtime
-using [command-line arguments.](../../references/command-line-interface/)
+Yes, see [here.](#what-should-i-back-up)
 
 ### Is my node done bootstrapping?
 
@@ -348,9 +370,11 @@ It's OK to make many API calls with the same `id` field.
 In addition to this documentation, there is a [community-run repository](https://github.com/tbrunain/awesome-ava-chain) of useful links and resoucres.
 Great thanks to `tbrunain` for this contribution :)
 
-### What is AVAX's denomination?
+### What are AVAX's units?
 
-AVAX is denomination 9, so the smallest unit of AVAX is nanoAVAX (nAVAX) at 10^-9 AVAX
+1 AVAX == 1,000 milliAVAX  
+1 milliAVAX == 1,000 microAVAX  
+1 microAVAX === 1,000 nAVAX
 
 ## Web Wallet
 
@@ -398,13 +422,13 @@ The expected output is:
 {
     "jsonrpc": "2.0",
     "result": {
-        "networkID": "everest"
+        "networkID": "mainnet"
     },
     "id": 1
 }
 ```
 
-If the response is not `everest`, or the API call fails with a 404, you are not on the Everest network.
+If the response is not `mainnet`, you are not on the Mainnet.
 
 ### API response says `invalid character 'â' looking for beginning of value`
 
@@ -421,12 +445,6 @@ Instead you need to [build AvalancheGo from source](quickstart.md#download-avala
 
 This section contains bugs and issues that we're aware of.
 Please also see our [Github issues.](https://github.com/ava-labs/avalanchego/issues)
-
-### Node won't start with `failed to listen on consensus server at 0.0.0.0:9651: unable to listen`
-
-To get around this, run the `avalanche` binary with `--staking-port=9652` (or `9653` or `9654` or ...)
-
-Example: `./avalanche --staking-port=9652`
 
 ### Node won't quit with `CTRL + C`
 
