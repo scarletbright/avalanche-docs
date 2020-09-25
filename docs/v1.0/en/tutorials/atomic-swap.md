@@ -1,17 +1,14 @@
-# Transfer AVAX tokens between the P-Chain and X-Chain
+# Transfer AVAX tokens between Chains
 
 ## Introduction
 
 AVAX tokens exist on both the X-Chain, where they can be traded, and the P-Chain, where they can be provided as a stake when validating the Primary Network.
-
 Avalanche supports **atomic swaps** of AVAX between the X-Chain and P-chain. (In the future Avalanche will support more generic atomic swaps between chains.)
-
 In this tutorial we'll send AVAX tokens between the X-Chain, P-Chain and C-Chain.
 
 ## Requirements
 
 We assume that you've already done the [quickstart guide](../quickstart.md) and are familiar with the [Avalanche Network's architecture.](../core-concepts/overview.md)
-
 We assume your node is connected to the Public Testnet.
 
 ## Export AVAX from the X-Chain to the P-Chain
@@ -283,7 +280,7 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/C/avax
 ``` 
 
-The esponse contains a hex encoded EVM address:
+The response contains a hex encoded EVM address:
 
 ```json
 {
