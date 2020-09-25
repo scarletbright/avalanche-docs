@@ -31,23 +31,19 @@ If you're running a validator, it's important that you follow some best practice
 
 ### Networking for validators
 
-TL;DR: 
+Your node must be able to send and receive traffic on the P2P port (`9651` by default.)
 
-* Open the P2P port (`9651` by default) to TCP traffic by setting up port forwarding or VPS settings.
-* Run your node with argument `--public-ip=[NODE'S PUBLIC IP]`
+#### If your node is behind a router
 
-#### P2P Port
+When you start your node, you may see that it says that NAT traversal failed.
+If this is the case, you must set up forwarding for port `9651` and you must run your
+node with argument `--public-ip=[NODE PUBLIC IP]`.  
+If you do not see this warning, you should be OK.
 
-Nodes communicate with other nodes over their P2P port. It's important to be able to receive/send traffic over this port.
-AvalancheGo attempts NAT traversal on startup to ensure that it can send and receive traffic on the P2P port. 
-If your node is behind a router (e.g. in your home) your node can probably receive and send traffic properly without any action on your part thanks to NAT traversal.
-If you're running a validator, you should also set up port forwarding on your router to ensure your node is well-connected.
-If your node is on a cloud service, make sure you've configured the security settings to allow incoming and outgoing traffic on the P2P port.
+#### If your node is not behind a router (e.g. on a cloud service)
 
-#### Public IP
-
-Start your validator with command line argument `--public-ip=[YOUR NODE'S PUBLIC IP HERE]`.
-Failure to do so may cause your node to connect to less peers.
+When you start your node, it will say that NAT traversal has failed. This is expected.
+Start your node with argument `--public-ip=[NODE PUBLIC IP]` and make sure that your network settings allow traffic on port `9651`.
 
 #### HTTP Host
 
