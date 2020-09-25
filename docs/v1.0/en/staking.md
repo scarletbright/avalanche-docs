@@ -66,6 +66,13 @@ Just because one node perceives your uptime as being low does not mean that you 
 
 The likely reason that your node is not connected to another node is that NAT traversal failed and you did not start your node with `--public-ip=[NODE'S PUBLIC IP]`.
 
+In the future we will add better monitoring to make it easier to verify that your node is well-connected.
+
+#### What if I see that NAT traversal failed?
+
+If you're on a cloud service, this is expected.
+If you're behind a router, make sure that you have port forwarding set up. See above.
+
 ### Secret Management
 
 The only secret that you need on your validating node is its Staking Key, the TLS key that determines your node's ID.
