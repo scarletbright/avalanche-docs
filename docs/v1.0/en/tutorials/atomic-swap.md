@@ -9,7 +9,6 @@ In this tutorial we'll send AVAX tokens between the X-Chain, P-Chain and C-Chain
 ## Requirements
 
 We assume that you've already done the [quickstart guide](../quickstart.md) and are familiar with the [Avalanche Network's architecture.](../core-concepts/overview.md)
-We assume your node is connected to the Public Testnet.
 
 ## Export AVAX from the X-Chain to the P-Chain
 

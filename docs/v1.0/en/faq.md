@@ -21,7 +21,7 @@ If your question is still unanswered, ask about it on our [Discord](https://chat
 ## I think something went wrong or there's a bug. What do I do?
 
 First, re-read any instructions that you were following and make sure that you followed them correctly.
-See [known issues](#known-issues) and the #testnet-status channel of our [Discord](https://chat.avalabs.org).
+See [known issues](#known-issues) and the #mainnet-status channel of our [Discord](https://chat.avalabs.org).
 If your issue is not addressed anywhere, post in the appropriate Discord channel (probably #troubleshooting.)
 
 If, after doing the above, you think there is a bug, please make an issue on our [Github.](https://github.com/ava-labs/avalanchego/issues) 
