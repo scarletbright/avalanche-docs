@@ -6,7 +6,15 @@ When running a node, there are a variety of possible configurations that are sup
 
 `--api-admin-enabled` (bool):
 
-If set to false, this node will not expose the Admin API. Defaults to `true`.
+If set to false, this node will not expose the Admin API. Defaults to `false`.
+
+`--api-auth-required` (bool):
+
+If set to true, API calls require an authorization token. Defaults to `false`. See [here](../api/auth.md) for more information.
+
+`--api-auth-password` (string):
+
+The password needed to create/revoke authorization tokens. If `--api-auth-required=true`, must be specified; otherwise ignored. See [here](../api/auth.md) for more information.
 
 `--api-ipcs-enabled` (bool):
 
@@ -30,11 +38,11 @@ Bootstrap IDs is an array of validator IDs. These IDs will be used to authentica
 
 `--bootstrap-ips` (string):
 
-Bootstrap IPs is an array of IPv4:port pairs. These IP Addresses will be used to bootstrap the current AVA state. An example setting of this field would be `--bootstrap-ips="127.0.0.1:12345,1.2.3.4:5678"`. The default value is the empty set.
+Bootstrap IPs is an array of IPv4:port pairs. These IP Addresses will be used to bootstrap the current Avalanche state. An example setting of this field would be `--bootstrap-ips="127.0.0.1:12345,1.2.3.4:5678"`. The default value is the empty set.
 
 `--db-dir` (string, file path):
 
-Specifies the directory to which the database is persisted. Defaults to `"db"`.
+Specifies the directory to which the database is persisted. Defaults to `"$HOME/.avalanchego/db"`.
 
 `--db-enabled` (bool):
 
@@ -45,11 +53,11 @@ When set to true, state updates are written to a local persistent database. Defa
 
 The address that HTTP APIs listen on. The default value is `127.0.0.1`.
 This means that by default, your node can only handle API calls made from the same machine.
-To allow API calls from other machines, do `--http-host=[PUBLIC IP OF MACHINE RUNNING NODE]`.
+To allow API calls from other machines, do `--http-host=`.
 
 `--http-port` (int):
 
-Each node runs an HTTP server that provides the APIs for interacting with the node and the AVA network.
+Each node runs an HTTP server that provides the APIs for interacting with the node and the Avalanche network.
 This argument specifies the port that the http server will listen on. The default value is `9650`.
 
 `--http-tls-cert-file` (string, file path):
@@ -63,6 +71,14 @@ If set to true, this flag will attempt to upgrade the server to use HTTPS. Defau
 `--http-tls-key-file` (string, file path):
 
 This argument specifies the location of the TLS private key used by the node for the HTTPS server. This must be specified when `--http-tls-enabled=true`. There is no default value.
+
+`--ipcs-chain-ids` string
+
+Comma separated list of chain ids to connect to. There is no default value.
+
+`--ipcs-path` string
+
+The directory (Unix) or named pipe prefix (Windows) for IPC sockets. Defaults to /tmp.
 
 `--log-level` (string, `{Off, Fatal, Error, Warn, Info, Debug, Verbo}`):
 
@@ -84,23 +100,27 @@ The log level determines which events to display to the screen. If left blank, w
 
 `--log-dir` (string, file path):
 
-Specifies the directory in which system logs are kept. If `""` is passed in, the logging directory defaults to `"~/.gecko/logs"`.
+Specifies the directory in which system logs are kept. Defaults to `"$HOME/.avalanchego/logs"`.
 
 `--network-id` (string):
 
 The identity of the network the node should connect to. Can be one of:
 
-* `--network-id=denali` -> Connect to the Denali test-network. This aliases `network-3`.
-* `--network-id=testnet` -> Connect to the current test-network. (Right now, this is Denali.)
+* `--network-id=fuji` -> Connect to the Fuji test-network. This aliases `network-5`.
+* `--network-id=testnet` -> Connect to the current test-network. (Right now, this is Fuji.)
 * `--network-id=local` -> Connect to a local test-network. This aliases `network-12345`.
 * `--network-id=network-{id}` -> Connect to the `id` network. `id` must be in the range `[0, 2^32)`.
 
-`--network-id` defaults to `denali`.
+`--network-id` defaults to `fuji`.
 
 `--public-ip` (string):
 
 Validators must know their public facing IP addresses so they can let other nodes know how to connect to them.
 If this argument is not provided, the node will attempt to perform NAT traversal to get the node's public IP. Should be set to `127.0.0.1` to create a local network. The default value is `""`.
+
+`--plugin-dir` (string, file path):
+
+Specifies the directory in which the `evm` plugin is kept. Defaults to `"$HOME/.avalanchego/build/plugins"`.
 
 `--signature-verification-enabled` (bool):
 
@@ -108,33 +128,47 @@ Enables signature verification to be disabled for testing. When set to false, si
 
 `--staking-port` (string):
 
-The port through which the staking server will connect to the AVA network. Defaults to `9651`.
+The port through which the staking server will connect to the Avalanche network. Defaults to `9651`.
 
 `--p2p-tls-enabled` (boolean):
 
-AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers. However, This can be disabled for testing. When TLS is disabled, the `stakingID` will be derived from the IP Address the node claims it owns. This will also disable encryption of inter-node communication. This should only be specified for testing. Defaults to `true`. This must be true when `--staking-tls-enabled=true`.
+Avalanche uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers. However, This can be disabled for testing. When TLS is disabled, the `stakingID` will be derived from the IP Address the node claims it owns. This will also disable encryption of inter-node communication. This should only be specified for testing. Defaults to `true`. This must be true when `--staking-enabled=true`.
 
-`--staking-tls-enabled` (boolean):
+`--staking-enabled` (boolean):
 
-AVA uses Proof of Stake (PoS) as Sybil resistance to make it prohibitively expensive to attack the network. When this is true, `--p2p-tls-enabled` must be set to true in order to secure P2P communications.
+Avalanche uses Proof of Stake (PoS) as Sybil resistance to make it prohibitively expensive to attack the network. When this is true, `--p2p-tls-enabled` must be set to true in order to secure P2P communications.
 
 `--staking-tls-cert-file` (string, file path):
 
-AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--p2p-tls-enabled=true`. This argument specifies the location of the TLS certificate used by the node. This must be specified when `--p2p-tls-enabled=true`. The default value is `""`.
+Avalanche uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--p2p-tls-enabled=true`. This argument specifies the location of the TLS certificate used by the node. This must be specified when `--p2p-tls-enabled=true`. The default value is `""`.
 
 `--staking-tls-key-file` (string, file path):
 
-AVA uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--p2p-tls-enabled=true`. This argument specifies the location of the TLS private key used by the node. This must be specified when `--p2p-tls-enabled=true`. The default value is `""`.
+Avalanche uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--p2p-tls-enabled=true`. This argument specifies the location of the TLS private key used by the node. This must be specified when `--p2p-tls-enabled=true`. The default value is `""`.
 
 ***
 
 ## Advanced Options
 
-The following options affect the correctness of the platform. They may need to be changed network-wide, and as a result, an ordinary user should rarely change from the defaults.
+The following options affect the correctness of the platform. They may need to be changed network-wide, and as a result, an ordinary user should not change from the defaults.
 
-`--ava-tx-fee` (int):
+`--avax-tx-fee` (int):
 
-The required amount of nAVA to be burned for a transaction to be valid. This parameter requires network agreement in its current form. Changing this value from the default should only be done on private networks. Defaults to `0` nAVA per transaction.
+The required amount of nAVAX to be burned for a transaction to be valid. This parameter requires network agreement in its current form. Changing this value from the default should only be done on private networks. Defaults to `0` nAVAX per transaction.
+
+`--min-delegator-stake` (int):
+
+The minimum stake that can be delegated to a validator of the Primary Network.
+
+Default on Main Net: `25000000000` (25 AVAX)
+Default on Everest Test Net: `5000000`  (5 x 10^-3 AVAX)
+
+`--min-validator-stake` (int):
+
+The minimum stake, in nAVAX, required to validate the Primary Network.
+
+Default on Main Net: `2000000000000` (2,000 AVAX)
+Default on Everest Test Net: `5000000` (5 x 10^-3 AVAX)
 
 `--snow-avalanche-batch-size` (int):
 

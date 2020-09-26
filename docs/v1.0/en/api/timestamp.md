@@ -9,9 +9,7 @@ The [genesis data](./platform.md#platfrombuildgenesis) for a new instance of the
 
 ## Endpoint
 
-```
-/ext/timestamp
-```
+`/ext/timestamp`
 
 ## Methods
 
@@ -22,7 +20,7 @@ Get a block by its ID. If no ID is provided, get the latest block.
 #### Signature
 
 ```go
-timestamp.getBlock({id: string}) -> 
+timestamp.getBlock({id: string}) ->
     {
         id: string,
         data: string,
@@ -33,7 +31,7 @@ timestamp.getBlock({id: string}) ->
 
 * `id` is the ID of the block being retrieved. If omitted from arguments, gets the latest block.
 * `data` is the base 58 (with checksum) representation of the block's 32 byte payload.
-* `timestamp` is the Unix when this block was created.
+* `timestamp` is the Unix timestamp when this block was created.
 * `parentID` is the block's parent.
 
 #### Example Call
