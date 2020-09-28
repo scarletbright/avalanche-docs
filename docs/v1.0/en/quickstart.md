@@ -97,6 +97,8 @@ If you are using the released binaries:
 ./avalanche-<VERSION>/avalanchego
 ```
 
+If you want to be able to make API calls to your node from other machines, include argument `--http-host=` (e.g. `./build/avalanchego --http-host=`)
+
 You can use `Ctrl + C` to kill the node.
 
 To connect to the Fuji Testnet instead, use argument `--network-id=fuji`.
@@ -211,6 +213,8 @@ To tell apart addresses on different chains, the Avalanche convention is for an 
 Hence, this address begins `X-`, denoting that it exists on the X-Chain.
 
 ## Send Funds From the Web Wallet to Your Node
+
+**Note: the instructions below move real funds.**
 
 Let's move funds from your web wallet to your node.
 

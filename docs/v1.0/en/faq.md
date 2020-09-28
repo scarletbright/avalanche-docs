@@ -407,6 +407,14 @@ If you started your node with command-line argument `--http-port=9700` then repl
 
 There is already a node running on your machine.
 
+### Node prints `NAT Traversal failed ...` on startup
+
+See [here](staking.md#networking).
+
+### Node only responds to API calls made from localhost
+
+Use command line argument `--http-host=` when you run your node. 
+
 ### Node is on the wrong network
 
 If you have already received funds from the faucet and can see them on the explorer, but you still can't send a transaction with your node, you may still be connected to an old test network.
@@ -476,14 +484,3 @@ youruser 29861  8.7  0.2 1459208 34996 pts/2   Sl+  19:44   0:00 ./build/avalanc
 Do:
 
 `kill -9 29861` (or whatever number appears in the second column)
-
-### Node prints `NAT Traversal failed ...`
-
-If your node is not behind a router (i.e. on a cloud service) then this is expected.
-Make sure your cloud instance can send and receive traffic on the P2P port (`9651` by default.)
-
-If your node is behind a router (e.g. in your home) and you see this message, you should set up port forwarding
-to allow incoming TCP traffic on port 9651.
-You may want to set up port forwarding anyway in order to be extra sure ensure that your node is well-connected.
-
-See [here](staking.md#networking) for more on networking.
