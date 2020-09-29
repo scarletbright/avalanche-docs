@@ -534,7 +534,7 @@ avm.mintNFT({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     : 1,
-    "method" :"avm.createMintTx",
+    "method" :"avm.mintNFT",
     "params" :{
         "assetID":"2KGdt2HpFKpTH5CtGZjYt5XPWs6Pv9DLoRBhiFfntbezdRvZWP",
         "payload":"2EWh72jYQvEJF9NLk",
@@ -1208,7 +1208,7 @@ Send a quantity of an asset to an address.
 #### Signature
 
 ```go
-avm.Send({
+avm.send({
     amount: int,
     assetID: string,
     to: string,
@@ -1217,7 +1217,7 @@ avm.Send({
     memo: string, (optional)
     username: string,
     password: string
-}) -> {txID: string}
+}) -> {txID: string, changeAddr: string}
 ```
 
 * Sends `amount` units of asset with ID `assetID` to address `to`. `amount` is denominated in the smallest increment of the asset. For AVAX this is 1 nAVAX (one billionth of 1 AVAX.)
@@ -1238,6 +1238,70 @@ curl -X POST --data '{
         "assetID"   : "AVAX",
         "amount"    : 10000,
         "to"        : "X-avax1yzt57wd8me6xmy3t42lz8m5lg6yruy79m6whsf",
+        "from":["X-avax1s65kep4smpr9cnf6uh9cuuud4ndm2z4jguj3gp"],
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
+        "memo"      : "hi, mom!",
+        "username"  : "userThatControlsAtLeast10000OfThisAsset",
+        "password"  : "myPassword"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "txID":"2iXSVLPNVdnFqn65rRvLrsu8WneTFqBJRMqkBJx5vZTwAQb8c1",
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"
+    }
+}
+```
+
+### avm.sendMultiple
+
+Sends an amount of assetID to an array of specified addresses from a list of owned of addresses.
+
+#### Signature
+
+```go
+avm.sendMultiple({
+    outputs: []{
+      assetID: string,
+      amount: int,
+      to: string
+    }
+    from: []string, (optional)
+    changeAddr: string, (optional)
+    memo: string, (optional)
+    username: string,
+    password: string
+}) -> {txID: string, changeAddr: string}
+```
+
+* `outputs` is an array of object literals which each contain an `assetID`, `amount` and `to`.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
+* `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
+* You can attach a `memo`, whose length can be up to 256 bytes.
+* The asset is sent from addresses controlled by user `username`. (Of course, that user will need to hold at least the balance of the asset being sent.)
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"avm.sendMultiple",
+    "params" :{
+        "outputs": [
+            {
+                "assetID" : "AVAX",
+                "to"      : "X-avax1yzt57wd8me6xmy3t42lz8m5lg6yruy79m6whsf",
+                "amount"  : 1000000000
+            }
+        ],
         "from":["X-avax1s65kep4smpr9cnf6uh9cuuud4ndm2z4jguj3gp"],
         "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
         "memo"      : "hi, mom!",
