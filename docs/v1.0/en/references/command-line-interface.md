@@ -4,11 +4,11 @@ When running a node, there are a variety of possible configurations that are sup
 
 ## Arguments
 
-`--api-admin-enabled` (bool):
+`--api-admin-enabled` (boolean):
 
 If set to false, this node will not expose the Admin API. Defaults to `false`.
 
-`--api-auth-required` (bool):
+`--api-auth-required` (boolean):
 
 If set to true, API calls require an authorization token. Defaults to `false`. See [here](../api/auth.md) for more information.
 
@@ -16,19 +16,19 @@ If set to true, API calls require an authorization token. Defaults to `false`. S
 
 The password needed to create/revoke authorization tokens. If `--api-auth-required=true`, must be specified; otherwise ignored. See [here](../api/auth.md) for more information.
 
-`--api-ipcs-enabled` (bool):
+`--api-ipcs-enabled` (boolean):
 
 If set to true, this node will expose the IPCs API. Defaults to `false`.
 
-`--api-keystore-enabled` (bool):
+`--api-keystore-enabled` (boolean):
 
 If set to false, this node will not expose the Keystore API. Defaults to `true`.
 
-`--api-metrics-enabled` (bool):
+`--api-metrics-enabled` (boolean):
 
 If set to false, this node will not expose the Metrics API. Defaults to `true`.
 
-`--assertions-enabled` (bool):
+`--assertions-enabled` (boolean):
 
 When set to true, assertions will execute at runtime throughout the codebase. This is intended for use in debugging, as we may get a more specific error message. Defaults to `true`.
 
@@ -44,7 +44,7 @@ Bootstrap IPs is an array of IPv4:port pairs. These IP Addresses will be used to
 
 Specifies the directory to which the database is persisted. Defaults to `"$HOME/.avalanchego/db"`.
 
-`--db-enabled` (bool):
+`--db-enabled` (boolean):
 
 If set to false, state updates are performed solely to an in-memory database, without making any changes on permanent storage.
 When set to true, state updates are written to a local persistent database. Defaults to `true`.
@@ -64,7 +64,7 @@ This argument specifies the port that the http server will listen on. The defaul
 
 This argument specifies the location of the TLS certificate used by the node for the HTTPS server. This must be specified when `--http-tls-enabled=true`. There is no default value.
 
-`--http-tls-enabled` (bool):
+`--http-tls-enabled` (boolean):
 
 If set to true, this flag will attempt to upgrade the server to use HTTPS. Defaults to `false`.
 
@@ -72,13 +72,17 @@ If set to true, this flag will attempt to upgrade the server to use HTTPS. Defau
 
 This argument specifies the location of the TLS private key used by the node for the HTTPS server. This must be specified when `--http-tls-enabled=true`. There is no default value.
 
-`--ipcs-chain-ids` string
+`--ipcs-chain-ids` (string)
 
 Comma separated list of chain ids to connect to. There is no default value.
 
-`--ipcs-path` string
+`--ipcs-path` (string)
 
 The directory (Unix) or named pipe prefix (Windows) for IPC sockets. Defaults to /tmp.
+
+`--fd-limit` (int)
+
+Attempts to raise the process file descriptor limit to at least this value. Defaults to `32768`
 
 `--log-level` (string, `{Off, Fatal, Error, Warn, Info, Debug, Verbo}`):
 
@@ -122,7 +126,7 @@ If this argument is not provided, the node will attempt to perform NAT traversal
 
 Specifies the directory in which the `evm` plugin is kept. Defaults to `"$HOME/.avalanchego/build/plugins"`.
 
-`--signature-verification-enabled` (bool):
+`--signature-verification-enabled` (boolean):
 
 Enables signature verification to be disabled for testing. When set to false, signatures won't be checked in VMs that allow signatures to be disabled. Defaults to `true`.
 
