@@ -150,15 +150,23 @@ Avalanche uses two-way authenticated TLS connections to securely identify the `s
 
 Avalanche uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--p2p-tls-enabled=true`. This argument specifies the location of the TLS private key used by the node. This must be specified when `--p2p-tls-enabled=true`. The default value is `""`.
 
+`--uptime-requirement` (float):
+
+Fraction of time a validator must be online to receive rewards. The default value is `0.6`.
+
 ***
 
 ## Advanced Options
 
 The following options affect the correctness of the platform. They may need to be changed network-wide, and as a result, an ordinary user should not change from the defaults.
 
-`--avax-tx-fee` (int):
+`--tx-fee` (int):
 
-The required amount of nAVAX to be burned for a transaction to be valid. This parameter requires network agreement in its current form. Changing this value from the default should only be done on private networks. Defaults to `0` nAVAX per transaction.
+The required amount of nAVAX to be burned for a transaction to be valid. This parameter requires network agreement in its current form. Changing this value from the default should only be done on private networks. Defaults to `1000000` nAVAX per transaction.
+
+`--creation-tx-fee` (int):
+
+Transaction fee, in nAVAX, for transactions that create new state. Defaults to `1000000` nAVAX per transaction.
 
 `--min-delegator-stake` (int):
 
@@ -211,3 +219,7 @@ The default value is `false`.
 `--xput-server-port` [Deprecated] (string):
 
 This option lets one specify on which port the throughput server, if enabled, will listen. The default value is `9652`.
+
+`--version` (boolean):
+
+If this is true, print the version and quit. The default value is `false`.
