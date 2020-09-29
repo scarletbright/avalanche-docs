@@ -534,7 +534,7 @@ avm.mintNFT({
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     : 1,
-    "method" :"avm.createMintTx",
+    "method" :"avm.mintNFT",
     "params" :{
         "assetID":"2KGdt2HpFKpTH5CtGZjYt5XPWs6Pv9DLoRBhiFfntbezdRvZWP",
         "payload":"2EWh72jYQvEJF9NLk",
