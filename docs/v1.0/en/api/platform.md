@@ -759,6 +759,10 @@ curl -X POST --data '{
 
 List the current validators of the given Subnet.
 
+The top level field `delegators` is deprecated as of v1.0.1. If you are using it, you should stop using it.
+Instead, each element of `validators` now contains the list of delegators for that validator.
+You should get information about delegators this way going forward.
+
 #### Signature 
 
 ```go
@@ -778,7 +782,19 @@ platform.getCurrentValidators({subnetID: string}) ->
         potentialReward: string,
         delegationFee: string,
         uptime: string,
-        connected: boolean
+        connected: boolean,
+        delegators: []{
+            startTime: string,
+            endTime: string,
+            stakeAmount: string, (optional)
+            nodeID: string,
+            rewardOwner: {
+                locktime: string,
+                threshold: string,
+                addresses: string[]
+            },
+            potentialReward: string,
+        }
     },
     delegators: []{
         startTime: string,
@@ -807,7 +823,8 @@ platform.getCurrentValidators({subnetID: string}) ->
     * `delegationFeeRate` is the percent fee this validator charges when others delegate stake to them.
     * `uptime` is the % of time the queried node has reported the peer as online.
     * `connected` is if the node is connected to the network
-* `delegators`: 
+    * `delegators` is the list of delegators to this validator.
+* `delegators`: (**deprecated as of v1.0.1. See note at top of method documentation.**)
     * `startTime` is the Unix time when the delegator started.
     * `endTime` is the Unix time when the delegator stops.
     * `stakeAmount` is the amount of nAVAX this delegator staked. Omitted if `subnetID` is not the Primary Network.
@@ -836,32 +853,49 @@ curl -X POST --data '{
             {
                 "startTime": "1600368632",
                 "endTime": "1602960455",
-                "stakeAmount": "200000000000",
+                "stakeAmount": "2000000000000",
                 "nodeID": "NodeID-5mb46qkSBj81k9g9e4VFjGGSbaaSLFRzD",
                 "rewardOwner": {
                     "locktime": "0",
                     "threshold": "1",
                     "addresses": [
-                        "P-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u"
+                        "P-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u"
                     ]
                 },
                 "potentialReward": "117431493426",
                 "delegationFee": "10.0000",
                 "uptime": "0.0000",
-                "connected": false
+                "connected": false,
+                "delegators": [
+                    {
+                        "startTime": "1600368523",
+                        "endTime": "1602960342",
+                        "stakeAmount": "25000000000",
+                        "nodeID": "NodeID-5mb46qkSBj81k9g9e4VFjGGSbaaSLFRzD",
+                        "rewardOwner": {
+                            "locktime": "0",
+                            "threshold": "1",
+                            "addresses": [
+                                "P-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u"
+                            ]
+                        },
+                        "potentialReward": "11743144774"
+                    }
+                ]
             }
+
         ],
         "delegators": [
             {
                 "startTime": "1600368523",
                 "endTime": "1602960342",
-                "stakeAmount": "20000000000",
-                "nodeID": "NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg",
+                "stakeAmount": "25000000000",
+                "nodeID": "NodeID-5mb46qkSBj81k9g9e4VFjGGSbaaSLFRzD",
                 "rewardOwner": {
                     "locktime": "0",
                     "threshold": "1",
                     "addresses": [
-                        "P-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u"
+                        "P-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u"
                     ]
                 },
                 "potentialReward": "11743144774"
