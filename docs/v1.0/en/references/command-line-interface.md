@@ -150,9 +150,9 @@ Avalanche uses two-way authenticated TLS connections to securely identify the `s
 
 Avalanche uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--p2p-tls-enabled=true`. This argument specifies the location of the TLS private key used by the node. This must be specified when `--p2p-tls-enabled=true`. The default value is `""`.
 
-`--uptime-requirement` (float):
+`--version` (boolean)
 
-Fraction of time a validator must be online to receive rewards. The default value is `0.6`.
+If this is `true`, print the version and quit. The default is `false`.
 
 ***
 
@@ -210,6 +210,10 @@ Snow consensus defines `beta1` as the number of consecutive polls that a virtuou
 
 Snow consensus defines `beta2` as the number of consecutive polls that a rogue transaction must increase its confidence for it to be accepted. This parameter lets us define the `beta2` value used for consensus. This should only be changed after careful consideration of the tradeoffs of Snow consensus. The value must be at least `beta1`. The default value is `30`.
 
+`--uptime-requirement` (float):
+
+Fraction of time a validator must be online to receive rewards. The default value is `0.6`.
+
 `--xput-server-enabled` [Deprecated] (boolean):
 
 An optional server helps run throughput tests by injecting load into the network on command.
@@ -219,7 +223,3 @@ The default value is `false`.
 `--xput-server-port` [Deprecated] (string):
 
 This option lets one specify on which port the throughput server, if enabled, will listen. The default value is `9652`.
-
-`--version` (boolean):
-
-If this is true, print the version and quit. The default value is `false`.
