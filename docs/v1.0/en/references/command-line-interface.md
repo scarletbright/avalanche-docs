@@ -6,11 +6,11 @@ When running a node, there are a variety of possible configurations that are sup
 
 `--api-admin-enabled` (boolean):
 
-If set to false, this node will not expose the Admin API. Defaults to `false`.
+If set to `false`, this node will not expose the Admin API. Defaults to `false`.
 
 `--api-auth-required` (boolean):
 
-If set to true, API calls require an authorization token. Defaults to `false`. See [here](../api/auth.md) for more information.
+If set to `true`, API calls require an authorization token. Defaults to `false`. See [here](../api/auth.md) for more information.
 
 `--api-auth-password` (string):
 
@@ -18,23 +18,23 @@ The password needed to create/revoke authorization tokens. If `--api-auth-requir
 
 `--api-ipcs-enabled` (boolean):
 
-If set to true, this node will expose the IPCs API. Defaults to `false`.
+If set to `true`, this node will expose the IPCs API. Defaults to `false`.
 
 `--api-keystore-enabled` (boolean):
 
-If set to false, this node will not expose the Keystore API. Defaults to `true`.
+If set to `false`, this node will not expose the Keystore API. Defaults to `true`.
 
 `--api-metrics-enabled` (boolean):
 
-If set to false, this node will not expose the Metrics API. Defaults to `true`.
+If set to `false`, this node will not expose the Metrics API. Defaults to `true`.
 
 `--assertions-enabled` (boolean):
 
-When set to true, assertions will execute at runtime throughout the codebase. This is intended for use in debugging, as we may get a more specific error message. Defaults to `true`.
+When set to `true`, assertions will execute at runtime throughout the codebase. This is intended for use in debugging, as we may get a more specific error message. Defaults to `true`.
 
 `--bootstrap-ids` (string):
 
-Bootstrap IDs is an array of validator IDs. These IDs will be used to authenticate bootstrapping peers. This only needs to be set when `--p2p-tls-enabled=true`. An example setting of this field would be `--bootstrap-ids="7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg,MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ"`. The default value is the empty set.
+Bootstrap IDs is an array of validator IDs. These IDs will be used to authenticate bootstrapping peers. This only needs to be set when `--p2p-tls-enabled=true`. An example setting of this field would be `--bootstrap-ids="NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg,NodeID-MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ"`. The default value is the empty set.
 
 `--bootstrap-ips` (string):
 
@@ -46,19 +46,15 @@ Specifies the directory to which the database is persisted. Defaults to `"$HOME/
 
 `--db-enabled` (boolean):
 
-If set to false, state updates are performed solely to an in-memory database, without making any changes on permanent storage.
-When set to true, state updates are written to a local persistent database. Defaults to `true`.
+If set to `false`, state updates are performed solely to an in-memory database, without making any changes on permanent storage. When set to `true`, state updates are written to a local persistent database. Defaults to `true`.
 
 `--http-host` (string):
 
-The address that HTTP APIs listen on. The default value is `127.0.0.1`.
-This means that by default, your node can only handle API calls made from the same machine.
-To allow API calls from other machines, do `--http-host=`.
+The address that HTTP APIs listen on. The default value is `127.0.0.1`. This means that by default, your node can only handle API calls made from the same machine. To allow API calls from other machines, do `--http-host=`. For example if your public IP address is `1.2.3.4` and you'd like to access AvalancheGo's RPC over that IP address then you need to pass in `--http-host=1.2.3.4`.
 
 `--http-port` (int):
 
-Each node runs an HTTP server that provides the APIs for interacting with the node and the Avalanche network.
-This argument specifies the port that the http server will listen on. The default value is `9650`.
+Each node runs an HTTP server that provides the APIs for interacting with the node and the Avalanche network. This argument specifies the port that the http server will listen on. The default value is `9650`.
 
 `--http-tls-cert-file` (string, file path):
 
@@ -66,7 +62,7 @@ This argument specifies the location of the TLS certificate used by the node for
 
 `--http-tls-enabled` (boolean):
 
-If set to true, this flag will attempt to upgrade the server to use HTTPS. Defaults to `false`.
+If set to `true`, this flag will attempt to upgrade the server to use HTTPS. Defaults to `false`.
 
 `--http-tls-key-file` (string, file path):
 
@@ -119,8 +115,7 @@ The identity of the network the node should connect to. Can be one of:
 
 `--public-ip` (string):
 
-Validators must know their public facing IP addresses so they can let other nodes know how to connect to them.
-If this argument is not provided, the node will attempt to perform NAT traversal to get the node's public IP. Should be set to `127.0.0.1` to create a local network. The default value is `""`.
+Validators must know their public facing IP addresses so they can let other nodes know how to connect to them. If this argument is not provided, the node will attempt to perform NAT traversal to get the node's public IP. Should be set to `127.0.0.1` to create a local network. The default value is `""`.
 
 `--plugin-dir` (string, file path):
 
@@ -128,7 +123,7 @@ Specifies the directory in which the `evm` plugin is kept. Defaults to `"$HOME/.
 
 `--signature-verification-enabled` (boolean):
 
-Enables signature verification to be disabled for testing. When set to false, signatures won't be checked in VMs that allow signatures to be disabled. Defaults to `true`.
+Enables signature verification. When set to `false`, signatures won't be checked in VMs that allow signatures to be disabled. Defaults to `true`.
 
 `--staking-port` (string):
 
@@ -140,7 +135,7 @@ Avalanche uses two-way authenticated TLS connections to securely identify the `s
 
 `--staking-enabled` (boolean):
 
-Avalanche uses Proof of Stake (PoS) as Sybil resistance to make it prohibitively expensive to attack the network. When this is true, `--p2p-tls-enabled` must be set to true in order to secure P2P communications.
+Avalanche uses Proof of Stake (PoS) as Sybil resistance to make it prohibitively expensive to attack the network. When this is true, `--p2p-tls-enabled` must be set to `true` in order to secure P2P communications.
 
 `--staking-tls-cert-file` (string, file path):
 
@@ -225,6 +220,10 @@ Snow consensus defines `beta1` as the number of consecutive polls that a virtuou
 `--snow-rogue-commit-threshold` (int):
 
 Snow consensus defines `beta2` as the number of consecutive polls that a rogue transaction must increase its confidence for it to be accepted. This parameter lets us define the `beta2` value used for consensus. This should only be changed after careful consideration of the tradeoffs of Snow consensus. The value must be at least `beta1`. The default value is `30`.
+
+`--stake-minting-period` (int):
+
+Consumption period of the staking function, in seconds. The Default on Main Net: `31536000` (365*60*60*24)
 
 `--uptime-requirement` (float):
 
