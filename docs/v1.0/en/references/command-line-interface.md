@@ -175,12 +175,28 @@ The minimum stake that can be delegated to a validator of the Primary Network.
 Default on Main Net: `25000000000` (25 AVAX)
 Default on Everest Test Net: `5000000`  (5 x 10^-3 AVAX)
 
+`--min-delegation-fee` (int):
+
+The minimum delegation fee, in the range [0, 1000000], that can be charged for delegation on the Primary Network. Default on Main Net: `20000` (2%)
+
+`--min-stake-duration` (int):
+
+Minimum staking duration, in seconds. The Default on Main Net: `86400` (60*60*24)
+
 `--min-validator-stake` (int):
 
 The minimum stake, in nAVAX, required to validate the Primary Network.
 
 Default on Main Net: `2000000000000` (2,000 AVAX)
 Default on Everest Test Net: `5000000` (5 x 10^-3 AVAX)
+
+`--max-stake-duration` (int):
+
+The maximum staking duration, in seconds. The Default on Main Net: `31536000` (365*60*60*24)
+
+`--max-validator-stake` (int):
+
+The maximum stake, in nAVAX, that can be placed on a validator on the primary network. The default on Main Net: `3000000000000000` (3,000,000 AVAX)
 
 `--snow-avalanche-batch-size` (int):
 
