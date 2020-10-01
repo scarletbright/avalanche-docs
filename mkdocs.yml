@@ -34,7 +34,7 @@ nav:
     - Deploy a Smart Contract          : ./v1.0/en/tutorials/deploy-a-smart-contract.md
     - Set up Node Monitoring           : ./v1.0/en/tutorials/node-monitoring.md
     - Create a Fixed-Cap Asset         : ./v1.0/en/tutorials/fixed-cap-asset.md
-    - Create a Non-fungible Asset Pt1  : ./v1.0/en/tutorials/non-fungible-token-pt-1.md
+    - Create a NFT Part 1              : ./v1.0/en/tutorials/non-fungible-token-pt-1.md
     - Create a Variable-Cap Asset      : ./v1.0/en/tutorials/variable-cap-asset.md
     - Create a Subnet                  : ./v1.0/en/tutorials/create-a-subnet.md
     - Add a Validator                  : ./v1.0/en/tutorials/adding-validators.md

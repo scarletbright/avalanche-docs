@@ -18,7 +18,7 @@ If you're not sure, ask for help on [Discord.](https://chat.avalabs.org)
 ## Requirements
 
 We assume that you've already done the [quickstart guide](../quickstart.md) and are familiar with the [Avalanche Network's architecture.](../core-concepts/overview.md)
-In this tutorial, we use [Avalanche's Postman collection](https://github.com/cgcardona/avalanche-postman-collection) to help us make API calls.
+In this tutorial, we use [Avalanche's Postman collection](https://github.com/ava-labs/avalanche-postman-collection) to help us make API calls.
 
 In order to ensure your node is well-connected, make sure that your node can receive and send TCP traffic on the staking port (`9651` by default)
 and that you started your node with command line argument `--public-ip=[YOUR NODE'S PUBLIC IP HERE]`.

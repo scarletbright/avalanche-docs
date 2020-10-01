@@ -1,12 +1,14 @@
-# Creating A Non-Fungible Token&mdash;Part 1
+# Creating An NFT&mdash;Part 1
 
 ## Introduction
 
-Avalanche is a global financial network for the issuing and trading of all digital goods. On Avalanche these digital goods are represented as tokens and can be assets or utilities. Often times these tokens are interchangible or fungible. For example, imagine an `$EXAMPLE` token which is used in commerce. If you pay for an item using `$EXAMPLE` and the merchant gives you different `$EXAMPLE` in return as change that&rsquo;s the expected behavior for fungible tokens. They are interchangible and one `$EXAMPLE` is, for all intents-and-purposes, the same as all other `$EXAMPLE` tokens.
+Avalanche is a global financial network for the issuing and trading of all digital goods. On Avalanche these digital goods are represented as tokens and can be assets or utilities. Often times these tokens are interchangible or fungible. For example, imagine an `$EXAMPLE` token which is used in commerce. If you pay for an item using `$EXAMPLE`, and in return the merchant gives you different `$EXAMPLE` as change, that&rsquo;s the expected behavior for fungible tokens. They are interchangible and one `$EXAMPLE` is, for all intents-and-purposes, the same as all other `$EXAMPLE` tokens.
 
-Avalanche also supports a unique type of token called a Non-fungible Token (NFT). NFTs are different than traditional tokens in the sense that they are not interchangible. They are non-fungible. For each issued NFT there will only ever be the single issued token. NFT's represent digital scarcity and may prove to have even greater utility than traditional tokens.
+Avalanche also supports a unique type of token called a Non-fungible Token (NFT). NFTs are different than traditional tokens in the sense that they are not interchangible. They are non-fungible. For each issued NFT there will only ever be the single issued token. NFT's represent digital scarcity and may prove to have even greater utility than traditional fungible tokens.
 
-NFTs on Avalanche are extremely expressive and powerful. They start with an NFT family. This family has a name and a symbol. Each family has a number of groups that you decide when you create the family. You can issue individual NFTs to each of the groups. In this tutorial we'll see how that is done at a high level with AvalancheGo's RPC. In Part-2 we'll build up a custom NFT family using AvalancheJS.
+## NFT Families and Groups
+
+NFTs on Avalanche are extremely expressive and powerful. They start with an NFT family. This family has a name and a symbol. Each family has a dynamic number of groups, the total count which you decide when you create the NFT family. You can issue individual NFTs to each of the groups. In this tutorial we'll see how that is done at a high level with AvalancheGo's RPC. In Part-2 we'll build up a custom NFT family using [AvalancheJS](../ ).
 
 This tutorial illustrates how to create a non-fungible asset using AvalancheGo's RPC. No units of the NFT exist when the asset is initialized, but more units may be minted. On asset creation we specify which sets of addresses may mint more NFTs of this family and group.
 
@@ -16,7 +18,7 @@ The second reason is flexibility. It's nice to be able to encode logic like, "Al
 
 ## Requirements
 
-We assume that you've already done the [quickstart guide](../quickstart.md) and are familiar with the [Avalanche Network's architecture.](../core-concepts/overview.md) In this tutorial, we use [Avalanche's Postman collection](https://github.com/cgcardona/avalanche-postman-collection) to help us make API calls.
+We assume that you've already done the [quickstart guide](../quickstart.md) and are familiar with the [Avalanche Network's architecture.](../core-concepts/overview.md) In this tutorial, we use [Avalanche's Postman collection](https://github.com/ava-labs/avalanche-postman-collection) to help us make API calls.
 
 ## Create the NFT Family
 
@@ -172,7 +174,7 @@ Note that the `TypeID` is `00 00 00 0a` which is the correct type id for an [NFT
 Now that we have an NFT family and a group for the single `MinterSet` we're able to mint some NFTs to the group. To do that we call `avm.mintNFT` and pass in the following parameters.
 
 * `assetID` is the ID of the NFT we're creating more of.
-* `payload` is an arbitrary CB58 encoded payload of up to 1024 bytes.
+* `payload` is an arbitrary CB58 encoded payload of up to 1024 bytes. In [Part 2](./non-fungible-token-pt-2) we'll explore creating a protocol around the NFT payload. For this tutorial I have encoded the string "AvalancheJS"
 * `to` is the address that will receive the newly minted NFT. Replace `to` with an address your user controls so that later you'll be able to send some of the newly minted NFT.
 * `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
