@@ -23,7 +23,6 @@ Prerequisites:
 * Shell access to the machine running the node
 * Administrator privileges on the machine
  
- 
 ## Set up Prometheus
 
 First we need to add a system user account and create directories (you will need superuser credentials):

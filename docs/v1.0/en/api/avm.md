@@ -361,7 +361,7 @@ avm.createVariableCapAsset({
     username: string,  
     password: string
 }) ->
- {
+{
     assetID: string,
     changeAddr: string,
 }
