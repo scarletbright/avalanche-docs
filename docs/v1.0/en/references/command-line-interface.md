@@ -189,6 +189,10 @@ The minimum stake, in nAVAX, required to validate the Primary Network.
 Default on Main Net: `2000000000000` (2,000 AVAX)
 Default on Everest Test Net: `5000000` (5 x 10^-3 AVAX)
 
+`--max-non-staker-pending-msgs` (int):
+
+Maximum number of messages a non-staker is allowed to have pending. The default is `3`.
+
 `--max-stake-duration` (int):
 
 The maximum staking duration, in seconds. The Default on Main Net: `31536000` (365*60*60*24)
@@ -196,6 +200,18 @@ The maximum staking duration, in seconds. The Default on Main Net: `31536000` (3
 `--max-validator-stake` (int):
 
 The maximum stake, in nAVAX, that can be placed on a validator on the primary network. The default on Main Net: `3000000000000000` (3,000,000 AVAX)
+
+`--network-initial-timeout` (int):
+
+Initial timeout value of the adaptive timeout manager, in nanoseconds. The default value is: `600`.
+
+`--network-minimum-timeout` (int):
+
+Minimum timeout value of the adaptive timeout manager, in nanoseconds. The default value is: `5000`.
+
+`--network-maximum-timeout` (int):
+
+Maximum timeout value of the adaptive timeout manager, in nanoseconds. The default value is: `10`.
 
 `--snow-avalanche-batch-size` (int):
 
@@ -227,7 +243,15 @@ Snow consensus defines `beta2` as the number of consecutive polls that a rogue t
 
 `--stake-minting-period` (int):
 
-Consumption period of the staking function, in seconds. The Default on Main Net: `31536000` (365*60*60*24)
+Consumption period of the staking function, in seconds. The Default on Main Net: `31536000` (365*60*60*24).
+
+`--staker-msg-reserved` (float):
+
+Reserve a portion of the chain message queue's space for stakers. The default value is `0.2`.
+
+`--staker-cpu-reserved` (float):
+
+Reserve a portion of the chain's CPU time for stakers.
 
 `--uptime-requirement` (float):
 
