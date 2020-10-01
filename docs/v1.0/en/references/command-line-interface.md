@@ -173,11 +173,11 @@ The following options affect the correctness of the platform. They may need to b
 
 `--consensus-gossip-frequency` (int):
 
-Frequency of gossiping accepted frontiers. The default is `60`.
+Number of nanoseconds between gossiping accepted frontiers. The default is `10000000000`.
 
 `--consensus-shutdown-timeout` (int):
 
-Timeout before killing an unresponsive chain. The default is `1`.
+Timeout before killing an unresponsive chain. The default is `1000000000`.
 
 `--creation-tx-fee` (int):
 
@@ -219,17 +219,17 @@ The maximum stake, in nAVAX, that can be placed on a validator on the primary ne
 
 `--network-initial-timeout` (int):
 
-Initial timeout value of the adaptive timeout manager, in nanoseconds. The default value is: `600`.
+Initial timeout value of the adaptive timeout manager, in nanoseconds. The default value is: `10000000000`.
 
 `--network-minimum-timeout` (int):
 
-Minimum timeout value of the adaptive timeout manager, in nanoseconds. The default value is: `5000`.
+Minimum timeout value of the adaptive timeout manager, in nanoseconds. The default value is: `500000000`.
 
 `--network-maximum-timeout` (int):
 
-Maximum timeout value of the adaptive timeout manager, in nanoseconds. The default value is: `10`.
+Maximum timeout value of the adaptive timeout manager, in nanoseconds. The default value is: `10000000000`.
 
-`--network-maximum-timeout` (float):
+`--network-timeout-multiplier` (float):
 
 Multiplier of the timeout after a failed request.. The default value is: `1.1`.
 
