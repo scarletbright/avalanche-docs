@@ -284,7 +284,7 @@ Neither Prometheus, nor Grafana as shown here are hardened against unauthorized 
 Make sure that both of them are accessible only over a secured proxy, local network, or VPN.
 Setting that up is beyond the scope of this tutorial, but exercise caution.
 Bad security practices could lead to attackers gaining control over your node!
-It is your responsibility to make sure proper security practices are followd.
+It is your responsibility to follow proper security practices.
 
 ## Contributions
 
