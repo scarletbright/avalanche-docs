@@ -16,6 +16,14 @@ If set to `true`, API calls require an authorization token. Defaults to `false`.
 
 The password needed to create/revoke authorization tokens. If `--api-auth-required=true`, must be specified; otherwise ignored. See [here](../api/auth.md) for more information.
 
+`--api-health-enabled` (boolean):
+
+If set to `true`, this node will expose the Health API. Defaults to `true`.
+
+`--api-info-enabled` (boolean):
+
+If set to `true`, this node will expose the Info API. Defaults to `true`.
+
 `--api-ipcs-enabled` (boolean):
 
 If set to `true`, this node will expose the IPCs API. Defaults to `false`.
@@ -98,6 +106,10 @@ When specifying a log level note that all logs with the specified priority or hi
 
 The log level determines which events to display to the screen. If left blank, will default to the value provided to `--log-level`.
 
+`--log-display-highlight` (string, `{auto, plain, colors}`):
+
+Whether to color/highlight display logs. Default highlights when the output is a terminal. Otherwise, should be one of `{auto, plain, colors}`
+
 `--log-dir` (string, file path):
 
 Specifies the directory in which system logs are kept. Defaults to `"$HOME/.avalanchego/logs"`.
@@ -159,9 +171,13 @@ If this is `true`, print the version and quit. The default is `false`.
 
 The following options affect the correctness of the platform. They may need to be changed network-wide, and as a result, an ordinary user should not change from the defaults.
 
-`--tx-fee` (int):
+`--consensus-gossip-frequency` (int):
 
-The required amount of nAVAX to be burned for a transaction to be valid. This parameter requires network agreement in its current form. Changing this value from the default should only be done on private networks. Defaults to `1000000` nAVAX per transaction.
+Frequency of gossiping accepted frontiers. The default is `60`.
+
+`--consensus-shutdown-timeout` (int):
+
+Timeout before killing an unresponsive chain. The default is `1`.
 
 `--creation-tx-fee` (int):
 
@@ -213,6 +229,14 @@ Minimum timeout value of the adaptive timeout manager, in nanoseconds. The defau
 
 Maximum timeout value of the adaptive timeout manager, in nanoseconds. The default value is: `10`.
 
+`--network-maximum-timeout` (float):
+
+Multiplier of the timeout after a failed request.. The default value is: `1.1`.
+
+`--network-timeout-reduction` (int):
+
+Reduction of the timeout after a successful request, in nanoseconds. The default value is: `1`.
+
 `--snow-avalanche-batch-size` (int):
 
 DAG implementations of Snow consensus define `b` as the number of transactions a vertex should include. Increasing `b` will, theoretically, increase throughput while increasing latency. The node will wait for at most 1 second to collect a batch, and will then issue the entire batch at once. The value must be at least `1`. The default value is `30`.
@@ -252,6 +276,10 @@ Reserve a portion of the chain message queue's space for stakers. The default va
 `--staker-cpu-reserved` (float):
 
 Reserve a portion of the chain's CPU time for stakers.
+
+`--tx-fee` (int):
+
+The required amount of nAVAX to be burned for a transaction to be valid. This parameter requires network agreement in its current form. Changing this value from the default should only be done on private networks. Defaults to `1000000` nAVAX per transaction.
 
 `--uptime-requirement` (float):
 
