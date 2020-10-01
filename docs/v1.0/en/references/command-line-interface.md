@@ -135,7 +135,7 @@ Avalanche uses two-way authenticated TLS connections to securely identify the `s
 
 `--staking-enabled` (boolean):
 
-Avalanche uses Proof of Stake (PoS) as Sybil resistance to make it prohibitively expensive to attack the network. When this is true, `--p2p-tls-enabled` must be set to `true` in order to secure P2P communications.
+Avalanche uses Proof of Stake (PoS) as Sybil resistance to make it prohibitively expensive to attack the network. When this is `true`, `--p2p-tls-enabled` must be set to `true` in order to secure P2P communications.
 
 `--staking-tls-cert-file` (string, file path):
 
@@ -144,6 +144,10 @@ Avalanche uses two-way authenticated TLS connections to securely identify the `s
 `--staking-tls-key-file` (string, file path):
 
 Avalanche uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers when `--p2p-tls-enabled=true`. This argument specifies the location of the TLS private key used by the node. This must be specified when `--p2p-tls-enabled=true`. The default value is `""`.
+
+`--staking-disabled-weight` (int):
+
+Weight to provide to each peer when staking is disabled. The default is `1`.
 
 `--version` (boolean)
 
