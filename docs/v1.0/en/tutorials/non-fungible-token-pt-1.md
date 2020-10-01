@@ -185,7 +185,7 @@ curl -X POST --data '{
     "id"     : 1,
     "method" :"avm.mintNFT",
     "params" :{
-        "assetID":"i1EqsthjiFTxunrj8WD2xFSrQ5p2siEKQacmCCB5qBFVqfSL2",
+        "assetID":"2yF5DPhRj4JvadN27xE8CGbkmpziFWs641zsEnZ2U9Tsp17fj",
         "payload":"2EWh72jYQvEJF9NLk",
         "to":"X-avax1a202a8pu5w4vnerwzp84j68yknm6lf47drfsdv",
         "from": ["X-avax1a202a8pu5w4vnerwzp84j68yknm6lf47drfsdv"],
@@ -280,85 +280,47 @@ Note that the `TypeID` is `00 00 00 0b` which is the correct type id for an [NFT
 
 ## Send the NFT
 
-### Check a Balance
-
-All 10M shares are controlled by the `to` address we specified in `mint`. 
-To verify this we'll use `avm.getBalance`:
+Lastly, you are now able to send the NFT to anyone. To do that you use AvalancheGo's `avm.sendNFT` RPC endpoint.
 
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
-    "method" :"avm.getBalance",
+    "method" :"avm.sendNFT",
     "params" :{
-        "address":"X-avax1a202a8pu5w4vnerwzp84j68yknm6lf47drfsdv",
-        "assetID":"i1EqsthjiFTxunrj8WD2xFSrQ5p2siEKQacmCCB5qBFVqfSL2"
-    }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
-```
-
-The response confirms that our asset creation was successful, and that the expected address holds all 10,000,000 shares:
-
-```json
-{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "result" :{
-        "balance":10000000
-    }
-}
-```
-
-### Send the Asset
-
-Let's send 100 shares to another address by using `avm.send`. To do so:
-
-```json
-curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "method" :"avm.send",
-    "params" :{
-        "username":"USERNAME GOES HERE",
-        "password":"PASSWORD GOES HERE",
         "assetID" :"i1EqsthjiFTxunrj8WD2xFSrQ5p2siEKQacmCCB5qBFVqfSL2",
-        "amount"  :100,
-        "to"      :"X-avax1qwnlpknmdkkl22rhmad0dcn80wfasp2y3yg3x0"
+        "from"    : ["X-avax1ghstjukrtw8935lryqtnh643xe9a94u3tc75c7"],
+        "to"      :"X-avax1ghstjukrtw8935lryqtnh643xe9a94u3tc75c7",
+        "groupID" : 0,
+        "changeAddr": "X-avax1ghstjukrtw8935lryqtnh643xe9a94u3tc75c7",
+        "username":"USERNAME GOES HERE",
+        "password":"PASSWORD GOES HERE"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-Let's check the balances of the `to` address:
-
-```json
-curl -X POST --data '{
-    "jsonrpc":"2.0",
-    "id"     :1,
-    "method" :"avm.getBalance",
-    "params" :{
-        "address":"X-avax1qwnlpknmdkkl22rhmad0dcn80wfasp2y3yg3x0",
-        "assetID":"i1EqsthjiFTxunrj8WD2xFSrQ5p2siEKQacmCCB5qBFVqfSL2"
-    }
-}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
-```
-
-The response should be:
+The response confirms that our NFT Transfer Operation was successful:
 
 ```json
 {
     "jsonrpc":"2.0",
     "id"     :1,
     "result" :{
-        "balance":100
+        "txID": "txtzxcrzPx1sn38HWKU9PB52EpbpXCegbdHNxPNAYd9ZvezJq",
+        "changeAddr": "X-avax1ghstjukrtw8935lryqtnh643xe9a94u3tc75c7"0
     }
 }
 ```
+
+You can call `avm.getUTXOs` for the address which you sent the NFT to and decompose the returned UTXO, after converting from CB58 to hex, to confirm that there is a UTXO with type id `00 00 00 0b` in hex or `11` in decimal.
 
 ## Wrapping up
 
-In this tutorial, we:
+Blockchain technology and tokenomics represent a radical new way of representing digital assets. Non-fungible tokens allow scarce assets to be tokenized. In this tutorial, we:
 
-* Used  `createVariableCapAsset` to create a variable-cap asset that represents shares.
-* Used  `mint` to mint more units of an asset.
-* Used  `getBalance` to check address balances.
-* Used  `send` to transfer shares.
+* Used  `createNFTAsset` to create a non-fungible asset family and group.
+* Used  `mintNFT` to mint units of an NFT to the group.
+* Used  `getUTXOs` to fetch UTXOs for an address. We then converted the CB58 encoded UTXO to hex and decomposed it to it's individual components.
+* Used  `sendNFT` to transfer NFTs between addresses.
+
+In [Part 2](./non-fungible-token-pt-2) of this series we'll go more in depth by using AvalancheJS to create a protocol for our NFT payload and by issuing to multiple groups.
