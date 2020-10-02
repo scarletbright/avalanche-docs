@@ -38,6 +38,10 @@ avm.createNFTAsset({
 }
 ```
 
+**Method**
+
+* `avm.createNFTAsset`
+
 **Parameters**
 
 * `name` is a human-readable name for our NFT family. Not necessarily unique. Between 0 and 128 characters.
@@ -89,13 +93,16 @@ The response should look like this:
 }
 ```
 
-
 A couple things to note: first, in addition to creating an NFT family, AvalancheGo's `avm.createNFTAsset` also creates a group for each of the `minterSets` which are passed in. For example, if `minterSets` has 3 elements, the NFT family has 3 groups. Second, take note of the `assetID` which is returned in the response. This is the `assetID` of the newly created NFT family and you'll need it later to issue NFTs.
 
 You may be wondering why we specify *sets* of addresses that can mint more units of the asset rather than a single address. The first reason is security: if only one address can mint more of the asset, and the private key for that address is lost, no more units can ever be minted. Similarly, if only one address can mint more of the asset, nothing stops the holder of that address from unilaterally minting as much as they want.
 The second reason is flexibility. It's nice to be able to encode logic like, "Alice can unilaterally mint more units of this asset, or 2 of Dinesh, Ellin and Jamie can together mint more." Let's now create an NFT underneath the family we just created.
 
 NFT outputs don't show up in calls to `avm.getBalance` or `avm.getAllBalances`. To see your NFTs you have to call `avm.getUTXOs` and then parse the utxo to check for the type ID. NFT Mint Outputs have a type id of `00 00 00 0a` in hexidecimal (`10` in decimal) and NFT Transfer Outputs have a type id of `00 00 00 0b` in hexdecimal (`11` in decimal.)
+
+**Method**
+
+* `avm.getUTXOs`
 
 **Parameters:**
 
@@ -146,13 +153,13 @@ The response contains a list of UTXOs:
 
 is expressed in hexadecimal as:
 
-```zsh
+```hex
 00 00 04 78 f2 39 8d d2 16 3c 34 13 2c e7 af a3 1f 0a c5 03 01 7f 86 3b f4 db 87 ea 55 53 c5 2d 7b 57 00 00 00 01 04 78 f2 39 8d d2 16 3c 34 13 2c e7 af a3 1f 0a c5 03 01 7f 86 3b f4 db 87 ea 55 53 c5 2d 7b 57 00 00 00 0a 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 01 3c b7 d3 84 2e 8c ee 6a 0e bd 09 f1 fe 88 4f 68 61 e1 b2 9c
 ```
 
 Now we can decompose the hex in to the UTXO's indivdual components by referring to the [transaction serialization format](../references/avm-transaction/../avm-transaction-serialization.md#utxo):
 
-```zsh
+```hex
 NFT Mint Output
 
 CodecID: 00 00
@@ -171,12 +178,16 @@ Note that the `TypeID` is `00 00 00 0a` which is the correct type ID for an NFT 
 
 ## Mint the Asset
 
-Now that we have an NFT family and a group for the single `MinterSet` we're able to creat NFTs belonging to this group. To do that we call [avm.mintNFT](../api/avm/#avmmintnft):
+Now that we have an NFT family and a group for the single `MinterSet` we're able to creat NFTs belonging to this group. To do that we call avm.mintNFT:
+
+**Method**
+
+* `avm.mintNFT`
 
 **Parameters**
 
 * `assetID` is the ID of the NFT family.
-* `payload` is an arbitrary CB58 encoded payload of up to 1024 bytes. In [Part 2](./non-fungible-token-pt-2) we'll explore creating a protocol around the NFT payload. For this tutorial it's the string "AVA Labs".
+* `payload` is an arbitrary CB58 encoded payload of up to 1024 bytes. In Part 2 (**COMING SOON**) we'll explore creating a protocol around the NFT payload. For this tutorial the payload is the string "AVA Labs".
 * `to` is the address that will receive the newly minted NFT. Replace `to` with an address your user controls so that later you'll be able to send some of the newly minted NFT.
 * `username` must be a user that holds keys giving it permission to mint more of this NFT. That is, it controls at least *threshold* keys for one of the minter sets we specified above.
 * `password` is the valid password for `username`
@@ -257,13 +268,13 @@ First we convert the Base58Check encoded string which is returned from `avm.getU
 
 is expressed in hexadecimal as:
 
-```zsh
+```hex
 00 00 7d 07 0d 1e fe a6 4e 45 09 05 c6 11 ee b1 cf 61 9f 21 22 eb 17 db aa ea 9a fe 2d ff 17 be 27 6b 00 00 00 01 04 78 f2 39 8d d2 16 3c 34 13 2c e7 af a3 1f 0a c5 03 01 7f 86 3b f4 db 87 ea 55 53 c5 2d 7b 57 00 00 00 0b 00 00 00 00 00 00 00 08 41 56 41 20 4c 61 62 73 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 01 3c b7 d3 84 2e 8c ee 6a 0e bd 09 f1 fe 88 4f 68 61 e1 b2 9c
 ```
 
 Now we can decompose the hex in to the UTXO's indivdual components:
 
-```zsh
+```hex
 NFT Mint Output
 
 CodecID: 00 00
@@ -286,11 +297,11 @@ Note that the `TypeID` is `00 00 00 0b` which is the correct type id for an [NFT
 
 Now you can send the NFT to anyone. To do that, use AvalancheGo's `avm.sendNFT` API method.
 
-### Method
+**Method**
 
 * `avm.sendNFT`
 
-### Parameters
+**Parameters**
 
 * `assetID` is the ID of the NFT we're sending.
 * `to` is the address that will receive the newly minted NFT.
@@ -298,7 +309,7 @@ Now you can send the NFT to anyone. To do that, use AvalancheGo's `avm.sendNFT` 
 * `username` is the user that controls the NFT.
 * `password` is the valid password for `username`
 
-### Response
+**Response**
 
 * `txID` is the transaction ID.
 * `changeAddr` in the result is the address where any change was sent.
