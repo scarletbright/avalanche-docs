@@ -492,7 +492,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "result": {
         "assetID": "2KGdt2HpFKpTH5CtGZjYt5XPWs6Pv9DLoRBhiFfntbezdRvZWP",
-        "changeAddr": "X-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u"
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"
     },
     "id": 1
 }
@@ -1375,7 +1375,7 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "result": {
         "txID": "DoR2UtG1Trd3Q8gWXVevNxD666Q3DPqSFmBSMPQ9dWTV8Qtuy",
-        "changeAddr": "X-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u"
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"
     },
     "id": 1
 }
