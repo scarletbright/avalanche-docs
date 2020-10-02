@@ -18,11 +18,11 @@ Today we will deploy and test a smart contract on Avalanche using Remix and Meta
 
 * **Network Name**: Avalanche C-Chain
 * **New RPC URL**:
-    * n/a for Localnet
+    * [http://localhost:9650/ext/bc/C/rpc](http://localhost:9650/ext/bc/C/rpc) for Local Testnet
     * [https://api.avax-test.network/ext/bc/C/rpc](https://api.avax-test.network/ext/bc/C/rpc) for Fuji Testnet
     * [https://api.avax.network/ext/bc/C/rpc](https://api.avax.network/ext/bc/C/rpc) for Mainnet
 * **ChainID**:
-    * `43112` for Localnet
+    * `43112` for Local Testnet
     * `43113` for Fuji Testnet
     * `43114` for Mainnet
 * **Symbol**: C-AVAX
