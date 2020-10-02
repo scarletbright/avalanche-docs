@@ -8,9 +8,9 @@ Avalanche also supports a unique type of token called a Non-fungible Token (NFT)
 
 ## NFT Families and Groups
 
-NFTs on Avalanche are extremely expressive and powerful. They start with an NFT family. This family has a name and a symbol. Each family has a dynamic number of groups, the total count which you decide when you create the NFT family. You can issue individual NFTs to each of the groups. In this tutorial we&rsquo;ll see how that is done at a high level with AvalancheGo&rsquo;s RPC. In Part-2 we&rsquo;ll build up a custom NFT family using [AvalancheJS](../ ) and explore NFT groups in more detail.
+NFTs on Avalanche are extremely expressive and powerful. They start with an NFT family which includes a name and a symbol. Each family has a dynamic number of groups, the total count which you decide when you create the NFT family. You can issue individual NFTs to each of the groups. In this tutorial we&rsquo;ll see how that is done at a high level with AvalancheGo&rsquo;s RPC. In Part 2 we&rsquo;ll create a custom NFT family using [AvalancheJS](../tools/avalanchejs/index.md) and explore NFT groups in more detail.
 
-This tutorial illustrates how to create a non-fungible asset using AvalancheGo&rsquo;s RPC. No units of the NFT exist when the asset is initialized, but more units may be minted. On asset creation we specify which sets of addresses may mint more NFTs of this family and group.
+This tutorial illustrates how to create a non-fungible asset using AvalancheGo&rsquo;s RPC. No units of the NFT exist when the asset is initialized, but more units may be minted. On asset creation we specify which sets of addresses may mint more NFTs of this family's different groups.
 
 You may be wondering why we specify *sets* of addresses that can mint more units of the asset rather than a single address. The first reason is security. If only one address can mint more of the asset, and the private key for that address is lost, no more units can ever be minted. Similarly, if only one address can mint more of the asset, nothing stops the holder of that address from unilaterally minting as much as they want.
 
@@ -22,7 +22,7 @@ We assume that you&rsquo;ve already done the [quickstart guide](../quickstart.md
 
 ## Create the NFT Family
 
-Our NFT will exist on the X-Chain, so to create our family we&rsquo;ll call `avm.createNFTAsset`, which is a method of the [X-Chain&rsquo;s API.](../api/avm.md)
+Our NFT will exist on the X-Chain, so to first create our family we&rsquo;ll call `avm.createNFTAsset`, which is a method of the [X-Chain&rsquo;s API.](../api/avm.md#avmcreatenftasset)
 
 The signature for this method is:
 
@@ -45,11 +45,15 @@ avm.createNFTAsset({
 }
 ```
 
+### Method
+
+* `avm.createNFTAsset`
+
 ### Parameters
 
 * `name` is a human-readable name for our NFT family. Not necessarily unique. Between 0 and 128 characters.
 * `symbol` is a shorthand symbol for this NFT family. Between 0 and 4 characters. Not necessarily unique. May be omitted.
-* `minterSets` is a list where each element specifies that `threshold` of the addresses in `minters` may together mint more of the asset by signing a minting transaction.
+* `minterSets` is a list where each element specifies that `threshold` of the addresses in `minters` may together mint more of the asset by signing a minting operation.
 * Performing a transaction on the X-Chain require a transaction fee paid in AVAX. `username` and `password` denote the user paying the fee.
 * `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
@@ -59,7 +63,7 @@ avm.createNFTAsset({
 * `assetID` is the ID of the new asset that we&rsquo;ll have created.
 * `changeAddr` in the result is the address where any change was sent.
 
-Later in this example we&rsquo;ll mint NFT, so be sure to replace at least 1 address in the minter set with an address which your user controls.
+Later in this example we&rsquo;ll mint an NFT, so be sure to replace at least 1 address in the minter set with an address which your user controls.
 
 ```json
 curl -X POST --data '{
@@ -102,7 +106,22 @@ A couple things to take note of. First, in addition to creating an NFT family, A
 
 ## Confirm newly created NFT Mint Output
 
-NFT outputs don&rsquo;t show up in calls to `avm.getBalance` or `avn.getAllBalances`. To see your NFTs you have to call `avm.getUTXOs` and then parse the utxo to check for the type ID. NFT Mint Outputs have a type id of `00 00 00 0a` in hexidecimal or `10` in decimal and NFT Transfer Outputs have a type id of `00 00 00 0b` hexdecimal or `11` in decimal.
+NFT outputs don&rsquo;t show up in calls to `avm.getBalance` or `avn.getAllBalances`. To see your NFTs you have to call `avm.getUTXOs` and then parse the utxo to check for the type ID. NFT Mint Outputs have a type id of `00 00 00 0a` in hexidecimal or `10` in decimal and NFT Transfer Outputs have a type id of `00 00 00 0b` in hexdecimal or `11` in decimal.
+
+### Method
+
+* `avm.getUTXOs`
+
+### Parameters
+
+* `addresses` are the addresses to fetch UTXO for.
+* `limit` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
+
+### Response
+
+* `numFetched` is the total number of UTXOs in the response.
+* `utxos` is an array of CB58 encoded strings.
+* `endIndex` This method supports pagination. `endIndex` denotes the last UTXO returned.
 
 ```json
 curl -X POST --data '{
@@ -116,7 +135,7 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-The response contains the transaction&rsquo;s ID:
+The response contains a list of UTXOs:
 
 ```json
 {
@@ -136,15 +155,13 @@ The response contains the transaction&rsquo;s ID:
 }
 ```
 
-`avm.getUTXOs` returns 2 UTXOs. Let&rsquo;s take the first one, `116VhGCxiSL4GrMPKHkk9Z92WCn2i4qk8qdN3gQkFz6FMEbHo82Lgg8nkMCPJcZgpVXZLQU6MfYuqRWfzHrojmcjKWbfwqzZoZZmvSjdD3KJFsW3PDs5oL3XpCHq4vkfFy3q1wxVY8qRc6VrTZaExfHKSQXX1KnC`, and decode it to confirm that it&rsquo;s an NFT Mint Output.
-
-First we convert the Base58Check encoded string which is returned from `avm.getUTXOs` in to hex. The following CB58 string:
+`avm.getUTXOs` returns 2 UTXOs. Let&rsquo;s take the first one, `116VhGCxiSL4GrMPKHkk9Z92WCn2i4qk8qdN3gQkFz6FMEbHo82Lgg8nkMCPJcZgpVXZLQU6MfYuqRWfzHrojmcjKWbfwqzZoZZmvSjdD3KJFsW3PDs5oL3XpCHq4vkfFy3q1wxVY8qRc6VrTZaExfHKSQXX1KnC`, and decode it to confirm that it&rsquo;s an [NFT Mint Output](../references/avm-transaction-serialization.md/#nft-mint-output). First we convert the Base58Check encoded string which is returned from `avm.getUTXOs` in to hex. The following CB58 string:
 
 ```zsh
 116VhGCxiSL4GrMPKHkk9Z92WCn2i4qk8qdN3gQkFz6FMEbHo82Lgg8nkMCPJcZgpVXZLQU6MfYuqRWfzHrojmcjKWbfwqzZoZZmvSjdD3KJFsW3PDs5oL3XpCHq4vkfFy3q1wxVY8qRc6VrTZaExfHKSQXX1KnC
 ```
 
-gets converted to the following hex:
+It gets converted to the following hex:
 
 ```zsh
 00 00 04 78 f2 39 8d d2 16 3c 34 13 2c e7 af a3 1f 0a c5 03 01 7f 86 3b f4 db 87 ea 55 53 c5 2d 7b 57 00 00 00 01 04 78 f2 39 8d d2 16 3c 34 13 2c e7 af a3 1f 0a c5 03 01 7f 86 3b f4 db 87 ea 55 53 c5 2d 7b 57 00 00 00 0a 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 01 3c b7 d3 84 2e 8c ee 6a 0e bd 09 f1 fe 88 4f 68 61 e1 b2 9c
@@ -167,19 +184,30 @@ Address Count: 00 00 00 01
 Addresses[0]: 3c b7 d3 84 2e 8c ee 6a 0e bd 09 f1 fe 88 4f 68 61 e1 b2 9c
 ```
 
-Note that the `TypeID` is `00 00 00 0a` which is the correct type id for an [NFT Mint Output](../references/avm-transaction-serialization.md/#nft-mint-output). Also note that the `GroupID` is `00 00 00 00`. This `GroupID` was created based on the number of `MinterSet`s which I passed in to `avm.createNFTAsset`.
+Note that the `TypeID` is `00 00 00 0a` which is the correct type id for an NFT Mint Output. Also note that the `GroupID` is `00 00 00 00`. This `GroupID` was created based on the number of `MinterSets` which I passed in to `avm.createNFTAsset`.
 
 ## Mint the Asset
 
-Now that we have an NFT family and a group for the single `MinterSet` we&rsquo;re able to mint some NFTs to the group. To do that we call `avm.mintNFT` and pass in the following parameters.
+Now that we have an NFT family and a group for the single `MinterSet` we&rsquo;re able to mint some NFTs to the group. To do that we call [avm.mintNFT](../api/avm/#avmmintnft) and pass in the following parameters.
+
+### Method
+
+* `avm.mintNFT`
+
+### Parameters
 
 * `assetID` is the ID of the NFT we&rsquo;re creating more of.
-* `payload` is an arbitrary CB58 encoded payload of up to 1024 bytes. In [Part 2](./non-fungible-token-pt-2) we&rsquo;ll explore creating a protocol around the NFT payload. For this tutorial I have encoded the string "AvalancheJS"
+* `payload` is an arbitrary CB58 encoded payload of up to 1024 bytes. In [Part 2](./non-fungible-token-pt-2) we&rsquo;ll explore creating a protocol around the NFT payload. For this tutorial I have encoded the string "AVA Labs".
 * `to` is the address that will receive the newly minted NFT. Replace `to` with an address your user controls so that later you&rsquo;ll be able to send some of the newly minted NFT.
 * `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` must be a user that holds keys giving it permission to mint more of this NFT. That is, it controls at least *threshold* keys for one of the minter sets we specified above.
 * `password` is the valid password for `username`
+
+### Response
+
+* `txID` is the transaction ID.
+* `changeAddr` in the result is the address where any change was sent.
 
 ```json
 curl -X POST --data '{
@@ -187,7 +215,7 @@ curl -X POST --data '{
     "id"     : 1,
     "method" :"avm.mintNFT",
     "params" :{
-        "assetID":"2yF5DPhRj4JvadN27xE8CGbkmpziFWs641zsEnZ2U9Tsp17fj",
+        "assetID":"2X1YV4jpGpqezvj2khQdj1yEiXU1dCwsJ7DmNhQRyZZ7j9oYBp",
         "payload":"2EWh72jYQvEJF9NLk",
         "to":"X-avax1a202a8pu5w4vnerwzp84j68yknm6lf47drfsdv",
         "from": ["X-avax1a202a8pu5w4vnerwzp84j68yknm6lf47drfsdv"],
@@ -290,7 +318,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.sendNFT",
     "params" :{
-        "assetID" :"i1EqsthjiFTxunrj8WD2xFSrQ5p2siEKQacmCCB5qBFVqfSL2",
+        "assetID" :"2X1YV4jpGpqezvj2khQdj1yEiXU1dCwsJ7DmNhQRyZZ7j9oYBp",
         "from"    : ["X-avax1ghstjukrtw8935lryqtnh643xe9a94u3tc75c7"],
         "to"      :"X-avax1ghstjukrtw8935lryqtnh643xe9a94u3tc75c7",
         "groupID" : 0,
