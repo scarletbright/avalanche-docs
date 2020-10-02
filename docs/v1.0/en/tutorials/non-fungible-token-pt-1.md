@@ -2,27 +2,27 @@
 
 ## Introduction
 
-Avalanche is a global financial network for the issuing and trading of all digital goods. On Avalanche these digital goods are represented as tokens and can be assets or utilities. Often times these tokens are interchangible or fungible. For example, imagine an `$EXAMPLE` token which is used in commerce. If you pay for an item using `$EXAMPLE`, and in return the merchant gives you different `$EXAMPLE` as change, that&rsquo;s the expected behavior for fungible tokens. They are interchangible and one `$EXAMPLE` is, for all intents-and-purposes, the same as all other `$EXAMPLE` tokens.
+Avalanche is a global financial network for the issuing and trading of all digital goods. On Avalanche these digital goods are represented as tokens and can be assets or utilities. Often times these tokens are interchangeable or fungible. For example, imagine an `$EXAMPLE` token which is used in commerce. If you pay for an item using `$EXAMPLE`, and in return for change the merchant gives you different `$EXAMPLE`, that&rsquo;s the expected behavior for fungible tokens. They are interchangeable and one `$EXAMPLE` token is, for all intents-and-purposes, the same as all other `$EXAMPLE` tokens in the same way any $5 USD note is interchangeable with any other $5 USD note.
 
-Avalanche also supports a unique type of token called a Non-fungible Token (NFT). NFTs are different than traditional tokens in the sense that they are not interchangible. They are non-fungible. For each issued NFT there will only ever be the single issued token. NFT's represent digital scarcity and may prove to have even greater utility than traditional fungible tokens.
+Avalanche also supports a unique type of token called a Non-fungible Token (NFT). NFTs are different than traditional tokens in the sense that they are not interchangeable. They are non-fungible. For each issued NFT there will only ever be the single issued token. NFT&rsquo;s represent digital scarcity and may prove to have even greater utility than traditional fungible tokens.
 
 ## NFT Families and Groups
 
-NFTs on Avalanche are extremely expressive and powerful. They start with an NFT family. This family has a name and a symbol. Each family has a dynamic number of groups, the total count which you decide when you create the NFT family. You can issue individual NFTs to each of the groups. In this tutorial we'll see how that is done at a high level with AvalancheGo's RPC. In Part-2 we'll build up a custom NFT family using [AvalancheJS](../ ).
+NFTs on Avalanche are extremely expressive and powerful. They start with an NFT family. This family has a name and a symbol. Each family has a dynamic number of groups, the total count which you decide when you create the NFT family. You can issue individual NFTs to each of the groups. In this tutorial we&rsquo;ll see how that is done at a high level with AvalancheGo&rsquo;s RPC. In Part-2 we&rsquo;ll build up a custom NFT family using [AvalancheJS](../ ) and explore NFT groups in more detail.
 
-This tutorial illustrates how to create a non-fungible asset using AvalancheGo's RPC. No units of the NFT exist when the asset is initialized, but more units may be minted. On asset creation we specify which sets of addresses may mint more NFTs of this family and group.
+This tutorial illustrates how to create a non-fungible asset using AvalancheGo&rsquo;s RPC. No units of the NFT exist when the asset is initialized, but more units may be minted. On asset creation we specify which sets of addresses may mint more NFTs of this family and group.
 
 You may be wondering why we specify *sets* of addresses that can mint more units of the asset rather than a single address. The first reason is security. If only one address can mint more of the asset, and the private key for that address is lost, no more units can ever be minted. Similarly, if only one address can mint more of the asset, nothing stops the holder of that address from unilaterally minting as much as they want.
 
-The second reason is flexibility. It's nice to be able to encode logic like, "Alice can unilaterally mint more units of this asset, or 2 of Dinesh, Ellin and Jamie can together mint more." Let's now create an NFT.
+The second reason is flexibility. It&rsquo;s nice to be able to encode logic like, "Alice can unilaterally mint more units of this asset, or 2 of Dinesh, Ellin and Jamie can together mint more." Let&rsquo;s now create an NFT.
 
 ## Requirements
 
-We assume that you've already done the [quickstart guide](../quickstart.md) and are familiar with the [Avalanche Network's architecture.](../core-concepts/overview.md) In this tutorial, we use [Avalanche's Postman collection](https://github.com/ava-labs/avalanche-postman-collection) to help us make API calls.
+We assume that you&rsquo;ve already done the [quickstart guide](../quickstart.md) and are familiar with the [Avalanche Network&rsquo;s architecture.](../core-concepts/overview.md) In this tutorial, we use [Avalanche&rsquo;s Postman collection](https://github.com/ava-labs/avalanche-postman-collection) to help us make API calls.
 
 ## Create the NFT Family
 
-Our NFT will exist on the X-Chain, so to create our family we'll call `avm.createNFTAsset`, which is a method of the [X-Chain's API.](../api/avm.md)
+Our NFT will exist on the X-Chain, so to create our family we&rsquo;ll call `avm.createNFTAsset`, which is a method of the [X-Chain&rsquo;s API.](../api/avm.md)
 
 The signature for this method is:
 
@@ -56,10 +56,10 @@ avm.createNFTAsset({
 
 ### Response
 
-* `assetID` is the ID of the new asset that we'll have created.
+* `assetID` is the ID of the new asset that we&rsquo;ll have created.
 * `changeAddr` in the result is the address where any change was sent.
 
-Later in this example we'll mint NFT, so be sure to replace at least 1 address in the minter set with an address which your user controls.
+Later in this example we&rsquo;ll mint NFT, so be sure to replace at least 1 address in the minter set with an address which your user controls.
 
 ```json
 curl -X POST --data '{
@@ -98,11 +98,11 @@ The response should look like this:
 }
 ```
 
-A couple things to take note of. First, in addition to creating an NFT family, AvalancheGo's `avm.createNFTAsset` also creates a group for each of the `minterSets` which are passed in. Second, take note of the `assetID` which is returned in the response. This is the `assetID` of the newly created NFT family and you'll need it later to issue NFTs.
+A couple things to take note of. First, in addition to creating an NFT family, AvalancheGo&rsquo;s `avm.createNFTAsset` also creates a group for each of the `minterSets` which are passed in. Second, take note of the `assetID` which is returned in the response. This is the `assetID` of the newly created NFT family and you&rsquo;ll need it later to issue NFTs.
 
 ## Confirm newly created NFT Mint Output
 
-NFT outputs don't show up in calls to `avm.getBalance` or `avn.getAllBalances`. To see your NFTs you have to call `avm.getUTXOs` and then parse the utxo to check for the type ID. NFT Mint Outputs have a type id of `00 00 00 0a` in hexidecimal or `10` in decimal and NFT Transfer Outputs have a type id of `00 00 00 0b` hexdecimal or `11` in decimal.
+NFT outputs don&rsquo;t show up in calls to `avm.getBalance` or `avn.getAllBalances`. To see your NFTs you have to call `avm.getUTXOs` and then parse the utxo to check for the type ID. NFT Mint Outputs have a type id of `00 00 00 0a` in hexidecimal or `10` in decimal and NFT Transfer Outputs have a type id of `00 00 00 0b` hexdecimal or `11` in decimal.
 
 ```json
 curl -X POST --data '{
@@ -116,7 +116,7 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-The response contains the transaction's ID:
+The response contains the transaction&rsquo;s ID:
 
 ```json
 {
@@ -136,7 +136,7 @@ The response contains the transaction's ID:
 }
 ```
 
-`avm.getUTXOs` returns 2 UTXOs. Let's take the first one, `116VhGCxiSL4GrMPKHkk9Z92WCn2i4qk8qdN3gQkFz6FMEbHo82Lgg8nkMCPJcZgpVXZLQU6MfYuqRWfzHrojmcjKWbfwqzZoZZmvSjdD3KJFsW3PDs5oL3XpCHq4vkfFy3q1wxVY8qRc6VrTZaExfHKSQXX1KnC`, and decode it to confirm that it's an NFT Mint Output.
+`avm.getUTXOs` returns 2 UTXOs. Let&rsquo;s take the first one, `116VhGCxiSL4GrMPKHkk9Z92WCn2i4qk8qdN3gQkFz6FMEbHo82Lgg8nkMCPJcZgpVXZLQU6MfYuqRWfzHrojmcjKWbfwqzZoZZmvSjdD3KJFsW3PDs5oL3XpCHq4vkfFy3q1wxVY8qRc6VrTZaExfHKSQXX1KnC`, and decode it to confirm that it&rsquo;s an NFT Mint Output.
 
 First we convert the Base58Check encoded string which is returned from `avm.getUTXOs` in to hex. The following CB58 string:
 
@@ -150,7 +150,7 @@ gets converted to the following hex:
 00 00 04 78 f2 39 8d d2 16 3c 34 13 2c e7 af a3 1f 0a c5 03 01 7f 86 3b f4 db 87 ea 55 53 c5 2d 7b 57 00 00 00 01 04 78 f2 39 8d d2 16 3c 34 13 2c e7 af a3 1f 0a c5 03 01 7f 86 3b f4 db 87 ea 55 53 c5 2d 7b 57 00 00 00 0a 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 01 3c b7 d3 84 2e 8c ee 6a 0e bd 09 f1 fe 88 4f 68 61 e1 b2 9c
 ```
 
-Now we can decompose the hex in to the UTXO's indivdual components:
+Now we can decompose the hex in to the UTXO&rsquo;s indivdual components:
 
 ```zsh
 NFT Mint Output
@@ -171,11 +171,11 @@ Note that the `TypeID` is `00 00 00 0a` which is the correct type id for an [NFT
 
 ## Mint the Asset
 
-Now that we have an NFT family and a group for the single `MinterSet` we're able to mint some NFTs to the group. To do that we call `avm.mintNFT` and pass in the following parameters.
+Now that we have an NFT family and a group for the single `MinterSet` we&rsquo;re able to mint some NFTs to the group. To do that we call `avm.mintNFT` and pass in the following parameters.
 
-* `assetID` is the ID of the NFT we're creating more of.
-* `payload` is an arbitrary CB58 encoded payload of up to 1024 bytes. In [Part 2](./non-fungible-token-pt-2) we'll explore creating a protocol around the NFT payload. For this tutorial I have encoded the string "AvalancheJS"
-* `to` is the address that will receive the newly minted NFT. Replace `to` with an address your user controls so that later you'll be able to send some of the newly minted NFT.
+* `assetID` is the ID of the NFT we&rsquo;re creating more of.
+* `payload` is an arbitrary CB58 encoded payload of up to 1024 bytes. In [Part 2](./non-fungible-token-pt-2) we&rsquo;ll explore creating a protocol around the NFT payload. For this tutorial I have encoded the string "AvalancheJS"
+* `to` is the address that will receive the newly minted NFT. Replace `to` with an address your user controls so that later you&rsquo;ll be able to send some of the newly minted NFT.
 * `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` must be a user that holds keys giving it permission to mint more of this NFT. That is, it controls at least *threshold* keys for one of the minter sets we specified above.
@@ -198,7 +198,7 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
 
-The response contains the transaction's ID:
+The response contains the transaction&rsquo;s ID:
 
 ```json
 {
@@ -245,7 +245,7 @@ This should give:
 }
 ```
 
-Again, similar to the previous step we can now decode the CB58 encoded UTXO to hexidecimal and then decompose it to it's individual components to confirm that we have the correct UTXO and type.
+Again, similar to the previous step we can now decode the CB58 encoded UTXO to hexidecimal and then decompose it to it&rsquo;s individual components to confirm that we have the correct UTXO and type.
 
 First we convert the Base58Check encoded string which is returned from `avm.getUTXOs` in to hex. The following CB58 string:
 
@@ -259,7 +259,7 @@ gets converted to the following hex:
 00 00 7d 07 0d 1e fe a6 4e 45 09 05 c6 11 ee b1 cf 61 9f 21 22 eb 17 db aa ea 9a fe 2d ff 17 be 27 6b 00 00 00 01 04 78 f2 39 8d d2 16 3c 34 13 2c e7 af a3 1f 0a c5 03 01 7f 86 3b f4 db 87 ea 55 53 c5 2d 7b 57 00 00 00 0b 00 00 00 00 00 00 00 08 41 56 41 20 4c 61 62 73 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 01 3c b7 d3 84 2e 8c ee 6a 0e bd 09 f1 fe 88 4f 68 61 e1 b2 9c
 ```
 
-Now we can decompose the hex in to the UTXO's indivdual components:
+Now we can decompose the hex in to the UTXO&rsquo;s indivdual components:
 
 ```zsh
 NFT Mint Output
@@ -282,7 +282,7 @@ Note that the `TypeID` is `00 00 00 0b` which is the correct type id for an [NFT
 
 ## Send the NFT
 
-Lastly, you are now able to send the NFT to anyone. To do that you use AvalancheGo's `avm.sendNFT` RPC endpoint.
+Lastly, you are now able to send the NFT to anyone. To do that you use AvalancheGo&rsquo;s `avm.sendNFT` RPC endpoint.
 
 ```json
 curl -X POST --data '{
@@ -322,7 +322,7 @@ Blockchain technology and tokenomics represent a radical new way of representing
 
 * Used  `createNFTAsset` to create a non-fungible asset family and group.
 * Used  `mintNFT` to mint units of an NFT to the group.
-* Used  `getUTXOs` to fetch UTXOs for an address. We then converted the CB58 encoded UTXO to hex and decomposed it to it's individual components.
+* Used  `getUTXOs` to fetch UTXOs for an address. We then converted the CB58 encoded UTXO to hex and decomposed it to it&rsquo;s individual components.
 * Used  `sendNFT` to transfer NFTs between addresses.
 
-In [Part 2](./non-fungible-token-pt-2) of this series we'll go more in depth by using AvalancheJS to create a protocol for our NFT payload and by issuing to multiple groups.
+In [Part 2](./non-fungible-token-pt-2) of this series we&rsquo;ll go more in depth by using AvalancheJS to create a protocol for our NFT payload and by issuing to multiple groups.
