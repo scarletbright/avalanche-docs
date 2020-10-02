@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Avalanche is a global financial network for the issuing and trading of all digital goods. On Avalanche these digital goods are represented as tokens and can be assets or utilities. Often times these tokens are interchangeable or fungible. For example, imagine an `$EXAMPLE` token which is used in commerce. If you pay for an item using `$EXAMPLE`, and in return for change the merchant gives you different `$EXAMPLE`, that&rsquo;s the expected behavior for fungible tokens. They are interchangeable and one `$EXAMPLE` token is, for all intents-and-purposes, the same as all other `$EXAMPLE` tokens in the same way any $5 USD note is interchangeable with any other $5 USD note.
+Avalanche is a global financial network for the issuing and trading of all digital goods. On Avalanche these digital goods are represented as tokens and can be assets or utilities. Often times these tokens are interchangeable or fungible. For example, imagine an `$EXAMPLE` token which is used in commerce. If you pay for an item using `$EXAMPLE`, and in return for change the merchant gives you different `$EXAMPLE`, that&rsquo;s the expected behavior for fungible tokens. They&rsquo;re interchangeable and one `$EXAMPLE` token is, for all intents-and-purposes, the same as all other `$EXAMPLE` tokens in the same way any $5 USD note is interchangeable with any other $5 USD note.
 
 Avalanche also supports a unique type of token called a Non-fungible Token (NFT). NFTs are different than traditional tokens in the sense that they are not interchangeable. They are non-fungible. For each issued NFT there will only ever be the single issued token. NFT&rsquo;s represent digital scarcity and may prove to have even greater utility than traditional fungible tokens.
 
