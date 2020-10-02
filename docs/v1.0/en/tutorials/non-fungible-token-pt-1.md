@@ -68,7 +68,7 @@ Later in this example we&rsquo;ll mint an NFT, so be sure to replace at least 1 
 ```json
 curl -X POST --data '{
     "jsonrpc":"2.0",
-    "id"     : 1,
+    "id"     :1,
     "method" :"avm.createNFTAsset",
     "params" :{
         "name":"Family",
@@ -311,6 +311,25 @@ Note that the `TypeID` is `00 00 00 0b` which is the correct type id for an [NFT
 ## Send the NFT
 
 Lastly, you are now able to send the NFT to anyone. To do that you use AvalancheGo&rsquo;s `avm.sendNFT` RPC endpoint.
+
+### Method
+
+* `avm.sendNFT`
+
+### Parameters
+
+* `assetID` is the ID of the NFT we&rsquo;re creating more of.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
+* `to` is the address that will receive the newly minted NFT. Replace `to` with an address your user controls so that later you&rsquo;ll be able to send some of the newly minted NFT.
+* `groupID` is the NFT group from which to send the NFT.
+* `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
+* `username` must be a user that holds keys giving it permission to mint more of this NFT. That is, it controls at least *threshold* keys for one of the minter sets we specified above.
+* `password` is the valid password for `username`
+
+### Response
+
+* `txID` is the transaction ID.
+* `changeAddr` in the result is the address where any change was sent.
 
 ```json
 curl -X POST --data '{
