@@ -32,10 +32,18 @@ Note: addresses should not include a chain prefix (ie. X-) in calls to the stati
 #### Signature
 
 ```go
-avm.buildGenesis(genesisData:JSON) -> {bytes:string}
+avm.buildGenesis({
+    genesisData:JSON,
+    encoding: string, (optional)
+}) -> {
+    bytes:string,
+    encoding:string,
+}
 ```
 
-where `genesisData` has this form:
+Encoding specifies the encoding format to use for arbitrary bytes ie. the genesis bytes that are returned. Can be either "cb58" or "hex". Defaults to "cb58".
+
+`genesisData` has this form:
 
 ```json
 {
@@ -143,7 +151,8 @@ curl -X POST --data '{
                     ]
                 }
             }
-        }
+        },
+        "encoding": "hex"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/vm/avm
 ```
@@ -154,7 +163,8 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "bytes":"11111BcSrCUj7fX2ZiHNVgPnTXSiS1bB1vWo7QMaZ61vcyR7LHgFURR95N4TR6Tnu9u4dUW8M1ERahfCrexDbZr6A7d3dfRkbhJyhyspHdLsxUj8Vxn3pmGt5iTCtJwPggjxy5EEqrK9EZGgTprKFonWY8EkE1hAfp1yLqKRNj64Yii4w6uqoMeiECV4h7nD2YmdXmDkKEPT3MuKesXKjFkpfK9nAMfVJx7JMAjNnS418zSbvjxs6kbbd8TYKna8CYwo8PgjGAqhWE4FkLKcF7vGjZobCkDqbYMmazqeDtHnQLdwEzdjMMCcstvRKG7a7WdCxTt1LDVviVY5DmbsbzZoAwh9b95dvhJCMZS5DfQkuNFrhyfnwqMR49jPdU7tnqisd2fXq75kcaumST2y3SHGVgGRDmuQeZeEUnnVRjeejNcCUdraTj8U5cNb91mKDhL36MkmWZgTaA3pPj2RHJQuBBTbtuHdtpgjZGAPZixX6btg328xUEyvhHzmoVBPswC6BpwXCLhZz1zTPz5XVeu5qEzKoUZesu5Ud6ExAG5R29J5ubdkvoDjNn5VacXRgYX3yxfxtdUmjKQGsqRV23YNJcoTHveSy8HHnPtPXcP6mf6aDoWY2i6pbKoG8ixxZoqZDqDsEbbAhzMjar7yob1B1f5Scm92HfpThKsAWd3iWbyabBLxhT3g54ohm6SjjQKkzRS8Z"
+        "bytes": "0x0000000000010006617373657431000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f6d794669786564436170417373657400044d464341000000000100000000000000010000000700000000000186a10000000000000000000000010000000152b219bc1b9ab0a9f2e3f9216e4460bd5db8d153bfa57c3c",
+        "encoding": "hex"
     },
     "id": 1
 }
@@ -509,6 +519,7 @@ avm.mintNFT({
     assetID: string,
     payload: string,
     to: string,
+    encoding: string, (optional)
     from: []string, (optional)
     changeAddr: string, (optional)
     username: string,
@@ -521,12 +532,13 @@ avm.mintNFT({
 ```
 
 * `assetID` is the assetID of the newly created NFT asset.
-* `payload` is an arbitrary CB58 encoded payload of up to 1024 bytes.
+* `payload` is an arbitrary payload of up to 1024 bytes. Its encoding format is specified by the `encoding` argument.
 * `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
 * `username` is the user that pays the transaction fee. `username` must hold keys giving it permission to mint more of this asset. That is, it must control at least *threshold* keys for one of the minter sets.
 * `txID` is this transaction's ID.
 * `changeAddr` in the result is the address where any change was sent.
+* `encoding` is the encoding format to use for the payload argument. Can be either "cb58" or "hex". Defaults to "cb58".
 
 #### Example Call
 
@@ -804,12 +816,18 @@ curl -X POST --data '{
 
 ### avm.getTx
 
-Returns the specified transaction
+Returns the specified transaction. The `encoding` parameter sets the format of the returned transaction. Can be either "cb58" or "hex". Defaults to "cb58".
 
 #### Signature
 
 ```go
-avm.getTx({txID: string}) -> {tx: string}
+avm.getTx({
+    txID: string,
+    encoding: string, (optional)
+}) -> {
+    tx: string,
+    encoding: string,
+}
 ```
   
 #### Example Call
@@ -820,7 +838,8 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.getTx",
     "params" :{
-        "txID":"2QouvFWUbjuySRxeX5xMbNCuAaKWfbk5FeEa2JmoF85RKLk2dD"
+        "txID":"2QouvFWUbjuySRxeX5xMbNCuAaKWfbk5FeEa2JmoF85RKLk2dD",
+        "encoding": "cb58"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -832,7 +851,8 @@ curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
     "result" :{
-        "tx":"1111111vQFqEEHkkAGwJnpdAJgga28zHk9pFARHp1VWe3QM5wC7ztGA5cZAPanFWXHkhbWEbFs9qsEpNZ7QHrzucUUZqLEPrAwJZLrZBik4dEhbsTCF3nS6s2fXVzc5ar2esLFD92WVMZmJNuTUQuKjVkjag2Gy3HHYSqm6bojrG62KrazywKPhrYx8QF9AqNfYYwD3XcSUV1g46r7sQ1WqzM8nyG4qL517JS1YVuTC3aWPeN5cxP6FdvbYexwHcgaBtiQsYbCEeZ9cuJqhE2Pxx8BJFpicLN8FBexb6fzQyBLiFR7yx6v6YBjq7dtu9MBczFdNCnDE4MsG2SyPZsdUv1XxQYVVwDqgqi8Zto5esJKph72YZbrXX3SHVSZBFZXkKbTzyEQFWHCF1jC"
+        "tx":"1111111vQFqEEHkkAGwJnpdAJgga28zHk9pFARHp1VWe3QM5wC7ztGA5cZAPanFWXHkhbWEbFs9qsEpNZ7QHrzucUUZqLEPrAwJZLrZBik4dEhbsTCF3nS6s2fXVzc5ar2esLFD92WVMZmJNuTUQuKjVkjag2Gy3HHYSqm6bojrG62KrazywKPhrYx8QF9AqNfYYwD3XcSUV1g46r7sQ1WqzM8nyG4qL517JS1YVuTC3aWPeN5cxP6FdvbYexwHcgaBtiQsYbCEeZ9cuJqhE2Pxx8BJFpicLN8FBexb6fzQyBLiFR7yx6v6YBjq7dtu9MBczFdNCnDE4MsG2SyPZsdUv1XxQYVVwDqgqi8Zto5esJKph72YZbrXX3SHVSZBFZXkKbTzyEQFWHCF1jC",
+        "encoding": "cb58"
     }
 }
 ```
@@ -894,7 +914,8 @@ avm.getUTXOs(
             address: string,
             utxo: string
         },
-        sourceChain: string (optional)
+        sourceChain: string, (optional)
+        encoding: string, (optional)
     },
 ) -> 
 {
@@ -916,6 +937,7 @@ avm.getUTXOs(
   That is, a UTXO may appear in the result of the first call, and then again in the second call.
 * When using pagination, consistency is not guaranteed across multiple calls.
   That is, the UTXO set of the addresses may have changed between calls.
+* `encoding` sets the format for the returned UTXOs. Can be either "cb58" or "hex". Defaults to "cb58".
 
 #### Example
 
@@ -928,7 +950,8 @@ curl -X POST --data '{
     "method" :"avm.getUTXOs",
     "params" :{
         "addresses":["X-avax1yzt57wd8me6xmy3t42lz8m5lg6yruy79m6whsf", "X-avax1x459sj0ssujguq723cljfty4jlae28evjzt7xz"],
-        "limit":5
+        "limit":5,
+        "encoding": "cb58"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -950,7 +973,8 @@ This gives response:
         "endIndex": {
             "address": "X-avax1x459sj0ssujguq723cljfty4jlae28evjzt7xz",
             "utxo": "kbUThAUfmBXUmRgTpgD6r3nLj7rJUGho6xyht5nouNNypH45j"
-        }
+        },
+        "encoding": "cb58"
     },
     "id": 1
 }
@@ -970,7 +994,8 @@ curl -X POST --data '{
         "endIndex": {
             "address": "X-avax1x459sj0ssujguq723cljfty4jlae28evjzt7xz",
             "utxo": "kbUThAUfmBXUmRgTpgD6r3nLj7rJUGho6xyht5nouNNypH45j"
-        }
+        },
+        "encoding": "cb58"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -991,7 +1016,8 @@ This gives response:
         "endIndex": {
             "address": "X-avax1x459sj0ssujguq723cljfty4jlae28evjzt7xz",
             "utxo": "21jG2RfqyHUUgkTLe2tUp6ETGLriSDTW3th8JXFbPRNiSZ11jK"
-        }
+        },
+        "encoding": "cb58"
     },
     "id": 1
 }
@@ -1009,7 +1035,8 @@ curl -X POST --data '{
     "params" :{
         "addresses":["X-avax1yzt57wd8me6xmy3t42lz8m5lg6yruy79m6whsf", "X-avax1x459sj0ssujguq723cljfty4jlae28evjzt7xz"],
         "limit":5,
-        "sourceChain": "P"
+        "sourceChain": "P",
+        "encoding": "cb58"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -1027,7 +1054,8 @@ This gives response:
         "endIndex": {
             "address": "X-avax1x459sj0ssujguq723cljfty4jlae28evjzt7xz",
             "utxo": "2Sz2XwRYqUHwPeiKoRnZ6ht88YqzAF1SQjMYZQQaB5wBFkAqST"
-        }
+        },
+        "encoding": "cb58"
     },
     "id": 1
 }
@@ -1128,12 +1156,18 @@ curl -X POST --data '{
 
 ### avm.issueTx
 
-Send a signed transaction to the network.
+Send a signed transaction to the network. `encoding` specifies the format of the signed transaction. Can be either "cb58" or "hex". Defaults to "cb58".
 
 #### Signature
 
 ```go
-avm.issueTx({tx: string}) -> {txID: string}
+avm.issueTx({
+    tx: string,
+    encoding: string, (optional)
+}) -> {
+    txID: string,
+    encoding: string,
+}
 ```
 
 #### Example Call
@@ -1144,7 +1178,8 @@ curl -X POST --data '{
     "id"     : 1,
     "method" :"avm.issueTx",
     "params" :{
-        "tx":"6sTENqXfk3gahxkJbEPsmX9eJTEFZRSRw83cRJqoHWBiaeAhVbz9QV4i6SLd6Dek4eLsojeR8FbT3arFtsGz9ycpHFaWHLX69edJPEmj2tPApsEqsFd7wDVp7fFxkG6HmySR"
+        "tx":"6sTENqXfk3gahxkJbEPsmX9eJTEFZRSRw83cRJqoHWBiaeAhVbz9QV4i6SLd6Dek4eLsojeR8FbT3arFtsGz9ycpHFaWHLX69edJPEmj2tPApsEqsFd7wDVp7fFxkG6HmySR",
+        "encoding": "cb58"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```

@@ -318,6 +318,7 @@ platform.createBlockchain(
         vmID: string,
         name: string,
         genesisData: string,
+        encoding: string, (optional)
         from: []string, (optional)
         changeAddr: string, (optional)
         username: string,
@@ -335,7 +336,8 @@ platform.createBlockchain(
 * `vmID` is the ID of the Virtual Machine the blockchain runs.
   Can also be an alias of the Virtual Machine.
 * `name` is a human-readable name for the new blockchain. Not necessarily unique.
-* `genesisData` is the base 58 (with checksum) representation of the genesis state of the new blockchain.
+* `genesisData` is the byte representation of the genesis state of the new blockchain encoded in the format specified by the `encoding` parameter.
+* `encoding` specifies the format to use for `genesisData`. Can be either "cb58" or "hex". Defaults to "cb58".
   Virtual Machines should have a static API method named `buildGenesis` that can be used to generate `genesisData`
 * `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
 * `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
@@ -357,6 +359,7 @@ curl -X POST --data '{
         "SubnetID":"2bRCr6B4MiEfSjidDwxDpdCyviwnfUVqB2HGwhm947w9YYqb7r",
         "name":"My new timestamp",
         "genesisData": "45oj4CqFViNHUtBxJ55TZfqaVAXFwMRMj2XkHVqUYjJYoTaEM",
+        "encoding": "cb58",
         "from": ["P-avax1gss39m5sx6jn7wlyzeqzm086yfq2l02xkvmecy"],
         "changeAddr": "P-avax103y30cxeulkjfe3kwfnpt432ylmnxux8r73r8u",
         "username":"username",
@@ -1199,10 +1202,18 @@ curl -X POST --data '{
 
 Gets a transaction by its ID.
 
+Optional `encoding` parameter to specify the format for the returned transaction. Can be either "cb58" or "hex". Defaults to "cb58".
+
 #### Signature
 
 ```go
-platform.getTx({txID: string} -> {tx: string})
+platform.getTx({
+    txID: string,
+    encoding: string (optional)
+} -> {
+    tx: string,
+    encoding: string,
+})
 ```
 
 #### Example Call
@@ -1212,7 +1223,8 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.getTx",
     "params": {
-    	"txID":"TAG9Ns1sa723mZy1GSoGqWipK6Mvpaj7CAswVJGM6MkVJDF9Q"
+    	"txID":"TAG9Ns1sa723mZy1GSoGqWipK6Mvpaj7CAswVJGM6MkVJDF9Q",
+        "encoding": "cb58"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
@@ -1224,7 +1236,8 @@ curl -X POST --data '{
 {
     "jsonrpc": "2.0",
     "result": {
-        "tx": "111117XV7Rm5EoKbwXFJp5WWWouAENJcF1zXGxPDPCfTbpiLfwkUXcoHKnfzdXz7sRgGYeaVtJkcD9MNgGuKGXsyWEWpTK2zAToEf64ezp7r7SyvyL7RqC5oqvNbRDShn5hm9pDV4JTCjZR5RzAxjBEJZ2V8eqtU6jvpsJMHxNBtCwL6Atc1t2Dt7s5nqf7wdbFUBvwKXppBb2Yps8wUvtTKQifssMUAPygc2Rv4rGd9LRANk4JTiT15qzUjXX7zSzz16pxdBXc4jp2Z2UJRWbdxZdaybL3mYCFj197bBnYieRYzRohaUEpEjGcohrmkSfHB8S2eD74o2r66sVGdpXYo95vkZeayQkrMRit6unwWBx8FJR7Sd7GysxS9A3CiMc8cL4oRmr7XyvcFCrnPbUZK7rnN1Gtq3MN8k4JVvX6DuiFAS7xe61jY3VKJAZM9Lg3BgU6TAU3gZ"
+        "tx": "111117XV7Rm5EoKbwXFJp5WWWouAENJcF1zXGxPDPCfTbpiLfwkUXcoHKnfzdXz7sRgGYeaVtJkcD9MNgGuKGXsyWEWpTK2zAToEf64ezp7r7SyvyL7RqC5oqvNbRDShn5hm9pDV4JTCjZR5RzAxjBEJZ2V8eqtU6jvpsJMHxNBtCwL6Atc1t2Dt7s5nqf7wdbFUBvwKXppBb2Yps8wUvtTKQifssMUAPygc2Rv4rGd9LRANk4JTiT15qzUjXX7zSzz16pxdBXc4jp2Z2UJRWbdxZdaybL3mYCFj197bBnYieRYzRohaUEpEjGcohrmkSfHB8S2eD74o2r66sVGdpXYo95vkZeayQkrMRit6unwWBx8FJR7Sd7GysxS9A3CiMc8cL4oRmr7XyvcFCrnPbUZK7rnN1Gtq3MN8k4JVvX6DuiFAS7xe61jY3VKJAZM9Lg3BgU6TAU3gZ",
+        "encoding": "cb58"
     },
     "id": 1
 }
@@ -1278,7 +1291,8 @@ platform.getUTXOs(
             address: string,
             utxo: string
         },
-        sourceChain: string (optional)
+        sourceChain: string, (optional)
+        encoding: string, (optional)
     },
 ) -> 
 {
@@ -1287,7 +1301,8 @@ platform.getUTXOs(
     endIndex: {
         address: string,
         utxo: string
-    }
+    },
+    encoding: string,
 }
 ```
 
@@ -1300,6 +1315,7 @@ platform.getUTXOs(
   That is, a UTXO may appear in the result of the first call, and then again in the second call.
 * When using pagination, consistency is not guaranteed across multiple calls.
   That is, the UTXO set of the addresses may have changed between calls.
+* `encoding` specifies the format for the returned UTXOs. Can be either "cb58" or "hex" and defaults to "cb58".
 
 #### Example
 
@@ -1312,7 +1328,8 @@ curl -X POST --data '{
     "method" :"platform.getUTXOs",
     "params" :{
         "addresses":["P-avax1s994jad0rtwvlfpkpyg2yau9nxt60qqfv023qx", "P-avax1fquvrjkj7ma5srtayfvx7kncu7um3ym73ztydr"],
-        "limit":5
+        "limit":5,
+        "encoding": "cb58"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
 ```
@@ -1334,7 +1351,8 @@ This gives response:
         "endIndex": {
             "address": "P-avax1fquvrjkj7ma5srtayfvx7kncu7um3ym73ztydr",
             "utxo": "kbUThAUfmBXUmRgTpgD6r3nLj7rJUGho6xyht5nouNNypH45j"
-        }
+        },
+        "encoding": "cb58"
     },
     "id": 1
 }
@@ -1354,7 +1372,8 @@ curl -X POST --data '{
         "startIndex": {
             "address": "P-avax1fquvrjkj7ma5srtayfvx7kncu7um3ym73ztydr",
             "utxo": "kbUThAUfmBXUmRgTpgD6r3nLj7rJUGho6xyht5nouNNypH45j"
-        }
+        },
+        "encoding": "cb58"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
 ```
@@ -1375,7 +1394,8 @@ This gives response:
         "endIndex": {
             "address": "P-avax1fquvrjkj7ma5srtayfvx7kncu7um3ym73ztydr",
             "utxo": "21jG2RfqyHUUgkTLe2tUp6ETGLriSDTW3th8JXFbPRNiSZ11jK"
-        }
+        },
+        "encoding": "cb58"
     },
     "id": 1
 }
@@ -1392,7 +1412,8 @@ curl -X POST --data '{
     "method" :"platform.getUTXOs",
     "params" :{
         "addresses":["P-avax1fquvrjkj7ma5srtayfvx7kncu7um3ym73ztydr"],
-        "sourceChain": "X"
+        "sourceChain": "X",
+        "encoding": "cb58"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/P
 ```
@@ -1410,7 +1431,8 @@ This gives response:
         "endIndex": {
             "address": "P-avax1fquvrjkj7ma5srtayfvx7kncu7um3ym73ztydr",
             "utxo": "S5UKgWoVpoGFyxfisebmmRf8WqC7ZwcmYwS7XaDVZqoaFcCwK"
-        }
+        },
+        "encoding": "cb58"
     },
     "id": 1
 }
@@ -1524,7 +1546,6 @@ curl -X POST --data '{
 }
 ```
 
-<!-- TODO: add issueTx to platform API
 ### platform.issueTx
 
 Issue a transaction to the Platform Chain.
@@ -1532,10 +1553,14 @@ Issue a transaction to the Platform Chain.
 #### Signature
 
 ```go
-platform.issueTx({tx: string}) -> {txID: string}
+platform.issueTx({
+    tx: string,
+    encoding: string, (optional)
+}) -> {txID: string}
 ```
 
-* `tx` is the base 58 (with checksum) representation of a transaction.
+* `tx` is the byte representation of a transaction.
+* `encoding` specifies the encoding format for the transaction bytes. Can be either "cb58" or "hex". Defaults to "cb58".
 * `txID` is the transaction's ID.
 
 #### Example Call
@@ -1545,7 +1570,8 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "method": "platform.issueTx",
     "params": {
-        "tx":"111Bit5JNASbJyTLrd2kWkYRoc96swEWoWdmEhuGAFK3rCAyTnTzomuFwgx1SCUdUE71KbtXPnqj93KGr3CeftpPN37kVyqBaAQ5xaDjr7wVBTUYi9iV7kYJnHF61yovViJF74mJJy7WWQKeRMDRTiPuii5gsd11gtNahCCsKbm9seJtk2h1wAPZn9M1eL84CGVPnLUiLP"
+        "tx":"111Bit5JNASbJyTLrd2kWkYRoc96swEWoWdmEhuGAFK3rCAyTnTzomuFwgx1SCUdUE71KbtXPnqj93KGr3CeftpPN37kVyqBaAQ5xaDjr7wVBTUYi9iV7kYJnHF61yovViJF74mJJy7WWQKeRMDRTiPuii5gsd11gtNahCCsKbm9seJtk2h1wAPZn9M1eL84CGVPnLUiLP",
+        "encoding": "cb58"
     },
     "id": 1
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
@@ -1562,7 +1588,6 @@ curl -X POST --data '{
     "id": 1
 }
 ```
--->
 
 ### platform.listAddresses
 
