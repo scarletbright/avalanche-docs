@@ -39,7 +39,3 @@ Allows clients to examine a node's internal state, set of connections, and simil
 ## [Info API](./info.md)
 
 Allows clients to examine basic information about a node.
-
-## [Timestamp API](./timestamp.md)
-
-Allows clients to interact with the Timestamp Chain, a simple timestamp server.

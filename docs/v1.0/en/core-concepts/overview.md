@@ -114,7 +114,7 @@ Virtual machines can contain almost any arbitrary logic and Avalanche imposes fe
 Avalanche is a network of custom, independent blockchains, so naturally blockchain creation is a core feature of Avalanche.
 
 Avalanche does not yet support the creation of new Virtual Machines.
-This means that presently, Avalanche only supports the creation of new instances of the [AVM](../api/avm.md) or the [Timestamp VM.](../api/timestamp.md) That is, one can only create a new blockchain that runs the AVM or Timestamp VM. See [this tutorial](../tutorials/create-a-blockchain.md) to learn how to do so.
+This means that presently, Avalanche only supports the creation of new instances of the [AVM](../api/avm.md). See [this tutorial](../tutorials/create-a-blockchain.md) to learn how to do so.
 
 In the future, Avalanche will allow users to define and launch custom blockchains, and we'll release SDKs to help developers do so. 
 
