@@ -20,24 +20,38 @@ The signature for this method is:
 
 ```go
 avm.createFixedCapAsset({
-    name: string, 
+    name: string,
     symbol: string,
     denomination: int,  
     initialHolders: []{
-        address: string, 
+        address: string,
         amount: int
-    }, 
+    },
+    from: []string,
+    changeAddr: string,
     username: string,  
     password: string
-}) -> {assetID: string}
+}) ->
+{
+    assetID: string,
+    changeAddr: string,
+}
 ```
+
+### Parameters
 
 * `name` is a human-readable name for the asset. Not necessarily unique.
 * `symbol` is a shorthand symbol for the asset. Between 0 and 4 characters. Not necessarily unique. May be omitted.
 * `denomination` determines how balances of this asset are displayed by user interfaces. If denomination is 0, 100 units of this asset are displayed as 100. If denomination is 1, 100 units of this asset are displayed as 10.0. If denomination is 2, 100 units of this asset are displays as .100, etc.
 * Performing a transaction on the X-Chain require a transaction fee paid in AVAX. `username` and `password` denote the user paying the fee.
 * Each element in `initialHolders` specifies that `address` holds `amount` units of the asset at genesis.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
+* `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
+
+### Response
+
 * `assetID` is the ID of the new asset.
+* `changeAddr` in the result is the address where any change was sent.
   
 Now, on to creating the asset.
 You'll want to replace `address` with an address your user controls so that you will
@@ -51,12 +65,15 @@ curl -X POST --data '{
     "params" :{
         "name": "ISA Shares",
         "symbol":"ISAS",
+        "denomination": 0,
         "initialHolders": [
             {
                 "address": "X-avax10pvk9anjqrjfv2xudkdptza654695uwc8ecyg5",
                 "amount": 10000000
             }
         ],
+        "from":["X-avax1s65kep4smpr9cnf6uh9cuuud4ndm2z4jguj3gp"],
+        "changeAddr":"X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
         "username":"USERNAME GOES HERE",
         "password":"PASSWORD GOES HERE"
     }

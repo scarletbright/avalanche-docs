@@ -10,7 +10,6 @@ On asset creation we specify which sets of addresses may mint more units.
 You may be wondering why we specify *sets* of addresses that can mint more units of the asset 
 rather than a single address.
 
-
 The first reason is security. If only one address can mint more of the asset, and
 the private key for that address is lost, no more units can ever be minted. Similarly, if only one
 address can mint more of the asset, nothing stops the holder of that address from unilaterally
@@ -36,21 +35,37 @@ The signature for this method is:
 avm.createVariableCapAsset({
     name: string,
     symbol: string,
+    denomination: int,
     minterSets []{
         minters: []string,
         threshold: int
     },
+    from: []string,
+    changeAddr: string,
     username: string,
     password: string
-}) -> {assetID: string}
+}) ->
+{
+    assetID: string,
+    changeAddr: string,
+}
 ```
+
+### Parameters
 
 * `name` is a human-readable name for our asset. Not necessarily unique. Between 0 and 128 characters.
 * `symbol` is a shorthand symbol for this asset. Between 0 and 4 characters. Not necessarily unique. May be omitted.
+* `denomination` determines how balances of this asset are displayed by user interfaces. If denomination is 0, 100 units of this asset are displayed as 100. If denomination is 1, 100 units of this asset are displayed as 10.0. If denomination is 2, 100 units of this asset are displays as .100, etc.
 * `minterSets` is a list where each element specifies that `threshold` of the addresses
   in `minters` may together mint more of the asset by signing a minting transaction.
 * Performing a transaction on the X-Chain require a transaction fee paid in AVAX. `username` and `password` denote the user paying the fee.
-* `assetID` is the ID of the new asset that we'll have created.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
+* `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
+
+### Response
+
+* `assetID` is the ID of the new asset.
+* `changeAddr` in the result is the address where any change was sent.
 
 
 Later in this example we'll mint more shares, so be sure to replace at least 2 addresses
@@ -80,6 +95,8 @@ curl -X POST --data '{
                 "threshold": 2
             }
         ],
+        "from":["X-avax1s65kep4smpr9cnf6uh9cuuud4ndm2z4jguj3gp"],
+        "changeAddr":"X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
         "username":"USERNAME GOES HERE",
         "password":"PASSWORD GOES HERE"
     }

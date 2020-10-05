@@ -2,6 +2,10 @@
 
 This API can be used for measuring node health.
 
+To get an HTTP status code response that indicates the node's health, make a `GET` request to `/ext/health`.
+If the node is healthy, it will return a `200` status code.
+If you want more in-depth information about a node's health, use the methods below.
+
 ## Format
 
 This API uses the `json 2.0` RPC format. For more information on making JSON RPC calls, see [here.](./issuing-api-calls.md)
