@@ -407,13 +407,49 @@ If you started your node with command-line argument `--http-port=9700` then repl
 
 There is already a node running on your machine.
 
-### Node prints `NAT Traversal failed ...` on startup
+### Node prints `UPnP or NAT-PMP router attach failed, you may not be listening publicly ...` on startup
 
-See [here](staking.md#networking).
+When you do not specify `--public-ip=[x.x.x.x]` (with an IP address) the node attempts to use UPnP or NAT-PMP.
+The message indicates there was an error connecting to your router, and we did not successfully establish a dynamic forwarding rule.
+Check your router settings to ensure that you have these setting enabled, and restart the node.
+
+*NOTE* If you are using a firewall on your node you will need to allow udp traffic from port 1900.
+
+`--staking-port=[##]` defaults to 9651, and is the port opened externally on your router.
+`--internal-staking-port=[##]` defaults to `--staking-port` and is the port of the node.
+You can control these params individually.
+
+Example:
+```
+./avalanchego --staking-port=9655 --internal-staking-port=9651 ....
+```
+This will setup your node to listen locally on por 9651, but externally (from the internet) on port 9655.
+This indicates that on your router you will forward connections from port 9655 to your node on port 9651.
+
+`--http-port=[##]` defaults to 9650, and is the port opened externally on your router if you use `--http-host=` with a value other than "127.0.0.1" or "localhost"
+`--http-port-external=[##]` defaults to `--http-port` and is the port of the node.
+You can controls these params individually.
+
+Example:
+```
+./avalanchego --http-port=9650 --http-port-external=9656 ...
+```
+
+This will setup your node to listen locally on port 9650 and externally (from the internet) on port 9656.
+
+If you choose to set use `--public-ip=...` you can control the ports and setup port forwarding on your router.
+
+*NOTE* Your public ip could change especially for home users.  Use of `--public-ip=...` in this setup can have adverse effects.
+
+You can query your external IP with the following commands.
+```
+$ dig +short myip.opendns.com @resolver1.opendns.com
+$ curl ifconfig.co
+```
 
 ### Node only responds to API calls made from localhost
 
-Use command line argument `--http-host=` when you run your node. 
+Use command line argument `--http-host=` or `--http-host=0.0.0.0` when you run your node.
 
 ### Node is on the wrong network
 
