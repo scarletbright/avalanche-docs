@@ -66,7 +66,7 @@ Each node runs an HTTP server that provides the APIs for interacting with the no
 
 `--http-port-external` (int):
 
-Each node runs an HTTP server that provides the APIs for interacting with the node and the Avalanche network. This argument specifies the port that the http server will listen on externally. The default value is `9650`.
+Each node runs an HTTP server that provides the APIs for interacting with the node and the Avalanche network. This argument specifies the port that the http server will listen on externally. The default value is `http-port`.
 
 `--http-tls-cert-file` (string, file path):
 
@@ -147,7 +147,7 @@ The port through which the staking server will connect to the Avalanche network 
 
 `--internal-staking-port` (string):
 
-The port through which this server will listen internally. Defaults to `9651`.
+The port through which this server will listen internally. Defaults to `staking-port`.
 
 `--p2p-tls-enabled` (boolean):
 
