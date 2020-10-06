@@ -413,7 +413,7 @@ When you do not specify `--public-ip=[x.x.x.x]` (with an IP address) the node at
 The message indicates there was an error connecting to your router, and we did not successfully establish a dynamic forwarding rule.
 Check your router settings to ensure that you have these setting enabled, and restart the node.
 
-*NOTE* If you are using a firewall on your node you will need to allow udp traffic from port 1900.
+*NOTE* If you are using a firewall on your node you will need to allow udp traffic from port 1900 to allow UPnP to function.
 
 `--staking-port=[##]` defaults to 9651, and is the port opened externally on your router.
 `--internal-staking-port=[##]` defaults to `--staking-port` and is the port of the node.
@@ -434,18 +434,19 @@ Example:
 ```
 ./avalanchego --http-port=9650 --http-port-external=9656 ...
 ```
-
 This will setup your node to listen locally on port 9650 and externally (from the internet) on port 9656.
 
-If you choose to set use `--public-ip=...` you can control the ports and setup port forwarding on your router.
+If you use `--public-ip=[x.x.x.x]` (with an IP) you must setup port forwarding on your router manually.
 
-*NOTE* Your public ip could change especially for home users.  Use of `--public-ip=...` in this setup can have adverse effects.
+*NOTE* Your public ip could change especially for home users.  Use of `--public-ip=...` can have adverse effects.
 
 You can query your external IP with the following commands.
 ```
 $ dig +short myip.opendns.com @resolver1.opendns.com
 $ curl ifconfig.co
 ```
+
+*NOTE* The only way to confirm your node is externally accessible is to attempt a connection from a box outside of your network.
 
 ### Node only responds to API calls made from localhost
 
