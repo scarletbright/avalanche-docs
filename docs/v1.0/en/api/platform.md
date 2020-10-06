@@ -755,6 +755,44 @@ curl -X POST --data '{
 }
 ```
 
+### platform.getCurrentSupply
+
+Returns an upper bound on the number of AVAX that exist.
+This is an upper bound because it does not account for burnt tokens, including transaction fees.
+
+#### Signature 
+
+```go
+platform.getCurrentSupply() -> {supply: int}
+```
+
+* `supply` is an upper bound on the number of AVAX that exist, denominated in nAVAX.
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "platform.getCurrentSupply",
+    "params": {},
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "supply": "365865167637779183"
+    },
+    "id": 1
+}
+```
+
+The response in this example indicates that AVAX's supply is at most 365.865 million. 
+
 ### platform.getCurrentValidators
 
 List the current validators of the given Subnet.
