@@ -1045,6 +1045,7 @@ platform.getPendingValidators({subnetID: string}) ->
     }
 }
 ```
+
 * `subnetID` is the subnet whose current validators are returned. If omitted, returns the current validators of the Primary Network.
 * `validators`:
     * `startTime` is the Unix time when the validator starts validating the Subnet.
