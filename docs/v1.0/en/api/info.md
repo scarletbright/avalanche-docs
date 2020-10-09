@@ -221,14 +221,18 @@ Get description of peer connections.
 #### Signature 
 
 ```go
-info.peers() -> {peers:[]{
-    ip: string,
-    publicIP: string,
-    nodeID: string,
-    version: string,
-    lastSent: string,
-    lastRecevied: string
-}}
+info.peers() -> 
+{
+    numPeers: int,
+    peers:[]{
+        ip: string,
+        publicIP: string,
+        nodeID: string,
+        version: string,
+        lastSent: string,
+        lastRecevied: string
+    }
+}
 ```
 
 #### Example Call
@@ -248,6 +252,7 @@ curl -X POST --data '{
     "jsonrpc":"2.0",
     "id"     :1,
     "result" :{
+        "numPeers":3,
         "peers":[
           {
              "ip":"206.189.137.87:9651",
