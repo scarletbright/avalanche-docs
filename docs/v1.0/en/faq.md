@@ -407,13 +407,24 @@ If you started your node with command-line argument `--http-port=9700` then repl
 
 There is already a node running on your machine.
 
-### Node prints `NAT Traversal failed ...` on startup
+### Node prints `UPnP or NAT-PMP router attach failed, you may not be listening publicly ...` on startup
 
-See [here](staking.md#networking).
+When you do not specify `--public-ip=[x.x.x.x]` (with an IP address) the node attempts to use UPnP or NAT-PMP.
+The message indicates there was an error and a dynamic port forwarding rule was not set.
+Check your router settings to ensure that you have these setting enabled, and restart the node.
+If you are using a firewall on your node, you will need to allow UDP traffic from port 1900 to allow UPnP to function.
+Alternatively, you can specify your public IP with `--public-ip=[x.x.x.x]`.
+Note that unless you have a static IP, your public IP may change during node operation, which can cause connectivity issues.
+
+You can query your external IP with either the following commands.
+```
+$ dig +short myip.opendns.com @resolver1.opendns.com
+$ curl ifconfig.co
+```
 
 ### Node only responds to API calls made from localhost
 
-Use command line argument `--http-host=` when you run your node. 
+Use command line argument `--http-host=` or `--http-host=0.0.0.0` when you run your node.
 
 ### Node is on the wrong network
 
