@@ -62,11 +62,11 @@ The address that HTTP APIs listen on. The default value is `127.0.0.1`. This mea
 
 `--http-port` (int):
 
-Each node runs an HTTP server that provides the APIs for interacting with the node and the Avalanche network. This argument specifies the port that the http server will listen on. The default value is `9650`.
+Each node runs an HTTP server that provides the APIs for interacting with the node and the Avalanche network. This argument specifies the port that the HTTP server will listen on. The default value is `9650`.
 
 `--http-port-external` (int):
 
-Each node runs an HTTP server that provides the APIs for interacting with the node and the Avalanche network. This argument specifies the port that the http server will listen on externally. The default value is `http-port`.
+Each node runs an HTTP server that provides the APIs for interacting with the node and the Avalanche network. This argument specifies the port that the HTTP server will listen on externally. The default value is `http-port`.
 
 `--http-tls-cert-file` (string, file path):
 
