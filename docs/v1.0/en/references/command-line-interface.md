@@ -141,10 +141,6 @@ Enables signature verification. When set to `false`, signatures won't be checked
 
 The port through which the staking server will connect to the Avalanche network externally. Defaults to `9651`.
 
-`--internal-staking-port` (string):
-
-The port through which this server will listen internally. Defaults to `staking-port`.
-
 `--p2p-tls-enabled` (boolean):
 
 Avalanche uses two-way authenticated TLS connections to securely identify the `stakingID` of connected peers. However, This can be disabled for testing. When TLS is disabled, the `stakingID` will be derived from the IP Address the node claims it owns. This will also disable encryption of inter-node communication. This should only be specified for testing. Defaults to `true`. This must be true when `--staking-enabled=true`.
