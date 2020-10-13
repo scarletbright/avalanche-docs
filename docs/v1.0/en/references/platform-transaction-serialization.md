@@ -1493,7 +1493,7 @@ A StakeableLockIn is a staked and locked input.
 
 A StakeableLockIn contains a `TypeID`, `Locktime` and `TransferableIn`.
 
-- **`TypeID`** is the ID for this output type. It is `0x00000016`.
+- **`TypeID`** is the ID for this output type. It is `0x00000015`.
 - **`Locktime`** is a long that contains the unix timestamp before which the input can be consumed only to stake. The unix timestamp is specific to the second.
 - **`TransferableIn`** is a transferable input object.
 
@@ -1525,13 +1525,13 @@ message StakeableLockIn {
 
 Let's make a stakeablelockin with:
 
-- **`TypeID`**: 22
+- **`TypeID`**: 21
 - **`Locktime`**: 54321
 - **`TransferableIn`**: "Example SECP256K1 Transfer Input as defined above"
 
 ```splus
 [
-    TypeID    <- 0x00000016
+    TypeID    <- 0x00000015
     Locktime  <- 0x000000000000d431
     TransferableIn <- [
         f1e1d1c1b1a191817161514131211101f0e0d0c0b0a09080706050403020100000000005000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000500000000075bcd150000000100000000,
@@ -1540,7 +1540,7 @@ Let's make a stakeablelockin with:
 =
 [
     // type_id:
-    0x00, 0x00, 0x00, 0x16,
+    0x00, 0x00, 0x00, 0x15,
     // locktime:
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
     // transferable_in
@@ -1567,7 +1567,7 @@ A StakeableLockOut is a staked and locked output.
 
 A StakeableLockOut contains a `TypeID`, `Locktime` and `TransferableOut`.
 
-- **`TypeID`** is the ID for this output type. It is `0x00000017`.
+- **`TypeID`** is the ID for this output type. It is `0x00000016`.
 - **`Locktime`** is a long that contains the unix timestamp before which the output can be consumed only to stake. The unix timestamp is specific to the second.
 - **`transferableout`**: "Example SECP256K1 Transfer Output as defined above"
 
@@ -1599,20 +1599,20 @@ message StakeableLockOut {
 
 Let's make a stakeablelockout with:
 
-- **`TypeID`**: 23
+- **`TypeID`**: 22
 - **`Locktime`**: 54321
 - **`TransferableOutput`**: `"Example SECP256K1 Transfer Output from above"`
 
 ```splus
 [
-    TypeID              <- 0x00000017
+    TypeID              <- 0x00000016
     Locktime            <- 0x000000000000d431
     TransferableOutput  <- 0x000000070000000000003039000000000000d431000000010000000251025c61fbcfc078f69334f834be6dd26d55a955c3344128e060128ede3523a24a461c8943ab0859,
 ]
 =
 [
     // type_id:
-    0x00, 0x00, 0x00, 0x17,
+    0x00, 0x00, 0x00, 0x16,
     // locktime:
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x31,
     // transferable_out
