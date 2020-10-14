@@ -10,7 +10,7 @@ Validators create new blocks/vertices and process transactions.
 As part of Avalanche consensus, validators repeatedly sample each other.
 
 The probability that a given validator is sampled is proportional to its **stake**.
-A stake is a bond, in AVAX tokens, put forward by a node in order to become a validator.
+A stake is a bond, in AVAX tokens, put forward in order to become a validator.
 
 When you add a node to the validator set you specify:
 
@@ -31,19 +31,23 @@ If you're running a validator, it's important that you follow some best practice
 
 ### Networking for validators
 
-Your node must be able to send and receive traffic on the P2P port (`9651` by default.)
+Your node must be able to receive incoming connections on the P2P port (`9651` by default.)
+You should specify the public IP your node will listen for incoming connections using `--public-ip=-[NODE PUBLIC IP]`.
+If you omit this argument, your node will try to discover its IP, which may fail.
 
 #### If your node is behind a router
 
-When you start your node, you may see that it says that NAT traversal failed.
-If this is the case, you must set up forwarding for port `9651` and you must run your
-node with argument `--public-ip=[NODE PUBLIC IP]`.  
-If you do not see this warning, you should be OK.
+Your node needs to be able to receive traffic on the P2P port.
+To do this, set up a port forwarding rule on your router to allow TCP traffic on the P2P port.
+If you don't run with argument `--public-ip`, the node will also try to set up this rule using UPnP and NAT-PMP.
 
 #### If your node is not behind a router (e.g. on a cloud service)
 
-When you start your node, it will say that NAT traversal has failed. This is expected.
-Start your node with argument `--public-ip=[NODE PUBLIC IP]` and make sure that your network settings allow traffic on port `9651`.
+Start your node with argument `--public-ip=[NODE PUBLIC IP]` and make sure that your network settings (e.g. AWS security group) allow traffic on the P2P port.
+
+#### Is my node's staking port open?
+
+You can check using [this site.](https://portchecker.co/)
 
 #### HTTP Host
 

@@ -48,6 +48,16 @@ Bootstrap IDs is an array of validator IDs. These IDs will be used to authentica
 
 Bootstrap IPs is an array of IPv4:port pairs. These IP Addresses will be used to bootstrap the current Avalanche state. An example setting of this field would be `--bootstrap-ips="127.0.0.1:12345,1.2.3.4:5678"`. The default value is the empty set.
 
+`--conn-meter-max-conns` (int):
+
+Upgrade at most `conn-meter-max-conns` connections from a given IP per `conn-meter-reset-duration`.
+If `conn-meter-reset-duration` is 0, incoming connections are not rate-limited.
+
+`--conn-meter-reset-duration` (duration):
+ 
+Upgrade at most `conn-meter-max-conns` connections from a given IP per `conn-meter-reset-duration`.
+If `conn-meter-reset-duration` is 0, incoming connections are not rate-limited.
+
 `--db-dir` (string, file path):
 
 Specifies the directory to which the database is persisted. Defaults to `"$HOME/.avalanchego/db"`.
@@ -129,6 +139,16 @@ The identity of the network the node should connect to. Can be one of:
 
 Validators must know their public facing IP addresses so they can let other nodes know how to connect to them. If this argument is not provided, the node will attempt to perform NAT traversal to get the node's public IP. Should be set to `127.0.0.1` to create a local network. The default value is `""`.
 
+`--dynamic-public-ip` (string):
+
+Valid values if param is present: `ifconfig` or `opendns`.
+This overrides `--public-ip`, will poll the remote service every `--dynamic-update-duration` and update the nodes public IP address.
+
+`--dynamic-update-duration` (duration):
+
+The time between poll events for `--dynamic-public-ip` or NAT traversal.
+The recommended minimum is 1 minute, the default is 5 minutes.
+
 `--plugin-dir` (string, file path):
 
 Specifies the directory in which the `evm` plugin is kept. Defaults to `"$HOME/.avalanchego/build/plugins"`.
@@ -177,7 +197,7 @@ Number of nanoseconds between gossiping accepted frontiers. The default is `1000
 
 `--consensus-shutdown-timeout` (int):
 
-Timeout before killing an unresponsive chain. The default is `1000000000`.
+Timeout before killing an unresponsive chain. The default is `5000000000`.
 
 `--creation-tx-fee` (int):
 
@@ -207,7 +227,7 @@ Default on Everest Test Net: `5000000` (5 x 10^-3 AVAX)
 
 `--max-non-staker-pending-msgs` (int):
 
-Maximum number of messages a non-staker is allowed to have pending. The default is `3`.
+Maximum number of messages a non-staker is allowed to have pending. The default is `20`.
 
 `--max-stake-duration` (int):
 
@@ -219,7 +239,7 @@ The maximum stake, in nAVAX, that can be placed on a validator on the primary ne
 
 `--network-initial-timeout` (int):
 
-Initial timeout value of the adaptive timeout manager, in nanoseconds. The default value is: `10000000000`.
+Initial timeout value of the adaptive timeout manager, in nanoseconds. The default value is: `5000000000`.
 
 `--network-minimum-timeout` (int):
 
@@ -271,11 +291,11 @@ Consumption period of the staking function, in seconds. The Default on Main Net:
 
 `--staker-msg-reserved` (float):
 
-Reserve a portion of the chain message queue's space for stakers. The default value is `0.2`.
+Portion of pending message buffer reserved for messages from validators. The default value is `0.375`.
 
 `--staker-cpu-reserved` (float):
 
-Reserve a portion of the chain's CPU time for stakers.
+Portion of chain's CPU time reserved for messages from validators.  The default value is `0.375`.
 
 `--tx-fee` (int):
 
