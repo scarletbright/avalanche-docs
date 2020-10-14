@@ -43,7 +43,7 @@ If you don't run with argument `--public-ip`, the node will also try to set up t
 
 #### If your node is not behind a router (e.g. on a cloud service)
 
-Start your node with argument `--public-ip=[NODE PUBLIC IP]` and make sure that your network settings allow traffic on port `9651`.
+Start your node with argument `--public-ip=[NODE PUBLIC IP]` and make sure that your network settings (e.g. AWS security group) allow traffic on the P2P port.
 
 #### Is my node's staking port open?
 
