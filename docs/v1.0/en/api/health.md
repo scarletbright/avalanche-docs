@@ -19,16 +19,17 @@ This API uses the `json 2.0` RPC format. For more information on making JSON RPC
 ## API Methods
 
 ### health.getLiveness
-Get health check on this node.
+
+The node runs a set of health checks every 30 seconds, including a health check for each chain.
+This method returns the last set of health check results.
 
 #### Signature 
 ```go
 health.getLiveness() -> {
-    checks: {
-        network.validators.heartbeat: {
-            message: {
-                heartbeat: int
-            },
+    checks: []{
+        checkName: {
+            message: JSON,
+            error: JSON,
             timestamp: string,
             duration: int,
             contiguousFailures: int,
@@ -39,17 +40,16 @@ health.getLiveness() -> {
 }
 ```
 
-* `chains.default.bootstrapped`
-     * `timestamp` is the timestamp of the last health check.
-     * `duration` is the execution duration of the last health check in nanoseconds.
-    * `contiguousFailures` is the number of fails that occurred in a row.
-    * `timeOfFirstFailure` is the time of the initial transitional failure.
-* `network.validators.heartbeat`
-    * `heartbeat` is the unix timestamp of the last time the network handled a message.
-    * `timestamp` is the timestamp of the last health check.
-    * `duration` is the execution duration of the last health check in nanoseconds.
-    * `contiguousFailures` is the number of fails that occurred in a row.
-    * `timeOfFirstFailure` is the time of the initial transitional failure.
+`healthy` is true if the node if all health checks are passing.
+
+`checks` is a list of health check responses.
+
+* A check response may include a `message` with additional context.
+* A check response may include an `error` describing why the check failed.
+* `timestamp` is the timestamp of the last health check.
+* `duration` is the execution duration of the last health check, in nanoseconds.
+* `contiguousFailures` is the number of times in a row this check failed.
+* `timeOfFirstFailure` is the time this check first failed.
 
 More information on these measurements can be found in the documentation for the [go-sundheit](https://github.com/AppsFlyer/go-sundheit) library.
 
@@ -64,28 +64,55 @@ curl -X POST --data '{
 
 #### Example Response
 
+In this example response, the C-Chain's health check is failing.
+
 ```json
 {
     "jsonrpc": "2.0",
     "result": {
         "checks": {
+            "C": {
+                "message": null,
+                "error": {
+                    "message": "example error message"
+                },
+                "timestamp": "2020-10-14T14:04:20.57759662Z",
+                "duration": 465253,
+                "contiguousFailures": 50,
+                "timeOfFirstFailure": "2020-10-14T13:16:10.576435413Z"
+            },
+            "P": {
+                "message": {
+                    "percentConnected": 0.9967694992864075
+                },
+                "timestamp": "2020-10-14T14:04:08.668743851Z",
+                "duration": 433363830,
+                "contiguousFailures": 0,
+                "timeOfFirstFailure": null
+            },
+            "X": {
+                "timestamp": "2020-10-14T14:04:20.3962705Z",
+                "duration": 1853,
+                "contiguousFailures": 0,
+                "timeOfFirstFailure": null
+            },
             "chains.default.bootstrapped": {
-                "timestamp": "2020-09-17T21:27:31.776773-07:00",
-                "duration": 5891,
+                "timestamp": "2020-10-14T14:04:04.238623814Z",
+                "duration": 8075,
                 "contiguousFailures": 0,
                 "timeOfFirstFailure": null
             },
             "network.validators.heartbeat": {
                 "message": {
-                    "heartbeat": 1600403244
+                    "heartbeat": 1602684245
                 },
-                "timestamp": "2020-09-17T21:27:31.776793-07:00",
-                "duration": 4000,
+                "timestamp": "2020-10-14T14:04:05.610007874Z",
+                "duration": 6124,
                 "contiguousFailures": 0,
                 "timeOfFirstFailure": null
             }
         },
-        "healthy": true
+        "healthy": false
     },
     "id": 1
 }
