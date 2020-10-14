@@ -40,6 +40,10 @@ If someone already reported the same issue, comment with your details.
 
 [Yes.](https://explorer.avax.network/)
 
+## Is there an indexer?
+
+[Yes.](https://github.com/ava-labs/ortelius)
+
 ## Is there a Javascript library?
 
 [Yes.](../../tools/avalanchejs/)
@@ -50,7 +54,7 @@ If someone already reported the same issue, comment with your details.
 
 ## Does Avalanche support hardware wallets?
 
-Ledger support is coming in the next few weeks.
+[Yes.](https://medium.com/avalabs/how-to-set-up-your-ledger-nano-s-with-avalanche-4e5d385410d4)
 
 ## Running a node
 
@@ -359,6 +363,9 @@ You can:
 * Check out the #dev-chat channel on our [Discord.](https://chat.avalabs.org)
 * Make an issue or pull request on our [Github.](https://github.com/ava-labs/avalanchego)
 
+## How can I get all transactions?
+
+You can use [Ortelius](https://github.com/ava-labs/ortelius), our indexer.
 
 ## What is the `id` field in every API call? Do I need to change it?
 
@@ -368,11 +375,6 @@ This is useful in tracking which response corresponds to which request.
 
 You do not need to change this field when making API calls.
 It's OK to make many API calls with the same `id` field.
-
-## Is there a repository of Avalanche related materials I can learn from?
-
-In addition to this documentation, there is a [community-run repository](https://github.com/tbrunain/awesome-ava-chain) of useful links and resoucres.
-Great thanks to `tbrunain` for this contribution :)
 
 ### What are AVAX's units?
 
