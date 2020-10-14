@@ -187,7 +187,7 @@ Number of nanoseconds between gossiping accepted frontiers. The default is `1000
 
 `--consensus-shutdown-timeout` (int):
 
-Timeout before killing an unresponsive chain. The default is `1000000000`.
+Timeout before killing an unresponsive chain. The default is `5000000000`.
 
 `--creation-tx-fee` (int):
 
@@ -217,7 +217,7 @@ Default on Everest Test Net: `5000000` (5 x 10^-3 AVAX)
 
 `--max-non-staker-pending-msgs` (int):
 
-Maximum number of messages a non-staker is allowed to have pending. The default is `3`.
+Maximum number of messages a non-staker is allowed to have pending. The default is `20`.
 
 `--max-stake-duration` (int):
 
@@ -229,7 +229,7 @@ The maximum stake, in nAVAX, that can be placed on a validator on the primary ne
 
 `--network-initial-timeout` (int):
 
-Initial timeout value of the adaptive timeout manager, in nanoseconds. The default value is: `10000000000`.
+Initial timeout value of the adaptive timeout manager, in nanoseconds. The default value is: `5000000000`.
 
 `--network-minimum-timeout` (int):
 
@@ -281,11 +281,11 @@ Consumption period of the staking function, in seconds. The Default on Main Net:
 
 `--staker-msg-reserved` (float):
 
-Reserve a portion of the chain message queue's space for stakers. The default value is `0.2`.
+Portion of pending message buffer reserved for messages from validators. The default value is `0.375`.
 
 `--staker-cpu-reserved` (float):
 
-Reserve a portion of the chain's CPU time for stakers.
+Portion of chain's CPU time reserved for messages from validators.  The default value is `0.375`.
 
 `--tx-fee` (int):
 
