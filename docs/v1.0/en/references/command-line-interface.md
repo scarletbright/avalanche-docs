@@ -48,6 +48,16 @@ Bootstrap IDs is an array of validator IDs. These IDs will be used to authentica
 
 Bootstrap IPs is an array of IPv4:port pairs. These IP Addresses will be used to bootstrap the current Avalanche state. An example setting of this field would be `--bootstrap-ips="127.0.0.1:12345,1.2.3.4:5678"`. The default value is the empty set.
 
+`--conn-meter-max-conns` (int):
+
+Upgrade at most `conn-meter-max-attempts` connections from a given IP per `conn-meter-reset-duration`.
+If `conn-meter-reset-duration` is 0, incoming connections are not rate-limited.
+
+`--conn-meter-reset-duration` (duration):
+ 
+Upgrade at most `conn-meter-max-attempts` connections from a given IP per `conn-meter-reset-duration`.
+If `conn-meter-reset-duration` is 0, incoming connections are not rate-limited.
+
 `--db-dir` (string, file path):
 
 Specifies the directory to which the database is persisted. Defaults to `"$HOME/.avalanchego/db"`.
