@@ -1234,6 +1234,40 @@ curl -X POST --data '{
 }
 ```
 
+### platform.getTotalStake
+
+Get the total amount of nAVAX staked on the Primary Network.
+
+#### Signature
+
+```go
+platform.getTotalStake() -> {stake: int}
+```
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "platform.getStake",
+    "params": {},
+    "id": 1
+}
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/P
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "stake": "279825917679866811"
+    },
+    "id": 1
+}
+```
+
 ### platform.getTx
 
 Gets a transaction by its ID.
