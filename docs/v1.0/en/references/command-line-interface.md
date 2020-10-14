@@ -50,12 +50,12 @@ Bootstrap IPs is an array of IPv4:port pairs. These IP Addresses will be used to
 
 `--conn-meter-max-conns` (int):
 
-Upgrade at most `conn-meter-max-attempts` connections from a given IP per `conn-meter-reset-duration`.
+Upgrade at most `conn-meter-max-conns` connections from a given IP per `conn-meter-reset-duration`.
 If `conn-meter-reset-duration` is 0, incoming connections are not rate-limited.
 
 `--conn-meter-reset-duration` (duration):
  
-Upgrade at most `conn-meter-max-attempts` connections from a given IP per `conn-meter-reset-duration`.
+Upgrade at most `conn-meter-max-conns` connections from a given IP per `conn-meter-reset-duration`.
 If `conn-meter-reset-duration` is 0, incoming connections are not rate-limited.
 
 `--db-dir` (string, file path):
