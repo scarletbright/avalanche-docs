@@ -398,7 +398,9 @@ Let's make a payment input with:
 
 Unsigned transactions contain the full content of a transaction with only the signatures missing. Unsigned transactions have six possible types: `AddValidatorTx`, `AddSubnetValidatorTx`, `AddDelegatorTx`, `CreateSubnetTx`, `ImportTx`, and `ExportTx`. They embed `BaseTx`, which contains common fields and operations.
 
-### What Base Tx Contains
+### Unsigned BaseTx
+
+#### What Base Tx Contains
 
 A base tx contains a `TypeID`, `NetworkID`, `BlockchainID`, `Outputs`, `Inputs`, and `Memo`.
 
@@ -409,7 +411,7 @@ A base tx contains a `TypeID`, `NetworkID`, `BlockchainID`, `Outputs`, `Inputs`,
 - **`Inputs`** is an array of transferable input objects. Inputs must be sorted and unique. Inputs are sorted first lexicographically by their **`TxID`** and then by the **`UTXOIndex`** from low to high. If there are inputs that have the same **`TxID`** and **`UTXOIndex`**, then the transaction is invalid as this would result in a double spend.
 - **`Memo`** Memo field contains arbitrary bytes, up to 256 bytes.
 
-### Gantt Base Tx Specification
+#### Gantt Base Tx Specification
 
 ```boo
 +---------------+----------------------+-----------------------------------------+
@@ -429,7 +431,7 @@ A base tx contains a `TypeID`, `NetworkID`, `BlockchainID`, `Outputs`, `Inputs`,
                           +------------------------------------------------------+
 ```
 
-### Proto Base Tx Specification
+#### Proto Base Tx Specification
 
 ```protobuf
 message BaseTx {
@@ -442,7 +444,7 @@ message BaseTx {
 }
 ```
 
-### Base Tx Example
+#### Base Tx Example
 
 Let's make a base tx that uses the inputs and outputs from the previous examples:
 
@@ -512,7 +514,9 @@ Let's make a base tx that uses the inputs and outputs from the previous examples
 
 ***
 
-### What Unsigned Add Validator Tx Contains
+### Unsigned Add Validator Tx
+
+#### What Unsigned Add Validator Tx Contains
 
 An unsigned add validator tx contains a `BaseTx`, `Validator`, `Stake`, `RewardsOwner`, and `Shares`. The `TypeID` for this type is `0x0000000c`.
 
@@ -522,11 +526,11 @@ An unsigned add validator tx contains a `BaseTx`, `Validator`, `Stake`, `Rewards
     - **`EndTime`** is a long which is the Unix time when the delegator stops delegating (and staked AVAX is returned).
     - **`Weight`** is a long which is the amount the delegator stakes
 - **`Stake`** Stake has `LockedOuts`
-    - **`LockedOuts`** An array of Transferable Outputs
+    - **`LockedOuts`** An array of Transferable Outputs that are locked for the duration of the staking period. At the end of the staking period, these outputs are refunded to their respective addresses.
 - **`RewardsOwner`** A `SECP256K1OutputOwners`
 - **`Shares`** 10,000 times percentage of reward taken from delegators
 
-### Gantt Unsigned Add Validator Tx Specification
+#### Gantt Unsigned Add Validator Tx Specification
 
 ```boo
 +---------------+-----------------------+-----------------------------------------+
@@ -544,7 +548,7 @@ An unsigned add validator tx contains a `BaseTx`, `Validator`, `Stake`, `Rewards
                   +--------------------------------------------------------------+
 ```
 
-### Proto Unsigned Add Validator Tx Specification
+#### Proto Unsigned Add Validator Tx Specification
 
 ```protobuf
 message AddValidatorTx {
@@ -556,7 +560,7 @@ message AddValidatorTx {
 }
 ```
 
-### Unsigned Add Validator Tx Example
+#### Unsigned Add Validator Tx Example
 
 Let's make an unsigned add validator tx that uses the inputs and outputs from the previous examples:
 
@@ -650,8 +654,9 @@ Let's make an unsigned add validator tx that uses the inputs and outputs from th
 
 ***
 
+### Unsigned Add Subnet Validator Tx
 
-### What Unsigned Add Subnet Validator Tx Contains
+#### What Unsigned Add Subnet Validator Tx Contains
 
 An unsigned add subnet validator tx contains a `BaseTx`, `Validator`, `SubnetID`, and `SubnetAuth`. The `TypeID` for this type is `0x0000000d`.
 
@@ -664,7 +669,7 @@ An unsigned add subnet validator tx contains a `BaseTx`, `Validator`, `SubnetID`
 - **`SubnetID`** a 32 byte subnet id
 - **`SubnetAuth`** contains `SigIndices` and has a type id of `0x0000000a`. `SigIndices` is a list of unique ints that define the addresses signing the control signature to add a validator to a subnet. The array must be sorted low to high.
 
-### Gantt Unsigned Add Subnet Validator Tx Specification
+#### Gantt Unsigned Add Subnet Validator Tx Specification
 
 ```boo
 +---------------+----------------------+-----------------------------------------+
@@ -680,7 +685,7 @@ An unsigned add subnet validator tx contains a `BaseTx`, `Validator`, `SubnetID`
                                    +---------------------------------------------+
 ```
 
-### Proto Unsigned Add Subnet Validator Tx Specification
+#### Proto Unsigned Add Subnet Validator Tx Specification
 
 ```protobuf
 message AddSubnetValidatorTx {
@@ -691,7 +696,7 @@ message AddSubnetValidatorTx {
 }
 ```
 
-### Unsigned Add Subnet Validator Tx Example
+#### Unsigned Add Subnet Validator Tx Example
 
 Let's make an unsigned add subnet validator tx that uses the inputs and outputs from the previous examples:
 
@@ -777,7 +782,9 @@ Let's make an unsigned add subnet validator tx that uses the inputs and outputs 
 
 ***
 
-### What Unsigned Add Delegator Tx Contains
+### Unsigned Add Delegator Tx
+
+#### What Unsigned Add Delegator Tx Contains
 
 An unsigned add delegator tx contains a `BaseTx`, `Validator`, `Stake`, and `RewardsOwner`. The `TypeID` for this type is `0x0000000e`.
 
@@ -788,10 +795,10 @@ An unsigned add delegator tx contains a `BaseTx`, `Validator`, `Stake`, and `Rew
     - **`EndTime`** is a long which is the Unix time when the delegator stops delegating (and staked AVAX is returned).
     - **`Weight`** is a long which is the amount the delegator stakes
 - **`Stake`** Stake has `LockedOuts`
-    - **`LockedOuts`** An array of Transferable Outputs
+    - **`LockedOuts`** An array of Transferable Outputs that are locked for the duration of the staking period. At the end of the staking period, these outputs are refunded to their respective addresses.
 - **`RewardsOwner`** An `SECP256K1OutputOwners`
 
-### Gantt Unsigned Add Delegator Tx Specification
+#### Gantt Unsigned Add Delegator Tx Specification
 
 ```boo
 +---------------+-----------------------+-----------------------------------------+
@@ -807,7 +814,7 @@ An unsigned add delegator tx contains a `BaseTx`, `Validator`, `Stake`, and `Rew
                   +--------------------------------------------------------------+
 ```
 
-### Proto Unsigned Add Delegator Tx Specification
+#### Proto Unsigned Add Delegator Tx Specification
 
 ```protobuf
 message AddDelegatorTx {
@@ -818,7 +825,7 @@ message AddDelegatorTx {
 }
 ```
 
-### Unsigned Add Delegator Tx Example
+#### Unsigned Add Delegator Tx Example
 
 Let's make an unsigned add delegator tx that uses the inputs and outputs from the previous examples:
 
@@ -906,14 +913,16 @@ Let's make an unsigned add delegator tx that uses the inputs and outputs from th
 
 ***
 
-### What Unsigned Create Subnet Tx Contains
+### Unsigned Create Subnet Tx
+
+#### What Unsigned Create Subnet Tx Contains
 
 An unsigned create subnet tx contains a `BaseTx`, and `RewardsOwner`. The `TypeID` for this type is `0x00000010`.
 
 - **`BaseTx`**
 - **`RewardsOwner`** A `SECP256K1OutputOwners`
 
-### Gantt Unsigned Create Subnet Tx Specification
+#### Gantt Unsigned Create Subnet Tx Specification
 
 ```boo
 +-----------------+-----------------------|---------------------------------+
@@ -925,7 +934,7 @@ An unsigned create subnet tx contains a `BaseTx`, and `RewardsOwner`. The `TypeI
                                 +-------------------------------------------+
 ```
 
-### Proto Unsigned Create Subnet Tx Specification
+#### Proto Unsigned Create Subnet Tx Specification
 
 ```protobuf
 message CreateSubnetTx {
@@ -934,7 +943,7 @@ message CreateSubnetTx {
 }
 ```
 
-### Unsigned Create Subnet Tx Example
+#### Unsigned Create Subnet Tx Example
 
 Let’s make an unsigned create subnet tx that uses the inputs from the previous examples:
 
@@ -993,7 +1002,9 @@ Let’s make an unsigned create subnet tx that uses the inputs from the previous
 
 ***
 
-### What Unsigned Import Tx Contains
+### Unsigned Import Tx
+
+#### What Unsigned Import Tx Contains
 
 An unsigned import tx contains a `BaseTx`, `SourceChain`, and `Ins`. The `TypeID` for this type is `0x00000011`.
 
@@ -1001,7 +1012,7 @@ An unsigned import tx contains a `BaseTx`, `SourceChain`, and `Ins`. The `TypeID
 - **`SourceChain`** is a 32-byte source blockchain ID.
 - **`Ins`** is a variable length array of Transferable Inputs.
 
-### Gantt Unsigned Import Tx Specification
+#### Gantt Unsigned Import Tx Specification
 
 ```boo
 +-----------------+--------------|---------------------------------+
@@ -1015,7 +1026,7 @@ An unsigned import tx contains a `BaseTx`, `SourceChain`, and `Ins`. The `TypeID
                             +--------------------------------------+
 ```
 
-### Proto Unsigned Import Tx Specification
+#### Proto Unsigned Import Tx Specification
 
 ```protobuf
 message ImportTx {
@@ -1025,7 +1036,7 @@ message ImportTx {
 }
 ```
 
-### Unsigned Import Tx Example
+#### Unsigned Import Tx Example
 
 Let’s make an unsigned import tx that uses the inputs from the previous examples:
 
@@ -1089,14 +1100,16 @@ Let’s make an unsigned import tx that uses the inputs from the previous exampl
 
 ***
 
-### What Unsigned Export Tx Contains
+### Unsigned Export Tx
+
+#### What Unsigned Export Tx Contains
 
 An unsigned export tx contains a `BaseTx`, `DestinationChain`, and `Outs`. The `TypeID` for this type is `0x00000012`.
 
 - **`DestinationChain`** is the 32 byte ID of the chain where the funds are being exported to.
 - **`Outs`** is a variable length array of Transferable Outputs.
 
-### Gantt Unsigned Export Tx Specification
+#### Gantt Unsigned Export Tx Specification
 
 ```boo
 +-------------------+---------------+--------------------------------------+
@@ -1110,7 +1123,7 @@ An unsigned export tx contains a `BaseTx`, `DestinationChain`, and `Outs`. The `
                           +---------------------------------------+
 ```
 
-### Proto Unsigned Export Tx Specification
+#### Proto Unsigned Export Tx Specification
 
 ```protobuf
 message ExportTx {
@@ -1120,7 +1133,7 @@ message ExportTx {
 }
 ```
 
-### Unsigned Export Tx Example
+#### Unsigned Export Tx Example
 
 Let’s make an unsigned export tx that uses the outputs from the previous examples:
 
@@ -1487,7 +1500,7 @@ Let's make a UTXO from the signed transaction created above:
 
 ## StakeableLockIn
 
-A StakeableLockIn is a staked and locked input.
+A StakeableLockIn is a staked and locked input. The StakeableLockIn can only fund StakeableLockOuts with the same address until its locktime has passed.
 
 #### What StakeableLockIn Contains
 
@@ -1523,7 +1536,7 @@ message StakeableLockIn {
 
 #### StakeableLockIn Example
 
-Let's make a stakeablelockin with:
+Let's make a StakeableLockIn with:
 
 - **`TypeID`**: 21
 - **`Locktime`**: 54321
@@ -1561,7 +1574,7 @@ Let's make a stakeablelockin with:
 
 ## StakeableLockOut
 
-A StakeableLockOut is a staked and locked output.
+A StakeableLockOut is an output that is locked until its locktime, but can be staked in the meantime.
 
 #### What StakeableLockOut Contains
 
