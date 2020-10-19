@@ -405,24 +405,48 @@ If you're running a node on another machine, replace `localhost` or `127.0.0.1` 
 
 If you started your node with command-line argument `--http-port=9700` then replace `9650` in the API call with `9700` (or whatever port you specified.)
 
-### Starting node fails with: `parsing parameters returned with error couldn't create db at ...`
+#### Starting node fails with: `parsing parameters returned with error couldn't create db at ...`
 
 There is already a node running on your machine.
 
-### Node prints `UPnP or NAT-PMP router attach failed, you may not be listening publicly ...` on startup
+### Networking setup
 
-When you do not specify `--public-ip=[x.x.x.x]` (with an IP address) the node attempts to use UPnP or NAT-PMP.
-The message indicates there was an error and a dynamic port forwarding rule was not set.
-Check your router settings to ensure that you have these setting enabled, and restart the node.
-If you are using a firewall on your node, you will need to allow UDP traffic from port 1900 to allow UPnP to function.
-Alternatively, you can specify your public IP with `--public-ip=[x.x.x.x]`.
-Note that unless you have a static IP, your public IP may change during node operation, which can cause connectivity issues.
+Refer to  [command line](command-line-interface)
 
-You can query your external IP with either the following commands.
+#### Static IP
+Start node with `--public-ip=[x.x.x.x]`.  You can control the port with `--staking-port=`, you need to configure your router or firewall for port forwarding manually.
+
+#### Dynamic IP NAT Traversal
+Start node _without_ specifying `public-ip` or `dynamic-public-ip`, the node will attempt to use UPnP or NAT-PMP.  Your router needs to be enabled for these features.
+Allow UDP traffic from port 1900 to the node host for UPnP.
+
+#### Dynamic IP
+Start node with `--dynamic-public-ip=[ifconfig or opendns]`.  You will need to configure your router or firewall for port forwarding manually.
+
+#### Dynamic Update Interval
+Controlled with `dynamic-update-duration`.  Sets the update interval for NAT mappings or the public IP in the node.
+Ifconfig has rate limiting of `1m`.
+
+#### What is my external IP
+
 ```
-$ dig +short myip.opendns.com @resolver1.opendns.com
 $ curl ifconfig.co
 ```
+
+```
+$ dig +short myip.opendns.com @resolver1.opendns.com
+```
+
+#### Node prints `UPnP or NAT-PMP router attach failed, you may not be listening publicly ...` on startup
+
+The message indicates a dynamic port forwarding may not of worked.
+Check your router settings to ensure that you have these setting enabled, and restart the node.
+
+#### Node prints `failed with goupnp: SOAP request got HTTP 500 Internal Server Error`
+
+Your node is attempting UPnP, and is having issues mapping on your router.
+Your router might have manually created port forwarding rules.
+Ensure that you do not have conflicting port forwarding rules on your router.
 
 ### Node only responds to API calls made from localhost
 
