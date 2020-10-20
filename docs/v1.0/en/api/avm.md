@@ -1335,12 +1335,17 @@ curl -X POST --data '{
                 "assetID" : "AVAX",
                 "to"      : "X-avax1yzt57wd8me6xmy3t42lz8m5lg6yruy79m6whsf",
                 "amount"  : 1000000000
+            },
+            {
+                "assetID" : "26aqSTpZuWDAVtRmo44fjCx4zW6PDEx3zy9Qtp2ts1MuMFn9FB",
+                "to"      : "X-avax18knvhxx8uhc0mwlgrfyzjcm2wrd6e60w37xrjq",
+                "amount"  : 10
             }
         ],
         "from":["X-avax1s65kep4smpr9cnf6uh9cuuud4ndm2z4jguj3gp"],
         "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
         "memo"      : "hi, mom!",
-        "username"  : "userThatControlsAtLeast10000OfThisAsset",
+        "username"  : "username",
         "password"  : "myPassword"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
@@ -1515,12 +1520,17 @@ curl -X POST --data '{
                 "assetID" : "AVAX",
                 "to"      : "X-avax1yzt57wd8me6xmy3t42lz8m5lg6yruy79m6whsf",
                 "amount"  : 1000000000
+            },
+            {
+                "assetID" : "26aqSTpZuWDAVtRmo44fjCx4zW6PDEx3zy9Qtp2ts1MuMFn9FB",
+                "to"      : "X-avax18knvhxx8uhc0mwlgrfyzjcm2wrd6e60w37xrjq",
+                "amount"  : 10
             }
         ],
         "from":["X-avax1s65kep4smpr9cnf6uh9cuuud4ndm2z4jguj3gp"],
         "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
         "memo"      : "hi, mom!",
-        "username"  : "userThatControlsAtLeast10000OfThisAsset",
+        "username"  : "username",
         "password"  : "myPassword"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X/wallet
