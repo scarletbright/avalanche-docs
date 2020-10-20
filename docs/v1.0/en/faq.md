@@ -394,6 +394,61 @@ HD wallets support generating a new address for every transaction. This is a con
 
 ## Common Problems
 
+### Networking Setup
+
+See [here](../en/references/command-line-interface.md) for all command line arguments.
+
+It's important that your node is well connected to other nodes.
+It needs to be able to create outgoing connections to other nodes as well as accept incoming connections.
+This means that:
+
+* Your node must know its public IP
+* Your node must be able to receive traffic on the P2P port (`9651` by default)
+
+#### Public IP
+
+If your node is on a machine with a static IP (e.g. AWS Elastic IP) then you should run your node with `--public-ip=[x.x.x.x]`.
+
+If not, you should configure your node to fetch its public IP from a web service.
+To do so, run with `--dynamic-public-ip=opendns`.
+
+If you use neither of the above arguments, your node will attempt to use UPnP or NAT-PMP to fetch your public IP from your router.
+Your router needs to have one of these features enabled, and you should allow UDP traffic from port 1900 to the node machine for UPnP.
+
+#### Open P2P Port
+
+If you run a node with `--public-ip` or `--dynamic-public-ip` then you must manually allow incoming TCP traffic the P2P port (`9651` by default.)
+If the node machine is behind a router, you should set up a port forwarding rule.
+If your node is on a cloud service, you should update your network security settings.
+If you use neither of the above arguments, your node will try to set up a port forwarding rule on your router, if it exists and supports UPnP or NAT-PMP.
+
+#### What is my public IP
+
+You can use either of the following commands:
+
+```
+$ curl ifconfig.co
+```
+
+```
+$ dig +short myip.opendns.com @resolver1.opendns.com
+```
+
+#### Node prints `UPnP or NAT-PMP router attach failed, you may not be listening publicly ...` on startup
+
+The message indicates a dynamic port forwarding may not have worked.
+Check your router settings to ensure that you have these setting enabled, and restart the node.
+
+#### Node prints `failed with goupnp: SOAP request got HTTP 500 Internal Server Error`
+
+Your node is attempting UPnP, and is having issues mapping on your router.
+Your router might have manually created port forwarding rules.
+Ensure that you do not have conflicting port forwarding rules on your router.
+
+### Node only responds to API calls made from localhost
+
+Use command line argument `--http-host=` or `--http-host=0.0.0.0` when you run your node.
+
 ### API call fails with `Failed to connect to 127.0.0.1 port 9650: Connection refused`
 
 This means that your node is not listening for HTTP traffic on localhost port 9650.
@@ -408,49 +463,6 @@ If you started your node with command-line argument `--http-port=9700` then repl
 #### Starting node fails with: `parsing parameters returned with error couldn't create db at ...`
 
 There is already a node running on your machine.
-
-### Networking setup
-
-Refer to  [command line](command-line-interface)
-
-#### Static IP
-Start node with `--public-ip=[x.x.x.x]`.  You can control the port with `--staking-port=`, you need to configure your router or firewall for port forwarding manually.
-
-#### Dynamic IP NAT Traversal
-Start node _without_ specifying `public-ip` or `dynamic-public-ip`, the node will attempt to use UPnP or NAT-PMP.  Your router needs to be enabled for these features.
-Allow UDP traffic from port 1900 to the node host for UPnP.
-
-#### Dynamic IP
-Start node with `--dynamic-public-ip=[ifconfig or opendns]`.  You will need to configure your router or firewall for port forwarding manually.
-
-#### Dynamic Update Interval
-Controlled with `dynamic-update-duration`.  Sets the update interval for NAT mappings or the public IP in the node.
-Ifconfig has rate limiting of `1m`.
-
-#### What is my external IP
-
-```
-$ curl ifconfig.co
-```
-
-```
-$ dig +short myip.opendns.com @resolver1.opendns.com
-```
-
-#### Node prints `UPnP or NAT-PMP router attach failed, you may not be listening publicly ...` on startup
-
-The message indicates a dynamic port forwarding may not of worked.
-Check your router settings to ensure that you have these setting enabled, and restart the node.
-
-#### Node prints `failed with goupnp: SOAP request got HTTP 500 Internal Server Error`
-
-Your node is attempting UPnP, and is having issues mapping on your router.
-Your router might have manually created port forwarding rules.
-Ensure that you do not have conflicting port forwarding rules on your router.
-
-### Node only responds to API calls made from localhost
-
-Use command line argument `--http-host=` or `--http-host=0.0.0.0` when you run your node.
 
 ### Node is on the wrong network
 

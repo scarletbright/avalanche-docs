@@ -27,37 +27,18 @@ If you're not sure, ask for help on [Discord.](https://chat.avalabs.org)
 
 ## Running a validator
 
-If you're running a validator, it's important that you follow some best practices to ensure that you receive a reward and keep your funds safe.
+### Networking
 
-### Networking for validators
+If you're running a validator, it's especially important that your node is well connected to ensure that you receive a reward. See [here.](faq.md#networking-setup)
 
-Your node must be able to receive incoming connections on the P2P port (`9651` by default.)
-You should specify the public IP your node will listen for incoming connections using `--public-ip=-[NODE PUBLIC IP]`.
-If you omit this argument, your node will try to discover its IP, which may fail.
+### Allow API calls
 
-#### If your node is behind a router
-
-Your node needs to be able to receive traffic on the P2P port.
-To do this, set up a port forwarding rule on your router to allow TCP traffic on the P2P port.
-If you don't run with argument `--public-ip`, the node will also try to set up this rule using UPnP and NAT-PMP.
-
-#### If your node is not behind a router (e.g. on a cloud service)
-
-Start your node with argument `--public-ip=[NODE PUBLIC IP]` and make sure that your network settings (e.g. AWS security group) allow traffic on the P2P port.
-
-#### Is my node's staking port open?
-
-You can check using [this site.](https://portchecker.co/)
-
-#### HTTP Host
-
-To make API calls to your node from remote machines, allow traffic on the API port (`9650` by default) 
-and run your node with argument `--http-host=`
+To make API calls to your node from remote machines, allow traffic on the API port (`9650` by default) and run your node with argument `--http-host=`
 
 If you do this, you should disable all APIs you will not use via command-line arguments.
 You should configure your network to only allow access to the API port from trusted machines (e.g. your personal computer.) 
 
-#### Why is my uptime low?
+### Why is my uptime low?
 
 Every validator on the Avalanche network keeps track of the uptime of other validators.
 You can see the connections a node has by calling `info.peers`, as well as the uptime of each connection.
@@ -67,11 +48,6 @@ Just because one node perceives your uptime as being low does not mean that you 
 The likely reason that your node is not connected to another node is that NAT traversal failed and you did not start your node with `--public-ip=[NODE'S PUBLIC IP]`.
 
 In the future we will add better monitoring to make it easier to verify that your node is well-connected.
-
-#### What if I see that NAT traversal failed?
-
-If you're on a cloud service, this is expected.
-If you're behind a router, make sure that you have port forwarding set up. See above.
 
 ### Secret Management
 
