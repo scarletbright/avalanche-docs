@@ -410,7 +410,7 @@ This means that:
 If your node is on a machine with a static IP (e.g. AWS Elastic IP) then you should run your node with `--public-ip=[x.x.x.x]`.
 
 If not, you should configure your node to fetch its public IP from a web service.
-To do so, run with `--dynamic-public-ip=opendns`.
+To do so, run with `--dynamic-public-ip=opendns` or `--dynamic-public-ip=ifconfig`.
 
 If you use neither of the above arguments, your node will attempt to use UPnP or NAT-PMP to fetch your public IP from your router.
 Your router needs to have one of these features enabled, and you should allow UDP traffic from port 1900 to the node machine for UPnP.
