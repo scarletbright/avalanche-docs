@@ -521,10 +521,10 @@ Let's make a base tx that uses the inputs and outputs from the previous examples
 An unsigned add validator tx contains a `BaseTx`, `Validator`, `Stake`, `RewardsOwner`, and `Shares`. The `TypeID` for this type is `0x0000000c`.
 
 - **`BaseTx`**
-    - **`NodeID`** is 20 bytes which is the node ID of the delegatee.
-    - **`StartTime`** is a long which is the Unix time when the delegator starts delegating.
-    - **`EndTime`** is a long which is the Unix time when the delegator stops delegating (and staked AVAX is returned).
-    - **`Weight`** is a long which is the amount the delegator stakes
+- **`NodeID`** is 20 bytes which is the node ID of the delegatee.
+- **`StartTime`** is a long which is the Unix time when the delegator starts delegating.
+- **`EndTime`** is a long which is the Unix time when the delegator stops delegating (and staked AVAX is returned).
+- **`Weight`** is a long which is the amount the delegator stakes
 - **`Stake`** Stake has `LockedOuts`
     - **`LockedOuts`** An array of Transferable Outputs that are locked for the duration of the staking period. At the end of the staking period, these outputs are refunded to their respective addresses.
 - **`RewardsOwner`** A `SECP256K1OutputOwners`
