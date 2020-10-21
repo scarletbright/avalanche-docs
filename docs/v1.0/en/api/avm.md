@@ -1335,12 +1335,17 @@ curl -X POST --data '{
                 "assetID" : "AVAX",
                 "to"      : "X-avax1yzt57wd8me6xmy3t42lz8m5lg6yruy79m6whsf",
                 "amount"  : 1000000000
+            },
+            {
+                "assetID" : "26aqSTpZuWDAVtRmo44fjCx4zW6PDEx3zy9Qtp2ts1MuMFn9FB",
+                "to"      : "X-avax18knvhxx8uhc0mwlgrfyzjcm2wrd6e60w37xrjq",
+                "amount"  : 10
             }
         ],
         "from":["X-avax1s65kep4smpr9cnf6uh9cuuud4ndm2z4jguj3gp"],
         "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
         "memo"      : "hi, mom!",
-        "username"  : "userThatControlsAtLeast10000OfThisAsset",
+        "username"  : "username",
         "password"  : "myPassword"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
@@ -1413,5 +1418,133 @@ curl -X POST --data '{
         "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"
     },
     "id": 1
+}
+```
+
+### wallet.send
+
+Send a quantity of an asset to an address and assume the tx will be accepted so that future calls can use the modified UTXO set.
+
+#### Signature
+
+```go
+wallet.send({
+    amount: int,
+    assetID: string,
+    to: string,
+    from: []string, (optional)
+    changeAddr: string, (optional)
+    memo: string, (optional)
+    username: string,
+    password: string
+}) -> {txID: string, changeAddr: string}
+```
+
+* Sends `amount` units of asset with ID `assetID` to address `to`. `amount` is denominated in the smallest increment of the asset. For AVAX this is 1 nAVAX (one billionth of 1 AVAX.)
+* `to` is the X-Chain address the asset is sent to.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
+* `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
+* You can attach a `memo`, whose length can be up to 256 bytes.
+* The asset is sent from addresses controlled by user `username`. (Of course, that user will need to hold at least the balance of the asset being sent.)
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"wallet.send",
+    "params" :{
+        "assetID"   : "AVAX",
+        "amount"    : 10000,
+        "to"        : "X-avax1yzt57wd8me6xmy3t42lz8m5lg6yruy79m6whsf",
+        "from":["X-avax1s65kep4smpr9cnf6uh9cuuud4ndm2z4jguj3gp"],
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
+        "memo"      : "hi, mom!",
+        "username"  : "userThatControlsAtLeast10000OfThisAsset",
+        "password"  : "myPassword"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X/wallet
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "txID":"2iXSVLPNVdnFqn65rRvLrsu8WneTFqBJRMqkBJx5vZTwAQb8c1",
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"
+    }
+}
+```
+
+### wallet.sendMultiple
+
+Sends an amount of assetID to an array of specified addresses from a list of owned of addresses and assume the tx will be accepted so that future calls can use the modified UTXO set.
+
+#### Signature
+
+```go
+wallet.sendMultiple({
+    outputs: []{
+      assetID: string,
+      amount: int,
+      to: string
+    }
+    from: []string, (optional)
+    changeAddr: string, (optional)
+    memo: string, (optional)
+    username: string,
+    password: string
+}) -> {txID: string, changeAddr: string}
+```
+
+* `outputs` is an array of object literals which each contain an `assetID`, `amount` and `to`.
+* `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.
+* `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.
+* You can attach a `memo`, whose length can be up to 256 bytes.
+* The asset is sent from addresses controlled by user `username`. (Of course, that user will need to hold at least the balance of the asset being sent.)
+
+#### Example Call
+
+```json
+curl -X POST --data '{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "method" :"wallet.sendMultiple",
+    "params" :{
+        "outputs": [
+            {
+                "assetID" : "AVAX",
+                "to"      : "X-avax1yzt57wd8me6xmy3t42lz8m5lg6yruy79m6whsf",
+                "amount"  : 1000000000
+            },
+            {
+                "assetID" : "26aqSTpZuWDAVtRmo44fjCx4zW6PDEx3zy9Qtp2ts1MuMFn9FB",
+                "to"      : "X-avax18knvhxx8uhc0mwlgrfyzjcm2wrd6e60w37xrjq",
+                "amount"  : 10
+            }
+        ],
+        "from":["X-avax1s65kep4smpr9cnf6uh9cuuud4ndm2z4jguj3gp"],
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8",
+        "memo"      : "hi, mom!",
+        "username"  : "username",
+        "password"  : "myPassword"
+    }
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X/wallet
+```
+
+#### Example Response
+
+```json
+{
+    "jsonrpc":"2.0",
+    "id"     :1,
+    "result" :{
+        "txID":"2iXSVLPNVdnFqn65rRvLrsu8WneTFqBJRMqkBJx5vZTwAQb8c1",
+        "changeAddr": "X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8"
+    }
 }
 ```
