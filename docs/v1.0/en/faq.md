@@ -432,6 +432,7 @@ $ curl ifconfig.co
 
 ```
 $ dig +short myip.opendns.com @resolver1.opendns.com
+$ dig +short -4 myip.opendns.com @resolver1.opendns.com
 ```
 
 #### Node prints `UPnP or NAT-PMP router attach failed, you may not be listening publicly ...` on startup
