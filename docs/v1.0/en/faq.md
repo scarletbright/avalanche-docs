@@ -418,9 +418,10 @@ If you are using a firewall on your node, you will need to allow UDP traffic fro
 Alternatively, you can specify your public IP with `--public-ip=[x.x.x.x]`.
 Note that unless you have a static IP, your public IP may change during node operation, which can cause connectivity issues.
 
-You can query your external IP with either the following commands.
+You can query your external IP with one of the following commands.
 ```
 $ dig +short myip.opendns.com @resolver1.opendns.com
+$ dig +short -4 myip.opendns.com @resolver1.opendns.com
 $ curl ifconfig.co
 ```
 
